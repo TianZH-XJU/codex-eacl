@@ -1,7 +1,7 @@
 # Execution Status
 
 **Last updated:** 2026-10-26  
-**Phase:** project scaffold committed; CPU bootstrap workflow configured  
+**Phase:** project scaffold committed; CPU bootstrap workflow configured and output paths audited  
 **Current research status:** no new benchmark accuracy or speed results have been measured yet.
 
 ## Verified environment facts
@@ -20,9 +20,9 @@
 - `requirements-cpu.txt`: starter dependencies (CPU PyTorch is installed separately).
 - `scripts/check_environment.py`: machine-readable environment report.
 - `scripts/download_datasets.py`: pinned dataset downloads and SHA-256 manifest.
-- `scripts/run_baseline_smoke.py`: tiny CPU run using the upstream Laya benchmark.
+- `scripts/run_baseline_smoke.py`: tiny CPU run using the upstream Laya benchmark; result paths are absolute so subprocess output is archived in the intended location.
 - `tests/test_config_and_scripts.py`: structural checks.
-- `.github/workflows/cpu-bootstrap.yml`: hosted runner workflow to install dependencies, download data, run tests and baseline smoke, and upload artifacts.
+- `.github/workflows/cpu-bootstrap.yml`: hosted runner workflow to install dependencies, download data, run tests and baseline smoke, archive resolved dependency versions, and upload artifacts.
 - `.gitignore`: excludes model weights, local datasets, caches, environments and large raw outputs.
 
 ## Run status
@@ -46,6 +46,6 @@ GitHub is the source of truth. Coherent code/docs changes are committed directly
 
 1. Inspect the first GitHub Actions run for install, dataset and model download results.
 2. Fix any dependency or current-Laya API mismatch revealed by logs.
-3. Save a tested dependency lockfile and pin the exact Laya commit/checkpoint revision.
+3. Save the CI-generated dependency lock artifact as the tested lockfile and pin the exact Laya commit/checkpoint revision.
 4. Run the 5-example CPU smoke test, then a small development baseline.
 5. Build cached action outputs and calculate the oracle gap before spending compute on NEAT.
