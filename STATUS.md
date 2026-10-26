@@ -68,9 +68,9 @@ Train cache: 77 class-balanced 1-shot examples from official `train`. Dev cache:
 | Confidence threshold | 0.5584 | 5131.2 | 2.810 |
 | Margin threshold | 0.5584 | 5131.2 | 2.810 |
 | Entropy threshold | 0.5584 | 5131.2 | 2.810 |
-| Logistic regression | 0.4113 | 2126.5 | 1.052 |
-| Decision tree (depth 3) | 0.4113 | 2362.8 | 1.173 |
-| Small MLP (8 units) | 0.4156 | 2232.0 | 1.100 |
+| Logistic regression (binary upgrade) | 0.4242 | 2799.0 | 1.080 |
+| Decision tree (depth 3, binary) | 0.4329 | 2889.4 | 1.100 |
+| Small MLP (8 units, binary) | 0.4026 | 2182.7 | 1.040 |
 | Random routing | 0.5152 | 4102.3 | 2.030 |
 | Oracle (post-hoc) | 0.7056 | 2870.9 | 1.416 |
 

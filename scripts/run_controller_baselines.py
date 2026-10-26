@@ -73,7 +73,13 @@ def main():
         return items[0]
 
     X_train = np.array([features(single_row(train_by[i])) for i in train_by], dtype=float)
-    y_train = np.array([label_example(train_by[i]) for i in train_by])
+
+    def upgrade_needed(items):
+        sr = single_row(items)
+        others_correct = any(r["correct"] for r in items if r["strategy"] != "single")
+        return int((not sr["correct"]) and others_correct)
+
+    y_train = np.array([upgrade_needed(train_by[i]) for i in train_by])
     X_dev = np.array([features(single_row(dev_by[i])) for i in dev_by], dtype=float)
     dev_indices = list(dev_by.keys())
 
@@ -102,10 +108,10 @@ def main():
             calls.append(row["cumulative_calls"])
         n = len(dev_indices)
         return {
-            "accuracy": round(correct / n, 4) if n else None,
-            "mean_cumulative_ms": round(sum(latencies) / n, 1) if n else None,
-            "p95_cumulative_ms": sorted(latencies)[min(n - 1, int(n * 0.95))] if latencies else None,
-            "mean_cumulative_calls": round(sum(calls) / n, 3) if n else None,
+            "accuracy": round(float(correct) / n, 4) if n else None,
+            "mean_cumulative_ms": round(float(sum(latencies)) / n, 1) if n else None,
+            "p95_cumulative_ms": float(sorted(latencies)[min(n - 1, int(n * 0.95))]) if latencies else None,
+            "mean_cumulative_calls": round(float(sum(calls)) / n, 3) if n else None,
         }
 
     results = {}
@@ -136,7 +142,7 @@ def main():
             preds.append("single")
         else:
             preds.append(upgrade_target)
-    results["confidence_threshold"] = {"threshold": best_t, "upgrade_target": upgrade_target, **evaluate(preds)}
+    results["confidence_threshold"] = {"threshold": (float(best_t) if best_t is not None else None), "upgrade_target": upgrade_target, **evaluate(preds)}
 
     # Margin threshold.
     best_t = None
@@ -161,7 +167,7 @@ def main():
             preds.append("single")
         else:
             preds.append(upgrade_target)
-    results["margin_threshold"] = {"threshold": best_t, "upgrade_target": upgrade_target, **evaluate(preds)}
+    results["margin_threshold"] = {"threshold": (float(best_t) if best_t is not None else None), "upgrade_target": upgrade_target, **evaluate(preds)}
 
     # Entropy threshold (lower entropy -> more confident).
     best_t = None
@@ -186,22 +192,24 @@ def main():
             preds.append("single")
         else:
             preds.append(upgrade_target)
-    results["entropy_threshold"] = {"threshold": best_t, "upgrade_target": upgrade_target, **evaluate(preds)}
+    results["entropy_threshold"] = {"threshold": (float(best_t) if best_t is not None else None), "upgrade_target": upgrade_target, **evaluate(preds)}
 
     # Logistic regression (multiclass best strategy).
     try:
-        lr = LogisticRegression(max_iter=1000, random_state=17)
+        lr = LogisticRegression(max_iter=1000, random_state=17, class_weight="balanced")
         lr.fit(X_train, y_train)
-        preds = list(lr.predict(X_dev))
-        results["logistic_regression"] = {"classes": list(lr.classes_), **evaluate(preds)}
+        raw = list(lr.predict(X_dev))
+        preds = ["single" if p == 0 else upgrade_target for p in raw]
+        results["logistic_regression"] = {"classes": [str(x) for x in lr.classes_], "positive_rate_train": float(y_train.mean()), **evaluate(preds)}
     except Exception as e:
         results["logistic_regression"] = {"error": f"{type(e).__name__}: {e}"}
 
     # Shallow decision tree.
     try:
-        dt = DecisionTreeClassifier(max_depth=3, random_state=17)
+        dt = DecisionTreeClassifier(max_depth=3, random_state=17, class_weight="balanced")
         dt.fit(X_train, y_train)
-        preds = list(dt.predict(X_dev))
+        raw = list(dt.predict(X_dev))
+        preds = ["single" if p == 0 else upgrade_target for p in raw]
         results["decision_tree"] = {"max_depth": 3, **evaluate(preds)}
     except Exception as e:
         results["decision_tree"] = {"error": f"{type(e).__name__}: {e}"}
@@ -210,7 +218,8 @@ def main():
     try:
         mlp = MLPClassifier(hidden_layer_sizes=(8,), max_iter=500, random_state=17)
         mlp.fit(X_train, y_train)
-        preds = list(mlp.predict(X_dev))
+        raw = list(mlp.predict(X_dev))
+        preds = ["single" if p == 0 else upgrade_target for p in raw]
         results["mlp"] = {"hidden_layer_sizes": [8], **evaluate(preds)}
     except Exception as e:
         results["mlp"] = {"error": f"{type(e).__name__}: {e}"}

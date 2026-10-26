@@ -47,30 +47,30 @@
     },
     "logistic_regression": {
       "classes": [
-        "single",
-        "tournament",
-        "wide"
+        "0",
+        "1"
       ],
-      "accuracy": 0.4113,
-      "mean_cumulative_ms": 2126.5,
-      "p95_cumulative_ms": 2176.6,
-      "mean_cumulative_calls": 1.052
+      "positive_rate_train": 0.22077922077922077,
+      "accuracy": 0.4242,
+      "mean_cumulative_ms": 2799.0,
+      "p95_cumulative_ms": 6525.7,
+      "mean_cumulative_calls": 1.381
     },
     "decision_tree": {
       "max_depth": 3,
-      "accuracy": 0.4113,
-      "mean_cumulative_ms": 2362.8,
-      "p95_cumulative_ms": 5907.3,
-      "mean_cumulative_calls": 1.173
+      "accuracy": 0.4329,
+      "mean_cumulative_ms": 2889.4,
+      "p95_cumulative_ms": 6263.7,
+      "mean_cumulative_calls": 1.459
     },
     "mlp": {
       "hidden_layer_sizes": [
         8
       ],
-      "accuracy": 0.4156,
-      "mean_cumulative_ms": 2232.0,
-      "p95_cumulative_ms": 4956.4,
-      "mean_cumulative_calls": 1.1
+      "accuracy": 0.4026,
+      "mean_cumulative_ms": 2182.7,
+      "p95_cumulative_ms": 2281.8,
+      "mean_cumulative_calls": 1.087
     },
     "random_routing": {
       "accuracy": 0.5152,
