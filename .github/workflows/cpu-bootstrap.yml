@@ -56,6 +56,11 @@ jobs:
       - name: Install experiment dependencies
         run: python -m pip install -r requirements-cpu.txt
 
+      - name: Save resolved dependency lock to run artifact
+        run: |
+          mkdir -p results
+          python -m pip freeze > results/requirements-lock-ci.txt
+
       - name: Run structural tests and environment report
         run: |
           pytest -q
