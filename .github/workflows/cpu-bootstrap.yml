@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: cpu-bootstrap-${{ github.ref }}
@@ -113,3 +113,16 @@ jobs:
             external/laya/research/benchmarks/tournament/results.json
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Autosave small machine-readable reports to main
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/environment.json results/dataset_manifest.json results/ci_run_manifest.json results/smoke/baseline_smoke_report.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(results): autosave CPU bootstrap reports [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No small report files available to autosave."
+          fi
