@@ -1,0 +1,34 @@
+{
+  "dataset": "massive",
+  "split": "validation",
+  "seed": 17,
+  "limit": 30,
+  "index": 8,
+  "text": "schedule a meeting with my colleague",
+  "gold": "calendar_set",
+  "model": "english",
+  "device": "cpu",
+  "cpu_threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "created_utc": "2026-10-26T13:36:30.067939+00:00",
+  "results": {
+    "single": {
+      "choice": "calendar set",
+      "answer_confidence": 0.7628,
+      "entropy_confidence": 0.8661,
+      "correct": true,
+      "calls": 1,
+      "latency_ms": 1503.2,
+      "error": null
+    },
+    "tournament": {
+      "choice": "calendar set",
+      "answer_confidence": 0.7472,
+      "entropy_confidence": 0.4114,
+      "correct": true,
+      "calls": 2,
+      "latency_ms": 2551.5,
+      "error": null
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "dataset": "massive",
+  "split": "validation",
+  "seed": 17,
+  "limit": 30,
+  "index": 9,
+  "text": "send an uber to me right now",
+  "gold": "transport_taxi",
+  "model": "english",
+  "device": "cpu",
+  "cpu_threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "created_utc": "2026-10-26T13:36:44.846805+00:00",
+  "results": {
+    "single": {
+      "choice": "transport taxi",
+      "answer_confidence": 0.9992,
+      "entropy_confidence": 0.9982,
+      "correct": true,
+      "calls": 1,
+      "latency_ms": 1469.4,
+      "error": null
+    },
+    "tournament": {
+      "choice": "transport taxi",
+      "answer_confidence": 0.8309,
+      "entropy_confidence": 0.5437,
+      "correct": true,
+      "calls": 2,
+      "latency_ms": 2421.2,
+      "error": null
+    }
+  }
+}

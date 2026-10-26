@@ -51,7 +51,8 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | Tiny CPU smoke test | passed | Three datasets return code 0 |
 | Unit/structure tests | passed | 3 passed from `pytest tests/ -q` |
 | Detailed baseline accuracy and latency | passed (pilot) | BANKING77 train 50, CLINC150 validation 30, MASSIVE validation 30 action caches; see pilot table |
-| Per-example action cache | passed | `scripts/build_action_cache.py`; JSONL plus summary with latency percentiles and pairwise overlaps |
+| Fixed train/dev manifest | passed | `scripts/make_split_manifest.py`; `results/splits/banking77_train_dev_manifest.json` (77 classes, 385 train, 231 dev, disjoint) |
+| Per-example action cache | passed | `scripts/build_action_cache.py`; SINGLE-first features, cascade costs, latency percentiles, pairwise overlaps |
 | Oracle action gap | measured (pilot) | BANKING77 +0.12, CLINC150 +0.033, MASSIVE +0.067 over best fixed strategy |
 | NEAT and controller baselines | not run | Implement baselines first; NEAT only if cache and headroom remain credible |
 | Local Git/GitHub sync | passed | Commit `7a3458f0211ec1df2a311dec6517fe8d9e0fde59` pushed to `main` |
