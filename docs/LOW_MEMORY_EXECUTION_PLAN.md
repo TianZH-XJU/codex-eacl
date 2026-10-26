@@ -47,6 +47,7 @@
     git remote add origin https://github.com/TianZH-XJU/codex-eacl.git
     git fetch origin main
     git reset --mixed origin/main
+    git ls-tree -r --name-only origin/main | ForEach-Object { if (-not (Test-Path $_)) { git checkout origin/main -- $_ } }
     Add-Content .gitignore ([Environment]::NewLine + 'external/laya/')
     git branch --set-upstream-to=origin/main main
     git status --short
