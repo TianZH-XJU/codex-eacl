@@ -1,0 +1,110 @@
+name: CPU bootstrap and baseline smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'AGENTS.md'
+      - 'README.md'
+      - 'STATUS.md'
+      - 'requirements-cpu.txt'
+      - 'configs/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'docs/**'
+      - '.github/workflows/cpu-bootstrap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cpu-bootstrap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  bootstrap-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      CUDA_VISIBLE_DEVICES: ""
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-cpu.txt
+
+      - name: Install CPU PyTorch
+        run: python -m pip install --upgrade pip && python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Clone and install current Laya source
+        run: |
+          git clone --depth 1 https://github.com/NandhaKishorM/laya.git external/laya
+          git -C external/laya rev-parse HEAD | tee laya_commit_ci.txt
+          python -m pip install -e external/laya
+
+      - name: Install experiment dependencies
+        run: python -m pip install -r requirements-cpu.txt
+
+      - name: Run structural tests and environment report
+        run: |
+          pytest -q
+          python scripts/check_environment.py --output results/environment.json --require-laya --require-neat
+
+      - name: Download pinned datasets
+        run: python scripts/download_datasets.py --output-dir data/raw --manifest results/dataset_manifest.json
+
+      - name: Run tiny CPU baseline smoke test
+        run: python scripts/run_baseline_smoke.py --laya-root external/laya --limit 5 --strategies single,tournament --output-dir results/smoke
+
+      - name: Save run manifest
+        if: always()
+        run: |
+          mkdir -p results
+          python - <<'PY'
+          import json, os, platform, subprocess, sys
+          from datetime import datetime, timezone
+          report = {
+              "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+              "git_sha": os.environ.get("GITHUB_SHA"),
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "python_version": sys.version,
+              "platform": platform.platform(),
+              "status": "workflow_step_failure_or_not_completed",
+              "note": "Inspect individual step outcomes and artifacts; this default status is intentionally not a success claim."
+          }
+          try:
+              p = subprocess.run([sys.executable, "scripts/check_environment.py", "--output", "results/environment.json"], capture_output=True, text=True)
+              report["environment_check_exit_code"] = p.returncode
+          except Exception as e:
+              report["environment_check_error"] = repr(e)
+          if os.path.exists("results/dataset_manifest.json"):
+              with open("results/dataset_manifest.json") as f: report["dataset_manifest_status"] = json.load(f).get("status")
+          if os.path.exists("results/smoke/baseline_smoke_report.json"):
+              with open("results/smoke/baseline_smoke_report.json") as f: report["baseline_smoke_status"] = json.load(f).get("status")
+          with open("results/ci_run_manifest.json", "w") as f: json.dump(report, f, indent=2)
+          PY
+
+      - name: Upload reports and downloaded datasets as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpu-bootstrap-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            results/
+            laya_commit_ci.txt
+            data/raw/
+            external/laya/research/benchmarks/tournament/results.json
+          if-no-files-found: warn
+          retention-days: 14
