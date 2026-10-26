@@ -1,0 +1,38 @@
+project: neat-laya-budget-controller
+seed: 17
+device: cpu
+cpu_threads: 3
+model:
+  name: english
+  revision: null # Fill with the resolved model commit after first download.
+  frozen: true
+datasets:
+  banking77:
+    repo_id: mteb/banking77
+    revision: 18072d2685ea682290f7b8924d94c62acc19c0b2
+    files: [data/train-00000-of-00001.parquet, data/test-00000-of-00001.parquet]
+    labels: 77
+  clinc150:
+    repo_id: clinc/clinc_oos
+    revision: 155b9c710419136e17307b80d0a13e68cd46b4ec
+    files: [plus/train-00000-of-00001.parquet, plus/validation-00000-of-00001.parquet, plus/test-00000-of-00001.parquet]
+    labels: 150
+    primary_metric_excludes_oos: true
+  massive_en_us:
+    repo_id: SetFit/amazon_massive_intent_en-US
+    revision: f7672a018e8ceb37fc0184dcfbb7e665155ffea6
+    files: [train.jsonl, validation.jsonl, test.jsonl]
+    labels: 60
+controller:
+  main_actions: [single, wide, tournament]
+  optional_actions: [permutation, abstain]
+  few_shot_per_class: [1, 3, 5]
+  neat_seeds: [17, 23, 41]
+  population_size: 50
+  generations: 30
+evaluation:
+  do_not_touch_test_until_protocol_locked: true
+  smoke_limit: 5
+  warmup_examples: 3
+  primary_metrics: [accuracy_at_matched_mean_cpu_latency, accuracy_latency_pareto]
+  secondary_metrics: [macro_f1, p50_latency_ms, p95_latency_ms, cpu_seconds, calls_per_example, peak_rss_mb]
