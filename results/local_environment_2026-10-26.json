@@ -1,0 +1,33 @@
+{
+  "timestamp_utc": "2026-10-26T08:47:26.195489+00:00",
+  "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+  "logical_cpu_count": 3,
+  "device": "cpu",
+  "torch_version": "2.10.0+cpu",
+  "torch_cuda_available": false,
+  "torch_cpu_threads": 3,
+  "modules": {
+    "torch": {"available": true, "version": "2.10.0+cpu"},
+    "laya": {"available": false, "error": "ModuleNotFoundError: No module named 'laya'"},
+    "transformers": {"available": false, "error": "ModuleNotFoundError: No module named 'transformers'"},
+    "huggingface_hub": {"available": true, "version": "1.16.1"},
+    "neat": {"available": false, "error": "ModuleNotFoundError: No module named 'neat'"},
+    "datasets": {"available": false, "error": "ModuleNotFoundError: No module named 'datasets'"},
+    "pyarrow": {"available": false, "error": "ModuleNotFoundError: No module named 'pyarrow'"},
+    "numpy": {"available": true, "version": "2.3.5"},
+    "pandas": {"available": true, "version": "2.2.3"},
+    "sklearn": {"available": true, "version": "1.8.0"},
+    "scipy": {"available": true, "version": "1.17.0"},
+    "psutil": {"available": true, "version": "7.2.2"},
+    "threadpoolctl": {"available": true, "version": "3.6.0"}
+  },
+  "status": "blocked_network",
+  "notes": [
+    "Direct shell git clone failed because github.com DNS resolution failed.",
+    "pip install neat-python datasets pyarrow failed because the package index hostname could not be resolved.",
+    "Laya clone, additional dependency installation, dataset/model downloads and baseline smoke test were not completed."
+  ]
+}
