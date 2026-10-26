@@ -1,0 +1,108 @@
+{
+  "timestamp_utc": "2026-10-26T13:51:46.198502+00:00",
+  "dataset": "banking77",
+  "split": "train_1shot",
+  "seed": 17,
+  "n_examples": 77,
+  "strategies": [
+    "single",
+    "wide",
+    "tournament"
+  ],
+  "by_strategy": {
+    "single": {
+      "n": 77,
+      "accuracy": 0.4416,
+      "mean_ms": 2087.1,
+      "p50_ms": 2077.0,
+      "p95_ms": 2263.5,
+      "max_ms": 2344.4,
+      "min_ms": 1863.9,
+      "mean_cumulative_ms": 2087.1,
+      "p95_cumulative_ms": 2263.5,
+      "calls_per_row": 1.0,
+      "cumulative_calls_per_row": 1.0,
+      "errors": 0,
+      "initial_errors": 0
+    },
+    "wide": {
+      "n": 77,
+      "accuracy": 0.4805,
+      "mean_ms": 2443.9,
+      "p50_ms": 2444.5,
+      "p95_ms": 2609.9,
+      "max_ms": 2703.1,
+      "min_ms": 2212.3,
+      "mean_cumulative_ms": 4531.0,
+      "p95_cumulative_ms": 4907.4,
+      "calls_per_row": 1.0,
+      "cumulative_calls_per_row": 2.0,
+      "errors": 0,
+      "initial_errors": 0
+    },
+    "tournament": {
+      "n": 77,
+      "accuracy": 0.5844,
+      "mean_ms": 3943.7,
+      "p50_ms": 3871.3,
+      "p95_ms": 4698.2,
+      "max_ms": 4960.5,
+      "min_ms": 3432.5,
+      "mean_cumulative_ms": 6030.8,
+      "p95_cumulative_ms": 6961.6,
+      "calls_per_row": 2.0,
+      "cumulative_calls_per_row": 3.0,
+      "errors": 0,
+      "initial_errors": 0
+    }
+  },
+  "best_fixed_strategy": "tournament",
+  "best_fixed_accuracy": 0.5844,
+  "oracle_accuracy": 0.6623,
+  "oracle_gain_over_best_fixed": 0.0779,
+  "pairwise_error_overlap": [
+    {
+      "strategies": [
+        "single",
+        "wide"
+      ],
+      "both_wrong": 35,
+      "only_first_wrong": 8,
+      "only_second_wrong": 5,
+      "both_correct": 29
+    },
+    {
+      "strategies": [
+        "single",
+        "tournament"
+      ],
+      "both_wrong": 26,
+      "only_first_wrong": 17,
+      "only_second_wrong": 6,
+      "both_correct": 28
+    },
+    {
+      "strategies": [
+        "wide",
+        "tournament"
+      ],
+      "both_wrong": 28,
+      "only_first_wrong": 12,
+      "only_second_wrong": 4,
+      "both_correct": 33
+    }
+  ],
+  "elapsed_seconds": 652.7,
+  "peak_rss_mb": 2147.6,
+  "cpu_threads": 2,
+  "device": "cpu",
+  "model": "english",
+  "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "9e19e297bea77c5828e6300a2d73ae0df8c8b89c",
+  "working_tree_dirty": true,
+  "status": "passed",
+  "errors": 0,
+  "records": 231,
+  "expected_records": 231
+}

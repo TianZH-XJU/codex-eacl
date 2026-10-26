@@ -67,7 +67,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dataset", required=True, choices=sorted(bench.DATASETS))
     ap.add_argument("--split", default="train")
-    ap.add_argument("--limit", type=int, default=20)
+    ap.add_argument("--limit", type=int, default=0, help="0 means all rows")
     ap.add_argument("--seed", type=int, default=17)
     ap.add_argument("--strategies", default="single,wide,tournament")
     ap.add_argument("--model", default="english")
@@ -101,13 +101,13 @@ def main():
         else:
             indices = manifest["dev_indices"]
         rows = [all_rows[i] for i in indices]
-        if args.limit and args.limit < len(rows):
+        if args.limit and args.limit > 0 and args.limit < len(rows):
             rows = rows[:args.limit]
         args.split = args.manifest_subset
     else:
         load, _instructions = bench.DATASETS[args.dataset]
         names, rows = load(args.split)
-        if args.limit and args.limit < len(rows):
+        if args.limit and args.limit > 0 and args.limit < len(rows):
             rows = random.Random(args.seed).sample(rows, args.limit)
 
     question = {"type": "choice", "instructions": bench.DATASETS[args.dataset][1],
