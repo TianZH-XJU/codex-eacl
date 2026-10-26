@@ -12,7 +12,7 @@ def main():
  parser.add_argument("--strategies",default="single,tournament"); args=parser.parse_args()
  root=Path(args.laya_root).resolve(); benchmark=root/"research/benchmarks/tournament/benchmark.py"
  if not benchmark.exists(): raise SystemExit(f"Upstream benchmark not found: {benchmark}. Checkout Laya first.")
- out_dir=Path(args.output_dir); out_dir.mkdir(parents=True,exist_ok=True)
+ out_dir=Path(args.output_dir).resolve(); out_dir.mkdir(parents=True,exist_ok=True)
  try:
   import torch
   torch.set_num_threads(int(os.environ.get("OMP_NUM_THREADS","3"))); torch.set_num_interop_threads(1)
