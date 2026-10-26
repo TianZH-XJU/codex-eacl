@@ -1,0 +1,18 @@
+# Install CPU PyTorch separately first:
+# python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+# Then install this file in the same virtual environment.
+# These are lower bounds for a starter environment; after successful resolution, lock
+# the actual tested versions with: python -m pip freeze > requirements-lock.txt
+neat-python>=0.92
+datasets>=3.0
+huggingface_hub>=0.25
+pyarrow>=18.0
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.5
+scipy>=1.13
+matplotlib>=3.9
+psutil>=6.0
+threadpoolctl>=3.5
+tqdm>=4.66
+pytest>=8.0
