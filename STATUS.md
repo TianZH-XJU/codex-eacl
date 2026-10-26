@@ -1,51 +1,58 @@
 # Execution Status
 
 **Last updated:** 2026-10-26  
-**Phase:** project scaffold committed; CPU bootstrap workflow configured and output paths audited  
-**Current research status:** no new benchmark accuracy or speed results have been measured yet.
+**Phase:** repository scaffold committed; CPU bootstrap and upstream baseline workflow configured  
+**Research result status:** no new accuracy result has been measured yet.
 
-## Verified environment facts
+## GitHub autosave / source of truth
 
-- Repository `TianZH-XJU/codex-eacl` is public and uses default branch `main`.
-- Current interactive runtime: Python 3.13.5; PyTorch 2.10.0+cpu; CUDA unavailable; 3 PyTorch CPU threads.
-- Current Laya source metadata inspected through GitHub: upstream `pyproject.toml` declares Laya 0.4.16, Python >=3.10, and base dependencies on torch, transformers, safetensors, huggingface_hub and numpy.
-- Upstream Laya tournament benchmark pins BANKING77, CLINC OOS and MASSIVE en-US dataset revisions. Those exact revisions are recorded in `configs/experiment.yaml` and `scripts/download_datasets.py`.
-- Shell networking in the current interactive runtime cannot resolve `github.com` or the package index. The attempted shell clone and pip install failed due to DNS resolution. This is a runtime connectivity blocker, not proof that upstream packages/data are unavailable.
+- Repository: https://github.com/TianZH-XJU/codex-eacl
+- Persistent project instructions: [AGENTS.md](AGENTS.md)
+- Full plan: [docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)
+- CPU bootstrap workflow: [.github/workflows/cpu-bootstrap.yml](.github/workflows/cpu-bootstrap.yml)
+- Main setup scripts: `scripts/check_environment.py`, `scripts/download_datasets.py`, `scripts/run_baseline_smoke.py`
+- The initial scaffold has been committed to `main` in multiple commits (the GitHub connector returned successful commit SHAs for README, AGENTS.md, STATUS.md, .gitignore, requirements-cpu.txt and experiment config; scripts/docs/workflow are present on main and are linked above).
+- Project instructions require each coherent change to be committed, the status updated, and the commit verified. GitHub Actions is configured to autosave small run manifests/results; raw data and model weights are uploaded as artifacts and not committed.
 
-## Committed project scaffolding
+## Verified directly in the current interactive runtime
 
-- `AGENTS.md`: persistent project instructions, research constraints, no-fabrication rule, test-leakage guardrails and automatic-save/commit protocol.
-- `docs/PROJECT_PLAN.md`: detailed research question, hypotheses, packages/models, datasets, literature, baselines, architecture, fitness, ablations, metrics and possible storylines.
-- `configs/experiment.yaml`: CPU-first configuration and pinned dataset revisions.
-- `requirements-cpu.txt`: starter dependencies (CPU PyTorch is installed separately).
-- `scripts/check_environment.py`: machine-readable environment report.
-- `scripts/download_datasets.py`: pinned dataset downloads and SHA-256 manifest.
-- `scripts/run_baseline_smoke.py`: tiny CPU run using the upstream Laya benchmark; result paths are absolute so subprocess output is archived in the intended location.
-- `tests/test_config_and_scripts.py`: structural checks.
-- `.github/workflows/cpu-bootstrap.yml`: hosted runner workflow to install dependencies, download data, run tests and baseline smoke, archive resolved dependency versions, upload artifacts, and commit small machine-readable run reports back to main (workflow has contents: write permission).
-- `.gitignore`: excludes model weights, local datasets, caches, environments and large raw outputs.
+- Python 3.13.5.
+- PyTorch 2.10.0+cpu.
+- CUDA unavailable.
+- PyTorch CPU threads: 3.
+- Previously checked: NumPy, pandas and scikit-learn are installed; Laya, Transformers, neat-python and datasets were absent before attempted installation.
+- Shell `git clone https://github.com/NandhaKishorM/laya.git` failed with DNS resolution error (`Could not resolve host: github.com`).
+- `python -m pip install neat-python datasets pyarrow` failed because the package index hostname could not be resolved. This is a current runtime network restriction, not evidence that the packages are unavailable upstream.
+- The current Laya upstream `pyproject.toml` was read through GitHub and declares version 0.4.16, Python >=3.10 and base dependencies on torch, transformers, safetensors, huggingface_hub and numpy.
+- The official current upstream benchmark script and README were read through GitHub; the project scripts pin the same three dataset revisions.
 
-## Run status
+## Status of install / download / benchmark
 
-| Step | Status | Evidence / blocker |
+| Step | Status | Evidence / next action |
 |---|---|---|
-| Repository and project instructions | committed | GitHub file fetches confirmed |
-| Local package installation | blocked | package index DNS resolution failed |
-| Local Laya clone | blocked | github.com DNS resolution failed |
-| Dataset files downloaded in current runtime | not completed | network blocker; CI workflow is configured to attempt it |
-| Model checkpoint downloaded | not completed | network blocker; not attempted to completion |
-| Laya CPU baseline smoke test | not run locally | dependencies, source checkout and model weights unavailable locally |
-| Hosted GitHub Actions bootstrap | pending verification | workflow is configured to trigger on relevant pushes and can be manually started; no successful run/artifact has yet been verified in this chat |
-| NEAT experiments | not run | must wait for successful baseline and cache/oracle-gap analysis |
+| Write project/system instructions to GitHub | **Committed** | See `AGENTS.md` and `docs/PROJECT_PLAN.md` |
+| Configure code/result autosave | **Configured; CI execution must be verified** | GitHub Actions workflow commits small reports and uploads artifacts |
+| Install Laya and experiment dependencies in this runtime | **Blocked by DNS/network** | Let GitHub-hosted Actions try the installation |
+| Download BANKING77, CLINC150 and MASSIVE files locally | **Blocked by DNS/network** | CI script downloads pinned revisions and writes SHA-256 manifest |
+| Download Laya model checkpoint locally | **Not run / blocked by network** | CI smoke test will attempt checkpoint download |
+| Run CPU baseline smoke test | **Not run yet** | Inspect Actions logs/artifact; fix API/dependency failures if any |
+| NEAT controller experiment | **Not run** | Do only after baseline and oracle-gap checks pass |
 
-## Automatic saving
+## Current pinned datasets
 
-GitHub is the source of truth. Coherent code/docs changes are committed directly to the repository. Pushes to relevant code, config and documentation paths trigger the CPU bootstrap workflow; the workflow stores environment reports, dataset manifest, smoke-test output and downloaded dataset bundle as Actions artifacts, and attempts to commit small machine-readable run summaries to main. Large data and model weights are not committed to Git. This is not a background editor autosave: every code change still needs a verified commit/push.
+- BANKING77: `mteb/banking77`, revision `18072d2685ea682290f7b8924d94c62acc19c0b2`.
+- CLINC150: `clinc/clinc_oos`, revision `155b9c710419136e17307b80d0a13e68cd46b4ec`; use the `plus` split and report in-scope and OOS separately.
+- MASSIVE en-US: `SetFit/amazon_massive_intent_en-US`, revision `f7672a018e8ceb37fc0184dcfbb7e665155ffea6`.
 
 ## Next actions
 
-1. Inspect the first GitHub Actions run for install, dataset and model download results.
-2. Fix any dependency or current-Laya API mismatch revealed by logs.
-3. Save the CI-generated dependency lock artifact as the tested lockfile and pin the exact Laya commit/checkpoint revision.
-4. Run the 5-example CPU smoke test, then a small development baseline.
-5. Build cached action outputs and calculate the oracle gap before spending compute on NEAT.
+1. Verify whether the GitHub Actions workflow is enabled and inspect the run triggered by the initial pushes.
+2. If the run has not started, manually dispatch it from the Actions tab (workflow_dispatch is enabled).
+3. Fix any dependency/API/model/data issue based on the actual log, not assumptions.
+4. Record the Laya commit and model revision, then run a slightly larger validation benchmark before implementing NEAT.
+5. Build cached per-example action outputs on train/validation only, calculate the oracle action gap, and stop if there is insufficient headroom.
+6. Implement simple controllers first; introduce NEAT only with matched-budget comparisons.
+
+## Autosave rule
+
+Each coherent code/documentation unit must be committed to GitHub. Every run must write a small machine-readable report with a truthful status (`not_run`, `blocked_network`, `failed`, `partial_failure`, or `passed`). Never mark a step passed unless the command exit code and output are verified.
