@@ -44,15 +44,15 @@ After each coherent unit of work:
 5. Commit and push the source-of-truth changes to `main` using the available GitHub connector or an authenticated git remote. Use a specific commit message.
 6. Verify the returned commit SHA or ref. If a push fails, report that the save failed and do not claim the files are in GitHub.
 
-The repository's CPU bootstrap workflow should run on code/config changes and preserve a small run manifest/summary in GitHub plus dataset and report artifacts in Actions. The workflow must not commit large datasets or model weights. Keep workflow path filters narrow so a workflow-generated update in `results/` does not start an infinite run loop.
+**Experiments must run on the user's own Windows PC, not on GitHub-hosted runners.** The cloud CPU bootstrap workflow has been removed by user request. Use the local .venv and local Hugging Face/dataset cache. GitHub is only the source-control/backup location: local changes must be committed and pushed from the user's working directory. Store small summaries and manifests in Git; keep raw data, model weights, and caches local/ignored. Do not recreate a workflow that installs packages, downloads data/models or runs inference on hosted GitHub Actions unless the user explicitly asks for that.
 
 ## Execution order
 
 1. Inspect these instructions, `STATUS.md`, and recent results.
-2. Verify internet access and the local Python environment; do not assume pip/GitHub/Hugging Face are reachable.
-3. Install dependencies in an isolated environment; install CPU PyTorch first.
-4. Download pinned datasets and generate a manifest/checksums.
-5. Reproduce an upstream Laya baseline from the exact current checkout before implementing NEAT.
+2. Verify the user's local Windows environment and available RAM; do not assume pip/GitHub/Hugging Face are reachable.
+3. Reuse the already-installed local .venv, model cache and downloaded datasets. Avoid duplicate downloads.
+4. Begin with a single-dataset, 20-example train-split pilot under a 3.5 GB process-memory ceiling.
+5. Read the existing smoke-test JSON before scaling; reproduce the upstream Laya baseline from the exact local checkout before implementing NEAT.
 6. Build cached candidate-action outputs and estimate the oracle action gap on non-test data.
 7. Implement/fairly compare controllers. Train/evaluate with seeds and a locked test protocol.
 8. Run ablations, calculate uncertainty and report all compute costs.
