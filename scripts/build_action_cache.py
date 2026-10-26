@@ -101,6 +101,8 @@ def main():
         else:
             indices = manifest["dev_indices"]
         rows = [all_rows[i] for i in indices]
+        if args.limit and args.limit < len(rows):
+            rows = rows[:args.limit]
         args.split = args.manifest_subset
     else:
         load, _instructions = bench.DATASETS[args.dataset]
