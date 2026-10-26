@@ -20,7 +20,7 @@
 - PyTorch 2.10.0+cpu.
 - CUDA unavailable.
 - PyTorch CPU threads: 3.
-- Previously checked: NumPy, pandas and scikit-learn are installed; Laya, Transformers, neat-python and datasets were absent before attempted installation.
+- A machine-readable environment audit is committed at [results/local_environment_2026-10-26.json](results/local_environment_2026-10-26.json): NumPy 2.3.5, pandas 2.2.3, scikit-learn 1.8.0, SciPy 1.17.0, psutil 7.2.2 and threadpoolctl 3.6.0 are present; Laya, Transformers, neat-python, datasets and pyarrow are absent.
 - Shell `git clone https://github.com/NandhaKishorM/laya.git` failed with DNS resolution error (`Could not resolve host: github.com`).
 - `python -m pip install neat-python datasets pyarrow` failed because the package index hostname could not be resolved. This is a current runtime network restriction, not evidence that the packages are unavailable upstream.
 - The current Laya upstream `pyproject.toml` was read through GitHub and declares version 0.4.16, Python >=3.10 and base dependencies on torch, transformers, safetensors, huggingface_hub and numpy.
