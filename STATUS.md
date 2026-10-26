@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-26  
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners  
-**Current phase:** dependencies/data/model prepared; tiny smoke tests passed; next is low-memory development pilot  
+**Current phase:** dependencies/data/model prepared; tiny smoke tests passed; low-memory action caches and targeted latency retests completed; controller baselines pending  
 **Research result status:** no statistically meaningful new accuracy result has been established yet.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
@@ -50,11 +50,11 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | Public dataset download | passed | Eight pinned files and SHA-256 manifest |
 | Tiny CPU smoke test | passed | Three datasets return code 0 |
 | Unit/structure tests | passed | 3 passed from `pytest tests/ -q` |
-| Detailed baseline accuracy and latency | pending | Five examples are smoke only; inspect JSON outputs and run a 20-row development pilot |
-| Per-example action cache | not implemented | Implement after the pilot; never rerun Laya for every NEAT genome |
-| Oracle action gap | not measured | Required go/no-go check before NEAT |
-| NEAT and controller baselines | not run | Wait for cache and oracle gate |
-| Local Git/GitHub sync | pending | Current extracted folder has no `.git`; follow the safe mixed-reset instructions in the low-memory plan |
+| Detailed baseline accuracy and latency | passed (pilot) | BANKING77 train 50, CLINC150 validation 30, MASSIVE validation 30 action caches; see pilot table |
+| Per-example action cache | passed | `scripts/build_action_cache.py`; JSONL plus summary with latency percentiles and pairwise overlaps |
+| Oracle action gap | measured (pilot) | BANKING77 +0.12, CLINC150 +0.033, MASSIVE +0.067 over best fixed strategy |
+| NEAT and controller baselines | not run | Implement baselines first; NEAT only if cache and headroom remain credible |
+| Local Git/GitHub sync | passed | Commit `7a3458f0211ec1df2a311dec6517fe8d9e0fde59` pushed to `main` |
 | GitHub-hosted experiments | disabled/not used | User requested all installation, data and model runs be performed on the user's computer. The CPU bootstrap GitHub Actions workflow has been removed to avoid executing experiments in GitHub's environment. |
 
 ## Low-memory pilot results (2026-10-26)
@@ -65,7 +65,7 @@ All pilots used the frozen Laya 0.4.16 checkpoint, CPU threads=2, and `train`/`v
 |---|---|---:|---|---:|---:|---:|---:|---|
 | BANKING77 | train | 50 | WIDE | 0.6400 | 0.7600 | +0.1200 | 2144.9 | single 0.46, wide 0.64, tournament 0.54; mean latency single 2037ms, wide 2399ms, tournament 3871ms |
 | CLINC150 | validation | 30 | TOURNAMENT | 0.8333 | 0.8667 | +0.0333 | 2166.1 | single 0.60, wide 0.7333, tournament 0.8333; modest oracle headroom |
-| MASSIVE en-US | validation | 30 | WIDE | 0.6667 | 0.7333 | +0.0667 | 2116.4 | extreme latency outliers on a few examples (single 1.87e6 ms, tournament 8.8e5 ms); median costs are much lower |
+| MASSIVE en-US | validation | 30 | WIDE | 0.6667 | 0.7333 | +0.0667 | 2116.4 | two cached examples had extreme latency (single 1.87e6 ms, tournament 8.8e5 ms); targeted retests of indices 8 and 9 were normal (single 1.68-1.77s, tournament 2.57-2.87s), so the extremes are treated as transient, not deleted |
 
 Interpretation:
 - There is measurable oracle headroom on BANKING77 (+0.12) and smaller headroom on CLINC150 (+0.033) and MASSIVE (+0.067).

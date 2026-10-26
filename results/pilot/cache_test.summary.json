@@ -1,47 +1,95 @@
 {
-  "timestamp_utc": "2026-10-26T10:37:29.955640+00:00",
+  "timestamp_utc": "2026-10-26T13:14:12.980095+00:00",
   "dataset": "banking77",
   "split": "train",
   "seed": 17,
   "n_examples": 3,
   "strategies": [
     "single",
+    "wide",
     "tournament"
   ],
   "by_strategy": {
     "single": {
       "n": 3,
       "accuracy": 0.0,
-      "mean_ms": 2201.1,
+      "mean_ms": 2170.8,
+      "p50_ms": 2181.9,
+      "p95_ms": 2251.1,
+      "max_ms": 2251.1,
+      "min_ms": 2079.4,
+      "calls_per_row": 1.0,
+      "errors": 0
+    },
+    "wide": {
+      "n": 3,
+      "accuracy": 0.6667,
+      "mean_ms": 2571.0,
+      "p50_ms": 2532.6,
+      "p95_ms": 2722.0,
+      "max_ms": 2722.0,
+      "min_ms": 2458.4,
       "calls_per_row": 1.0,
       "errors": 0
     },
     "tournament": {
       "n": 3,
       "accuracy": 0.0,
-      "mean_ms": 4367.1,
+      "mean_ms": 4419.7,
+      "p50_ms": 4080.7,
+      "p95_ms": 5182.7,
+      "max_ms": 5182.7,
+      "min_ms": 3995.7,
       "calls_per_row": 2.0,
       "errors": 0
     }
   },
-  "best_fixed_strategy": "single",
-  "best_fixed_accuracy": 0.0,
-  "oracle_accuracy": 0.0,
+  "best_fixed_strategy": "wide",
+  "best_fixed_accuracy": 0.6667,
+  "oracle_accuracy": 0.6667,
   "oracle_gain_over_best_fixed": 0.0,
-  "error_overlap": {
-    "strategies": [
-      "single",
-      "tournament"
-    ],
-    "both_wrong": 3,
-    "only_first_wrong": 0,
-    "only_second_wrong": 0
-  },
-  "elapsed_seconds": 19.7,
-  "peak_rss_mb": 2125.3,
+  "pairwise_error_overlap": [
+    {
+      "strategies": [
+        "single",
+        "wide"
+      ],
+      "both_wrong": 1,
+      "only_first_wrong": 2,
+      "only_second_wrong": 0,
+      "both_correct": 0
+    },
+    {
+      "strategies": [
+        "single",
+        "tournament"
+      ],
+      "both_wrong": 3,
+      "only_first_wrong": 0,
+      "only_second_wrong": 0,
+      "both_correct": 0
+    },
+    {
+      "strategies": [
+        "wide",
+        "tournament"
+      ],
+      "both_wrong": 1,
+      "only_first_wrong": 0,
+      "only_second_wrong": 2,
+      "both_correct": 0
+    }
+  ],
+  "elapsed_seconds": 27.5,
+  "peak_rss_mb": 2130.4,
   "cpu_threads": 2,
   "device": "cpu",
   "model": "english",
+  "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
   "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
-  "status": "passed"
+  "project_git_sha": "7a3458f0211ec1df2a311dec6517fe8d9e0fde59",
+  "status": "passed",
+  "errors": 0,
+  "records": 9,
+  "expected_records": 9
 }
