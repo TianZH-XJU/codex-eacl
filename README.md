@@ -2,7 +2,7 @@
 
 Research repository for an EACL 2027 Student Research Workshop project: evaluate whether a small NEAT-evolved controller can choose among inference strategies for a frozen Laya System-1 decision model under CPU-only and low-label constraints.
 
-> **Research status:** project instructions, plan, data-download scripts and CPU bootstrap workflow are committed. The local runtime cannot reach GitHub/PyPI due to DNS, so installation/data download/baseline are pending verification on GitHub Actions. No new accuracy or speed gains are claimed until measured.
+> **Research status:** according to the user's local Windows logs, Python dependencies, the Laya model, 8 pinned dataset files, the 3-dataset five-example smoke test and 3 structural tests are ready/passed. The research computer is AMD Ryzen 5 with 16 GB installed RAM but only about 4 GB may be used by this project. No research-level accuracy/latency result has been established yet. All experiments are local-only; the cloud bootstrap workflow was removed on request.
 
 ## Project instructions
 
@@ -10,7 +10,7 @@ Read [`AGENTS.md`](AGENTS.md) before editing code. It is the project's persisten
 
 ## Research plan
 
-See [`docs/PROJECT_PLAN.md`](docs/PROJECT_PLAN.md) for problem definition, model/data choices, baseline matrix, architecture, fitness function, ablations, compute-accounting rules, expected narratives and timeline.
+See [`docs/PROJECT_PLAN.md`](docs/PROJECT_PLAN.md) for the research design and [`docs/LOW_MEMORY_EXECUTION_PLAN.md`](docs/LOW_MEMORY_EXECUTION_PLAN.md) for Windows/Git sync steps, a 4 GB RAM budget, the first 20-row pilot, and go/no-go gates.
 
 ## Status
 
@@ -54,15 +54,13 @@ Run the upstream baseline smoke test (requires `external/laya`, network access f
 python scripts/run_baseline_smoke.py --laya-root external/laya --limit 5 --output-dir results/smoke
 ```
 
-## Automatic saving and reproducibility
+## Local-only execution and autosave
 
-- Source code, prompts, configurations and documentation are versioned in GitHub.
-- A coding agent must commit each coherent work unit instead of leaving changes only in chat/session memory.
-- Pushes to relevant code/config/workflow paths trigger the CPU bootstrap workflow. It installs dependencies, downloads pinned public datasets, runs a small baseline smoke test and stores the report/dataset bundle as GitHub Actions artifacts.
-- The workflow records a small machine-readable run status in `results/`; raw datasets, model weights, local environments and large model caches are not committed to Git.
-- Do not report a run as successful unless its command exit code and outputs have been checked. Any unrun/failed step must be stated explicitly.
-
-Workflow status and artifacts: [GitHub Actions](https://github.com/TianZH-XJU/codex-eacl/actions).
+- Run installs, downloads and inference on the user's own Windows computer. Do not run the experiments on ChatGPT's runtime or GitHub-hosted Actions runners.
+- The previous cloud bootstrap workflow was removed. GitHub is for source control and backup, not remote model execution.
+- The current folder must be a real Git clone or connected local Git repository for autosave/push to work. The user's current extracted folder had no `.git` directory; follow the safe setup instructions in `docs/LOW_MEMORY_EXECUTION_PLAN.md` before the next experiment.
+- Commit coherent code/docs changes and small JSON summaries to GitHub. Keep `.venv`, `external/laya`, model weights, raw datasets, HF caches and large output caches local and ignored.
+- Do not report success unless the local command return code and result files are checked. Any unrun/failed step must be stated explicitly.
 
 ## Important baseline warning
 
