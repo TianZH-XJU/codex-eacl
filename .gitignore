@@ -38,3 +38,6 @@ results/smoke/*.log
 results/**/*.parquet
 results/**/*.jsonl
 results/**/*.csv.gz
+
+# Upstream Laya checkout is a separate dependency, not project source.
+external/laya/
