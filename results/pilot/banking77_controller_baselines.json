@@ -1,0 +1,88 @@
+{
+  "train_cache": "results/pilot/banking77_train1shot_cache.jsonl",
+  "dev_cache": "results/pilot/banking77_dev_cache.jsonl",
+  "n_train": 77,
+  "n_dev": 231,
+  "strategies": [
+    "single",
+    "tournament",
+    "wide"
+  ],
+  "train_strategy_accuracy": {
+    "single": 0.44155844155844154,
+    "tournament": 0.5844155844155844,
+    "wide": 0.4805194805194805
+  },
+  "results": {
+    "best_fixed": {
+      "strategy": "tournament",
+      "accuracy": 0.5541,
+      "mean_cumulative_ms": 5766.4,
+      "p95_cumulative_ms": 6525.7,
+      "mean_cumulative_calls": 3.0
+    },
+    "confidence_threshold": {
+      "threshold": 1.0,
+      "upgrade_target": "tournament",
+      "accuracy": 0.5584,
+      "mean_cumulative_ms": 5131.2,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 2.654
+    },
+    "margin_threshold": {
+      "threshold": 1.0,
+      "upgrade_target": "tournament",
+      "accuracy": 0.5584,
+      "mean_cumulative_ms": 5131.2,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 2.654
+    },
+    "entropy_threshold": {
+      "threshold": 0.0,
+      "upgrade_target": "tournament",
+      "accuracy": 0.5584,
+      "mean_cumulative_ms": 5131.2,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 2.654
+    },
+    "logistic_regression": {
+      "classes": [
+        "single",
+        "tournament",
+        "wide"
+      ],
+      "accuracy": 0.4113,
+      "mean_cumulative_ms": 2126.5,
+      "p95_cumulative_ms": 2176.6,
+      "mean_cumulative_calls": 1.052
+    },
+    "decision_tree": {
+      "max_depth": 3,
+      "accuracy": 0.4113,
+      "mean_cumulative_ms": 2362.8,
+      "p95_cumulative_ms": 5907.3,
+      "mean_cumulative_calls": 1.173
+    },
+    "mlp": {
+      "hidden_layer_sizes": [
+        8
+      ],
+      "accuracy": 0.4156,
+      "mean_cumulative_ms": 2232.0,
+      "p95_cumulative_ms": 4956.4,
+      "mean_cumulative_calls": 1.1
+    },
+    "random_routing": {
+      "accuracy": 0.5152,
+      "mean_cumulative_ms": 4102.3,
+      "p95_cumulative_ms": 6098.6,
+      "mean_cumulative_calls": 2.03
+    },
+    "oracle": {
+      "accuracy": 0.7056,
+      "mean_cumulative_ms": 2870.9,
+      "p95_cumulative_ms": 5752.6,
+      "mean_cumulative_calls": 1.416
+    }
+  }
+}

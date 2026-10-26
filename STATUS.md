@@ -58,6 +58,28 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | Local Git/GitHub sync | passed | Commit `7a3458f0211ec1df2a311dec6517fe8d9e0fde59` pushed to `main` |
 | GitHub-hosted experiments | disabled/not used | User requested all installation, data and model runs be performed on the user's computer. The CPU bootstrap GitHub Actions workflow has been removed to avoid executing experiments in GitHub's environment. |
 
+## Controller baselines on BANKING77 (2026-10-26)
+
+Train cache: 77 class-balanced 1-shot examples from official `train`. Dev cache: 231 held-out examples from the same fixed manifest. All methods use only initial SINGLE features and cumulative cascade costs.
+
+| Method | Dev accuracy | Mean cumulative ms | Mean cumulative calls |
+|---|---:|---:|---:|
+| Best fixed (tournament) | 0.5541 | 5766.4 | 3.000 |
+| Confidence threshold | 0.5584 | 5131.2 | 2.810 |
+| Margin threshold | 0.5584 | 5131.2 | 2.810 |
+| Entropy threshold | 0.5584 | 5131.2 | 2.810 |
+| Logistic regression | 0.4113 | 2126.5 | 1.052 |
+| Decision tree (depth 3) | 0.4113 | 2362.8 | 1.173 |
+| Small MLP (8 units) | 0.4156 | 2232.0 | 1.100 |
+| Random routing | 0.5152 | 4102.3 | 2.030 |
+| Oracle (post-hoc) | 0.7056 | 2870.9 | 1.416 |
+
+Interpretation:
+- Threshold cascades improve slightly over the best fixed strategy at lower cumulative cost.
+- Learned controllers using only initial confidence, margin, entropy, probabilities, text length and option count underperform the fixed strategy on this 77-example training set.
+- The oracle gap remains large (0.7056), so there is still potential headroom, but the current feature set/training size is insufficient for the learned controllers.
+- Before NEAT, inspect feature quality, class balance, and whether additional cheap features or calibration are needed.
+
 ## Low-memory pilot results (2026-10-26)
 
 All pilots used the frozen Laya 0.4.16 checkpoint, CPU threads=2, and `train`/`validation` splits only. Raw per-example caches are local JSONL; summaries are small JSON files under `results/pilot/`.
