@@ -187,11 +187,11 @@ F. No reproducible gain: document this as a negative result if data, costs, unce
 - scripts/download_datasets.py: pinned dataset downloader and SHA-256 manifest.
 - scripts/run_baseline_smoke.py: tiny CPU baseline test using upstream Laya benchmark.
 - tests/: fast structural tests.
-- .github/workflows/cpu-bootstrap.yml: CI install/download/smoke-test workflow.
+- docs/LOW_MEMORY_EXECUTION_PLAN.md: local Windows execution plan for a 4 GB usable RAM budget.
 - STATUS.md: human-readable project state.
 - results/: small reports only; big raw files and model caches are artifacts or local ignored files.
 
-GitHub is the source of truth. Commit each coherent work unit, update STATUS, and verify the commit. CI artifacts retain logs/manifests/dataset bundle; do not commit raw data or weights.
+Experiments run only on the user's local Windows computer. GitHub is the source-control/backup location; commit each coherent work unit, update STATUS, and verify the commit. The cloud bootstrap workflow was removed on request. Commit small reports/manifests only; do not commit raw data, model weights or caches.
 
 ## 11. Submission planning
 
@@ -200,11 +200,10 @@ Target EACL 2027 SRW. Re-check official dates, eligibility, formatting and curre
 ## 12. Immediate execution checklist
 
 - [ ] Commit scaffold and this plan.
-- [ ] Run CI on a hosted runner and inspect install/download logs.
-- [ ] Fix dependency/API errors; pin exact working environment.
-- [ ] Download data at exact revisions and save SHA-256 manifest.
-- [ ] Run 5-example CPU smoke test for all three datasets.
-- [ ] Reproduce upstream baseline on a small development subset.
-- [ ] Build candidate-action cache and estimate oracle gap.
+- [x] Install local CPU environment, download datasets and model, and run the 5-example smoke test across three datasets (based on user's supplied local log).
+- [ ] Establish Git sync for the existing local folder without losing .venv/data/cache.
+- [ ] Inspect the existing smoke/environment/dataset JSON reports.
+- [ ] Run a BANKING77 train-split 20-example pilot with single+tournament only under the memory cap.
+- [ ] Build candidate-action cache and estimate oracle gap on development data.
 - [ ] Only then implement NEAT and simple controller baselines.
 - [ ] Run locked test evaluation, ablations, cost audit and statistical analysis.
