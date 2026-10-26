@@ -1,0 +1,41 @@
+{
+ "dataset": "banking77",
+ "split": "test",
+ "rows": 5,
+ "options": 77,
+ "revisions": {
+  "mteb/banking77": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+  "clinc/clinc_oos": "155b9c710419136e17307b80d0a13e68cd46b4ec",
+  "SetFit/amazon_massive_intent_en-US": "f7672a018e8ceb37fc0184dcfbb7e665155ffea6"
+ },
+ "model": "english",
+ "device": "cpu",
+ "laya": "0.4.16",
+ "machine": "AMD64",
+ "strategies": {
+  "single": {
+   "errors": 0,
+   "first_error": null,
+   "accuracy": 0.4,
+   "ece": 0.5077,
+   "mean_ms": 1697.3,
+   "p50_ms": 1692.0,
+   "p95_ms": 1737.6,
+   "calls_per_row": 1.0
+  },
+  "tournament": {
+   "errors": 0,
+   "first_error": null,
+   "accuracy": 0.6,
+   "ece": 0.2192,
+   "mean_ms": 3365.2,
+   "p50_ms": 3318.6,
+   "p95_ms": 3586.9,
+   "calls_per_row": 2.0,
+   "vs_single": {
+    "gained": 1,
+    "lost": 0
+   }
+  }
+ }
+}

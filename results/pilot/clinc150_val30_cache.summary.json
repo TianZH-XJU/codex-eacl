@@ -1,0 +1,55 @@
+{
+  "timestamp_utc": "2026-10-26T10:51:42.087299+00:00",
+  "dataset": "clinc150",
+  "split": "validation",
+  "seed": 17,
+  "n_examples": 30,
+  "strategies": [
+    "single",
+    "wide",
+    "tournament"
+  ],
+  "by_strategy": {
+    "single": {
+      "n": 30,
+      "accuracy": 0.6,
+      "mean_ms": 2997.2,
+      "calls_per_row": 1.0,
+      "errors": 0
+    },
+    "wide": {
+      "n": 30,
+      "accuracy": 0.7333,
+      "mean_ms": 3057.1,
+      "calls_per_row": 1.0,
+      "errors": 0
+    },
+    "tournament": {
+      "n": 30,
+      "accuracy": 0.8333,
+      "mean_ms": 4914.5,
+      "calls_per_row": 2.0,
+      "errors": 0
+    }
+  },
+  "best_fixed_strategy": "tournament",
+  "best_fixed_accuracy": 0.8333,
+  "oracle_accuracy": 0.8667,
+  "oracle_gain_over_best_fixed": 0.0333,
+  "error_overlap": {
+    "strategies": [
+      "single",
+      "wide"
+    ],
+    "both_wrong": 8,
+    "only_first_wrong": 4,
+    "only_second_wrong": 0
+  },
+  "elapsed_seconds": 329.1,
+  "peak_rss_mb": 2166.1,
+  "cpu_threads": 2,
+  "device": "cpu",
+  "model": "english",
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "status": "passed"
+}

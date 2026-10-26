@@ -57,6 +57,22 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | Local Git/GitHub sync | pending | Current extracted folder has no `.git`; follow the safe mixed-reset instructions in the low-memory plan |
 | GitHub-hosted experiments | disabled/not used | User requested all installation, data and model runs be performed on the user's computer. The CPU bootstrap GitHub Actions workflow has been removed to avoid executing experiments in GitHub's environment. |
 
+## Low-memory pilot results (2026-10-26)
+
+All pilots used the frozen Laya 0.4.16 checkpoint, CPU threads=2, and `train`/`validation` splits only. Raw per-example caches are local JSONL; summaries are small JSON files under `results/pilot/`.
+
+| Dataset | Split | N | Best fixed | Best fixed acc. | Oracle acc. | Oracle gain | Peak RSS (MB) | Notes |
+|---|---|---:|---|---:|---:|---:|---:|---|
+| BANKING77 | train | 50 | WIDE | 0.6400 | 0.7600 | +0.1200 | 2144.9 | single 0.46, wide 0.64, tournament 0.54; mean latency single 2037ms, wide 2399ms, tournament 3871ms |
+| CLINC150 | validation | 30 | TOURNAMENT | 0.8333 | 0.8667 | +0.0333 | 2166.1 | single 0.60, wide 0.7333, tournament 0.8333; modest oracle headroom |
+| MASSIVE en-US | validation | 30 | WIDE | 0.6667 | 0.7333 | +0.0667 | 2116.4 | extreme latency outliers on a few examples (single 1.87e6 ms, tournament 8.8e5 ms); median costs are much lower |
+
+Interpretation:
+- There is measurable oracle headroom on BANKING77 (+0.12) and smaller headroom on CLINC150 (+0.033) and MASSIVE (+0.067).
+- Peak RSS stayed below 2.2 GB, so the 3.5 GB ceiling was not approached.
+- WIDE is a strong fixed baseline; TOURNAMENT is expensive (about 2 Laya calls per example) and not uniformly better.
+- Before NEAT, implement controller baselines and lock a protocol. Test leakage must be avoided: use only train/validation labels for controller training and thresholds.
+
 ## Next actions
 
 1. Read `results/smoke/baseline_smoke_report.json`, `results/dataset_manifest.json` and `results/environment.json` locally.

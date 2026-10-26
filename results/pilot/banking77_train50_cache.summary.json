@@ -1,0 +1,55 @@
+{
+  "timestamp_utc": "2026-10-26T10:44:51.537412+00:00",
+  "dataset": "banking77",
+  "split": "train",
+  "seed": 17,
+  "n_examples": 50,
+  "strategies": [
+    "single",
+    "wide",
+    "tournament"
+  ],
+  "by_strategy": {
+    "single": {
+      "n": 50,
+      "accuracy": 0.46,
+      "mean_ms": 2037.1,
+      "calls_per_row": 1.0,
+      "errors": 0
+    },
+    "wide": {
+      "n": 50,
+      "accuracy": 0.64,
+      "mean_ms": 2399.3,
+      "calls_per_row": 1.0,
+      "errors": 0
+    },
+    "tournament": {
+      "n": 50,
+      "accuracy": 0.54,
+      "mean_ms": 3871.1,
+      "calls_per_row": 2.0,
+      "errors": 0
+    }
+  },
+  "best_fixed_strategy": "wide",
+  "best_fixed_accuracy": 0.64,
+  "oracle_accuracy": 0.76,
+  "oracle_gain_over_best_fixed": 0.12,
+  "error_overlap": {
+    "strategies": [
+      "single",
+      "wide"
+    ],
+    "both_wrong": 16,
+    "only_first_wrong": 11,
+    "only_second_wrong": 2
+  },
+  "elapsed_seconds": 415.5,
+  "peak_rss_mb": 2144.9,
+  "cpu_threads": 2,
+  "device": "cpu",
+  "model": "english",
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "status": "passed"
+}

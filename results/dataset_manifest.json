@@ -1,0 +1,87 @@
+{
+  "timestamp_utc": "2026-10-26T09:58:21.501085+00:00",
+  "status": "passed",
+  "output_dir": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw",
+  "files": [
+    {
+      "dataset_key": "banking77",
+      "repo_id": "mteb/banking77",
+      "revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+      "filename": "data/train-00000-of-00001.parquet",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\banking77\\data\\train-00000-of-00001.parquet",
+      "size_bytes": 294377,
+      "sha256": "482d07d5f8027debcaca8fb3b8fa9da9d81a01318bba746eb36e5bb4fcd785af",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "banking77",
+      "repo_id": "mteb/banking77",
+      "revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+      "filename": "data/test-00000-of-00001.parquet",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\banking77\\data\\test-00000-of-00001.parquet",
+      "size_bytes": 91367,
+      "sha256": "9575f636fdeae0c94a0f3f2d926ca8f9a2833b998cf94108936dfd5d72322bf9",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "clinc150",
+      "repo_id": "clinc/clinc_oos",
+      "revision": "155b9c710419136e17307b80d0a13e68cd46b4ec",
+      "filename": "plus/train-00000-of-00001.parquet",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\clinc150\\plus\\train-00000-of-00001.parquet",
+      "size_bytes": 312096,
+      "sha256": "30188119cf9f86fc9db27e1c22442d091cb5cb0913c9496f945fe11e7a02a28f",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "clinc150",
+      "repo_id": "clinc/clinc_oos",
+      "revision": "155b9c710419136e17307b80d0a13e68cd46b4ec",
+      "filename": "plus/validation-00000-of-00001.parquet",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\clinc150\\plus\\validation-00000-of-00001.parquet",
+      "size_bytes": 77789,
+      "sha256": "fbd545b46c611c4a7ba4b48cae6c7f09bb5b59f33ff56206ad1cd366c85cdfaa",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "clinc150",
+      "repo_id": "clinc/clinc_oos",
+      "revision": "155b9c710419136e17307b80d0a13e68cd46b4ec",
+      "filename": "plus/test-00000-of-00001.parquet",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\clinc150\\plus\\test-00000-of-00001.parquet",
+      "size_bytes": 135844,
+      "sha256": "3e60e45b25bf86543aa5df8ba4fcc674114164e6184f0197690648c2908d0102",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "massive_en_us",
+      "repo_id": "SetFit/amazon_massive_intent_en-US",
+      "revision": "f7672a018e8ceb37fc0184dcfbb7e665155ffea6",
+      "filename": "train.jsonl",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\massive_en_us\\train.jsonl",
+      "size_bytes": 1143545,
+      "sha256": "5d7acab7dd4ec9f8253dec8571eafd75fa8fc4ef64ad401ef2ac6907d277e1a8",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "massive_en_us",
+      "repo_id": "SetFit/amazon_massive_intent_en-US",
+      "revision": "f7672a018e8ceb37fc0184dcfbb7e665155ffea6",
+      "filename": "validation.jsonl",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\massive_en_us\\validation.jsonl",
+      "size_bytes": 201274,
+      "sha256": "616da8f9a9c33e72ae57f64bac4804f87b92f71712ef7f348f576032f7bf9c6d",
+      "status": "downloaded"
+    },
+    {
+      "dataset_key": "massive_en_us",
+      "repo_id": "SetFit/amazon_massive_intent_en-US",
+      "revision": "f7672a018e8ceb37fc0184dcfbb7e665155ffea6",
+      "filename": "test.jsonl",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\massive_en_us\\test.jsonl",
+      "size_bytes": 293658,
+      "sha256": "946947a0e8de7f120bc643b2892f54638673b9fe97b627a67305ca5f2d93c3c2",
+      "status": "downloaded"
+    }
+  ]
+}

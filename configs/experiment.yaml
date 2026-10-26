@@ -4,7 +4,7 @@ device: cpu
 cpu_threads: 3
 model:
   name: english
-  revision: null # Fill with the resolved model commit after first download.
+  revision: 7b928d828b7b0e022f929d9bd2e44165aa270148 # convaiinnovations/laya, verified in local HF cache on 2026-10-26.
   frozen: true
 datasets:
   banking77:

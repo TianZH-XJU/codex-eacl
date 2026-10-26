@@ -26,7 +26,7 @@ def main():
  for dataset,split in DATASETS:
   result_path=out_dir/f"{dataset}.json"
   command=[sys.executable,str(benchmark),"--dataset",dataset,"--split",split,"--limit",str(args.limit),"--seed",str(args.seed),
-   "--strategies",args.strategies,"--model",args.model,"--device","cpu","--out",str(result_path)]
+   "--strategies",args.strategies,"--model",args.model,"--device", "cpu","--out",str(result_path)]
   print("RUN:"," ".join(command),flush=True); start=time.monotonic()
   env={**os.environ,"CUDA_VISIBLE_DEVICES":"","OMP_NUM_THREADS":str(torch.get_num_threads()),
    "MKL_NUM_THREADS":str(torch.get_num_threads()),"OPENBLAS_NUM_THREADS":str(torch.get_num_threads())}

@@ -1,0 +1,74 @@
+{
+  "timestamp_utc": "2026-10-26T09:57:53.164367+00:00",
+  "git_sha": null,
+  "python_version": "3.12.12 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 20:05:38) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "cpu_model": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+  "logical_cpu_count": 12,
+  "cpu_threads_env": {
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "modules": {
+    "torch": {
+      "available": true,
+      "version": "2.14.1+cpu"
+    },
+    "laya": {
+      "available": true,
+      "version": "0.4.16"
+    },
+    "transformers": {
+      "available": true,
+      "version": "5.20.2"
+    },
+    "huggingface_hub": {
+      "available": true,
+      "version": "2.3.0"
+    },
+    "neat": {
+      "available": true,
+      "version": "2.0.0"
+    },
+    "datasets": {
+      "available": true,
+      "version": "5.1.0"
+    },
+    "pyarrow": {
+      "available": true,
+      "version": "26.0.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.5.4"
+    },
+    "pandas": {
+      "available": true,
+      "version": "3.1.0"
+    },
+    "sklearn": {
+      "available": true,
+      "version": "1.9.1"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.18.1"
+    },
+    "psutil": {
+      "available": true,
+      "version": "7.2.2"
+    },
+    "threadpoolctl": {
+      "available": true,
+      "version": "3.7.0"
+    }
+  },
+  "device": "cpu",
+  "status": "passed",
+  "notes": [],
+  "torch_version": "2.14.1+cpu",
+  "torch_cuda_available": false,
+  "torch_cpu_threads": 6
+}
