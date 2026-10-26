@@ -58,7 +58,7 @@ python scripts/run_baseline_smoke.py --laya-root external/laya --limit 5 --outpu
 
 - Run installs, downloads and inference on the user's own Windows computer. Do not run the experiments on ChatGPT's runtime or GitHub-hosted Actions runners.
 - The previous cloud bootstrap workflow was removed. GitHub is for source control and backup, not remote model execution.
-- The current folder must be a real Git clone or connected local Git repository for autosave/push to work. The user's current extracted folder had no `.git` directory; follow the safe setup instructions in `docs/LOW_MEMORY_EXECUTION_PLAN.md` before the next experiment.
+- The current folder must be a real Git clone or connected local Git repository for autosave/push to work. The user's current extracted folder had no `.git` directory; follow the safe setup instructions in `docs/LOW_MEMORY_EXECUTION_PLAN.md` before the next experiment. After Git is connected, use `scripts/sync_checkpoint.ps1` for a reviewed one-command checkpoint save/push.
 - Commit coherent code/docs changes and small JSON summaries to GitHub. Keep `.venv`, `external/laya`, model weights, raw datasets, HF caches and large output caches local and ignored.
 - Do not report success unless the local command return code and result files are checked. Any unrun/failed step must be stated explicitly.
 
