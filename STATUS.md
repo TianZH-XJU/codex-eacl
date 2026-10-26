@@ -22,7 +22,7 @@
 - `scripts/download_datasets.py`: pinned dataset downloads and SHA-256 manifest.
 - `scripts/run_baseline_smoke.py`: tiny CPU run using the upstream Laya benchmark; result paths are absolute so subprocess output is archived in the intended location.
 - `tests/test_config_and_scripts.py`: structural checks.
-- `.github/workflows/cpu-bootstrap.yml`: hosted runner workflow to install dependencies, download data, run tests and baseline smoke, archive resolved dependency versions, and upload artifacts.
+- `.github/workflows/cpu-bootstrap.yml`: hosted runner workflow to install dependencies, download data, run tests and baseline smoke, archive resolved dependency versions, upload artifacts, and commit small machine-readable run reports back to main (workflow has contents: write permission).
 - `.gitignore`: excludes model weights, local datasets, caches, environments and large raw outputs.
 
 ## Run status
@@ -35,12 +35,12 @@
 | Dataset files downloaded in current runtime | not completed | network blocker; CI workflow is configured to attempt it |
 | Model checkpoint downloaded | not completed | network blocker; not attempted to completion |
 | Laya CPU baseline smoke test | not run locally | dependencies, source checkout and model weights unavailable locally |
-| Hosted GitHub Actions bootstrap | pending verification | workflow committed; inspect Actions run and artifacts before calling it successful |
+| Hosted GitHub Actions bootstrap | pending verification | workflow is configured to trigger on relevant pushes and can be manually started; no successful run/artifact has yet been verified in this chat |
 | NEAT experiments | not run | must wait for successful baseline and cache/oracle-gap analysis |
 
 ## Automatic saving
 
-GitHub is the source of truth. Coherent code/docs changes are committed directly to the repository. Pushes to relevant code, config and documentation paths trigger the CPU bootstrap workflow; the workflow stores environment reports, dataset manifest, smoke-test output and downloaded dataset bundle as Actions artifacts. Large data and model weights are not committed to Git. This is not a background editor autosave: every code change still needs a verified commit/push.
+GitHub is the source of truth. Coherent code/docs changes are committed directly to the repository. Pushes to relevant code, config and documentation paths trigger the CPU bootstrap workflow; the workflow stores environment reports, dataset manifest, smoke-test output and downloaded dataset bundle as Actions artifacts, and attempts to commit small machine-readable run summaries to main. Large data and model weights are not committed to Git. This is not a background editor autosave: every code change still needs a verified commit/push.
 
 ## Next actions
 
