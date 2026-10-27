@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Cache-only 3-fold OOF NEAT evaluation against locked controller baselines.
+"""Cache-only stratified OOF evaluation of NEAT and controller baselines.
 
-No Laya calls and no dev/confirmation/test split access. Each class's 3 cached
-train samples is held out once (77 test / 154 fit). Cost estimates, scalers,
-encoders, LR comparators and NEAT genomes are fitted inside each fold. The
-primary NEAT input is six numeric SINGLE features plus one-hot initial_choice;
-numeric-only is an ablation. Fitness uses correctness minus lambda times the
-fold-train mean cumulative cost of the selected action.
+3-shot caches use 3 folds (77 held out / 154 fit); 5-shot caches use 5 folds
+(77 held out / 308 fit). No Laya calls and no dev/confirmation/test access.
+Cost estimates, preprocessors, comparators and genomes are fitted per fold.
+Fitness balances correctness against fold-train mean cumulative action cost.
 """
 from __future__ import annotations
 import argparse, atexit, ctypes, json, os, random, subprocess, sys, tempfile, time
