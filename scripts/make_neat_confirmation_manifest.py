@@ -13,8 +13,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "external" / "laya" / "research" / "benchmarks" / "tournament"))
-import benchmark as bench
 
 def choose_confirmation_indices(rows, used_indices, seed):
     by_label = defaultdict(list)
@@ -69,6 +67,8 @@ def main():
     if used & old_conf:
         raise SystemExit("The existing confirmation set overlaps train/dev unexpectedly")
     used |= old_conf
+    sys.path.insert(0, str(ROOT / "external" / "laya" / "research" / "benchmarks" / "tournament"))
+    import benchmark as bench
     load, _ = bench.DATASETS["banking77"]
     names, rows = load(split.get("source_split", "train"))
     chosen, per_class = choose_confirmation_indices(rows, used, args.seed)
