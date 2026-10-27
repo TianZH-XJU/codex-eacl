@@ -26,7 +26,18 @@ def test_neat_config_uses_three_actions_and_sparse_initial_topology():
     assert "num_inputs = 83" in cfg
     assert "num_outputs = 3" in cfg
     assert "initial_connection = partial_direct 0.15" in cfg
+    assert "conn_add_prob = 0.2" in cfg
     assert "fitness_threshold = 2.0" in cfg
+
+
+def test_fixed_topology_evolution_disables_structural_changes():
+    cfg = config_text(83, 30, fixed_topology=True)
+    assert "initial_connection = full_direct" in cfg
+    assert "conn_add_prob = 0.0" in cfg
+    assert "conn_delete_prob = 0.0" in cfg
+    assert "node_add_prob = 0.0" in cfg
+    assert "node_delete_prob = 0.0" in cfg
+    assert "activation_mutate_rate = 0.0" in cfg
 
 
 def test_metrics_report_correctness_latency_and_action_mix():
