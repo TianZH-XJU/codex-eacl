@@ -191,6 +191,10 @@ The user attributes the three extreme confirmation latencies to Windows sleep. E
 
 These scripts are committed, but none of the new Laya replay, NEAT evolution, fresh cache build, or one-shot evaluation has been executed on the user's Windows machine. Do not report any NEAT gain until the saved local results demonstrate it.
 
+### Anomaly rerun result (local, 2026-10-27)
+
+`results/pilot/banking77_anomaly_rerun.summary.json` (status passed, `windows_sleep_prevention_active: true`, 2 threads, CPU, peak RSS 2134 MB): tournament old mean 2,523,885 ms → rerun 2,927.5 ms (n=2); wide old 103,809.9 ms → rerun 1,752.7 ms (n=1). `accuracy_changed_on_rerun: 0`, `choices_changed_on_rerun: 0`, text/gold verified, originals not overwritten. The extremes are confirmed transient (sleep-pollution hypothesis now has rerun support); original values retained as history.
+
 ## Next actions (test split remains locked)
 
 1. Pull latest `main`, run the targeted anomaly rerun, and review per-row results. Do not replace historical latency values.

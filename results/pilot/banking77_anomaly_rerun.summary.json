@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-10-27T12:39:29.463817+00:00",
+  "dataset": "banking77",
+  "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "split": "confirmation",
+  "manifest_seed": 23,
+  "n_rows": 3,
+  "targets": [
+    {
+      "cache_position": 25,
+      "source_dataset_index": 3238,
+      "strategy": "wide"
+    },
+    {
+      "cache_position": 26,
+      "source_dataset_index": 3440,
+      "strategy": "tournament"
+    },
+    {
+      "cache_position": 27,
+      "source_dataset_index": 3602,
+      "strategy": "tournament"
+    }
+  ],
+  "windows_sleep_prevention_active": true,
+  "cpu_threads": 2,
+  "device": "cpu",
+  "status": "passed",
+  "elapsed_seconds_including_load_warmup": 22.9,
+  "peak_rss_mb": 2134.0,
+  "latency_by_strategy": {
+    "tournament": {
+      "n": 2,
+      "old_target_latency_ms": 2523885.0,
+      "rerun_target_latency_ms": 2927.5
+    },
+    "wide": {
+      "n": 1,
+      "old_target_latency_ms": 103809.9,
+      "rerun_target_latency_ms": 1752.7
+    }
+  },
+  "accuracy_changed_on_rerun": 0,
+  "choices_changed_on_rerun": 0,
+  "original_values_overwritten": false,
+  "note": "Rerun costs are separate diagnostics; they do not replace original confirmation costs."
+}
