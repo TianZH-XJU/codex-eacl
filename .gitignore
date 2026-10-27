@@ -32,6 +32,9 @@ models/
 !.env.example
 .DS_Store
 
+# Local (per-machine) Claude Code permission config — not shared with collaborators
+.claude/settings.local.json
+
 # Large raw run files; keep small summaries/manifests in Git
 results/raw/
 results/smoke/*.log

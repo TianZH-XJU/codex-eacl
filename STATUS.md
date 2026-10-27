@@ -31,7 +31,8 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 - [`scripts/check_environment.py`](scripts/check_environment.py): environment report.
 - [`scripts/download_datasets.py`](scripts/download_datasets.py): pinned dataset downloader and SHA-256 manifest.
 - [`scripts/run_baseline_smoke.py`](scripts/run_baseline_smoke.py): small CPU smoke test.
-- [`.gitignore`](.gitignore): ignores model data, raw dataset files, virtual environment and the separate upstream Laya checkout.
+- [`.gitignore`](.gitignore): ignores model data, raw dataset files, virtual environment, the separate upstream Laya checkout, and the local Claude Code permission config.
+- [`.claude/settings.local.json`](.claude/settings.local.json): local (git-ignored) Claude Code permission config for this folder only — `bypassPermissions` mode plus an explicit allow list, per user request. This file is machine-local and is never committed or pushed.
 
 ## Dataset and model pins
 
