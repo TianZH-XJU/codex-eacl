@@ -1,0 +1,481 @@
+{
+  "locked_config": {
+    "features": "choice primary (numeric control)",
+    "lambda_per_ms": 2e-05,
+    "note": "unweighted LR; fold-train-only preprocessing"
+  },
+  "fold_stability_primary": [
+    {
+      "fold": 0,
+      "kind": "fixed_ea_choice",
+      "seed": 17,
+      "train_fitness": 0.5771,
+      "nodes": 3,
+      "connections": 186,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 4633.5,
+      "oof_action_mix": {
+        "single": 18,
+        "wide": 18,
+        "tournament": 41
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "fixed_ea_choice",
+      "seed": 17,
+      "train_fitness": 0.5693,
+      "nodes": 3,
+      "connections": 192,
+      "oof_accuracy": 0.5455,
+      "oof_mean_ms": 4357.6,
+      "oof_action_mix": {
+        "single": 18,
+        "wide": 33,
+        "tournament": 26
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "fixed_ea_choice",
+      "seed": 17,
+      "train_fitness": 0.541,
+      "nodes": 3,
+      "connections": 186,
+      "oof_accuracy": 0.6104,
+      "oof_mean_ms": 4996.7,
+      "oof_action_mix": {
+        "single": 9,
+        "wide": 20,
+        "tournament": 48
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "fixed_ea_choice",
+      "seed": 23,
+      "train_fitness": 0.5651,
+      "nodes": 3,
+      "connections": 186,
+      "oof_accuracy": 0.5584,
+      "oof_mean_ms": 3879.8,
+      "oof_action_mix": {
+        "single": 35,
+        "wide": 15,
+        "tournament": 27
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "fixed_ea_choice",
+      "seed": 23,
+      "train_fitness": 0.5658,
+      "nodes": 3,
+      "connections": 192,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 4472.7,
+      "oof_action_mix": {
+        "single": 15,
+        "wide": 34,
+        "tournament": 28
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "fixed_ea_choice",
+      "seed": 23,
+      "train_fitness": 0.5469,
+      "nodes": 3,
+      "connections": 186,
+      "oof_accuracy": 0.6234,
+      "oof_mean_ms": 4455.7,
+      "oof_action_mix": {
+        "single": 27,
+        "wide": 1,
+        "tournament": 49
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "fixed_ea_choice",
+      "seed": 41,
+      "train_fitness": 0.5751,
+      "nodes": 3,
+      "connections": 186,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 4348.4,
+      "oof_action_mix": {
+        "single": 27,
+        "wide": 12,
+        "tournament": 38
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "fixed_ea_choice",
+      "seed": 41,
+      "train_fitness": 0.5539,
+      "nodes": 3,
+      "connections": 192,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 4375.6,
+      "oof_action_mix": {
+        "single": 18,
+        "wide": 30,
+        "tournament": 29
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "fixed_ea_choice",
+      "seed": 41,
+      "train_fitness": 0.5444,
+      "nodes": 3,
+      "connections": 186,
+      "oof_accuracy": 0.6234,
+      "oof_mean_ms": 4100.2,
+      "oof_action_mix": {
+        "single": 21,
+        "wide": 37,
+        "tournament": 19
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "neat_choice",
+      "seed": 17,
+      "train_fitness": 0.5623,
+      "nodes": 3,
+      "connections": 26,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 4578.9,
+      "oof_action_mix": {
+        "single": 26,
+        "wide": 0,
+        "tournament": 51
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "neat_choice",
+      "seed": 17,
+      "train_fitness": 0.538,
+      "nodes": 3,
+      "connections": 26,
+      "oof_accuracy": 0.5974,
+      "oof_mean_ms": 4837.9,
+      "oof_action_mix": {
+        "single": 11,
+        "wide": 24,
+        "tournament": 42
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "neat_choice",
+      "seed": 17,
+      "train_fitness": 0.5304,
+      "nodes": 3,
+      "connections": 25,
+      "oof_accuracy": 0.5844,
+      "oof_mean_ms": 5370.8,
+      "oof_action_mix": {
+        "single": 8,
+        "wide": 1,
+        "tournament": 68
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "neat_choice",
+      "seed": 23,
+      "train_fitness": 0.5588,
+      "nodes": 3,
+      "connections": 26,
+      "oof_accuracy": 0.5455,
+      "oof_mean_ms": 5114.5,
+      "oof_action_mix": {
+        "single": 2,
+        "wide": 35,
+        "tournament": 40
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "neat_choice",
+      "seed": 23,
+      "train_fitness": 0.5447,
+      "nodes": 4,
+      "connections": 26,
+      "oof_accuracy": 0.5974,
+      "oof_mean_ms": 4207.5,
+      "oof_action_mix": {
+        "single": 33,
+        "wide": 0,
+        "tournament": 44
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "neat_choice",
+      "seed": 23,
+      "train_fitness": 0.512,
+      "nodes": 4,
+      "connections": 32,
+      "oof_accuracy": 0.6364,
+      "oof_mean_ms": 4702.4,
+      "oof_action_mix": {
+        "single": 22,
+        "wide": 0,
+        "tournament": 55
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "neat_choice",
+      "seed": 41,
+      "train_fitness": 0.5539,
+      "nodes": 3,
+      "connections": 27,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 4345.3,
+      "oof_action_mix": {
+        "single": 30,
+        "wide": 2,
+        "tournament": 45
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "neat_choice",
+      "seed": 41,
+      "train_fitness": 0.5353,
+      "nodes": 5,
+      "connections": 28,
+      "oof_accuracy": 0.5844,
+      "oof_mean_ms": 5171.7,
+      "oof_action_mix": {
+        "single": 0,
+        "wide": 35,
+        "tournament": 42
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "neat_choice",
+      "seed": 41,
+      "train_fitness": 0.5215,
+      "nodes": 3,
+      "connections": 24,
+      "oof_accuracy": 0.6104,
+      "oof_mean_ms": 4460.4,
+      "oof_action_mix": {
+        "single": 18,
+        "wide": 24,
+        "tournament": 35
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "neat_numeric",
+      "seed": 17,
+      "train_fitness": 0.5492,
+      "nodes": 5,
+      "connections": 7,
+      "oof_accuracy": 0.5455,
+      "oof_mean_ms": 4233.9,
+      "oof_action_mix": {
+        "single": 33,
+        "wide": 0,
+        "tournament": 44
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "neat_numeric",
+      "seed": 17,
+      "train_fitness": 0.5267,
+      "nodes": 4,
+      "connections": 7,
+      "oof_accuracy": 0.5714,
+      "oof_mean_ms": 3929.3,
+      "oof_action_mix": {
+        "single": 38,
+        "wide": 2,
+        "tournament": 37
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "neat_numeric",
+      "seed": 17,
+      "train_fitness": 0.5083,
+      "nodes": 3,
+      "connections": 2,
+      "oof_accuracy": 0.6364,
+      "oof_mean_ms": 5128.6,
+      "oof_action_mix": {
+        "single": 0,
+        "wide": 37,
+        "tournament": 40
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "neat_numeric",
+      "seed": 23,
+      "train_fitness": 0.5444,
+      "nodes": 4,
+      "connections": 4,
+      "oof_accuracy": 0.5195,
+      "oof_mean_ms": 4462.4,
+      "oof_action_mix": {
+        "single": 28,
+        "wide": 0,
+        "tournament": 49
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "neat_numeric",
+      "seed": 23,
+      "train_fitness": 0.5227,
+      "nodes": 4,
+      "connections": 6,
+      "oof_accuracy": 0.6104,
+      "oof_mean_ms": 5064.7,
+      "oof_action_mix": {
+        "single": 0,
+        "wide": 41,
+        "tournament": 36
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "neat_numeric",
+      "seed": 23,
+      "train_fitness": 0.5023,
+      "nodes": 3,
+      "connections": 3,
+      "oof_accuracy": 0.5844,
+      "oof_mean_ms": 5395.0,
+      "oof_action_mix": {
+        "single": 2,
+        "wide": 16,
+        "tournament": 59
+      }
+    },
+    {
+      "fold": 0,
+      "kind": "neat_numeric",
+      "seed": 41,
+      "train_fitness": 0.5471,
+      "nodes": 3,
+      "connections": 4,
+      "oof_accuracy": 0.5195,
+      "oof_mean_ms": 4039.5,
+      "oof_action_mix": {
+        "single": 37,
+        "wide": 0,
+        "tournament": 40
+      }
+    },
+    {
+      "fold": 1,
+      "kind": "neat_numeric",
+      "seed": 41,
+      "train_fitness": 0.5347,
+      "nodes": 5,
+      "connections": 6,
+      "oof_accuracy": 0.5584,
+      "oof_mean_ms": 3792.6,
+      "oof_action_mix": {
+        "single": 40,
+        "wide": 4,
+        "tournament": 33
+      }
+    },
+    {
+      "fold": 2,
+      "kind": "neat_numeric",
+      "seed": 41,
+      "train_fitness": 0.5144,
+      "nodes": 3,
+      "connections": 5,
+      "oof_accuracy": 0.6234,
+      "oof_mean_ms": 4195.0,
+      "oof_action_mix": {
+        "single": 33,
+        "wide": 0,
+        "tournament": 44
+      }
+    }
+  ],
+  "correctness_predictability": {
+    "auc_per_action": {
+      "numeric": {
+        "single": [
+          0.7421,
+          0.71,
+          0.7993
+        ],
+        "wide": [
+          0.7696,
+          0.6184,
+          0.6578
+        ],
+        "tournament": [
+          0.6542,
+          0.634,
+          0.5652
+        ]
+      },
+      "choice": {
+        "single": [
+          0.8297,
+          0.752,
+          0.8007
+        ],
+        "wide": [
+          0.8169,
+          0.6469,
+          0.6564
+        ],
+        "tournament": [
+          0.6465,
+          0.7021,
+          0.5695
+        ]
+      }
+    },
+    "accuracy_first_routing": {
+      "numeric": [
+        0.5844,
+        0.5714,
+        0.5974
+      ],
+      "choice": [
+        0.5844,
+        0.5714,
+        0.6234
+      ]
+    },
+    "upgrade_fix_rate": {
+      "numeric": [
+        0.9412,
+        0.7895,
+        0.7308
+      ],
+      "choice": [
+        0.8824,
+        0.5789,
+        0.7692
+      ]
+    }
+  },
+  "interpretation_notes": [
+    "fold_stability_primary: per-fold train fitness / genome size / action mix / OOF accuracy",
+    "auc_per_action: can initial features predict each action's held-out correctness?",
+    "upgrade_fix_rate: among held-out samples where single is wrong but an upgrade is right, share routed (accuracy-first) to a correct action"
+  ]
+}

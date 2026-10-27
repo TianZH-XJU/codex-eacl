@@ -136,6 +136,13 @@ For calibration and training examples, run each candidate action once and cache 
 F(theta) = mean(correctness - lambda * normalized_cost) - beta * complexity(theta).
 Evaluate multiple pre-registered lambda/budget values. Do not choose fitness weights based on test results.
 
+> Implementation note (2026-10-27, protocol deviation recorded here, not changed post hoc):
+> `scripts/run_neat_cv.py` uses F = mean(correctness − λ · fold-train mean cumulative cost in raw ms
+> for the selected action) with genome size reported but NO beta·complexity term. Cost is not
+> separately normalized. Results from that script must not be described as using the
+> complexity-regularized fitness above. If a complexity penalty is introduced later, it will be
+> registered as a separate experiment, not mixed with the 2026-10-27 OOF runs.
+
 ### Oracle gap gate
 Before implementing NEAT at scale, compute the best fixed-action score and an oracle per-example upper bound on validation/calibration data. If oracle improvement is negligible, do not spend time on a large evolutionary search. Oracle results must never be used as a deployable baseline.
 
