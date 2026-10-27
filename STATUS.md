@@ -2,8 +2,8 @@
 
 **Last updated:** 2026-10-27
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
-**Current phase:** offline error analysis done; upgrade helps 34 classes / harms 16 — no stable overall edge; no scale-up  
-**Research result status:** no statistically meaningful new accuracy result has been established yet.
+**Current phase:** targeted latency rerun and cache-only NEAT cross-validation tooling committed; local execution/results pending  
+**Research result status:** no reliable learned-controller gain is established yet; NEAT has not been run on the user's local cache.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
 
@@ -18,7 +18,7 @@
 - The five-row-per-dataset CPU smoke test reported status passed, and the subprocess return code for BANKING77, CLINC150 and MASSIVE en-US was 0.
 - `pytest tests/ -q` reports 3 passed after the local smoke-runner test was corrected.
 - Detailed per-action accuracy/latency and peak RSS are not present in the pasted terminal excerpt; read the local JSON reports before quoting them.
-- The local folder has no `.git` directory yet, so code changes there are not automatically committed to GitHub.
+- Local repository/Git state must be verified before execution. Recent source changes are already on GitHub `main`; the user's Windows clone must pull them before running.
 
 The above local setup and smoke-test facts are based on the user's terminal log pasted into the conversation. Do not treat a five-example smoke test as a research result.
 
@@ -55,7 +55,7 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | Fixed train/dev manifest | passed | `scripts/make_split_manifest.py`; `results/splits/banking77_train_dev_manifest.json` (77 classes, 385 train, 231 dev, disjoint) |
 | Per-example action cache | passed | `scripts/build_action_cache.py`; SINGLE-first features, cascade costs, latency percentiles, pairwise overlaps |
 | Oracle action gap | measured (pilot) | BANKING77 +0.12, CLINC150 +0.033, MASSIVE +0.067 over best fixed strategy |
-| NEAT and controller baselines | baselines done; NEAT paused | Binary + three-action + calibration diagnostics on fixed caches; NEAT only after reliable baseline |
+| NEAT and controller baselines | simple baselines complete; NEAT implementation committed, not run | Use `scripts/run_neat_cv.py` on the fixed 3-shot cache; no hosted runner or test data |
 | Three-action offline evaluation | done 2026-10-27 | `scripts/run_three_action.py`; 1-shot/3-shot Pareto in `results/pilot/banking77_three_action_*.json` |
 | Temperature calibration | done 2026-10-27 | `scripts/calibrate_temperature.py`; T fit on train only; `results/pilot/banking77_calibration_3shot.json` |
 | CV stability (3-fold OOF on 3-shot train) | done 2026-10-27 | `scripts/run_cv_stability.py`; choice beats numeric under both weight settings; `results/pilot/banking77_cv_stability.json` |
@@ -179,12 +179,48 @@ Interpretation:
 - WIDE is a strong fixed baseline; TOURNAMENT is expensive (about 2 Laya calls per example) and not uniformly better.
 - Before NEAT, implement controller baselines and lock a protocol. Test leakage must be avoided: use only train/validation labels for controller training and thresholds.
 
-## Next actions (updated 2026-10-27; test split stays locked)
+## Targeted anomaly replay + NEAT pipeline (2026-10-27; source committed, local runs pending)
 
-1. DONE: independent confirmation run (n=77, locked config, evaluated once). Directional signal only; CI covers zero.
-2. DONE: offline error analysis. Class-concentrated routing errors; no reliable overall edge for learned controllers.
-3. Next: decide whether class-level upgrade-harm patterns justify further work; default is to keep threshold cascade as main baseline with a negative result for learned controllers. No new inference, no 5-shot, no NEAT unless a stable, explainable pattern emerges.
-4. Keep all test splits locked; no test use for tuning, thresholds, model selection, or fitness. Never reuse the confirmation set for tuning.
+The user attributes the three extreme confirmation latencies to Windows sleep. Existing raw records are retained. New code:
+- `scripts/rerun_anomaly_rows.py`: validates frozen manifest/cache text and label, reruns only cache positions 25 (WIDE), 26 (TOURNAMENT), 27 (TOURNAMENT), requests Windows sleep prevention, writes separate files and never overwrites original costs.
+- `scripts/build_action_cache.py`: now requests temporary Windows system-sleep prevention during long inference and records whether it was active.
+- `scripts/run_neat_cv.py`: cache-only 3-fold OOF evaluation on the existing 3-shot train cache; numeric-only and numeric+initial_choice inputs; preset lambdas and seeds; fold-only scalers/encoders/costs; compares with LR, threshold cascade and fixed strategy. No Laya calls.
+- `scripts/train_neat_controller.py`: after the OOF result selects a configuration, fits a final controller on train cache only and writes a local ignored pickle artifact.
+- `scripts/make_neat_confirmation_manifest.py`: reserves a fresh one-example-per-class manifest excluding the complete train pool, dev, and the prior inspected confirmation set.
+- `scripts/evaluate_neat_confirmation.py`: evaluates a locked artifact once on the new confirmation cache without fitting or tuning on its labels.
+
+These scripts are committed, but none of the new Laya replay, NEAT evolution, fresh cache build, or one-shot evaluation has been executed on the user's Windows machine. Do not report any NEAT gain until the saved local results demonstrate it.
+
+## Next actions (test split remains locked)
+
+1. Pull latest `main`, run the targeted anomaly rerun, and review per-row results. Do not replace historical latency values.
+2. Run new tests, then the small NEAT smoke run (10 genomes × 2 generations, one seed/lambda) before the full preset 3-fold OOF grid.
+3. Primary NEAT hypothesis: `choice` features, `lambda=2e-5`, seed 17; seeds 23/41 are robustness checks. Compare to threshold cascade, fixed actions and matched-lambda LR. Do not choose the best seed after seeing OOF and present it as confirmatory.
+4. Proceed to the fresh NEAT confirmation only if OOF results show a credible non-dominated accuracy–cost trade-off. Fit on the 3-shot train cache, lock the artifact, create the fresh manifest, run cache inference once with sleep prevention, then evaluate once.
+5. If NEAT fails the OOF gate, first inspect training/OOF diagnostics; consider a larger cached training set only as a separately registered follow-up. No test split, no reuse of the older confirmation set for tuning.
+
+## Commands for the local Windows machine
+
+From the repository root after syncing the latest `main`:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests/ -q
+
+.\.venv\Scripts\python.exe scripts\rerun_anomaly_rows.py
+
+.\.venv\Scripts\python.exe scripts\run_neat_cv.py `
+  --out results/pilot/banking77_neat_cv_smoke.json `
+  --progress results/pilot/banking77_neat_cv_smoke.progress.jsonl `
+  --pop-size 10 --generations 2 --seeds 17 --lambdas 2e-5
+
+# Only if the smoke run passes:
+.\.venv\Scripts\python.exe scripts\run_neat_cv.py `
+  --out results/pilot/banking77_neat_cv.json `
+  --progress results/pilot/banking77_neat_cv.progress.jsonl `
+  --pop-size 30 --generations 20 --seeds 17,23,41 --lambdas 0,2e-5,5e-5
+```
+
+For a later one-shot NEAT confirmation (only after locking the configuration): train the controller, create `banking77_neat_confirmation_manifest.json`, use `scripts/build_action_cache.py --dataset banking77 --manifest results/splits/banking77_neat_confirmation_manifest.json --manifest-subset confirmation --strategies single,wide,tournament --threads 2 --out results/pilot/banking77_neat_confirmation_cache.jsonl`, then run `scripts/evaluate_neat_confirmation.py` once. Do not start this confirmation stage until the OOF report is reviewed.
 
 ## Resource limits and research integrity
 
