@@ -444,6 +444,8 @@ def main():
 
     all_policies = {f"baseline::{k}": v for k, v in baseline_oof.items()}
     all_policies.update({f"neat::{k}": v for k, v in neat_oof.items()})
+    all_choices = dict(baseline_oof)
+    all_choices.update(neat_oof)
     report = {k: metrics(by, v) for k, v in all_policies.items()}
     oracle = {}
     for i in by:
@@ -469,7 +471,7 @@ def main():
             keys.append(f"neat_choice_lam_{lam:g}_seed_{seed_text}")
         elif mode == "choice" and abs(lam - 2e-5) < 1e-12:
             keys.append(f"fixed_ea_choice_lam_{lam:g}_seed_{seed_text}")
-        comparisons[neat_key] = {k: paired_ci(by, baseline_oof[k], chosen) for k in keys}
+        comparisons[neat_key] = {k: paired_ci(by, all_choices[k], chosen) for k in keys}
 
     try:
         sha = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "HEAD"],
