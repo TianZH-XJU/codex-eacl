@@ -161,8 +161,15 @@ def main():
         "status": "passed" if len(results) == 3 else "failed",
         "elapsed_seconds_including_load_warmup": round(time.perf_counter() - t_run, 1),
         "peak_rss_mb": round(peak_rss / (1024 * 1024), 1),
-        "mean_old_target_latency_ms": round(sum(x["old_target_latency_ms"] for x in results) / len(results), 1),
-        "mean_rerun_target_latency_ms": round(sum(x["rerun_target_latency_ms"] for x in results) / len(results), 1),
+        "latency_by_strategy": {
+            strategy: {
+                "n": sum(x["strategy_rerun"] == strategy for x in results),
+                "old_target_latency_ms": round(sum(x["old_target_latency_ms"] for x in results if x["strategy_rerun"] == strategy) /
+                                               max(1, sum(x["strategy_rerun"] == strategy for x in results)), 1),
+                "rerun_target_latency_ms": round(sum(x["rerun_target_latency_ms"] for x in results if x["strategy_rerun"] == strategy) /
+                                                 max(1, sum(x["strategy_rerun"] == strategy for x in results)), 1),
+            } for strategy in sorted({x["strategy_rerun"] for x in results})
+        },
         "accuracy_changed_on_rerun": sum(x["old_target_correct"] != x["new_target_correct"] for x in results),
         "choices_changed_on_rerun": sum(x["old_target_choice"] != x["new_target_choice"] for x in results),
         "original_values_overwritten": False,
