@@ -440,7 +440,8 @@ def main():
     report["oracle::posthoc"] = metrics(by, oracle)
     comparisons = {}
     for neat_key, chosen in neat_oof.items():
-        mode = neat_key.split("_")[1]
+        is_fixed_ea = neat_key.startswith("fixed_ea_")
+        mode = "choice" if is_fixed_ea else neat_key.split("_")[1]
         rhs = neat_key.split("_lam_", 1)[1]
         lam_text, seed_text = rhs.rsplit("_seed_", 1)
         lam = float(lam_text)
@@ -451,7 +452,7 @@ def main():
             f"decision_tree_{mode}_lam_{lam:g}", f"decision_tree_{other_mode}_lam_{lam:g}",
             f"mlp_{mode}_lam_{lam:g}", f"mlp_{other_mode}_lam_{lam:g}",
         ]
-        if neat_key.startswith("fixed_ea_"):
+        if is_fixed_ea:
             keys.append(f"neat_choice_lam_{lam:g}_seed_{seed_text}")
         elif mode == "choice" and abs(lam - 2e-5) < 1e-12:
             keys.append(f"fixed_ea_choice_lam_{lam:g}_seed_{seed_text}")
