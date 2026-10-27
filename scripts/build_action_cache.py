@@ -74,7 +74,7 @@ def main():
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--manifest", default=None, help="Fixed split manifest JSON")
-    ap.add_argument("--manifest-subset", default="dev", choices=["train_1shot", "train_3shot", "train_5shot", "dev", "train_all"])
+    ap.add_argument("--manifest-subset", default="dev", choices=["train_1shot", "train_3shot", "train_5shot", "dev", "train_all", "confirmation"])
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
@@ -98,6 +98,8 @@ def main():
             indices = manifest["nested_train_indices"]["5"]
         elif args.manifest_subset == "train_all":
             indices = manifest["train_indices_all"]
+        elif args.manifest_subset == "confirmation":
+            indices = manifest["confirmation_indices"]
         else:
             indices = manifest["dev_indices"]
         rows = [all_rows[i] for i in indices]

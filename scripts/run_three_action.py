@@ -58,7 +58,7 @@ def estimate_train_costs(train_by):
     return costs
 
 
-def train_correctness_models(train_by):
+def train_correctness_models(train_by, class_weight="balanced"):
     """One binary LR per action: P(action correct | initial features)."""
     models = {}
     X = np.array([features(single_row(train_by[i])) for i in train_by], dtype=float)
@@ -67,7 +67,7 @@ def train_correctness_models(train_by):
                       for i in train_by])
         clf = Pipeline([
             ("scaler", StandardScaler()),
-            ("clf", LogisticRegression(max_iter=1000, random_state=17, class_weight="balanced")),
+            ("clf", LogisticRegression(max_iter=1000, random_state=17, class_weight=class_weight)),
         ])
         clf.fit(X, y)
         models[s] = clf
@@ -111,6 +111,8 @@ def main():
                     help="run_controller_baselines.py output to merge into Pareto table")
     ap.add_argument("--with-choice-ablation", action="store_true",
                     help="one controlled ablation adding one-hot initial_choice (strong L2, C=0.2)")
+    ap.add_argument("--class-weight", default="balanced", choices=["balanced", "none"],
+                    help="LR class_weight for correctness models (primary: none)")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
@@ -119,8 +121,9 @@ def main():
     train_by, dev_by = group(train), group(dev)
     dev_indices = list(dev_by.keys())
 
+    cw = None if args.class_weight == "none" else "balanced"
     costs = estimate_train_costs(train_by)
-    models = train_correctness_models(train_by)
+    models = train_correctness_models(train_by, class_weight=cw)
 
     # Predicted correctness per dev example per action.
     X_dev = np.array([features(single_row(dev_by[i])) for i in dev_indices], dtype=float)
@@ -148,6 +151,7 @@ def main():
         "n_train": len(train_by),
         "n_dev": len(dev_by),
         "feature_names": FEATURE_NAMES,
+        "class_weight": args.class_weight,
         "train_mean_costs": costs,
         "lambdas": LAMBDAS,
         "results": results,
@@ -170,7 +174,7 @@ def main():
             for s in STRATEGIES:
                 y = _np.array([int(next(x for x in train_by[i] if x["strategy"] == s)["correct"])
                                for i in train_by])
-                clf = LogisticRegression(max_iter=1000, random_state=17, class_weight="balanced", C=0.2)
+                clf = LogisticRegression(max_iter=1000, random_state=17, class_weight=cw, C=0.2)
                 clf.fit(Xtr, y)
                 ab_models[s] = clf
             ab_results = {}
