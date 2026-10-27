@@ -183,7 +183,7 @@ def evolve(X_train, train_ids, by, costs, lam, seed, pop_size, generations):
             "connections_enabled": sum(bool(c.enabled) for c in best.connections.values()),
             "generations_evaluated": len(stats.get_fitness_mean()),
         }
-        return net, detail
+        return net, detail, best, text
 
 def paired_ci(by, base, candidate, reps=BOOTSTRAP_REPS, seed=BOOTSTRAP_SEED):
     import numpy as np
@@ -288,7 +288,7 @@ def main():
                 for li, lam in enumerate(lambdas):
                     for seed0 in seeds:
                         actual_seed = seed0 + fi * 100000 + mode_i * 10000 + li * 1000
-                        net, genome = evolve(Xtr, tr, by, costs, lam, actual_seed,
+                        net, genome, _best_genome, _config_text = evolve(Xtr, tr, by, costs, lam, actual_seed,
                                              args.pop_size, args.generations)
                         choices = {i: STRATEGIES[int(np.argmax(net.activate(Xte[j])))] for j, i in enumerate(te)}
                         key = f"neat_{mode}_lam_{lam:g}_seed_{seed0}"
