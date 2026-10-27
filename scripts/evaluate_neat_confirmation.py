@@ -92,6 +92,11 @@ def main():
         raise SystemExit("Confirmation cache summary is not a passed BANKING77 run")
     if cache_summary.get("n_examples") != 77 or cache_summary.get("records") != 231:
         raise SystemExit("Confirmation cache summary must have 77 examples / 231 action records")
+    if cache_summary.get("seed") != manifest.get("seed") or cache_summary.get("split") != "confirmation":
+        raise SystemExit("Cache seed/split does not match the fresh confirmation manifest")
+    excluded = manifest.get("excluded_index_counts") or {}
+    if excluded.get("previous_confirmation") != 77 or not manifest.get("old_confirmation_manifest_sha256"):
+        raise SystemExit("Fresh confirmation manifest provenance/exclusion record is missing")
 
     with artifact_path.open("rb") as f:
         bundle = pickle.load(f)
