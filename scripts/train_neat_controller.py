@@ -7,7 +7,7 @@ pickle artifact is local/ignored; the JSON summary records its provenance.
 No Laya calls, no dev/confirmation/test cache access.
 """
 from __future__ import annotations
-import argparse, hashlib, json, os, pickle, sys, time
+import argparse, atexit, ctypes, hashlib, json, os, pickle, sys, time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -18,6 +18,18 @@ os.environ.setdefault("OPENBLAS_NUM_THREADS", "2")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+
+def prevent_system_sleep():
+    if os.name != "nt":
+        return False
+    es_continuous, es_system_required = 0x80000000, 0x00000001
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    set_state = kernel.SetThreadExecutionState
+    set_state.argtypes, set_state.restype = [ctypes.c_uint], ctypes.c_uint
+    if set_state(es_continuous | es_system_required) == 0:
+        raise ctypes.WinError(ctypes.get_last_error())
+    atexit.register(lambda: set_state(es_continuous))
+    return True
 from run_controller_baselines import features, single_row
 from run_three_action import STRATEGIES, group, load_cache
 from run_cv_stability import fit_choice_models, fit_numeric_models, fold_costs
@@ -27,6 +39,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--train-cache", default="results/pilot/banking77_train3shot_cache.jsonl")
     ap.add_argument("--mode", choices=["choice", "numeric"], default="choice")
+    ap.add_argument("--topology", choices=["neat", "fixed"], default="neat")
     ap.add_argument("--lambda-per-ms", type=float, default=2e-5)
     ap.add_argument("--seed", type=int, default=17)
     ap.add_argument("--pop-size", type=int, default=30)
@@ -67,13 +80,15 @@ def main():
         cats = np.asarray([[single_row(by[i]).get("initial_choice") or ""] for i in ids])
         X = np.hstack([scaler.transform(Xraw), encoder.transform(cats).toarray()])
     costs = fold_costs(by, ids)
+    sleep_prevention_active = prevent_system_sleep()
     started = time.perf_counter()
     with threadpool_limits(limits=2):
         _net, genome_info, genome, config_str = evolve(
-            X, ids, by, costs, args.lambda_per_ms, args.seed, args.pop_size, args.generations)
+            X, ids, by, costs, args.lambda_per_ms, args.seed, args.pop_size, args.generations,
+            fixed_topology=(args.topology == "fixed"))
     bundle = {
         "format_version": 1, "genome": genome, "config_text": config_str,
-        "mode": args.mode, "lambda_per_ms": args.lambda_per_ms,
+        "mode": args.mode, "topology": args.topology, "lambda_per_ms": args.lambda_per_ms,
         "n_train": len(ids), "examples_per_class": examples_per_class,
         "seed": args.seed, "pop_size": args.pop_size, "generations": args.generations,
         "scaler": scaler, "encoder": encoder, "strategies": STRATEGIES,
@@ -94,7 +109,8 @@ def main():
     summary = {
         "created_utc": datetime.now(timezone.utc).isoformat(), "project_git_sha": sha,
         "status": "passed", "laya_calls": 0,
-        "mode": args.mode, "lambda_per_ms": args.lambda_per_ms, "seed": args.seed,
+        "mode": args.mode, "topology": args.topology, "lambda_per_ms": args.lambda_per_ms, "seed": args.seed,
+        "windows_sleep_prevention_active": sleep_prevention_active,
         "pop_size": args.pop_size, "generations": args.generations,
         "n_train": len(ids), "n_classes": len({str(single_row(by[i]).get("gold_normalized") or single_row(by[i]).get("gold")) for i in ids}),
         "artifact": str(artifact_path), "artifact_sha256": digest,
