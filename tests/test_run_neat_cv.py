@@ -38,6 +38,7 @@ def test_fixed_topology_evolution_disables_structural_changes():
     assert "node_add_prob = 0.0" in cfg
     assert "node_delete_prob = 0.0" in cfg
     assert "activation_mutate_rate = 0.0" in cfg
+    assert "enabled_mutate_rate = 0.0" in cfg
 
 
 def test_metrics_report_correctness_latency_and_action_mix():
