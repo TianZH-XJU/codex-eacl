@@ -58,15 +58,16 @@ def main():
     ap.add_argument("--confirmation-manifest", default="results/splits/banking77_neat_confirmation_manifest.json")
     ap.add_argument("--confirmation-cache", default="results/pilot/banking77_neat_confirmation_cache.jsonl")
     ap.add_argument("--artifact", default="artifacts/checkpoints/banking77_neat_controller.pkl")
+    ap.add_argument("--fixed-artifact", default="artifacts/checkpoints/banking77_fixed_ea_controller.pkl")
     ap.add_argument("--out", default="results/pilot/banking77_neat_confirmation_result.json")
     args = ap.parse_args()
-    train_path, manifest_path, cache_path, artifact_path, out_path = [
+    train_path, manifest_path, cache_path, artifact_path, fixed_artifact_path, out_path = [
         (ROOT / p).resolve() for p in (
             args.train_cache, args.confirmation_manifest, args.confirmation_cache,
-            args.artifact, args.out)]
+            args.artifact, args.fixed_artifact, args.out)]
     if out_path.exists():
         raise SystemExit(f"Refusing to overwrite one-shot evaluation output: {out_path}")
-    for p in (train_path, manifest_path, cache_path, artifact_path):
+    for p in (train_path, manifest_path, cache_path, artifact_path, fixed_artifact_path):
         if not p.is_file():
             raise SystemExit(f"Required input missing: {p}")
     try:
@@ -100,10 +101,16 @@ def main():
 
     with artifact_path.open("rb") as f:
         bundle = pickle.load(f)
-    if bundle.get("format_version") != 1:
-        raise SystemExit("Unsupported NEAT artifact format")
-    if int(bundle.get("n_train", -1)) != len(train_by):
-        raise SystemExit("Training cache size differs from the controller artifact provenance")
+    with fixed_artifact_path.open("rb") as f:
+        fixed_bundle = pickle.load(f)
+    if bundle.get("format_version") != 1 or fixed_bundle.get("format_version") != 1:
+        raise SystemExit("Unsupported NEAT/fixed-topology artifact format")
+    if int(bundle.get("n_train", -1)) != len(train_by) or int(fixed_bundle.get("n_train", -1)) != len(train_by):
+        raise SystemExit("Training cache size differs from an artifact's provenance")
+    if bundle.get("topology") != "neat" or fixed_bundle.get("topology") != "fixed":
+        raise SystemExit("Expected a NEAT artifact and a fixed-topology evolutionary artifact")
+    if bundle.get("mode") != fixed_bundle.get("mode") or abs(float(bundle["lambda_per_ms"]) - float(fixed_bundle["lambda_per_ms"])) > 1e-12:
+        raise SystemExit("NEAT and fixed-topology artifacts must use the same features and lambda")
     lam = float(bundle["lambda_per_ms"])
     mode = bundle["mode"]
     costs = fold_costs(train_by, sorted(train_by))
@@ -123,8 +130,13 @@ def main():
         cfg = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                           neat.DefaultSpeciesSet, neat.DefaultStagnation, str(cfg_path))
         net = neat.nn.FeedForwardNetwork.create(bundle["genome"], cfg)
+        fixed_cfg_path = Path(tmp) / "fixed_config.ini"
+        fixed_cfg_path.write_text(fixed_bundle["config_text"], encoding="utf-8")
+        fixed_cfg = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
+                                neat.DefaultSpeciesSet, neat.DefaultStagnation, str(fixed_cfg_path))
+        fixed_net = neat.nn.FeedForwardNetwork.create(fixed_bundle["genome"], fixed_cfg)
         choices = {name: {} for name in (
-            "neat", "numeric_lr", "choice_lr", "threshold_cascade", "fixed_train_best",
+            "neat", "fixed_topology_ea", "numeric_lr", "choice_lr", "threshold_cascade", "fixed_train_best",
             "fixed_single", "fixed_wide", "fixed_tournament")}
         for i in sorted(conf_by):
             sr = single_row(conf_by[i])
@@ -135,6 +147,13 @@ def main():
                 cat = np.asarray([[sr.get("initial_choice") or ""]])
                 z = np.hstack([bundle["scaler"].transform(x), bundle["encoder"].transform(cat).toarray()])[0]
             choices["neat"][i] = STRATEGIES[int(np.argmax(net.activate(z)))]
+            if mode == "numeric":
+                fixed_z = fixed_bundle["scaler"].transform(x)[0]
+            else:
+                fixed_cat = np.asarray([[sr.get("initial_choice") or ""]])
+                fixed_z = np.hstack([fixed_bundle["scaler"].transform(x),
+                                     fixed_bundle["encoder"].transform(fixed_cat).toarray()])[0]
+            choices["fixed_topology_ea"][i] = STRATEGIES[int(np.argmax(fixed_net.activate(fixed_z)))]
             choices["numeric_lr"][i] = choose_action(predict_proba_numeric(num_scaler, num_models, sr), costs, lam)
             choices["choice_lr"][i] = choose_action(predict_proba_choice(choice_scaler, enc, choice_models, sr), costs, lam)
             confidence = float(sr.get("initial_answer_confidence") or 0.0)
@@ -145,7 +164,8 @@ def main():
 
     result_metrics = {k: metrics(conf_by, v) for k, v in choices.items()}
     comparisons = {}
-    for baseline in ("threshold_cascade", "fixed_train_best", "fixed_tournament", "choice_lr", "numeric_lr"):
+    for baseline in ("threshold_cascade", "fixed_train_best", "fixed_tournament",
+                     "fixed_topology_ea", "choice_lr", "numeric_lr"):
         comparisons[f"neat_minus_{baseline}"] = bootstrap_pair(conf_by, choices["neat"], choices[baseline])
 
     summary = {
@@ -157,7 +177,9 @@ def main():
         "confirmation_cache_summary": str(cache_summary_path.relative_to(ROOT)) if cache_summary_path.is_relative_to(ROOT) else str(cache_summary_path),
         "confirmation_cache_records": cache_summary.get("records"),
         "model_artifact_sha256": hashlib.sha256(artifact_path.read_bytes()).hexdigest(),
-        "neat_config": {k: bundle.get(k) for k in ("mode", "lambda_per_ms", "seed", "pop_size", "generations", "genome_summary")},
+        "fixed_topology_artifact_sha256": hashlib.sha256(fixed_artifact_path.read_bytes()).hexdigest(),
+        "neat_config": {k: bundle.get(k) for k in ("mode", "topology", "lambda_per_ms", "seed", "pop_size", "generations", "genome_summary")},
+        "fixed_topology_config": {k: fixed_bundle.get(k) for k in ("mode", "topology", "lambda_per_ms", "seed", "pop_size", "generations", "genome_summary")},
         "training_costs": costs,
         "threshold_cascade": {"upgrade_target": upgrade, "threshold": threshold},
         "fixed_train_best": fixed_best,
