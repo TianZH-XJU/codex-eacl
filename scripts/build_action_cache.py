@@ -12,7 +12,9 @@ The cache stores both the initial SINGLE features and each strategy's outcome.
 """
 from __future__ import annotations
 
+import atexit
 import argparse
+import ctypes
 import json
 import math
 import os
@@ -33,6 +35,20 @@ import torch  # noqa: E402
 
 import benchmark as bench  # noqa: E402
 import laya  # noqa: E402
+
+def prevent_system_sleep():
+    """Prevent Windows system sleep during long local inference; restore at exit."""
+    if os.name != "nt":
+        return False
+    es_continuous, es_system_required = 0x80000000, 0x00000001
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    set_state = kernel.SetThreadExecutionState
+    set_state.argtypes, set_state.restype = [ctypes.c_uint], ctypes.c_uint
+    if set_state(es_continuous | es_system_required) == 0:
+        raise ctypes.WinError(ctypes.get_last_error())
+    atexit.register(lambda: set_state(es_continuous))
+    return True
+
 
 DATASET_TO_REPO = {
     "banking77": "mteb/banking77",
@@ -80,6 +96,7 @@ def main():
 
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
+    sleep_prevention_active = prevent_system_sleep()
     if torch.cuda.is_available():
         raise RuntimeError("CPU-only run refused: CUDA is available")
 
@@ -308,6 +325,7 @@ def main():
 
     summary = {
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "windows_sleep_prevention_active": sleep_prevention_active,
         "dataset": args.dataset,
         "split": args.split,
         "seed": args.seed,
