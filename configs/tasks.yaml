@@ -1,0 +1,39 @@
+# Task registry for the multi-domain study (§10.1 deliverable).
+# Pinned revisions only; test splits stay locked; no controller tuning on test.
+
+processbench_math_choice:
+  domain: math
+  source_repo: Qwen/ProcessBench
+  data_revision: 3bdcd5371ed567559a78f559c01c13a6deee7604
+  source_git_commit: e8024636bcabdf8bd514440551b531d3f90dd18b
+  license: Apache-2.0
+  task_type: choice
+  label_mapping: label == -1 means all steps correct, else 0-based earliest-error step index (official run_eval.py match rule)
+  candidates: one per step (0-based) plus ALL_STEPS_CORRECT sentinel last
+  split_rule: group by problem text; stratified by (source file, error-vs-all-correct); seed 17; fractions train/dev/test 0.6/0.2/0.2
+  split_manifest: results/processbench/split_manifest.json
+  laya_actions: [single, wide, tournament]
+  action_adapter: single-first cascade (same cost definition as BANKING77)
+  budgets: [1.00x, 1.25x, 1.50x, 2.00x]
+  status: split_defined
+  gate: Gate 1 complementarity pilot pending
+
+codexglue_defect:
+  domain: code
+  source_repo: microsoft/CodeXGLUE (Defect Detection, Devign origin)
+  data_revision: null
+  task_type: choice_vs_noul
+  label_mapping: null
+  laya_actions: [single]
+  status: blocked_on_api_and_data_precheck
+  gate: Gate 0 (Noul vs binary-Choice adapter check) pending
+
+findver_claim:
+  domain: finance
+  source_repo: yilunzhao/FinDVer
+  data_revision: null
+  task_type: noul_vs_choice
+  label_mapping: null
+  laya_actions: [single]
+  status: blocked_on_api_and_data_precheck
+  gate: Gate 0 (long-document/truncation + Noul/Choice adapter check) pending
