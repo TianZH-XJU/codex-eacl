@@ -65,21 +65,24 @@ Train cache: 77 class-balanced 1-shot examples from official `train`. Dev cache:
 
 | Method | Dev accuracy | Mean cumulative ms | Mean cumulative calls |
 |---|---:|---:|---:|
-| Best fixed (tournament) | 0.5541 | 5766.4 | 3.000 |
-| Confidence threshold | 0.5584 | 5131.2 | 2.810 |
-| Margin threshold | 0.5584 | 5131.2 | 2.810 |
-| Entropy threshold | 0.5584 | 5131.2 | 2.810 |
-| Logistic regression (binary upgrade) | 0.4242 | 2799.0 | 1.080 |
-| Decision tree (depth 3, binary) | 0.4329 | 2889.4 | 1.100 |
-| Small MLP (8 units, binary) | 0.4026 | 2182.7 | 1.040 |
+| Best fixed (tournament) | 0.5541 / 0.5541 | 5766.4 | 3.000 |
+| Confidence threshold | 0.5584 / 0.5541 | 5131.2 / 4660.6 | 2.810 / 2.593 |
+| Margin threshold | 0.5584 / 0.5541 | 5131.2 / 4660.2 | 2.810 / 2.593 |
+| Entropy-confidence threshold | 0.5584 / 0.5541 | 5131.2 / 4660.6 | 2.810 / 2.593 |
+| Logistic regression (binary, scaled) | 0.4329 / 0.4848 | 2827.1 / 3508.0 | 1.082 / 1.394 |
+| Decision tree (depth 3, binary) | 0.4329 / 0.5325 | 2889.4 / 4412.6 | 1.100 / 2.065 |
+| Small MLP (8 units, binary, scaled) | 0.4069 / 0.4069 | 2174.6 / 2043.8 | 1.035 / 1.000 |
 | Random routing | 0.5152 | 4102.3 | 2.030 |
 | Oracle (post-hoc) | 0.7056 | 2870.9 | 1.416 |
 
+Columns for learned/threshold rows are 1-shot / 3-shot dev accuracy and cost. Labels are binary upgrade targets tied to the concrete TRAIN-chosen upgrade (tournament in both runs). Features are the locked 6-feature set with scaler fitted on train only for LR/MLP.
+
 Interpretation:
-- Threshold cascades improve slightly over the best fixed strategy at lower cumulative cost.
-- Learned controllers using only initial confidence, margin, entropy, probabilities, text length and option count underperform the fixed strategy on this 77-example training set.
-- The oracle gap remains large (0.7056), so there is still potential headroom, but the current feature set/training size is insufficient for the learned controllers.
-- Before NEAT, inspect feature quality, class balance, and whether additional cheap features or calibration are needed.
+- Threshold cascades match or slightly beat best fixed at lower cost, but the 1-shot gain is 1/231 samples and not a stable accuracy claim.
+- After the label fix, decision tree improves from 0.4329 (1-shot) to 0.5325 (3-shot), closer to threshold behavior; LR also improves with more data.
+- Dev failure modes (n=231): 27 tournament-only fixes, 12 wide-only fixes, 30 fixed by both, 31 single-correct-but-upgrade-wrong, 68 all-wrong, 63 all-correct.
+- Upgrade-gain cases have lower median confidence (0.73) than upgrade-loss cases (0.99), so confidence carries signal but overlaps heavily.
+- No 5-shot cache and no NEAT yet; decided after this correction.
 
 ## Low-memory pilot results (2026-10-26)
 

@@ -8,11 +8,21 @@
     "tournament",
     "wide"
   ],
+  "feature_names": [
+    "answer_confidence",
+    "margin",
+    "entropy_confidence",
+    "act_probability",
+    "text_len",
+    "choice_name_len"
+  ],
   "train_strategy_accuracy": {
     "single": 0.44155844155844154,
     "tournament": 0.6017316017316018,
     "wide": 0.5411255411255411
   },
+  "best_fixed_strategy": "tournament",
+  "upgrade_target": "tournament",
   "results": {
     "best_fixed": {
       "strategy": "tournament",
@@ -23,6 +33,8 @@
     },
     "confidence_threshold": {
       "threshold": 0.9964,
+      "threshold_key": "initial_answer_confidence",
+      "train_accuracy": 0.6061,
       "upgrade_target": "tournament",
       "accuracy": 0.5541,
       "mean_cumulative_ms": 4660.6,
@@ -31,46 +43,75 @@
     },
     "margin_threshold": {
       "threshold": 0.9952,
+      "threshold_key": "initial_margin",
+      "train_accuracy": 0.6061,
       "upgrade_target": "tournament",
       "accuracy": 0.5541,
       "mean_cumulative_ms": 4660.2,
       "p95_cumulative_ms": 6485.2,
       "mean_cumulative_calls": 2.403
     },
-    "entropy_threshold": {
-      "threshold": 0.0,
+    "entropy_confidence_threshold": {
+      "threshold": 0.9919,
+      "threshold_key": "initial_entropy_confidence",
+      "train_accuracy": 0.6061,
       "upgrade_target": "tournament",
-      "accuracy": 0.5584,
-      "mean_cumulative_ms": 5131.2,
+      "accuracy": 0.5541,
+      "mean_cumulative_ms": 4660.6,
       "p95_cumulative_ms": 6485.2,
-      "mean_cumulative_calls": 2.654
+      "mean_cumulative_calls": 2.403
     },
     "logistic_regression": {
-      "classes": [
-        "0",
-        "1"
+      "feature_names": [
+        "answer_confidence",
+        "margin",
+        "entropy_confidence",
+        "act_probability",
+        "text_len",
+        "choice_name_len"
       ],
-      "positive_rate_train": 0.2683982683982684,
-      "accuracy": 0.4935,
-      "mean_cumulative_ms": 3519.2,
+      "standardized": true,
+      "positive_rate_train": 0.22943722943722944,
+      "accuracy": 0.4848,
+      "mean_cumulative_ms": 3508.0,
       "p95_cumulative_ms": 6525.7,
-      "mean_cumulative_calls": 1.779
+      "mean_cumulative_calls": 1.771
     },
     "decision_tree": {
       "max_depth": 3,
-      "accuracy": 0.4978,
-      "mean_cumulative_ms": 3726.8,
-      "p95_cumulative_ms": 6326.6,
-      "mean_cumulative_calls": 1.909
+      "feature_names": [
+        "answer_confidence",
+        "margin",
+        "entropy_confidence",
+        "act_probability",
+        "text_len",
+        "choice_name_len"
+      ],
+      "standardized": false,
+      "positive_rate_train": 0.22943722943722944,
+      "accuracy": 0.5325,
+      "mean_cumulative_ms": 4412.6,
+      "p95_cumulative_ms": 6383.1,
+      "mean_cumulative_calls": 2.273
     },
     "mlp": {
       "hidden_layer_sizes": [
         8
       ],
-      "accuracy": 0.4026,
-      "mean_cumulative_ms": 2182.7,
-      "p95_cumulative_ms": 2281.8,
-      "mean_cumulative_calls": 1.087
+      "feature_names": [
+        "answer_confidence",
+        "margin",
+        "entropy_confidence",
+        "act_probability",
+        "text_len",
+        "choice_name_len"
+      ],
+      "standardized": true,
+      "positive_rate_train": 0.22943722943722944,
+      "accuracy": 0.4069,
+      "mean_cumulative_ms": 2043.8,
+      "p95_cumulative_ms": 2171.3,
+      "mean_cumulative_calls": 1.017
     },
     "random_routing": {
       "accuracy": 0.5152,

@@ -1,0 +1,158 @@
+{
+  "n_dev": 231,
+  "categories": {
+    "single_only_correct": 0,
+    "wide_only_fix": 12,
+    "tournament_only_fix": 27,
+    "both_fix": 30,
+    "single_correct_upgrade_wrong": 31,
+    "all_wrong": 68,
+    "all_correct": 63
+  },
+  "upgrade_gain_confidence": {
+    "n": 57,
+    "mean": 0.6524,
+    "p25": 0.3522,
+    "p50": 0.7277,
+    "p75": 0.9757
+  },
+  "upgrade_gain_margin": {
+    "n": 57,
+    "mean": 0.5619,
+    "p25": 0.1344,
+    "p50": 0.6689,
+    "p75": 0.9716
+  },
+  "upgrade_gain_entropy_conf": {
+    "n": 57,
+    "mean": 0.6887,
+    "p25": 0.394,
+    "p50": 0.7664,
+    "p75": 0.957
+  },
+  "upgrade_loss_confidence": {
+    "n": 23,
+    "mean": 0.8459,
+    "p25": 0.7143,
+    "p50": 0.9888,
+    "p75": 0.9995
+  },
+  "upgrade_loss_margin": {
+    "n": 23,
+    "mean": 0.7789,
+    "p25": 0.5403,
+    "p50": 0.9824,
+    "p75": 0.9994
+  },
+  "confidence_bins": {
+    "0.9-1.0": {
+      "n": 84,
+      "single_correct": 41,
+      "tournament_correct": 50,
+      "gain": 20
+    },
+    "1.0-1.1": {
+      "n": 40,
+      "single_correct": 32,
+      "tournament_correct": 31,
+      "gain": 3
+    },
+    "0.1-0.2": {
+      "n": 17,
+      "single_correct": 3,
+      "tournament_correct": 10,
+      "gain": 7
+    },
+    "0.6-0.7": {
+      "n": 8,
+      "single_correct": 2,
+      "tournament_correct": 1,
+      "gain": 1
+    },
+    "0.5-0.6": {
+      "n": 15,
+      "single_correct": 1,
+      "tournament_correct": 5,
+      "gain": 5
+    },
+    "0.8-0.9": {
+      "n": 19,
+      "single_correct": 4,
+      "tournament_correct": 7,
+      "gain": 4
+    },
+    "0.3-0.4": {
+      "n": 10,
+      "single_correct": 0,
+      "tournament_correct": 5,
+      "gain": 5
+    },
+    "0.4-0.5": {
+      "n": 12,
+      "single_correct": 4,
+      "tournament_correct": 6,
+      "gain": 4
+    },
+    "0.7-0.8": {
+      "n": 13,
+      "single_correct": 5,
+      "tournament_correct": 7,
+      "gain": 3
+    },
+    "0.2-0.3": {
+      "n": 12,
+      "single_correct": 2,
+      "tournament_correct": 6,
+      "gain": 5
+    },
+    "0.0-0.1": {
+      "n": 1,
+      "single_correct": 0,
+      "tournament_correct": 0,
+      "gain": 0
+    }
+  },
+  "wide_only_fix_indices": [
+    9,
+    53,
+    114,
+    116,
+    164,
+    176,
+    187,
+    196,
+    200,
+    216,
+    225,
+    226
+  ],
+  "tournament_only_fix_indices": [
+    0,
+    1,
+    2,
+    23,
+    43,
+    45,
+    56,
+    86,
+    96,
+    103,
+    108,
+    109,
+    110,
+    111,
+    112,
+    123,
+    124,
+    125,
+    129,
+    131,
+    135,
+    139,
+    149,
+    154,
+    161,
+    182,
+    205
+  ]
+}
