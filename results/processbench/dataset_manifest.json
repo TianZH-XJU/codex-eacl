@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-27T14:47:53.180326+00:00",
+  "repo_id": "Qwen/ProcessBench",
+  "revision": "3bdcd5371ed567559a78f559c01c13a6deee7604",
+  "processbench_git_commit": "e8024636bcabdf8bd514440551b531d3f90dd18b",
+  "license": "Apache-2.0 (per dataset card; recheck before release)",
+  "files": [
+    {
+      "filename": "gsm8k.json",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\processbench\\gsm8k.json",
+      "n_rows": 400,
+      "size_bytes": 574343,
+      "sha256": "fb1c59dfd1e83e1c5a48dbe598db27e4bc0b8bc524a09445f2d4b69178f61349"
+    },
+    {
+      "filename": "math.json",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\processbench\\math.json",
+      "n_rows": 1000,
+      "size_bytes": 1938778,
+      "sha256": "60cb0d7a69cbec98d43cf50855b9b7e7294599c3c9a24bdd031abd18c3b6b136"
+    },
+    {
+      "filename": "olympiadbench.json",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\processbench\\olympiadbench.json",
+      "n_rows": 1000,
+      "size_bytes": 2808955,
+      "sha256": "e9d801c9f3c03f949adbfa08e90cb21ad85c0b9224bc5e98326f8215c218aa55"
+    },
+    {
+      "filename": "omnimath.json",
+      "path": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\data\\raw\\processbench\\omnimath.json",
+      "n_rows": 1000,
+      "size_bytes": 2842872,
+      "sha256": "e8d7cf4512c82168dae2fe48b1718069a3002e7910af1d180a27ee0d9948ba47"
+    }
+  ],
+  "status": "inspected"
+}

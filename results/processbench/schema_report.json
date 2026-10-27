@@ -1,0 +1,62 @@
+{
+  "created_utc": "2026-10-27T14:47:53.180326+00:00",
+  "repo_id": "Qwen/ProcessBench",
+  "revision": "3bdcd5371ed567559a78f559c01c13a6deee7604",
+  "processbench_git_commit": "e8024636bcabdf8bd514440551b531d3f90dd18b",
+  "n_rows": 3400,
+  "n_problems": 2842,
+  "problems_with_multiple_trajectories": 430,
+  "n_invalid_rows": 0,
+  "per_file_rows": {
+    "gsm8k.json": 400,
+    "math.json": 1000,
+    "olympiadbench.json": 1000,
+    "omnimath.json": 1000
+  },
+  "label_histogram": {
+    "-1": 1179,
+    "0": 272,
+    "1": 527,
+    "2": 492,
+    "3": 323,
+    "4": 198,
+    "5": 149,
+    "6": 82,
+    "7": 59,
+    "8": 32,
+    "9": 23,
+    "10": 22,
+    "11": 12,
+    "12": 4,
+    "13": 9,
+    "14": 4,
+    "15": 3,
+    "16": 3,
+    "17": 1,
+    "18": 2,
+    "20": 1,
+    "21": 1,
+    "22": 1,
+    "25": 1
+  },
+  "generator_histogram": {
+    "Qwen2-7B-Instruct": 422,
+    "Qwen2.5-Math-7B-Instruct": 397,
+    "Qwen2-1.5B-Instruct": 88,
+    "Llama-3.1-8B-Instruct": 526,
+    "Llama-3.1-70B-Instruct": 274,
+    "Meta-Llama-3-8B-Instruct": 94,
+    "Qwen2.5-1.5B-Instruct": 116,
+    "Qwen2-72B-Instruct": 335,
+    "Qwen2.5-7B-Instruct": 351,
+    "Meta-Llama-3-70B-Instruct": 172,
+    "Qwen2.5-72B-Instruct": 254,
+    "Qwen2.5-Math-72B-Instruct": 371
+  },
+  "steps_len": {
+    "min": null,
+    "max": null
+  },
+  "official_metric": "error acc / correct-correct acc / F1 = harmonic mean (run_eval.py)",
+  "label_mapping": "label == -1 means all steps correct, else 0-based earliest-error step index"
+}
