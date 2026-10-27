@@ -1,0 +1,399 @@
+{
+  "train_cache": "results/pilot/banking77_train3shot_cache.jsonl",
+  "n_examples": 231,
+  "n_classes": 77,
+  "lambdas": [
+    0.0,
+    2e-05,
+    5e-05,
+    0.0001
+  ],
+  "fixed_reference_train_accuracy": {
+    "single": 0.4416,
+    "wide": 0.5411,
+    "tournament": 0.6017
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "n_train": 154,
+      "n_test": 77,
+      "train_costs": {
+        "single": {
+          "mean_cumulative_ms": 2014.235064935065,
+          "mean_cumulative_calls": 1.0
+        },
+        "wide": {
+          "mean_cumulative_ms": 4369.948701298701,
+          "mean_cumulative_calls": 2.0
+        },
+        "tournament": {
+          "mean_cumulative_ms": 5777.128571428571,
+          "mean_cumulative_calls": 3.0
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "n_train": 154,
+      "n_test": 77,
+      "train_costs": {
+        "single": {
+          "mean_cumulative_ms": 2023.8376623376623,
+          "mean_cumulative_calls": 1.0
+        },
+        "wide": {
+          "mean_cumulative_ms": 4392.407142857142,
+          "mean_cumulative_calls": 2.0
+        },
+        "tournament": {
+          "mean_cumulative_ms": 5825.507792207792,
+          "mean_cumulative_calls": 3.0
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "n_train": 154,
+      "n_test": 77,
+      "train_costs": {
+        "single": {
+          "mean_cumulative_ms": 2019.8064935064936,
+          "mean_cumulative_calls": 1.0
+        },
+        "wide": {
+          "mean_cumulative_ms": 4392.623376623376,
+          "mean_cumulative_calls": 2.0
+        },
+        "tournament": {
+          "mean_cumulative_ms": 5831.405194805195,
+          "mean_cumulative_calls": 3.0
+        }
+      }
+    }
+  ],
+  "results": {
+    "choice_balanced_lam_0": {
+      "model": "choice",
+      "class_weight": "balanced",
+      "lambda_per_ms": 0.0,
+      "oof_accuracy": 0.5801,
+      "oof_mean_cumulative_ms": 3953.5,
+      "oof_p95_cumulative_ms": 6280.2,
+      "oof_mean_cumulative_calls": 1.939,
+      "action_mix": {
+        "single": 94,
+        "wide": 57,
+        "tournament": 80
+      }
+    },
+    "choice_balanced_lam_2e-05": {
+      "model": "choice",
+      "class_weight": "balanced",
+      "lambda_per_ms": 2e-05,
+      "oof_accuracy": 0.5195,
+      "oof_mean_cumulative_ms": 3199.2,
+      "oof_p95_cumulative_ms": 6151.2,
+      "oof_mean_cumulative_calls": 1.563,
+      "action_mix": {
+        "single": 146,
+        "wide": 40,
+        "tournament": 45
+      }
+    },
+    "choice_balanced_lam_5e-05": {
+      "model": "choice",
+      "class_weight": "balanced",
+      "lambda_per_ms": 5e-05,
+      "oof_accuracy": 0.4545,
+      "oof_mean_cumulative_ms": 2604.9,
+      "oof_p95_cumulative_ms": 5836.5,
+      "oof_mean_cumulative_calls": 1.268,
+      "action_mix": {
+        "single": 186,
+        "wide": 28,
+        "tournament": 17
+      }
+    },
+    "choice_balanced_lam_0.0001": {
+      "model": "choice",
+      "class_weight": "balanced",
+      "lambda_per_ms": 0.0001,
+      "oof_accuracy": 0.4459,
+      "oof_mean_cumulative_ms": 2029.5,
+      "oof_p95_cumulative_ms": 2180.9,
+      "oof_mean_cumulative_calls": 1.004,
+      "action_mix": {
+        "single": 230,
+        "wide": 1,
+        "tournament": 0
+      }
+    },
+    "choice_none_lam_0": {
+      "model": "choice",
+      "class_weight": "none",
+      "lambda_per_ms": 0.0,
+      "oof_accuracy": 0.6061,
+      "oof_mean_cumulative_ms": 5492.7,
+      "oof_p95_cumulative_ms": 6545.0,
+      "oof_mean_cumulative_calls": 2.771,
+      "action_mix": {
+        "single": 2,
+        "wide": 49,
+        "tournament": 180
+      }
+    },
+    "choice_none_lam_2e-05": {
+      "model": "choice",
+      "class_weight": "none",
+      "lambda_per_ms": 2e-05,
+      "oof_accuracy": 0.6061,
+      "oof_mean_cumulative_ms": 4737.8,
+      "oof_p95_cumulative_ms": 6280.2,
+      "oof_mean_cumulative_calls": 2.338,
+      "action_mix": {
+        "single": 40,
+        "wide": 73,
+        "tournament": 118
+      }
+    },
+    "choice_none_lam_5e-05": {
+      "model": "choice",
+      "class_weight": "none",
+      "lambda_per_ms": 5e-05,
+      "oof_accuracy": 0.5238,
+      "oof_mean_cumulative_ms": 3301.5,
+      "oof_p95_cumulative_ms": 6151.2,
+      "oof_mean_cumulative_calls": 1.615,
+      "action_mix": {
+        "single": 139,
+        "wide": 42,
+        "tournament": 50
+      }
+    },
+    "choice_none_lam_0.0001": {
+      "model": "choice",
+      "class_weight": "none",
+      "lambda_per_ms": 0.0001,
+      "oof_accuracy": 0.4502,
+      "oof_mean_cumulative_ms": 2360.6,
+      "oof_p95_cumulative_ms": 4405.6,
+      "oof_mean_cumulative_calls": 1.152,
+      "action_mix": {
+        "single": 203,
+        "wide": 21,
+        "tournament": 7
+      }
+    },
+    "numeric_balanced_lam_0": {
+      "model": "numeric",
+      "class_weight": "balanced",
+      "lambda_per_ms": 0.0,
+      "oof_accuracy": 0.5455,
+      "oof_mean_cumulative_ms": 3717.8,
+      "oof_p95_cumulative_ms": 6516.0,
+      "oof_mean_cumulative_calls": 1.827,
+      "action_mix": {
+        "single": 112,
+        "wide": 47,
+        "tournament": 72
+      }
+    },
+    "numeric_balanced_lam_2e-05": {
+      "model": "numeric",
+      "class_weight": "balanced",
+      "lambda_per_ms": 2e-05,
+      "oof_accuracy": 0.4978,
+      "oof_mean_cumulative_ms": 3109.7,
+      "oof_p95_cumulative_ms": 6151.2,
+      "oof_mean_cumulative_calls": 1.515,
+      "action_mix": {
+        "single": 152,
+        "wide": 39,
+        "tournament": 40
+      }
+    },
+    "numeric_balanced_lam_5e-05": {
+      "model": "numeric",
+      "class_weight": "balanced",
+      "lambda_per_ms": 5e-05,
+      "oof_accuracy": 0.4545,
+      "oof_mean_cumulative_ms": 2602.8,
+      "oof_p95_cumulative_ms": 5752.9,
+      "oof_mean_cumulative_calls": 1.264,
+      "action_mix": {
+        "single": 184,
+        "wide": 33,
+        "tournament": 14
+      }
+    },
+    "numeric_balanced_lam_0.0001": {
+      "model": "numeric",
+      "class_weight": "balanced",
+      "lambda_per_ms": 0.0001,
+      "oof_accuracy": 0.4459,
+      "oof_mean_cumulative_ms": 2080.8,
+      "oof_p95_cumulative_ms": 2215.1,
+      "oof_mean_cumulative_calls": 1.026,
+      "action_mix": {
+        "single": 225,
+        "wide": 6,
+        "tournament": 0
+      }
+    },
+    "numeric_none_lam_0": {
+      "model": "numeric",
+      "class_weight": "none",
+      "lambda_per_ms": 0.0,
+      "oof_accuracy": 0.5844,
+      "oof_mean_cumulative_ms": 5502.3,
+      "oof_p95_cumulative_ms": 6545.0,
+      "oof_mean_cumulative_calls": 2.771,
+      "action_mix": {
+        "single": 0,
+        "wide": 53,
+        "tournament": 178
+      }
+    },
+    "numeric_none_lam_2e-05": {
+      "model": "numeric",
+      "class_weight": "none",
+      "lambda_per_ms": 2e-05,
+      "oof_accuracy": 0.5758,
+      "oof_mean_cumulative_ms": 4689.5,
+      "oof_p95_cumulative_ms": 6545.0,
+      "oof_mean_cumulative_calls": 2.32,
+      "action_mix": {
+        "single": 46,
+        "wide": 65,
+        "tournament": 120
+      }
+    },
+    "numeric_none_lam_5e-05": {
+      "model": "numeric",
+      "class_weight": "none",
+      "lambda_per_ms": 5e-05,
+      "oof_accuracy": 0.5152,
+      "oof_mean_cumulative_ms": 3240.1,
+      "oof_p95_cumulative_ms": 6159.2,
+      "oof_mean_cumulative_calls": 1.589,
+      "action_mix": {
+        "single": 146,
+        "wide": 34,
+        "tournament": 51
+      }
+    },
+    "numeric_none_lam_0.0001": {
+      "model": "numeric",
+      "class_weight": "none",
+      "lambda_per_ms": 0.0001,
+      "oof_accuracy": 0.4545,
+      "oof_mean_cumulative_ms": 2341.3,
+      "oof_p95_cumulative_ms": 4381.6,
+      "oof_mean_cumulative_calls": 1.139,
+      "action_mix": {
+        "single": 201,
+        "wide": 28,
+        "tournament": 2
+      }
+    }
+  },
+  "paired_comparisons": {
+    "choice_vs_numeric_none_lam_0": {
+      "weight": "none",
+      "lambda_per_ms": 0.0,
+      "oof_acc_numeric": 0.5844,
+      "oof_acc_choice": 0.6061,
+      "oof_acc_diff": 0.0216,
+      "bootstrap": {
+        "mean": 0.0214,
+        "ci95_lo": 0.0,
+        "ci95_hi": 0.0433
+      }
+    },
+    "choice_vs_numeric_none_lam_2e-05": {
+      "weight": "none",
+      "lambda_per_ms": 2e-05,
+      "oof_acc_numeric": 0.5758,
+      "oof_acc_choice": 0.6061,
+      "oof_acc_diff": 0.0303,
+      "bootstrap": {
+        "mean": 0.0304,
+        "ci95_lo": 0.0087,
+        "ci95_hi": 0.0519
+      }
+    },
+    "choice_vs_numeric_none_lam_5e-05": {
+      "weight": "none",
+      "lambda_per_ms": 5e-05,
+      "oof_acc_numeric": 0.5152,
+      "oof_acc_choice": 0.5238,
+      "oof_acc_diff": 0.0087,
+      "bootstrap": {
+        "mean": 0.0085,
+        "ci95_lo": -0.013,
+        "ci95_hi": 0.0303
+      }
+    },
+    "choice_vs_numeric_none_lam_0.0001": {
+      "weight": "none",
+      "lambda_per_ms": 0.0001,
+      "oof_acc_numeric": 0.4545,
+      "oof_acc_choice": 0.4502,
+      "oof_acc_diff": -0.0043,
+      "bootstrap": {
+        "mean": -0.0043,
+        "ci95_lo": -0.013,
+        "ci95_hi": 0.0
+      }
+    },
+    "choice_vs_numeric_balanced_lam_0": {
+      "weight": "balanced",
+      "lambda_per_ms": 0.0,
+      "oof_acc_numeric": 0.5455,
+      "oof_acc_choice": 0.5801,
+      "oof_acc_diff": 0.0346,
+      "bootstrap": {
+        "mean": 0.0348,
+        "ci95_lo": 0.0087,
+        "ci95_hi": 0.0606
+      }
+    },
+    "choice_vs_numeric_balanced_lam_2e-05": {
+      "weight": "balanced",
+      "lambda_per_ms": 2e-05,
+      "oof_acc_numeric": 0.4978,
+      "oof_acc_choice": 0.5195,
+      "oof_acc_diff": 0.0216,
+      "bootstrap": {
+        "mean": 0.0211,
+        "ci95_lo": 0.0,
+        "ci95_hi": 0.0433
+      }
+    },
+    "choice_vs_numeric_balanced_lam_5e-05": {
+      "weight": "balanced",
+      "lambda_per_ms": 5e-05,
+      "oof_acc_numeric": 0.4545,
+      "oof_acc_choice": 0.4545,
+      "oof_acc_diff": 0.0,
+      "bootstrap": {
+        "mean": -0.0001,
+        "ci95_lo": -0.0087,
+        "ci95_hi": 0.0087
+      }
+    },
+    "choice_vs_numeric_balanced_lam_0.0001": {
+      "weight": "balanced",
+      "lambda_per_ms": 0.0001,
+      "oof_acc_numeric": 0.4459,
+      "oof_acc_choice": 0.4459,
+      "oof_acc_diff": 0.0,
+      "bootstrap": {
+        "mean": 0.0,
+        "ci95_lo": -0.0087,
+        "ci95_hi": 0.0087
+      }
+    }
+  }
+}

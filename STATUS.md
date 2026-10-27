@@ -58,6 +58,7 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | NEAT and controller baselines | baselines done; NEAT paused | Binary + three-action + calibration diagnostics on fixed caches; NEAT only after reliable baseline |
 | Three-action offline evaluation | done 2026-10-27 | `scripts/run_three_action.py`; 1-shot/3-shot Pareto in `results/pilot/banking77_three_action_*.json` |
 | Temperature calibration | done 2026-10-27 | `scripts/calibrate_temperature.py`; T fit on train only; `results/pilot/banking77_calibration_3shot.json` |
+| CV stability (3-fold OOF on 3-shot train) | done 2026-10-27 | `scripts/run_cv_stability.py`; choice beats numeric under both weight settings; `results/pilot/banking77_cv_stability.json` |
 | Local Git/GitHub sync | passed | Commit `7a3458f0211ec1df2a311dec6517fe8d9e0fde59` pushed to `main` |
 | GitHub-hosted experiments | disabled/not used | User requested all installation, data and model runs be performed on the user's computer. The CPU bootstrap GitHub Actions workflow has been removed to avoid executing experiments in GitHub's environment. |
 
@@ -83,6 +84,27 @@ Interpretation:
 - The single controlled choice ablation (6 numeric + one-hot initial_choice, C=0.2, 3-shot only) matches best-fixed accuracy (0.5541) at ~30% lower mean cost (4026 vs 5766 ms). Hypothesis only: 77-category one-hot on 231 train samples carries overfit risk; needs seed/subset replication before any claim.
 - Calibration (T=4.60 fit on 3-shot train): dev NLL 4.95→2.87, Brier 0.91→0.79, ECE 0.36→0.16. Routing with calibrated confidence: dev 0.5541 at 4921 ms vs raw 0.5541 at 4661 ms — reliability improves, routing does not. Keep calibration as analysis, not a core contribution.
 - No 5-shot cache, no NEAT. Next: replicate choice-ablation stability across seeds/subsets before deciding on 5-shot.
+
+## CV stability on 3-shot train cache (2026-10-27, offline)
+
+3-fold OOF within `banking77_train3shot_cache.jsonl` (231 samples; fold k holds out the k-th sample of each class → 77 OOF / 154 fit; ≈2-shot scale). Unweighted LR is the primary probability estimator, balanced LR the control. Costs from fold-train only; fixed lambda grid; 16/16 tests pass.
+
+| OOF (n=231) | unweighted acc / ms | balanced acc / ms |
+|---|---:|---:|
+| numeric lam=0 | 0.5844 / 5502 | 0.5455 / 3718 |
+| choice lam=0 | 0.6061 / 5493 | 0.5801 / 3954 |
+| numeric lam=2e-05 | 0.5758 / 4690 | 0.4978 / 3110 |
+| choice lam=2e-05 | 0.6061 / 4738 | 0.5195 / 3199 |
+| fixed tournament (train ref) | 0.6017 | 0.6017 |
+
+Paired choice-vs-numeric OOF diff with stratified bootstrap 95% CI:
+- unweighted lam=0: +0.0216 [0.0000, 0.0433]; lam=2e-05: +0.0303 [0.0087, 0.0519]
+- balanced lam=0: +0.0346 [0.0087, 0.0606]; lam=2e-05: +0.0216 [0.0000, 0.0433]
+
+Interpretation:
+- The choice advantage replicates under BOTH probability settings (not an artifact of class_weight), at lam=0 and lam=2e-05 with lower or equal cost. Per the audit decision table this points to an independent confirmation experiment, not to 5-shot or NEAT.
+- At higher lambdas both models collapse to near-single and the gap vanishes, as expected.
+- Next (gated): hold out a 77-sample confirmation set from manifest train samples unused so far, run new Laya inference once with the locked config, evaluate once. No 5-shot, no test touch, no NEAT until then.
 
 ## Controller baselines on BANKING77 (2026-10-26)
 
@@ -125,14 +147,12 @@ Interpretation:
 - WIDE is a strong fixed baseline; TOURNAMENT is expensive (about 2 Laya calls per example) and not uniformly better.
 - Before NEAT, implement controller baselines and lock a protocol. Test leakage must be avoided: use only train/validation labels for controller training and thresholds.
 
-## Next actions
+## Next actions (updated 2026-10-27; test split stays locked)
 
-1. Read `results/smoke/baseline_smoke_report.json`, `results/dataset_manifest.json` and `results/environment.json` locally.
-2. Establish Git sync without discarding the local virtual environment, model cache or datasets.
-3. Run one BANKING77 train pilot with 20 rows and SINGLE+TOURNAMENT only, with CPU threads limited to 2.
-4. Inspect elapsed time and peak RAM; expand to 50 rows only if stable.
-5. Build an output cache, check action error overlap and calculate the oracle gap on development data.
-6. Implement simple controller baselines and NEAT only if the action set has sufficient headroom.
+1. Decide whether to launch the gated independent confirmation run: 77 held-out train-manifest samples, one locked-config inference, single evaluation. Needs new Laya inference (~30-60 min, single process, 2 threads).
+2. Only if confirmation replicates the choice advantage: consider 5-shot cache, then NEAT vs fixed-topology baselines under matched budgets.
+3. If confirmation fails: keep threshold cascade as the main baseline and do error analysis; do not scale up.
+4. Keep all test splits locked; no test use for tuning, thresholds, model selection, or fitness.
 
 ## Resource limits and research integrity
 
