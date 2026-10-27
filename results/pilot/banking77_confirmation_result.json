@@ -1,0 +1,66 @@
+{
+  "created_utc": "2026-10-27T10:49:28.884471+00:00",
+  "locked_config": {
+    "class_weight": "none",
+    "C_numeric": 1.0,
+    "C_choice": 0.2,
+    "lambda_per_ms": 2e-05,
+    "upgrade_reference": "tournament"
+  },
+  "train_cache": "results/pilot/banking77_train3shot_cache.jsonl",
+  "confirmation_cache": "results/pilot/banking77_confirmation_cache.jsonl",
+  "n_confirmation": 77,
+  "project_git_sha": "cda918d8aeae85b645b0b84cef4c3dfe81bf9346",
+  "working_tree_dirty": true,
+  "results": {
+    "numeric_only": {
+      "accuracy": 0.5714,
+      "mean_cumulative_ms": 70294.4,
+      "p95_cumulative_ms": 8897.7,
+      "mean_cumulative_calls": 2.234,
+      "action_mix": {
+        "single": 21,
+        "wide": 17,
+        "tournament": 39
+      }
+    },
+    "numeric_choice": {
+      "accuracy": 0.6234,
+      "mean_cumulative_ms": 42068.6,
+      "p95_cumulative_ms": 8761.6,
+      "mean_cumulative_calls": 2.351,
+      "action_mix": {
+        "single": 14,
+        "wide": 22,
+        "tournament": 41
+      }
+    }
+  },
+  "paired_choice_minus_numeric": {
+    "accuracy_diff": 0.0519,
+    "bootstrap95_lo": -0.026,
+    "bootstrap95_hi": 0.1299,
+    "bootstrap_note": "plain paired bootstrap over 77 samples (5000 reps, seed 17); 1 sample/class precludes stratified resampling \u2014 wide uncertainty expected",
+    "mcnemar_table": {
+      "both_correct": 41,
+      "both_wrong": 26,
+      "choice_only_correct": 7,
+      "numeric_only_correct": 3
+    }
+  },
+  "fixed_reference_on_confirmation": {
+    "single": {
+      "accuracy": 0.4805,
+      "mean_cumulative_ms": 2124.8
+    },
+    "wide": {
+      "accuracy": 0.5455,
+      "mean_cumulative_ms": 6006.7
+    },
+    "tournament": {
+      "accuracy": 0.6494,
+      "mean_cumulative_ms": 71641.2
+    }
+  },
+  "evaluated_once": true
+}

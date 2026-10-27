@@ -1,0 +1,108 @@
+{
+  "timestamp_utc": "2026-10-27T10:47:54.048345+00:00",
+  "dataset": "banking77",
+  "split": "confirmation",
+  "seed": 23,
+  "n_examples": 77,
+  "strategies": [
+    "single",
+    "wide",
+    "tournament"
+  ],
+  "by_strategy": {
+    "single": {
+      "n": 77,
+      "accuracy": 0.4805,
+      "mean_ms": 2124.8,
+      "p50_ms": 2032.9,
+      "p95_ms": 2663.2,
+      "max_ms": 3775.1,
+      "min_ms": 1645.9,
+      "mean_cumulative_ms": 2124.8,
+      "p95_cumulative_ms": 2663.2,
+      "calls_per_row": 1.0,
+      "cumulative_calls_per_row": 1.0,
+      "errors": 0,
+      "initial_errors": 0
+    },
+    "wide": {
+      "n": 77,
+      "accuracy": 0.5455,
+      "mean_ms": 3881.9,
+      "p50_ms": 2409.1,
+      "p95_ms": 4190.5,
+      "max_ms": 103809.9,
+      "min_ms": 2127.3,
+      "mean_cumulative_ms": 6006.7,
+      "p95_cumulative_ms": 7385.0,
+      "calls_per_row": 1.0,
+      "cumulative_calls_per_row": 2.0,
+      "errors": 0,
+      "initial_errors": 0
+    },
+    "tournament": {
+      "n": 77,
+      "accuracy": 0.6494,
+      "mean_ms": 69516.4,
+      "p50_ms": 3783.9,
+      "p95_ms": 6705.8,
+      "max_ms": 2855864.0,
+      "min_ms": 3344.5,
+      "mean_cumulative_ms": 71641.2,
+      "p95_cumulative_ms": 8897.7,
+      "calls_per_row": 2.0,
+      "cumulative_calls_per_row": 3.0,
+      "errors": 0,
+      "initial_errors": 0
+    }
+  },
+  "best_fixed_strategy": "tournament",
+  "best_fixed_accuracy": 0.6494,
+  "oracle_accuracy": 0.7403,
+  "oracle_gain_over_best_fixed": 0.0909,
+  "pairwise_error_overlap": [
+    {
+      "strategies": [
+        "single",
+        "wide"
+      ],
+      "both_wrong": 32,
+      "only_first_wrong": 8,
+      "only_second_wrong": 3,
+      "both_correct": 34
+    },
+    {
+      "strategies": [
+        "single",
+        "tournament"
+      ],
+      "both_wrong": 21,
+      "only_first_wrong": 19,
+      "only_second_wrong": 6,
+      "both_correct": 31
+    },
+    {
+      "strategies": [
+        "wide",
+        "tournament"
+      ],
+      "both_wrong": 22,
+      "only_first_wrong": 13,
+      "only_second_wrong": 5,
+      "both_correct": 37
+    }
+  ],
+  "elapsed_seconds": 5815.5,
+  "peak_rss_mb": 2136.9,
+  "cpu_threads": 2,
+  "device": "cpu",
+  "model": "english",
+  "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "cda918d8aeae85b645b0b84cef4c3dfe81bf9346",
+  "working_tree_dirty": true,
+  "status": "passed",
+  "errors": 0,
+  "records": 231,
+  "expected_records": 231
+}

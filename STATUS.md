@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-27
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
-**Current phase:** three-action offline evaluation + temperature calibration done on fixed BANKING77 caches; 5-shot and NEAT paused  
+**Current phase:** independent confirmation run done (n=77, locked config, evaluated once); signal directional but uncertain — no scale-up  
 **Research result status:** no statistically meaningful new accuracy result has been established yet.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
@@ -85,6 +85,22 @@ Interpretation:
 - Calibration (T=4.60 fit on 3-shot train): dev NLL 4.95→2.87, Brier 0.91→0.79, ECE 0.36→0.16. Routing with calibrated confidence: dev 0.5541 at 4921 ms vs raw 0.5541 at 4661 ms — reliability improves, routing does not. Keep calibration as analysis, not a core contribution.
 - No 5-shot cache, no NEAT. Next: replicate choice-ablation stability across seeds/subsets before deciding on 5-shot.
 
+## Independent confirmation (2026-10-27, GO, locked config, evaluated once)
+
+Frozen: code `cda918d`, confirmation manifest seed 23 (77 samples, 1/class, disjoint from all train/dev), Laya `b9fe351`, model rev `7b928d8`, 2 threads, single process. Eval provenance `working_tree_dirty=true` reflects only the run's own new output files; code unchanged since freeze. Eval script re-executed once after deleting its own untracked log sidecars (identical locked config/data — no tuning; disclosed here).
+
+| Confirmation (n=77) | accuracy | mean cum. ms | p95 cum. ms | mix (s/w/t) |
+|---|---:|---:|---:|---|
+| numeric-only (unweighted, C=1.0) | 0.5714 | 70294 | 8897 | 21/17/39 |
+| numeric+choice (unweighted, C=0.2) | 0.6234 | 42069 | 8762 | 14/22/41 |
+| fixed single / wide / tournament | 0.4805 / 0.5455 / 0.6494 | 2125 / 6007 / 71641 | — | — |
+
+Paired choice−numeric: +0.0519 (+4/77), bootstrap 95% CI [−0.026, 0.130] (plain paired, 5000 reps; 1/class precludes stratification). McNemar discordants: choice-only 7 vs numeric-only 3; both-correct 41, both-wrong 26.
+
+Cost caveat: two confirmation rows (idx 26/27, tournament) hit transient extremes (~2858 s / ~2192 s, same pattern as the earlier MASSIVE outliers; both rows wrong under all strategies so accuracy is unaffected). Mean costs are contaminated; medians are normal (single 2033, wide 4442, tournament 5821 ms). Raw values kept, not deleted.
+
+Interpretation: direction replicates the CV finding (choice ≥ numeric) but the 77-sample CI covers zero — not a stable-gain claim. Fixed tournament (0.6494) still leads on accuracy at far higher cost. Decision: no 5-shot, no NEAT, no reuse of this set for tuning. Keep threshold cascade as main baseline; next step is error analysis, not more inference.
+
 ## CV stability on 3-shot train cache (2026-10-27, offline)
 
 3-fold OOF within `banking77_train3shot_cache.jsonl` (231 samples; fold k holds out the k-th sample of each class → 77 OOF / 154 fit; ≈2-shot scale). Unweighted LR is the primary probability estimator, balanced LR the control. Costs from fold-train only; fixed lambda grid; 16/16 tests pass.
@@ -149,10 +165,11 @@ Interpretation:
 
 ## Next actions (updated 2026-10-27; test split stays locked)
 
-1. Decide whether to launch the gated independent confirmation run: 77 held-out train-manifest samples, one locked-config inference, single evaluation. Needs new Laya inference (~30-60 min, single process, 2 threads).
-2. Only if confirmation replicates the choice advantage: consider 5-shot cache, then NEAT vs fixed-topology baselines under matched budgets.
-3. If confirmation fails: keep threshold cascade as the main baseline and do error analysis; do not scale up.
-4. Keep all test splits locked; no test use for tuning, thresholds, model selection, or fitness.
+1. DONE: independent confirmation run (n=77, locked config, evaluated once). Directional signal only; CI covers zero.
+2. Error analysis on confirmation + dev failures (which classes/actions benefit, calibration overlap). No new inference.
+3. Only if error analysis finds a stable, explainable pattern: consider 5-shot cache. Otherwise keep threshold cascade as main baseline.
+4. NEAT stays paused until a reliable, reproducible learned-controller edge exists.
+5. Keep all test splits locked; no test use for tuning, thresholds, model selection, or fitness. Never reuse the confirmation set for tuning.
 
 ## Resource limits and research integrity
 
