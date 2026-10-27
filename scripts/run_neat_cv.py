@@ -29,6 +29,8 @@ from run_cv_stability import (
     BOOTSTRAP_REPS, BOOTSTRAP_SEED, fit_choice_models,
     fit_numeric_models, fold_costs, predict_proba_choice, predict_proba_numeric,
 )
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPClassifier
 
 DEFAULT_LAMBDAS = (0.0, 2e-5, 5e-5)
 DEFAULT_SEEDS = (17, 23, 41)
@@ -100,6 +102,63 @@ def metrics(by, choices):
         "mean_cumulative_calls": round(float(np.mean(calls)), 3),
         "action_mix": mix,
     }
+
+def fit_aux_correctness_models(X_train, train_ids, by, family, seed):
+    """Three train-fold correctness models with the same action set as NEAT."""
+    models = {}
+    diagnostics = {}
+    for ai, action in enumerate(STRATEGIES):
+        y = [int(bool(next(r for r in by[i] if r["strategy"] == action)["correct"]))
+             for i in train_ids]
+        if family == "decision_tree":
+            model = DecisionTreeClassifier(max_depth=3, random_state=seed + ai, class_weight=None)
+        elif family == "mlp":
+            model = MLPClassifier(hidden_layer_sizes=(8,), max_iter=300,
+                                  random_state=seed + ai, early_stopping=False)
+        else:
+            raise ValueError(f"Unknown auxiliary model family: {family}")
+        model.fit(X_train, y)
+        models[action] = model
+        diagnostics[action] = {
+            "n_iter": int(getattr(model, "n_iter_", 0)),
+            "reached_max_iter": bool(family == "mlp" and getattr(model, "n_iter_", 0) >= 300),
+        }
+    return models, diagnostics
+
+def auxiliary_probabilities(models, X):
+    """Return P(action correct) for each action; handle single-class folds safely."""
+    import numpy as np
+    result = {s: np.zeros(len(X), dtype=float) for s in STRATEGIES}
+    for action, model in models.items():
+        classes = list(model.classes_)
+        prob = model.predict_proba(X)
+        if 1 in classes:
+            result[action] = np.asarray(prob[:, classes.index(1)], dtype=float)
+        elif len(classes) == 1 and classes[0] == 1:
+            result[action] = np.ones(len(X), dtype=float)
+    return result
+
+def pareto_frontier(report):
+    """Deployable accuracy-vs-mean-cost frontier; excludes post-hoc oracle."""
+    points = []
+    for name, item in report.items():
+        if name.startswith("oracle::posthoc") or "accuracy" not in item or "mean_cumulative_ms" not in item:
+            continue
+        points.append({"policy": name, "accuracy": item["accuracy"],
+                       "mean_cumulative_ms": item["mean_cumulative_ms"],
+                       "mean_cumulative_calls": item.get("mean_cumulative_calls")})
+    frontier = []
+    for candidate in points:
+        dominated = any(
+            other["accuracy"] >= candidate["accuracy"]
+            and other["mean_cumulative_ms"] <= candidate["mean_cumulative_ms"]
+            and (other["accuracy"] > candidate["accuracy"]
+                 or other["mean_cumulative_ms"] < candidate["mean_cumulative_ms"])
+            for other in points if other["policy"] != candidate["policy"]
+        )
+        if not dominated:
+            frontier.append(candidate)
+    return sorted(frontier, key=lambda p: (p["mean_cumulative_ms"], -p["accuracy"]))
 
 def config_text(n_inputs, pop_size):
     return f"""[NEAT]
@@ -217,13 +276,12 @@ def paired_ci(by, base, candidate, reps=BOOTSTRAP_REPS, seed=BOOTSTRAP_SEED):
     for g, d in zip(golds, diffs):
         strata[g].append(d)
     rng = np.random.RandomState(seed)
-    draws = []
-    for _ in range(reps):
-        sample = []
-        for g in sorted(strata):
-            arr = np.asarray(strata[g], dtype=float)
-            sample.extend(rng.choice(arr, size=len(arr), replace=True).tolist())
-        draws.append(float(np.mean(sample)))
+    draws = np.zeros(reps, dtype=float)
+    n = len(diffs)
+    for g in sorted(strata):
+        arr = np.asarray(strata[g], dtype=float)
+        sampled = rng.randint(0, len(arr), size=(reps, len(arr)))
+        draws += arr[sampled].mean(axis=1) * (len(arr) / n)
     return {"candidate_minus_baseline_accuracy": round(float(np.mean(diffs)), 4),
             "ci95_lo": round(float(np.percentile(draws, 2.5)), 4),
             "ci95_hi": round(float(np.percentile(draws, 97.5)), 4),
@@ -299,6 +357,21 @@ def main():
             Xtrc = np.hstack([csc.transform(raw_x(by, tr)), enc.transform(cats_tr).toarray()])
             Xtec = np.hstack([csc.transform(raw_x(by, te)), enc.transform(cats_te).toarray()])
             matrices = (("numeric", Xtrn, Xten), ("choice", Xtrc, Xtec))
+            for mode_i, (mode, Xtr, Xte) in enumerate(matrices):
+                for family in ("decision_tree", "mlp"):
+                    aux_models, aux_diag = fit_aux_correctness_models(
+                        Xtr, tr, by, family, seed=17 + fi * 100 + mode_i * 10)
+                    probs_by_action = auxiliary_probabilities(aux_models, Xte)
+                    for lam in lambdas:
+                        baseline_oof.setdefault(f"{family}_{mode}_lam_{lam:g}", {}).update({
+                            i: choose_action({s: float(probs_by_action[s][j]) for s in STRATEGIES},
+                                             costs, lam)
+                            for j, i in enumerate(te)
+                        })
+                    fold_log.append({
+                        "fold": fi, "mode": mode, "family": family,
+                        "diagnostics": aux_diag,
+                    })
             fold_log.append({
                 "fold": fi, "n_train": len(tr), "n_test": len(te),
                 "train_costs": costs, "train_accuracy_by_action": train_acc,
@@ -342,9 +415,13 @@ def main():
         rhs = neat_key.split("_lam_", 1)[1]
         lam_text, seed_text = rhs.rsplit("_seed_", 1)
         lam = float(lam_text)
-        keys = ["fixed_best_train", "threshold_trainfit",
-                f"{mode}_lr_lam_{lam:g}",
-                f"{'choice' if mode == 'numeric' else 'numeric'}_lr_lam_{lam:g}"]
+        other_mode = "choice" if mode == "numeric" else "numeric"
+        keys = [
+            "fixed_best_train", "threshold_trainfit",
+            f"{mode}_lr_lam_{lam:g}", f"{other_mode}_lr_lam_{lam:g}",
+            f"decision_tree_{mode}_lam_{lam:g}", f"decision_tree_{other_mode}_lam_{lam:g}",
+            f"mlp_{mode}_lam_{lam:g}", f"mlp_{other_mode}_lam_{lam:g}",
+        ]
         comparisons[neat_key] = {k: paired_ci(by, baseline_oof[k], chosen) for k in keys}
 
     try:
@@ -367,6 +444,7 @@ def main():
             "laya_calls": 0, "test_split_touched": False, "confirmation_split_touched": False,
         },
         "folds": fold_log, "metrics": report, "paired_bootstrap_neat_minus_baselines": comparisons,
+        "pareto_frontier_deployable": pareto_frontier(report),
         "progress_log": str(progress_path.relative_to(ROOT)) if progress_path.is_relative_to(ROOT) else str(progress_path),
         "elapsed_seconds": round(time.perf_counter() - started, 1),
         "status": "passed" if len(neat_oof) == 2 * len(lambdas) * len(seeds) else "partial_failure",
