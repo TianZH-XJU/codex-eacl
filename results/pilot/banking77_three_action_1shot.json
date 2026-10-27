@@ -1,0 +1,164 @@
+{
+  "train_cache": "results/pilot/banking77_train1shot_cache.jsonl",
+  "dev_cache": "results/pilot/banking77_dev_cache.jsonl",
+  "n_train": 77,
+  "n_dev": 231,
+  "feature_names": [
+    "answer_confidence",
+    "margin",
+    "entropy_confidence",
+    "act_probability",
+    "text_len",
+    "choice_name_len"
+  ],
+  "train_mean_costs": {
+    "single": {
+      "mean_cumulative_ms": 2087.1363636363635,
+      "mean_cumulative_calls": 1.0
+    },
+    "wide": {
+      "mean_cumulative_ms": 4531.02987012987,
+      "mean_cumulative_calls": 2.0
+    },
+    "tournament": {
+      "mean_cumulative_ms": 6030.827272727272,
+      "mean_cumulative_calls": 3.0
+    }
+  },
+  "lambdas": [
+    0.0,
+    2e-05,
+    5e-05,
+    0.0001
+  ],
+  "results": {
+    "tri_action_lam_0": {
+      "lambda_per_ms": 0.0,
+      "action_mix": {
+        "single": 79,
+        "wide": 92,
+        "tournament": 60
+      },
+      "accuracy": 0.4848,
+      "mean_cumulative_ms": 3993.1,
+      "p95_cumulative_ms": 6525.7,
+      "mean_cumulative_calls": 1.918
+    },
+    "tri_action_lam_2e-05": {
+      "lambda_per_ms": 2e-05,
+      "action_mix": {
+        "single": 155,
+        "wide": 42,
+        "tournament": 34
+      },
+      "accuracy": 0.4329,
+      "mean_cumulative_ms": 3058.0,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 1.476
+    },
+    "tri_action_lam_5e-05": {
+      "lambda_per_ms": 5e-05,
+      "action_mix": {
+        "single": 200,
+        "wide": 15,
+        "tournament": 16
+      },
+      "accuracy": 0.4199,
+      "mean_cumulative_ms": 2458.2,
+      "p95_cumulative_ms": 6275.9,
+      "mean_cumulative_calls": 1.203
+    },
+    "tri_action_lam_0.0001": {
+      "lambda_per_ms": 0.0001,
+      "action_mix": {
+        "single": 230,
+        "wide": 0,
+        "tournament": 1
+      },
+      "accuracy": 0.4069,
+      "mean_cumulative_ms": 2021.1,
+      "p95_cumulative_ms": 2171.3,
+      "mean_cumulative_calls": 1.009
+    }
+  },
+  "pareto_dev": {
+    "best_fixed": {
+      "accuracy": 0.5541,
+      "mean_cumulative_ms": 5766.4,
+      "p95_cumulative_ms": 6525.7,
+      "mean_cumulative_calls": 3.0
+    },
+    "confidence_threshold": {
+      "accuracy": 0.5584,
+      "mean_cumulative_ms": 5131.2,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 2.654
+    },
+    "margin_threshold": {
+      "accuracy": 0.5584,
+      "mean_cumulative_ms": 5131.2,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 2.654
+    },
+    "entropy_confidence_threshold": {
+      "accuracy": 0.5584,
+      "mean_cumulative_ms": 5131.2,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 2.654
+    },
+    "logistic_regression": {
+      "accuracy": 0.4329,
+      "mean_cumulative_ms": 2827.1,
+      "p95_cumulative_ms": 6525.7,
+      "mean_cumulative_calls": 1.398
+    },
+    "decision_tree": {
+      "accuracy": 0.4329,
+      "mean_cumulative_ms": 2889.4,
+      "p95_cumulative_ms": 6263.7,
+      "mean_cumulative_calls": 1.459
+    },
+    "mlp": {
+      "accuracy": 0.4069,
+      "mean_cumulative_ms": 2174.6,
+      "p95_cumulative_ms": 2232.4,
+      "mean_cumulative_calls": 1.087
+    },
+    "random_routing": {
+      "accuracy": 0.5152,
+      "mean_cumulative_ms": 4102.3,
+      "p95_cumulative_ms": 6098.6,
+      "mean_cumulative_calls": 2.03
+    },
+    "oracle": {
+      "accuracy": 0.7056,
+      "mean_cumulative_ms": 2870.9,
+      "p95_cumulative_ms": 5752.6,
+      "mean_cumulative_calls": 1.416
+    },
+    "tri_action_lam_0": {
+      "accuracy": 0.4848,
+      "mean_cumulative_ms": 3993.1,
+      "p95_cumulative_ms": 6525.7,
+      "mean_cumulative_calls": 1.918
+    },
+    "tri_action_lam_2e-05": {
+      "accuracy": 0.4329,
+      "mean_cumulative_ms": 3058.0,
+      "p95_cumulative_ms": 6485.2,
+      "mean_cumulative_calls": 1.476
+    },
+    "tri_action_lam_5e-05": {
+      "accuracy": 0.4199,
+      "mean_cumulative_ms": 2458.2,
+      "p95_cumulative_ms": 6275.9,
+      "mean_cumulative_calls": 1.203
+    },
+    "tri_action_lam_0.0001": {
+      "accuracy": 0.4069,
+      "mean_cumulative_ms": 2021.1,
+      "p95_cumulative_ms": 2171.3,
+      "mean_cumulative_calls": 1.009
+    }
+  }
+}

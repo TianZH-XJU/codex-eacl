@@ -1,8 +1,8 @@
 # Execution Status
 
-**Last updated:** 2026-10-26  
-**Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners  
-**Current phase:** dependencies/data/model prepared; tiny smoke tests passed; low-memory action caches and targeted latency retests completed; controller baselines pending  
+**Last updated:** 2026-10-27
+**Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
+**Current phase:** three-action offline evaluation + temperature calibration done on fixed BANKING77 caches; 5-shot and NEAT paused  
 **Research result status:** no statistically meaningful new accuracy result has been established yet.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
@@ -55,9 +55,34 @@ The above local setup and smoke-test facts are based on the user's terminal log 
 | Fixed train/dev manifest | passed | `scripts/make_split_manifest.py`; `results/splits/banking77_train_dev_manifest.json` (77 classes, 385 train, 231 dev, disjoint) |
 | Per-example action cache | passed | `scripts/build_action_cache.py`; SINGLE-first features, cascade costs, latency percentiles, pairwise overlaps |
 | Oracle action gap | measured (pilot) | BANKING77 +0.12, CLINC150 +0.033, MASSIVE +0.067 over best fixed strategy |
-| NEAT and controller baselines | not run | Implement baselines first; NEAT only if cache and headroom remain credible |
+| NEAT and controller baselines | baselines done; NEAT paused | Binary + three-action + calibration diagnostics on fixed caches; NEAT only after reliable baseline |
+| Three-action offline evaluation | done 2026-10-27 | `scripts/run_three_action.py`; 1-shot/3-shot Pareto in `results/pilot/banking77_three_action_*.json` |
+| Temperature calibration | done 2026-10-27 | `scripts/calibrate_temperature.py`; T fit on train only; `results/pilot/banking77_calibration_3shot.json` |
 | Local Git/GitHub sync | passed | Commit `7a3458f0211ec1df2a311dec6517fe8d9e0fde59` pushed to `main` |
 | GitHub-hosted experiments | disabled/not used | User requested all installation, data and model runs be performed on the user's computer. The CPU bootstrap GitHub Actions workflow has been removed to avoid executing experiments in GitHub's environment. |
+
+## Three-action offline evaluation + calibration (2026-10-27)
+
+All offline on fixed caches (train 1-shot n=77 / 3-shot n=231, dev n=231). Decisions use TRAIN-estimated mean costs only, never per-sample dev latency. 13/13 tests pass.
+
+| Method (dev n=231) | 1-shot acc / ms | 3-shot acc / ms |
+|---|---:|---:|
+| Best fixed (tournament) | 0.5541 / 5766 | 0.5541 / 5766 |
+| Best threshold cascade | 0.5584 / 5131 | 0.5541 / 4661 |
+| Binary decision tree | 0.4329 / 2889 | 0.5325 / 4413 |
+| Tri-action lam=0 | 0.4848 / 3993 | 0.5195 / 3798 |
+| Tri-action lam=2e-05 | 0.4329 / 3058 | 0.4805 / 3214 |
+| Tri-action + choice ablation lam=0 (3-shot only, C=0.2) | — | 0.5541 / 4026 |
+| Tri-action + choice ablation lam=2e-05 | — | 0.5325 / 3406 |
+| Oracle (post-hoc) | 0.7056 / 2871 | 0.7056 / 2871 |
+
+Full Pareto tables: `results/pilot/banking77_three_action_1shot.json`, `results/pilot/banking77_three_action_3shot.json`.
+
+Interpretation:
+- Tri-action without category info beats binary LR but stays below best fixed; the binary action design was indeed part of the limitation, but features remain the binding constraint.
+- The single controlled choice ablation (6 numeric + one-hot initial_choice, C=0.2, 3-shot only) matches best-fixed accuracy (0.5541) at ~30% lower mean cost (4026 vs 5766 ms). Hypothesis only: 77-category one-hot on 231 train samples carries overfit risk; needs seed/subset replication before any claim.
+- Calibration (T=4.60 fit on 3-shot train): dev NLL 4.95→2.87, Brier 0.91→0.79, ECE 0.36→0.16. Routing with calibrated confidence: dev 0.5541 at 4921 ms vs raw 0.5541 at 4661 ms — reliability improves, routing does not. Keep calibration as analysis, not a core contribution.
+- No 5-shot cache, no NEAT. Next: replicate choice-ablation stability across seeds/subsets before deciding on 5-shot.
 
 ## Controller baselines on BANKING77 (2026-10-26)
 

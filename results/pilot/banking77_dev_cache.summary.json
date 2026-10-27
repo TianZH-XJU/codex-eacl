@@ -1,0 +1,108 @@
+{
+  "timestamp_utc": "2026-10-26T14:24:54.715335+00:00",
+  "dataset": "banking77",
+  "split": "dev",
+  "seed": 17,
+  "n_examples": 231,
+  "strategies": [
+    "single",
+    "wide",
+    "tournament"
+  ],
+  "by_strategy": {
+    "single": {
+      "n": 231,
+      "accuracy": 0.4069,
+      "mean_ms": 1996.9,
+      "p50_ms": 1993.6,
+      "p95_ms": 2171.3,
+      "max_ms": 2341.9,
+      "min_ms": 1762.7,
+      "mean_cumulative_ms": 1996.9,
+      "p95_cumulative_ms": 2171.3,
+      "calls_per_row": 1.0,
+      "cumulative_calls_per_row": 1.0,
+      "errors": 0,
+      "initial_errors": 0
+    },
+    "wide": {
+      "n": 231,
+      "accuracy": 0.5195,
+      "mean_ms": 2354.1,
+      "p50_ms": 2340.3,
+      "p95_ms": 2562.6,
+      "max_ms": 2768.7,
+      "min_ms": 2121.9,
+      "mean_cumulative_ms": 4351.0,
+      "p95_cumulative_ms": 4692.1,
+      "calls_per_row": 1.0,
+      "cumulative_calls_per_row": 2.0,
+      "errors": 0,
+      "initial_errors": 0
+    },
+    "tournament": {
+      "n": 231,
+      "accuracy": 0.5541,
+      "mean_ms": 3769.5,
+      "p50_ms": 3700.6,
+      "p95_ms": 4373.0,
+      "max_ms": 5586.2,
+      "min_ms": 3291.3,
+      "mean_cumulative_ms": 5766.4,
+      "p95_cumulative_ms": 6525.7,
+      "calls_per_row": 2.0,
+      "cumulative_calls_per_row": 3.0,
+      "errors": 0,
+      "initial_errors": 0
+    }
+  },
+  "best_fixed_strategy": "tournament",
+  "best_fixed_accuracy": 0.5541,
+  "oracle_accuracy": 0.7056,
+  "oracle_gain_over_best_fixed": 0.1515,
+  "pairwise_error_overlap": [
+    {
+      "strategies": [
+        "single",
+        "wide"
+      ],
+      "both_wrong": 95,
+      "only_first_wrong": 42,
+      "only_second_wrong": 16,
+      "both_correct": 78
+    },
+    {
+      "strategies": [
+        "single",
+        "tournament"
+      ],
+      "both_wrong": 80,
+      "only_first_wrong": 57,
+      "only_second_wrong": 23,
+      "both_correct": 71
+    },
+    {
+      "strategies": [
+        "wide",
+        "tournament"
+      ],
+      "both_wrong": 76,
+      "only_first_wrong": 35,
+      "only_second_wrong": 27,
+      "both_correct": 93
+    }
+  ],
+  "elapsed_seconds": 1876.2,
+  "peak_rss_mb": 2155.2,
+  "cpu_threads": 2,
+  "device": "cpu",
+  "model": "english",
+  "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "4baa9bde5cd5f67f5e683694d865f5b20db2a884",
+  "working_tree_dirty": true,
+  "status": "passed",
+  "errors": 0,
+  "records": 693,
+  "expected_records": 693
+}
