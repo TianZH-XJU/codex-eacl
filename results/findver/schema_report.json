@@ -1,0 +1,45 @@
+{
+  "created_utc": "2026-10-27T15:12:35.552646+00:00",
+  "repo": "yilunzhao/FinDVer",
+  "commit": "e8bb237def4ce555a606a45edba22666e31df248",
+  "per_split": {
+    "testmini": {
+      "n": 700,
+      "subsets": {
+        "ie": 250,
+        "numeric": 250,
+        "knowledge": 200
+      },
+      "labels": {
+        "False": 350,
+        "True": 350
+      },
+      "n_reports": 255
+    },
+    "test": {
+      "n": 1700,
+      "subsets": {
+        "ie": 600,
+        "numeric": 600,
+        "knowledge": 500
+      },
+      "labels": {
+        "False": 849,
+        "True": 851
+      },
+      "n_reports": 439
+    }
+  },
+  "example_id_overlap_testmini_test": 0,
+  "report_overlap_testmini_test": 155,
+  "report_overlap_note": "shared reports across official splits: carve controller train/dev from testmini grouped by report; never train on test",
+  "n_invalid_rows": 0,
+  "rows_missing_explanation_auxiliary": 250,
+  "task": "claim verification: entailment_label True = supported by report evidence",
+  "official_subsets": {
+    "ie": "information extraction",
+    "numeric": "numerical reasoning",
+    "knowledge": "knowledge-intensive reasoning"
+  },
+  "evidence": "relevant_context indices resolve against financial_reports/<report>.context[] entries"
+}

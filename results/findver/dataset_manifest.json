@@ -1,0 +1,11 @@
+{
+  "created_utc": "2026-10-27T15:12:35.552646+00:00",
+  "repo": "yilunzhao/FinDVer",
+  "commit": "e8bb237def4ce555a606a45edba22666e31df248",
+  "license_note": "repo LICENSE is MIT (code); data terms need recheck before release",
+  "per_split_rows": {
+    "testmini": 700,
+    "test": 1700
+  },
+  "status": "inspected"
+}

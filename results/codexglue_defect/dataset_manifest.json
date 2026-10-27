@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-10-27T15:12:41.766115+00:00",
+  "repo": "microsoft/CodeXGLUE",
+  "commit": "ac74a62802a0dd159b3258c78a2df8ad36cdf2b9",
+  "gdrive_id": "1x6hoF7G-tSYxg8AFybggypLZgMGDNHfF",
+  "function_json_sha256": "0a3b2d561dc6280e53795886ede727d0045c016d083905ba3e9ce384a7eab246",
+  "index_sha256": {
+    "train.txt": "f0a25410594302a9f0e542a393ad82ad479308a8aa471f4d6cf61b91d6d572bf",
+    "valid.txt": "9f2fa1e108955f197d4a7fa2aa2c7f5e542457b51e0eb1f6e890172d6f700a6e",
+    "test.txt": "b5336b337170ea1edf0570b69edb5a90e3c99bf41cd92909795f5fe32d376d52"
+  },
+  "sizes": {
+    "train": 21854,
+    "valid": 2732,
+    "test": 2732
+  },
+  "license_note": "verify CodeXGLUE/Devign terms before release; Drive data has no separate license file",
+  "status": "inspected"
+}

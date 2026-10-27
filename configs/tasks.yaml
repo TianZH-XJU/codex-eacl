@@ -25,7 +25,7 @@ codexglue_defect:
   task_type: choice_vs_noul
   label_mapping: null
   laya_actions: [single]
-  status: blocked_on_api_and_data_precheck
+  status: data_inspected_split_pending
   gate: Gate 0 (Noul vs binary-Choice adapter check) pending
 
 findver_claim:
@@ -35,5 +35,5 @@ findver_claim:
   task_type: noul_vs_choice
   label_mapping: null
   laya_actions: [single]
-  status: blocked_on_api_and_data_precheck
+  status: data_inspected_split_pending
   gate: Gate 0 (long-document/truncation + Noul/Choice adapter check) pending

@@ -46,3 +46,5 @@ results/**/*.csv.gz
 external/laya/
 # Upstream ProcessBench checkout is a reference for label mapping only.
 external/ProcessBench/
+# Upstream FinDVer checkout pins data + code for inspection; raw reports stay local.
+external/FinDVer/
