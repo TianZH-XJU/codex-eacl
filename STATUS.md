@@ -214,7 +214,7 @@ Verdict per pre-registered gate: NEAT does not beat threshold cascade or matched
 
 ## NEAT gate diagnostics (2026-10-27, offline; 5-shot follow-up NOT launched)
 
-`scripts/analyze_neat_diagnostics.py` + `results/analysis/banking77_neat_diagnostics.json` (19/19 tests pass). Progress log (63 records) committed as `results/pilot/banking77_neat_cv.progress.jsonl`.
+`scripts/analyze_neat_diagnostics.py` + `results/analysis/banking77_neat_diagnostics.json` (30/30 tests pass). The 63-record progress log stays local-only (git-ignored JSONL); the compact diagnostics JSON is committed.
 
 Fold stability (choice, λ=2e-05): train fitness 0.51–0.58; OOF acc 0.55–0.64; action mix swings wildly across folds for the same config (e.g. seed 17 fold 2 {8,1,68} vs seed 41 fold 1 {0,35,42}). Genomes stay tiny (3–5 nodes, 24–32 connections for choice mode).
 Held-out correctness AUC (folds): single 0.71–0.83, wide 0.62–0.82, tournament 0.57–0.70 — weak, fold-unstable signals. Accuracy-first routing already fixes 73–94% of upgrade-fixable held-out samples (numeric) without any cost term; +choice does not consistently improve the fix rate (fold 1: 0.58 vs 0.79).
