@@ -1,0 +1,404 @@
+{
+  "created_utc": "2026-10-27T09:09:46.739513+00:00",
+  "dataset": "banking77",
+  "source_split": "train",
+  "dataset_revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+  "seed": 23,
+  "rule": "1 per class, uniform choice among official-train rows unused by train_all/dev subsets",
+  "split_manifest": "results/splits/banking77_train_dev_manifest.json",
+  "n_classes": 77,
+  "n_confirmation": 77,
+  "confirmation_indices": [
+    70,
+    156,
+    372,
+    411,
+    616,
+    759,
+    980,
+    1068,
+    1176,
+    1275,
+    1405,
+    1555,
+    1558,
+    1764,
+    1800,
+    1835,
+    2054,
+    2110,
+    2305,
+    2402,
+    2674,
+    2725,
+    2955,
+    3050,
+    3107,
+    3238,
+    3440,
+    3602,
+    3754,
+    3846,
+    3902,
+    4070,
+    4224,
+    4324,
+    4366,
+    4458,
+    4588,
+    4644,
+    4853,
+    5010,
+    5240,
+    5282,
+    5524,
+    5640,
+    5741,
+    5944,
+    6029,
+    6218,
+    6245,
+    6439,
+    6478,
+    6596,
+    6834,
+    6932,
+    7091,
+    7204,
+    7391,
+    7475,
+    7635,
+    7744,
+    7898,
+    8034,
+    8129,
+    8180,
+    8357,
+    8413,
+    8506,
+    8706,
+    8907,
+    8939,
+    9079,
+    9193,
+    9352,
+    9602,
+    9713,
+    9817,
+    9950
+  ],
+  "per_class": {
+    "Refund_not_showing_up": {
+      "confirmation_index": 5741,
+      "n_unused_candidates": 154
+    },
+    "activate_my_card": {
+      "confirmation_index": 9193,
+      "n_unused_candidates": 151
+    },
+    "age_limit": {
+      "confirmation_index": 1558,
+      "n_unused_candidates": 102
+    },
+    "apple_pay_or_google_pay": {
+      "confirmation_index": 9713,
+      "n_unused_candidates": 118
+    },
+    "atm_support": {
+      "confirmation_index": 4588,
+      "n_unused_candidates": 78
+    },
+    "automatic_top_up": {
+      "confirmation_index": 1176,
+      "n_unused_candidates": 119
+    },
+    "balance_not_updated_after_bank_transfer": {
+      "confirmation_index": 8706,
+      "n_unused_candidates": 163
+    },
+    "balance_not_updated_after_cheque_or_cash_deposit": {
+      "confirmation_index": 3440,
+      "n_unused_candidates": 173
+    },
+    "beneficiary_not_allowed": {
+      "confirmation_index": 7091,
+      "n_unused_candidates": 148
+    },
+    "cancel_transfer": {
+      "confirmation_index": 2110,
+      "n_unused_candidates": 148
+    },
+    "card_about_to_expire": {
+      "confirmation_index": 9602,
+      "n_unused_candidates": 121
+    },
+    "card_acceptance": {
+      "confirmation_index": 3107,
+      "n_unused_candidates": 51
+    },
+    "card_arrival": {
+      "confirmation_index": 70,
+      "n_unused_candidates": 145
+    },
+    "card_delivery_estimate": {
+      "confirmation_index": 1068,
+      "n_unused_candidates": 104
+    },
+    "card_linking": {
+      "confirmation_index": 156,
+      "n_unused_candidates": 131
+    },
+    "card_not_working": {
+      "confirmation_index": 1275,
+      "n_unused_candidates": 103
+    },
+    "card_payment_fee_charged": {
+      "confirmation_index": 2674,
+      "n_unused_candidates": 179
+    },
+    "card_payment_not_recognised": {
+      "confirmation_index": 3602,
+      "n_unused_candidates": 160
+    },
+    "card_payment_wrong_exchange_rate": {
+      "confirmation_index": 411,
+      "n_unused_candidates": 159
+    },
+    "card_swallowed": {
+      "confirmation_index": 6245,
+      "n_unused_candidates": 53
+    },
+    "cash_withdrawal_charge": {
+      "confirmation_index": 9352,
+      "n_unused_candidates": 169
+    },
+    "cash_withdrawal_not_recognised": {
+      "confirmation_index": 8907,
+      "n_unused_candidates": 152
+    },
+    "change_pin": {
+      "confirmation_index": 6932,
+      "n_unused_candidates": 113
+    },
+    "compromised_card": {
+      "confirmation_index": 4458,
+      "n_unused_candidates": 78
+    },
+    "contactless_not_working": {
+      "confirmation_index": 1800,
+      "n_unused_candidates": 27
+    },
+    "country_support": {
+      "confirmation_index": 9950,
+      "n_unused_candidates": 120
+    },
+    "declined_card_payment": {
+      "confirmation_index": 5944,
+      "n_unused_candidates": 145
+    },
+    "declined_cash_withdrawal": {
+      "confirmation_index": 5010,
+      "n_unused_candidates": 165
+    },
+    "declined_transfer": {
+      "confirmation_index": 5640,
+      "n_unused_candidates": 124
+    },
+    "direct_debit_payment_not_recognised": {
+      "confirmation_index": 4644,
+      "n_unused_candidates": 174
+    },
+    "disposable_card_limits": {
+      "confirmation_index": 4366,
+      "n_unused_candidates": 113
+    },
+    "edit_personal_details": {
+      "confirmation_index": 3754,
+      "n_unused_candidates": 113
+    },
+    "exchange_charge": {
+      "confirmation_index": 8939,
+      "n_unused_candidates": 113
+    },
+    "exchange_rate": {
+      "confirmation_index": 372,
+      "n_unused_candidates": 104
+    },
+    "exchange_via_app": {
+      "confirmation_index": 1405,
+      "n_unused_candidates": 110
+    },
+    "extra_charge_on_statement": {
+      "confirmation_index": 616,
+      "n_unused_candidates": 158
+    },
+    "failed_transfer": {
+      "confirmation_index": 7475,
+      "n_unused_candidates": 129
+    },
+    "fiat_currency_support": {
+      "confirmation_index": 980,
+      "n_unused_candidates": 118
+    },
+    "get_disposable_virtual_card": {
+      "confirmation_index": 8413,
+      "n_unused_candidates": 89
+    },
+    "get_physical_card": {
+      "confirmation_index": 4070,
+      "n_unused_candidates": 98
+    },
+    "getting_spare_card": {
+      "confirmation_index": 7898,
+      "n_unused_candidates": 121
+    },
+    "getting_virtual_card": {
+      "confirmation_index": 3050,
+      "n_unused_candidates": 90
+    },
+    "lost_or_stolen_card": {
+      "confirmation_index": 1555,
+      "n_unused_candidates": 74
+    },
+    "lost_or_stolen_phone": {
+      "confirmation_index": 5282,
+      "n_unused_candidates": 113
+    },
+    "order_physical_card": {
+      "confirmation_index": 8129,
+      "n_unused_candidates": 112
+    },
+    "passcode_forgotten": {
+      "confirmation_index": 4853,
+      "n_unused_candidates": 95
+    },
+    "pending_card_payment": {
+      "confirmation_index": 5240,
+      "n_unused_candidates": 150
+    },
+    "pending_cash_withdrawal": {
+      "confirmation_index": 759,
+      "n_unused_candidates": 135
+    },
+    "pending_top_up": {
+      "confirmation_index": 2054,
+      "n_unused_candidates": 141
+    },
+    "pending_transfer": {
+      "confirmation_index": 6029,
+      "n_unused_candidates": 140
+    },
+    "pin_blocked": {
+      "confirmation_index": 1764,
+      "n_unused_candidates": 106
+    },
+    "receiving_money": {
+      "confirmation_index": 7391,
+      "n_unused_candidates": 87
+    },
+    "request_refund": {
+      "confirmation_index": 5524,
+      "n_unused_candidates": 161
+    },
+    "reverted_card_payment?": {
+      "confirmation_index": 6834,
+      "n_unused_candidates": 153
+    },
+    "supported_cards_and_currencies": {
+      "confirmation_index": 2955,
+      "n_unused_candidates": 121
+    },
+    "terminate_account": {
+      "confirmation_index": 6218,
+      "n_unused_candidates": 100
+    },
+    "top_up_by_bank_transfer_charge": {
+      "confirmation_index": 1835,
+      "n_unused_candidates": 103
+    },
+    "top_up_by_card_charge": {
+      "confirmation_index": 9079,
+      "n_unused_candidates": 106
+    },
+    "top_up_by_cash_or_cheque": {
+      "confirmation_index": 8034,
+      "n_unused_candidates": 106
+    },
+    "top_up_failed": {
+      "confirmation_index": 8506,
+      "n_unused_candidates": 137
+    },
+    "top_up_limits": {
+      "confirmation_index": 2305,
+      "n_unused_candidates": 89
+    },
+    "top_up_reverted": {
+      "confirmation_index": 3238,
+      "n_unused_candidates": 138
+    },
+    "topping_up_by_card": {
+      "confirmation_index": 4324,
+      "n_unused_candidates": 95
+    },
+    "transaction_charged_twice": {
+      "confirmation_index": 6439,
+      "n_unused_candidates": 167
+    },
+    "transfer_fee_charged": {
+      "confirmation_index": 7204,
+      "n_unused_candidates": 164
+    },
+    "transfer_into_account": {
+      "confirmation_index": 7635,
+      "n_unused_candidates": 105
+    },
+    "transfer_not_received_by_recipient": {
+      "confirmation_index": 2725,
+      "n_unused_candidates": 163
+    },
+    "transfer_timing": {
+      "confirmation_index": 6596,
+      "n_unused_candidates": 120
+    },
+    "unable_to_verify_identity": {
+      "confirmation_index": 3902,
+      "n_unused_candidates": 94
+    },
+    "verify_my_identity": {
+      "confirmation_index": 9817,
+      "n_unused_candidates": 96
+    },
+    "verify_source_of_funds": {
+      "confirmation_index": 6478,
+      "n_unused_candidates": 105
+    },
+    "verify_top_up": {
+      "confirmation_index": 7744,
+      "n_unused_candidates": 118
+    },
+    "virtual_card_not_working": {
+      "confirmation_index": 8180,
+      "n_unused_candidates": 33
+    },
+    "visa_or_mastercard": {
+      "confirmation_index": 4224,
+      "n_unused_candidates": 127
+    },
+    "why_verify_identity": {
+      "confirmation_index": 3846,
+      "n_unused_candidates": 113
+    },
+    "wrong_amount_of_cash_received": {
+      "confirmation_index": 2402,
+      "n_unused_candidates": 172
+    },
+    "wrong_exchange_rate_for_cash_withdrawal": {
+      "confirmation_index": 8357,
+      "n_unused_candidates": 155
+    }
+  },
+  "project_git_sha": "1c94cfbc6b9fa36f1252b30862003d57d61e8c94",
+  "working_tree_dirty_at_freeze": false,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148"
+}
