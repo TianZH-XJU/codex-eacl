@@ -26,7 +26,7 @@ sys.path.insert(0, str(SCRIPTS))
 from run_controller_baselines import FEATURE_NAMES, features, single_row
 from run_three_action import STRATEGIES, choose_action, group, load_cache
 from run_cv_stability import (
-    BOOTSTRAP_REPS, BOOTSTRAP_SEED, build_folds, fit_choice_models,
+    BOOTSTRAP_REPS, BOOTSTRAP_SEED, fit_choice_models,
     fit_numeric_models, fold_costs, predict_proba_choice, predict_proba_numeric,
 )
 
@@ -39,6 +39,26 @@ def label(r):
 def raw_x(by, ids):
     import numpy as np
     return np.asarray([features(single_row(by[i])) for i in ids], dtype=float)
+
+def build_stratified_folds(by):
+    """Hold out one sample/class per fold for the fixed 3-shot or 5-shot cache."""
+    by_label = defaultdict(list)
+    for idx, items in by.items():
+        by_label[label(single_row(items))].append(idx)
+    for gold in by_label:
+        by_label[gold].sort()
+    counts = {len(v) for v in by_label.values()}
+    if len(counts) != 1 or next(iter(counts)) not in (3, 5):
+        raise ValueError("expected exactly 3 or 5 cached samples per class")
+    k_folds = next(iter(counts))
+    all_ids = set(by)
+    folds = []
+    for k in range(k_folds):
+        test = sorted(v[k] for v in by_label.values())
+        test_set = set(test)
+        train = sorted(all_ids - test_set)
+        folds.append({"train": train, "test": test})
+    return folds, k_folds
 
 def fit_threshold(by, train_ids, target):
     vals = sorted({float(single_row(by[i]).get("initial_answer_confidence") or 0.0) for i in train_ids})
@@ -234,9 +254,11 @@ def main():
     except Exception as exc:
         raise SystemExit(f"Required offline dependency unavailable: {exc}") from exc
     by = group(load_cache(cache_path))
-    if len(by) != 231:
-        raise SystemExit(f"Expected 231 examples in the fixed BANKING77 3-shot cache, got {len(by)}")
-    folds = build_folds(by)
+    if len({label(single_row(items)) for items in by.values()}) != 77:
+        raise SystemExit("Expected all 77 BANKING77 classes in the training cache")
+    folds, examples_per_class = build_stratified_folds(by)
+    if len(by) != 77 * examples_per_class:
+        raise SystemExit("Training cache size does not match its class-stratified fold structure")
     seeds = [int(x.strip()) for x in args.seeds.split(",") if x.strip()]
     lambdas = [float(x.strip()) for x in args.lambdas.split(",") if x.strip()]
     if not seeds or not lambdas:
@@ -332,7 +354,8 @@ def main():
         sha = None
     out = {
         "created_utc": created, "project_git_sha": sha,
-        "dataset": "banking77", "split": "3shot_train_3fold_oof",
+        "dataset": "banking77", "split": f"train_{examples_per_class}shot_{examples_per_class}fold_oof",
+        "examples_per_class": examples_per_class,
         "train_cache": str(cache_path.relative_to(ROOT)) if cache_path.is_relative_to(ROOT) else str(cache_path),
         "n_examples": len(by), "n_classes": len({label(single_row(x)) for x in by.values()}),
         "config": {
