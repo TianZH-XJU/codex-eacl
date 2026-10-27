@@ -84,8 +84,8 @@ def main():
     cache_summary = json.loads(cache_summary_path.read_text(encoding="utf-8"))
     if manifest.get("n_confirmation") != 77 or len(manifest.get("confirmation_indices", [])) != 77:
         raise SystemExit("Expected fresh one-example-per-class confirmation manifest (n=77)")
-    if len(train_by) != 231 or len(conf_by) != 77:
-        raise SystemExit(f"Wrong cache sizes: train={len(train_by)} confirmation={len(conf_by)}")
+    if len(train_by) not in (231, 385) or len(conf_by) != 77:
+        raise SystemExit(f"Wrong cache sizes: train={len(train_by)} (expected 231 or 385) confirmation={len(conf_by)}")
     if len({str(single_row(conf_by[i]).get("gold_normalized") or single_row(conf_by[i]).get("gold")) for i in conf_by}) != 77:
         raise SystemExit("Confirmation cache is not one sample per each of 77 classes")
     if cache_summary.get("dataset") != "banking77" or cache_summary.get("status") != "passed":
@@ -102,6 +102,8 @@ def main():
         bundle = pickle.load(f)
     if bundle.get("format_version") != 1:
         raise SystemExit("Unsupported NEAT artifact format")
+    if int(bundle.get("n_train", -1)) != len(train_by):
+        raise SystemExit("Training cache size differs from the controller artifact provenance")
     lam = float(bundle["lambda_per_ms"])
     mode = bundle["mode"]
     costs = fold_costs(train_by, sorted(train_by))
