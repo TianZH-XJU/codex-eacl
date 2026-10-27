@@ -47,8 +47,15 @@ def main():
         raise SystemExit(f"Required offline dependency unavailable: {exc}") from exc
     rows = load_cache(train_path)
     by = group(rows)
-    if len(by) != 231:
-        raise SystemExit(f"Expected fixed 3-shot train cache n=231, got {len(by)}")
+    class_counts = {}
+    for i in by:
+        gold = str(single_row(by[i]).get("gold_normalized") or single_row(by[i]).get("gold") or "")
+        class_counts[gold] = class_counts.get(gold, 0) + 1
+    if len(class_counts) != 77 or len(set(class_counts.values())) != 1:
+        raise SystemExit("Expected a balanced BANKING77 cache with 77 classes and equal examples/class")
+    examples_per_class = next(iter(class_counts.values()))
+    if examples_per_class not in (3, 5) or len(by) != 77 * examples_per_class:
+        raise SystemExit("Expected either 3-shot (n=231) or 5-shot (n=385) cache")
     ids = sorted(by)
     Xraw = np.asarray([features(single_row(by[i])) for i in ids], dtype=float)
     if args.mode == "numeric":
@@ -67,6 +74,7 @@ def main():
     bundle = {
         "format_version": 1, "genome": genome, "config_text": config_str,
         "mode": args.mode, "lambda_per_ms": args.lambda_per_ms,
+        "n_train": len(ids), "examples_per_class": examples_per_class,
         "seed": args.seed, "pop_size": args.pop_size, "generations": args.generations,
         "scaler": scaler, "encoder": encoder, "strategies": STRATEGIES,
         "train_cache": str(train_path.relative_to(ROOT)) if train_path.is_relative_to(ROOT) else str(train_path),
