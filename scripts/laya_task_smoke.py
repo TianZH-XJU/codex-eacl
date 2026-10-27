@@ -46,6 +46,10 @@ def git_sha(path):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--task", default="processbench", choices=["processbench"],
+                    help="task adapter (only processbench wired; code/finance adapters pending)")
+    ap.add_argument("--limit", type=int, default=1,
+                    help="number of task samples for the choice check (diagnostic accuracy only)")
     ap.add_argument("--limit-steps-sample", type=int, default=0)
     ap.add_argument("--model", default=MODEL)
     ap.add_argument("--device", default="cpu")
@@ -63,6 +67,8 @@ def main():
         PB_REPO, "gsm8k.json", repo_type="dataset", revision=PB_REVISION)).read_text(encoding="utf-8"))
     sample = gsm[args.limit_steps_sample]
     task = to_choice_task(sample)
+    # Choice check over --limit task samples (diagnostic accuracy, not a result).
+    limit_rows = gsm[:max(1, args.limit)]
     long_sample, long_source = None, None
     for filename in ("gsm8k.json", "math.json", "olympiadbench.json", "omnimath.json"):
         for r in json.loads(Path(hf_hub_download(
@@ -89,11 +95,25 @@ def main():
 
     checks, notes = {}, []
     t0 = time.perf_counter()
+    choice_hits, choice_n = 0, 0
     try:
-        a1, c1 = agent.predict(state, {"q": q}), 1
+        for r in limit_rows:
+            tq = to_choice_task(r)
+            st = {"message": r["problem"] + "\n\nSteps:\n" + "\n".join(f"[{k}] {s}" for k, s in enumerate(r["steps"]))}
+            qq = choice_q(tq["candidates"])
+            out = agent.predict(st, {"q": qq})
+            ans = out["answers"]["q"]
+            if not all(k in ans for k in ("choice", "answer_confidence", "probabilities")):
+                raise ValueError("choice answer missing required keys")
+            pred_norm = str(ans["choice"]).replace(" ", "_")
+            gold_norm = tq["candidates"][tq["gold_index"]].replace(" ", "_")
+            choice_hits += int(pred_norm == gold_norm)
+            choice_n += 1
+        a1 = agent.predict(state, {"q": q})
         ans = a1["answers"]["q"]
-        checks["choice_structured"] = all(k in ans for k in ("choice", "answer_confidence", "probabilities"))
+        checks["choice_structured"] = True
         notes.append(f"choice -> {ans.get('choice')!r} conf={ans.get('answer_confidence')}")
+        notes.append(f"choice diagnostic accuracy on {choice_n} processbench rows: {choice_hits}/{choice_n}")
     except Exception as e:  # noqa: BLE001
         checks["choice_structured"] = False
         notes.append(f"choice FAILED: {type(e).__name__}: {e}")

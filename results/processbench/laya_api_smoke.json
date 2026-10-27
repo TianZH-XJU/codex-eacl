@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-27T14:59:11.439749+00:00",
+  "created_utc": "2026-10-27T15:31:12.897870+00:00",
   "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
   "laya_version": "0.4.16",
   "model": "english",
@@ -20,11 +20,12 @@
   },
   "notes": [
     "choice -> 'step 0' conf=0.2874",
+    "choice diagnostic accuracy on 30 processbench rows: 3/30",
     "wide used head_max_len/max_len rerun kwargs (same question, not continued thought)",
     "tournament n=18 rounds=1 finalists=2",
     "noul P(true) default=0.1233 -> false; custom=0.2189 -> false",
     "score=0.9035 top_level=0 -> 1; direction/scale need task-level validation"
   ],
-  "elapsed_seconds": 15.4,
+  "elapsed_seconds": 93.4,
   "status": "passed"
 }

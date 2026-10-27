@@ -13,5 +13,5 @@ def test_smoke_script_imports_without_running_model():
     src = Path(ROOT / "scripts" / "laya_task_smoke.py").read_text(encoding="utf-8")
     for token in ("predict_tournament", "noul", "score", "head_max_len",
                   "tournament_passthrough_small", "noul_custom_labels", "score_shape",
-                  "P(true)", "legend"):
+                  "P(true)", "legend", "--task", "--limit"):
         assert token in src, token
