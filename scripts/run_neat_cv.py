@@ -160,7 +160,13 @@ def pareto_frontier(report):
             frontier.append(candidate)
     return sorted(frontier, key=lambda p: (p["mean_cumulative_ms"], -p["accuracy"]))
 
-def config_text(n_inputs, pop_size):
+def config_text(n_inputs, pop_size, fixed_topology=False):
+    conn_add = 0.0 if fixed_topology else 0.2
+    conn_delete = 0.0 if fixed_topology else 0.05
+    node_add = 0.0 if fixed_topology else 0.1
+    node_delete = 0.0 if fixed_topology else 0.03
+    activation_mutate = 0.0 if fixed_topology else 0.02
+    initial_connection = "full_direct" if fixed_topology else "partial_direct 0.15"
     return f"""[NEAT]
 fitness_criterion = max
 fitness_threshold = 2.0
@@ -170,7 +176,7 @@ no_fitness_termination = False
 
 [DefaultGenome]
 activation_default = tanh
-activation_mutate_rate = 0.02
+activation_mutate_rate = {activation_mutate}
 activation_options = tanh sigmoid relu
 aggregation_default = sum
 aggregation_mutate_rate = 0.0
@@ -185,14 +191,14 @@ bias_mutate_rate = 0.7
 bias_replace_rate = 0.1
 compatibility_disjoint_coefficient = 1.0
 compatibility_weight_coefficient = 0.5
-conn_add_prob = 0.2
-conn_delete_prob = 0.05
+conn_add_prob = {conn_add}
+conn_delete_prob = {conn_delete}
 enabled_default = True
 enabled_mutate_rate = 0.01
 feed_forward = True
-initial_connection = partial_direct 0.15
-node_add_prob = 0.1
-node_delete_prob = 0.03
+initial_connection = {initial_connection}
+node_add_prob = {node_add}
+node_delete_prob = {node_delete}
 num_hidden = 0
 num_inputs = {n_inputs}
 num_outputs = 3
@@ -227,12 +233,12 @@ survival_threshold = 0.2
 min_species_size = 2
 """
 
-def evolve(X_train, train_ids, by, costs, lam, seed, pop_size, generations):
+def evolve(X_train, train_ids, by, costs, lam, seed, pop_size, generations, fixed_topology=False):
     import neat
     import numpy as np
     random.seed(seed)
     np.random.seed(seed)
-    text = config_text(X_train.shape[1], pop_size)
+    text = config_text(X_train.shape[1], pop_size, fixed_topology=fixed_topology)
     with tempfile.TemporaryDirectory(prefix="neat_laya_cfg_") as tmp:
         cfgpath = Path(tmp) / "config.ini"
         cfgpath.write_text(text, encoding="utf-8")
@@ -260,6 +266,7 @@ def evolve(X_train, train_ids, by, costs, lam, seed, pop_size, generations):
             "nodes": len(best.nodes),
             "connections_total": len(best.connections),
             "connections_enabled": sum(bool(c.enabled) for c in best.connections.values()),
+            "topology_type": "fixed_full_direct" if fixed_topology else "neat_evolved",
             "generations_evaluated": len(stats.get_fitness_mean()),
         }
         return net, detail, best, text
@@ -399,6 +406,28 @@ def main():
                         print(f"  {key} fold={fi + 1}: acc={rec['fold_oof_metrics']['accuracy']:.4f}, "
                               f"mean_ms={rec['fold_oof_metrics']['mean_cumulative_ms']:.0f}, "
                               f"fitness={genome['fitness']:.4f}", flush=True)
+                        # Matched fixed-topology evolutionary ablation for the primary
+                        # choice-feature / lambda=2e-5 setting, same fold and search budget.
+                        if mode == "choice" and abs(lam - 2e-5) < 1e-12:
+                            fixed_seed = actual_seed + 500
+                            fnet, fgenome, _fbest, _fcfg = evolve(
+                                Xtr, tr, by, costs, lam, fixed_seed,
+                                args.pop_size, args.generations, fixed_topology=True)
+                            fchoices = {i: STRATEGIES[int(np.argmax(fnet.activate(Xte[j])))]
+                                        for j, i in enumerate(te)}
+                            fkey = f"fixed_ea_choice_lam_{lam:g}_seed_{seed0}"
+                            neat_oof.setdefault(fkey, {}).update(fchoices)
+                            frec = {
+                                "fold": fi, "mode": "choice", "topology_type": "fixed_full_direct",
+                                "lambda_per_ms": lam, "seed": seed0, "actual_seed": fixed_seed,
+                                "pop_size": args.pop_size, "generations": args.generations,
+                                "best_genome": fgenome, "fold_oof_metrics": metrics(by, fchoices),
+                            }
+                            log.write(json.dumps(frec) + "\n")
+                            log.flush()
+                            print(f"  {fkey} fold={fi + 1}: acc={frec['fold_oof_metrics']['accuracy']:.4f}, "
+                                  f"mean_ms={frec['fold_oof_metrics']['mean_cumulative_ms']:.0f}, "
+                                  f"fitness={fgenome['fitness']:.4f}", flush=True)
 
     all_policies = {f"baseline::{k}": v for k, v in baseline_oof.items()}
     all_policies.update({f"neat::{k}": v for k, v in neat_oof.items()})
@@ -422,6 +451,10 @@ def main():
             f"decision_tree_{mode}_lam_{lam:g}", f"decision_tree_{other_mode}_lam_{lam:g}",
             f"mlp_{mode}_lam_{lam:g}", f"mlp_{other_mode}_lam_{lam:g}",
         ]
+        if neat_key.startswith("fixed_ea_"):
+            keys.append(f"neat_choice_lam_{lam:g}_seed_{seed_text}")
+        elif mode == "choice" and abs(lam - 2e-5) < 1e-12:
+            keys.append(f"fixed_ea_choice_lam_{lam:g}_seed_{seed_text}")
         comparisons[neat_key] = {k: paired_ci(by, baseline_oof[k], chosen) for k in keys}
 
     try:
@@ -447,7 +480,7 @@ def main():
         "pareto_frontier_deployable": pareto_frontier(report),
         "progress_log": str(progress_path.relative_to(ROOT)) if progress_path.is_relative_to(ROOT) else str(progress_path),
         "elapsed_seconds": round(time.perf_counter() - started, 1),
-        "status": "passed" if len(neat_oof) == 2 * len(lambdas) * len(seeds) else "partial_failure",
+        "status": "passed" if len(neat_oof) == 2 * len(lambdas) * len(seeds) + len(seeds) else "partial_failure",
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
