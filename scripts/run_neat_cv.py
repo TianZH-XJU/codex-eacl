@@ -9,7 +9,7 @@ numeric-only is an ablation. Fitness uses correctness minus lambda times the
 fold-train mean cumulative cost of the selected action.
 """
 from __future__ import annotations
-import argparse, json, os, random, subprocess, sys, tempfile, time
+import argparse, atexit, ctypes, json, os, random, subprocess, sys, tempfile, time
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -34,6 +34,19 @@ from sklearn.neural_network import MLPClassifier
 
 DEFAULT_LAMBDAS = (0.0, 2e-5, 5e-5)
 DEFAULT_SEEDS = (17, 23, 41)
+
+def prevent_system_sleep():
+    """Keep a Windows local OOF run from being suspended; restore on exit."""
+    if os.name != "nt":
+        return False
+    es_continuous, es_system_required = 0x80000000, 0x00000001
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    set_state = kernel.SetThreadExecutionState
+    set_state.argtypes, set_state.restype = [ctypes.c_uint], ctypes.c_uint
+    if set_state(es_continuous | es_system_required) == 0:
+        raise ctypes.WinError(ctypes.get_last_error())
+    atexit.register(lambda: set_state(es_continuous))
+    return True
 
 def label(r):
     return str(r.get("gold_normalized") or r.get("gold") or "").replace("_", " ").strip()
@@ -166,6 +179,7 @@ def config_text(n_inputs, pop_size, fixed_topology=False):
     node_add = 0.0 if fixed_topology else 0.1
     node_delete = 0.0 if fixed_topology else 0.03
     activation_mutate = 0.0 if fixed_topology else 0.02
+    enabled_mutate = 0.0 if fixed_topology else 0.01
     initial_connection = "full_direct" if fixed_topology else "partial_direct 0.15"
     return f"""[NEAT]
 fitness_criterion = max
@@ -194,7 +208,7 @@ compatibility_weight_coefficient = 0.5
 conn_add_prob = {conn_add}
 conn_delete_prob = {conn_delete}
 enabled_default = True
-enabled_mutate_rate = 0.01
+enabled_mutate_rate = {enabled_mutate}
 feed_forward = True
 initial_connection = {initial_connection}
 node_add_prob = {node_add}
@@ -329,6 +343,7 @@ def main():
     if not seeds or not lambdas:
         raise SystemExit("Seeds and lambdas must be non-empty lists.")
     created = datetime.now(timezone.utc).isoformat()
+    sleep_prevention_active = prevent_system_sleep()
     started = time.perf_counter()
     progress_path.parent.mkdir(parents=True, exist_ok=True)
     progress_path.touch(exist_ok=False)
@@ -476,12 +491,18 @@ def main():
             "fitness": "mean(correct_selected - lambda * fold-train mean cumulative cost for selected action)",
             "cost_estimation": "fold-train only; held-out per-example latency never used to choose actions",
             "laya_calls": 0, "test_split_touched": False, "confirmation_split_touched": False,
+            "windows_sleep_prevention_active": sleep_prevention_active,
+            "auxiliary_baselines": ["three-action decision tree", "three-action MLP (8 hidden units)",
+                                    "fixed-topology evolutionary network (primary choice/lambda only)"],
         },
         "folds": fold_log, "metrics": report, "paired_bootstrap_neat_minus_baselines": comparisons,
         "pareto_frontier_deployable": pareto_frontier(report),
         "progress_log": str(progress_path.relative_to(ROOT)) if progress_path.is_relative_to(ROOT) else str(progress_path),
         "elapsed_seconds": round(time.perf_counter() - started, 1),
-        "status": "passed" if len(neat_oof) == 2 * len(lambdas) * len(seeds) + len(seeds) else "partial_failure",
+        "expected_oof_policies": 2 * len(lambdas) * len(seeds) + (
+            len(seeds) if any(abs(lam - 2e-5) < 1e-12 for lam in lambdas) else 0),
+        "status": "passed" if len(neat_oof) == 2 * len(lambdas) * len(seeds) + (
+            len(seeds) if any(abs(lam - 2e-5) < 1e-12 for lam in lambdas) else 0) else "partial_failure",
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
