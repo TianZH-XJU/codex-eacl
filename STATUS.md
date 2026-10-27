@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-27
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
-**Current phase:** targeted latency rerun and cache-only NEAT cross-validation tooling committed; local execution/results pending  
+**Current phase:** full NEAT OOF grid done — NEAT fails the gate (below matched LR/threshold); fresh confirmation NOT launched  
 **Research result status:** no reliable learned-controller gain is established yet; NEAT has not been run on the user's local cache.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
@@ -195,13 +195,29 @@ These scripts are committed, but none of the new Laya replay, NEAT evolution, fr
 
 `results/pilot/banking77_anomaly_rerun.summary.json` (status passed, `windows_sleep_prevention_active: true`, 2 threads, CPU, peak RSS 2134 MB): tournament old mean 2,523,885 ms → rerun 2,927.5 ms (n=2); wide old 103,809.9 ms → rerun 1,752.7 ms (n=1). `accuracy_changed_on_rerun: 0`, `choices_changed_on_rerun: 0`, text/gold verified, originals not overwritten. The extremes are confirmed transient (sleep-pollution hypothesis now has rerun support); original values retained as history.
 
+### Full NEAT OOF grid result (local, 2026-10-27) — gate FAILED
+
+`results/pilot/banking77_neat_cv.json` (status passed; real neat-python evolution, pop 30 × 20 gens × 3 folds × 3 seeds × 3 lambdas × 2 feature modes + matched fixed-topology EA). OOF accuracy / mean cum. ms:
+
+| Policy (OOF) | acc | ms |
+|---|---:|---:|
+| choice_lr lam=2e-05 (matched) | 0.6061 | 4738 |
+| threshold_trainfit | 0.5887 | 4736 |
+| neat_choice lam=2e-05 seed 17 (primary) | 0.5844 | 4929 |
+| neat_choice lam=2e-05 seed 23 / 41 | 0.5931 / 0.5887 | 4675 / 4659 |
+| fixed_ea_choice lam=2e-05 seeds 17/23/41 | 0.5758 / 0.5844 / 0.5887 | 4663 / 4269 / 4275 |
+| oracle posthoc | 0.7100 | 2815 |
+
+Paired bootstrap (primary vs baselines): vs choice_lr −0.0216 [−0.056, +0.013]; vs threshold −0.0043 [−0.030, +0.022]; vs fixed −0.0173 [−0.048, +0.009]. Best NEAT genomes stayed tiny (3 nodes, 4–5 connections).
+
+Verdict per pre-registered gate: NEAT does not beat threshold cascade or matched LR on OOF; fixed-topology EA also below choice_lr. Fresh NEAT confirmation NOT launched. Next: inspect fitness/action/feature diagnostics before deciding whether a larger cached training set is justified; no blind generation increase, no test touch.
+
 ## Next actions (test split remains locked)
 
-1. Pull latest `main`, run the targeted anomaly rerun, and review per-row results. Do not replace historical latency values.
-2. Run new tests, then the small NEAT smoke run (10 genomes × 2 generations, one seed/lambda) before the full preset 3-fold OOF grid.
-3. Primary NEAT hypothesis: `choice` features, `lambda=2e-5`, seed 17; seeds 23/41 are robustness checks. Compare to threshold cascade, fixed actions and matched-lambda LR. Do not choose the best seed after seeing OOF and present it as confirmatory.
-4. Proceed to the fresh NEAT confirmation only if OOF results show a credible non-dominated accuracy–cost trade-off. Fit on the 3-shot train cache, lock the artifact, create the fresh manifest, run cache inference once with sleep prevention, then evaluate once.
-5. If NEAT fails the OOF gate, first inspect training/OOF diagnostics; consider a larger cached training set only as a separately registered follow-up. No test split, no reuse of the older confirmation set for tuning.
+1. DONE: anomaly rerun (transient confirmed, predictions unchanged, originals kept).
+2. DONE: NEAT smoke + full OOF grid — gate FAILED, fresh confirmation not launched.
+3. Next: inspect fitness/action/feature diagnostics; decide only then whether a larger cached training set is justified as a separately registered follow-up.
+4. No test split, no reuse of the older confirmation set for tuning.
 
 ## Commands for the local Windows machine
 
