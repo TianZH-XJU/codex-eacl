@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-27
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
-**Current phase:** independent confirmation run done (n=77, locked config, evaluated once); signal directional but uncertain — no scale-up  
+**Current phase:** offline error analysis done; upgrade helps 34 classes / harms 16 — no stable overall edge; no scale-up  
 **Research result status:** no statistically meaningful new accuracy result has been established yet.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
@@ -85,6 +85,22 @@ Interpretation:
 - Calibration (T=4.60 fit on 3-shot train): dev NLL 4.95→2.87, Brier 0.91→0.79, ECE 0.36→0.16. Routing with calibrated confidence: dev 0.5541 at 4921 ms vs raw 0.5541 at 4661 ms — reliability improves, routing does not. Keep calibration as analysis, not a core contribution.
 - No 5-shot cache, no NEAT. Next: replicate choice-ablation stability across seeds/subsets before deciding on 5-shot.
 
+## Offline error analysis (2026-10-27; replay only, no tuning)
+
+`scripts/analyze_cached_errors.py` replays locked controllers (fit on 3-shot train only) on dev (n=231) and confirmation (n=77, post-hoc). 17/17 tests pass.
+
+| Split | single | wide | tournament | thr-cascade | numeric | choice | all-wrong |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| dev acc | 0.4069 | 0.5195 | 0.5541 | 0.5541 | 0.5541 | 0.5758 | 68 |
+| dev avoidable | 69 | 43 | 35 | 35 | 35 | 30 | — |
+| conf acc | 0.4805 | 0.5455 | 0.6494 | 0.5974 | 0.5714 | 0.6234 | 20 |
+| conf avoidable | 20 | 15 | 7 | 11 | 13 | 9 | — |
+
+Class pattern (dev, 77 classes): upgrade-to-tournament helps 34 classes, harms 16 (e.g. `transfer not received by recipient`, `wrong amount of cash received`, `pin blocked` — tournament never right yet chosen), 45 classes have at least one upgrade-fixable sample, 5 classes all-wrong under all strategies.
+Latency extremes (≥60 s, raw kept): confirmation idx 26/27 tournament (~2858 s / ~2192 s) + idx 25 wide (~104 s); both tournament rows wrong under all strategies.
+
+Interpretation: routing errors are class-concentrated, not uniform noise — but with 3 train samples/class the controllers cannot reliably learn which classes are upgrade-harm. On confirmation, fixed tournament still leads (0.6494) and even has fewer avoidable errors (7) than choice (9). No overall-edge claim; threshold cascade stays the main baseline. Next: no new inference; decide only whether error patterns justify any further work.
+
 ## Independent confirmation (2026-10-27, GO, locked config, evaluated once)
 
 Frozen: code `cda918d`, confirmation manifest seed 23 (77 samples, 1/class, disjoint from all train/dev), Laya `b9fe351`, model rev `7b928d8`, 2 threads, single process. Eval provenance `working_tree_dirty=true` reflects only the run's own new output files; code unchanged since freeze. Eval script re-executed once after deleting its own untracked log sidecars (identical locked config/data — no tuning; disclosed here).
@@ -166,10 +182,9 @@ Interpretation:
 ## Next actions (updated 2026-10-27; test split stays locked)
 
 1. DONE: independent confirmation run (n=77, locked config, evaluated once). Directional signal only; CI covers zero.
-2. Error analysis on confirmation + dev failures (which classes/actions benefit, calibration overlap). No new inference.
-3. Only if error analysis finds a stable, explainable pattern: consider 5-shot cache. Otherwise keep threshold cascade as main baseline.
-4. NEAT stays paused until a reliable, reproducible learned-controller edge exists.
-5. Keep all test splits locked; no test use for tuning, thresholds, model selection, or fitness. Never reuse the confirmation set for tuning.
+2. DONE: offline error analysis. Class-concentrated routing errors; no reliable overall edge for learned controllers.
+3. Next: decide whether class-level upgrade-harm patterns justify further work; default is to keep threshold cascade as main baseline with a negative result for learned controllers. No new inference, no 5-shot, no NEAT unless a stable, explainable pattern emerges.
+4. Keep all test splits locked; no test use for tuning, thresholds, model selection, or fitness. Never reuse the confirmation set for tuning.
 
 ## Resource limits and research integrity
 
