@@ -47,6 +47,8 @@ def main():
     ap.add_argument("--split-manifest", default="results/splits/banking77_train_dev_manifest.json")
     ap.add_argument("--old-confirmation-manifest", default="results/splits/banking77_confirmation_manifest.json")
     ap.add_argument("--seed", type=int, default=47)
+    ap.add_argument("--exclude-manifest", action="append", default=[],
+                    help="Additional prior confirmation manifest to exclude (may be repeated).")
     ap.add_argument("--out", default="results/splits/banking77_neat_confirmation_manifest.json")
     args = ap.parse_args()
     split_path, old_path, out_path = [(ROOT / p).resolve() for p in
@@ -67,6 +69,25 @@ def main():
     if used & old_conf:
         raise SystemExit("The existing confirmation set overlaps train/dev unexpectedly")
     used |= old_conf
+    additional_exclusions = []
+    for excluded_path_arg in args.exclude_manifest:
+        excluded_path = (ROOT / excluded_path_arg).resolve()
+        if excluded_path == out_path:
+            raise SystemExit("Output manifest cannot also be an exclusion manifest")
+        if not excluded_path.is_file():
+            raise SystemExit(f"Additional exclusion manifest missing: {excluded_path}")
+        excluded = json.loads(excluded_path.read_text(encoding="utf-8"))
+        if excluded.get("dataset") != "banking77" or excluded.get("dataset_revision") != split.get("dataset_revision"):
+            raise SystemExit(f"Additional exclusion manifest dataset/revision mismatch: {excluded_path}")
+        excluded_indices = set(map(int, excluded.get("confirmation_indices", [])))
+        if not excluded_indices:
+            raise SystemExit(f"Additional exclusion manifest has no confirmation indices: {excluded_path}")
+        used |= excluded_indices
+        additional_exclusions.append({
+            "path": str(excluded_path.relative_to(ROOT)),
+            "sha256": sha256_file(excluded_path),
+            "n_indices": len(excluded_indices),
+        })
     sys.path.insert(0, str(ROOT / "external" / "laya" / "research" / "benchmarks" / "tournament"))
     import benchmark as bench
     load, _ = bench.DATASETS["banking77"]
@@ -86,8 +107,11 @@ def main():
             "train_pool": len(split["train_indices_all"]),
             "dev": len(split["dev_indices"]),
             "previous_confirmation": len(old_conf),
+            "additional_confirmation_manifests": len(additional_exclusions),
+            "additional_confirmation_indices_total": sum(x["n_indices"] for x in additional_exclusions),
             "union": len(used),
         },
+        "additional_excluded_manifests": additional_exclusions,
         "confirmation_indices": chosen, "per_class": per_class,
         "project_git_sha_at_creation": git_sha(ROOT),
         "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
