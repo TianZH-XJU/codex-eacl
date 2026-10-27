@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Fit the already-locked NEAT configuration on the full 3-shot train cache.
+"""Fit the predeclared controller config on a 3-shot or 5-shot cache.
 
-Run only after reviewing results/pilot/banking77_neat_cv.json and choosing one
-predeclared configuration without consulting the new confirmation set. The
-pickle artifact is local/ignored; the JSON summary records its provenance.
-No Laya calls, no dev/confirmation/test cache access.
+Supports NEAT topology evolution and a matched fixed-topology evolutionary
+baseline. The local pickle artifact is ignored by Git; small JSON provenance is
+written separately. No Laya calls and no dev/confirmation/test cache access.
 """
 from __future__ import annotations
 import argparse, atexit, ctypes, hashlib, json, os, pickle, sys, time
