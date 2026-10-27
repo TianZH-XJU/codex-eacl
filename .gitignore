@@ -44,3 +44,5 @@ results/**/*.csv.gz
 
 # Upstream Laya checkout is a separate dependency, not project source.
 external/laya/
+# Upstream ProcessBench checkout is a reference for label mapping only.
+external/ProcessBench/
