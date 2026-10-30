@@ -1,7 +1,7 @@
 {
-  "created_utc": "2026-10-30T10:56:08.300937+00:00",
+  "created_utc": "2026-10-30T11:12:16.414230+00:00",
   "gate": "Gate 1 strategy complementarity (pilot)",
-  "train": {
+  "pilot_train": {
     "n": 120,
     "accuracy": {
       "single": 0.125,
@@ -100,7 +100,7 @@
       ]
     ]
   },
-  "dev": {
+  "pilot_dev": {
     "n": 60,
     "accuracy": {
       "single": 0.2,
@@ -199,7 +199,7 @@
       ]
     ]
   },
-  "predictability_train_3fold": {
+  "predictability_pilot_train_3fold": {
     "wide": {
       "oof_accuracy": [
         0.85,
@@ -216,17 +216,17 @@
     },
     "tournament": {
       "oof_accuracy": [
-        0.95,
-        0.95,
-        0.95
+        1.0,
+        1.0,
+        1.0
       ],
       "majority_baseline": [
-        0.95,
-        0.95,
-        0.95
+        1.0,
+        1.0,
+        1.0
       ],
-      "mean_oof": 0.95,
-      "mean_majority": 0.95
+      "mean_oof": 1.0,
+      "mean_majority": 1.0
     }
   },
   "note": "predictability uses initial SINGLE features only; DeltaCorrect in {-1,0,+1}"
