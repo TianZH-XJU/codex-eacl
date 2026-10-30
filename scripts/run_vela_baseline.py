@@ -163,7 +163,8 @@ def recover_text(task, srow):
     r = next(x for x in rows if x["example_id"] == srow["row_id"])
     rep = json.loads((ROOT / f"external/FinDVer/financial_reports/{r['report']}").read_text(encoding="utf-8"))
     ev = "\n".join(rep["context"][i]["context"] for i in r["relevant_context"])
-    return f"Claim: {r['statement']}\n\nEvidence context:\n{ev}"
+    # IDENTICAL state text to the Laya pilot cache (see build_binary_cache.py).
+    return f"Claim: {r['statement']}\n\nEvidence:\n{ev}"
 
 
 def gold_render(task, srow):

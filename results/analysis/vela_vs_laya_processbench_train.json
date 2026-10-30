@@ -1,0 +1,2301 @@
+{
+  "laya_cache": "results/processbench/pilot_train_cache.jsonl",
+  "vela_baseline": "results/vela_baseline_processbench_train.json",
+  "laya_strategy": "single",
+  "vela_rep": "choice",
+  "n_paired": 120,
+  "missing_vela_rows": 0,
+  "laya_accuracy": 0.125,
+  "vela_accuracy": 0.0583,
+  "accuracy_diff_vela_minus_laya": -0.0667,
+  "both_correct": 2,
+  "both_wrong": 100,
+  "laya_only": 13,
+  "vela_only": 5,
+  "mean_latency_ms": {
+    "laya": 2972.6,
+    "vela": 1794.5
+  },
+  "rows": [
+    {
+      "key": [
+        "pilot_train",
+        0
+      ],
+      "row_id": "omnimath-468",
+      "gold": "step_5",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 2594.1,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 3427.7,
+      "vela_usage": {
+        "input_tokens": 728,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        1
+      ],
+      "row_id": "olympiadbench-349",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 2351.5,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 2165.6,
+      "vela_usage": {
+        "input_tokens": 1028,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        2
+      ],
+      "row_id": "olympiadbench-459",
+      "gold": "step_0",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 2409.0,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 3677.5,
+      "vela_usage": {
+        "input_tokens": 1485,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        3
+      ],
+      "row_id": "omnimath-682",
+      "gold": "step_2",
+      "laya_pred": "step 2",
+      "laya_correct": true,
+      "laya_ms": 2375.5,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 1429.6,
+      "vela_usage": {
+        "input_tokens": 736,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        4
+      ],
+      "row_id": "omnimath-584",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 2358.8,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 1183.3,
+      "vela_usage": {
+        "input_tokens": 616,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        5
+      ],
+      "row_id": "olympiadbench-316",
+      "gold": "step_2",
+      "laya_pred": "step 2",
+      "laya_correct": true,
+      "laya_ms": 2491.1,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 2047.1,
+      "vela_usage": {
+        "input_tokens": 959,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        6
+      ],
+      "row_id": "math-655",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 1844.4,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": false,
+      "vela_ms": 781.6,
+      "vela_usage": {
+        "input_tokens": 417,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        7
+      ],
+      "row_id": "omnimath-474",
+      "gold": "step_2",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 2353.8,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 2352.2,
+      "vela_usage": {
+        "input_tokens": 1112,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        8
+      ],
+      "row_id": "gsm8k-365",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 1724.2,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 685.9,
+      "vela_usage": {
+        "input_tokens": 388,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        9
+      ],
+      "row_id": "olympiadbench-954",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 2366.8,
+      "laya_calls": 1,
+      "vela_pred": "step_15",
+      "vela_correct": false,
+      "vela_ms": 3457.6,
+      "vela_usage": {
+        "input_tokens": 1448,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        10
+      ],
+      "row_id": "math-675",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 1482.6,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 558.7,
+      "vela_usage": {
+        "input_tokens": 305,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        11
+      ],
+      "row_id": "math-241",
+      "gold": "step_3",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 2164.7,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": true,
+      "vela_ms": 829.4,
+      "vela_usage": {
+        "input_tokens": 439,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        12
+      ],
+      "row_id": "olympiadbench-277",
+      "gold": "step_4",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3474.6,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 1874.7,
+      "vela_usage": {
+        "input_tokens": 904,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        13
+      ],
+      "row_id": "omnimath-258",
+      "gold": "step_2",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3446.7,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": true,
+      "vela_ms": 1268.2,
+      "vela_usage": {
+        "input_tokens": 646,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        14
+      ],
+      "row_id": "olympiadbench-496",
+      "gold": "step_3",
+      "laya_pred": "step 3",
+      "laya_correct": true,
+      "laya_ms": 3292.2,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 2614.8,
+      "vela_usage": {
+        "input_tokens": 1157,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        15
+      ],
+      "row_id": "olympiadbench-969",
+      "gold": "step_13",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3641.3,
+      "laya_calls": 1,
+      "vela_pred": "step_10",
+      "vela_correct": false,
+      "vela_ms": 3739.0,
+      "vela_usage": {
+        "input_tokens": 1495,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        16
+      ],
+      "row_id": "omnimath-267",
+      "gold": "step_1",
+      "laya_pred": "step 1",
+      "laya_correct": true,
+      "laya_ms": 3558.8,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1898.9,
+      "vela_usage": {
+        "input_tokens": 781,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        17
+      ],
+      "row_id": "olympiadbench-656",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3370.7,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1239.0,
+      "vela_usage": {
+        "input_tokens": 579,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        18
+      ],
+      "row_id": "math-889",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3531.5,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1036.8,
+      "vela_usage": {
+        "input_tokens": 535,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        19
+      ],
+      "row_id": "olympiadbench-20",
+      "gold": "step_1",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3408.0,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 928.6,
+      "vela_usage": {
+        "input_tokens": 483,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        20
+      ],
+      "row_id": "omnimath-47",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3441.3,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 3004.1,
+      "vela_usage": {
+        "input_tokens": 1292,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        21
+      ],
+      "row_id": "olympiadbench-806",
+      "gold": "step_3",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3536.6,
+      "laya_calls": 1,
+      "vela_pred": "step_7",
+      "vela_correct": false,
+      "vela_ms": 1950.2,
+      "vela_usage": {
+        "input_tokens": 905,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        22
+      ],
+      "row_id": "math-153",
+      "gold": "step_0",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 1496.5,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 421.7,
+      "vela_usage": {
+        "input_tokens": 221,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        23
+      ],
+      "row_id": "olympiadbench-964",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3337.3,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1295.7,
+      "vela_usage": {
+        "input_tokens": 660,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        24
+      ],
+      "row_id": "olympiadbench-624",
+      "gold": "step_3",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3311.3,
+      "laya_calls": 1,
+      "vela_pred": "step_7",
+      "vela_correct": false,
+      "vela_ms": 1193.0,
+      "vela_usage": {
+        "input_tokens": 630,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        25
+      ],
+      "row_id": "gsm8k-347",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3418.5,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 1198.5,
+      "vela_usage": {
+        "input_tokens": 586,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        26
+      ],
+      "row_id": "math-660",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 2193.1,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 827.8,
+      "vela_usage": {
+        "input_tokens": 406,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        27
+      ],
+      "row_id": "omnimath-380",
+      "gold": "step_1",
+      "laya_pred": "step 1",
+      "laya_correct": true,
+      "laya_ms": 3380.7,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1858.3,
+      "vela_usage": {
+        "input_tokens": 872,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        28
+      ],
+      "row_id": "math-981",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 2094.8,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": false,
+      "vela_ms": 728.0,
+      "vela_usage": {
+        "input_tokens": 385,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        29
+      ],
+      "row_id": "olympiadbench-873",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 3464.1,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 2165.4,
+      "vela_usage": {
+        "input_tokens": 958,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        30
+      ],
+      "row_id": "omnimath-39",
+      "gold": "step_1",
+      "laya_pred": "step 1",
+      "laya_correct": true,
+      "laya_ms": 3564.4,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 2581.8,
+      "vela_usage": {
+        "input_tokens": 1117,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        31
+      ],
+      "row_id": "omnimath-815",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3211.0,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 1282.7,
+      "vela_usage": {
+        "input_tokens": 678,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        32
+      ],
+      "row_id": "omnimath-730",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3435.6,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1216.1,
+      "vela_usage": {
+        "input_tokens": 603,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        33
+      ],
+      "row_id": "gsm8k-87",
+      "gold": "step_1",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 2954.3,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 829.9,
+      "vela_usage": {
+        "input_tokens": 446,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        34
+      ],
+      "row_id": "gsm8k-183",
+      "gold": "step_1",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 1913.7,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 550.7,
+      "vela_usage": {
+        "input_tokens": 319,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        35
+      ],
+      "row_id": "omnimath-8",
+      "gold": "step_0",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3719.4,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 1478.4,
+      "vela_usage": {
+        "input_tokens": 695,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        36
+      ],
+      "row_id": "olympiadbench-418",
+      "gold": "step_0",
+      "laya_pred": "step 0",
+      "laya_correct": true,
+      "laya_ms": 3250.2,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 3445.7,
+      "vela_usage": {
+        "input_tokens": 1399,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        37
+      ],
+      "row_id": "math-88",
+      "gold": "step_5",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3341.9,
+      "laya_calls": 1,
+      "vela_pred": "step_9",
+      "vela_correct": false,
+      "vela_ms": 1240.3,
+      "vela_usage": {
+        "input_tokens": 631,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        38
+      ],
+      "row_id": "math-0",
+      "gold": "step_0",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 1176.1,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": false,
+      "vela_ms": 328.3,
+      "vela_usage": {
+        "input_tokens": 194,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        39
+      ],
+      "row_id": "math-876",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 2369.8,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 679.8,
+      "vela_usage": {
+        "input_tokens": 360,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        40
+      ],
+      "row_id": "olympiadbench-675",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 3336.0,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 2685.8,
+      "vela_usage": {
+        "input_tokens": 1145,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        41
+      ],
+      "row_id": "olympiadbench-688",
+      "gold": "step_0",
+      "laya_pred": "step 0",
+      "laya_correct": true,
+      "laya_ms": 3388.3,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 3065.2,
+      "vela_usage": {
+        "input_tokens": 1270,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        42
+      ],
+      "row_id": "olympiadbench-38",
+      "gold": "step_1",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3066.4,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 855.8,
+      "vela_usage": {
+        "input_tokens": 467,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        43
+      ],
+      "row_id": "gsm8k-71",
+      "gold": "step_2",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3552.3,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 1059.0,
+      "vela_usage": {
+        "input_tokens": 559,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        44
+      ],
+      "row_id": "math-550",
+      "gold": "step_3",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3323.1,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": true,
+      "vela_ms": 2234.4,
+      "vela_usage": {
+        "input_tokens": 972,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        45
+      ],
+      "row_id": "olympiadbench-486",
+      "gold": "step_3",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3489.0,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 1845.7,
+      "vela_usage": {
+        "input_tokens": 865,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        46
+      ],
+      "row_id": "math-605",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 2257.9,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 675.4,
+      "vela_usage": {
+        "input_tokens": 342,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        47
+      ],
+      "row_id": "omnimath-214",
+      "gold": "step_1",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3272.5,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1701.4,
+      "vela_usage": {
+        "input_tokens": 811,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        48
+      ],
+      "row_id": "omnimath-767",
+      "gold": "step_5",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3297.0,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 2145.9,
+      "vela_usage": {
+        "input_tokens": 965,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        49
+      ],
+      "row_id": "gsm8k-337",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 1441.7,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 432.0,
+      "vela_usage": {
+        "input_tokens": 228,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        50
+      ],
+      "row_id": "omnimath-785",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3395.4,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 3164.8,
+      "vela_usage": {
+        "input_tokens": 1248,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        51
+      ],
+      "row_id": "omnimath-135",
+      "gold": "step_2",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3277.7,
+      "laya_calls": 1,
+      "vela_pred": "step_17",
+      "vela_correct": false,
+      "vela_ms": 3972.9,
+      "vela_usage": {
+        "input_tokens": 1540,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        52
+      ],
+      "row_id": "omnimath-649",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3294.5,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 2820.5,
+      "vela_usage": {
+        "input_tokens": 1195,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        53
+      ],
+      "row_id": "omnimath-776",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3227.2,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1639.5,
+      "vela_usage": {
+        "input_tokens": 771,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        54
+      ],
+      "row_id": "omnimath-563",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 3156.4,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1569.0,
+      "vela_usage": {
+        "input_tokens": 742,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        55
+      ],
+      "row_id": "omnimath-242",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3119.6,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": true,
+      "vela_ms": 1241.0,
+      "vela_usage": {
+        "input_tokens": 599,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        56
+      ],
+      "row_id": "omnimath-718",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3047.0,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 951.6,
+      "vela_usage": {
+        "input_tokens": 503,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        57
+      ],
+      "row_id": "omnimath-23",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3334.2,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": true,
+      "vela_ms": 1977.0,
+      "vela_usage": {
+        "input_tokens": 941,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        58
+      ],
+      "row_id": "olympiadbench-825",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3310.4,
+      "laya_calls": 1,
+      "vela_pred": "step_8",
+      "vela_correct": false,
+      "vela_ms": 1409.4,
+      "vela_usage": {
+        "input_tokens": 654,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        59
+      ],
+      "row_id": "math-884",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3276.9,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 1602.8,
+      "vela_usage": {
+        "input_tokens": 786,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        60
+      ],
+      "row_id": "gsm8k-115",
+      "gold": "step_0",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 2336.3,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 671.7,
+      "vela_usage": {
+        "input_tokens": 348,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        61
+      ],
+      "row_id": "gsm8k-217",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 1964.7,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 636.2,
+      "vela_usage": {
+        "input_tokens": 335,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        62
+      ],
+      "row_id": "math-953",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 2401.8,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 657.9,
+      "vela_usage": {
+        "input_tokens": 401,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        63
+      ],
+      "row_id": "olympiadbench-185",
+      "gold": "step_8",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 3240.8,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 3824.5,
+      "vela_usage": {
+        "input_tokens": 1569,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        64
+      ],
+      "row_id": "omnimath-83",
+      "gold": "step_2",
+      "laya_pred": "step 7",
+      "laya_correct": false,
+      "laya_ms": 3221.8,
+      "laya_calls": 1,
+      "vela_pred": "step_7",
+      "vela_correct": false,
+      "vela_ms": 1193.5,
+      "vela_usage": {
+        "input_tokens": 632,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        65
+      ],
+      "row_id": "olympiadbench-962",
+      "gold": "step_2",
+      "laya_pred": "step 2",
+      "laya_correct": true,
+      "laya_ms": 3213.0,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1548.2,
+      "vela_usage": {
+        "input_tokens": 780,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        66
+      ],
+      "row_id": "olympiadbench-747",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3306.7,
+      "laya_calls": 1,
+      "vela_pred": "step_0",
+      "vela_correct": false,
+      "vela_ms": 1355.3,
+      "vela_usage": {
+        "input_tokens": 718,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        67
+      ],
+      "row_id": "math-109",
+      "gold": "step_5",
+      "laya_pred": "step 7",
+      "laya_correct": false,
+      "laya_ms": 2387.8,
+      "laya_calls": 1,
+      "vela_pred": "step_7",
+      "vela_correct": false,
+      "vela_ms": 695.5,
+      "vela_usage": {
+        "input_tokens": 371,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        68
+      ],
+      "row_id": "olympiadbench-720",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3387.4,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 3386.0,
+      "vela_usage": {
+        "input_tokens": 1403,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        69
+      ],
+      "row_id": "omnimath-247",
+      "gold": "step_1",
+      "laya_pred": "step 12",
+      "laya_correct": false,
+      "laya_ms": 3256.1,
+      "laya_calls": 1,
+      "vela_pred": "step_10",
+      "vela_correct": false,
+      "vela_ms": 6387.6,
+      "vela_usage": {
+        "input_tokens": 2189,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        70
+      ],
+      "row_id": "math-289",
+      "gold": "step_2",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3097.6,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1170.0,
+      "vela_usage": {
+        "input_tokens": 561,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        71
+      ],
+      "row_id": "olympiadbench-513",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3385.8,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 990.1,
+      "vela_usage": {
+        "input_tokens": 501,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        72
+      ],
+      "row_id": "omnimath-357",
+      "gold": "step_4",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 3248.3,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 880.1,
+      "vela_usage": {
+        "input_tokens": 459,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        73
+      ],
+      "row_id": "olympiadbench-796",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3295.9,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 2125.8,
+      "vela_usage": {
+        "input_tokens": 1003,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        74
+      ],
+      "row_id": "math-510",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3183.0,
+      "laya_calls": 1,
+      "vela_pred": "step_11",
+      "vela_correct": false,
+      "vela_ms": 2306.9,
+      "vela_usage": {
+        "input_tokens": 1047,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        75
+      ],
+      "row_id": "olympiadbench-870",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 6",
+      "laya_correct": false,
+      "laya_ms": 2367.0,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 714.1,
+      "vela_usage": {
+        "input_tokens": 387,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        76
+      ],
+      "row_id": "olympiadbench-941",
+      "gold": "step_2",
+      "laya_pred": "step 2",
+      "laya_correct": true,
+      "laya_ms": 3437.7,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": true,
+      "vela_ms": 2288.4,
+      "vela_usage": {
+        "input_tokens": 1016,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        77
+      ],
+      "row_id": "olympiadbench-946",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3118.5,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1206.3,
+      "vela_usage": {
+        "input_tokens": 614,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        78
+      ],
+      "row_id": "olympiadbench-358",
+      "gold": "step_1",
+      "laya_pred": "step 7",
+      "laya_correct": false,
+      "laya_ms": 3102.6,
+      "laya_calls": 1,
+      "vela_pred": "step_8",
+      "vela_correct": false,
+      "vela_ms": 1216.6,
+      "vela_usage": {
+        "input_tokens": 610,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        79
+      ],
+      "row_id": "olympiadbench-982",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3105.5,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 1210.0,
+      "vela_usage": {
+        "input_tokens": 650,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        80
+      ],
+      "row_id": "omnimath-896",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3207.2,
+      "laya_calls": 1,
+      "vela_pred": "step_17",
+      "vela_correct": false,
+      "vela_ms": 2591.9,
+      "vela_usage": {
+        "input_tokens": 1142,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        81
+      ],
+      "row_id": "omnimath-885",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3279.9,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 2090.3,
+      "vela_usage": {
+        "input_tokens": 915,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        82
+      ],
+      "row_id": "olympiadbench-823",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3298.3,
+      "laya_calls": 1,
+      "vela_pred": "step_10",
+      "vela_correct": false,
+      "vela_ms": 2421.5,
+      "vela_usage": {
+        "input_tokens": 1119,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        83
+      ],
+      "row_id": "math-217",
+      "gold": "step_3",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 2177.0,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 624.5,
+      "vela_usage": {
+        "input_tokens": 352,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        84
+      ],
+      "row_id": "math-177",
+      "gold": "step_8",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3120.9,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 1520.5,
+      "vela_usage": {
+        "input_tokens": 802,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        85
+      ],
+      "row_id": "olympiadbench-463",
+      "gold": "step_6",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3318.3,
+      "laya_calls": 1,
+      "vela_pred": "step_11",
+      "vela_correct": false,
+      "vela_ms": 4292.8,
+      "vela_usage": {
+        "input_tokens": 1614,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        86
+      ],
+      "row_id": "omnimath-827",
+      "gold": "step_1",
+      "laya_pred": "step 0",
+      "laya_correct": false,
+      "laya_ms": 3190.9,
+      "laya_calls": 1,
+      "vela_pred": "step_8",
+      "vela_correct": false,
+      "vela_ms": 1199.7,
+      "vela_usage": {
+        "input_tokens": 601,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        87
+      ],
+      "row_id": "olympiadbench-694",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3212.3,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1756.1,
+      "vela_usage": {
+        "input_tokens": 902,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        88
+      ],
+      "row_id": "omnimath-351",
+      "gold": "step_6",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3322.0,
+      "laya_calls": 1,
+      "vela_pred": "step_12",
+      "vela_correct": false,
+      "vela_ms": 2656.2,
+      "vela_usage": {
+        "input_tokens": 1224,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        89
+      ],
+      "row_id": "omnimath-104",
+      "gold": "step_4",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3271.2,
+      "laya_calls": 1,
+      "vela_pred": "step_8",
+      "vela_correct": false,
+      "vela_ms": 1664.2,
+      "vela_usage": {
+        "input_tokens": 848,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        90
+      ],
+      "row_id": "math-859",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 3245.5,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1069.4,
+      "vela_usage": {
+        "input_tokens": 568,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        91
+      ],
+      "row_id": "math-883",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3243.4,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 3149.9,
+      "vela_usage": {
+        "input_tokens": 1287,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        92
+      ],
+      "row_id": "omnimath-410",
+      "gold": "step_5",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3199.9,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1532.7,
+      "vela_usage": {
+        "input_tokens": 736,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        93
+      ],
+      "row_id": "omnimath-880",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3148.0,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 1280.3,
+      "vela_usage": {
+        "input_tokens": 614,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        94
+      ],
+      "row_id": "omnimath-471",
+      "gold": "step_2",
+      "laya_pred": "step 4",
+      "laya_correct": false,
+      "laya_ms": 3200.5,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1228.7,
+      "vela_usage": {
+        "input_tokens": 581,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        95
+      ],
+      "row_id": "omnimath-48",
+      "gold": "step_4",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3127.3,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 3796.9,
+      "vela_usage": {
+        "input_tokens": 1374,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        96
+      ],
+      "row_id": "gsm8k-2",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 2054.3,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 683.5,
+      "vela_usage": {
+        "input_tokens": 354,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        97
+      ],
+      "row_id": "gsm8k-302",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 2439.2,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 806.2,
+      "vela_usage": {
+        "input_tokens": 416,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        98
+      ],
+      "row_id": "olympiadbench-156",
+      "gold": "step_3",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3161.2,
+      "laya_calls": 1,
+      "vela_pred": "step_10",
+      "vela_correct": false,
+      "vela_ms": 2570.9,
+      "vela_usage": {
+        "input_tokens": 1038,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        99
+      ],
+      "row_id": "olympiadbench-96",
+      "gold": "step_22",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3008.2,
+      "laya_calls": 1,
+      "vela_pred": "step_24",
+      "vela_correct": false,
+      "vela_ms": 4554.5,
+      "vela_usage": {
+        "input_tokens": 1639,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        100
+      ],
+      "row_id": "omnimath-269",
+      "gold": "step_0",
+      "laya_pred": "step 0",
+      "laya_correct": true,
+      "laya_ms": 3310.8,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": false,
+      "vela_ms": 1014.3,
+      "vela_usage": {
+        "input_tokens": 494,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        101
+      ],
+      "row_id": "olympiadbench-913",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3293.5,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 1762.9,
+      "vela_usage": {
+        "input_tokens": 871,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        102
+      ],
+      "row_id": "math-75",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 2624.7,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 756.5,
+      "vela_usage": {
+        "input_tokens": 416,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        103
+      ],
+      "row_id": "math-258",
+      "gold": "step_0",
+      "laya_pred": "step 0",
+      "laya_correct": true,
+      "laya_ms": 3105.0,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 3977.1,
+      "vela_usage": {
+        "input_tokens": 1596,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        104
+      ],
+      "row_id": "omnimath-963",
+      "gold": "step_1",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 3286.0,
+      "laya_calls": 1,
+      "vela_pred": "step_8",
+      "vela_correct": false,
+      "vela_ms": 2345.7,
+      "vela_usage": {
+        "input_tokens": 1058,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        105
+      ],
+      "row_id": "omnimath-348",
+      "gold": "step_3",
+      "laya_pred": "step 6",
+      "laya_correct": false,
+      "laya_ms": 3296.6,
+      "laya_calls": 1,
+      "vela_pred": "step_1",
+      "vela_correct": false,
+      "vela_ms": 2056.2,
+      "vela_usage": {
+        "input_tokens": 938,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        106
+      ],
+      "row_id": "olympiadbench-668",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3154.1,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 2346.2,
+      "vela_usage": {
+        "input_tokens": 1102,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        107
+      ],
+      "row_id": "omnimath-173",
+      "gold": "step_3",
+      "laya_pred": "step 3",
+      "laya_correct": true,
+      "laya_ms": 3145.9,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": true,
+      "vela_ms": 1441.2,
+      "vela_usage": {
+        "input_tokens": 742,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        108
+      ],
+      "row_id": "math-761",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3158.4,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 2646.9,
+      "vela_usage": {
+        "input_tokens": 1216,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        109
+      ],
+      "row_id": "gsm8k-254",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 2688.7,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 805.2,
+      "vela_usage": {
+        "input_tokens": 427,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        110
+      ],
+      "row_id": "math-365",
+      "gold": "step_1",
+      "laya_pred": "step 1",
+      "laya_correct": true,
+      "laya_ms": 3561.7,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 1853.8,
+      "vela_usage": {
+        "input_tokens": 907,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        111
+      ],
+      "row_id": "omnimath-642",
+      "gold": "step_1",
+      "laya_pred": "step 1",
+      "laya_correct": true,
+      "laya_ms": 3179.8,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 1514.6,
+      "vela_usage": {
+        "input_tokens": 757,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        112
+      ],
+      "row_id": "olympiadbench-540",
+      "gold": "step_11",
+      "laya_pred": "step 7",
+      "laya_correct": false,
+      "laya_ms": 3060.1,
+      "laya_calls": 1,
+      "vela_pred": "step_17",
+      "vela_correct": false,
+      "vela_ms": 4636.4,
+      "vela_usage": {
+        "input_tokens": 1751,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        113
+      ],
+      "row_id": "math-530",
+      "gold": "step_1",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 3105.0,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 964.2,
+      "vela_usage": {
+        "input_tokens": 506,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        114
+      ],
+      "row_id": "olympiadbench-858",
+      "gold": "step_0",
+      "laya_pred": "step 1",
+      "laya_correct": false,
+      "laya_ms": 3250.0,
+      "laya_calls": 1,
+      "vela_pred": "step_2",
+      "vela_correct": false,
+      "vela_ms": 1943.8,
+      "vela_usage": {
+        "input_tokens": 891,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        115
+      ],
+      "row_id": "omnimath-458",
+      "gold": "step_6",
+      "laya_pred": "step 3",
+      "laya_correct": false,
+      "laya_ms": 2879.6,
+      "laya_calls": 1,
+      "vela_pred": "step_12",
+      "vela_correct": false,
+      "vela_ms": 3286.7,
+      "vela_usage": {
+        "input_tokens": 1405,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        116
+      ],
+      "row_id": "olympiadbench-760",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 2831.2,
+      "laya_calls": 1,
+      "vela_pred": "step_4",
+      "vela_correct": false,
+      "vela_ms": 1226.6,
+      "vela_usage": {
+        "input_tokens": 643,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        117
+      ],
+      "row_id": "math-272",
+      "gold": "step_4",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 2876.4,
+      "laya_calls": 1,
+      "vela_pred": "step_6",
+      "vela_correct": false,
+      "vela_ms": 1125.9,
+      "vela_usage": {
+        "input_tokens": 590,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        118
+      ],
+      "row_id": "gsm8k-236",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 2",
+      "laya_correct": false,
+      "laya_ms": 1958.3,
+      "laya_calls": 1,
+      "vela_pred": "step_3",
+      "vela_correct": false,
+      "vela_ms": 575.1,
+      "vela_usage": {
+        "input_tokens": 341,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_train",
+        119
+      ],
+      "row_id": "gsm8k-239",
+      "gold": "all_steps_correct",
+      "laya_pred": "step 5",
+      "laya_correct": false,
+      "laya_ms": 1945.2,
+      "laya_calls": 1,
+      "vela_pred": "step_5",
+      "vela_correct": false,
+      "vela_ms": 584.9,
+      "vela_usage": {
+        "input_tokens": 329,
+        "output_tokens": 0
+      }
+    }
+  ]
+}

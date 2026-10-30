@@ -1,0 +1,1817 @@
+{
+  "created_utc": "2026-10-30T14:49:16.570060+00:00",
+  "model": "vela-2.0-0.3B",
+  "task": "processbench",
+  "device": "cpu",
+  "threads": 2,
+  "pilot_cache": "results/processbench/pilot_train_cache.jsonl",
+  "n_rows": 120,
+  "load_seconds": 1.7,
+  "peak_rss_mb": 1755.0,
+  "windows_sleep_prevention_active": true,
+  "project_git_sha": "632c02c1b94b31082e883a7d337ac395d22aba1e",
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "results": [
+    {
+      "split": "pilot_train",
+      "position": 0,
+      "row_id": "omnimath-468",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_5",
+      "correct": false,
+      "latency_ms": 3427.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 728,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 1,
+      "row_id": "olympiadbench-349",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 2165.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 1028,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 2,
+      "row_id": "olympiadbench-459",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 3677.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 1485,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 3,
+      "row_id": "omnimath-682",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 1429.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 736,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 4,
+      "row_id": "omnimath-584",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1183.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 616,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 5,
+      "row_id": "olympiadbench-316",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 2047.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 959,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 6,
+      "row_id": "math-655",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 781.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 417,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 7,
+      "row_id": "omnimath-474",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 2352.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 1112,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 8,
+      "row_id": "gsm8k-365",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 685.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 388,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 9,
+      "row_id": "olympiadbench-954",
+      "rep": "choice",
+      "pred": "step_15",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 3457.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 1448,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 10,
+      "row_id": "math-675",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 558.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 305,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 11,
+      "row_id": "math-241",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_3",
+      "correct": true,
+      "latency_ms": 829.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 439,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 12,
+      "row_id": "olympiadbench-277",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "step_4",
+      "correct": false,
+      "latency_ms": 1874.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 904,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 13,
+      "row_id": "omnimath-258",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_2",
+      "correct": true,
+      "latency_ms": 1268.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 646,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 14,
+      "row_id": "olympiadbench-496",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 2614.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 1157,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 15,
+      "row_id": "olympiadbench-969",
+      "rep": "choice",
+      "pred": "step_10",
+      "gold": "step_13",
+      "correct": false,
+      "latency_ms": 3739.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 1495,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 16,
+      "row_id": "omnimath-267",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1898.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 781,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 17,
+      "row_id": "olympiadbench-656",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1239.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 18,
+      "row_id": "math-889",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1036.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 535,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 19,
+      "row_id": "olympiadbench-20",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 928.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 483,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 20,
+      "row_id": "omnimath-47",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 3004.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 1292,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 21,
+      "row_id": "olympiadbench-806",
+      "rep": "choice",
+      "pred": "step_7",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 1950.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 905,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 22,
+      "row_id": "math-153",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 421.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 221,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 23,
+      "row_id": "olympiadbench-964",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1295.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 660,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 24,
+      "row_id": "olympiadbench-624",
+      "rep": "choice",
+      "pred": "step_7",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 1193.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 630,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 25,
+      "row_id": "gsm8k-347",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1198.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 586,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 26,
+      "row_id": "math-660",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 827.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 27,
+      "row_id": "omnimath-380",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1858.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 872,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 28,
+      "row_id": "math-981",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 728.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 385,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 29,
+      "row_id": "olympiadbench-873",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2165.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 958,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 30,
+      "row_id": "omnimath-39",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 2581.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 1117,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 31,
+      "row_id": "omnimath-815",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1282.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 678,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 32,
+      "row_id": "omnimath-730",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1216.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 603,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 33,
+      "row_id": "gsm8k-87",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 829.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 446,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 34,
+      "row_id": "gsm8k-183",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 550.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 319,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 35,
+      "row_id": "omnimath-8",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 1478.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 695,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 36,
+      "row_id": "olympiadbench-418",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 3445.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 1399,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 37,
+      "row_id": "math-88",
+      "rep": "choice",
+      "pred": "step_9",
+      "gold": "step_5",
+      "correct": false,
+      "latency_ms": 1240.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 631,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 38,
+      "row_id": "math-0",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 328.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 194,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 39,
+      "row_id": "math-876",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 679.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 360,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 40,
+      "row_id": "olympiadbench-675",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2685.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 1145,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 41,
+      "row_id": "olympiadbench-688",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 3065.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 1270,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 42,
+      "row_id": "olympiadbench-38",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 855.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 467,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 43,
+      "row_id": "gsm8k-71",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 1059.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 559,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 44,
+      "row_id": "math-550",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_3",
+      "correct": true,
+      "latency_ms": 2234.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 972,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 45,
+      "row_id": "olympiadbench-486",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 1845.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 865,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 46,
+      "row_id": "math-605",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 675.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 342,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 47,
+      "row_id": "omnimath-214",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1701.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 811,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 48,
+      "row_id": "omnimath-767",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_5",
+      "correct": false,
+      "latency_ms": 2145.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 965,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 49,
+      "row_id": "gsm8k-337",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 432.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 50,
+      "row_id": "omnimath-785",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 3164.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 1248,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 51,
+      "row_id": "omnimath-135",
+      "rep": "choice",
+      "pred": "step_17",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 3972.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1540,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 52,
+      "row_id": "omnimath-649",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2820.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 1195,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 53,
+      "row_id": "omnimath-776",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1639.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 771,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 54,
+      "row_id": "omnimath-563",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1569.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 742,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 55,
+      "row_id": "omnimath-242",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "step_1",
+      "correct": true,
+      "latency_ms": 1241.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 599,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 56,
+      "row_id": "omnimath-718",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 951.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 503,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 57,
+      "row_id": "omnimath-23",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "step_1",
+      "correct": true,
+      "latency_ms": 1977.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 941,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 58,
+      "row_id": "olympiadbench-825",
+      "rep": "choice",
+      "pred": "step_8",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1409.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 654,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 59,
+      "row_id": "math-884",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1602.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 786,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 60,
+      "row_id": "gsm8k-115",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 671.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 348,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 61,
+      "row_id": "gsm8k-217",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 636.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 335,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 62,
+      "row_id": "math-953",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 657.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 63,
+      "row_id": "olympiadbench-185",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_8",
+      "correct": false,
+      "latency_ms": 3824.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 1569,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 64,
+      "row_id": "omnimath-83",
+      "rep": "choice",
+      "pred": "step_7",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 1193.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 632,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 65,
+      "row_id": "olympiadbench-962",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 1548.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 780,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 66,
+      "row_id": "olympiadbench-747",
+      "rep": "choice",
+      "pred": "step_0",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1355.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 718,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 67,
+      "row_id": "math-109",
+      "rep": "choice",
+      "pred": "step_7",
+      "gold": "step_5",
+      "correct": false,
+      "latency_ms": 695.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 371,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 68,
+      "row_id": "olympiadbench-720",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 3386.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 1403,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 69,
+      "row_id": "omnimath-247",
+      "rep": "choice",
+      "pred": "step_10",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 6387.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 2189,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 70,
+      "row_id": "math-289",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 1170.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 561,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 71,
+      "row_id": "olympiadbench-513",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 990.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 501,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 72,
+      "row_id": "omnimath-357",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "step_4",
+      "correct": false,
+      "latency_ms": 880.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 459,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 73,
+      "row_id": "olympiadbench-796",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2125.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 1003,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 74,
+      "row_id": "math-510",
+      "rep": "choice",
+      "pred": "step_11",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2306.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1047,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 75,
+      "row_id": "olympiadbench-870",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 714.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 387,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 76,
+      "row_id": "olympiadbench-941",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_2",
+      "correct": true,
+      "latency_ms": 2288.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 1016,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 77,
+      "row_id": "olympiadbench-946",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1206.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 614,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 78,
+      "row_id": "olympiadbench-358",
+      "rep": "choice",
+      "pred": "step_8",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1216.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 610,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 79,
+      "row_id": "olympiadbench-982",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1210.0,
+      "error": null,
+      "usage": {
+        "input_tokens": 650,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 80,
+      "row_id": "omnimath-896",
+      "rep": "choice",
+      "pred": "step_17",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2591.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1142,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 81,
+      "row_id": "omnimath-885",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2090.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 915,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 82,
+      "row_id": "olympiadbench-823",
+      "rep": "choice",
+      "pred": "step_10",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2421.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 1119,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 83,
+      "row_id": "math-217",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 624.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 352,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 84,
+      "row_id": "math-177",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "step_8",
+      "correct": false,
+      "latency_ms": 1520.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 802,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 85,
+      "row_id": "olympiadbench-463",
+      "rep": "choice",
+      "pred": "step_11",
+      "gold": "step_6",
+      "correct": false,
+      "latency_ms": 4292.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 1614,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 86,
+      "row_id": "omnimath-827",
+      "rep": "choice",
+      "pred": "step_8",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1199.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 601,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 87,
+      "row_id": "olympiadbench-694",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1756.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 902,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 88,
+      "row_id": "omnimath-351",
+      "rep": "choice",
+      "pred": "step_12",
+      "gold": "step_6",
+      "correct": false,
+      "latency_ms": 2656.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 1224,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 89,
+      "row_id": "omnimath-104",
+      "rep": "choice",
+      "pred": "step_8",
+      "gold": "step_4",
+      "correct": false,
+      "latency_ms": 1664.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 848,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 90,
+      "row_id": "math-859",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1069.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 568,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 91,
+      "row_id": "math-883",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 3149.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1287,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 92,
+      "row_id": "omnimath-410",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_5",
+      "correct": false,
+      "latency_ms": 1532.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 736,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 93,
+      "row_id": "omnimath-880",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1280.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 614,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 94,
+      "row_id": "omnimath-471",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_2",
+      "correct": false,
+      "latency_ms": 1228.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 581,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 95,
+      "row_id": "omnimath-48",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_4",
+      "correct": false,
+      "latency_ms": 3796.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1374,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 96,
+      "row_id": "gsm8k-2",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 683.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 354,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 97,
+      "row_id": "gsm8k-302",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 806.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 416,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 98,
+      "row_id": "olympiadbench-156",
+      "rep": "choice",
+      "pred": "step_10",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 2570.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1038,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 99,
+      "row_id": "olympiadbench-96",
+      "rep": "choice",
+      "pred": "step_24",
+      "gold": "step_22",
+      "correct": false,
+      "latency_ms": 4554.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 1639,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 100,
+      "row_id": "omnimath-269",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 1014.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 494,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 101,
+      "row_id": "olympiadbench-913",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1762.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 871,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 102,
+      "row_id": "math-75",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 756.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 416,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 103,
+      "row_id": "math-258",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 3977.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 1596,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 104,
+      "row_id": "omnimath-963",
+      "rep": "choice",
+      "pred": "step_8",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 2345.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 1058,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 105,
+      "row_id": "omnimath-348",
+      "rep": "choice",
+      "pred": "step_1",
+      "gold": "step_3",
+      "correct": false,
+      "latency_ms": 2056.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 938,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 106,
+      "row_id": "olympiadbench-668",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2346.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 1102,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 107,
+      "row_id": "omnimath-173",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_3",
+      "correct": true,
+      "latency_ms": 1441.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 742,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 108,
+      "row_id": "math-761",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 2646.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 1216,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 109,
+      "row_id": "gsm8k-254",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 805.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 427,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 110,
+      "row_id": "math-365",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1853.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 907,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 111,
+      "row_id": "omnimath-642",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 1514.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 757,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 112,
+      "row_id": "olympiadbench-540",
+      "rep": "choice",
+      "pred": "step_17",
+      "gold": "step_11",
+      "correct": false,
+      "latency_ms": 4636.4,
+      "error": null,
+      "usage": {
+        "input_tokens": 1751,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 113,
+      "row_id": "math-530",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_1",
+      "correct": false,
+      "latency_ms": 964.2,
+      "error": null,
+      "usage": {
+        "input_tokens": 506,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 114,
+      "row_id": "olympiadbench-858",
+      "rep": "choice",
+      "pred": "step_2",
+      "gold": "step_0",
+      "correct": false,
+      "latency_ms": 1943.8,
+      "error": null,
+      "usage": {
+        "input_tokens": 891,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 115,
+      "row_id": "omnimath-458",
+      "rep": "choice",
+      "pred": "step_12",
+      "gold": "step_6",
+      "correct": false,
+      "latency_ms": 3286.7,
+      "error": null,
+      "usage": {
+        "input_tokens": 1405,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 116,
+      "row_id": "olympiadbench-760",
+      "rep": "choice",
+      "pred": "step_4",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 1226.6,
+      "error": null,
+      "usage": {
+        "input_tokens": 643,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 117,
+      "row_id": "math-272",
+      "rep": "choice",
+      "pred": "step_6",
+      "gold": "step_4",
+      "correct": false,
+      "latency_ms": 1125.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 590,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 118,
+      "row_id": "gsm8k-236",
+      "rep": "choice",
+      "pred": "step_3",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 575.1,
+      "error": null,
+      "usage": {
+        "input_tokens": 341,
+        "output_tokens": 0
+      }
+    },
+    {
+      "split": "pilot_train",
+      "position": 119,
+      "row_id": "gsm8k-239",
+      "rep": "choice",
+      "pred": "step_5",
+      "gold": "all_steps_correct",
+      "correct": false,
+      "latency_ms": 584.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 329,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "status": "passed"
+}
