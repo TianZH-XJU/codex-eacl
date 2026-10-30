@@ -1,0 +1,110 @@
+{
+  "created_utc": "2026-10-30T11:12:18.033533+00:00",
+  "gate": "Gate 1 strategy complementarity (pilot)",
+  "pilot_valid": {
+    "n": 60,
+    "accuracy": {
+      "single": 0.5167,
+      "switch": 0.5333,
+      "wide": 0.5333
+    },
+    "correct_counts": {
+      "single": 31,
+      "switch": 32,
+      "wide": 32
+    },
+    "pairwise_overlap": {
+      "single_vs_switch": {
+        "both_wrong": 13,
+        "only_first_wrong": 16,
+        "only_second_wrong": 15,
+        "both_correct": 16
+      },
+      "single_vs_wide": {
+        "both_wrong": 13,
+        "only_first_wrong": 16,
+        "only_second_wrong": 15,
+        "both_correct": 16
+      },
+      "switch_vs_wide": {
+        "both_wrong": 27,
+        "only_first_wrong": 1,
+        "only_second_wrong": 1,
+        "both_correct": 31
+      }
+    },
+    "only_fix": {
+      "switch": 1,
+      "wide": 1
+    },
+    "new_errors": {
+      "switch": 15,
+      "wide": 15
+    },
+    "all_correct": 16,
+    "all_wrong": 12,
+    "oracle_accuracy": 0.8,
+    "oracle_gain_over_best_fixed": 0.2667,
+    "cumulative_latency_ms": {
+      "single": {
+        "mean_ms": 1697.5,
+        "p50_ms": 1995.2,
+        "p95_ms": 2416.0,
+        "max_ms": 2444.4
+      },
+      "switch": {
+        "mean_ms": 3368.1,
+        "p50_ms": 3901.1,
+        "p95_ms": 4803.9,
+        "max_ms": 4945.8
+      },
+      "wide": {
+        "mean_ms": 4083.3,
+        "p50_ms": 3888.0,
+        "p95_ms": 7457.8,
+        "max_ms": 7701.6
+      }
+    },
+    "single_prediction_top": [
+      [
+        "vulnerable",
+        38
+      ],
+      [
+        "secure",
+        22
+      ]
+    ]
+  },
+  "predictability_pilot_valid_3fold": {
+    "switch": {
+      "oof_accuracy": [
+        0.3,
+        0.35,
+        0.2
+      ],
+      "majority_baseline": [
+        0.4,
+        0.55,
+        0.5
+      ],
+      "mean_oof": 0.2833,
+      "mean_majority": 0.4833
+    },
+    "wide": {
+      "oof_accuracy": [
+        0.3,
+        0.45,
+        0.4
+      ],
+      "majority_baseline": [
+        0.35,
+        0.6,
+        0.5
+      ],
+      "mean_oof": 0.3833,
+      "mean_majority": 0.4833
+    }
+  },
+  "note": "predictability uses initial SINGLE features only; DeltaCorrect in {-1,0,+1}"
+}

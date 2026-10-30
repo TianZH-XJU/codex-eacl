@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-30T11:09:58.657111+00:00",
+  "dataset": "code_defect",
+  "split": "valid",
+  "seed": 17,
+  "n": 60,
+  "strategies": [
+    "single",
+    "switch",
+    "wide"
+  ],
+  "model": "english",
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "01a01c4605e6b4c4ef3dedc7be709f4dd8694bce",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2190.7,
+  "status": "passed"
+}

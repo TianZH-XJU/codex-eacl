@@ -19,7 +19,16 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 
-STRATEGIES = ["single", "wide", "tournament"]
+STRATEGIES = ["single", "wide", "tournament", "switch"]
+
+
+def present_strategies(by):
+    seen = []
+    for items in by.values():
+        for r in items:
+            if r["strategy"] not in seen:
+                seen.append(r["strategy"])
+    return seen
 FEAT_KEYS = ["initial_answer_confidence", "initial_entropy_confidence", "initial_margin",
              "initial_entropy", "initial_top1_prob", "initial_text_len", "initial_n_options"]
 
@@ -59,12 +68,14 @@ def predictability(by, seed=17):
     rng.shuffle(idxs)
     folds = [idxs[i::3] for i in range(3)]
     out = {}
-    for action in ("wide", "tournament"):
+    for action in [s for s in present_strategies(by) if s != "single"]:
         accs, majs = [], []
         for k in range(3):
             te, tr = set(folds[k]), [i for j, f in enumerate(folds) if j != k for i in f]
             Xtr = np.array([features(single_row(by, i)) for i in tr], dtype=float)
             ytr = np.array([delta_correct(by, i, action) + 1 for i in tr])  # shift to 0,1,2
+            Xte = np.array([features(single_row(by, i)) for i in te], dtype=float)
+            yte = np.array([delta_correct(by, i, action) + 1 for i in te])
             sc = StandardScaler().fit(Xtr)
             if len(set(ytr.tolist())) < 2:
                 # No variation to learn in this fold-train: predict majority.
@@ -89,11 +100,13 @@ def predictability(by, seed=17):
 
 def split_report(by, strat_costs=None):
     idxs = list(by.keys())
-    correct = {s: sum(correctness(by, i, s) for i in idxs) for s in STRATEGIES}
-    acc = {s: round(correct[s] / len(idxs), 4) for s in STRATEGIES}
+    strat = present_strategies(by)
+    upgrades = [s for s in strat if s != "single"]
+    correct = {s: sum(correctness(by, i, s) for i in idxs) for s in strat}
+    acc = {s: round(correct[s] / len(idxs), 4) for s in strat}
     overlap = {}
-    for x in STRATEGIES:
-        for y in STRATEGIES:
+    for x in strat:
+        for y in strat:
             if x < y:
                 overlap[f"{x}_vs_{y}"] = {
                     "both_wrong": sum((not correctness(by, i, x)) and (not correctness(by, i, y)) for i in idxs),
@@ -102,15 +115,15 @@ def split_report(by, strat_costs=None):
                     "both_correct": sum(correctness(by, i, x) and correctness(by, i, y) for i in idxs),
                 }
     only_fix, new_err = {}, {}
-    for a in ("wide", "tournament"):
+    for a in upgrades:
         only_fix[a] = sum((not correctness(by, i, "single")) and correctness(by, i, a)
-                          and not any(correctness(by, i, b) for b in ("wide", "tournament") if b != a) for i in idxs)
+                          and not any(correctness(by, i, b) for b in upgrades if b != a) for i in idxs)
         new_err[a] = sum(correctness(by, i, "single") and (not correctness(by, i, a)) for i in idxs)
-    all_correct = sum(all(correctness(by, i, s) for s in STRATEGIES) for i in idxs)
-    all_wrong = sum(not any(correctness(by, i, s) for s in STRATEGIES) for i in idxs)
-    oracle = sum(any(correctness(by, i, s) for s in STRATEGIES) for i in idxs)
+    all_correct = sum(all(correctness(by, i, s) for s in strat) for i in idxs)
+    all_wrong = sum(not any(correctness(by, i, s) for s in strat) for i in idxs)
+    oracle = sum(any(correctness(by, i, s) for s in strat) for i in idxs)
     lat = {}
-    for s in STRATEGIES:
+    for s in strat:
         vals = sorted(next(x for x in by[i] if x["strategy"] == s)["cumulative_latency_ms"] for i in idxs)
         lat[s] = {"mean_ms": round(sum(vals) / len(vals), 1), "p50_ms": vals[len(vals) // 2],
                   "p95_ms": vals[min(len(vals) - 1, int(len(vals) * 0.95))], "max_ms": vals[-1]}
@@ -130,26 +143,32 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--train-cache", default="results/processbench/pilot_train_cache.jsonl")
     ap.add_argument("--dev-cache", default="results/processbench/pilot_dev_cache.jsonl")
+    ap.add_argument("--splits", nargs="*", default=None,
+                    help="split names to report (default: pilot_train pilot_dev); predictability runs on the first")
     ap.add_argument("--out", default="results/analysis/processbench_gate1.json")
     args = ap.parse_args()
 
     by = group(load_cache(args.train_cache) + load_cache(args.dev_cache))
-    train_by = {k: v for k, v in by.items() if k[0] == "pilot_train"}
-    dev_by = {k: v for k, v in by.items() if k[0] == "pilot_dev"}
+    names = args.splits or ["pilot_train", "pilot_dev"]
+    parts = {name: {k: v for k, v in by.items() if k[0] == name} for name in names}
+    parts = {k: v for k, v in parts.items() if v}
+    if not parts:
+        raise SystemExit(f"no rows for splits {names}")
     out = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "gate": "Gate 1 strategy complementarity (pilot)",
-        "train": split_report(train_by),
-        "dev": split_report(dev_by),
-        "predictability_train_3fold": predictability(train_by),
-        "note": "predictability uses initial SINGLE features only; DeltaCorrect in {-1,0,+1}",
     }
+    for name, sub in parts.items():
+        out[name] = split_report(sub)
+    first = next(iter(parts))
+    out[f"predictability_{first}_3fold"] = predictability(parts[first])
+    out["note"] = "predictability uses initial SINGLE features only; DeltaCorrect in {-1,0,+1}"
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: {kk: out[k][kk] for kk in ("n", "accuracy", "oracle_accuracy",
                    "oracle_gain_over_best_fixed", "only_fix", "new_errors",
-                   "all_correct", "all_wrong")} for k in ("train", "dev")}, indent=2))
-    print(json.dumps(out["predictability_train_3fold"], indent=2))
+                   "all_correct", "all_wrong")} for k in parts}, indent=2))
+    print(json.dumps(out[f"predictability_{first}_3fold"], indent=2))
 
 
 if __name__ == "__main__":
