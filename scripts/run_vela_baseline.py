@@ -91,7 +91,8 @@ def main():
                 text = recover_text(args.task, srow)
             reps = []
             if args.task == "processbench":
-                cands = gold_candidates(args.task, srow)
+                n = srow.get("n_candidates", 0)
+                cands = [f"step {k}" for k in range(max(0, n - 1))] + ["ALL STEPS CORRECT"]
                 reps.append(("choice", {"type": "choice",
                     "instructions": "Which step contains the earliest error? Choose the sentinel if all steps are correct.",
                     "criteria": {c: None for c in cands}}, "choice"))
