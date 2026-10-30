@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-10-30T14:21:22.702185+00:00",
+  "model": "vela",
+  "task": "findver_choice",
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "vela_snapshot": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\models\\vela",
+  "load_seconds": 9.1,
+  "rss_before_load_mb": 197.6,
+  "rss_after_load_mb": 1595.7,
+  "peak_rss_mb": 1690.9,
+  "windows_sleep_prevention_active": true,
+  "project_git_sha": "44fb3d1822c3742e8728cce617275c98e538d9b1",
+  "results": [
+    {
+      "case": "findver_choice",
+      "latency_ms": 3222.0,
+      "error": null,
+      "shape_ok": true,
+      "usage": {
+        "input_tokens": 387,
+        "output_tokens": 0
+      },
+      "answer_keys": {
+        "q": [
+          "choice",
+          "confidence",
+          "probabilities",
+          "type"
+        ]
+      }
+    }
+  ],
+  "status": "passed"
+}
