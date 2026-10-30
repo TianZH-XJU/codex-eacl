@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-10-30T14:13:35.065261+00:00",
+  "model": "vela",
+  "task": "processbench_choice",
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "vela_snapshot": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\models\\vela",
+  "load_seconds": 8.0,
+  "rss_before_load_mb": 197.7,
+  "rss_after_load_mb": 1597.9,
+  "peak_rss_mb": 1688.3,
+  "windows_sleep_prevention_active": true,
+  "project_git_sha": "5532d6e6656b9e0f05615a5907cb708599eceaae",
+  "results": [
+    {
+      "case": "pb_choice",
+      "latency_ms": 2306.7,
+      "error": null,
+      "shape_ok": true,
+      "usage": {
+        "input_tokens": 268,
+        "output_tokens": 0
+      },
+      "answer_keys": {
+        "q": [
+          "choice",
+          "confidence",
+          "probabilities",
+          "type"
+        ]
+      }
+    }
+  ],
+  "status": "passed"
+}
