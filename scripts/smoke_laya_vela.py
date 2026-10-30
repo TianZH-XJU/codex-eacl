@@ -100,7 +100,7 @@ def main():
             return [("pb_choice", state, {"q": q}, row)]
         if args.task == "code_noul":
             import json as js
-            js_all = {r.get("idx", -1): r for r in js.loads((ROOT / "data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))}
+            js_all = {k: r for k, r in enumerate(js.loads((ROOT / "data/raw/codexglue_defect/function.json").read_text(encoding="utf-8")))}
             valid = [int(x) for x in (ROOT / "data/raw/codexglue_defect/valid.txt").read_text(encoding="utf-8").split()]
             r = js_all[valid[0]]
             return [("code_noul", {"message": r["func"]},
