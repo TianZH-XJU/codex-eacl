@@ -1,0 +1,1161 @@
+{
+  "laya_cache": "results/findver/pilot_dev_cache.jsonl",
+  "vela_baseline": "results/vela_baseline_findver_dev.json",
+  "laya_strategy": "switch",
+  "vela_rep": "switch",
+  "n_paired": 60,
+  "missing_vela_rows": 0,
+  "laya_accuracy": 0.6167,
+  "vela_accuracy": 0.5333,
+  "accuracy_diff_vela_minus_laya": -0.0833,
+  "both_correct": 21,
+  "both_wrong": 12,
+  "laya_only": 16,
+  "vela_only": 11,
+  "mean_latency_ms": {
+    "laya": 6005.7,
+    "vela": 2792.9
+  },
+  "rows": [
+    {
+      "key": [
+        "pilot_dev",
+        0
+      ],
+      "row_id": "numeric-val-34",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 4775.0,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1359.8,
+      "vela_usage": {
+        "input_tokens": 694,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        1
+      ],
+      "row_id": "ie-val-186",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 4750.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1514.7,
+      "vela_usage": {
+        "input_tokens": 649,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        2
+      ],
+      "row_id": "numeric-val-60",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 2533.4,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 600.4,
+      "vela_usage": {
+        "input_tokens": 307,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        3
+      ],
+      "row_id": "numeric-val-77",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 4886.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 2030.9,
+      "vela_usage": {
+        "input_tokens": 968,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        4
+      ],
+      "row_id": "numeric-val-181",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 4773.9,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1768.3,
+      "vela_usage": {
+        "input_tokens": 810,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        5
+      ],
+      "row_id": "numeric-val-180",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6666.5,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 8278.8,
+      "vela_usage": {
+        "input_tokens": 2560,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        6
+      ],
+      "row_id": "numeric-val-4",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 7136.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1512.1,
+      "vela_usage": {
+        "input_tokens": 754,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        7
+      ],
+      "row_id": "knowledge-val-80",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 7739.4,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 2617.6,
+      "vela_usage": {
+        "input_tokens": 1073,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        8
+      ],
+      "row_id": "numeric-val-125",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 2778.1,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 333.4,
+      "vela_usage": {
+        "input_tokens": 209,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        9
+      ],
+      "row_id": "numeric-val-164",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 7084.4,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1182.1,
+      "vela_usage": {
+        "input_tokens": 625,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        10
+      ],
+      "row_id": "knowledge-val-117",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 7369.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 7242.9,
+      "vela_usage": {
+        "input_tokens": 2377,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        11
+      ],
+      "row_id": "knowledge-val-26",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 7060.0,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1066.0,
+      "vela_usage": {
+        "input_tokens": 555,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        12
+      ],
+      "row_id": "knowledge-val-73",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 7140.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 2174.1,
+      "vela_usage": {
+        "input_tokens": 948,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        13
+      ],
+      "row_id": "ie-val-201",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6956.7,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1498.6,
+      "vela_usage": {
+        "input_tokens": 777,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        14
+      ],
+      "row_id": "numeric-val-21",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 4896.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1084.6,
+      "vela_usage": {
+        "input_tokens": 522,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        15
+      ],
+      "row_id": "ie-val-180",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 6756.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 2412.9,
+      "vela_usage": {
+        "input_tokens": 1117,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        16
+      ],
+      "row_id": "numeric-val-222",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6803.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 6774.6,
+      "vela_usage": {
+        "input_tokens": 2260,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        17
+      ],
+      "row_id": "ie-val-81",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6730.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1505.7,
+      "vela_usage": {
+        "input_tokens": 807,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        18
+      ],
+      "row_id": "knowledge-val-161",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6566.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 7308.7,
+      "vela_usage": {
+        "input_tokens": 2281,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        19
+      ],
+      "row_id": "numeric-val-51",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 3828.1,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 595.4,
+      "vela_usage": {
+        "input_tokens": 345,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        20
+      ],
+      "row_id": "numeric-val-152",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6755.1,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1210.3,
+      "vela_usage": {
+        "input_tokens": 605,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        21
+      ],
+      "row_id": "numeric-val-118",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6633.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1642.1,
+      "vela_usage": {
+        "input_tokens": 729,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        22
+      ],
+      "row_id": "ie-val-119",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6050.7,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1003.2,
+      "vela_usage": {
+        "input_tokens": 498,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        23
+      ],
+      "row_id": "numeric-val-241",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 5387.0,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1118.5,
+      "vela_usage": {
+        "input_tokens": 551,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        24
+      ],
+      "row_id": "knowledge-val-118",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6789.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 7831.7,
+      "vela_usage": {
+        "input_tokens": 2435,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        25
+      ],
+      "row_id": "knowledge-val-69",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 6570.7,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 4547.3,
+      "vela_usage": {
+        "input_tokens": 1651,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        26
+      ],
+      "row_id": "numeric-val-194",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 3139.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 504.8,
+      "vela_usage": {
+        "input_tokens": 239,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        27
+      ],
+      "row_id": "numeric-val-237",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 7010.1,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 10262.8,
+      "vela_usage": {
+        "input_tokens": 2889,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        28
+      ],
+      "row_id": "knowledge-val-54",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6846.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1157.4,
+      "vela_usage": {
+        "input_tokens": 564,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        29
+      ],
+      "row_id": "knowledge-val-123",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6654.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1534.7,
+      "vela_usage": {
+        "input_tokens": 681,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        30
+      ],
+      "row_id": "ie-val-219",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6784.5,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 2350.7,
+      "vela_usage": {
+        "input_tokens": 1032,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        31
+      ],
+      "row_id": "knowledge-val-107",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6802.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 7603.8,
+      "vela_usage": {
+        "input_tokens": 2375,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        32
+      ],
+      "row_id": "ie-val-152",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6678.4,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1364.9,
+      "vela_usage": {
+        "input_tokens": 648,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        33
+      ],
+      "row_id": "numeric-val-233",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 6818.0,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 4407.5,
+      "vela_usage": {
+        "input_tokens": 1647,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        34
+      ],
+      "row_id": "ie-val-143",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6867.0,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1193.7,
+      "vela_usage": {
+        "input_tokens": 568,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        35
+      ],
+      "row_id": "numeric-val-187",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 4069.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 543.4,
+      "vela_usage": {
+        "input_tokens": 304,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        36
+      ],
+      "row_id": "ie-val-95",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6878.7,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1758.5,
+      "vela_usage": {
+        "input_tokens": 744,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        37
+      ],
+      "row_id": "ie-val-148",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6701.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1437.7,
+      "vela_usage": {
+        "input_tokens": 725,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        38
+      ],
+      "row_id": "ie-val-59",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 7020.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 2019.6,
+      "vela_usage": {
+        "input_tokens": 881,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        39
+      ],
+      "row_id": "ie-val-54",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 5088.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 733.9,
+      "vela_usage": {
+        "input_tokens": 395,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        40
+      ],
+      "row_id": "ie-val-80",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 4390.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 659.8,
+      "vela_usage": {
+        "input_tokens": 328,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        41
+      ],
+      "row_id": "ie-val-213",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 7338.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1366.6,
+      "vela_usage": {
+        "input_tokens": 634,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        42
+      ],
+      "row_id": "knowledge-val-31",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 7134.5,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 6362.4,
+      "vela_usage": {
+        "input_tokens": 2013,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        43
+      ],
+      "row_id": "numeric-val-9",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 7263.7,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1657.9,
+      "vela_usage": {
+        "input_tokens": 790,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        44
+      ],
+      "row_id": "ie-val-35",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6570.0,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1121.5,
+      "vela_usage": {
+        "input_tokens": 535,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        45
+      ],
+      "row_id": "ie-val-51",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6449.5,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1708.5,
+      "vela_usage": {
+        "input_tokens": 782,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        46
+      ],
+      "row_id": "numeric-val-30",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6548.4,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 17863.5,
+      "vela_usage": {
+        "input_tokens": 4043,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        47
+      ],
+      "row_id": "knowledge-val-140",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6569.7,
+      "laya_calls": 2,
+      "vela_pred": "not_supported",
+      "vela_correct": true,
+      "vela_ms": 5101.5,
+      "vela_usage": {
+        "input_tokens": 1790,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        48
+      ],
+      "row_id": "numeric-val-175",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 3408.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 651.6,
+      "vela_usage": {
+        "input_tokens": 309,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        49
+      ],
+      "row_id": "numeric-val-37",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 5885.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1576.6,
+      "vela_usage": {
+        "input_tokens": 756,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        50
+      ],
+      "row_id": "numeric-val-182",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 4601.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1158.7,
+      "vela_usage": {
+        "input_tokens": 535,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        51
+      ],
+      "row_id": "ie-val-118",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 5952.8,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 2772.4,
+      "vela_usage": {
+        "input_tokens": 1233,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        52
+      ],
+      "row_id": "knowledge-val-189",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 5921.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 2309.2,
+      "vela_usage": {
+        "input_tokens": 1019,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        53
+      ],
+      "row_id": "ie-val-176",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 5842.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1403.1,
+      "vela_usage": {
+        "input_tokens": 675,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        54
+      ],
+      "row_id": "knowledge-val-22",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 4890.4,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 878.9,
+      "vela_usage": {
+        "input_tokens": 421,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        55
+      ],
+      "row_id": "knowledge-val-51",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 6360.6,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 1387.7,
+      "vela_usage": {
+        "input_tokens": 667,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        56
+      ],
+      "row_id": "ie-val-116",
+      "gold": "not_supported",
+      "laya_pred": "supported",
+      "laya_correct": false,
+      "laya_ms": 6085.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 2531.1,
+      "vela_usage": {
+        "input_tokens": 1061,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        57
+      ],
+      "row_id": "knowledge-val-199",
+      "gold": "not_supported",
+      "laya_pred": "not_supported",
+      "laya_correct": true,
+      "laya_ms": 6778.3,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": false,
+      "vela_ms": 1789.5,
+      "vela_usage": {
+        "input_tokens": 787,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        58
+      ],
+      "row_id": "numeric-val-208",
+      "gold": "supported",
+      "laya_pred": "not_supported",
+      "laya_correct": false,
+      "laya_ms": 3278.1,
+      "laya_calls": 2,
+      "vela_pred": "not_supported",
+      "vela_correct": false,
+      "vela_ms": 517.2,
+      "vela_usage": {
+        "input_tokens": 274,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_dev",
+        59
+      ],
+      "row_id": "ie-val-169",
+      "gold": "supported",
+      "laya_pred": "supported",
+      "laya_correct": true,
+      "laya_ms": 6295.2,
+      "laya_calls": 2,
+      "vela_pred": "supported",
+      "vela_correct": true,
+      "vela_ms": 7669.7,
+      "vela_usage": {
+        "input_tokens": 2381,
+        "output_tokens": 0
+      }
+    }
+  ]
+}
