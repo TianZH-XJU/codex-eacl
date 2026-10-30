@@ -13,6 +13,8 @@ processbench_math_choice:
   split_rule: group by problem text; stratified by (source file, error-vs-all-correct); seed 17; fractions train/dev/test 0.6/0.2/0.2
   split_manifest: results/processbench/split_manifest.json
   laya_actions: [single, wide, tournament]
+  vela_paired_baseline: recorded 2026-10-30 (Laya 0.125 vs Vela 0.058 on 120 train rows; both near chance; Vela faster)
+  stage4_sensitivity: running 2026-10-30 (100 train rows x 6 pre-registered configs)
   action_adapter: single-first cascade (same cost definition as BANKING77)
   budgets: [1.00x, 1.25x, 1.50x, 2.00x]
   status: gate1_failed_neat_paused
