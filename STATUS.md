@@ -1,9 +1,10 @@
 # Execution Status
 
-**Last updated:** 2026-10-27
+**Last updated:** 2026-10-30
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
 **Current phase:** full NEAT OOF grid done — NEAT fails the gate (below matched LR/threshold); fresh confirmation NOT launched  
-**Research result status:** no reliable learned-controller gain is established yet; NEAT OOF has been run on the user's local cache and failed the pre-registered gate.
+**Research result status:** no reliable learned-controller gain is established yet (BANKING77 NEAT OOF failed its gate); new domains have no controller results yet.
+**Active plan:** docs/BLSC_RESEARCH_PLAN_20261027.md
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
 
