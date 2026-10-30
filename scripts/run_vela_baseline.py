@@ -166,7 +166,8 @@ def recover_text(task, srow):
 
 
 def gold_render(task, srow):
-    return (srow.get("gold_render", "") or "").replace(" ", "_").lower()
+    g = srow.get("gold_rendered", "") or srow.get("gold_render", "") or ""
+    return g.replace(" ", "_").lower()
 
 
 if __name__ == "__main__":
