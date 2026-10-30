@@ -2,8 +2,8 @@
 
 **Last updated:** 2026-10-30
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
-**Current phase:** full NEAT OOF grid done — NEAT fails the gate (below matched LR/threshold); fresh confirmation NOT launched  
-**Research result status:** no reliable learned-controller gain is established yet (BANKING77 NEAT OOF failed its gate); new domains have no controller results yet.
+**Current phase:** all three new-domain Gate 0/1 pilots done (math/code/finance all FAILED Gate 1); NEAT paused everywhere; no Stage 2/3 launched.
+**Research result status:** no reliable learned-controller gain is established yet (BANKING77 NEAT OOF failed its gate); all three new-domain Gate 1 pilots FAILED (math/code/finance); NEAT paused everywhere; no Stage 2/3 launched.
 **Active plan:** docs/BLSC_RESEARCH_PLAN_20261027.md
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
