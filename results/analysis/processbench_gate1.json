@@ -1,0 +1,233 @@
+{
+  "created_utc": "2026-10-30T10:56:08.300937+00:00",
+  "gate": "Gate 1 strategy complementarity (pilot)",
+  "train": {
+    "n": 120,
+    "accuracy": {
+      "single": 0.125,
+      "wide": 0.05,
+      "tournament": 0.125
+    },
+    "correct_counts": {
+      "single": 15,
+      "wide": 6,
+      "tournament": 15
+    },
+    "pairwise_overlap": {
+      "single_vs_wide": {
+        "both_wrong": 103,
+        "only_first_wrong": 2,
+        "only_second_wrong": 11,
+        "both_correct": 4
+      },
+      "single_vs_tournament": {
+        "both_wrong": 105,
+        "only_first_wrong": 0,
+        "only_second_wrong": 0,
+        "both_correct": 15
+      },
+      "tournament_vs_wide": {
+        "both_wrong": 103,
+        "only_first_wrong": 2,
+        "only_second_wrong": 11,
+        "both_correct": 4
+      }
+    },
+    "only_fix": {
+      "wide": 2,
+      "tournament": 0
+    },
+    "new_errors": {
+      "wide": 11,
+      "tournament": 0
+    },
+    "all_correct": 4,
+    "all_wrong": 103,
+    "oracle_accuracy": 0.1417,
+    "oracle_gain_over_best_fixed": 0.0167,
+    "cumulative_latency_ms": {
+      "single": {
+        "mean_ms": 2972.6,
+        "p50_ms": 3207.2,
+        "p95_ms": 3552.3,
+        "max_ms": 3719.4
+      },
+      "wide": {
+        "mean_ms": 7643.4,
+        "p50_ms": 7563.8,
+        "p95_ms": 10574.6,
+        "max_ms": 11007.7
+      },
+      "tournament": {
+        "mean_ms": 6229.0,
+        "p50_ms": 6447.2,
+        "p95_ms": 9293.7,
+        "max_ms": 13363.1
+      }
+    },
+    "single_prediction_top": [
+      [
+        "step 2",
+        36
+      ],
+      [
+        "step 4",
+        18
+      ],
+      [
+        "step 3",
+        17
+      ],
+      [
+        "step 1",
+        16
+      ],
+      [
+        "step 0",
+        13
+      ],
+      [
+        "step 5",
+        13
+      ],
+      [
+        "step 7",
+        4
+      ],
+      [
+        "step 6",
+        2
+      ]
+    ]
+  },
+  "dev": {
+    "n": 60,
+    "accuracy": {
+      "single": 0.2,
+      "wide": 0.1333,
+      "tournament": 0.2
+    },
+    "correct_counts": {
+      "single": 12,
+      "wide": 8,
+      "tournament": 12
+    },
+    "pairwise_overlap": {
+      "single_vs_wide": {
+        "both_wrong": 48,
+        "only_first_wrong": 0,
+        "only_second_wrong": 4,
+        "both_correct": 8
+      },
+      "single_vs_tournament": {
+        "both_wrong": 48,
+        "only_first_wrong": 0,
+        "only_second_wrong": 0,
+        "both_correct": 12
+      },
+      "tournament_vs_wide": {
+        "both_wrong": 48,
+        "only_first_wrong": 0,
+        "only_second_wrong": 4,
+        "both_correct": 8
+      }
+    },
+    "only_fix": {
+      "wide": 0,
+      "tournament": 0
+    },
+    "new_errors": {
+      "wide": 4,
+      "tournament": 0
+    },
+    "all_correct": 8,
+    "all_wrong": 48,
+    "oracle_accuracy": 0.2,
+    "oracle_gain_over_best_fixed": 0.0,
+    "cumulative_latency_ms": {
+      "single": {
+        "mean_ms": 2782.2,
+        "p50_ms": 2970.8,
+        "p95_ms": 3184.7,
+        "max_ms": 3209.4
+      },
+      "wide": {
+        "mean_ms": 6962.0,
+        "p50_ms": 7080.1,
+        "p95_ms": 9769.5,
+        "max_ms": 9822.2
+      },
+      "tournament": {
+        "mean_ms": 5633.6,
+        "p50_ms": 5933.6,
+        "p95_ms": 6305.3,
+        "max_ms": 11439.0
+      }
+    },
+    "single_prediction_top": [
+      [
+        "step 2",
+        16
+      ],
+      [
+        "step 3",
+        14
+      ],
+      [
+        "step 0",
+        11
+      ],
+      [
+        "step 4",
+        9
+      ],
+      [
+        "step 5",
+        4
+      ],
+      [
+        "step 1",
+        4
+      ],
+      [
+        "step 7",
+        1
+      ],
+      [
+        "step 6",
+        1
+      ]
+    ]
+  },
+  "predictability_train_3fold": {
+    "wide": {
+      "oof_accuracy": [
+        0.85,
+        0.85,
+        0.95
+      ],
+      "majority_baseline": [
+        0.85,
+        0.875,
+        0.95
+      ],
+      "mean_oof": 0.8833,
+      "mean_majority": 0.8917
+    },
+    "tournament": {
+      "oof_accuracy": [
+        0.95,
+        0.95,
+        0.95
+      ],
+      "majority_baseline": [
+        0.95,
+        0.95,
+        0.95
+      ],
+      "mean_oof": 0.95,
+      "mean_majority": 0.95
+    }
+  },
+  "note": "predictability uses initial SINGLE features only; DeltaCorrect in {-1,0,+1}"
+}

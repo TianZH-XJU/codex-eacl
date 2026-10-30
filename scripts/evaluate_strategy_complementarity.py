@@ -66,6 +66,12 @@ def predictability(by, seed=17):
             Xtr = np.array([features(single_row(by, i)) for i in tr], dtype=float)
             ytr = np.array([delta_correct(by, i, action) + 1 for i in tr])  # shift to 0,1,2
             sc = StandardScaler().fit(Xtr)
+            if len(set(ytr.tolist())) < 2:
+                # No variation to learn in this fold-train: predict majority.
+                maj = float(np.bincount(yte, minlength=3).max() / len(yte)) if len(yte) else None
+                accs.append(maj)
+                majs.append(maj)
+                continue
             clf = LogisticRegression(max_iter=1000, random_state=17)
             clf.fit(sc.transform(Xtr), ytr)
             Xte = sc.transform(np.array([features(single_row(by, i)) for i in te], dtype=float))

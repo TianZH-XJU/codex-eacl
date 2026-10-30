@@ -15,8 +15,8 @@ processbench_math_choice:
   laya_actions: [single, wide, tournament]
   action_adapter: single-first cascade (same cost definition as BANKING77)
   budgets: [1.00x, 1.25x, 1.50x, 2.00x]
-  status: split_defined
-  gate: Gate 1 complementarity pilot pending
+  status: gate1_failed_neat_paused
+  gate: Gate 1 FAILED 2026-10-30 — tournament correct set identical to single; wide net-harmful; oracle +0.017; LR == majority. NEAT paused for math Choice.
 
 codexglue_defect:
   domain: code
