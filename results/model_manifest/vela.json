@@ -1,6 +1,114 @@
 {
-  "timestamp_utc": "2026-10-30T14:09:01.091609+00:00",
+  "timestamp_utc": "2026-10-30T14:10:32.255645+00:00",
   "model_repo": "vllm-sr/Vela-2.0-0.3B",
   "pinned_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
-  "status": "not_downloaded"
+  "local_snapshot": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\models\\vela",
+  "requested_files": [
+    "model.safetensors",
+    "config.json",
+    "calibration.json",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "special_tokens_map.json",
+    "configuration_vela2.py",
+    "modeling_vela2.py",
+    "vela2_inference.py",
+    "README.md",
+    "USAGE.md",
+    "TRAINING.md",
+    "EVALUATION.md",
+    "LICENSE",
+    "NOTICE",
+    "DISTRIBUTION_TERMS.md",
+    "LICENSING_STATUS.md",
+    "NOTICE_SOURCES.json",
+    "MODIFICATIONS.md"
+  ],
+  "present_files": {
+    "model.safetensors": {
+      "bytes": 1236473252,
+      "sha256": "bd37dd0db177d766bc554eded78ae8493bc248172d0480f6a543b30932a0cc8e"
+    },
+    "config.json": {
+      "bytes": 2823,
+      "sha256": "81e08c8f8f2a4a6205f05b67d5682e42fc5249cc11e5231c456929ae0534d675"
+    },
+    "calibration.json": {
+      "bytes": 7063,
+      "sha256": "f8557b3922e9bef33e688ece12da20436b5ae868ed7ff1375b346bd26403506a"
+    },
+    "tokenizer.json": {
+      "bytes": 34364665,
+      "sha256": "e4b670c5ab72158f35de150792133e8c92adb4ba677d26b99d22c77f34c63faf"
+    },
+    "tokenizer_config.json": {
+      "bytes": 47992,
+      "sha256": "7f91c861ebdaba0c211b973dcfb4e303ecc1cc37a95eb0e7c34ec26475102cef"
+    },
+    "special_tokens_map.json": {
+      "bytes": 2184,
+      "sha256": "d06e6589673f3f246972572d7911f83fe8b868bf5b76b71152500f0f2f95e596"
+    },
+    "configuration_vela2.py": {
+      "bytes": 1592,
+      "sha256": "94b22bf266a45eaa4877123ca59e62e0908d4054a985712f12de8d1e230f0e3c"
+    },
+    "modeling_vela2.py": {
+      "bytes": 9557,
+      "sha256": "a536b7ffa832693b2aaaa6f499da6c594bebc1be2bd8d85d2ef5e794124cda94"
+    },
+    "vela2_inference.py": {
+      "bytes": 60886,
+      "sha256": "d3e140c7bc9d291e0862b85894f03ecb1d4c95f0c58bbf705da775b1f63cbf22"
+    },
+    "README.md": {
+      "bytes": 12697,
+      "sha256": "07b61db37712904dd76b74dffbb7d450a444cb9970ca34217a0c96fb471a6d14"
+    },
+    "USAGE.md": {
+      "bytes": 26074,
+      "sha256": "734afdbd980943f2aa921c9debea54cab5c78c54e3412f20e983c54c5f3be20f"
+    },
+    "TRAINING.md": {
+      "bytes": 6087,
+      "sha256": "22d9c867239a664f35d7e41b5116483c49ce2b7a953ef8cd04f522be831ddb39"
+    },
+    "EVALUATION.md": {
+      "bytes": 8383,
+      "sha256": "ac71d19aac91062a60c563854b8e5c6844175c08eca6e868e6483813e2462233"
+    },
+    "LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "NOTICE": {
+      "bytes": 4359,
+      "sha256": "e24bef8d93593474468fbd0cdb1d524dc88468ca704db374b5fe75d649fbd1e5"
+    },
+    "DISTRIBUTION_TERMS.md": {
+      "bytes": 1256,
+      "sha256": "426dc9c6dc08687b872288ff91af690c806b01d105a94e2267a6f28c6768cdd7"
+    },
+    "LICENSING_STATUS.md": {
+      "bytes": 1535,
+      "sha256": "1332503fa069761da6c4a2b2149cb04a998452f9a208746daf73e1c05e477507"
+    },
+    "NOTICE_SOURCES.json": {
+      "bytes": 9255,
+      "sha256": "5f34959797fdc6853cacf6ad097e0bd0e66beb7a12bfd7d801bfc27c8d6d6ec7"
+    },
+    "MODIFICATIONS.md": {
+      "bytes": 1454,
+      "sha256": "548784088d3b50d62a43b521b3848b94252605e7a3c111968f347ab49d202d3b"
+    }
+  },
+  "missing_files": [],
+  "remote_code_files": {
+    "configuration_vela2.py": "94b22bf266a45eaa4877123ca59e62e0908d4054a985712f12de8d1e230f0e3c",
+    "modeling_vela2.py": "a536b7ffa832693b2aaaa6f499da6c594bebc1be2bd8d85d2ef5e794124cda94",
+    "vela2_inference.py": "d3e140c7bc9d291e0862b85894f03ecb1d4c95f0c58bbf705da775b1f63cbf22"
+  },
+  "remote_code_note": "trust_remote_code executes these on load; audited before first load",
+  "license_note": "weights/code/docs Apache-2.0 per model card; tokenizer under Gemma Terms of Use; see LICENSE/NOTICE/DISTRIBUTION_TERMS in snapshot",
+  "status": "downloaded"
 }
