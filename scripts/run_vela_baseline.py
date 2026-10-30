@@ -154,7 +154,8 @@ def recover_text(task, srow):
     if task == "processbench":
         rows = json.loads((ROOT / "data/raw/processbench" / srow["source_file"]).read_text(encoding="utf-8"))
         r = next(x for x in rows if x["id"] == srow["row_id"])
-        return r["problem"] + "\n\nReasoning steps:\n" + "\n".join(f"{k+1}. {s}" for k, s in enumerate(r["steps"]))
+        # IDENTICAL state text to the Laya pilot cache (see build_processbench_cache.py).
+        return r["problem"] + "\n\nSteps:\n" + "\n".join(f"[{k}] {s}" for k, s in enumerate(r["steps"]))
     if task == "code_defect":
         rows = json.loads((ROOT / "data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))
         return rows[int(srow["row_id"])]["func"]
