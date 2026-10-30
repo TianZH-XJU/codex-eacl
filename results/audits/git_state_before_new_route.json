@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-10-30T14:09:01.091609+00:00",
+  "root": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main",
+  "head": "d055a7f89e45f3a1b0641910a71aa0a797f38cde",
+  "branch": "main",
+  "status_porcelain": "?? results/environment/\n?? results/model_manifest/\n?? scripts/audit_models.py",
+  "remotes": "origin\thttps://github.com/TianZH-XJU/codex-eacl.git (fetch)\norigin\thttps://github.com/TianZH-XJU/codex-eacl.git (push)"
+}

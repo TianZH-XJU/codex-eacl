@@ -1,0 +1,108 @@
+{
+  "timestamp_utc": "2026-10-30T14:09:01.091609+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "python_version": "3.12.12 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 20:05:38) [MSC v.1929 64 bit (AMD64)]",
+  "logical_cpu_count": 12,
+  "device_policy": "cpu-only",
+  "cpu_threads_policy": 2,
+  "memory": {
+    "total_mb": 15556.9,
+    "free_mb": 1883.4
+  },
+  "disk": {
+    "free_gb": 42.4,
+    "total_gb": 200.0
+  },
+  "modules": {
+    "torch": {
+      "available": true,
+      "version": "2.14.1+cpu"
+    },
+    "transformers": {
+      "available": true,
+      "version": "5.20.2"
+    },
+    "tokenizers": {
+      "available": true,
+      "version": "0.23.3"
+    },
+    "huggingface_hub": {
+      "available": true,
+      "version": "2.3.0"
+    },
+    "datasets": {
+      "available": true,
+      "version": "5.1.0"
+    },
+    "pyarrow": {
+      "available": true,
+      "version": "26.0.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.5.4"
+    },
+    "pandas": {
+      "available": true,
+      "version": "3.1.0"
+    },
+    "sklearn": {
+      "available": true,
+      "version": "1.9.1"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.18.1"
+    },
+    "psutil": {
+      "available": true,
+      "version": "7.2.2"
+    },
+    "threadpoolctl": {
+      "available": true,
+      "version": "3.7.0"
+    },
+    "tqdm": {
+      "available": true,
+      "version": "4.70.1"
+    },
+    "pytest": {
+      "available": true,
+      "version": "9.1.1"
+    },
+    "safetensors": {
+      "available": true,
+      "version": "0.8.0"
+    },
+    "onnxruntime": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'onnxruntime'"
+    },
+    "cma": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'cma'"
+    },
+    "optuna": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'optuna'"
+    },
+    "deap": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'deap'"
+    },
+    "pymoo": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'pymoo'"
+    },
+    "neat": {
+      "available": true,
+      "version": "2.0.0"
+    },
+    "laya": {
+      "available": true,
+      "version": "0.4.16"
+    }
+  },
+  "status": "passed"
+}

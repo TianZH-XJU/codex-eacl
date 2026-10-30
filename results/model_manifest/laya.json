@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-10-30T14:09:01.091609+00:00",
+  "package": "laya",
+  "installed_version": "0.4.16",
+  "source_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "model_repo": "convaiinnovations/laya",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "device": "cpu",
+  "status": "cached_and_verified"
+}
