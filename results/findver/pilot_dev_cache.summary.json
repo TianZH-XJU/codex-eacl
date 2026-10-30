@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-30T11:23:22.056914+00:00",
+  "dataset": "findver",
+  "split": "dev",
+  "seed": 17,
+  "n": 60,
+  "strategies": [
+    "single",
+    "switch",
+    "wide"
+  ],
+  "model": "english",
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "6933910bcb761bed2814e74a491ed56ce159c153",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2189.1,
+  "status": "passed"
+}
