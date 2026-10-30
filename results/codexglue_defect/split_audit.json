@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-10-30T10:26:22.000378+00:00",
+  "sizes": {
+    "train": 21854,
+    "valid": 2732,
+    "test": 2732
+  },
+  "label_balance": {
+    "train": {
+      "1": 10018,
+      "0": 11836
+    },
+    "valid": {
+      "1": 1187,
+      "0": 1545
+    },
+    "test": {
+      "1": 1255,
+      "0": 1477
+    }
+  },
+  "exact_duplicate_func_strings_total": 60,
+  "dup_rows_within_same_split": 47,
+  "dup_rows_across_splits": 13,
+  "n_projects": 2,
+  "projects_spanning_multiple_splits": 2,
+  "cross_split_projects": [
+    "FFmpeg",
+    "qemu"
+  ],
+  "note": "official split kept for Gate 0; project-deduped controller split decided after adapter check"
+}
