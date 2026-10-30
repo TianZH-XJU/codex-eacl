@@ -158,8 +158,8 @@ def main():
                 err, choice, correct, n_calls, extra = None, None, 0, None, {}
                 try:
                     if cfg["action"] == "wide":
-                        ans, n_calls = bench.strategy("wide", agent)(state, base_q, **cfg["kwargs"])
-                        choice = ans["answers"]["q"]["choice"] if isinstance(ans, dict) and "answers" in ans else ans["choice"]
+                        out_full, n_calls = agent.predict(state, {"q": base_q}, **cfg["kwargs"]), 1
+                        choice = out_full["answers"]["q"]["choice"]
                     elif cfg["action"] == "order":
                         crit = dict(reversed(list(base_q["criteria"].items())))
                         q2 = dict(base_q, criteria=crit)
