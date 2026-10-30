@@ -1,0 +1,1161 @@
+{
+  "laya_cache": "results/codexglue_defect/pilot_valid_cache.jsonl",
+  "vela_baseline": "results/vela_baseline_code_valid.json",
+  "laya_strategy": "single",
+  "vela_rep": "noul",
+  "n_paired": 60,
+  "missing_vela_rows": 0,
+  "laya_accuracy": 0.5167,
+  "vela_accuracy": 0.4833,
+  "accuracy_diff_vela_minus_laya": -0.0333,
+  "both_correct": 10,
+  "both_wrong": 10,
+  "laya_only": 21,
+  "vela_only": 19,
+  "mean_latency_ms": {
+    "laya": 1697.5,
+    "vela": 2638.3
+  },
+  "rows": [
+    {
+      "key": [
+        "pilot_valid",
+        0
+      ],
+      "row_id": "17305",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 1002.3,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 2377.6,
+      "vela_usage": {
+        "input_tokens": 171,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        1
+      ],
+      "row_id": "7231",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 765.5,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 219.8,
+      "vela_usage": {
+        "input_tokens": 119,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        2
+      ],
+      "row_id": "7819",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 1376.7,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 602.0,
+      "vela_usage": {
+        "input_tokens": 315,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        3
+      ],
+      "row_id": "5239",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2383.3,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 2801.2,
+      "vela_usage": {
+        "input_tokens": 1159,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        4
+      ],
+      "row_id": "12817",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 801.8,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 326.5,
+      "vela_usage": {
+        "input_tokens": 151,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        5
+      ],
+      "row_id": "27069",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 472.9,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": true,
+      "vela_ms": 171.3,
+      "vela_usage": {
+        "input_tokens": 66,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        6
+      ],
+      "row_id": "18349",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 882.3,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 300.0,
+      "vela_usage": {
+        "input_tokens": 172,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        7
+      ],
+      "row_id": "22236",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2425.9,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 1034.4,
+      "vela_usage": {
+        "input_tokens": 539,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        8
+      ],
+      "row_id": "9860",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2350.9,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1902.3,
+      "vela_usage": {
+        "input_tokens": 885,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        9
+      ],
+      "row_id": "6697",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 1035.5,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": true,
+      "vela_ms": 379.6,
+      "vela_usage": {
+        "input_tokens": 206,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        10
+      ],
+      "row_id": "25468",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2371.5,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 1714.0,
+      "vela_usage": {
+        "input_tokens": 832,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        11
+      ],
+      "row_id": "22573",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 484.2,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": false,
+      "vela_ms": 163.1,
+      "vela_usage": {
+        "input_tokens": 65,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        12
+      ],
+      "row_id": "10136",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2347.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1870.6,
+      "vela_usage": {
+        "input_tokens": 933,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        13
+      ],
+      "row_id": "17448",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2351.1,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 6709.3,
+      "vela_usage": {
+        "input_tokens": 2288,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        14
+      ],
+      "row_id": "16500",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 1865.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 681.8,
+      "vela_usage": {
+        "input_tokens": 386,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        15
+      ],
+      "row_id": "10843",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2330.7,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 4289.4,
+      "vela_usage": {
+        "input_tokens": 1643,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        16
+      ],
+      "row_id": "11248",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 654.4,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 250.5,
+      "vela_usage": {
+        "input_tokens": 113,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        17
+      ],
+      "row_id": "5790",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 1497.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 658.2,
+      "vela_usage": {
+        "input_tokens": 356,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        18
+      ],
+      "row_id": "521",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 882.8,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 333.2,
+      "vela_usage": {
+        "input_tokens": 185,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        19
+      ],
+      "row_id": "2559",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 802.9,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 294.1,
+      "vela_usage": {
+        "input_tokens": 161,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        20
+      ],
+      "row_id": "6654",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2350.1,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 3916.3,
+      "vela_usage": {
+        "input_tokens": 1579,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        21
+      ],
+      "row_id": "3789",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2367.1,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1039.5,
+      "vela_usage": {
+        "input_tokens": 543,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        22
+      ],
+      "row_id": "19530",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 1255.7,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 482.5,
+      "vela_usage": {
+        "input_tokens": 246,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        23
+      ],
+      "row_id": "4112",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2369.3,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1540.2,
+      "vela_usage": {
+        "input_tokens": 764,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        24
+      ],
+      "row_id": "3859",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2143.1,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1136.6,
+      "vela_usage": {
+        "input_tokens": 568,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        25
+      ],
+      "row_id": "12963",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 1272.1,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 456.1,
+      "vela_usage": {
+        "input_tokens": 258,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        26
+      ],
+      "row_id": "27199",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 1980.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 856.8,
+      "vela_usage": {
+        "input_tokens": 450,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        27
+      ],
+      "row_id": "7719",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2309.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 2419.4,
+      "vela_usage": {
+        "input_tokens": 1120,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        28
+      ],
+      "row_id": "21222",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2321.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 47787.8,
+      "vela_usage": {
+        "input_tokens": 7564,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        29
+      ],
+      "row_id": "23509",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 2329.4,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 6432.8,
+      "vela_usage": {
+        "input_tokens": 2229,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        30
+      ],
+      "row_id": "6034",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2444.4,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 3312.4,
+      "vela_usage": {
+        "input_tokens": 1339,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        31
+      ],
+      "row_id": "863",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 1947.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 914.4,
+      "vela_usage": {
+        "input_tokens": 493,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        32
+      ],
+      "row_id": "14244",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2343.8,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 1164.3,
+      "vela_usage": {
+        "input_tokens": 593,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        33
+      ],
+      "row_id": "13673",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 1313.6,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 516.4,
+      "vela_usage": {
+        "input_tokens": 287,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        34
+      ],
+      "row_id": "13857",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 693.4,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 260.5,
+      "vela_usage": {
+        "input_tokens": 113,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        35
+      ],
+      "row_id": "16511",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 649.9,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": false,
+      "vela_ms": 216.2,
+      "vela_usage": {
+        "input_tokens": 103,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        36
+      ],
+      "row_id": "14496",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 2342.7,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 3723.8,
+      "vela_usage": {
+        "input_tokens": 1536,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        37
+      ],
+      "row_id": "12778",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 807.7,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": false,
+      "vela_ms": 330.1,
+      "vela_usage": {
+        "input_tokens": 170,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        38
+      ],
+      "row_id": "13282",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2315.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 2306.3,
+      "vela_usage": {
+        "input_tokens": 1102,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        39
+      ],
+      "row_id": "20144",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 542.7,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 170.0,
+      "vela_usage": {
+        "input_tokens": 81,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        40
+      ],
+      "row_id": "19866",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 2342.8,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 6451.3,
+      "vela_usage": {
+        "input_tokens": 2254,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        41
+      ],
+      "row_id": "11914",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 1738.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 962.5,
+      "vela_usage": {
+        "input_tokens": 532,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        42
+      ],
+      "row_id": "13361",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2414.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1640.7,
+      "vela_usage": {
+        "input_tokens": 839,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        43
+      ],
+      "row_id": "8428",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2416.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 4219.0,
+      "vela_usage": {
+        "input_tokens": 1676,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        44
+      ],
+      "row_id": "10596",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 1995.2,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": false,
+      "vela_ms": 1060.5,
+      "vela_usage": {
+        "input_tokens": 583,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        45
+      ],
+      "row_id": "17768",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2340.2,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 2397.3,
+      "vela_usage": {
+        "input_tokens": 1081,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        46
+      ],
+      "row_id": "23488",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 899.4,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": false,
+      "vela_ms": 333.3,
+      "vela_usage": {
+        "input_tokens": 190,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        47
+      ],
+      "row_id": "19620",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2351.8,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 21194.6,
+      "vela_usage": {
+        "input_tokens": 4769,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        48
+      ],
+      "row_id": "24966",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2312.9,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 1305.9,
+      "vela_usage": {
+        "input_tokens": 668,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        49
+      ],
+      "row_id": "8024",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 1413.6,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 681.3,
+      "vela_usage": {
+        "input_tokens": 351,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        50
+      ],
+      "row_id": "15226",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2322.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 1477.4,
+      "vela_usage": {
+        "input_tokens": 747,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        51
+      ],
+      "row_id": "3284",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 2007.6,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 879.8,
+      "vela_usage": {
+        "input_tokens": 461,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        52
+      ],
+      "row_id": "18930",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 832.4,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 248.3,
+      "vela_usage": {
+        "input_tokens": 135,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        53
+      ],
+      "row_id": "1565",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2322.3,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1281.5,
+      "vela_usage": {
+        "input_tokens": 654,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        54
+      ],
+      "row_id": "18278",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 1084.6,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 455.5,
+      "vela_usage": {
+        "input_tokens": 254,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        55
+      ],
+      "row_id": "11883",
+      "gold": "secure",
+      "laya_pred": "secure",
+      "laya_correct": true,
+      "laya_ms": 2296.6,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 4333.2,
+      "vela_usage": {
+        "input_tokens": 1648,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        56
+      ],
+      "row_id": "16850",
+      "gold": "vulnerable",
+      "laya_pred": "secure",
+      "laya_correct": false,
+      "laya_ms": 1421.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 671.9,
+      "vela_usage": {
+        "input_tokens": 385,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        57
+      ],
+      "row_id": "20557",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 2323.0,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": true,
+      "vela_ms": 1946.7,
+      "vela_usage": {
+        "input_tokens": 908,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        58
+      ],
+      "row_id": "19156",
+      "gold": "vulnerable",
+      "laya_pred": "vulnerable",
+      "laya_correct": true,
+      "laya_ms": 1033.8,
+      "laya_calls": 1,
+      "vela_pred": "neg",
+      "vela_correct": false,
+      "vela_ms": 455.0,
+      "vela_usage": {
+        "input_tokens": 228,
+        "output_tokens": 0
+      }
+    },
+    {
+      "key": [
+        "pilot_valid",
+        59
+      ],
+      "row_id": "7211",
+      "gold": "secure",
+      "laya_pred": "vulnerable",
+      "laya_correct": false,
+      "laya_ms": 801.7,
+      "laya_calls": 1,
+      "vela_pred": "pos",
+      "vela_correct": false,
+      "vela_ms": 238.7,
+      "vela_usage": {
+        "input_tokens": 119,
+        "output_tokens": 0
+      }
+    }
+  ]
+}
