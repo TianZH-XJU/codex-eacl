@@ -1,0 +1,34 @@
+{
+  "created_utc": "2026-10-30T14:27:10.495715+00:00",
+  "model": "vela",
+  "task": "staircase",
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "vela_snapshot": "C:\\Users\\32085\\Desktop\\codex-eacl-main\\codex-eacl-main\\models\\vela",
+  "load_seconds": 8.7,
+  "rss_before_load_mb": 197.8,
+  "rss_after_load_mb": 1596.0,
+  "peak_rss_mb": 1701.9,
+  "windows_sleep_prevention_active": true,
+  "project_git_sha": "fc86ca795de4536dcf0a4e47a2a1c815f3bcf862",
+  "results": [
+    {
+      "case": "staircase_1024",
+      "latency_ms": 3931.2,
+      "error": null,
+      "shape_ok": true,
+      "usage": {
+        "input_tokens": 891,
+        "output_tokens": 0
+      },
+      "answer_keys": {
+        "q": [
+          "noul",
+          "type"
+        ]
+      }
+    }
+  ],
+  "status": "passed"
+}
