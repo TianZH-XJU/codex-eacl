@@ -117,7 +117,7 @@ def row_features(answer):
     return {
         "answer_confidence": (answer.get("answer_confidence") if answer else None),
         "entropy_confidence": (answer.get("confidence") if answer else None),
-        "act_probability": ((answer.get("action") or {}).get("act_probability") if answer else None,
+        "act_probability": ((answer.get("action") or {}).get("act_probability") if answer else None),
         "top1_prob": top1, "top2_prob": top2,
         "margin": (top1 - top2) if (top1 is not None and top2 is not None) else None,
         "entropy": ent, "noul_p_true": (answer.get("noul") if answer and "noul" in answer else None),
