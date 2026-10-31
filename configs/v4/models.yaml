@@ -1,0 +1,24 @@
+# v4 model registry (pins; no training, no weight modification)
+laya:
+  package: laya==0.4.16
+  source_commit: b9fe351ce81e2d974bca2bf219c1e4030c0a05ea
+  repo: convaiinnovations/laya
+  revision: 7b928d828b7b0e022f929d9bd2e44165aa270148
+  backend: torch_fp32_cpu
+  natives: [choice, noul, score]
+  supports_option_order: true
+  supports_tournament: true
+  supports_shortlist: true
+  supports_predict_long: true  # aggregate=auto only; smoke before use
+  supports_min_confidence: abstain_experiment_only
+vela:
+  repo: vllm-sr/Vela-2.0-0.3B
+  revision: d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409
+  backend: torch_fp32_cpu
+  architectures: ModernBERT-22L encoder, hidden 768, max_input_tokens 8192 (schema+markers+state)
+  natives: [choice, noul, score, span, set]
+  max_choice_options: 255
+  supports_typed_parts: true  # user/context/answer
+  supports_multiquery_batch: true  # measured; per-request cost must be recorded
+  disallowed_as_search_knobs: [max_len, head_max_len, group_size, shortlist_k, window_overlap, internal_constants]
+  license_notes: weights+code+docs Apache-2.0; tokenizer under Gemma Terms of Use; see snapshot LICENSE/NOTICE/DISTRIBUTION_TERMS.md

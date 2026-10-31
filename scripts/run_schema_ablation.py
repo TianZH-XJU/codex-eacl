@@ -59,14 +59,19 @@ def _code_rows(limit, seed, split):
     rng = random.Random(seed)
     manifest = json.loads(Path("results/v2/data_manifest/codexglue_function_groups.json").read_text(encoding="utf-8"))
     js_all = json.loads(Path("data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))
-    g2idx = {}
-    for i, r in enumerate(js_all):
-        g2idx.setdefault(function_group_id(r["func"]), []).append(i)
+    members = manifest.get("members")
+    if members is None:  # legacy manifest: rebuild from official train indices only
+        train_idx = {int(x) for x in Path("data/raw/codexglue_defect/train.txt").read_text(encoding="utf-8").split()}
+        g2idx = {}
+        for i, r in enumerate(js_all):
+            if i in train_idx:
+                g2idx.setdefault(function_group_id(r["func"]), []).append(i)
+        members = g2idx
     groups = list(manifest["splits"][split])
     rng.shuffle(groups)
     rows = []
     for g in groups:
-        for i in sorted(g2idx.get(g, [])):
+        for i in sorted(members.get(g, [])):
             rows.append({"key": f"idx:{i}", "text": js_all[i]["func"],
                          "gold": bool(js_all[i]["target"]), "group_id": g,
                          "meta": {"idx": i, "project": js_all[i].get("project", "?")}})

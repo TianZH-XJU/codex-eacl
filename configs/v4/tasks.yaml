@@ -1,0 +1,63 @@
+# v4 task registry (initial; data revisions hashed in manifests at download time)
+tasks:
+  - id: dair_emotion
+    domain: general
+    form: multiclass
+    labels: 6
+    role: primary_low_k
+    status: pending_download
+  - id: banking77
+    domain: intent
+    form: multiclass
+    labels: 77
+    role: primary_high_k_transfer
+    data_revision: 18072d2685ea682290f7b8924d94c62acc19c0b2
+    status: data_present_unprepared
+  - id: clinc150
+    domain: intent
+    form: multiclass_oos
+    labels: 150
+    role: transfer
+    status: not_downloaded
+  - id: codexglue_devign
+    domain: code
+    form: binary_defect
+    labels: 2
+    role: primary
+    status: v3_audited
+  - id: bigclonebench
+    domain: code
+    form: binary_pair
+    labels: 2
+    role: extension
+    status: not_downloaded
+  - id: gsm8k_verifier
+    domain: math
+    form: binary_verification
+    labels: 2
+    role: primary
+    status: construction_pending
+  - id: mathqa_category
+    domain: math
+    form: multiclass
+    labels: 6
+    role: primary
+    status: not_downloaded
+  - id: financial_phrasebank
+    domain: finance
+    form: multiclass
+    labels: 3
+    role: primary
+    status: not_downloaded
+  - id: finqa_verifier
+    domain: finance
+    form: structured_binary_verification
+    labels: 2
+    role: primary
+    status: construction_pending
+  - id: ag_news
+    domain: general
+    form: multiclass
+    labels: 4
+    role: control
+    status: not_downloaded

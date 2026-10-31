@@ -1,0 +1,34 @@
+# EvoTIDE v4 protocol (frozen 2026-10-31, baseline 974b621)
+
+track: post_gate_evolutionary_diagnostic_v4
+budget: {cpu_threads: 2, single_model_residency: true, rss_target_mb: 3072, rss_hard_stop_mb: 3584}
+seeds: [17, 23, 41, 59, 73]
+models:
+  laya: {package: laya==0.4.16, source_commit: b9fe351ce81e2d974bca2bf219c1e4030c0a05ea,
+         repo: convaiinnovations/laya, revision: 7b928d828b7b0e022f929d9bd2e44165aa270148,
+         backend: torch_fp32_cpu}
+  vela: {repo: vllm-sr/Vela-2.0-0.3B, revision: d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409,
+         backend: torch_fp32_cpu, note: onnx only as separately-validated deployment track}
+gates:
+  A0: [audit_fixes_pass, schemas_validated, splits_zero_overlap, paired_join_ok, no_test_access, freeze_manifest]
+  A1: [native_matrix_per_task_model, tfidf_and_majority_baselines, official_metrics]
+  A2: [factor_screen_or_interaction IN {pass: repeatable_nonnoise_output_change, fail: flat_or_harmful_only}]
+  A3: [config_bank_built, complementary_gain_measurable] # else: faultmap + throughput only
+  A4: [pareto_selection_on_dev, high_fidelity_topk_verified]
+  A5: [matched_budget_random_beaten, cross_seed_stable]
+  A6: [transfer_matrix_measured]
+  A7: [confirm_once_on_frozen, locked_test_once]
+forbidden:
+  - test_labels_in_search_or_fitness
+  - oud_params_in_main_search
+  - laya_params_on_vela
+  - cache_latency_as_deployed_latency
+  - unvalidated_surrogate_for_selection
+  - claiming_ci_without_group_bootstrap
+budgets:
+  pilot_rows_per_task_model: [100, 200]
+  gp_population: [20, 30]
+  gp_generations: [20, 25, 40]
+  unique_genome_budget: [150, 300, 500, 750, 1000]
+  mvp_seeds: [17, 23]
+  final_seeds: [17, 23, 41, 59, 73]

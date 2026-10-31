@@ -70,6 +70,7 @@ def code_manifest(args):
     manifest = {"created_utc": datetime.now(timezone.utc).isoformat(),
                 "rule": "official-train only, grouped by canonical function hash; seed 17",
                 "n_groups": len(groups), "excluded_cross_split_leaked_idx": leaked,
+                "members": {g: sorted(info["idx"]) for g, info in groups.items()},
                 "splits": {k: sorted(v) for k, v in splits.items()},
                 "split_sizes_groups": {k: len(v) for k, v in splits.items()}}
     out = Path(args.out_dir, "codexglue_function_groups.json")

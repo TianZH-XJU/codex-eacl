@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-31T18:15:31.609730+00:00",
+  "created_utc": "2026-10-31T21:34:41.860013+00:00",
   "rule": "train problems minus all history-pilot problem groups; grouped by problem hash; seed 17",
   "n_history_touched_row_ids": 192,
   "n_history_touched_groups": 185,
