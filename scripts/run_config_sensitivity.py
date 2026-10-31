@@ -96,6 +96,7 @@ def validate_config(cfg, n_candidates):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=100)
+    ap.add_argument("--split", default="train", choices=["train", "dev"])
     ap.add_argument("--seed", type=int, default=17)
     ap.add_argument("--split-manifest", default="results/processbench/split_manifest.json")
     ap.add_argument("--raw-dir", default="data/raw/processbench")
@@ -103,6 +104,8 @@ def main():
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--out-dir", default="results/processbench")
+    ap.add_argument("--tag", default="sensitivity_pilot",
+                    help="output filename stem: <tag>_cache.jsonl and <tag>.summary.json")
     args = ap.parse_args()
 
     torch.set_num_threads(args.threads)
@@ -111,7 +114,7 @@ def main():
         raise RuntimeError("CPU-only run refused: CUDA is available")
 
     manifest = json.loads(Path(args.split_manifest).read_text(encoding="utf-8"))
-    pool = list(manifest["rows"]["train"])
+    pool = list(manifest["rows"][args.split])
     rng = random.Random(args.seed)
     rng.shuffle(pool)
     chosen = pool[:args.limit]
@@ -219,9 +222,9 @@ def main():
                "windows_sleep_prevention_active": sleep_on, "peak_rss_mb": round(peak_rss / 2**20, 1),
                "configs": summary_cfgs, "status": "passed",
                "sample_ids": [r["id"] for r in chosen]}
-    (out_dir / "sensitivity_pilot_cache.jsonl").write_text(
+    (out_dir / f"{args.tag}_cache.jsonl").write_text(
         "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows_out), encoding="utf-8")
-    (out_dir / "sensitivity_pilot.summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    (out_dir / f"{args.tag}.summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: {kk: summary["configs"][k][kk] for kk in ("accuracy", "mean_delta_correct", "delta_ci95", "flips_vs_single", "mean_cumulative_ms")} for k in summary["configs"]}, indent=2))
 
 
