@@ -60,7 +60,7 @@ def tfidf_menus(train_texts, train_labels, dev_texts, labels, k_list, seed=17):
     Xtr = vec.fit_transform(train_texts)
     Xte = vec.transform(dev_texts)
     uniq = sorted(set(train_labels))
-    C = np.asarray([np.asarray(Xtr[[i for i, l in enumerate(train_labels) if l == u]]).mean(axis=0).ravel() for u in uniq])
+    C = np.asarray([np.asarray(Xtr[[i for i, l in enumerate(train_labels) if l == u]].mean(axis=0)).ravel() for u in uniq])
     S = cosine_similarity(Xte, C)
     order = np.argsort(-S, axis=1)
     rng = random.Random(seed)
