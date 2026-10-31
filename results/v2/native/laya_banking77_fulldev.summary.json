@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-10-31T22:20:57.649301+00:00",
+  "dataset": "banking77",
+  "model": "laya",
+  "split": "pilot_search",
+  "seed": 17,
+  "n": 60,
+  "accuracy": 0.3167,
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "fdec362c287446a3c032e8595bc8e6a2010a9f9e",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2111.6,
+  "status": "passed"
+}
