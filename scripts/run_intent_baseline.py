@@ -53,16 +53,10 @@ def git_sha(path):
 
 
 def load_search_rows(dataset, limit, seed):
+    """Returns (sampled_rows, full_label_list). Candidates always cover the FULL task label set."""
     manifest = json.loads((ROOT / "results/v4/data_manifest" / f"{dataset}_groups.json").read_text(encoding="utf-8"))
     if dataset == "clinc150":
         import pyarrow.parquet as pq
-        all_rows = {}
-        for split in ("train", "validation", "test"):
-            p = ROOT / f"data/raw/clinc150/plus/{split}-00000-of-00001.parquet"
-            names = json.loads(pq.read_schema(p).metadata[b"huggingface"])["info"]["features"]["intent"]["names"]
-            for r in pq.read_table(p).to_pylist():
-                all_rows[(split, r["text"])] = names[r["intent"]]
-        # members store train row indices
         raw_train = pq.read_table(ROOT / "data/raw/clinc150/plus/train-00000-of-00001.parquet").to_pylist()
         names = json.loads(pq.read_schema(ROOT / "data/raw/clinc150/plus/train-00000-of-00001.parquet").metadata[b"huggingface"])["info"]["features"]["intent"]["names"]
         pool = []
@@ -70,19 +64,22 @@ def load_search_rows(dataset, limit, seed):
             for i in manifest["members"].get(g, []):
                 r = raw_train[i]
                 pool.append({"key": f"train:{i}", "text": r["text"], "gold": names[r["intent"]],
-                             "group_id": g, "gold_idx": names.index(names[r["intent"]])})
-    else:
-        import pyarrow.parquet as pq
-        raw_train = pq.read_table(ROOT / "data/raw/banking77/data/train-00000-of-00001.parquet").to_pylist()
-        pool = []
-        for g in manifest["splits"]["search_train"]:
-            for i in manifest["members"].get(g, []):
-                r = raw_train[i]
-                pool.append({"key": f"train:{i}", "text": r["text"], "gold": r["label_text"],
-                             "group_id": g, "gold_idx": None})
+                             "group_id": g})
+        rng = random.Random(seed)
+        rng.shuffle(pool)
+        return pool[:limit], list(names)
+    import pyarrow.parquet as pq
+    raw_train = pq.read_table(ROOT / "data/raw/banking77/data/train-00000-of-00001.parquet").to_pylist()
+    all_labels = sorted({r["label_text"] for r in raw_train})
+    pool = []
+    for g in manifest["splits"]["search_train"]:
+        for i in manifest["members"].get(g, []):
+            r = raw_train[i]
+            pool.append({"key": f"train:{i}", "text": r["text"], "gold": r["label_text"],
+                         "group_id": g})
     rng = random.Random(seed)
     rng.shuffle(pool)
-    return pool[:limit]
+    return pool[:limit], all_labels
 
 
 def main():
@@ -100,8 +97,7 @@ def main():
     if torch.cuda.is_available():
         raise RuntimeError("CPU-only run refused: CUDA is available")
 
-    rows = load_search_rows(args.dataset, args.limit, args.seed)
-    labels = sorted({r["gold"] for r in rows})
+    rows, labels = load_search_rows(args.dataset, args.limit, args.seed)
     if args.model == "laya":
         sys.path.insert(0, str(LAYA_ROOT / "research" / "benchmarks" / "tournament"))
         import laya  # noqa: E402
