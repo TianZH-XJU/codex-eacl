@@ -9,7 +9,8 @@
 
 | Gate | Verdict | Evidence |
 |---|---|---|
-| A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; 79 tests pass |
+| A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; full suite 88 passed at `e166e29` (only authoritative count; older counts below are era-labeled history) |
+| Stage 0 E2 evidence audit | PASS | 18/18 offline checks; path corrections; see `docs/AUDIT_V4_1.md` |
 | A1 native | DONE | intent full-label baselines above; TF-IDF baselines recorded; no significant Laya/Vela gap |
 | A2 schema | DONE | legacy/Choice parser bug fixed; OOD note on wide_max1024 |
 | A3 OFAT | FAILED | h96 zero flips, max384 harmful-only; no ES on budgets |
@@ -19,6 +20,11 @@
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | E5 active / ES / NEAT / locked test | BLOCKED | per gates; bank fully measured (exhaustive), no repeatable signal from configs |
 | ONNX parity | not_run | Torch FP32 stable, peak RSS < 2.2 GB; unnecessary |
+
+> Track separation (Stage 0): the gate table + header above are the CURRENT v4 track.
+> Everything below from "Three-action offline evaluation" through "NEAT gate diagnostics"
+> is FROZEN HISTORICAL record (v1–v3, 2026-10-26/27) — do not extend, do not rewrite numbers.
+> Path/test-count conflicts are adjudicated in `docs/AUDIT_V4_1.md`.
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)
 
