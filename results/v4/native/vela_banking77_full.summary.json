@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-10-31T22:00:20.443453+00:00",
+  "dataset": "banking77",
+  "model": "vela",
+  "split": "pilot_search",
+  "seed": 17,
+  "n": 100,
+  "accuracy": 0.54,
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "0a218da38359e3beff6bc5eea07b7e2389c7e787",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1711.1,
+  "status": "passed"
+}
