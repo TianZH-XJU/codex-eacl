@@ -52,7 +52,7 @@ def git_sha(path):
         return None
 
 
-def load_search_rows(dataset, limit, seed):
+def load_search_rows(dataset, limit, seed, split="search_train"):
     """Returns (sampled_rows, full_label_list). Candidates always cover the FULL task label set."""
     manifest = json.loads((ROOT / "results/v4/data_manifest" / f"{dataset}_groups.json").read_text(encoding="utf-8"))
     if dataset == "clinc150":
@@ -60,7 +60,7 @@ def load_search_rows(dataset, limit, seed):
         raw_train = pq.read_table(ROOT / "data/raw/clinc150/plus/train-00000-of-00001.parquet").to_pylist()
         names = json.loads(pq.read_schema(ROOT / "data/raw/clinc150/plus/train-00000-of-00001.parquet").metadata[b"huggingface"])["info"]["features"]["intent"]["names"]
         pool = []
-        for g in manifest["splits"]["search_train"]:
+        for g in manifest["splits"][split]:
             for i in manifest["members"].get(g, []):
                 r = raw_train[i]
                 pool.append({"key": f"train:{i}", "text": r["text"], "gold": names[r["intent"]],
@@ -72,7 +72,7 @@ def load_search_rows(dataset, limit, seed):
     raw_train = pq.read_table(ROOT / "data/raw/banking77/data/train-00000-of-00001.parquet").to_pylist()
     all_labels = sorted({r["label_text"] for r in raw_train})
     pool = []
-    for g in manifest["splits"]["search_train"]:
+    for g in manifest["splits"][split]:
         for i in manifest["members"].get(g, []):
             r = raw_train[i]
             pool.append({"key": f"train:{i}", "text": r["text"], "gold": r["label_text"],
