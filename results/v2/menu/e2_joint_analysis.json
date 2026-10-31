@@ -1,0 +1,154 @@
+{
+  "n_rows": 30,
+  "models": {
+    "vela": {
+      "exhaustive_range": [
+        0.6333,
+        0.8
+      ],
+      "best_exh": {
+        "genome_id": 17,
+        "genome": {
+          "retriever": "tfidf-char",
+          "k": 10,
+          "norm": "raw",
+          "order": "shuffled"
+        },
+        "n": 30,
+        "accuracy": 0.8,
+        "mean_ms": 150.7,
+        "recall_hit_rate": 0.9667
+      },
+      "best_rnd": {
+        "genome_id": 6,
+        "genome": {
+          "retriever": "tfidf-char",
+          "k": 10,
+          "norm": "raw",
+          "order": "shuffled"
+        },
+        "n": 30,
+        "accuracy": 0.8333,
+        "mean_ms": 151.4,
+        "recall_hit_rate": 0.9667
+      },
+      "n_common": 12,
+      "n_flips": 7,
+      "flips": {
+        "('tfidf-char', 5, 'lower', 'shuffled')": [
+          0.7333,
+          0.7667
+        ],
+        "('tfidf-char', 5, 'raw', 'shuffled')": [
+          0.7333,
+          0.7667
+        ],
+        "('tfidf-char', 10, 'raw', 'shuffled')": [
+          0.8,
+          0.8333
+        ],
+        "('tfidf-char', 20, 'raw', 'shuffled')": [
+          0.7333,
+          0.7
+        ],
+        "('tfidf-word', 10, 'raw', 'shuffled')": [
+          0.6667,
+          0.7
+        ],
+        "('tfidf-word', 20, 'lower', 'shuffled')": [
+          0.7,
+          0.6667
+        ],
+        "('tfidf-word', 20, 'raw', 'shuffled')": [
+          0.7,
+          0.6667
+        ]
+      },
+      "n_effective_distinct": 12,
+      "peak_rss_mb": 1738.4
+    },
+    "laya": {
+      "exhaustive_range": [
+        0.6667,
+        0.8
+      ],
+      "best_exh": {
+        "genome_id": 14,
+        "genome": {
+          "retriever": "tfidf-char",
+          "k": 5,
+          "norm": "lower",
+          "order": "ranked"
+        },
+        "n": 30,
+        "accuracy": 0.8,
+        "mean_ms": 542.4,
+        "recall_hit_rate": 0.9333
+      },
+      "best_rnd": {
+        "genome_id": 9,
+        "genome": {
+          "retriever": "tfidf-char",
+          "k": 5,
+          "norm": "lower",
+          "order": "ranked"
+        },
+        "n": 30,
+        "accuracy": 0.8,
+        "mean_ms": 509.5,
+        "recall_hit_rate": 0.9333
+      },
+      "n_common": 12,
+      "n_flips": 6,
+      "flips": {
+        "('tfidf-char', 5, 'lower', 'shuffled')": [
+          0.7667,
+          0.7333
+        ],
+        "('tfidf-char', 5, 'raw', 'shuffled')": [
+          0.7667,
+          0.7333
+        ],
+        "('tfidf-char', 10, 'raw', 'shuffled')": [
+          0.7667,
+          0.7333
+        ],
+        "('tfidf-word', 10, 'raw', 'shuffled')": [
+          0.7,
+          0.8
+        ],
+        "('tfidf-word', 20, 'lower', 'shuffled')": [
+          0.6667,
+          0.6
+        ],
+        "('tfidf-word', 20, 'raw', 'shuffled')": [
+          0.6667,
+          0.6
+        ]
+      },
+      "n_effective_distinct": 12,
+      "peak_rss_mb": 2127.5
+    }
+  },
+  "cross_model_genome_corr": 0.092,
+  "norm_noop": "confirmed offline (TfidfVectorizer lowercase=True); effective space 12 not 24",
+  "vela_within_process": {
+    "acc_pass1": 0.7667,
+    "acc_pass2": 0.7667,
+    "n_flips": 0
+  },
+  "cost_projection": {
+    "laya_menu_ms_per_row": 542.4,
+    "vela_menu_ms_per_row": 150.7,
+    "exhaustive24_n500_laya_min": 108.5,
+    "exhaustive24_n500_vela_min": 30.1,
+    "gp300_n500_laya_hr": 22.6,
+    "gp300_n500_vela_hr": 6.3
+  },
+  "verdict": "E2 menu landscape flat within cross-process noise on n=30 (Vela flips 7/12 x +/-1 row; Laya 6/12 x up to +/-3 rows); both models deterministic within-process (0 flips, Vela 0.767/0.767, Laya 0.70/0.70). No genome reliably beats best-fixed menu (char/k10 Vela, char/k5 Laya, both 0.80). GP on n=30 would evolve noise; repeatable selection needs n~=500 with prohibitive CPU cost on this box (Laya GP-scale ~22.6 hr). E2 search BLOCKED pending bigger budget or narrower space; fixed-retrieval menu effect stands.",
+  "laya_within_process": {
+    "acc_pass1": 0.7,
+    "acc_pass2": 0.7,
+    "n_flips": 0
+  }
+}
