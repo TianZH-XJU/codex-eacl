@@ -2,12 +2,14 @@
 """Distinct-view Vela batching test (single process, offline analysis after).
 
 Same state, up to 4 SEMANTICALLY DISTINCT questions in one request vs
-separate requests: full Choice, top-10 menu Choice, Noul, Score.
-Measures per-question latency, usage, and answer consistency vs separate calls.
+separate requests: full Choice, Noul, menu Choice, Score.
+Compares DECISIONS (not raw dicts with floats) and saves raw answers for
+offline re-analysis. No test data (uses a fixed search_dev row).
 """
 from __future__ import annotations
 
 import argparse
+import ctypes
 import json
 import subprocess
 import sys
@@ -20,6 +22,23 @@ import torch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
+ES_CONTINUOUS = 0x80000000
+ES_SYSTEM_REQUIRED = 0x00000001
+
+
+def prevent_sleep():
+    try:
+        return bool(ctypes.windll.kernel32.SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED))
+    except Exception:
+        return False
+
+
+def allow_sleep():
+    try:
+        ctypes.windll.kernel32.SetThreadExecutionState(ES_CONTINUOUS)
+    except Exception:
+        pass
+
 
 def git_sha(path):
     try:
@@ -29,14 +48,50 @@ def git_sha(path):
         return None
 
 
+def decision(ans):
+    """Decision-level extraction robust to float noise.
+
+    choice -> normalized key; noul -> pos/neg at 0.5 plus rounded p;
+    score -> expected level rounded to 3 decimals (plus argmax level when present).
+    """
+    if not isinstance(ans, dict):
+        return None
+    t = ans.get("type")
+    if t == "choice":
+        return ["choice", str(ans.get("choice", "")).replace(" ", "_").lower()]
+    if t == "noul":
+        try:
+            p = float(ans.get("noul", 0.0))
+        except (TypeError, ValueError):
+            return ["noul", None, None]
+        return ["noul", "pos" if p >= 0.5 else "neg", round(p, 4)]
+    if t == "score":
+        try:
+            s = float(ans.get("score", 0.0))
+        except (TypeError, ValueError):
+            return ["score", None]
+        probs = ans.get("probabilities") or {}
+        argmax = None
+        if isinstance(probs, dict) and probs:
+            try:
+                argmax = max(probs.items(), key=lambda kv: float(kv[1]))[0]
+            except (TypeError, ValueError):
+                argmax = None
+        return ["score", round(s, 3), str(argmax)]
+    return ["unknown", None]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--threads", type=int, default=2)
+    ap.add_argument("--warmup", type=int, default=2)
     ap.add_argument("--out", default="results/v2/vela_batching_distinct.json")
     args = ap.parse_args()
 
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
+    if torch.cuda.is_available():
+        raise RuntimeError("CPU-only run refused: CUDA is available")
 
     from transformers import AutoModel
     t0 = time.perf_counter()
@@ -63,38 +118,77 @@ def main():
                   "criteria": ["0", "1", "2", "3", "4"]},
     }
     out_qs = ["full", "noul", "menu", "score"]
+    sleep_on = prevent_sleep()
     results = []
-    # separate calls
-    sep = {}
-    t0 = time.perf_counter()
-    for q in out_qs:
-        a = agent.system_one(state, {q: questions[q]})
-        sep[q] = a["answers"][q]
-    sep_ms = (time.perf_counter() - t0) * 1000.0
-    peak = max(peak, proc.memory_info().rss)
-    results.append({"mode": "separate", "n_questions": len(out_qs), "latency_ms": round(sep_ms, 1),
-                    "per_q_ms": round(sep_ms / len(out_qs), 1)})
-    # batched call
-    t0 = time.perf_counter()
-    batched = agent.system_one(state, {q: questions[q] for q in out_qs})
-    bat_ms = (time.perf_counter() - t0) * 1000.0
-    peak = max(peak, proc.memory_info().rss)
-    usage = batched.get("usage", {})
-    answers = batched.get("answers", {})
-    match = {q: (answers.get(q) == sep.get(q)) for q in out_qs}
-    results.append({"mode": "batched", "n_questions": len(out_qs), "latency_ms": round(bat_ms, 1),
-                    "per_q_ms": round(bat_ms / len(out_qs), 1), "usage": usage,
-                    "answer_match_vs_separate": match, "all_match": all(match.values())})
+    try:
+        # warm-up (not timed): one separate + one batched call to settle caches
+        for _ in range(max(0, args.warmup)):
+            try:
+                agent.system_one(state, {"full": questions["full"]})
+            except Exception:
+                pass
+        peak = max(peak, proc.memory_info().rss)
+
+        # separate calls (store raw answers for decision-level comparison)
+        sep = {}
+        sep_usage = {}
+        t0 = time.perf_counter()
+        for q in out_qs:
+            a = agent.system_one(state, {q: questions[q]})
+            sep[q] = a["answers"][q]
+            sep_usage[q] = a.get("usage", {})
+        sep_ms = (time.perf_counter() - t0) * 1000.0
+        rss_after_sep = proc.memory_info().rss
+        peak = max(peak, rss_after_sep)
+        results.append({"mode": "separate", "n_questions": len(out_qs),
+                        "latency_ms": round(sep_ms, 1),
+                        "per_q_ms": round(sep_ms / len(out_qs), 1),
+                        "usage_per_question": sep_usage,
+                        "rss_mb": round(rss_after_sep / 2**20, 1),
+                        "raw_answers": sep,
+                        "decisions": {q: decision(sep[q]) for q in out_qs}})
+
+        # batched call
+        t0 = time.perf_counter()
+        batched = agent.system_one(state, {q: questions[q] for q in out_qs})
+        bat_ms = (time.perf_counter() - t0) * 1000.0
+        rss_after_bat = proc.memory_info().rss
+        peak = max(peak, rss_after_bat)
+        usage = batched.get("usage", {})
+        answers = batched.get("answers", {})
+
+        raw_match = {q: (answers.get(q) == sep.get(q)) for q in out_qs}
+        dec_sep = {q: decision(sep.get(q)) for q in out_qs}
+        dec_bat = {q: decision(answers.get(q)) for q in out_qs}
+        dec_match = {q: (dec_sep[q] == dec_bat[q]) for q in out_qs}
+        results.append({"mode": "batched", "n_questions": len(out_qs),
+                        "latency_ms": round(bat_ms, 1),
+                        "per_q_ms": round(bat_ms / len(out_qs), 1), "usage": usage,
+                        "rss_mb": round(rss_after_bat / 2**20, 1),
+                        "raw_answers": {q: answers.get(q) for q in out_qs},
+                        "decisions": dec_bat,
+                        "raw_match_vs_separate": raw_match,
+                        "decision_match_vs_separate": dec_match,
+                        "all_raw_match": all(raw_match.values()),
+                        "all_decision_match": all(dec_match.values())})
+        print(json.dumps({"sep_ms": round(sep_ms, 1), "batched_ms": round(bat_ms, 1),
+                          "raw_match": raw_match, "decision_match": dec_match,
+                          "status": "passed" if all(dec_match.values()) else "partial_match"}, indent=2),
+              flush=True)
+        status = "passed" if all(dec_match.values()) else "partial_match"
+    finally:
+        allow_sleep()
+
     report = {"created_utc": datetime.now(timezone.utc).isoformat(),
-              "model": "vella-2.0-0.3b", "device": "cpu", "threads": args.threads,
+              "model": "vela-2.0-0.3B", "device": "cpu", "threads": args.threads,
+              "warmup_calls": args.warmup, "order": "warmup -> separate -> batched (fixed; single-sample diagnostic)",
               "load_seconds": round(load_s, 1), "peak_rss_mb": round(peak / 2**20, 1),
               "project_git_sha": git_sha(ROOT), "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
               "results": results,
-              "status": "passed" if all(match.values()) else "partial_match"}
+              "status": status,
+              "note": "single-sample diagnostic; raw dict equality is float-sensitive, decision_match is primary"}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"sep_ms": round(sep_ms, 1), "batched_ms": round(bat_ms, 1),
-                      "all_match": all(match.values()), "status": report["status"]}, indent=2))
 
 
 if __name__ == "__main__":
