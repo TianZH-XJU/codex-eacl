@@ -69,8 +69,9 @@ def main():
     groups = defaultdict(list)
     for split, rows in per_split.items():
         for i, r in enumerate(rows):
-            groups[(normalize_text(r["text"]), r["label"])].append({"split": split, "idx": i,
-                                                                    "text": r["text"], "label": r["label"]})
+            gid = "u:" + sha256_hex(normalize_text(r["text"]) + "\x00" + str(r["label"]))[:16]
+            groups[gid].append({"split": split, "idx": i,
+                                "text": r["text"], "label": r["label"]})
     spans = {g: sorted({m["split"] for m in ms}) for g, ms in groups.items()}
     cross = {g: ms for g, ms in groups.items() if len(spans[g]) > 1}
 
@@ -81,6 +82,7 @@ def main():
 
     # search/dev/confirm from TRAIN groups only, stratified by label presence
     train_groups = {g: ms for g, ms in groups.items() if all(m["split"] == "train" for m in ms)}
+    train_idx = {m["idx"] for ms in train_groups.values() for m in ms}
     by_label = defaultdict(list)
     for g, ms in train_groups.items():
         by_label[ms[0]["label"]].append(g)
@@ -104,6 +106,7 @@ def main():
                 "n_cross_split_groups": len(cross),
                 "oos_rows_total": oos,
                 "search_rule": "train groups only, stratified by label, seed 17",
+                "members": {g: sorted(m["idx"] for m in ms) for g, ms in train_groups.items()},
                 "splits": {k: sorted(v) for k, v in splits.items()},
                 "split_sizes_groups": {k: len(v) for k, v in splits.items()},
                 "note": "utterance groups are exact-normalized-text; paraphrase clusters not merged (documented limitation)"}

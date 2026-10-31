@@ -29,3 +29,12 @@ def test_intent_leakage_audit_present():
     m = _load("banking77_groups.json")
     assert m["oos_rows_total"] == 0
     assert "revision" in m and "repo" in m
+
+
+def test_intent_manifest_pins_train_only_members():
+    for name in ("clinc150_groups.json", "banking77_groups.json"):
+        m = _load(name)
+        assert "members" in m, "manifest must pin per-group train-only member rows"
+        for key in ("search_train", "search_dev", "confirm"):
+            for g in m["splits"][key]:
+                assert len(m["members"].get(g, [])) >= 1, g
