@@ -97,7 +97,7 @@ def main():
         labels = sorted({r["label_text"] for r in raw})
     else:
         base = ROOT / "data/raw/clinc150/plus/train-00000-of-00001.parquet"
-        names = json.loads(pq.read_schema(base).metadata[b"huggingface"])["info"]["features"]["names"]
+        names = json.loads(pq.read_schema(base).metadata[b"huggingface"])["info"]["features"]["intent"]["names"]
         raw = pq.read_table(base).to_pylist()
         rows_all = [{"text": r["text"], "label": names[r["intent"]]} for r in raw]
         labels = sorted(set(names))
