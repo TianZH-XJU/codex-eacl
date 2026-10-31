@@ -1,0 +1,1621 @@
+{
+  "laya_cache": "results/v4/native/laya_banking77_full.jsonl",
+  "vela_baseline": "results/v4/native/vela_banking77_full.jsonl",
+  "laya_strategy": "single",
+  "vela_rep": "choice",
+  "n_paired": 100,
+  "missing_vela_rows": 0,
+  "laya_accuracy": 0.44,
+  "vela_accuracy": 0.54,
+  "accuracy_diff_vela_minus_laya": 0.1,
+  "both_correct": 31,
+  "both_wrong": 33,
+  "laya_only": 13,
+  "vela_only": 23,
+  "mean_latency_ms": {
+    "laya": 1470.6,
+    "vela": 610.6
+  },
+  "rows": [
+    {
+      "key": [
+        "pilot_search",
+        0
+      ],
+      "row_id": "train:3554",
+      "gold": "card_payment_not_recognised",
+      "laya_pred": "transaction charged twice",
+      "laya_correct": false,
+      "laya_ms": 1587.1,
+      "laya_calls": 1,
+      "vela_pred": "request refund",
+      "vela_correct": false,
+      "vela_ms": 2414.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        1
+      ],
+      "row_id": "train:1140",
+      "gold": "automatic_top_up",
+      "laya_pred": "automatic top up",
+      "laya_correct": true,
+      "laya_ms": 1484.6,
+      "laya_calls": 1,
+      "vela_pred": "automatic top up",
+      "vela_correct": true,
+      "vela_ms": 643.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        2
+      ],
+      "row_id": "train:7155",
+      "gold": "transfer_fee_charged",
+      "laya_pred": "transfer fee charged",
+      "laya_correct": true,
+      "laya_ms": 1474.6,
+      "laya_calls": 1,
+      "vela_pred": "transfer fee charged",
+      "vela_correct": true,
+      "vela_ms": 562.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        3
+      ],
+      "row_id": "train:6287",
+      "gold": "card_swallowed",
+      "laya_pred": "cancel transfer",
+      "laya_correct": false,
+      "laya_ms": 1452.3,
+      "laya_calls": 1,
+      "vela_pred": "lost or stolen card",
+      "vela_correct": false,
+      "vela_ms": 539.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        4
+      ],
+      "row_id": "train:8216",
+      "gold": "wrong_exchange_rate_for_cash_withdrawal",
+      "laya_pred": "wrong exchange rate for cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1671.0,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 512.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        5
+      ],
+      "row_id": "train:4805",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "transaction charged twice",
+      "laya_correct": false,
+      "laya_ms": 1555.5,
+      "laya_calls": 1,
+      "vela_pred": "request refund",
+      "vela_correct": false,
+      "vela_ms": 609.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        6
+      ],
+      "row_id": "train:8296",
+      "gold": "wrong_exchange_rate_for_cash_withdrawal",
+      "laya_pred": "wrong exchange rate for cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1445.6,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 655.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        7
+      ],
+      "row_id": "train:9512",
+      "gold": "card_about_to_expire",
+      "laya_pred": "getting spare card",
+      "laya_correct": false,
+      "laya_ms": 1476.1,
+      "laya_calls": 1,
+      "vela_pred": "card about to expire",
+      "vela_correct": true,
+      "vela_ms": 644.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        8
+      ],
+      "row_id": "train:8300",
+      "gold": "wrong_exchange_rate_for_cash_withdrawal",
+      "laya_pred": "wrong exchange rate for cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1459.9,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 583.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        9
+      ],
+      "row_id": "train:6095",
+      "gold": "pending_transfer",
+      "laya_pred": "transfer timing",
+      "laya_correct": false,
+      "laya_ms": 1456.8,
+      "laya_calls": 1,
+      "vela_pred": "pending transfer",
+      "vela_correct": true,
+      "vela_ms": 586.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        10
+      ],
+      "row_id": "train:1322",
+      "gold": "card_not_working",
+      "laya_pred": "terminate account",
+      "laya_correct": false,
+      "laya_ms": 1444.9,
+      "laya_calls": 1,
+      "vela_pred": "virtual card not working",
+      "vela_correct": false,
+      "vela_ms": 593.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        11
+      ],
+      "row_id": "train:2176",
+      "gold": "cancel_transfer",
+      "laya_pred": "transaction charged twice",
+      "laya_correct": false,
+      "laya_ms": 1433.0,
+      "laya_calls": 1,
+      "vela_pred": "cancel transfer",
+      "vela_correct": true,
+      "vela_ms": 530.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        12
+      ],
+      "row_id": "train:9918",
+      "gold": "country_support",
+      "laya_pred": "country support",
+      "laya_correct": true,
+      "laya_ms": 1432.8,
+      "laya_calls": 1,
+      "vela_pred": "get physical card",
+      "vela_correct": false,
+      "vela_ms": 639.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        13
+      ],
+      "row_id": "train:7511",
+      "gold": "failed_transfer",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1654.6,
+      "laya_calls": 1,
+      "vela_pred": "pending transfer",
+      "vela_correct": false,
+      "vela_ms": 716.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        14
+      ],
+      "row_id": "train:9561",
+      "gold": "card_about_to_expire",
+      "laya_pred": "age limit",
+      "laya_correct": false,
+      "laya_ms": 1495.5,
+      "laya_calls": 1,
+      "vela_pred": "card about to expire",
+      "vela_correct": true,
+      "vela_ms": 704.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        15
+      ],
+      "row_id": "train:5097",
+      "gold": "pending_card_payment",
+      "laya_pred": "pending card payment",
+      "laya_correct": true,
+      "laya_ms": 1508.9,
+      "laya_calls": 1,
+      "vela_pred": "pending card payment",
+      "vela_correct": true,
+      "vela_ms": 637.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        16
+      ],
+      "row_id": "train:1094",
+      "gold": "card_delivery_estimate",
+      "laya_pred": "transfer timing",
+      "laya_correct": false,
+      "laya_ms": 1407.0,
+      "laya_calls": 1,
+      "vela_pred": "get physical card",
+      "vela_correct": false,
+      "vela_ms": 593.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        17
+      ],
+      "row_id": "train:9172",
+      "gold": "activate_my_card",
+      "laya_pred": "activate my card",
+      "laya_correct": true,
+      "laya_ms": 1426.7,
+      "laya_calls": 1,
+      "vela_pred": "activate my card",
+      "vela_correct": true,
+      "vela_ms": 556.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        18
+      ],
+      "row_id": "train:8908",
+      "gold": "cash_withdrawal_not_recognised",
+      "laya_pred": "verify source of funds",
+      "laya_correct": false,
+      "laya_ms": 1519.5,
+      "laya_calls": 1,
+      "vela_pred": "lost or stolen card",
+      "vela_correct": false,
+      "vela_ms": 595.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        19
+      ],
+      "row_id": "train:8875",
+      "gold": "cash_withdrawal_not_recognised",
+      "laya_pred": "verify source of funds",
+      "laya_correct": false,
+      "laya_ms": 1433.0,
+      "laya_calls": 1,
+      "vela_pred": "cash withdrawal not recognised",
+      "vela_correct": true,
+      "vela_ms": 627.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        20
+      ],
+      "row_id": "train:8139",
+      "gold": "order_physical_card",
+      "laya_pred": "getting virtual card",
+      "laya_correct": false,
+      "laya_ms": 1507.0,
+      "laya_calls": 1,
+      "vela_pred": "get physical card",
+      "vela_correct": false,
+      "vela_ms": 599.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        21
+      ],
+      "row_id": "train:4784",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "direct debit payment not recognised",
+      "laya_correct": true,
+      "laya_ms": 1458.6,
+      "laya_calls": 1,
+      "vela_pred": "direct debit payment not recognised",
+      "vela_correct": true,
+      "vela_ms": 686.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        22
+      ],
+      "row_id": "train:9371",
+      "gold": "cash_withdrawal_charge",
+      "laya_pred": "extra charge on statement",
+      "laya_correct": false,
+      "laya_ms": 1468.8,
+      "laya_calls": 1,
+      "vela_pred": "extra charge on statement",
+      "vela_correct": false,
+      "vela_ms": 587.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        23
+      ],
+      "row_id": "train:2768",
+      "gold": "transfer_not_received_by_recipient",
+      "laya_pred": "transfer timing",
+      "laya_correct": false,
+      "laya_ms": 1444.4,
+      "laya_calls": 1,
+      "vela_pred": "transfer timing",
+      "vela_correct": false,
+      "vela_ms": 554.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        24
+      ],
+      "row_id": "train:2582",
+      "gold": "card_payment_fee_charged",
+      "laya_pred": "card payment fee charged",
+      "laya_correct": true,
+      "laya_ms": 1460.5,
+      "laya_calls": 1,
+      "vela_pred": "card payment fee charged",
+      "vela_correct": true,
+      "vela_ms": 610.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        25
+      ],
+      "row_id": "train:4680",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "request refund",
+      "laya_correct": false,
+      "laya_ms": 1518.4,
+      "laya_calls": 1,
+      "vela_pred": "request refund",
+      "vela_correct": false,
+      "vela_ms": 669.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        26
+      ],
+      "row_id": "train:6776",
+      "gold": "reverted_card_payment?",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1455.0,
+      "laya_calls": 1,
+      "vela_pred": "reverted card payment?",
+      "vela_correct": true,
+      "vela_ms": 631.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        27
+      ],
+      "row_id": "train:417",
+      "gold": "card_payment_wrong_exchange_rate",
+      "laya_pred": "wrong exchange rate for cash withdrawal",
+      "laya_correct": false,
+      "laya_ms": 1459.6,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": false,
+      "vela_ms": 621.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        28
+      ],
+      "row_id": "train:2193",
+      "gold": "cancel_transfer",
+      "laya_pred": "transfer into account",
+      "laya_correct": false,
+      "laya_ms": 1394.1,
+      "laya_calls": 1,
+      "vela_pred": "cancel transfer",
+      "vela_correct": true,
+      "vela_ms": 535.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        29
+      ],
+      "row_id": "train:639",
+      "gold": "extra_charge_on_statement",
+      "laya_pred": "transfer fee charged",
+      "laya_correct": false,
+      "laya_ms": 1426.7,
+      "laya_calls": 1,
+      "vela_pred": "card payment fee charged",
+      "vela_correct": false,
+      "vela_ms": 606.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        30
+      ],
+      "row_id": "train:4584",
+      "gold": "atm_support",
+      "laya_pred": "atm support",
+      "laya_correct": true,
+      "laya_ms": 1452.7,
+      "laya_calls": 1,
+      "vela_pred": "get physical card",
+      "vela_correct": false,
+      "vela_ms": 570.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        31
+      ],
+      "row_id": "train:5159",
+      "gold": "pending_card_payment",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1552.0,
+      "laya_calls": 1,
+      "vela_pred": "pending card payment",
+      "vela_correct": true,
+      "vela_ms": 583.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        32
+      ],
+      "row_id": "train:1832",
+      "gold": "top_up_by_bank_transfer_charge",
+      "laya_pred": "cancel transfer",
+      "laya_correct": false,
+      "laya_ms": 1491.4,
+      "laya_calls": 1,
+      "vela_pred": "supported cards and currencies",
+      "vela_correct": false,
+      "vela_ms": 605.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        33
+      ],
+      "row_id": "train:4389",
+      "gold": "disposable_card_limits",
+      "laya_pred": "get disposable virtual card",
+      "laya_correct": false,
+      "laya_ms": 1528.5,
+      "laya_calls": 1,
+      "vela_pred": "disposable card limits",
+      "vela_correct": true,
+      "vela_ms": 577.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        34
+      ],
+      "row_id": "train:4694",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "transaction charged twice",
+      "laya_correct": false,
+      "laya_ms": 1449.5,
+      "laya_calls": 1,
+      "vela_pred": "direct debit payment not recognised",
+      "vela_correct": true,
+      "vela_ms": 616.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        35
+      ],
+      "row_id": "train:6958",
+      "gold": "change_pin",
+      "laya_pred": "edit personal details",
+      "laya_correct": false,
+      "laya_ms": 1472.0,
+      "laya_calls": 1,
+      "vela_pred": "change pin",
+      "vela_correct": true,
+      "vela_ms": 566.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        36
+      ],
+      "row_id": "train:7902",
+      "gold": "getting_spare_card",
+      "laya_pred": "getting spare card",
+      "laya_correct": true,
+      "laya_ms": 1436.4,
+      "laya_calls": 1,
+      "vela_pred": "get disposable virtual card",
+      "vela_correct": false,
+      "vela_ms": 611.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        37
+      ],
+      "row_id": "train:1415",
+      "gold": "exchange_via_app",
+      "laya_pred": "exchange via app",
+      "laya_correct": true,
+      "laya_ms": 1434.9,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": false,
+      "vela_ms": 628.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        38
+      ],
+      "row_id": "train:4285",
+      "gold": "topping_up_by_card",
+      "laya_pred": "top up by bank transfer charge",
+      "laya_correct": false,
+      "laya_ms": 1469.6,
+      "laya_calls": 1,
+      "vela_pred": "topping up by card",
+      "vela_correct": true,
+      "vela_ms": 519.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        39
+      ],
+      "row_id": "train:1033",
+      "gold": "card_delivery_estimate",
+      "laya_pred": "transfer timing",
+      "laya_correct": false,
+      "laya_ms": 1426.0,
+      "laya_calls": 1,
+      "vela_pred": "card delivery estimate",
+      "vela_correct": true,
+      "vela_ms": 630.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        40
+      ],
+      "row_id": "train:2007",
+      "gold": "pending_top_up",
+      "laya_pred": "transfer timing",
+      "laya_correct": false,
+      "laya_ms": 1471.7,
+      "laya_calls": 1,
+      "vela_pred": "pending top up",
+      "vela_correct": true,
+      "vela_ms": 599.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        41
+      ],
+      "row_id": "train:1200",
+      "gold": "automatic_top_up",
+      "laya_pred": "automatic top up",
+      "laya_correct": true,
+      "laya_ms": 1452.6,
+      "laya_calls": 1,
+      "vela_pred": "automatic top up",
+      "vela_correct": true,
+      "vela_ms": 515.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        42
+      ],
+      "row_id": "train:3102",
+      "gold": "card_acceptance",
+      "laya_pred": "supported cards and currencies",
+      "laya_correct": false,
+      "laya_ms": 1461.3,
+      "laya_calls": 1,
+      "vela_pred": "card acceptance",
+      "vela_correct": true,
+      "vela_ms": 503.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        43
+      ],
+      "row_id": "train:6807",
+      "gold": "reverted_card_payment?",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1447.0,
+      "laya_calls": 1,
+      "vela_pred": "declined card payment",
+      "vela_correct": false,
+      "vela_ms": 554.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        44
+      ],
+      "row_id": "train:1219",
+      "gold": "automatic_top_up",
+      "laya_pred": "automatic top up",
+      "laya_correct": true,
+      "laya_ms": 1578.4,
+      "laya_calls": 1,
+      "vela_pred": "automatic top up",
+      "vela_correct": true,
+      "vela_ms": 543.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        45
+      ],
+      "row_id": "train:8953",
+      "gold": "exchange_charge",
+      "laya_pred": "exchange charge",
+      "laya_correct": true,
+      "laya_ms": 1491.1,
+      "laya_calls": 1,
+      "vela_pred": "exchange charge",
+      "vela_correct": true,
+      "vela_ms": 639.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        46
+      ],
+      "row_id": "train:2546",
+      "gold": "card_payment_fee_charged",
+      "laya_pred": "card payment fee charged",
+      "laya_correct": true,
+      "laya_ms": 1444.5,
+      "laya_calls": 1,
+      "vela_pred": "card payment fee charged",
+      "vela_correct": true,
+      "vela_ms": 574.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        47
+      ],
+      "row_id": "train:6201",
+      "gold": "terminate_account",
+      "laya_pred": "terminate account",
+      "laya_correct": true,
+      "laya_ms": 1454.6,
+      "laya_calls": 1,
+      "vela_pred": "terminate account",
+      "vela_correct": true,
+      "vela_ms": 510.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        48
+      ],
+      "row_id": "train:4652",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "direct debit payment not recognised",
+      "laya_correct": true,
+      "laya_ms": 1497.2,
+      "laya_calls": 1,
+      "vela_pred": "direct debit payment not recognised",
+      "vela_correct": true,
+      "vela_ms": 604.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        49
+      ],
+      "row_id": "train:7286",
+      "gold": "transfer_fee_charged",
+      "laya_pred": "transfer fee charged",
+      "laya_correct": true,
+      "laya_ms": 1423.4,
+      "laya_calls": 1,
+      "vela_pred": "transfer fee charged",
+      "vela_correct": true,
+      "vela_ms": 621.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        50
+      ],
+      "row_id": "train:236",
+      "gold": "card_linking",
+      "laya_pred": "activate my card",
+      "laya_correct": false,
+      "laya_ms": 1544.4,
+      "laya_calls": 1,
+      "vela_pred": "activate my card",
+      "vela_correct": false,
+      "vela_ms": 641.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        51
+      ],
+      "row_id": "train:9184",
+      "gold": "activate_my_card",
+      "laya_pred": "activate my card",
+      "laya_correct": true,
+      "laya_ms": 1446.3,
+      "laya_calls": 1,
+      "vela_pred": "activate my card",
+      "vela_correct": true,
+      "vela_ms": 521.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        52
+      ],
+      "row_id": "train:7022",
+      "gold": "beneficiary_not_allowed",
+      "laya_pred": "transfer not received by recipient",
+      "laya_correct": false,
+      "laya_ms": 1422.8,
+      "laya_calls": 1,
+      "vela_pred": "declined transfer",
+      "vela_correct": false,
+      "vela_ms": 599.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        53
+      ],
+      "row_id": "train:6608",
+      "gold": "transfer_timing",
+      "laya_pred": "transfer timing",
+      "laya_correct": true,
+      "laya_ms": 1414.8,
+      "laya_calls": 1,
+      "vela_pred": "transfer timing",
+      "vela_correct": true,
+      "vela_ms": 555.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        54
+      ],
+      "row_id": "train:7897",
+      "gold": "getting_spare_card",
+      "laya_pred": "transfer fee charged",
+      "laya_correct": false,
+      "laya_ms": 1412.2,
+      "laya_calls": 1,
+      "vela_pred": "card payment fee charged",
+      "vela_correct": false,
+      "vela_ms": 498.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        55
+      ],
+      "row_id": "train:4993",
+      "gold": "declined_cash_withdrawal",
+      "laya_pred": "declined cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1469.3,
+      "laya_calls": 1,
+      "vela_pred": "cash withdrawal not recognised",
+      "vela_correct": false,
+      "vela_ms": 551.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        56
+      ],
+      "row_id": "train:7247",
+      "gold": "transfer_fee_charged",
+      "laya_pred": "transfer fee charged",
+      "laya_correct": true,
+      "laya_ms": 1418.1,
+      "laya_calls": 1,
+      "vela_pred": "transfer fee charged",
+      "vela_correct": true,
+      "vela_ms": 518.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        57
+      ],
+      "row_id": "train:3587",
+      "gold": "card_payment_not_recognised",
+      "laya_pred": "verify source of funds",
+      "laya_correct": false,
+      "laya_ms": 1442.8,
+      "laya_calls": 1,
+      "vela_pred": "card payment not recognised",
+      "vela_correct": true,
+      "vela_ms": 556.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        58
+      ],
+      "row_id": "train:9891",
+      "gold": "country_support",
+      "laya_pred": "get physical card",
+      "laya_correct": false,
+      "laya_ms": 1454.6,
+      "laya_calls": 1,
+      "vela_pred": "get physical card",
+      "vela_correct": false,
+      "vela_ms": 590.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        59
+      ],
+      "row_id": "train:4280",
+      "gold": "topping_up_by_card",
+      "laya_pred": "top up by bank transfer charge",
+      "laya_correct": false,
+      "laya_ms": 1453.7,
+      "laya_calls": 1,
+      "vela_pred": "topping up by card",
+      "vela_correct": true,
+      "vela_ms": 545.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        60
+      ],
+      "row_id": "train:2592",
+      "gold": "card_payment_fee_charged",
+      "laya_pred": "request refund",
+      "laya_correct": false,
+      "laya_ms": 1425.6,
+      "laya_calls": 1,
+      "vela_pred": "reverted card payment?",
+      "vela_correct": false,
+      "vela_ms": 543.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        61
+      ],
+      "row_id": "train:2117",
+      "gold": "cancel_transfer",
+      "laya_pred": "transaction charged twice",
+      "laya_correct": false,
+      "laya_ms": 1424.2,
+      "laya_calls": 1,
+      "vela_pred": "request refund",
+      "vela_correct": false,
+      "vela_ms": 625.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        62
+      ],
+      "row_id": "train:9568",
+      "gold": "card_about_to_expire",
+      "laya_pred": "getting spare card",
+      "laya_correct": false,
+      "laya_ms": 1475.9,
+      "laya_calls": 1,
+      "vela_pred": "order physical card",
+      "vela_correct": false,
+      "vela_ms": 590.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        63
+      ],
+      "row_id": "train:9021",
+      "gold": "exchange_charge",
+      "laya_pred": "exchange charge",
+      "laya_correct": true,
+      "laya_ms": 1443.4,
+      "laya_calls": 1,
+      "vela_pred": "exchange charge",
+      "vela_correct": true,
+      "vela_ms": 615.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        64
+      ],
+      "row_id": "train:4281",
+      "gold": "topping_up_by_card",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1433.1,
+      "laya_calls": 1,
+      "vela_pred": "declined cash withdrawal",
+      "vela_correct": false,
+      "vela_ms": 568.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        65
+      ],
+      "row_id": "train:7824",
+      "gold": "getting_spare_card",
+      "laya_pred": "getting spare card",
+      "laya_correct": true,
+      "laya_ms": 1433.6,
+      "laya_calls": 1,
+      "vela_pred": "pending card payment",
+      "vela_correct": false,
+      "vela_ms": 603.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        66
+      ],
+      "row_id": "train:7343",
+      "gold": "receiving_money",
+      "laya_pred": "receiving money",
+      "laya_correct": true,
+      "laya_ms": 1440.6,
+      "laya_calls": 1,
+      "vela_pred": "transfer into account",
+      "vela_correct": false,
+      "vela_ms": 568.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        67
+      ],
+      "row_id": "train:548",
+      "gold": "card_payment_wrong_exchange_rate",
+      "laya_pred": "wrong exchange rate for cash withdrawal",
+      "laya_correct": false,
+      "laya_ms": 1502.5,
+      "laya_calls": 1,
+      "vela_pred": "card payment wrong exchange rate",
+      "vela_correct": true,
+      "vela_ms": 633.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        68
+      ],
+      "row_id": "train:2747",
+      "gold": "transfer_not_received_by_recipient",
+      "laya_pred": "transfer not received by recipient",
+      "laya_correct": true,
+      "laya_ms": 1464.7,
+      "laya_calls": 1,
+      "vela_pred": "transfer not received by recipient",
+      "vela_correct": true,
+      "vela_ms": 585.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        69
+      ],
+      "row_id": "train:4859",
+      "gold": "passcode_forgotten",
+      "laya_pred": "passcode forgotten",
+      "laya_correct": true,
+      "laya_ms": 1420.8,
+      "laya_calls": 1,
+      "vela_pred": "change pin",
+      "vela_correct": false,
+      "vela_ms": 551.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        70
+      ],
+      "row_id": "train:9606",
+      "gold": "card_about_to_expire",
+      "laya_pred": "age limit",
+      "laya_correct": false,
+      "laya_ms": 1418.8,
+      "laya_calls": 1,
+      "vela_pred": "card about to expire",
+      "vela_correct": true,
+      "vela_ms": 519.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        71
+      ],
+      "row_id": "train:4692",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "direct debit payment not recognised",
+      "laya_correct": true,
+      "laya_ms": 1492.6,
+      "laya_calls": 1,
+      "vela_pred": "direct debit payment not recognised",
+      "vela_correct": true,
+      "vela_ms": 715.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        72
+      ],
+      "row_id": "train:9002",
+      "gold": "exchange_charge",
+      "laya_pred": "exchange via app",
+      "laya_correct": false,
+      "laya_ms": 1444.5,
+      "laya_calls": 1,
+      "vela_pred": "supported cards and currencies",
+      "vela_correct": false,
+      "vela_ms": 606.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        73
+      ],
+      "row_id": "train:9103",
+      "gold": "top_up_by_card_charge",
+      "laya_pred": "top up reverted",
+      "laya_correct": false,
+      "laya_ms": 1440.0,
+      "laya_calls": 1,
+      "vela_pred": "topping up by card",
+      "vela_correct": false,
+      "vela_ms": 600.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        74
+      ],
+      "row_id": "train:7877",
+      "gold": "getting_spare_card",
+      "laya_pred": "getting spare card",
+      "laya_correct": true,
+      "laya_ms": 1488.7,
+      "laya_calls": 1,
+      "vela_pred": "get disposable virtual card",
+      "vela_correct": false,
+      "vela_ms": 526.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        75
+      ],
+      "row_id": "train:4358",
+      "gold": "disposable_card_limits",
+      "laya_pred": "disposable card limits",
+      "laya_correct": true,
+      "laya_ms": 1411.1,
+      "laya_calls": 1,
+      "vela_pred": "disposable card limits",
+      "vela_correct": true,
+      "vela_ms": 634.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        76
+      ],
+      "row_id": "train:2753",
+      "gold": "transfer_not_received_by_recipient",
+      "laya_pred": "pending card payment",
+      "laya_correct": false,
+      "laya_ms": 1469.8,
+      "laya_calls": 1,
+      "vela_pred": "pending transfer",
+      "vela_correct": false,
+      "vela_ms": 616.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        77
+      ],
+      "row_id": "train:7492",
+      "gold": "failed_transfer",
+      "laya_pred": "declined transfer",
+      "laya_correct": false,
+      "laya_ms": 1620.7,
+      "laya_calls": 1,
+      "vela_pred": "failed transfer",
+      "vela_correct": true,
+      "vela_ms": 609.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        78
+      ],
+      "row_id": "train:986",
+      "gold": "fiat_currency_support",
+      "laya_pred": "fiat currency support",
+      "laya_correct": true,
+      "laya_ms": 1562.5,
+      "laya_calls": 1,
+      "vela_pred": "fiat currency support",
+      "vela_correct": true,
+      "vela_ms": 612.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        79
+      ],
+      "row_id": "train:1704",
+      "gold": "pin_blocked",
+      "laya_pred": "edit personal details",
+      "laya_correct": false,
+      "laya_ms": 1474.2,
+      "laya_calls": 1,
+      "vela_pred": "transfer into account",
+      "vela_correct": false,
+      "vela_ms": 646.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        80
+      ],
+      "row_id": "train:4246",
+      "gold": "topping_up_by_card",
+      "laya_pred": "transfer into account",
+      "laya_correct": false,
+      "laya_ms": 1529.7,
+      "laya_calls": 1,
+      "vela_pred": "transfer into account",
+      "vela_correct": false,
+      "vela_ms": 561.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        81
+      ],
+      "row_id": "train:4917",
+      "gold": "declined_cash_withdrawal",
+      "laya_pred": "declined cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1547.0,
+      "laya_calls": 1,
+      "vela_pred": "declined cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 608.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        82
+      ],
+      "row_id": "train:1641",
+      "gold": "age_limit",
+      "laya_pred": "age limit",
+      "laya_correct": true,
+      "laya_ms": 1431.3,
+      "laya_calls": 1,
+      "vela_pred": "age limit",
+      "vela_correct": true,
+      "vela_ms": 562.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        83
+      ],
+      "row_id": "train:3165",
+      "gold": "top_up_reverted",
+      "laya_pred": "top up reverted",
+      "laya_correct": true,
+      "laya_ms": 1444.3,
+      "laya_calls": 1,
+      "vela_pred": "top up reverted",
+      "vela_correct": true,
+      "vela_ms": 594.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        84
+      ],
+      "row_id": "train:2740",
+      "gold": "transfer_not_received_by_recipient",
+      "laya_pred": "transfer timing",
+      "laya_correct": false,
+      "laya_ms": 1519.3,
+      "laya_calls": 1,
+      "vela_pred": "transfer timing",
+      "vela_correct": false,
+      "vela_ms": 676.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        85
+      ],
+      "row_id": "train:359",
+      "gold": "exchange_rate",
+      "laya_pred": "exchange rate",
+      "laya_correct": true,
+      "laya_ms": 1536.5,
+      "laya_calls": 1,
+      "vela_pred": "card payment wrong exchange rate",
+      "vela_correct": false,
+      "vela_ms": 561.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        86
+      ],
+      "row_id": "train:4725",
+      "gold": "direct_debit_payment_not_recognised",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1474.6,
+      "laya_calls": 1,
+      "vela_pred": "request refund",
+      "vela_correct": false,
+      "vela_ms": 570.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        87
+      ],
+      "row_id": "train:8282",
+      "gold": "wrong_exchange_rate_for_cash_withdrawal",
+      "laya_pred": "wrong exchange rate for cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1468.0,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 636.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        88
+      ],
+      "row_id": "train:7377",
+      "gold": "receiving_money",
+      "laya_pred": "transfer into account",
+      "laya_correct": false,
+      "laya_ms": 1443.6,
+      "laya_calls": 1,
+      "vela_pred": "transfer into account",
+      "vela_correct": false,
+      "vela_ms": 613.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        89
+      ],
+      "row_id": "train:8093",
+      "gold": "order_physical_card",
+      "laya_pred": "getting spare card",
+      "laya_correct": false,
+      "laya_ms": 1443.9,
+      "laya_calls": 1,
+      "vela_pred": "activate my card",
+      "vela_correct": false,
+      "vela_ms": 625.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        90
+      ],
+      "row_id": "train:8245",
+      "gold": "wrong_exchange_rate_for_cash_withdrawal",
+      "laya_pred": "exchange rate",
+      "laya_correct": false,
+      "laya_ms": 1477.3,
+      "laya_calls": 1,
+      "vela_pred": "wrong exchange rate for cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 653.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        91
+      ],
+      "row_id": "train:1762",
+      "gold": "pin_blocked",
+      "laya_pred": "pin blocked",
+      "laya_correct": true,
+      "laya_ms": 1455.2,
+      "laya_calls": 1,
+      "vela_pred": "unable to verify identity",
+      "vela_correct": false,
+      "vela_ms": 527.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        92
+      ],
+      "row_id": "train:5873",
+      "gold": "declined_card_payment",
+      "laya_pred": "declined card payment",
+      "laya_correct": true,
+      "laya_ms": 1465.4,
+      "laya_calls": 1,
+      "vela_pred": "card payment not recognised",
+      "vela_correct": false,
+      "vela_ms": 653.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        93
+      ],
+      "row_id": "train:4955",
+      "gold": "declined_cash_withdrawal",
+      "laya_pred": "declined cash withdrawal",
+      "laya_correct": true,
+      "laya_ms": 1424.6,
+      "laya_calls": 1,
+      "vela_pred": "declined cash withdrawal",
+      "vela_correct": true,
+      "vela_ms": 614.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        94
+      ],
+      "row_id": "train:5734",
+      "gold": "refund_not_showing_up",
+      "laya_pred": "request refund",
+      "laya_correct": false,
+      "laya_ms": 1419.3,
+      "laya_calls": 1,
+      "vela_pred": "Refund not showing up",
+      "vela_correct": true,
+      "vela_ms": 515.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        95
+      ],
+      "row_id": "train:5665",
+      "gold": "declined_transfer",
+      "laya_pred": "declined transfer",
+      "laya_correct": true,
+      "laya_ms": 1432.0,
+      "laya_calls": 1,
+      "vela_pred": "declined transfer",
+      "vela_correct": true,
+      "vela_ms": 501.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        96
+      ],
+      "row_id": "train:7352",
+      "gold": "receiving_money",
+      "laya_pred": "receiving money",
+      "laya_correct": true,
+      "laya_ms": 1456.0,
+      "laya_calls": 1,
+      "vela_pred": "transfer not received by recipient",
+      "vela_correct": false,
+      "vela_ms": 653.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        97
+      ],
+      "row_id": "train:8807",
+      "gold": "cash_withdrawal_not_recognised",
+      "laya_pred": "balance not updated after bank transfer",
+      "laya_correct": false,
+      "laya_ms": 1479.4,
+      "laya_calls": 1,
+      "vela_pred": "wrong amount of cash received",
+      "vela_correct": false,
+      "vela_ms": 580.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        98
+      ],
+      "row_id": "train:5854",
+      "gold": "declined_card_payment",
+      "laya_pred": "declined card payment",
+      "laya_correct": true,
+      "laya_ms": 1462.5,
+      "laya_calls": 1,
+      "vela_pred": "declined card payment",
+      "vela_correct": true,
+      "vela_ms": 567.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        99
+      ],
+      "row_id": "train:5153",
+      "gold": "pending_card_payment",
+      "laya_pred": "declined card payment",
+      "laya_correct": false,
+      "laya_ms": 1536.0,
+      "laya_calls": 1,
+      "vela_pred": "pending card payment",
+      "vela_correct": true,
+      "vela_ms": 604.1,
+      "vela_usage": null
+    }
+  ]
+}

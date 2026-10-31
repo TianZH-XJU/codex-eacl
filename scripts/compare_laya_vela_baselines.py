@@ -24,6 +24,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--laya-cache", required=True)
     ap.add_argument("--vela-baseline", required=True)
+    ap.add_argument("--vela-jsonl", action="store_true",
+                    help="read Vela rows from a pilot-cache-schema JSONL instead of legacy baseline JSON")
     ap.add_argument("--laya-strategy", default="single")
     ap.add_argument("--vela-rep", default=None,
                     help="Vela rep to compare (default: choice for processbench, noul otherwise)")
@@ -31,7 +33,14 @@ def main():
     args = ap.parse_args()
 
     laya = [r for r in load_jsonl(args.laya_cache) if r["strategy"] == args.laya_strategy]
-    vela_all = json.loads(Path(args.vela_baseline).read_text(encoding="utf-8"))["results"]
+    if args.vela_jsonl:
+        vela_all = [{"rep": "choice", "split": r.get("split"), "position": r.get("position"),
+                     "pred": r.get("choice"), "correct": r.get("correct"),
+                     "latency_ms": r.get("latency_ms"), "usage": None,
+                     "gold_check": r.get("gold_rendered")}
+                    for r in load_jsonl(args.vela_baseline)]
+    else:
+        vela_all = json.loads(Path(args.vela_baseline).read_text(encoding="utf-8"))["results"]
     rep = args.vela_rep or ("choice" if any(r["rep"] == "choice" for r in vela_all) else "noul")
     vela = [r for r in vela_all if r["rep"] == rep]
     v_by_key = {(r["split"], r["position"]): r for r in vela}

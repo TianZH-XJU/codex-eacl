@@ -1,0 +1,1621 @@
+{
+  "laya_cache": "results/v4/native/laya_clinc150_full.jsonl",
+  "vela_baseline": "results/v4/native/vela_clinc150_full.jsonl",
+  "laya_strategy": "single",
+  "vela_rep": "choice",
+  "n_paired": 100,
+  "missing_vela_rows": 0,
+  "laya_accuracy": 0.61,
+  "vela_accuracy": 0.57,
+  "accuracy_diff_vela_minus_laya": -0.04,
+  "both_correct": 39,
+  "both_wrong": 21,
+  "laya_only": 22,
+  "vela_only": 18,
+  "mean_latency_ms": {
+    "laya": 2632.4,
+    "vela": 652.9
+  },
+  "rows": [
+    {
+      "key": [
+        "pilot_search",
+        0
+      ],
+      "row_id": "train:13794",
+      "gold": "cancel_reservation",
+      "laya_pred": "cancel",
+      "laya_correct": false,
+      "laya_ms": 2330.1,
+      "laya_calls": 1,
+      "vela_pred": "cancel reservation",
+      "vela_correct": true,
+      "vela_ms": 2446.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        1
+      ],
+      "row_id": "train:5086",
+      "gold": "reminder",
+      "laya_pred": "reminder update",
+      "laya_correct": false,
+      "laya_ms": 2357.6,
+      "laya_calls": 1,
+      "vela_pred": "reminder update",
+      "vela_correct": false,
+      "vela_ms": 627.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        2
+      ],
+      "row_id": "train:9451",
+      "gold": "order_status",
+      "laya_pred": "order status",
+      "laya_correct": true,
+      "laya_ms": 2130.2,
+      "laya_calls": 1,
+      "vela_pred": "travel notification",
+      "vela_correct": false,
+      "vela_ms": 630.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        3
+      ],
+      "row_id": "train:3390",
+      "gold": "next_song",
+      "laya_pred": "next song",
+      "laya_correct": true,
+      "laya_ms": 2166.3,
+      "laya_calls": 1,
+      "vela_pred": "play music",
+      "vela_correct": false,
+      "vela_ms": 634.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        4
+      ],
+      "row_id": "train:13586",
+      "gold": "expiration_date",
+      "laya_pred": "expiration date",
+      "laya_correct": true,
+      "laya_ms": 2178.5,
+      "laya_calls": 1,
+      "vela_pred": "expiration date",
+      "vela_correct": true,
+      "vela_ms": 618.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        5
+      ],
+      "row_id": "train:12883",
+      "gold": "bill_balance",
+      "laya_pred": "pay bill",
+      "laya_correct": false,
+      "laya_ms": 2138.7,
+      "laya_calls": 1,
+      "vela_pred": "bill balance",
+      "vela_correct": true,
+      "vela_ms": 618.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        6
+      ],
+      "row_id": "train:9795",
+      "gold": "account_blocked",
+      "laya_pred": "account blocked",
+      "laya_correct": true,
+      "laya_ms": 2143.6,
+      "laya_calls": 1,
+      "vela_pred": "account blocked",
+      "vela_correct": true,
+      "vela_ms": 637.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        7
+      ],
+      "row_id": "train:15222",
+      "gold": "oos",
+      "laya_pred": "accept reservations",
+      "laya_correct": false,
+      "laya_ms": 2112.6,
+      "laya_calls": 1,
+      "vela_pred": "what can i ask you",
+      "vela_correct": false,
+      "vela_ms": 624.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        8
+      ],
+      "row_id": "train:12885",
+      "gold": "bill_balance",
+      "laya_pred": "bill balance",
+      "laya_correct": true,
+      "laya_ms": 2184.2,
+      "laya_calls": 1,
+      "vela_pred": "bill balance",
+      "vela_correct": true,
+      "vela_ms": 622.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        9
+      ],
+      "row_id": "train:4958",
+      "gold": "todo_list_update",
+      "laya_pred": "todo list update",
+      "laya_correct": true,
+      "laya_ms": 2152.8,
+      "laya_calls": 1,
+      "vela_pred": "shopping list",
+      "vela_correct": false,
+      "vela_ms": 626.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        10
+      ],
+      "row_id": "train:13446",
+      "gold": "gas",
+      "laya_pred": "gas",
+      "laya_correct": true,
+      "laya_ms": 2161.8,
+      "laya_calls": 1,
+      "vela_pred": "tire pressure",
+      "vela_correct": false,
+      "vela_ms": 638.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        11
+      ],
+      "row_id": "train:1886",
+      "gold": "change_user_name",
+      "laya_pred": "change user name",
+      "laya_correct": true,
+      "laya_ms": 2128.7,
+      "laya_calls": 1,
+      "vela_pred": "make call",
+      "vela_correct": false,
+      "vela_ms": 624.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        12
+      ],
+      "row_id": "train:3640",
+      "gold": "rewards_balance",
+      "laya_pred": "redeem rewards",
+      "laya_correct": false,
+      "laya_ms": 2151.5,
+      "laya_calls": 1,
+      "vela_pred": "income",
+      "vela_correct": false,
+      "vela_ms": 622.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        13
+      ],
+      "row_id": "train:2372",
+      "gold": "oil_change_how",
+      "laya_pred": "oil change when",
+      "laya_correct": false,
+      "laya_ms": 2195.6,
+      "laya_calls": 1,
+      "vela_pred": "oil change how",
+      "vela_correct": true,
+      "vela_ms": 618.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        14
+      ],
+      "row_id": "train:7341",
+      "gold": "alarm",
+      "laya_pred": "alarm",
+      "laya_correct": true,
+      "laya_ms": 2122.3,
+      "laya_calls": 1,
+      "vela_pred": "alarm",
+      "vela_correct": true,
+      "vela_ms": 622.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        15
+      ],
+      "row_id": "train:13857",
+      "gold": "tell_joke",
+      "laya_pred": "tell joke",
+      "laya_correct": true,
+      "laya_ms": 2129.6,
+      "laya_calls": 1,
+      "vela_pred": "tell joke",
+      "vela_correct": true,
+      "vela_ms": 614.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        16
+      ],
+      "row_id": "train:7813",
+      "gold": "calories",
+      "laya_pred": "calories",
+      "laya_correct": true,
+      "laya_ms": 2203.8,
+      "laya_calls": 1,
+      "vela_pred": "calories",
+      "vela_correct": true,
+      "vela_ms": 643.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        17
+      ],
+      "row_id": "train:5919",
+      "gold": "date",
+      "laya_pred": "next holiday",
+      "laya_correct": false,
+      "laya_ms": 2132.2,
+      "laya_calls": 1,
+      "vela_pred": "time",
+      "vela_correct": false,
+      "vela_ms": 618.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        18
+      ],
+      "row_id": "train:4564",
+      "gold": "oil_change_when",
+      "laya_pred": "oil change when",
+      "laya_correct": true,
+      "laya_ms": 2178.4,
+      "laya_calls": 1,
+      "vela_pred": "oil change how",
+      "vela_correct": false,
+      "vela_ms": 626.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        19
+      ],
+      "row_id": "train:10572",
+      "gold": "smart_home",
+      "laya_pred": "smart home",
+      "laya_correct": true,
+      "laya_ms": 2171.1,
+      "laya_calls": 1,
+      "vela_pred": "what can i ask you",
+      "vela_correct": false,
+      "vela_ms": 628.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        20
+      ],
+      "row_id": "train:9441",
+      "gold": "order_status",
+      "laya_pred": "order status",
+      "laya_correct": true,
+      "laya_ms": 2210.6,
+      "laya_calls": 1,
+      "vela_pred": "lost luggage",
+      "vela_correct": false,
+      "vela_ms": 617.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        21
+      ],
+      "row_id": "train:343",
+      "gold": "definition",
+      "laya_pred": "definition",
+      "laya_correct": true,
+      "laya_ms": 2150.5,
+      "laya_calls": 1,
+      "vela_pred": "definition",
+      "vela_correct": true,
+      "vela_ms": 624.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        22
+      ],
+      "row_id": "train:9558",
+      "gold": "pin_change",
+      "laya_pred": "pin change",
+      "laya_correct": true,
+      "laya_ms": 2240.0,
+      "laya_calls": 1,
+      "vela_pred": "pin change",
+      "vela_correct": true,
+      "vela_ms": 672.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        23
+      ],
+      "row_id": "train:995",
+      "gold": "improve_credit_score",
+      "laya_pred": "improve credit score",
+      "laya_correct": true,
+      "laya_ms": 2262.0,
+      "laya_calls": 1,
+      "vela_pred": "improve credit score",
+      "vela_correct": true,
+      "vela_ms": 638.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        24
+      ],
+      "row_id": "train:1002",
+      "gold": "fun_fact",
+      "laya_pred": "fun fact",
+      "laya_correct": true,
+      "laya_ms": 2209.4,
+      "laya_calls": 1,
+      "vela_pred": "fun fact",
+      "vela_correct": true,
+      "vela_ms": 635.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        25
+      ],
+      "row_id": "train:1281",
+      "gold": "payday",
+      "laya_pred": "income",
+      "laya_correct": false,
+      "laya_ms": 2184.2,
+      "laya_calls": 1,
+      "vela_pred": "pay bill",
+      "vela_correct": false,
+      "vela_ms": 648.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        26
+      ],
+      "row_id": "train:5320",
+      "gold": "no",
+      "laya_pred": "cancel",
+      "laya_correct": false,
+      "laya_ms": 2144.9,
+      "laya_calls": 1,
+      "vela_pred": "no",
+      "vela_correct": true,
+      "vela_ms": 643.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        27
+      ],
+      "row_id": "train:8314",
+      "gold": "schedule_meeting",
+      "laya_pred": "schedule meeting",
+      "laya_correct": true,
+      "laya_ms": 2225.9,
+      "laya_calls": 1,
+      "vela_pred": "schedule meeting",
+      "vela_correct": true,
+      "vela_ms": 633.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        28
+      ],
+      "row_id": "train:12726",
+      "gold": "text",
+      "laya_pred": "text",
+      "laya_correct": true,
+      "laya_ms": 2810.8,
+      "laya_calls": 1,
+      "vela_pred": "thank you",
+      "vela_correct": false,
+      "vela_ms": 639.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        29
+      ],
+      "row_id": "train:14931",
+      "gold": "card_declined",
+      "laya_pred": "card declined",
+      "laya_correct": true,
+      "laya_ms": 2804.4,
+      "laya_calls": 1,
+      "vela_pred": "card declined",
+      "vela_correct": true,
+      "vela_ms": 631.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        30
+      ],
+      "row_id": "train:11530",
+      "gold": "pto_balance",
+      "laya_pred": "pto balance",
+      "laya_correct": true,
+      "laya_ms": 2772.9,
+      "laya_calls": 1,
+      "vela_pred": "bill balance",
+      "vela_correct": false,
+      "vela_ms": 646.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        31
+      ],
+      "row_id": "train:11229",
+      "gold": "cancel",
+      "laya_pred": "cancel",
+      "laya_correct": true,
+      "laya_ms": 2770.1,
+      "laya_calls": 1,
+      "vela_pred": "cancel",
+      "vela_correct": true,
+      "vela_ms": 617.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        32
+      ],
+      "row_id": "train:3665",
+      "gold": "rewards_balance",
+      "laya_pred": "redeem rewards",
+      "laya_correct": false,
+      "laya_ms": 2885.4,
+      "laya_calls": 1,
+      "vela_pred": "redeem rewards",
+      "vela_correct": false,
+      "vela_ms": 628.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        33
+      ],
+      "row_id": "train:2419",
+      "gold": "restaurant_reservation",
+      "laya_pred": "restaurant suggestion",
+      "laya_correct": false,
+      "laya_ms": 2727.6,
+      "laya_calls": 1,
+      "vela_pred": "restaurant reservation",
+      "vela_correct": true,
+      "vela_ms": 648.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        34
+      ],
+      "row_id": "train:5621",
+      "gold": "calendar",
+      "laya_pred": "calendar update",
+      "laya_correct": false,
+      "laya_ms": 2790.0,
+      "laya_calls": 1,
+      "vela_pred": "calendar update",
+      "vela_correct": false,
+      "vela_ms": 627.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        35
+      ],
+      "row_id": "train:13680",
+      "gold": "update_playlist",
+      "laya_pred": "update playlist",
+      "laya_correct": true,
+      "laya_ms": 2700.5,
+      "laya_calls": 1,
+      "vela_pred": "update playlist",
+      "vela_correct": true,
+      "vela_ms": 626.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        36
+      ],
+      "row_id": "train:13272",
+      "gold": "calendar_update",
+      "laya_pred": "calendar update",
+      "laya_correct": true,
+      "laya_ms": 2821.8,
+      "laya_calls": 1,
+      "vela_pred": "confirm reservation",
+      "vela_correct": false,
+      "vela_ms": 637.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        37
+      ],
+      "row_id": "train:12301",
+      "gold": "credit_limit_change",
+      "laya_pred": "credit limit change",
+      "laya_correct": true,
+      "laya_ms": 2678.6,
+      "laya_calls": 1,
+      "vela_pred": "credit limit change",
+      "vela_correct": true,
+      "vela_ms": 630.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        38
+      ],
+      "row_id": "train:1216",
+      "gold": "payday",
+      "laya_pred": "income",
+      "laya_correct": false,
+      "laya_ms": 2886.1,
+      "laya_calls": 1,
+      "vela_pred": "pay bill",
+      "vela_correct": false,
+      "vela_ms": 634.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        39
+      ],
+      "row_id": "train:5784",
+      "gold": "uber",
+      "laya_pred": "uber",
+      "laya_correct": true,
+      "laya_ms": 2871.3,
+      "laya_calls": 1,
+      "vela_pred": "uber",
+      "vela_correct": true,
+      "vela_ms": 616.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        40
+      ],
+      "row_id": "train:13408",
+      "gold": "gas",
+      "laya_pred": "gas",
+      "laya_correct": true,
+      "laya_ms": 2717.5,
+      "laya_calls": 1,
+      "vela_pred": "gas type",
+      "vela_correct": false,
+      "vela_ms": 624.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        41
+      ],
+      "row_id": "train:2815",
+      "gold": "rollover_401k",
+      "laya_pred": "rollover 401k",
+      "laya_correct": true,
+      "laya_ms": 2780.7,
+      "laya_calls": 1,
+      "vela_pred": "rollover 401k",
+      "vela_correct": true,
+      "vela_ms": 642.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        42
+      ],
+      "row_id": "train:702",
+      "gold": "travel_alert",
+      "laya_pred": "travel alert",
+      "laya_correct": true,
+      "laya_ms": 2691.2,
+      "laya_calls": 1,
+      "vela_pred": "travel notification",
+      "vela_correct": false,
+      "vela_ms": 662.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        43
+      ],
+      "row_id": "train:12714",
+      "gold": "text",
+      "laya_pred": "text",
+      "laya_correct": true,
+      "laya_ms": 2852.0,
+      "laya_calls": 1,
+      "vela_pred": "text",
+      "vela_correct": true,
+      "vela_ms": 765.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        44
+      ],
+      "row_id": "train:5865",
+      "gold": "calculator",
+      "laya_pred": "calculator",
+      "laya_correct": true,
+      "laya_ms": 2940.6,
+      "laya_calls": 1,
+      "vela_pred": "meaning of life",
+      "vela_correct": false,
+      "vela_ms": 632.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        45
+      ],
+      "row_id": "train:1548",
+      "gold": "application_status",
+      "laya_pred": "application status",
+      "laya_correct": true,
+      "laya_ms": 2942.8,
+      "laya_calls": 1,
+      "vela_pred": "application status",
+      "vela_correct": true,
+      "vela_ms": 624.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        46
+      ],
+      "row_id": "train:13349",
+      "gold": "are_you_a_bot",
+      "laya_pred": "are you a bot",
+      "laya_correct": true,
+      "laya_ms": 2943.1,
+      "laya_calls": 1,
+      "vela_pred": "meaning of life",
+      "vela_correct": false,
+      "vela_ms": 617.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        47
+      ],
+      "row_id": "train:3831",
+      "gold": "spending_history",
+      "laya_pred": "w2",
+      "laya_correct": false,
+      "laya_ms": 2717.9,
+      "laya_calls": 1,
+      "vela_pred": "spending history",
+      "vela_correct": true,
+      "vela_ms": 622.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        48
+      ],
+      "row_id": "train:2086",
+      "gold": "shopping_list_update",
+      "laya_pred": "shopping list update",
+      "laya_correct": true,
+      "laya_ms": 2842.0,
+      "laya_calls": 1,
+      "vela_pred": "shopping list",
+      "vela_correct": false,
+      "vela_ms": 660.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        49
+      ],
+      "row_id": "train:15224",
+      "gold": "oos",
+      "laya_pred": "travel suggestion",
+      "laya_correct": false,
+      "laya_ms": 2911.7,
+      "laya_calls": 1,
+      "vela_pred": "what are your hobbies",
+      "vela_correct": false,
+      "vela_ms": 626.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        50
+      ],
+      "row_id": "train:3061",
+      "gold": "distance",
+      "laya_pred": "time",
+      "laya_correct": false,
+      "laya_ms": 2799.7,
+      "laya_calls": 1,
+      "vela_pred": "pto request",
+      "vela_correct": false,
+      "vela_ms": 652.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        51
+      ],
+      "row_id": "train:14101",
+      "gold": "car_rental",
+      "laya_pred": "car rental",
+      "laya_correct": true,
+      "laya_ms": 2836.0,
+      "laya_calls": 1,
+      "vela_pred": "car rental",
+      "vela_correct": true,
+      "vela_ms": 654.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        52
+      ],
+      "row_id": "train:10485",
+      "gold": "measurement_conversion",
+      "laya_pred": "calculator",
+      "laya_correct": false,
+      "laya_ms": 2728.1,
+      "laya_calls": 1,
+      "vela_pred": "distance",
+      "vela_correct": false,
+      "vela_ms": 633.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        53
+      ],
+      "row_id": "train:14377",
+      "gold": "meal_suggestion",
+      "laya_pred": "recipe",
+      "laya_correct": false,
+      "laya_ms": 2815.5,
+      "laya_calls": 1,
+      "vela_pred": "restaurant suggestion",
+      "vela_correct": false,
+      "vela_ms": 622.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        54
+      ],
+      "row_id": "train:1433",
+      "gold": "time",
+      "laya_pred": "time",
+      "laya_correct": true,
+      "laya_ms": 2808.1,
+      "laya_calls": 1,
+      "vela_pred": "time",
+      "vela_correct": true,
+      "vela_ms": 633.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        55
+      ],
+      "row_id": "train:12583",
+      "gold": "book_flight",
+      "laya_pred": "book flight",
+      "laya_correct": true,
+      "laya_ms": 2809.4,
+      "laya_calls": 1,
+      "vela_pred": "book flight",
+      "vela_correct": true,
+      "vela_ms": 644.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        56
+      ],
+      "row_id": "train:4445",
+      "gold": "mpg",
+      "laya_pred": "mpg",
+      "laya_correct": true,
+      "laya_ms": 2732.1,
+      "laya_calls": 1,
+      "vela_pred": "mpg",
+      "vela_correct": true,
+      "vela_ms": 623.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        57
+      ],
+      "row_id": "train:9202",
+      "gold": "how_busy",
+      "laya_pred": "accept reservations",
+      "laya_correct": false,
+      "laya_ms": 2764.5,
+      "laya_calls": 1,
+      "vela_pred": "expiration date",
+      "vela_correct": false,
+      "vela_ms": 634.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        58
+      ],
+      "row_id": "train:2187",
+      "gold": "what_can_i_ask_you",
+      "laya_pred": "accept reservations",
+      "laya_correct": false,
+      "laya_ms": 2738.3,
+      "laya_calls": 1,
+      "vela_pred": "what can i ask you",
+      "vela_correct": true,
+      "vela_ms": 628.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        59
+      ],
+      "row_id": "train:4162",
+      "gold": "new_card",
+      "laya_pred": "new card",
+      "laya_correct": true,
+      "laya_ms": 2878.2,
+      "laya_calls": 1,
+      "vela_pred": "new card",
+      "vela_correct": true,
+      "vela_ms": 629.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        60
+      ],
+      "row_id": "train:2661",
+      "gold": "confirm_reservation",
+      "laya_pred": "confirm reservation",
+      "laya_correct": true,
+      "laya_ms": 2745.4,
+      "laya_calls": 1,
+      "vela_pred": "confirm reservation",
+      "vela_correct": true,
+      "vela_ms": 640.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        61
+      ],
+      "row_id": "train:3189",
+      "gold": "user_name",
+      "laya_pred": "change user name",
+      "laya_correct": false,
+      "laya_ms": 2724.2,
+      "laya_calls": 1,
+      "vela_pred": "what is your name",
+      "vela_correct": false,
+      "vela_ms": 614.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        62
+      ],
+      "row_id": "train:14840",
+      "gold": "order_checks",
+      "laya_pred": "order checks",
+      "laya_correct": true,
+      "laya_ms": 2927.5,
+      "laya_calls": 1,
+      "vela_pred": "order checks",
+      "vela_correct": true,
+      "vela_ms": 639.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        63
+      ],
+      "row_id": "train:12898",
+      "gold": "bill_balance",
+      "laya_pred": "pay bill",
+      "laya_correct": false,
+      "laya_ms": 2701.3,
+      "laya_calls": 1,
+      "vela_pred": "pay bill",
+      "vela_correct": false,
+      "vela_ms": 621.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        64
+      ],
+      "row_id": "train:6655",
+      "gold": "roll_dice",
+      "laya_pred": "roll dice",
+      "laya_correct": true,
+      "laya_ms": 2729.5,
+      "laya_calls": 1,
+      "vela_pred": "roll dice",
+      "vela_correct": true,
+      "vela_ms": 619.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        65
+      ],
+      "row_id": "train:8121",
+      "gold": "routing",
+      "laya_pred": "w2",
+      "laya_correct": false,
+      "laya_ms": 2920.9,
+      "laya_calls": 1,
+      "vela_pred": "routing",
+      "vela_correct": true,
+      "vela_ms": 640.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        66
+      ],
+      "row_id": "train:11957",
+      "gold": "reset_settings",
+      "laya_pred": "reset settings",
+      "laya_correct": true,
+      "laya_ms": 2731.5,
+      "laya_calls": 1,
+      "vela_pred": "reset settings",
+      "vela_correct": true,
+      "vela_ms": 636.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        67
+      ],
+      "row_id": "train:8638",
+      "gold": "tire_change",
+      "laya_pred": "schedule maintenance",
+      "laya_correct": false,
+      "laya_ms": 2721.6,
+      "laya_calls": 1,
+      "vela_pred": "schedule maintenance",
+      "vela_correct": false,
+      "vela_ms": 636.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        68
+      ],
+      "row_id": "train:7265",
+      "gold": "make_call",
+      "laya_pred": "make call",
+      "laya_correct": true,
+      "laya_ms": 2787.0,
+      "laya_calls": 1,
+      "vela_pred": "make call",
+      "vela_correct": true,
+      "vela_ms": 632.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        69
+      ],
+      "row_id": "train:7678",
+      "gold": "w2",
+      "laya_pred": "w2",
+      "laya_correct": true,
+      "laya_ms": 2855.1,
+      "laya_calls": 1,
+      "vela_pred": "w2",
+      "vela_correct": true,
+      "vela_ms": 625.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        70
+      ],
+      "row_id": "train:12399",
+      "gold": "credit_limit_change",
+      "laya_pred": "credit limit change",
+      "laya_correct": true,
+      "laya_ms": 2735.6,
+      "laya_calls": 1,
+      "vela_pred": "improve credit score",
+      "vela_correct": false,
+      "vela_ms": 647.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        71
+      ],
+      "row_id": "train:12208",
+      "gold": "interest_rate",
+      "laya_pred": "interest rate",
+      "laya_correct": true,
+      "laya_ms": 2982.5,
+      "laya_calls": 1,
+      "vela_pred": "interest rate",
+      "vela_correct": true,
+      "vela_ms": 648.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        72
+      ],
+      "row_id": "train:12108",
+      "gold": "direct_deposit",
+      "laya_pred": "direct deposit",
+      "laya_correct": true,
+      "laya_ms": 2891.4,
+      "laya_calls": 1,
+      "vela_pred": "direct deposit",
+      "vela_correct": true,
+      "vela_ms": 623.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        73
+      ],
+      "row_id": "train:12881",
+      "gold": "bill_balance",
+      "laya_pred": "gas",
+      "laya_correct": false,
+      "laya_ms": 2791.7,
+      "laya_calls": 1,
+      "vela_pred": "bill balance",
+      "vela_correct": true,
+      "vela_ms": 622.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        74
+      ],
+      "row_id": "train:12592",
+      "gold": "book_flight",
+      "laya_pred": "book flight",
+      "laya_correct": true,
+      "laya_ms": 2810.7,
+      "laya_calls": 1,
+      "vela_pred": "book flight",
+      "vela_correct": true,
+      "vela_ms": 655.9,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        75
+      ],
+      "row_id": "train:4605",
+      "gold": "yes",
+      "laya_pred": "yes",
+      "laya_correct": true,
+      "laya_ms": 2635.5,
+      "laya_calls": 1,
+      "vela_pred": "thank you",
+      "vela_correct": false,
+      "vela_ms": 629.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        76
+      ],
+      "row_id": "train:4341",
+      "gold": "repeat",
+      "laya_pred": "repeat",
+      "laya_correct": true,
+      "laya_ms": 2815.3,
+      "laya_calls": 1,
+      "vela_pred": "report lost card",
+      "vela_correct": false,
+      "vela_ms": 627.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        77
+      ],
+      "row_id": "train:13724",
+      "gold": "cancel_reservation",
+      "laya_pred": "cancel",
+      "laya_correct": false,
+      "laya_ms": 2787.3,
+      "laya_calls": 1,
+      "vela_pred": "cancel reservation",
+      "vela_correct": true,
+      "vela_ms": 649.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        78
+      ],
+      "row_id": "train:12663",
+      "gold": "shopping_list",
+      "laya_pred": "shopping list update",
+      "laya_correct": false,
+      "laya_ms": 2772.5,
+      "laya_calls": 1,
+      "vela_pred": "shopping list",
+      "vela_correct": true,
+      "vela_ms": 616.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        79
+      ],
+      "row_id": "train:5202",
+      "gold": "tire_pressure",
+      "laya_pred": "tire pressure",
+      "laya_correct": true,
+      "laya_ms": 2753.2,
+      "laya_calls": 1,
+      "vela_pred": "tire pressure",
+      "vela_correct": true,
+      "vela_ms": 645.8,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        80
+      ],
+      "row_id": "train:11795",
+      "gold": "spelling",
+      "laya_pred": "plug type",
+      "laya_correct": false,
+      "laya_ms": 2789.0,
+      "laya_calls": 1,
+      "vela_pred": "meaning of life",
+      "vela_correct": false,
+      "vela_ms": 626.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        81
+      ],
+      "row_id": "train:13545",
+      "gold": "expiration_date",
+      "laya_pred": "replacement card duration",
+      "laya_correct": false,
+      "laya_ms": 3329.2,
+      "laya_calls": 1,
+      "vela_pred": "expiration date",
+      "vela_correct": true,
+      "vela_ms": 631.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        82
+      ],
+      "row_id": "train:14178",
+      "gold": "car_rental",
+      "laya_pred": "car rental",
+      "laya_correct": true,
+      "laya_ms": 3279.4,
+      "laya_calls": 1,
+      "vela_pred": "car rental",
+      "vela_correct": true,
+      "vela_ms": 661.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        83
+      ],
+      "row_id": "train:2355",
+      "gold": "oil_change_how",
+      "laya_pred": "oil change when",
+      "laya_correct": false,
+      "laya_ms": 2824.3,
+      "laya_calls": 1,
+      "vela_pred": "oil change how",
+      "vela_correct": true,
+      "vela_ms": 637.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        84
+      ],
+      "row_id": "train:9063",
+      "gold": "who_do_you_work_for",
+      "laya_pred": "schedule meeting",
+      "laya_correct": false,
+      "laya_ms": 2668.8,
+      "laya_calls": 1,
+      "vela_pred": "card declined",
+      "vela_correct": false,
+      "vela_ms": 623.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        85
+      ],
+      "row_id": "train:9514",
+      "gold": "pin_change",
+      "laya_pred": "pin change",
+      "laya_correct": true,
+      "laya_ms": 2703.1,
+      "laya_calls": 1,
+      "vela_pred": "pin change",
+      "vela_correct": true,
+      "vela_ms": 630.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        86
+      ],
+      "row_id": "train:8691",
+      "gold": "tire_change",
+      "laya_pred": "tire pressure",
+      "laya_correct": false,
+      "laya_ms": 2771.6,
+      "laya_calls": 1,
+      "vela_pred": "tire change",
+      "vela_correct": true,
+      "vela_ms": 614.0,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        87
+      ],
+      "row_id": "train:14671",
+      "gold": "order",
+      "laya_pred": "car rental",
+      "laya_correct": false,
+      "laya_ms": 2695.5,
+      "laya_calls": 1,
+      "vela_pred": "pto request",
+      "vela_correct": false,
+      "vela_ms": 616.3,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        88
+      ],
+      "row_id": "train:10445",
+      "gold": "measurement_conversion",
+      "laya_pred": "calculator",
+      "laya_correct": false,
+      "laya_ms": 2812.4,
+      "laya_calls": 1,
+      "vela_pred": "measurement conversion",
+      "vela_correct": true,
+      "vela_ms": 623.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        89
+      ],
+      "row_id": "train:9730",
+      "gold": "account_blocked",
+      "laya_pred": "freeze account",
+      "laya_correct": false,
+      "laya_ms": 2909.4,
+      "laya_calls": 1,
+      "vela_pred": "account blocked",
+      "vela_correct": true,
+      "vela_ms": 632.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        90
+      ],
+      "row_id": "train:14771",
+      "gold": "traffic",
+      "laya_pred": "traffic",
+      "laya_correct": true,
+      "laya_ms": 2674.2,
+      "laya_calls": 1,
+      "vela_pred": "travel suggestion",
+      "vela_correct": false,
+      "vela_ms": 638.6,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        91
+      ],
+      "row_id": "train:12349",
+      "gold": "credit_limit_change",
+      "laya_pred": "credit limit change",
+      "laya_correct": true,
+      "laya_ms": 2765.3,
+      "laya_calls": 1,
+      "vela_pred": "credit limit change",
+      "vela_correct": true,
+      "vela_ms": 647.2,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        92
+      ],
+      "row_id": "train:7021",
+      "gold": "report_lost_card",
+      "laya_pred": "report lost card",
+      "laya_correct": true,
+      "laya_ms": 2907.3,
+      "laya_calls": 1,
+      "vela_pred": "report lost card",
+      "vela_correct": true,
+      "vela_ms": 645.1,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        93
+      ],
+      "row_id": "train:5955",
+      "gold": "date",
+      "laya_pred": "date",
+      "laya_correct": true,
+      "laya_ms": 2804.9,
+      "laya_calls": 1,
+      "vela_pred": "expiration date",
+      "vela_correct": false,
+      "vela_ms": 661.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        94
+      ],
+      "row_id": "train:15201",
+      "gold": "oos",
+      "laya_pred": "fun fact",
+      "laya_correct": false,
+      "laya_ms": 2874.3,
+      "laya_calls": 1,
+      "vela_pred": "what can i ask you",
+      "vela_correct": false,
+      "vela_ms": 639.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        95
+      ],
+      "row_id": "train:14338",
+      "gold": "meal_suggestion",
+      "laya_pred": "restaurant suggestion",
+      "laya_correct": false,
+      "laya_ms": 2893.3,
+      "laya_calls": 1,
+      "vela_pred": "restaurant suggestion",
+      "vela_correct": false,
+      "vela_ms": 623.4,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        96
+      ],
+      "row_id": "train:9886",
+      "gold": "what_song",
+      "laya_pred": "next song",
+      "laya_correct": false,
+      "laya_ms": 2733.7,
+      "laya_calls": 1,
+      "vela_pred": "what song",
+      "vela_correct": true,
+      "vela_ms": 638.7,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        97
+      ],
+      "row_id": "train:13059",
+      "gold": "redeem_rewards",
+      "laya_pred": "redeem rewards",
+      "laya_correct": true,
+      "laya_ms": 2618.5,
+      "laya_calls": 1,
+      "vela_pred": "pay bill",
+      "vela_correct": false,
+      "vela_ms": 644.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        98
+      ],
+      "row_id": "train:7945",
+      "gold": "damaged_card",
+      "laya_pred": "damaged card",
+      "laya_correct": true,
+      "laya_ms": 2707.8,
+      "laya_calls": 1,
+      "vela_pred": "damaged card",
+      "vela_correct": true,
+      "vela_ms": 656.5,
+      "vela_usage": null
+    },
+    {
+      "key": [
+        "pilot_search",
+        99
+      ],
+      "row_id": "train:1641",
+      "gold": "flight_status",
+      "laya_pred": "book flight",
+      "laya_correct": false,
+      "laya_ms": 2793.7,
+      "laya_calls": 1,
+      "vela_pred": "flight status",
+      "vela_correct": true,
+      "vela_ms": 641.5,
+      "vela_usage": null
+    }
+  ]
+}
