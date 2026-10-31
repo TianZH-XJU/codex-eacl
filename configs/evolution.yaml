@@ -1,0 +1,33 @@
+# v4.1 evolution registry. Nothing here runs until its gate passes.
+# Budgets count REAL model evaluations (genome evals AND per-sample calls, both recorded).
+algorithms:
+  ga:
+    runner: missing
+    role: primary_single_task_search
+    pilot_params: {population: [8, 12, 16], generations: [3, 5, 8], crossover: [0.6, 0.8], mutation: [0.05, 0.10, 0.20], elitism: [1, 2]}
+    seeds_pilot: [17, 23, 41]
+    status: blocked_pending_task_adapters
+  random_search:
+    runner: missing
+    role: mandatory_matched_budget_control
+    status: blocked_pending_task_adapters
+  neat_multistep:
+    runner: missing
+    role: multistep_policy_search
+    legacy_reference: scripts/run_neat_cv.py (HISTORICAL single-step BANKING77 failure, not a runner for new tasks)
+    status: blocked_pending_complementarity_gate
+  nsga2:
+    runner: missing
+    role: quality_latency_multiobjective
+    status: blocked_pending_single_objective_signal
+  es:
+    runner: missing
+    role: continuous_params_only
+    status: blocked_pending_numeric_space
+  gp_structural:
+    runner: missing
+    role: policy_structure_search
+    legacy_note: E2 menu-24 space rejected as GP target (exhaustive covers it; see e2_joint_analysis.json)
+    status: blocked_pending_tree_grammar
+budgets_eval_counts: [24, 48, 96, 192]
+seeds_ladder: {pilot: 3, stability: 5, formal: 10}

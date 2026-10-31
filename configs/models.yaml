@@ -1,0 +1,29 @@
+# v4.1 model registry (top-level; pins mirror configs/v4/models.yaml).
+# Adapter implementation status is recorded per model; pins change only here + registry test together.
+models:
+  laya:
+    package: laya==0.4.16
+    source_commit: b9fe351ce81e2d974bca2bf219c1e4030c0a05ea
+    repo: convaiinnovations/laya
+    revision: 7b928d828b7b0e022f929d9bd2e44165aa270148
+    backend: torch_fp32_cpu
+    adapter: src/models/laya_adapter.py
+    adapter_status: implemented
+    smoke_status: pending
+    natives: [choice, noul, score]
+  vela:
+    repo: vllm-sr/Vela-2.0-0.3B
+    revision: d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409
+    backend: torch_fp32_cpu
+    adapter: src/models/vela_adapter.py
+    adapter_status: implemented
+    smoke_status: pending
+    natives: [choice, noul, score, span, set]
+    common_subspace: [choice, noul, score]
+    disallowed_as_search_knobs: [max_len, head_max_len, group_size, shortlist_k, window_overlap, internal_constants]
+runtime:
+  device: cpu
+  cpu_threads: 2
+  single_model_residency: true
+  rss_target_mb: 3072
+  rss_hard_stop_mb: 3584

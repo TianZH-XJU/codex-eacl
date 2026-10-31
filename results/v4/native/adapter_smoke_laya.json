@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-10-31T23:55:39.214611+00:00",
+  "model": "laya",
+  "load_seconds": 6.4,
+  "shape_ok": true,
+  "choice": "Refund not showing up",
+  "record": {
+    "model": "laya",
+    "revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+    "task": "intent",
+    "input_len": 34,
+    "output_types": [
+      "choice"
+    ],
+    "ok": true,
+    "parse_ok": true,
+    "latency_ms": 599.1,
+    "rss_mb": 2075.2,
+    "n_calls": 1,
+    "adapter_version": "src-v1",
+    "prompt_version": "stage1-smoke-v1",
+    "error": null
+  },
+  "status": "passed"
+}
