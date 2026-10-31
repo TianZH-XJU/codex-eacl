@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-10-31T22:33:58.131925+00:00",
+  "dataset": "clinc150",
+  "model": "vela",
+  "split": "pilot_search",
+  "seed": 17,
+  "n": 60,
+  "accuracy": 0.55,
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "9551644c07fed986df7ff332ceca4c44908b895f",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1718.9,
+  "status": "passed"
+}
