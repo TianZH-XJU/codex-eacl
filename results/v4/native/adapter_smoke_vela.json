@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-10-31T23:57:14.589574+00:00",
+  "model": "vela",
+  "load_seconds": 6.4,
+  "shape_ok": true,
+  "choice": "Refund not showing up",
+  "record": {
+    "model": "vela",
+    "revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+    "task": "intent",
+    "input_len": 34,
+    "output_types": [
+      "choice"
+    ],
+    "ok": true,
+    "parse_ok": true,
+    "latency_ms": 2265.5,
+    "rss_mb": 1687.7,
+    "n_calls": 1,
+    "adapter_version": "src-v1",
+    "prompt_version": "stage1-smoke-v1",
+    "error": null
+  },
+  "status": "passed"
+}

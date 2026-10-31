@@ -9,7 +9,8 @@ models:
     backend: torch_fp32_cpu
     adapter: src/models/laya_adapter.py
     adapter_status: implemented
-    smoke_status: pending
+    smoke_status: passed_2026-11-01_single_row
+    smoke_evidence: results/v4/native/adapter_smoke_laya.json
     natives: [choice, noul, score]
   vela:
     repo: vllm-sr/Vela-2.0-0.3B
@@ -17,7 +18,8 @@ models:
     backend: torch_fp32_cpu
     adapter: src/models/vela_adapter.py
     adapter_status: implemented
-    smoke_status: pending
+    smoke_status: passed_2026-11-01_single_row
+    smoke_evidence: results/v4/native/adapter_smoke_vela.json
     natives: [choice, noul, score, span, set]
     common_subspace: [choice, noul, score]
     disallowed_as_search_knobs: [max_len, head_max_len, group_size, shortlist_k, window_overlap, internal_constants]
