@@ -1,0 +1,9 @@
+task,split,model,accuracy,balanced_accuracy,macro_f1,harmonic_f1,error_acc,correct_acc
+processbench,train,laya-default-single,,,,0.0,,
+processbench,dev,laya-default-single,,,,0.0,,
+codexglue,search_dev,tfidf_logreg,0.6136,0.6055,0.6051,,,
+codexglue,search_dev,tfidf_linearsvm,0.6042,0.5995,0.5997,,,
+codexglue,search_dev,majority,0.5424,0.5,0.3517,,,
+findver,search_dev,tfidf_logreg,0.4915,0.5109,0.4178,,,
+findver,search_dev,tfidf_linearsvm,0.5254,0.5346,0.5141,,,
+findver,search_dev,majority,0.4746,0.5,0.3218,,,

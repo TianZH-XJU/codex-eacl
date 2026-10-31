@@ -1,0 +1,54 @@
+{
+  "processbench_laya_single_train": {
+    "error_acc": 0.2113,
+    "correct_acc": 0.0,
+    "harmonic_f1": 0.0,
+    "n_error": 71,
+    "n_correct": 49,
+    "random_step_expected_acc": 0.1361,
+    "laya_single_acc": 0.125
+  },
+  "processbench_laya_single_dev": {
+    "error_acc": 0.2927,
+    "correct_acc": 0.0,
+    "harmonic_f1": 0.0,
+    "n_error": 41,
+    "n_correct": 19,
+    "random_step_expected_acc": 0.1554,
+    "laya_single_acc": 0.2
+  },
+  "codexglue_tfidf_searchdev": {
+    "tfidf_logreg": {
+      "accuracy": 0.6136,
+      "balanced_accuracy": 0.6055,
+      "macro_f1": 0.6051
+    },
+    "tfidf_linearsvm": {
+      "accuracy": 0.6042,
+      "balanced_accuracy": 0.5995,
+      "macro_f1": 0.5997
+    },
+    "majority": {
+      "accuracy": 0.5424,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.3517
+    }
+  },
+  "findver_tfidf_searchdev": {
+    "tfidf_logreg": {
+      "accuracy": 0.4915,
+      "balanced_accuracy": 0.5109,
+      "macro_f1": 0.4178
+    },
+    "tfidf_linearsvm": {
+      "accuracy": 0.5254,
+      "balanced_accuracy": 0.5346,
+      "macro_f1": 0.5141
+    },
+    "majority": {
+      "accuracy": 0.4746,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.3218
+    }
+  }
+}
