@@ -1,0 +1,160 @@
+{
+  "created_utc": "2026-10-31T18:16:25.431484+00:00",
+  "method": "GroupKFold(3) by true group + train-only majority + cluster bootstrap",
+  "processbench_train": {
+    "wide": {
+      "fold_oof_accuracy": [
+        0.925,
+        0.825,
+        0.875
+      ],
+      "fold_majority_train_only": [
+        0.95,
+        0.85,
+        0.875
+      ],
+      "mean_oof": 0.875,
+      "mean_majority": 0.8917,
+      "cluster_bootstrap_oof": {
+        "mean": 0.8753,
+        "ci95_lo": 0.8136,
+        "ci95_hi": 0.9328,
+        "n_groups": 118,
+        "n_rows": 120,
+        "group_size_min": 1,
+        "group_size_max": 2,
+        "reps": 5000,
+        "seed": 17
+      }
+    },
+    "tournament": {
+      "fold_oof_accuracy": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "fold_majority_train_only": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_oof": 1.0,
+      "mean_majority": 1.0,
+      "cluster_bootstrap_oof": {
+        "mean": 1.0,
+        "ci95_lo": 1.0,
+        "ci95_hi": 1.0,
+        "n_groups": 118,
+        "n_rows": 120,
+        "group_size_min": 1,
+        "group_size_max": 2,
+        "reps": 5000,
+        "seed": 17
+      }
+    }
+  },
+  "codexglue_valid": {
+    "switch": {
+      "fold_oof_accuracy": [
+        0.15,
+        0.25,
+        0.2
+      ],
+      "fold_majority_train_only": [
+        0.7,
+        0.45,
+        0.3
+      ],
+      "mean_oof": 0.2,
+      "mean_majority": 0.4833,
+      "cluster_bootstrap_oof": {
+        "mean": 0.2004,
+        "ci95_lo": 0.1,
+        "ci95_hi": 0.3,
+        "n_groups": 60,
+        "n_rows": 60,
+        "group_size_min": 1,
+        "group_size_max": 1,
+        "reps": 5000,
+        "seed": 17
+      }
+    },
+    "wide": {
+      "fold_oof_accuracy": [
+        0.35,
+        0.25,
+        0.3
+      ],
+      "fold_majority_train_only": [
+        0.7,
+        0.4,
+        0.35
+      ],
+      "mean_oof": 0.3,
+      "mean_majority": 0.4833,
+      "cluster_bootstrap_oof": {
+        "mean": 0.3011,
+        "ci95_lo": 0.1833,
+        "ci95_hi": 0.4167,
+        "n_groups": 60,
+        "n_rows": 60,
+        "group_size_min": 1,
+        "group_size_max": 1,
+        "reps": 5000,
+        "seed": 17
+      }
+    }
+  },
+  "findver_dev": {
+    "switch": {
+      "fold_oof_accuracy": [
+        0.8,
+        0.7,
+        0.9
+      ],
+      "fold_majority_train_only": [
+        0.8,
+        0.7,
+        0.95
+      ],
+      "mean_oof": 0.8,
+      "mean_majority": 0.8167,
+      "cluster_bootstrap_oof": {
+        "mean": 0.8005,
+        "ci95_lo": 0.6897,
+        "ci95_hi": 0.9016,
+        "n_groups": 37,
+        "n_rows": 60,
+        "group_size_min": 1,
+        "group_size_max": 4,
+        "reps": 5000,
+        "seed": 17
+      }
+    },
+    "wide": {
+      "fold_oof_accuracy": [
+        0.8,
+        0.55,
+        0.7
+      ],
+      "fold_majority_train_only": [
+        0.8,
+        0.55,
+        0.85
+      ],
+      "mean_oof": 0.6833,
+      "mean_majority": 0.7333,
+      "cluster_bootstrap_oof": {
+        "mean": 0.685,
+        "ci95_lo": 0.5781,
+        "ci95_hi": 0.7895,
+        "n_groups": 37,
+        "n_rows": 60,
+        "group_size_min": 1,
+        "group_size_max": 4,
+        "reps": 5000,
+        "seed": 17
+      }
+    }
+  }
+}
