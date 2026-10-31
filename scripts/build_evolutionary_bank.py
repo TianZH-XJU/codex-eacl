@@ -47,7 +47,7 @@ def main():
                 continue
             acc = sum(r["correct"] for r in sub) / len(sub)
             lat = [r["latency_ms"] for r in sub]
-            bank.append({"entry": f"{task}|{model}|{rep}|default-budget", "task": task,
+            bank.append({"entry": f"{task}|{model}|{rep}|default-budget|n={len(sub)}", "task": task,
                          "model": model, "rep": rep, "config": "native-default", "n": len(sub),
                          "accuracy": round(acc, 4),
                          "mean_latency_ms": round(sum(lat) / len(lat), 1)})
@@ -58,7 +58,7 @@ def main():
         sub = [r for r in d["results"] if r["error"] is None]
         acc = sum(r["correct"] for r in sub) / len(sub)
         lat = [r["latency_ms"] for r in sub]
-        bank.append({"entry": f"findver|{model}|choice-fixed-parser|default-budget", "task": "findver",
+        bank.append({"entry": f"findver|{model}|choice-fixed-parser|default-budget|n={len(sub)}", "task": "findver",
                      "model": model, "rep": "choice", "config": "native-default-fixed-parser", "n": len(sub),
                      "accuracy": round(acc, 4), "mean_latency_ms": round(sum(lat) / len(lat), 1)})
 
@@ -77,7 +77,7 @@ def main():
         sub = [r for r in d["results"] if r["rep"] == "semantic_noul" and r["error"] is None]
         acc = sum(r["correct"] for r in sub) / len(sub) if sub else None
         lat = [r["latency_ms"] for r in sub]
-        bank.append({"entry": f"{task}|laya|semantic_noul|{cfg}", "task": task, "model": "laya",
+        bank.append({"entry": f"{task}|laya|semantic_noul|{cfg}|n={len(sub)}", "task": task, "model": "laya",
                      "rep": "semantic_noul", "config": cfg, "n": len(sub),
                      "accuracy": round(acc, 4) if acc is not None else None,
                      "mean_latency_ms": round(sum(lat) / len(lat), 1) if lat else None})

@@ -1,10 +1,10 @@
 {
-  "created": "2026-10-31T20:45:34.922775+00:00",
+  "created": "2026-10-31T20:46:21.213942+00:00",
   "n_entries": 26,
   "note": "every entry measured with real model calls; no surrogate fitness anywhere",
   "entries": [
     {
-      "entry": "code_defect|laya|choice|default-budget",
+      "entry": "code_defect|laya|choice|default-budget|n=20",
       "task": "code_defect",
       "model": "laya",
       "rep": "choice",
@@ -14,7 +14,7 @@
       "mean_latency_ms": 1785.7
     },
     {
-      "entry": "code_defect|laya|legacy_noul|default-budget",
+      "entry": "code_defect|laya|legacy_noul|default-budget|n=20",
       "task": "code_defect",
       "model": "laya",
       "rep": "legacy_noul",
@@ -24,7 +24,7 @@
       "mean_latency_ms": 1786.1
     },
     {
-      "entry": "code_defect|laya|semantic_noul|default-budget",
+      "entry": "code_defect|laya|semantic_noul|default-budget|n=20",
       "task": "code_defect",
       "model": "laya",
       "rep": "semantic_noul",
@@ -34,7 +34,7 @@
       "mean_latency_ms": 1818.4
     },
     {
-      "entry": "code_defect|laya|choice|default-budget",
+      "entry": "code_defect|laya|choice|default-budget|n=60",
       "task": "code_defect",
       "model": "laya",
       "rep": "choice",
@@ -44,7 +44,7 @@
       "mean_latency_ms": 2460.1
     },
     {
-      "entry": "code_defect|laya|legacy_noul|default-budget",
+      "entry": "code_defect|laya|legacy_noul|default-budget|n=60",
       "task": "code_defect",
       "model": "laya",
       "rep": "legacy_noul",
@@ -54,7 +54,7 @@
       "mean_latency_ms": 2491.3
     },
     {
-      "entry": "code_defect|laya|semantic_noul|default-budget",
+      "entry": "code_defect|laya|semantic_noul|default-budget|n=60",
       "task": "code_defect",
       "model": "laya",
       "rep": "semantic_noul",
@@ -64,7 +64,7 @@
       "mean_latency_ms": 2508.6
     },
     {
-      "entry": "findver|laya|choice|default-budget",
+      "entry": "findver|laya|choice|default-budget|n=20",
       "task": "findver",
       "model": "laya",
       "rep": "choice",
@@ -74,7 +74,7 @@
       "mean_latency_ms": 2152.9
     },
     {
-      "entry": "findver|laya|legacy_noul|default-budget",
+      "entry": "findver|laya|legacy_noul|default-budget|n=20",
       "task": "findver",
       "model": "laya",
       "rep": "legacy_noul",
@@ -84,7 +84,7 @@
       "mean_latency_ms": 2160.4
     },
     {
-      "entry": "findver|laya|semantic_noul|default-budget",
+      "entry": "findver|laya|semantic_noul|default-budget|n=20",
       "task": "findver",
       "model": "laya",
       "rep": "semantic_noul",
@@ -94,7 +94,7 @@
       "mean_latency_ms": 2189.1
     },
     {
-      "entry": "findver|laya|choice|default-budget",
+      "entry": "findver|laya|choice|default-budget|n=59",
       "task": "findver",
       "model": "laya",
       "rep": "choice",
@@ -104,7 +104,7 @@
       "mean_latency_ms": 3259.3
     },
     {
-      "entry": "findver|laya|legacy_noul|default-budget",
+      "entry": "findver|laya|legacy_noul|default-budget|n=59",
       "task": "findver",
       "model": "laya",
       "rep": "legacy_noul",
@@ -114,7 +114,7 @@
       "mean_latency_ms": 3227.3
     },
     {
-      "entry": "findver|laya|semantic_noul|default-budget",
+      "entry": "findver|laya|semantic_noul|default-budget|n=59",
       "task": "findver",
       "model": "laya",
       "rep": "semantic_noul",
@@ -124,7 +124,7 @@
       "mean_latency_ms": 3228.3
     },
     {
-      "entry": "code_defect|vela|choice|default-budget",
+      "entry": "code_defect|vela|choice|default-budget|n=20",
       "task": "code_defect",
       "model": "vela",
       "rep": "choice",
@@ -134,7 +134,7 @@
       "mean_latency_ms": 2206.5
     },
     {
-      "entry": "code_defect|vela|semantic_noul|default-budget",
+      "entry": "code_defect|vela|semantic_noul|default-budget|n=20",
       "task": "code_defect",
       "model": "vela",
       "rep": "semantic_noul",
@@ -144,7 +144,7 @@
       "mean_latency_ms": 2368.2
     },
     {
-      "entry": "code_defect|vela|choice|default-budget",
+      "entry": "code_defect|vela|choice|default-budget|n=60",
       "task": "code_defect",
       "model": "vela",
       "rep": "choice",
@@ -154,7 +154,7 @@
       "mean_latency_ms": 2424.0
     },
     {
-      "entry": "code_defect|vela|semantic_noul|default-budget",
+      "entry": "code_defect|vela|semantic_noul|default-budget|n=60",
       "task": "code_defect",
       "model": "vela",
       "rep": "semantic_noul",
@@ -164,7 +164,7 @@
       "mean_latency_ms": 2498.1
     },
     {
-      "entry": "findver|vela|choice|default-budget",
+      "entry": "findver|vela|choice|default-budget|n=20",
       "task": "findver",
       "model": "vela",
       "rep": "choice",
@@ -174,7 +174,7 @@
       "mean_latency_ms": 1033.2
     },
     {
-      "entry": "findver|vela|semantic_noul|default-budget",
+      "entry": "findver|vela|semantic_noul|default-budget|n=20",
       "task": "findver",
       "model": "vela",
       "rep": "semantic_noul",
@@ -184,7 +184,7 @@
       "mean_latency_ms": 1133.5
     },
     {
-      "entry": "findver|vela|choice|default-budget",
+      "entry": "findver|vela|choice|default-budget|n=59",
       "task": "findver",
       "model": "vela",
       "rep": "choice",
@@ -194,7 +194,7 @@
       "mean_latency_ms": 2619.2
     },
     {
-      "entry": "findver|vela|semantic_noul|default-budget",
+      "entry": "findver|vela|semantic_noul|default-budget|n=59",
       "task": "findver",
       "model": "vela",
       "rep": "semantic_noul",
@@ -204,7 +204,7 @@
       "mean_latency_ms": 2691.3
     },
     {
-      "entry": "findver|laya|choice-fixed-parser|default-budget",
+      "entry": "findver|laya|choice-fixed-parser|default-budget|n=20",
       "task": "findver",
       "model": "laya",
       "rep": "choice",
@@ -214,7 +214,7 @@
       "mean_latency_ms": 3213.5
     },
     {
-      "entry": "findver|vela|choice-fixed-parser|default-budget",
+      "entry": "findver|vela|choice-fixed-parser|default-budget|n=20",
       "task": "findver",
       "model": "vela",
       "rep": "choice",
@@ -224,7 +224,7 @@
       "mean_latency_ms": 1607.9
     },
     {
-      "entry": "code_defect|laya|semantic_noul|head_max_len=96",
+      "entry": "code_defect|laya|semantic_noul|head_max_len=96|n=20",
       "task": "code_defect",
       "model": "laya",
       "rep": "semantic_noul",
@@ -234,7 +234,7 @@
       "mean_latency_ms": 1818.8
     },
     {
-      "entry": "findver|laya|semantic_noul|head_max_len=96",
+      "entry": "findver|laya|semantic_noul|head_max_len=96|n=20",
       "task": "findver",
       "model": "laya",
       "rep": "semantic_noul",
@@ -244,7 +244,7 @@
       "mean_latency_ms": 2198.3
     },
     {
-      "entry": "code_defect|laya|semantic_noul|max_len=384",
+      "entry": "code_defect|laya|semantic_noul|max_len=384|n=20",
       "task": "code_defect",
       "model": "laya",
       "rep": "semantic_noul",
@@ -254,7 +254,7 @@
       "mean_latency_ms": 1524.1
     },
     {
-      "entry": "findver|laya|semantic_noul|max_len=384",
+      "entry": "findver|laya|semantic_noul|max_len=384|n=20",
       "task": "findver",
       "model": "laya",
       "rep": "semantic_noul",
