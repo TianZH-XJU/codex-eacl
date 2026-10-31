@@ -1,9 +1,9 @@
 # Execution Status
 
-**Last updated:** 2026-10-30
+**Last updated:** 2026-10-31
 **Run location:** user's own Windows PC, not ChatGPT or GitHub-hosted runners
-**Current phase:** all three new-domain Gate 0/1 pilots done (math/code/finance all FAILED Gate 1); NEAT paused everywhere; no Stage 2/3 launched.
-**Research result status:** no reliable learned-controller gain is established yet (BANKING77 NEAT OOF failed its gate); all three new-domain Gate 1 pilots FAILED (math/code/finance); NEAT paused everywhere; no Stage 2/3 launched.
+**Current phase:** all three new-domain Gate 0/1 pilots done (math/code/finance all FAILED Gate 1); NEAT paused everywhere; no Stage 2/3 launched. New route: all Vela checks passed (Torch FP32, 256-8192 tokens, RSS<2GB); Stage 3 paired baselines done (Laya ahead-or-tied everywhere, both weak); Gate 4 config-sensitivity FAILED on train+dev replication (no repeatable quality gain) so Stage 5 ES, Stage 6 NEAT, Stage 9 locked test all BLOCKED. Paper draft at paper/main.md.
+**Research result status:** no reliable learned-controller gain is established yet (BANKING77 NEAT OOF failed its gate); all three new-domain Gate 1 pilots FAILED (math/code/finance); NEAT paused everywhere; no Stage 2/3 launched. New route: all Vela checks passed (Torch FP32, 256-8192 tokens, RSS<2GB); Stage 3 paired baselines done (Laya ahead-or-tied everywhere, both weak); Gate 4 config-sensitivity FAILED on train+dev replication (no repeatable quality gain) so Stage 5 ES, Stage 6 NEAT, Stage 9 locked test all BLOCKED. Paper draft at paper/main.md.
 **Active plan:** docs/BLSC_RESEARCH_PLAN_20261027.md
 
 ## Local machine and verified steps (from the user's pasted PowerShell log)

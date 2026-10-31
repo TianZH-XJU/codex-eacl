@@ -14,7 +14,7 @@ processbench_math_choice:
   split_manifest: results/processbench/split_manifest.json
   laya_actions: [single, wide, tournament]
   vela_paired_baseline: recorded 2026-10-30 (Laya 0.125 vs Vela 0.058 on 120 train rows; both near chance; Vela faster)
-  stage4_sensitivity: running 2026-10-30 (100 train rows x 6 pre-registered configs)
+  stage4_sensitivity: FAILED 2026-10-31 (train n=100 + dev n=60; only significant effect was wide_max1024 harm on train, not replicated; nothing improves quality repeatably; Stage 5 ES blocked)
   action_adapter: single-first cascade (same cost definition as BANKING77)
   budgets: [1.00x, 1.25x, 1.50x, 2.00x]
   status: gate1_failed_neat_paused
