@@ -1,7 +1,7 @@
 # Execution Status
 
 **Last updated:** 2026-11-01
-**Current phase:** v4 EvoTIDE track active; A0 audit PASS; A1 native baselines done (math/code/findver/intent, Laya+Vela paired); A2 schema ablation DONE (legacy/Choice parser bug fixed; OOD note: wide_max1024 exceeds pinned budget); A3 OFAT FAILED (h96 zero flips, max384 harmful-only); E2 menu headroom CONFIRMED (3/4 paired CIs exclude zero) but surrogate fitness REJECTED (agreement 0.62/0.75/0.85/0.78, bar 0.9) so E2 GP needs real-call budget approval; distinct-view batching diagnostic done (4/4 categorical match, large continuous shifts, single-sample only); A4+ ES, conditional NEAT and locked test BLOCKED per gates.
+**Current phase:** v4 EvoTIDE track active; A0 audit PASS; A1 native baselines done (math/code/findver/intent, Laya+Vela paired); A2 schema ablation DONE; A3 OFAT FAILED; E2 menu headroom CONFIRMED (3/4 paired CIs) but E2 pilot shows landscape flat within cross-process noise on n=30 (norm no-op, cross-model corr 0.092, both models 0 within-process flips) so E2 GP search BLOCKED pending n≈500 budget (GP-scale Laya ~22.6 h prohibitive); surrogate fitness REJECTED (0.62/0.75/0.85/0.78 < 0.9); distinct-view batching diagnostic done; A4+ ES, conditional NEAT and locked test BLOCKED per gates.
 **Research result status:** no repeatable learned-controller or config gain anywhere yet. Intent A1: CLINC150 Laya 0.61 vs Vela 0.57 (diff -0.04 CI [-0.16,+0.08]); BANKING77 Laya 0.44 vs Vela 0.54 (diff +0.10 CI [-0.02,+0.21]); no significant gap, Vela 2.5-4x faster per call. Subset-candidate pilot had inflated Laya CLINC150 to 0.86 (fixed by full-set rerun). E2: TF-IDF menu recall@10 0.94-0.98; menu-restricted Choice beats full Choice (BANKING77 Laya +0.333 [0.2,0.4667]; CLINC150 Laya +0.25 [0.1333,0.3667], Vela +0.217 [0.1,0.3333]); fixed-retrieval effect only, no evolutionary gain claimed.
 **Active plan:** docs/BLSC_RESEARCH_PLAN_20261027.md
 
@@ -14,6 +14,7 @@
 | A2 schema | DONE | legacy/Choice parser bug fixed; OOD note on wide_max1024 |
 | A3 OFAT | FAILED | h96 zero flips, max384 harmful-only; no ES on budgets |
 | E2 menu headroom | CONFIRMED | recall@10 0.94–0.98; menu beats full in 3/4 paired CIs; `results/v2/native/paired_menu_full.json` |
+| E2 menu pilot (real calls) | FLAT IN NOISE | exhaustive-24 + random-12 both models, n=30: Vela 0.633–0.80, Laya 0.667–0.80; cross-process flips (Vela 7/12 ±1 row, Laya 6/12 up to ±3 rows) vs 0 within-process flips; cross-model corr 0.092; norm no-op (effective 12); `results/v2/menu/e2_joint_analysis.json` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | E5 active / ES / NEAT / locked test | BLOCKED | per gates; bank fully measured (exhaustive), no repeatable signal from configs |

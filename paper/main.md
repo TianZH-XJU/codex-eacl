@@ -176,3 +176,19 @@ Latency 3222→1095 ms total (per-q 806→274 ms), tokens 1877→542, RSS ~1.7 G
 Fixed order (warmup→separate→batched), single sample: an engineering clue, not a
 distinct-query speedup claim. A randomized multi-row interleaved study is required
 before any throughput conclusion.
+
+**E2 menu-parameter pilot (banking77, n=30 dev rows, real calls; 2026-11-01).**
+Genome = {retriever × k × norm × order} = 24 combos; `norm` later proven a no-op
+(TfidfVectorizer lowercases by default; effective space 12). Exhaustive-24 + random-12,
+both models, same 30 rows. Vela range 0.633–0.80 (best char/k=10, 0.80); random-12 best
+0.833 on identical params (1-row cross-process flip). Laya range 0.667–0.80 (best
+char/k=5, 0.80); random-12 ties 0.80, with one genome flipping 3 rows across processes
+(word/k=10/shuffled: 0.70→0.80). Cross-model genome-accuracy correlation is 0.092 —
+"good menu" does not transfer across models. Determinism check (same genome, same rows,
+two passes, one process): 0 flips both models (Vela 0.767/0.767, Laya 0.70/0.70), so the
+cross-process flips are process-level noise, and adjacent-genome gaps (0.033–0.067) sit
+inside it. Verdict: the menu landscape is flat within noise on n=30; GP at this n would
+evolve noise. Repeatable selection needs n≈500, whose CPU cost is prohibitive on this box
+(exhaustive-24 ≈108 min Laya / 30 min Vela; GP-300 ≈22.6 h Laya / 6.3 h Vela, real calls).
+E2 search is therefore BLOCKED pending budget or a narrower space; the fixed-retrieval
+menu effect (3/4 paired CIs) stands unchanged and unclaimed by any evolutionary method.
