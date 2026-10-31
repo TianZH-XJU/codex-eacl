@@ -1,0 +1,71 @@
+{
+  "created_utc": "2026-10-31T20:47:24.357807+00:00",
+  "example_id": "ie-val-102",
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "project_git_sha": "0cc27c855e1d9c62c96d35af02bc8533f8aadb2a",
+  "load_seconds": 1.4,
+  "peak_rss_mb": 1706.4,
+  "windows_sleep_prevention_active": true,
+  "results": [
+    {
+      "n_questions": 1,
+      "mode": "batched",
+      "latency_ms": 2684.5,
+      "error": null,
+      "usage": {
+        "input_tokens": 386,
+        "output_tokens": 0
+      },
+      "n_answers": 1,
+      "per_variant_ms": 2684.5
+    },
+    {
+      "n_questions": 2,
+      "mode": "batched",
+      "latency_ms": 867.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 0
+      },
+      "n_answers": 2,
+      "per_variant_ms": 433.6
+    },
+    {
+      "n_questions": 4,
+      "mode": "batched",
+      "latency_ms": 803.9,
+      "error": null,
+      "usage": {
+        "input_tokens": 431,
+        "output_tokens": 0
+      },
+      "n_answers": 4,
+      "per_variant_ms": 201.0
+    },
+    {
+      "n_questions": 8,
+      "mode": "batched",
+      "latency_ms": 954.3,
+      "error": null,
+      "usage": {
+        "input_tokens": 491,
+        "output_tokens": 0
+      },
+      "n_answers": 8,
+      "per_variant_ms": 119.3
+    },
+    {
+      "n_questions": 8,
+      "mode": "separate",
+      "latency_ms": 5928.2,
+      "error": null,
+      "usage": {},
+      "n_answers": 8,
+      "per_variant_ms": 741.0
+    }
+  ],
+  "status": "passed"
+}
