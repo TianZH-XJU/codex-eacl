@@ -1,0 +1,189 @@
+{
+  "created_utc": "2026-10-31T23:32:55.632235+00:00",
+  "task": "banking77",
+  "model": "laya",
+  "strategy": "random",
+  "n_genomes": 12,
+  "n_rows": 30,
+  "n_train": 2000,
+  "seed": 17,
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "ec404347b047ca6bffc1fdefcc59abe9d5c14c91",
+  "model_revision": null,
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2127.4,
+  "genomes": [
+    {
+      "genome_id": 0,
+      "genome": {
+        "retriever": "tfidf-char",
+        "k": 10,
+        "norm": "raw",
+        "order": "ranked"
+      },
+      "n": 30,
+      "accuracy": 0.7333,
+      "mean_ms": 673.8,
+      "recall_hit_rate": 0.9667
+    },
+    {
+      "genome_id": 1,
+      "genome": {
+        "retriever": "tfidf-char",
+        "k": 5,
+        "norm": "raw",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.7333,
+      "mean_ms": 515.8,
+      "recall_hit_rate": 0.9333
+    },
+    {
+      "genome_id": 2,
+      "genome": {
+        "retriever": "tfidf-word",
+        "k": 20,
+        "norm": "raw",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.6,
+      "mean_ms": 811.8,
+      "recall_hit_rate": 0.9667
+    },
+    {
+      "genome_id": 3,
+      "genome": {
+        "retriever": "tfidf-word",
+        "k": 20,
+        "norm": "lower",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.6,
+      "mean_ms": 816.5,
+      "recall_hit_rate": 0.9667
+    },
+    {
+      "genome_id": 4,
+      "genome": {
+        "retriever": "tfidf-char",
+        "k": 20,
+        "norm": "raw",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.7333,
+      "mean_ms": 828.6,
+      "recall_hit_rate": 1.0
+    },
+    {
+      "genome_id": 5,
+      "genome": {
+        "retriever": "tfidf-word",
+        "k": 10,
+        "norm": "raw",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.8,
+      "mean_ms": 629.2,
+      "recall_hit_rate": 0.9667
+    },
+    {
+      "genome_id": 6,
+      "genome": {
+        "retriever": "tfidf-char",
+        "k": 10,
+        "norm": "raw",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.7333,
+      "mean_ms": 618.7,
+      "recall_hit_rate": 0.9667
+    },
+    {
+      "genome_id": 7,
+      "genome": {
+        "retriever": "tfidf-word",
+        "k": 20,
+        "norm": "raw",
+        "order": "ranked"
+      },
+      "n": 30,
+      "accuracy": 0.6667,
+      "mean_ms": 819.0,
+      "recall_hit_rate": 0.9667
+    },
+    {
+      "genome_id": 8,
+      "genome": {
+        "retriever": "tfidf-word",
+        "k": 5,
+        "norm": "lower",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.7667,
+      "mean_ms": 506.9,
+      "recall_hit_rate": 0.9
+    },
+    {
+      "genome_id": 9,
+      "genome": {
+        "retriever": "tfidf-char",
+        "k": 5,
+        "norm": "lower",
+        "order": "ranked"
+      },
+      "n": 30,
+      "accuracy": 0.8,
+      "mean_ms": 509.5,
+      "recall_hit_rate": 0.9333
+    },
+    {
+      "genome_id": 10,
+      "genome": {
+        "retriever": "tfidf-word",
+        "k": 5,
+        "norm": "raw",
+        "order": "ranked"
+      },
+      "n": 30,
+      "accuracy": 0.7667,
+      "mean_ms": 505.4,
+      "recall_hit_rate": 0.9
+    },
+    {
+      "genome_id": 11,
+      "genome": {
+        "retriever": "tfidf-char",
+        "k": 5,
+        "norm": "lower",
+        "order": "shuffled"
+      },
+      "n": 30,
+      "accuracy": 0.7333,
+      "mean_ms": 512.5,
+      "recall_hit_rate": 0.9333
+    }
+  ],
+  "best": {
+    "genome_id": 9,
+    "genome": {
+      "retriever": "tfidf-char",
+      "k": 5,
+      "norm": "lower",
+      "order": "ranked"
+    },
+    "n": 30,
+    "accuracy": 0.8,
+    "mean_ms": 509.5,
+    "recall_hit_rate": 0.9333
+  },
+  "status": "passed"
+}
