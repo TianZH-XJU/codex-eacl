@@ -1,0 +1,72 @@
+[
+  {
+    "task": "processbench",
+    "comparison": "Laya single vs Vela choice (train pilot, n=120)",
+    "n_paired": 120,
+    "laya_accuracy": 0.125,
+    "vela_accuracy": 0.0583,
+    "diff_mean": -0.0667,
+    "ci95": [
+      -0.1333,
+      0.0
+    ],
+    "n": 120,
+    "seed": 17
+  },
+  {
+    "task": "code_defect",
+    "comparison": "Laya single(noul) vs Vela noul (valid pilot, n=60)",
+    "n_paired": 60,
+    "laya_accuracy": 0.5167,
+    "vela_accuracy": 0.4833,
+    "diff_mean": -0.0333,
+    "ci95": [
+      -0.2333,
+      0.1667
+    ],
+    "n": 60,
+    "seed": 17
+  },
+  {
+    "task": "code_defect",
+    "comparison": "Laya switch vs Vela switch (valid pilot, n=60)",
+    "n_paired": 60,
+    "laya_accuracy": 0.5333,
+    "vela_accuracy": 0.5,
+    "diff_mean": -0.0333,
+    "ci95": [
+      -0.1667,
+      0.0833
+    ],
+    "n": 60,
+    "seed": 17
+  },
+  {
+    "task": "findver",
+    "comparison": "Laya single(noul) vs Vela noul (dev pilot, n=60)",
+    "n_paired": 60,
+    "laya_accuracy": 0.5667,
+    "vela_accuracy": 0.4333,
+    "diff_mean": -0.1333,
+    "ci95": [
+      -0.3337,
+      0.0667
+    ],
+    "n": 60,
+    "seed": 17
+  },
+  {
+    "task": "findver",
+    "comparison": "Laya switch vs Vela switch (dev pilot, n=60)",
+    "n_paired": 60,
+    "laya_accuracy": 0.6167,
+    "vela_accuracy": 0.5333,
+    "diff_mean": -0.0833,
+    "ci95": [
+      -0.25,
+      0.0833
+    ],
+    "n": 60,
+    "seed": 17
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "processbench_sensitivity_train": {
+    "wide_h96": {
+      "accuracy": 0.1,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 1,
+      "mean_cumulative_ms": 5853.9,
+      "errors": 0
+    },
+    "wide_h160": {
+      "accuracy": 0.1,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 0,
+      "mean_cumulative_ms": 5837.3,
+      "errors": 0
+    },
+    "wide_max1024": {
+      "accuracy": 0.03,
+      "mean_delta_correct": -0.07,
+      "delta_ci95": [
+        -0.14,
+        -0.01
+      ],
+      "flips_vs_single": 57,
+      "mean_cumulative_ms": 7486.6,
+      "errors": 0
+    },
+    "order_reverse": {
+      "accuracy": 0.12,
+      "mean_delta_correct": 0.02,
+      "delta_ci95": [
+        -0.02,
+        0.06
+      ],
+      "flips_vs_single": 18,
+      "mean_cumulative_ms": 5842.2,
+      "errors": 0
+    },
+    "tournament_g8": {
+      "accuracy": 0.1,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 18,
+      "mean_cumulative_ms": 8229.8,
+      "errors": 0
+    },
+    "tournament_g16": {
+      "accuracy": 0.1,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 4,
+      "mean_cumulative_ms": 6131.1,
+      "errors": 0
+    }
+  },
+  "gate4_note": "train pilot n=100; dev replication pending in sensitivity_devpilot.summary.json"
+}

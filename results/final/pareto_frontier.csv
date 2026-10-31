@@ -1,0 +1,11 @@
+task,policy,accuracy,mean_latency_ms,status
+processbench,laya-fixed,0.125,,measured-fixed-config-only
+processbench,vela-fixed,0.0583,,measured-fixed-config-only
+code_defect,laya-fixed,0.5167,,measured-fixed-config-only
+code_defect,vela-fixed,0.4833,,measured-fixed-config-only
+code_defect,laya-fixed,0.5333,,measured-fixed-config-only
+code_defect,vela-fixed,0.5,,measured-fixed-config-only
+findver,laya-fixed,0.5667,,measured-fixed-config-only
+findver,vela-fixed,0.4333,,measured-fixed-config-only
+findver,laya-fixed,0.6167,,measured-fixed-config-only
+findver,vela-fixed,0.5333,,measured-fixed-config-only

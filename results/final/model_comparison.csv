@@ -1,0 +1,6 @@
+task,comparison,n_paired,laya_accuracy,vela_accuracy,diff_mean,ci95_lo,ci95_hi
+processbench,"Laya single vs Vela choice (train pilot, n=120)",120,0.125,0.0583,-0.0667,-0.1333,0.0
+code_defect,"Laya single(noul) vs Vela noul (valid pilot, n=60)",60,0.5167,0.4833,-0.0333,-0.2333,0.1667
+code_defect,"Laya switch vs Vela switch (valid pilot, n=60)",60,0.5333,0.5,-0.0333,-0.1667,0.0833
+findver,"Laya single(noul) vs Vela noul (dev pilot, n=60)",60,0.5667,0.4333,-0.1333,-0.3337,0.0667
+findver,"Laya switch vs Vela switch (dev pilot, n=60)",60,0.6167,0.5333,-0.0833,-0.25,0.0833

@@ -1,0 +1,62 @@
+{
+  "Laya single vs Vela choice (train pilot, n=120)": {
+    "paired_bootstrap_vela_minus_laya": {
+      "diff_mean": -0.0667,
+      "ci95": [
+        -0.1333,
+        0.0
+      ],
+      "n": 120,
+      "reps": 5000,
+      "seed": 17
+    }
+  },
+  "Laya single(noul) vs Vela noul (valid pilot, n=60)": {
+    "paired_bootstrap_vela_minus_laya": {
+      "diff_mean": -0.0333,
+      "ci95": [
+        -0.2333,
+        0.1667
+      ],
+      "n": 60,
+      "reps": 5000,
+      "seed": 17
+    }
+  },
+  "Laya switch vs Vela switch (valid pilot, n=60)": {
+    "paired_bootstrap_vela_minus_laya": {
+      "diff_mean": -0.0333,
+      "ci95": [
+        -0.1667,
+        0.0833
+      ],
+      "n": 60,
+      "reps": 5000,
+      "seed": 17
+    }
+  },
+  "Laya single(noul) vs Vela noul (dev pilot, n=60)": {
+    "paired_bootstrap_vela_minus_laya": {
+      "diff_mean": -0.1333,
+      "ci95": [
+        -0.3337,
+        0.0667
+      ],
+      "n": 60,
+      "reps": 5000,
+      "seed": 17
+    }
+  },
+  "Laya switch vs Vela switch (dev pilot, n=60)": {
+    "paired_bootstrap_vela_minus_laya": {
+      "diff_mean": -0.0833,
+      "ci95": [
+        -0.25,
+        0.0833
+      ],
+      "n": 60,
+      "reps": 5000,
+      "seed": 17
+    }
+  }
+}

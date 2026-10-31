@@ -1,0 +1,30 @@
+{
+  "hardware_policy": "CPU-only, 2 threads, single model process, RSS hard stop 3.5GB",
+  "vela_torch_fp32_staircase_tokens": {
+    "256": {
+      "peak_rss_mb": 1683.7,
+      "latency_ms": 2436.6
+    },
+    "512": {
+      "peak_rss_mb": 1691.6,
+      "latency_ms": 2828.8
+    },
+    "1024": {
+      "peak_rss_mb": 1701.9,
+      "latency_ms": 3931.2
+    },
+    "2048": {
+      "peak_rss_mb": 1711.7,
+      "latency_ms": 7342.0
+    },
+    "4096": {
+      "peak_rss_mb": 1743.1,
+      "latency_ms": 15110.9
+    },
+    "8192": {
+      "peak_rss_mb": 1950.4,
+      "latency_ms": 41329.3
+    }
+  },
+  "note": "all Vela runs stayed under 2.0GB RSS; latency grows super-linearly with input tokens"
+}

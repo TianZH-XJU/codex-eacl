@@ -1,0 +1,8 @@
+algorithm,status,note
+cmaes,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
+de,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
+ga,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
+nsga2,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
+tpe,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
+random,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
+neat-trackB,not_run,blocked: Gate 4 (config sensitivity) failed; no stable quality signal
