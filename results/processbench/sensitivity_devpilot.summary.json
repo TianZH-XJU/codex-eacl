@@ -1,0 +1,184 @@
+{
+  "created_utc": "2026-10-31T15:58:53.099453+00:00",
+  "dataset": "Qwen/ProcessBench",
+  "seed": 17,
+  "n_rows": 60,
+  "model": "english",
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "2a834c4076d9717713919a62738168128802693b",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2133.2,
+  "configs": {
+    "wide_h96": {
+      "n": 60,
+      "accuracy": 0.1167,
+      "single_accuracy_ref": 0.1167,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 0,
+      "mean_cumulative_ms": 5813.2,
+      "errors": 0,
+      "config_hash": "bd16a67987a5",
+      "kwargs": {
+        "head_max_len": 96,
+        "max_len": 512
+      }
+    },
+    "wide_h160": {
+      "n": 60,
+      "accuracy": 0.1167,
+      "single_accuracy_ref": 0.1167,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 0,
+      "mean_cumulative_ms": 5822.6,
+      "errors": 0,
+      "config_hash": "0a499da39049",
+      "kwargs": {
+        "head_max_len": 160,
+        "max_len": 512
+      }
+    },
+    "wide_max1024": {
+      "n": 60,
+      "accuracy": 0.1167,
+      "single_accuracy_ref": 0.1167,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        -0.1,
+        0.1
+      ],
+      "flips_vs_single": 32,
+      "mean_cumulative_ms": 7498.5,
+      "errors": 0,
+      "config_hash": "bdde93e30577",
+      "kwargs": {
+        "head_max_len": 512,
+        "max_len": 1024
+      }
+    },
+    "order_reverse": {
+      "n": 60,
+      "accuracy": 0.1167,
+      "single_accuracy_ref": 0.1167,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        -0.05,
+        0.05
+      ],
+      "flips_vs_single": 15,
+      "mean_cumulative_ms": 5835.1,
+      "errors": 0,
+      "config_hash": "7a15c034360b",
+      "kwargs": {
+        "order": "REVERSE"
+      }
+    },
+    "tournament_g8": {
+      "n": 60,
+      "accuracy": 0.05,
+      "single_accuracy_ref": 0.1167,
+      "mean_delta_correct": -0.0667,
+      "delta_ci95": [
+        -0.1333,
+        -0.0167
+      ],
+      "flips_vs_single": 11,
+      "mean_cumulative_ms": 8312.4,
+      "errors": 0,
+      "config_hash": "85ea5f30d2f3",
+      "kwargs": {
+        "group_size": 8
+      }
+    },
+    "tournament_g16": {
+      "n": 60,
+      "accuracy": 0.1167,
+      "single_accuracy_ref": 0.1167,
+      "mean_delta_correct": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "flips_vs_single": 1,
+      "mean_cumulative_ms": 5991.9,
+      "errors": 0,
+      "config_hash": "c3e3141bc365",
+      "kwargs": {
+        "group_size": 16
+      }
+    }
+  },
+  "status": "passed",
+  "sample_ids": [
+    "gsm8k-101",
+    "olympiadbench-933",
+    "olympiadbench-272",
+    "olympiadbench-115",
+    "omnimath-871",
+    "gsm8k-89",
+    "math-54",
+    "math-642",
+    "omnimath-823",
+    "gsm8k-260",
+    "omnimath-257",
+    "omnimath-234",
+    "omnimath-711",
+    "omnimath-686",
+    "math-996",
+    "math-348",
+    "math-334",
+    "omnimath-266",
+    "olympiadbench-109",
+    "olympiadbench-84",
+    "omnimath-235",
+    "math-477",
+    "olympiadbench-453",
+    "omnimath-713",
+    "olympiadbench-580",
+    "math-800",
+    "olympiadbench-864",
+    "math-248",
+    "math-399",
+    "math-350",
+    "math-687",
+    "math-267",
+    "omnimath-106",
+    "olympiadbench-466",
+    "math-950",
+    "math-600",
+    "omnimath-659",
+    "math-902",
+    "olympiadbench-188",
+    "omnimath-198",
+    "olympiadbench-638",
+    "olympiadbench-176",
+    "math-828",
+    "math-445",
+    "omnimath-244",
+    "omnimath-504",
+    "math-793",
+    "olympiadbench-874",
+    "math-223",
+    "math-662",
+    "omnimath-115",
+    "omnimath-129",
+    "olympiadbench-521",
+    "omnimath-735",
+    "math-163",
+    "olympiadbench-678",
+    "math-723",
+    "omnimath-121",
+    "omnimath-119",
+    "olympiadbench-24"
+  ]
+}
