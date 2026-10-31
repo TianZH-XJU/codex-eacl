@@ -1,0 +1,9 @@
+# E2 menu-parameter pilot: exhaustive-24 + random-subset, REAL model calls.
+# GP over this 24-point discrete space is unjustified; GP reserved for tree space.
+strategy: exhaustive_then_random_subset
+genome: {retriever: [tfidf-word, tfidf-char], k: [5, 10, 20], norm: [raw, lower], order: [ranked, shuffled]}
+budgets: {n_train_pool: 2000, n_rows_pilot: 30, seeds: [17]}
+dev_pool: search_dev (group-safe, train groups only; confirm/locked-test never touched)
+fitness: {primary: accuracy, secondary: [mean_ms, recall_hit_rate]}
+runner: scripts/run_evo_menu_pilot.py
+status: pilot_running_vela_banking77

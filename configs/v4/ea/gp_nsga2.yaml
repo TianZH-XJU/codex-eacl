@@ -1,0 +1,13 @@
+# Reserved for EvoDecomp tree space (grammar-GP + NSGA-II vs Random Search).
+# NOT launched: requires explicit real-call eval budget (surrogate rejected, §9).
+# Launch conditions: (1) menu pilot completes on both models; (2) tree grammar +
+# repair operators specified in configs/v4/schemas/; (3) unique-genome budget set
+# (pilot 150-300/seed) with wall-clock estimate on this CPU box.
+algorithm: grammar_gp_nsga2
+population_size: 30
+generations: 25
+unique_genome_budget: 750
+crossover_probability: 0.80
+mutation_probability: 0.15
+seeds: [17, 23, 41, 59, 73]
+status: blocked_pending_budget_and_grammar
