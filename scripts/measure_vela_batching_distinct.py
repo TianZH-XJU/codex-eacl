@@ -49,10 +49,12 @@ def git_sha(path):
 
 
 def decision(ans):
-    """Decision-level extraction robust to float noise.
+    """Categorical decision-level extraction (primary for batching equivalence).
 
-    choice -> normalized key; noul -> pos/neg at 0.5 plus rounded p;
-    score -> expected level rounded to 3 decimals (plus argmax level when present).
+    choice -> normalized key; noul -> pos/neg at 0.5; score -> argmax level key.
+    Continuous values (probabilities, expected score) are NOT part of the
+    decision; they are compared separately as deltas since fusion/calibration
+    depends on them.
     """
     if not isinstance(ans, dict):
         return None
@@ -63,22 +65,41 @@ def decision(ans):
         try:
             p = float(ans.get("noul", 0.0))
         except (TypeError, ValueError):
-            return ["noul", None, None]
-        return ["noul", "pos" if p >= 0.5 else "neg", round(p, 4)]
+            return ["noul", None]
+        return ["noul", "pos" if p >= 0.5 else "neg"]
     if t == "score":
-        try:
-            s = float(ans.get("score", 0.0))
-        except (TypeError, ValueError):
-            return ["score", None]
         probs = ans.get("probabilities") or {}
-        argmax = None
         if isinstance(probs, dict) and probs:
             try:
                 argmax = max(probs.items(), key=lambda kv: float(kv[1]))[0]
             except (TypeError, ValueError):
                 argmax = None
-        return ["score", round(s, 3), str(argmax)]
+            return ["score", str(argmax)]
+        try:
+            return ["score", str(int(round(float(ans.get("score", 0.0)))))]
+        except (TypeError, ValueError):
+            return ["score", None]
     return ["unknown", None]
+
+
+def continuous_delta(sep_ans, bat_ans):
+    """Magnitude of continuous shift under batching (same decision may hide it)."""
+    if not isinstance(sep_ans, dict) or not isinstance(bat_ans, dict):
+        return None
+    t = sep_ans.get("type")
+    try:
+        if t == "choice":
+            sp = sep_ans.get("probabilities") or {}
+            bp = bat_ans.get("probabilities") or {}
+            keys = set(sp) | set(bp)
+            return {"l1_prob": round(sum(abs(float(sp.get(k, 0)) - float(bp.get(k, 0))) for k in keys), 4)}
+        if t == "noul":
+            return {"abs_p_diff": round(abs(float(sep_ans.get("noul", 0)) - float(bat_ans.get("noul", 0))), 4)}
+        if t == "score":
+            return {"abs_expected_diff": round(abs(float(sep_ans.get("score", 0)) - float(bat_ans.get("score", 0))), 4)}
+    except (TypeError, ValueError):
+        return None
+    return None
 
 
 def main():
@@ -161,6 +182,7 @@ def main():
         dec_sep = {q: decision(sep.get(q)) for q in out_qs}
         dec_bat = {q: decision(answers.get(q)) for q in out_qs}
         dec_match = {q: (dec_sep[q] == dec_bat[q]) for q in out_qs}
+        deltas = {q: continuous_delta(sep.get(q), answers.get(q)) for q in out_qs}
         results.append({"mode": "batched", "n_questions": len(out_qs),
                         "latency_ms": round(bat_ms, 1),
                         "per_q_ms": round(bat_ms / len(out_qs), 1), "usage": usage,
@@ -169,10 +191,12 @@ def main():
                         "decisions": dec_bat,
                         "raw_match_vs_separate": raw_match,
                         "decision_match_vs_separate": dec_match,
+                        "continuous_deltas": deltas,
                         "all_raw_match": all(raw_match.values()),
                         "all_decision_match": all(dec_match.values())})
         print(json.dumps({"sep_ms": round(sep_ms, 1), "batched_ms": round(bat_ms, 1),
                           "raw_match": raw_match, "decision_match": dec_match,
+                          "continuous_deltas": deltas,
                           "status": "passed" if all(dec_match.values()) else "partial_match"}, indent=2),
               flush=True)
         status = "passed" if all(dec_match.values()) else "partial_match"

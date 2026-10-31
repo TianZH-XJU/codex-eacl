@@ -1,0 +1,196 @@
+{
+  "created_utc": "2026-10-31T23:03:00.473039+00:00",
+  "model": "vela-2.0-0.3B",
+  "device": "cpu",
+  "threads": 2,
+  "warmup_calls": 2,
+  "order": "warmup -> separate -> batched (fixed; single-sample diagnostic)",
+  "load_seconds": 1.4,
+  "peak_rss_mb": 1710.4,
+  "project_git_sha": "2d8f0b43098129c7de86d5c987f2eb3c7b9f5320",
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "results": [
+    {
+      "mode": "separate",
+      "n_questions": 4,
+      "latency_ms": 3222.2,
+      "per_q_ms": 805.5,
+      "usage_per_question": {
+        "full": {
+          "input_tokens": 461,
+          "output_tokens": 0
+        },
+        "noul": {
+          "input_tokens": 480,
+          "output_tokens": 0
+        },
+        "menu": {
+          "input_tokens": 464,
+          "output_tokens": 0
+        },
+        "score": {
+          "input_tokens": 472,
+          "output_tokens": 0
+        }
+      },
+      "rss_mb": 1698.2,
+      "raw_answers": {
+        "full": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.8482384668297674,
+          "probabilities": {
+            "supported": 0.9241192334148837,
+            "not_supported": 0.07588076658511626
+          }
+        },
+        "noul": {
+          "type": "noul",
+          "noul": 0.7989747958109281
+        },
+        "menu": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.6095331896343108,
+          "probabilities": {
+            "supported": 0.7335701185565543,
+            "not supported": 0.12403692892224348,
+            "unclear": 0.03860606874283887,
+            "partial": 0.10378688377836334
+          }
+        },
+        "score": {
+          "type": "score",
+          "score": 2.2746429327265383,
+          "confidence": 0.23936249784209718,
+          "legend": {
+            "0": "0",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4"
+          },
+          "probabilities": {
+            "0": 0.06834108166899681,
+            "1": 0.2488672608510917,
+            "2": 0.22973920074915585,
+            "3": 0.2459125565458871,
+            "4": 0.2071399001848684
+          }
+        }
+      },
+      "decisions": {
+        "full": [
+          "choice",
+          "supported"
+        ],
+        "noul": [
+          "noul",
+          "pos",
+          0.799
+        ],
+        "menu": [
+          "choice",
+          "supported"
+        ],
+        "score": [
+          "score",
+          2.275,
+          "1"
+        ]
+      }
+    },
+    {
+      "mode": "batched",
+      "n_questions": 4,
+      "latency_ms": 1095.2,
+      "per_q_ms": 273.8,
+      "usage": {
+        "input_tokens": 542,
+        "output_tokens": 0
+      },
+      "rss_mb": 1710.4,
+      "raw_answers": {
+        "full": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.4940001826827373,
+          "probabilities": {
+            "supported": 0.7470000913413687,
+            "not_supported": 0.25299990865863137
+          }
+        },
+        "noul": {
+          "type": "noul",
+          "noul": 0.6664169749731302
+        },
+        "menu": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.40134775931447275,
+          "probabilities": {
+            "supported": 0.5861593785506529,
+            "not supported": 0.18481161923618014,
+            "unclear": 0.0859641134760665,
+            "partial": 0.14306488873710055
+          }
+        },
+        "score": {
+          "type": "score",
+          "score": 2.1138778677248964,
+          "confidence": 0.1443796097222757,
+          "legend": {
+            "0": "0",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4"
+          },
+          "probabilities": {
+            "0": 0.11164984525722975,
+            "1": 0.26960204188357184,
+            "2": 0.21258247587507015,
+            "3": 0.2055516738453288,
+            "4": 0.2006139631387995
+          }
+        }
+      },
+      "decisions": {
+        "full": [
+          "choice",
+          "supported"
+        ],
+        "noul": [
+          "noul",
+          "pos",
+          0.6664
+        ],
+        "menu": [
+          "choice",
+          "supported"
+        ],
+        "score": [
+          "score",
+          2.114,
+          "1"
+        ]
+      },
+      "raw_match_vs_separate": {
+        "full": false,
+        "noul": false,
+        "menu": false,
+        "score": false
+      },
+      "decision_match_vs_separate": {
+        "full": true,
+        "noul": false,
+        "menu": true,
+        "score": false
+      },
+      "all_raw_match": false,
+      "all_decision_match": false
+    }
+  ],
+  "status": "partial_match",
+  "note": "single-sample diagnostic; raw dict equality is float-sensitive, decision_match is primary"
+}

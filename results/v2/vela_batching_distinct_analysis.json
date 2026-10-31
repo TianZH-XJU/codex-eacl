@@ -1,0 +1,75 @@
+{
+  "created_utc": "2026-10-31T23:03:00.473039+00:00",
+  "source": "results/v2/vela_batching_distinct.json",
+  "categorical_decisions_separate": {
+    "full": [
+      "choice",
+      "supported"
+    ],
+    "noul": [
+      "noul",
+      "pos"
+    ],
+    "menu": [
+      "choice",
+      "supported"
+    ],
+    "score": [
+      "score",
+      "1"
+    ]
+  },
+  "categorical_decisions_batched": {
+    "full": [
+      "choice",
+      "supported"
+    ],
+    "noul": [
+      "noul",
+      "pos"
+    ],
+    "menu": [
+      "choice",
+      "supported"
+    ],
+    "score": [
+      "score",
+      "1"
+    ]
+  },
+  "categorical_match": {
+    "full": true,
+    "noul": true,
+    "menu": true,
+    "score": true
+  },
+  "all_categorical_match": true,
+  "continuous_deltas": {
+    "full": {
+      "l1_prob": 0.3542
+    },
+    "noul": {
+      "abs_p_diff": 0.1326
+    },
+    "menu": {
+      "l1_prob": 0.2948
+    },
+    "score": {
+      "abs_expected_diff": 0.1608
+    }
+  },
+  "latency": {
+    "separate_ms": 3222.2,
+    "batched_ms": 1095.2
+  },
+  "tokens": {
+    "separate_sum": 1877,
+    "batched": 542
+  },
+  "rss_mb": {
+    "separate": 1698.2,
+    "batched": 1710.4,
+    "peak": 1710.4
+  },
+  "caveats": "single-sample, fixed order separate-then-batched, 2 warmup calls; engineering clue only, not a distinct-query speedup claim"
+}

@@ -5,6 +5,11 @@ All numbers below are measured on the author's local CPU machine; nothing is sim
 Test splits were never used for tuning. No evolutionary search stage was reached: every
 search gate failed, so this paper reports sensitivity, baselines, and a failed-gate analysis.*
 
+*Addendum v0.2 — 2026-11-01 (v4 EvoTIDE track, frozen v3 unchanged). New intent-track
+results (CLINC150/BANKING77, full label sets, paired Laya/Vela) and a validated menu-restriction
+effect are reported in §9. No GP/NSGA-II search has run; surrogate-cache fitness was rejected
+after three-way validation, so any future E2 search must use real model calls.*
+
 ## 1. Introduction
 
 Structured decision models such as Laya and Vela answer typed questions (choice, yes/no,
@@ -135,3 +140,39 @@ paired inputs, cost-accounted configs, pre-registered gates, and published failu
 For these tasks, the next step is not more search but better task adaptation (e.g.
 counteracting position collapse) or honest model comparison — both laid out as explicit
 follow-ups, not claims.
+
+## 9. v4 addendum: intent track — menu restriction helps, surrogate fitness rejected (2026-11-01)
+
+v3 is frozen above and unchanged. On a new intent track (CLINC150/BANKING77, v4 group
+manifests, full label sets, same-row Laya/Vela pairs) we report three measured outcomes.
+No GP/NSGA-II search has run; no test split was touched.
+
+**A1 native baselines (full label sets, search_train n=100/row-matched).**
+CLINC150: Laya 0.61 vs Vela 0.57 (paired diff −0.04, 95% CI [−0.16,+0.08]).
+BANKING77: Laya 0.44 vs Vela 0.54 (diff +0.10, CI [−0.02,+0.21]).
+Neither gap is significant; Vela is 2.5–4× faster per call. A subset-candidate pilot
+that inflated Laya CLINC150 to 0.86 was caught and fixed by the full-set rerun.
+
+**E2 menu headroom (dev n=60/task, TF-IDF top-10 menus, identical rows full-vs-menu).**
+Menu recall@10 is 0.9367 (CLINC150) / 0.9767 (BANKING77) vs random 0.11.
+Restricted-menu Choice beats full-menu Choice in 3/4 paired CIs:
+BANKING77 Laya +0.333 [0.2,0.4667], Vela +0.133 [0.0,0.2667];
+CLINC150 Laya +0.25 [0.1333,0.3667], Vela +0.217 [0.1,0.3333].
+Menus also cut mean latency (e.g. Laya CLINC150 2256→585 ms).
+This is a *fixed-retrieval* effect, not an evolutionary gain.
+
+**Surrogate rejection (three-way: full-real vs restricted-real vs cached-restriction, n=30).**
+Restricted-real vs cached-restriction agreement is 0.62 (Laya/banking77), 0.75
+(Vela/banking77), 0.85 (Laya/clinc150), 0.78 (Vela/clinc150) — all below the 0.9 bar.
+Cached full-distribution argmax does not reproduce restricted-menu calls, so any E2
+search must use real model calls for fitness. E2 GP scope (tiny real-call pilot vs
+record-as-blocked) is pending explicit eval-budget approval and is not claimed here.
+
+**Distinct-view batching (Vela, single-sample diagnostic, 4 distinct questions).**
+Categorical decisions match 4/4 (choice keys, noul pos/neg, score argmax level), but
+continuous outputs shift substantially (choice L1 0.29–0.35, noul |Δp| 0.13, score
+|Δexpected| 0.16) — relevant because fusion/calibration consumes those values.
+Latency 3222→1095 ms total (per-q 806→274 ms), tokens 1877→542, RSS ~1.7 GB.
+Fixed order (warmup→separate→batched), single sample: an engineering clue, not a
+distinct-query speedup claim. A randomized multi-row interleaved study is required
+before any throughput conclusion.
