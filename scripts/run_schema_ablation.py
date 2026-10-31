@@ -54,43 +54,58 @@ def git_sha(path):
         return None
 
 
-def resolve_rows(task, limit, seed):
+def _code_rows(limit, seed, split):
+    from group_oof import function_group_id
     rng = random.Random(seed)
-    if task == "code_defect":
-        from group_oof import function_group_id
-        manifest = json.loads(Path("results/v2/data_manifest/codexglue_function_groups.json").read_text(encoding="utf-8"))
-        js_all = json.loads(Path("data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))
-        g2idx = {}
-        for i, r in enumerate(js_all):
-            g2idx.setdefault(function_group_id(r["func"]), []).append(i)
-        groups = list(manifest["splits"]["search_dev"])
-        rng.shuffle(groups)
-        rows = []
-        for g in groups:
-            for i in g2idx.get(g, []):
-                rows.append({"key": f"idx:{i}", "text": js_all[i]["func"],
-                             "gold": bool(js_all[i]["target"]), "group_id": g})
-                if len(rows) >= limit:
-                    return rows
-        return rows
-    manifest = json.loads(Path("results/v2/data_manifest/findver_report_groups.json").read_text(encoding="utf-8"))
-    data = {r["example_id"]: r for r in
-            json.loads(Path("external/FinDVer/data/testmini.json").read_text(encoding="utf-8"))}
-    reps = list(manifest["splits"]["search_dev"])
-    rng.shuffle(reps)
+    manifest = json.loads(Path("results/v2/data_manifest/codexglue_function_groups.json").read_text(encoding="utf-8"))
+    js_all = json.loads(Path("data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))
+    g2idx = {}
+    for i, r in enumerate(js_all):
+        g2idx.setdefault(function_group_id(r["func"]), []).append(i)
+    groups = list(manifest["splits"][split])
+    rng.shuffle(groups)
     rows = []
-    for rep in reps:
-        rep_path = ROOT / f"external/FinDVer/financial_reports/{rep}"
-        repj = json.loads(rep_path.read_text(encoding="utf-8"))
-        for eid, r in data.items():
-            if r["report"] != rep:
-                continue
-            ev = "\n".join(repj["context"][i]["context"] for i in r["relevant_context"])
-            rows.append({"key": eid, "text": f"Claim: {r['statement']}\n\nEvidence:\n{ev}",
-                         "gold": bool(r["entailment_label"]), "group_id": f"rp:{rep}"})
+    for g in groups:
+        for i in sorted(g2idx.get(g, [])):
+            rows.append({"key": f"idx:{i}", "text": js_all[i]["func"],
+                         "gold": bool(js_all[i]["target"]), "group_id": g,
+                         "meta": {"idx": i, "project": js_all[i].get("project", "?")}})
             if len(rows) >= limit:
                 return rows
     return rows
+
+
+def _findver_rows(limit, seed, split):
+    rng = random.Random(seed)
+    manifest = json.loads(Path("results/v2/data_manifest/findver_report_groups.json").read_text(encoding="utf-8"))
+    return _findver_rows_from_ids(
+        [eid for rep in manifest["splits"][split] for eid in
+         [r["example_id"] for r in json.loads(Path("external/FinDVer/data/testmini.json").read_text(encoding="utf-8")) if r["report"] == rep]],
+        rng, limit)
+
+
+def _findver_rows_from_ids(ids, rng, limit):
+    data = {r["example_id"]: r for r in
+            json.loads(Path("external/FinDVer/data/testmini.json").read_text(encoding="utf-8"))}
+    ids = list(ids)
+    rng.shuffle(ids)
+    rows = []
+    for eid in ids[:limit]:
+        r = data[eid]
+        rep = json.loads((ROOT / f"external/FinDVer/financial_reports/{r['report']}").read_text(encoding="utf-8"))
+        ev = "\n".join(rep["context"][i]["context"] for i in r["relevant_context"])
+        rows.append({"key": eid, "text": f"Claim: {r['statement']}\n\nEvidence:\n{ev}",
+                     "gold": bool(r["entailment_label"]), "group_id": f"rp:{r['report']}"})
+    return rows
+
+
+def resolve_rows(task, limit, seed, pool="v1"):
+    """pool is reserved for future pools; default = v2 search_dev (matches all A2 runs)."""
+    if task == "code_defect":
+        split = "search_train" if pool == "v2train" else "search_dev"
+        return _code_rows(limit, seed, split)
+    split = "search_train" if pool == "v2train" else "search_dev"
+    return _findver_rows(limit, seed, split)
 
 
 def normalize_choice(raw, valid):

@@ -36,6 +36,9 @@ def test_code_row_resolution_labels():
     assert len(rows) == 6
     assert {r["gold"] for r in rows} <= {True, False}
     assert all(r["group_id"].startswith("fn:") for r in rows)
+    assert [r["key"] for r in m.resolve_rows("code_defect", 6, 17)] == [r["key"] for r in rows]
+    train = m.resolve_rows("code_defect", 6, 17, pool="v2train")
+    assert not (set(r["key"] for r in rows) & set(r["key"] for r in train))
 
 
 def test_question_builder_shapes():
