@@ -1,5 +1,8 @@
 # v4.1 task registry. `adapter` = src/tasks/* (unified); `legacy` = existing scripts.
 # No task may enter EA before: adapter present + group splits audited + native baseline measured.
+# v3 multi-domain evidence (Gate 1 verdicts, revisions, manifests) preserved verbatim below.
+# Key renames vs pre-v4.1 file (content unchanged): processbench_math_choice -> processbench,
+# findver_claim -> findver.
 tasks:
   banking77_intent:
     domain: general
@@ -27,27 +30,51 @@ tasks:
   processbench:
     domain: math
     form: step_localization
-    repo: local_data_raw_processbench
+    source_repo: Qwen/ProcessBench
+    data_revision: 3bdcd5371ed567559a78f559c01c13a6deee7604
+    source_git_commit: e8024636bcabdf8bd514440551b531d3f90dd18b
+    license: Apache-2.0
+    task_type: choice
+    label_mapping: label == -1 means all steps correct, else 0-based earliest-error step index (official run_eval.py match rule)
+    candidates: one per step (0-based) plus ALL_STEPS_CORRECT sentinel last
+    split_rule: group by problem text; stratified by (source file, error-vs-all-correct); seed 17; fractions train/dev/test 0.6/0.2/0.2
+    split_manifest: results/processbench/split_manifest.json
+    laya_actions: [single, wide, tournament]
+    vela_paired_baseline: recorded 2026-10-30 (Laya 0.125 vs Vela 0.058 on 120 train rows; both near chance; Vela faster)
+    stage4_sensitivity: FAILED 2026-10-31 (train n=100 + dev n=60; only significant effect was wide_max1024 harm on train, not replicated; nothing improves quality repeatably; Stage 5 ES blocked)
+    action_adapter: single-first cascade (same cost definition as BANKING77)
+    budgets: [1.00x, 1.25x, 1.50x, 2.00x]
     role: primary
     adapter: missing
     legacy: [scripts/prepare_processbench.py, scripts/build_processbench_cache.py, scripts/make_processbench_split.py]
-    group_unit: problem_id
-    status: adapter_pending
+    group_unit: problem_text
+    status: gate1_failed_neat_paused
+    gate: Gate 1 FAILED 2026-10-30 — tournament correct set identical to single; wide net-harmful; oracle +0.017; LR == majority. NEAT paused for math Choice.
   codexglue_defect:
     domain: code
     form: binary_defect
-    repo: local_data_raw_codexglue_defect
+    source_repo: microsoft/CodeXGLUE (Defect Detection, Devign origin)
+    data_revision: null
+    task_type: choice_vs_noul
+    label_mapping: null
+    laya_actions: [single]
     role: primary
     adapter: missing
     legacy: [scripts/prepare_codexglue_defect.py, scripts/build_binary_cache.py, scripts/make_codexglue_split.py]
     group_unit: function_or_project
-    status: adapter_pending
+    status: gate1_failed_neat_paused
+    gate: Gate 1 FAILED 2026-10-30 — switch net +1 (34→37/60) but LR OOF below majority; wide zero net gain. NEAT paused for code.
   findver:
     domain: finance
     form: claim_verification
-    repo: external_FinDVer_testmini
+    source_repo: yilunzhao/FinDVer
+    data_revision: null
+    task_type: noul_vs_choice
+    label_mapping: null
+    laya_actions: [single]
     role: primary
     adapter: missing
     legacy: [scripts/prepare_findver.py, scripts/build_binary_cache.py, scripts/make_findver_split.py]
     group_unit: report_id
-    status: adapter_pending
+    status: gate1_failed_neat_paused
+    gate: Gate 1 FAILED 2026-10-30 — switch 0.6167 vs single 0.5667 raw, but LR OOF below majority; wide zero net gain; oracle +0.10. NEAT paused for finance.
