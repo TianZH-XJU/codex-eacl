@@ -93,6 +93,17 @@ def resolve_rows(task, limit, seed):
     return rows
 
 
+def normalize_choice(raw, valid):
+    """Normalize a raw choice string for comparison. Returns (normalized|None, reason)."""
+    if raw is None:
+        return None, "missing"
+    norm = str(raw).strip().lower().replace("_", " ")
+    norm = " ".join(norm.split())
+    if norm in valid:
+        return norm, "ok"
+    return None, f"unknown choice {raw!r}"
+
+
 def build_question(task, rep):
     import semantic_schemas as S
     key = f"{task.split('_')[0]}_{rep}"
@@ -197,7 +208,7 @@ def main():
                     err = f"{type(e).__name__}: {e}"
                 ms = (time.perf_counter() - t0) * 1000.0
                 peak = max(peak, proc.memory_info().rss)
-                pred = score = None
+                pred = score = raw_choice = norm_choice = None
                 if err is None and ans is not None:
                     if ans.get("type") == "noul":
                         score = float(ans.get("noul", 0.0))
@@ -206,11 +217,17 @@ def main():
                         probs = ans.get("probabilities", {}) or {}
                         top = max(probs, key=lambda k: probs[k]) if probs else None
                         score = float(probs.get(top, 0.0)) if top else 0.0
-                        pred = ("vulnerable" in str(ans.get("choice", "")).lower()
-                                if args.task == "code_defect"
-                                else "not supported" not in str(ans.get("choice", "")).lower())
+                        raw_choice = ans.get("choice")
+                        valid = {"secure", "vulnerable"} if args.task == "code_defect" else {"supported", "not supported"}
+                        norm_choice, reason = normalize_choice(raw_choice, valid)
+                        if norm_choice is None:
+                            err = f"choice-parse: {reason}"
+                        else:
+                            pos_label = "vulnerable" if args.task == "code_defect" else "supported"
+                            pred = (norm_choice == pos_label)
                 results.append({"position": pos, "row_key": row["key"], "group_id": row["group_id"],
                                 "rep": rep, "gold": bool(row["gold"]), "pred": pred, "score": score,
+                                "raw_choice": raw_choice, "norm_choice": norm_choice,
                                 "correct": bool(pred == bool(row["gold"])) if pred is not None else False,
                                 "latency_ms": round(ms, 1), "calls": n_calls, "error": err})
                 print(f"{pos+1}/{len(rows)} {rep} err={err}", flush=True)

@@ -47,6 +47,15 @@ def test_question_builder_shapes():
     assert q3["type"] == "choice" and len(q3["criteria"]) == 2
 
 
+def test_normalize_choice_handles_variants_and_unknown():
+    valid = {"supported", "not supported"}
+    assert m.normalize_choice("not_supported", valid) == ("not supported", "ok")
+    assert m.normalize_choice("  NOT   SUPPORTED ", valid) == ("not supported", "ok")
+    assert m.normalize_choice("supported", valid) == ("supported", "ok")
+    assert m.normalize_choice(None, valid)[1] == "missing"
+    assert m.normalize_choice("maybe", valid)[1].startswith("unknown")
+
+
 def _check_budget_kw(kw):
     allowed = {"head_max_len": (1, 192), "max_len": (1, 512)}
     for k, v in kw.items():
