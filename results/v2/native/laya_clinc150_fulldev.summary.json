@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-10-31T22:31:04.612236+00:00",
+  "dataset": "clinc150",
+  "model": "laya",
+  "split": "pilot_search",
+  "seed": 17,
+  "n": 60,
+  "accuracy": 0.6667,
+  "device": "cpu",
+  "threads": 2,
+  "laya_commit": "b9fe351ce81e2d974bca2bf219c1e4030c0a05ea",
+  "project_git_sha": "fdad645134cd0e8a47311cdcdf97b986d99d1afa",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2142.6,
+  "status": "passed"
+}
