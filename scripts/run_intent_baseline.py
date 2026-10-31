@@ -88,6 +88,11 @@ def main():
     ap.add_argument("--model", required=True, choices=["laya", "vela"])
     ap.add_argument("--limit", type=int, default=100)
     ap.add_argument("--seed", type=int, default=17)
+    ap.add_argument("--split", default="search_train", choices=["search_train", "search_dev", "confirm"])
+    ap.add_argument("--menu-file", default=None,
+                    help="JSON menu bank (results/v2/menu/recall_bank.json with 'menus'); restricts criteria to the stored top-K menu")
+    ap.add_argument("--full-labels", action="store_true",
+                    help="with --menu-file: use the same menu-file rows but the full label set (paired full-vs-menu comparison)")
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
@@ -97,7 +102,15 @@ def main():
     if torch.cuda.is_available():
         raise RuntimeError("CPU-only run refused: CUDA is available")
 
-    rows, labels = load_search_rows(args.dataset, args.limit, args.seed)
+    rows, labels = load_search_rows(args.dataset, args.limit, args.seed, args.split)
+    menus = {}
+    if args.menu_file:
+        bank = json.loads(Path(args.menu_file).read_text(encoding="utf-8"))
+        entries = bank["menus"][args.dataset][:args.limit]
+        rows = [{"key": m["key"], "text": m["text"], "gold": m["gold"], "group_id": m["group_id"]}
+                for m in entries]
+        if not args.full_labels:
+            menus = {m["key"]: m[[k for k in m if k.startswith("top")][0]] for m in entries}
     if args.model == "laya":
         sys.path.insert(0, str(LAYA_ROOT / "research" / "benchmarks" / "tournament"))
         import laya  # noqa: E402
@@ -116,7 +129,12 @@ def main():
     out = []
     try:
         for pos, row in enumerate(rows):
-            cands = labels
+            if args.menu_file and row["key"] in menus:
+                cands = list(dict.fromkeys(menus[row["key"]] + [row["gold"]]))
+                menu_hit = int(row["gold"] in menus[row["key"]])
+            else:
+                cands = labels
+                menu_hit = None
             q = {"type": "choice", "instructions": "Which intent does this message express?",
                  "criteria": {c.replace("_", " "): None for c in cands}}
             t0 = time.perf_counter()
@@ -134,6 +152,7 @@ def main():
                 "dataset": args.dataset, "split": "pilot_search", "seed": args.seed,
                 "position": pos, "row_id": row["key"], "gold_rendered": row["gold"],
                 "gold_normalized": row["gold"].replace("_", " "), "n_candidates": len(cands),
+                "menu_restricted": bool(args.menu_file), "menu_recall_hit": menu_hit,
                 "strategy": "single", "choice": choice, "correct": bool(correct),
                 "latency_ms": round(ms, 1), "calls": n_calls, "error": err,
                 "strategy_features": {}, "tournament": {"rounds": 0, "n": len(cands)},

@@ -90,11 +90,14 @@ def main():
     ap.add_argument("--n-train", type=int, default=2000)
     ap.add_argument("--n-test", type=int, default=300)
     ap.add_argument("--seed", type=int, default=17)
+    ap.add_argument("--dump-menus", type=int, default=0,
+                    help="if >0, write per-row top-K menus for the dev pool to --menu-out")
+    ap.add_argument("--menu-out", default="results/v2/menu/menus.json")
     ap.add_argument("--out", default="results/v2/menu/recall_bank.json")
     args = ap.parse_args()
     ks = [int(x) for x in args.k_list.split(",")]
 
-    out = {"created_utc": datetime.now(timezone.utc).isoformat(), "tasks": {}}
+    out = {"created_utc": datetime.now(timezone.utc).isoformat(), "tasks": {}, "menus": {}}
     for ds in ("clinc150", "banking77"):
         train = load_pool(ds, "search_train", args.n_train, args.seed)
         dev = load_pool(ds, "search_dev", args.n_test, args.seed + 1)
@@ -127,6 +130,13 @@ def main():
         res["majority_label"] = {"label": maj, "dev_hit_rate": round(sum(1 for r in dev if r["label"] == maj) / len(dev), 4) if dev else None}
         out["tasks"][ds] = {"n_train": len(train), "n_dev": len(dev), "n_labels": len(labels), "methods": res}
         print(ds, json.dumps(res, indent=1)[:800])
+        if args.dump_menus:
+            ranked = rank_labels([r["text"] for r in train], [r["label"] for r in train],
+                                 [r["text"] for r in dev], labels, "tfidf-word")
+            out["menus"][ds] = [{"key": r["key"], "gold": r["label"], "group_id": r["group"], "text": r["text"],
+                                 f"top{args.dump_menus}": preds[:args.dump_menus],
+                                 "recall_hit": bool(r["label"] in preds[:args.dump_menus])}
+                                for r, preds in zip(dev, ranked)]
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
