@@ -1,0 +1,182 @@
+{
+  "laya_code": {
+    "n": 20,
+    "operating_points": [
+      {
+        "threshold": 0.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.2308
+      },
+      {
+        "threshold": 0.6775,
+        "balanced_accuracy": 0.5714,
+        "macro_f1": 0.375
+      },
+      {
+        "threshold": 0.781,
+        "balanced_accuracy": 0.4405,
+        "macro_f1": 0.3484
+      },
+      {
+        "threshold": 0.8601,
+        "balanced_accuracy": 0.619,
+        "macro_f1": 0.5833
+      },
+      {
+        "threshold": 0.9013,
+        "balanced_accuracy": 0.6786,
+        "macro_f1": 0.6865
+      },
+      {
+        "threshold": 0.9337,
+        "balanced_accuracy": 0.5476,
+        "macro_f1": 0.5312
+      },
+      {
+        "threshold": 1.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.4118
+      }
+    ],
+    "best_balanced_acc": {
+      "threshold": 0.9013,
+      "balanced_accuracy": 0.6786,
+      "macro_f1": 0.6865
+    }
+  },
+  "laya_findver": {
+    "n": 20,
+    "operating_points": [
+      {
+        "threshold": 0.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.375
+      },
+      {
+        "threshold": 0.3543,
+        "balanced_accuracy": 0.625,
+        "macro_f1": 0.6
+      },
+      {
+        "threshold": 0.4625,
+        "balanced_accuracy": 0.7083,
+        "macro_f1": 0.7151
+      },
+      {
+        "threshold": 0.6326,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.4949
+      },
+      {
+        "threshold": 0.7489,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.4373
+      },
+      {
+        "threshold": 0.8263,
+        "balanced_accuracy": 0.4792,
+        "macro_f1": 0.3407
+      },
+      {
+        "threshold": 1.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.2857
+      }
+    ],
+    "best_balanced_acc": {
+      "threshold": 0.4625,
+      "balanced_accuracy": 0.7083,
+      "macro_f1": 0.7151
+    }
+  },
+  "vela_code": {
+    "n": 20,
+    "operating_points": [
+      {
+        "threshold": 0.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.2308
+      },
+      {
+        "threshold": 0.0186,
+        "balanced_accuracy": 0.5714,
+        "macro_f1": 0.375
+      },
+      {
+        "threshold": 0.0229,
+        "balanced_accuracy": 0.5595,
+        "macro_f1": 0.4486
+      },
+      {
+        "threshold": 0.0282,
+        "balanced_accuracy": 0.619,
+        "macro_f1": 0.5833
+      },
+      {
+        "threshold": 0.0367,
+        "balanced_accuracy": 0.5595,
+        "macro_f1": 0.5611
+      },
+      {
+        "threshold": 0.0599,
+        "balanced_accuracy": 0.5476,
+        "macro_f1": 0.5312
+      },
+      {
+        "threshold": 1.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.4118
+      }
+    ],
+    "best_balanced_acc": {
+      "threshold": 0.0282,
+      "balanced_accuracy": 0.619,
+      "macro_f1": 0.5833
+    }
+  },
+  "vela_findver": {
+    "n": 20,
+    "operating_points": [
+      {
+        "threshold": 0.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.375
+      },
+      {
+        "threshold": 0.6157,
+        "balanced_accuracy": 0.4167,
+        "macro_f1": 0.3333
+      },
+      {
+        "threshold": 0.7531,
+        "balanced_accuracy": 0.2917,
+        "macro_f1": 0.2593
+      },
+      {
+        "threshold": 0.8091,
+        "balanced_accuracy": 0.1875,
+        "macro_f1": 0.1919
+      },
+      {
+        "threshold": 0.8771,
+        "balanced_accuracy": 0.2917,
+        "macro_f1": 0.2327
+      },
+      {
+        "threshold": 0.9102,
+        "balanced_accuracy": 0.375,
+        "macro_f1": 0.2308
+      },
+      {
+        "threshold": 1.0,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.2857
+      }
+    ],
+    "best_balanced_acc": {
+      "threshold": 0.0,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.375
+    }
+  }
+}
