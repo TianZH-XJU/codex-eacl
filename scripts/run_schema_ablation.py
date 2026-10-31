@@ -107,6 +107,37 @@ def build_question(task, rep):
     return dict(base)
 
 
+ALLOWED_BUDGETS = {"head_max_len": (1, 192), "max_len": (1, 512)}
+
+
+def parse_predict_kwargs(raw, model):
+    """Parse k=v,k=v or equivalent JSON. Raises SystemExit on misuse."""
+    if model != "laya":
+        raise SystemExit("--predict-kwargs is Laya-only (Vela has no such per-call budget API)")
+    raw = (raw or "").strip()
+    try:
+        parsed = dict(json.loads(raw)) if raw.startswith("{") else None
+    except ValueError:
+        parsed = None
+    if parsed is None:
+        parsed = {}
+        for part in raw.split(","):
+            if "=" not in part:
+                raise SystemExit(f"invalid --predict-kwargs entry (want k=v): {part!r}")
+            k, v = part.split("=", 1)
+            try:
+                parsed[k.strip()] = int(v.strip())
+            except ValueError:
+                raise SystemExit(f"non-integer budget value: {part!r}")
+    for k, v in parsed.items():
+        if k not in ALLOWED_BUDGETS:
+            raise SystemExit(f"unsupported budget key: {k}")
+        lo, hi = ALLOWED_BUDGETS[k]
+        if isinstance(v, bool) or not isinstance(v, int) or not (lo <= v <= hi):
+            raise SystemExit(f"budget {k}={v} out of pinned in-range [{lo},{hi}] (larger = OOD stress, separate)")
+    return parsed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True, choices=["laya", "vela"])
@@ -114,6 +145,9 @@ def main():
     ap.add_argument("--reps", default=None)
     ap.add_argument("--limit", type=int, default=20)
     ap.add_argument("--seed", type=int, default=17)
+    ap.add_argument("--predict-kwargs", default=None,
+                    help='Budget overrides for Laya only: k=v,k=v (e.g. head_max_len=96) or '
+                         'equivalent JSON. Rejected for Vela and for out-of-range values.')
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
@@ -126,6 +160,7 @@ def main():
     default_reps = {"laya": ["legacy_noul", "semantic_noul", "choice"],
                     "vela": ["semantic_noul", "choice"]}[args.model]
     reps = args.reps.split(",") if args.reps else default_reps
+    budget_kw = parse_predict_kwargs(args.predict_kwargs, args.model) if args.predict_kwargs else {}
     if args.model == "laya" and "legacy_noul" not in reps:
         pass
     if args.model == "vela" and "legacy_noul" in reps:
@@ -138,7 +173,7 @@ def main():
         import laya  # noqa: E402
         agent = laya.load("english", device="cpu")
         def call(state, q):
-            return agent.predict(state, {"q": q})["answers"]["q"], 1
+            return agent.predict(state, {"q": q}, **budget_kw)["answers"]["q"], 1
     else:
         from transformers import AutoModel
         agent = AutoModel.from_pretrained(str(ROOT / "models/vela"), trust_remote_code=True)
@@ -184,6 +219,7 @@ def main():
 
     report = {"created_utc": datetime.now(timezone.utc).isoformat(), "model": args.model,
               "task": args.task, "reps": reps, "seed": args.seed, "n_rows": len(rows),
+              "predict_kwargs": budget_kw or None,
               "device": "cpu", "threads": args.threads, "laya_commit": git_sha(LAYA_ROOT),
               "project_git_sha": git_sha(ROOT),
               "windows_sleep_prevention_active": sleep_on,
