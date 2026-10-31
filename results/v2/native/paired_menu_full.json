@@ -1,0 +1,142 @@
+{
+  "banking77_laya_menu_vs_full": {
+    "n": 60,
+    "first_acc": 0.3167,
+    "second_acc": 0.65,
+    "diff": 0.3333,
+    "ci95": [
+      0.2,
+      0.4667
+    ],
+    "both_ok": 17,
+    "both_bad": 19,
+    "first_only": 2,
+    "second_only": 22,
+    "mean_ms_full": 1482.7,
+    "mean_ms_menu": 538.2,
+    "recall_hit": 0.95
+  },
+  "banking77_vela_menu_vs_full": {
+    "n": 60,
+    "first_acc": 0.4667,
+    "second_acc": 0.6,
+    "diff": 0.1333,
+    "ci95": [
+      0.0,
+      0.2667
+    ],
+    "both_ok": 24,
+    "both_bad": 20,
+    "first_only": 4,
+    "second_only": 12,
+    "mean_ms_full": 698.1,
+    "mean_ms_menu": 150.9,
+    "recall_hit": 0.95
+  },
+  "clinc150_laya_menu_vs_full": {
+    "n": 60,
+    "first_acc": 0.6667,
+    "second_acc": 0.9167,
+    "diff": 0.25,
+    "ci95": [
+      0.1333,
+      0.3667
+    ],
+    "both_ok": 39,
+    "both_bad": 4,
+    "first_only": 1,
+    "second_only": 16,
+    "mean_ms_full": 2256.6,
+    "mean_ms_menu": 585.3,
+    "recall_hit": 0.9
+  },
+  "clinc150_vela_menu_vs_full": {
+    "n": 60,
+    "first_acc": 0.55,
+    "second_acc": 0.7667,
+    "diff": 0.2167,
+    "ci95": [
+      0.1,
+      0.3333
+    ],
+    "both_ok": 32,
+    "both_bad": 13,
+    "first_only": 1,
+    "second_only": 14,
+    "mean_ms_full": 693.8,
+    "mean_ms_menu": 134.2,
+    "recall_hit": 0.9
+  },
+  "banking77_laya_vs_vela_full": {
+    "n": 60,
+    "first_acc": 0.3167,
+    "second_acc": 0.4667,
+    "diff": 0.15,
+    "ci95": [
+      -0.0167,
+      0.3167
+    ],
+    "both_ok": 10,
+    "both_bad": 23,
+    "first_only": 9,
+    "second_only": 18,
+    "mean_ms": {
+      "laya": 1482.7,
+      "vela": 698.1
+    }
+  },
+  "banking77_laya_vs_vela_menu": {
+    "n": 60,
+    "first_acc": 0.65,
+    "second_acc": 0.6,
+    "diff": -0.05,
+    "ci95": [
+      -0.15,
+      0.05
+    ],
+    "both_ok": 33,
+    "both_bad": 18,
+    "first_only": 6,
+    "second_only": 3,
+    "mean_ms": {
+      "laya": 538.2,
+      "vela": 150.9
+    }
+  },
+  "clinc150_laya_vs_vela_full": {
+    "n": 60,
+    "first_acc": 0.6667,
+    "second_acc": 0.55,
+    "diff": -0.1167,
+    "ci95": [
+      -0.2833,
+      0.05
+    ],
+    "both_ok": 23,
+    "both_bad": 10,
+    "first_only": 17,
+    "second_only": 10,
+    "mean_ms": {
+      "laya": 2256.6,
+      "vela": 693.8
+    }
+  },
+  "clinc150_laya_vs_vela_menu": {
+    "n": 60,
+    "first_acc": 0.9167,
+    "second_acc": 0.7667,
+    "diff": -0.15,
+    "ci95": [
+      -0.25,
+      -0.05
+    ],
+    "both_ok": 45,
+    "both_bad": 4,
+    "first_only": 10,
+    "second_only": 1,
+    "mean_ms": {
+      "laya": 585.3,
+      "vela": 134.2
+    }
+  }
+}
