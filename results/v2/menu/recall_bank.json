@@ -1,0 +1,77 @@
+{
+  "created_utc": "2026-10-31T22:03:19.733517+00:00",
+  "tasks": {
+    "clinc150": {
+      "n_train": 2000,
+      "n_dev": 300,
+      "n_labels": 151,
+      "methods": {
+        "tfidf-word": {
+          "recall_at_k": {
+            "1": 0.8033,
+            "5": 0.92,
+            "10": 0.9367,
+            "20": 0.9767,
+            "40": 0.98,
+            "full": 1.0
+          },
+          "macro_recall_at_10": 0.9371
+        },
+        "tfidf-char": {
+          "recall_at_k": {
+            "1": 0.7867,
+            "5": 0.9267,
+            "10": 0.94,
+            "20": 0.9867,
+            "40": 0.9933,
+            "full": 1.0
+          },
+          "macro_recall_at_10": 0.9404
+        },
+        "random": {
+          "recall_at_10": 0.0767
+        },
+        "majority_label": {
+          "label": "accept_reservations",
+          "dev_hit_rate": 0.0067
+        }
+      }
+    },
+    "banking77": {
+      "n_train": 2000,
+      "n_dev": 300,
+      "n_labels": 77,
+      "methods": {
+        "tfidf-word": {
+          "recall_at_k": {
+            "1": 0.7433,
+            "5": 0.9467,
+            "10": 0.9767,
+            "20": 0.99,
+            "40": 0.9933,
+            "full": 1.0
+          },
+          "macro_recall_at_10": 0.9773
+        },
+        "tfidf-char": {
+          "recall_at_k": {
+            "1": 0.78,
+            "5": 0.9367,
+            "10": 0.97,
+            "20": 0.9933,
+            "40": 0.9967,
+            "full": 1.0
+          },
+          "macro_recall_at_10": 0.9708
+        },
+        "random": {
+          "recall_at_10": 0.11
+        },
+        "majority_label": {
+          "label": "Refund_not_showing_up",
+          "dev_hit_rate": 0.0133
+        }
+      }
+    }
+  }
+}
