@@ -1,0 +1,894 @@
+{
+  "created_utc": "2026-10-31T23:33:29.978890+00:00",
+  "task": "banking77",
+  "model": "vela",
+  "genome": {
+    "retriever": "tfidf-char",
+    "k": 10,
+    "norm": "raw",
+    "order": "shuffled"
+  },
+  "n": 30,
+  "seed": 17,
+  "device": "cpu",
+  "threads": 2,
+  "project_git_sha": "c7e13673e39a8c02282e3c0b50dc20dc6fda1ab8",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1702.5,
+  "acc_pass1": 0.7667,
+  "acc_pass2": 0.7667,
+  "n_flips": 0,
+  "rows": [
+    {
+      "key": "train:442",
+      "gold": "card_payment_wrong_exchange_rate",
+      "menu": [
+        "exchange_via_app",
+        "wrong_amount_of_cash_received",
+        "exchange_charge",
+        "receiving_money",
+        "supported_cards_and_currencies",
+        "fiat_currency_support",
+        "wrong_exchange_rate_for_cash_withdrawal",
+        "compromised_card",
+        "exchange_rate",
+        "card_payment_wrong_exchange_rate"
+      ],
+      "pass1": {
+        "choice": "exchange_rate",
+        "error": null,
+        "ms": 2133.0
+      },
+      "pass2": {
+        "choice": "exchange_rate",
+        "error": null,
+        "ms": 166.0
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:938",
+      "gold": "fiat_currency_support",
+      "menu": [
+        "supported_cards_and_currencies",
+        "exchange_via_app",
+        "exchange_rate",
+        "exchange_charge",
+        "top_up_by_bank_transfer_charge",
+        "fiat_currency_support",
+        "change_pin",
+        "wrong_exchange_rate_for_cash_withdrawal",
+        "card_acceptance",
+        "card_payment_wrong_exchange_rate"
+      ],
+      "pass1": {
+        "choice": "fiat_currency_support",
+        "error": null,
+        "ms": 143.4
+      },
+      "pass2": {
+        "choice": "fiat_currency_support",
+        "error": null,
+        "ms": 127.5
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:9594",
+      "gold": "card_about_to_expire",
+      "menu": [
+        "getting_spare_card",
+        "card_arrival",
+        "country_support",
+        "card_linking",
+        "transfer_timing",
+        "card_swallowed",
+        "order_physical_card",
+        "card_about_to_expire",
+        "activate_my_card",
+        "card_delivery_estimate"
+      ],
+      "pass1": {
+        "choice": "order_physical_card",
+        "error": null,
+        "ms": 146.5
+      },
+      "pass2": {
+        "choice": "order_physical_card",
+        "error": null,
+        "ms": 143.3
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:1030",
+      "gold": "card_delivery_estimate",
+      "menu": [
+        "pin_blocked",
+        "country_support",
+        "visa_or_mastercard",
+        "receiving_money",
+        "card_arrival",
+        "order_physical_card",
+        "atm_support",
+        "card_delivery_estimate",
+        "transaction_charged_twice",
+        "terminate_account"
+      ],
+      "pass1": {
+        "choice": "card_delivery_estimate",
+        "error": null,
+        "ms": 136.6
+      },
+      "pass2": {
+        "choice": "card_delivery_estimate",
+        "error": null,
+        "ms": 124.5
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:9087",
+      "gold": "top_up_by_card_charge",
+      "menu": [
+        "top_up_by_bank_transfer_charge",
+        "top_up_by_card_charge",
+        "top_up_failed",
+        "transfer_fee_charged",
+        "extra_charge_on_statement",
+        "card_payment_fee_charged",
+        "top_up_by_cash_or_cheque",
+        "cash_withdrawal_charge",
+        "transaction_charged_twice",
+        "topping_up_by_card"
+      ],
+      "pass1": {
+        "choice": "topping_up_by_card",
+        "error": null,
+        "ms": 166.6
+      },
+      "pass2": {
+        "choice": "topping_up_by_card",
+        "error": null,
+        "ms": 176.0
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:7306",
+      "gold": "transfer_fee_charged",
+      "menu": [
+        "top_up_by_bank_transfer_charge",
+        "pending_transfer",
+        "transfer_fee_charged",
+        "balance_not_updated_after_bank_transfer",
+        "failed_transfer",
+        "cash_withdrawal_charge",
+        "extra_charge_on_statement",
+        "transaction_charged_twice",
+        "card_payment_fee_charged",
+        "declined_transfer"
+      ],
+      "pass1": {
+        "choice": "transfer_fee_charged",
+        "error": null,
+        "ms": 174.5
+      },
+      "pass2": {
+        "choice": "transfer_fee_charged",
+        "error": null,
+        "ms": 147.2
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:4700",
+      "gold": "direct_debit_payment_not_recognised",
+      "menu": [
+        "card_payment_not_recognised",
+        "request_refund",
+        "extra_charge_on_statement",
+        "cash_withdrawal_charge",
+        "compromised_card",
+        "card_payment_fee_charged",
+        "transaction_charged_twice",
+        "top_up_by_card_charge",
+        "Refund_not_showing_up",
+        "transfer_fee_charged"
+      ],
+      "pass1": {
+        "choice": "request_refund",
+        "error": null,
+        "ms": 194.7
+      },
+      "pass2": {
+        "choice": "request_refund",
+        "error": null,
+        "ms": 209.5
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:361",
+      "gold": "exchange_rate",
+      "menu": [
+        "exchange_charge",
+        "card_acceptance",
+        "card_payment_wrong_exchange_rate",
+        "exchange_via_app",
+        "change_pin",
+        "verify_source_of_funds",
+        "fiat_currency_support",
+        "exchange_rate",
+        "edit_personal_details",
+        "wrong_exchange_rate_for_cash_withdrawal"
+      ],
+      "pass1": {
+        "choice": "exchange_rate",
+        "error": null,
+        "ms": 151.8
+      },
+      "pass2": {
+        "choice": "exchange_rate",
+        "error": null,
+        "ms": 163.1
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:1812",
+      "gold": "contactless_not_working",
+      "menu": [
+        "top_up_failed",
+        "card_not_working",
+        "cash_withdrawal_not_recognised",
+        "wrong_exchange_rate_for_cash_withdrawal",
+        "contactless_not_working",
+        "cash_withdrawal_charge",
+        "unable_to_verify_identity",
+        "card_payment_fee_charged",
+        "declined_cash_withdrawal",
+        "pending_cash_withdrawal"
+      ],
+      "pass1": {
+        "choice": "contactless_not_working",
+        "error": null,
+        "ms": 133.6
+      },
+      "pass2": {
+        "choice": "contactless_not_working",
+        "error": null,
+        "ms": 152.4
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:2142",
+      "gold": "cancel_transfer",
+      "menu": [
+        "direct_debit_payment_not_recognised",
+        "transfer_not_received_by_recipient",
+        "card_not_working",
+        "cancel_transfer",
+        "compromised_card",
+        "transaction_charged_twice",
+        "balance_not_updated_after_bank_transfer",
+        "card_payment_wrong_exchange_rate",
+        "wrong_exchange_rate_for_cash_withdrawal",
+        "wrong_amount_of_cash_received"
+      ],
+      "pass1": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 175.1
+      },
+      "pass2": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 158.5
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:3204",
+      "gold": "top_up_reverted",
+      "menu": [
+        "card_not_working",
+        "topping_up_by_card",
+        "apple_pay_or_google_pay",
+        "top_up_reverted",
+        "transfer_not_received_by_recipient",
+        "pending_top_up",
+        "declined_cash_withdrawal",
+        "transfer_into_account",
+        "top_up_failed",
+        "balance_not_updated_after_bank_transfer"
+      ],
+      "pass1": {
+        "choice": "top_up_failed",
+        "error": null,
+        "ms": 250.5
+      },
+      "pass2": {
+        "choice": "top_up_failed",
+        "error": null,
+        "ms": 213.8
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:1288",
+      "gold": "card_not_working",
+      "menu": [
+        "compromised_card",
+        "declined_card_payment",
+        "lost_or_stolen_card",
+        "top_up_failed",
+        "card_acceptance",
+        "card_arrival",
+        "virtual_card_not_working",
+        "transfer_not_received_by_recipient",
+        "contactless_not_working",
+        "card_not_working"
+      ],
+      "pass1": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 164.2
+      },
+      "pass2": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 154.1
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:904",
+      "gold": "fiat_currency_support",
+      "menu": [
+        "receiving_money",
+        "card_acceptance",
+        "fiat_currency_support",
+        "country_support",
+        "exchange_charge",
+        "top_up_reverted",
+        "exchange_via_app",
+        "wrong_amount_of_cash_received",
+        "reverted_card_payment?",
+        "supported_cards_and_currencies"
+      ],
+      "pass1": {
+        "choice": "fiat_currency_support",
+        "error": null,
+        "ms": 136.3
+      },
+      "pass2": {
+        "choice": "fiat_currency_support",
+        "error": null,
+        "ms": 155.9
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:6909",
+      "gold": "change_pin",
+      "menu": [
+        "wrong_exchange_rate_for_cash_withdrawal",
+        "change_pin",
+        "card_payment_wrong_exchange_rate",
+        "pending_top_up",
+        "card_linking",
+        "exchange_rate",
+        "pin_blocked",
+        "get_physical_card",
+        "edit_personal_details",
+        "exchange_via_app"
+      ],
+      "pass1": {
+        "choice": "change_pin",
+        "error": null,
+        "ms": 130.4
+      },
+      "pass2": {
+        "choice": "change_pin",
+        "error": null,
+        "ms": 158.2
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:3336",
+      "gold": "balance_not_updated_after_cheque_or_cash_deposit",
+      "menu": [
+        "transfer_not_received_by_recipient",
+        "balance_not_updated_after_bank_transfer",
+        "edit_personal_details",
+        "pending_top_up",
+        "cancel_transfer",
+        "compromised_card",
+        "reverted_card_payment?",
+        "balance_not_updated_after_cheque_or_cash_deposit",
+        "Refund_not_showing_up",
+        "top_up_reverted"
+      ],
+      "pass1": {
+        "choice": "balance_not_updated_after_cheque_or_cash_deposit",
+        "error": null,
+        "ms": 182.3
+      },
+      "pass2": {
+        "choice": "balance_not_updated_after_cheque_or_cash_deposit",
+        "error": null,
+        "ms": 142.9
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:1339",
+      "gold": "card_not_working",
+      "menu": [
+        "card_linking",
+        "compromised_card",
+        "order_physical_card",
+        "declined_cash_withdrawal",
+        "getting_spare_card",
+        "card_payment_fee_charged",
+        "cash_withdrawal_not_recognised",
+        "card_arrival",
+        "unable_to_verify_identity",
+        "card_not_working"
+      ],
+      "pass1": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 126.1
+      },
+      "pass2": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 145.5
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:2772",
+      "gold": "transfer_not_received_by_recipient",
+      "menu": [
+        "transaction_charged_twice",
+        "wrong_amount_of_cash_received",
+        "declined_cash_withdrawal",
+        "receiving_money",
+        "transfer_not_received_by_recipient",
+        "card_payment_not_recognised",
+        "topping_up_by_card",
+        "reverted_card_payment?",
+        "balance_not_updated_after_cheque_or_cash_deposit",
+        "card_arrival"
+      ],
+      "pass1": {
+        "choice": "transfer_not_received_by_recipient",
+        "error": null,
+        "ms": 156.8
+      },
+      "pass2": {
+        "choice": "transfer_not_received_by_recipient",
+        "error": null,
+        "ms": 128.1
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:3071",
+      "gold": "getting_virtual_card",
+      "menu": [
+        "virtual_card_not_working",
+        "declined_card_payment",
+        "card_delivery_estimate",
+        "card_not_working",
+        "get_disposable_virtual_card",
+        "order_physical_card",
+        "transfer_not_received_by_recipient",
+        "getting_virtual_card",
+        "disposable_card_limits",
+        "card_arrival"
+      ],
+      "pass1": {
+        "choice": "virtual_card_not_working",
+        "error": null,
+        "ms": 147.5
+      },
+      "pass2": {
+        "choice": "virtual_card_not_working",
+        "error": null,
+        "ms": 121.1
+      },
+      "flip": false,
+      "correct1": false,
+      "correct2": false
+    },
+    {
+      "key": "train:6400",
+      "gold": "transaction_charged_twice",
+      "menu": [
+        "card_payment_fee_charged",
+        "extra_charge_on_statement",
+        "balance_not_updated_after_bank_transfer",
+        "card_not_working",
+        "top_up_by_card_charge",
+        "compromised_card",
+        "cash_withdrawal_charge",
+        "transaction_charged_twice",
+        "cancel_transfer",
+        "transfer_fee_charged"
+      ],
+      "pass1": {
+        "choice": "transaction_charged_twice",
+        "error": null,
+        "ms": 163.1
+      },
+      "pass2": {
+        "choice": "transaction_charged_twice",
+        "error": null,
+        "ms": 194.3
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:2325",
+      "gold": "top_up_limits",
+      "menu": [
+        "apple_pay_or_google_pay",
+        "disposable_card_limits",
+        "automatic_top_up",
+        "top_up_by_cash_or_cheque",
+        "top_up_by_card_charge",
+        "pending_top_up",
+        "top_up_limits",
+        "topping_up_by_card",
+        "top_up_failed",
+        "top_up_reverted"
+      ],
+      "pass1": {
+        "choice": "top_up_limits",
+        "error": null,
+        "ms": 158.2
+      },
+      "pass2": {
+        "choice": "top_up_limits",
+        "error": null,
+        "ms": 131.1
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:9695",
+      "gold": "apple_pay_or_google_pay",
+      "menu": [
+        "top_up_failed",
+        "top_up_by_cash_or_cheque",
+        "verify_top_up",
+        "top_up_by_card_charge",
+        "card_payment_fee_charged",
+        "pending_top_up",
+        "apple_pay_or_google_pay",
+        "top_up_limits",
+        "topping_up_by_card",
+        "automatic_top_up"
+      ],
+      "pass1": {
+        "choice": "apple_pay_or_google_pay",
+        "error": null,
+        "ms": 165.7
+      },
+      "pass2": {
+        "choice": "apple_pay_or_google_pay",
+        "error": null,
+        "ms": 146.6
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:1660",
+      "gold": "age_limit",
+      "menu": [
+        "topping_up_by_card",
+        "verify_top_up",
+        "top_up_by_cash_or_cheque",
+        "automatic_top_up",
+        "age_limit",
+        "top_up_by_card_charge",
+        "getting_virtual_card",
+        "pin_blocked",
+        "top_up_limits",
+        "top_up_failed"
+      ],
+      "pass1": {
+        "choice": "age_limit",
+        "error": null,
+        "ms": 124.3
+      },
+      "pass2": {
+        "choice": "age_limit",
+        "error": null,
+        "ms": 124.9
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:4861",
+      "gold": "passcode_forgotten",
+      "menu": [
+        "compromised_card",
+        "passcode_forgotten",
+        "card_not_working",
+        "lost_or_stolen_phone",
+        "lost_or_stolen_card",
+        "verify_top_up",
+        "supported_cards_and_currencies",
+        "get_physical_card",
+        "card_swallowed",
+        "card_acceptance"
+      ],
+      "pass1": {
+        "choice": "passcode_forgotten",
+        "error": null,
+        "ms": 133.4
+      },
+      "pass2": {
+        "choice": "passcode_forgotten",
+        "error": null,
+        "ms": 139.8
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:9328",
+      "gold": "activate_my_card",
+      "menu": [
+        "card_arrival",
+        "card_delivery_estimate",
+        "order_physical_card",
+        "activate_my_card",
+        "card_not_working",
+        "card_swallowed",
+        "edit_personal_details",
+        "lost_or_stolen_card",
+        "transfer_not_received_by_recipient",
+        "card_linking"
+      ],
+      "pass1": {
+        "choice": "activate_my_card",
+        "error": null,
+        "ms": 126.1
+      },
+      "pass2": {
+        "choice": "activate_my_card",
+        "error": null,
+        "ms": 142.3
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:7948",
+      "gold": "top_up_by_cash_or_cheque",
+      "menu": [
+        "transfer_into_account",
+        "balance_not_updated_after_bank_transfer",
+        "apple_pay_or_google_pay",
+        "top_up_by_card_charge",
+        "balance_not_updated_after_cheque_or_cash_deposit",
+        "top_up_by_cash_or_cheque",
+        "terminate_account",
+        "age_limit",
+        "top_up_failed",
+        "topping_up_by_card"
+      ],
+      "pass1": {
+        "choice": "top_up_by_cash_or_cheque",
+        "error": null,
+        "ms": 196.8
+      },
+      "pass2": {
+        "choice": "top_up_by_cash_or_cheque",
+        "error": null,
+        "ms": 166.2
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:1311",
+      "gold": "card_not_working",
+      "menu": [
+        "card_swallowed",
+        "card_linking",
+        "declined_card_payment",
+        "topping_up_by_card",
+        "card_about_to_expire",
+        "contactless_not_working",
+        "card_not_working",
+        "country_support",
+        "virtual_card_not_working",
+        "order_physical_card"
+      ],
+      "pass1": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 143.7
+      },
+      "pass2": {
+        "choice": "card_not_working",
+        "error": null,
+        "ms": 129.3
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:6632",
+      "gold": "transfer_timing",
+      "menu": [
+        "transfer_fee_charged",
+        "transfer_into_account",
+        "beneficiary_not_allowed",
+        "pending_transfer",
+        "transfer_not_received_by_recipient",
+        "transfer_timing",
+        "top_up_by_bank_transfer_charge",
+        "failed_transfer",
+        "cancel_transfer",
+        "balance_not_updated_after_bank_transfer"
+      ],
+      "pass1": {
+        "choice": "transfer_timing",
+        "error": null,
+        "ms": 156.9
+      },
+      "pass2": {
+        "choice": "transfer_timing",
+        "error": null,
+        "ms": 124.2
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:682",
+      "gold": "extra_charge_on_statement",
+      "menu": [
+        "card_payment_fee_charged",
+        "extra_charge_on_statement",
+        "transfer_fee_charged",
+        "Refund_not_showing_up",
+        "card_payment_not_recognised",
+        "top_up_by_card_charge",
+        "cash_withdrawal_charge",
+        "cash_withdrawal_not_recognised",
+        "declined_card_payment",
+        "transaction_charged_twice"
+      ],
+      "pass1": {
+        "choice": "extra_charge_on_statement",
+        "error": null,
+        "ms": 171.8
+      },
+      "pass2": {
+        "choice": "extra_charge_on_statement",
+        "error": null,
+        "ms": 173.9
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:5258",
+      "gold": "lost_or_stolen_phone",
+      "menu": [
+        "declined_card_payment",
+        "card_linking",
+        "card_arrival",
+        "lost_or_stolen_card",
+        "card_not_working",
+        "virtual_card_not_working",
+        "pending_transfer",
+        "pending_top_up",
+        "card_delivery_estimate",
+        "lost_or_stolen_phone"
+      ],
+      "pass1": {
+        "choice": "lost_or_stolen_phone",
+        "error": null,
+        "ms": 127.4
+      },
+      "pass2": {
+        "choice": "lost_or_stolen_phone",
+        "error": null,
+        "ms": 150.4
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    },
+    {
+      "key": "train:705",
+      "gold": "extra_charge_on_statement",
+      "menu": [
+        "cash_withdrawal_charge",
+        "age_limit",
+        "card_payment_fee_charged",
+        "beneficiary_not_allowed",
+        "transfer_fee_charged",
+        "balance_not_updated_after_cheque_or_cash_deposit",
+        "terminate_account",
+        "balance_not_updated_after_bank_transfer",
+        "extra_charge_on_statement",
+        "transfer_into_account"
+      ],
+      "pass1": {
+        "choice": "extra_charge_on_statement",
+        "error": null,
+        "ms": 188.9
+      },
+      "pass2": {
+        "choice": "extra_charge_on_statement",
+        "error": null,
+        "ms": 151.1
+      },
+      "flip": false,
+      "correct1": true,
+      "correct2": true
+    }
+  ],
+  "status": "passed"
+}
