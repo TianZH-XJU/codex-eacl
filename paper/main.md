@@ -347,3 +347,17 @@ replicating the v3 LR==majority finding on new pools; GA beats this failed
 router SIG on code, which credits the fixed rep, not evolution. Math abstention
 vs never-abstain: raw accuracy drops (Vela −0.083 SIG) — abstention rations
 answers, it cannot manufacture accuracy. `traditional_controls.json`.
+
+**v4.1 protocol (train search, macro-F1 selection, dev/confirm report).**
+Fitness scalar switched to the task primary (macro-F1 for code/findver) with
+generations derived from the unique-eval budget and a run manifest per
+experiment; search pools, report pools and cache hashes are pinned in
+`configs/v4/protocol_v4_1.yaml`. Train-selected GA vs matched Random on the
+same train caches: all 12 paired CIs include zero
+(`results/v4_1/evolution/ga_vs_random_significance.json`). The train-selected
+code/Laya policy scores 0.45 on dev (paired gap vs fixed switch -0.20, 2/3
+seeds SIG negative) and 0.55 on confirm — the v4 in-sample 0.65 does not
+survive held-out reporting under either accuracy or macro-F1 selection.
+NSGA-II deploy-vs-random on train-selected fronts: 12/12 ns. No evolutionary
+method beats matched Random or the best fixed rep on any task, model, split,
+or metric tried.

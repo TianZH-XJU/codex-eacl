@@ -75,3 +75,11 @@ no source files were renamed (history stays stable).
 - Known wording fixes applied to paper/STATUS: transfer max off-diagonal is 0.0
   (not -0.006); ablation-vs-switch and traditional ga-vs-threshold are 11/12 ns
   (not all-ns); there is no results/v4/menu path (always results/v2/menu).
+
+## 7. Follow-up fixes applied (this round)
+
+- Budget pre-check + memoization in all runners; dead budget params wired ((mu,lambda) in NSGA-II).
+- Paired-join and pool-disjoint guards in eval/selection scripts with regression tests.
+- Fitness task-primary metric plumbed (accuracy default frozen legacy; v4.1 uses macro-F1).
+- Weight hash pinned and verified at Vela load; laya package version checked.
+- Full suite: 132 passed.
