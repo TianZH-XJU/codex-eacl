@@ -185,6 +185,20 @@ high-headroom/low-predictability/flat row (0.233 gross headroom, zero
 transferable utility, plateau-0 search); findver sits between, with OOF AUROC
 ~0.45 (no ranking signal at all). No task matches any "sustained gain" row.
 
+Explicit 8-row mapping (plan §2.3 rows → evidence):
+| headroom | predictability | search | verdict here |
+|---|---|---|---|
+| low | — | flat | math: headroom 0.0, nothing to route |
+| high | low | flat | code/Laya: 0.233 gross headroom, no transferable utility, plateau-0 |
+| high | high | no gain | not observed (no cell has transferable utility) |
+| high | high | train↑ dev↓ | not observed (train gains never materialize) |
+| high | high | all-split gain | not observed (no sustained gain anywhere) |
+| low | high | flat | findver/Laya OOF ~0.45: ranking itself absent, degradation moot |
+| high | low | low-diversity proposals | consistent secondary: b48 realized 22/17/23 of 48 |
+| high | high | high duplicates | consistent secondary: duplicate_hits 5–26 per run |
+Rows 1–2 carry the conclusion; rows 3–5 are empty by measurement; rows 6–8 are
+consistent-but-secondary (they cannot rescue H1's binding constraint).
+
 **Evidence grades (all claims point to committed artifacts).**
 
 | Method | Pool / metric | Result | Grade |
