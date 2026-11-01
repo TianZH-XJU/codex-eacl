@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-11-01T00:28:56.741534+00:00",
+  "task": "findver",
+  "model": "vela",
+  "split": "search_dev",
+  "seed": 17,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "project_git_sha": "26886562e8dad27dd030b6bfdcf96ac9d5db4498",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1794.7,
+  "by_rep": {
+    "noul": {
+      "n": 59,
+      "accuracy": 0.4576,
+      "mean_ms": 2393.8
+    },
+    "switch": {
+      "n": 59,
+      "accuracy": 0.4576,
+      "mean_ms": 2263.0
+    }
+  },
+  "status": "passed"
+}
