@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-11-01T09:21:56.126735+00:00",
+  "method": "grouped rows as stored (intent rows carry group_id); paired bootstrap, seed 17, 5000 reps",
+  "project_git_sha": "9b36ea26111c17042ea224c53c24714b02c41d1e",
+  "a1_paired": {
+    "paired_clinc150": {
+      "n": 100,
+      "laya_acc": 0.61,
+      "vela_acc": 0.57,
+      "vela_minus_laya": {
+        "est": -0.04,
+        "ci95": [
+          -0.16,
+          0.08
+        ]
+      }
+    },
+    "paired_banking77": {
+      "n": 100,
+      "laya_acc": 0.44,
+      "vela_acc": 0.54,
+      "vela_minus_laya": {
+        "est": 0.1,
+        "ci95": [
+          -0.02,
+          0.21
+        ]
+      }
+    }
+  },
+  "surrogate": {
+    "surrogate_laya_banking77": {
+      "agreement": 0.6167,
+      "n": 60,
+      "bar": 0.9,
+      "verdict": "rejected"
+    },
+    "surrogate_laya_clinc150": {
+      "agreement": 0.85,
+      "n": 60,
+      "bar": 0.9,
+      "verdict": "rejected"
+    },
+    "surrogate_vela_banking77": {
+      "agreement": 0.75,
+      "n": 60,
+      "bar": 0.9,
+      "verdict": "rejected"
+    },
+    "surrogate_vela_clinc150": {
+      "agreement": 0.7833,
+      "n": 60,
+      "bar": 0.9,
+      "verdict": "rejected"
+    }
+  }
+}
