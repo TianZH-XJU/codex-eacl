@@ -1,0 +1,18 @@
+{
+  "n_positions": 60,
+  "reps": [
+    "choice"
+  ],
+  "per_rep": {
+    "choice": {
+      "accuracy": {
+        "est": 0.1,
+        "ci95": [
+          0.0328,
+          0.1786
+        ]
+      },
+      "mean_ms": 1576.7
+    }
+  }
+}
