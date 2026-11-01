@@ -308,9 +308,16 @@ Vela risk-coverage curve is honest but useless: t=0.3 → 0.286 selective accura
 at 11.7% coverage; t=0.5 → 1.0 on a single row; base 0.10. Abstention cannot
 manufacture signal the model lacks — it only rations the few correct answers.
 
-NEAT/multistep and NSGA-II remain explicitly BLOCKED, not silently dropped:
+NEAT/multistep remains explicitly BLOCKED, not silently dropped:
 single-step cascade already exhausts the available complementarity (code oracle
-gain comes from switch-only fixes, no sequential decision needed); with zero
-quality gradient, NSGA-II's front collapses to a cost line. Launch conditions
-(a task with residual sequential structure, a quality gradient) are written in
-`configs/evolution.yaml`.
+gain comes from switch-only fixes, no sequential decision needed). Launch
+conditions (a task with residual sequential structure, a quality gradient) are
+written in `configs/evolution.yaml`.
+
+**NSGA-II deploy significance (paired group-bootstrap, 5000 reps, per seed).**
+Front deploy rule pre-registered (max accuracy, tie-break fewer calls / higher
+coverage); random-best reconstructed with the identical sampling RNG.
+NSGA-II-deploy minus random-best, 12/12 CIs include zero (two degenerate [0,0]):
+`nsga2_deploy_significance.json`. This closes the last significance gap — every
+EA-vs-control comparison in the project now carries a paired CI, and none
+excludes zero.
