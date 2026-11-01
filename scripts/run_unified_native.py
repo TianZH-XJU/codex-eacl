@@ -86,6 +86,18 @@ def norm(s):
     return str(s or "").strip().lower().replace("_", " ")
 
 
+def unwrap(ans):
+    """Single-question calls return answers keyed by question name ({"q": {...}}).
+    Unwrap to the per-question dict; tolerate already-unwrapped or bad payloads."""
+    if isinstance(ans, dict):
+        inner = ans.get("q")
+        if isinstance(inner, dict):
+            return inner
+        if isinstance(ans.get("type"), str):
+            return ans
+    return {}
+
+
 def correctness(task, rep, row, ans):
     if not isinstance(ans, dict):
         return False
@@ -153,10 +165,11 @@ def main():
                     err = f"{type(e).__name__}: {e}"
                     rec = None
                 ms = (time.perf_counter() - t0) * 1000.0
-                ok = False if err else correctness(args.task, rep, row, ans)
+                ans_q = unwrap(ans)
+                ok = False if err else correctness(args.task, rep, row, ans_q)
                 out_rows.append({"task": args.task, "split": args.split, "seed": args.seed,
                                  "position": pos, "row_id": row["key"], "rep": rep,
-                                 "gold": row["gold"], "choice": (ans or {}).get("choice"),
+                                 "gold": row["gold"], "choice": ans_q.get("choice"),
                                  "correct": bool(ok), "latency_ms": round(ms, 1),
                                  "usage": usage, "error": err,
                                  "record_rss_mb": round(rec.rss_mb, 1) if rec else None,

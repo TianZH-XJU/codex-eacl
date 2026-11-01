@@ -19,12 +19,18 @@ def test_task_maps_cover_everything():
 
 
 def test_correctness_rules():
-    assert U.correctness("banking77_intent", "choice",
-                         {"label": "pay_bill", "gold": None, "meta": {}},
-                         {"choice": "pay bill"})
-    assert not U.correctness("banking77_intent", "choice",
-                             {"label": "pay_bill", "gold": None, "meta": {}},
-                             {"choice": "cancel"})
+    nest = lambda d: {"q": d}  # noqa: E731 - single-question API envelope
+    assert U.unwrap(nest({"type": "choice", "choice": "a"})) == {"type": "choice", "choice": "a"}
+    assert U.unwrap({"type": "noul", "noul": 0.1}) == {"type": "noul", "noul": 0.1}
+    assert U.unwrap(None) == {} and U.unwrap({}) == {}
+    # runner sequence: correctness(task, rep, row, unwrap(ans))
+    scor = lambda t, r, row, a: U.correctness(t, r, row, U.unwrap(a))  # noqa: E731
+    assert scor("banking77_intent", "choice",
+                {"label": "pay_bill", "gold": None, "meta": {}},
+                nest({"choice": "pay bill"}))
+    assert not scor("banking77_intent", "choice",
+                     {"label": "pay_bill", "gold": None, "meta": {}},
+                     nest({"choice": "cancel"}))
     assert U.correctness("codexglue_defect", "noul", {"gold": True}, {"noul": 0.9})
     assert not U.correctness("codexglue_defect", "noul", {"gold": True}, {"noul": 0.1})
     assert U.correctness("codexglue_defect", "switch", {"gold": False}, {"choice": "secure"})
