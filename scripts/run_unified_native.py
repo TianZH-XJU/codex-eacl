@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import ctypes
 import json
+import math
 import subprocess
 import sys
 import time
@@ -103,10 +104,12 @@ def correctness(task, rep, row, ans):
         return False
     if rep == "noul":
         try:
-            pred = bool(float(ans.get("noul", 0.0)) >= 0.5)
+            v = float(ans.get("noul", 0.0))
         except (TypeError, ValueError):
             return False
-        return pred == bool(row["gold"])
+        if not math.isfinite(v) or not 0.0 <= v <= 1.0:
+            return False
+        return bool(v >= 0.5) == bool(row["gold"])
     # choice / switch
     choice = norm(ans.get("choice"))
     if task.endswith("intent"):

@@ -25,8 +25,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "scripts"))
 
 from evolution import BudgetTracker, CascadeGenome, evaluate, es_run, ga_run, random_run  # noqa: E402
+from eval_trainselected_on_dev import assert_disjoint_pool  # noqa: E402
 
 
 def git_sha(path):
@@ -77,6 +79,11 @@ def main():
     rows, train_meta = load_rows(train_path)
     dev_rows, dev_meta = (load_rows(args.dev_cache) if args.dev_cache else (None, None))
     conf_rows, conf_meta = (load_rows(args.confirm_cache) if args.confirm_cache else (None, None))
+    # Fail-closed pool hygiene: report pools must share no row keys with train.
+    if dev_rows is not None:
+        assert_disjoint_pool(rows, dev_rows, f"dev-cache {args.dev_cache}")
+    if conf_rows is not None:
+        assert_disjoint_pool(rows, conf_rows, f"confirm-cache {args.confirm_cache}")
 
     # B ~= P + G*(P-E): cap generations to the budget, record both values.
     denom = max(args.pop - args.elit, 1)

@@ -23,10 +23,9 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from evolution import (AbstainGenome, BudgetTracker, CascadeGenome,  # noqa: E402
                        evaluate_math, nsga2_run)
-from test_evo_significance import paired_ci, rowwise  # noqa: E402
+from test_evo_significance import paired_ci, rowwise, rowwise_math  # noqa: E402
 
 EV = ROOT / "results" / "v4" / "evolution"
-rng = np.random.RandomState(17)
 
 
 def load(cache):
@@ -131,7 +130,14 @@ def main():
                 th[str(tt)] = evaluate_math(AbstainGenome(t=tt, use_margin=0, m=0.0), dev)
             per_seed[str(s)] = {"deploy": {"t": deploy.t, "use_margin": deploy.use_margin, "m": deploy.m},
                                 "deploy_report": fd, "never_abstain_report": f0, "thresholds_report": th,
-                                "hypervolume_train": n["hypervolume"]}
+                                "hypervolume_train": n["hypervolume"],
+                                "deploy_minus_never_report": paired_ci(
+                                    rowwise_math(AbstainGenome(t=0.0, use_margin=0, m=0.0), dev),
+                                    rowwise_math(deploy, dev)),
+                                "deploy_minus_threshold_report": {
+                                    str(tt): paired_ci(
+                                        rowwise_math(AbstainGenome(t=tt, use_margin=0, m=0.0), dev),
+                                        rowwise_math(deploy, dev)) for tt in (0.3, 0.5, 0.7)}}
         report["tasks"][f"math_{m}"] = {"per_seed": per_seed}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

@@ -17,8 +17,6 @@ from pathlib import Path
 
 import numpy as np
 
-import sys
-
 ROOT = Path(__file__).resolve().parents[1]
 
 

@@ -104,7 +104,7 @@ rows (a state-text mismatch bug was caught, fixed, and the affected Vela run rep
 Vela choice 0.058 (Δ −0.067, 95% CI [−0.133, 0.0]). Code valid pilot (n=60): Laya
 noul 0.517 vs Vela 0.483; switch-vs-switch 0.533 vs 0.500. FinDVer dev carve (n=60):
 Laya 0.567 vs Vela 0.433 (noul); 0.617 vs 0.533 (switch). Vela is consistently faster
-per call (e.g. 1.7 vs 3.0 ms mean on math) but never more accurate; every paired CI
+per call (e.g. 2.6 s vs 1.6 s mean on math) but never significantly more accurate; every paired CI
 covers zero or favors Laya. Vela runs 256–8192 input tokens on CPU within 1.7–2.0 GB RSS;
 latency grows super-linearly (2.4 s at 256 tokens → 41 s at 8192), so long-doc sweeps
 would be honest but impractical — a resource finding in itself.
@@ -171,7 +171,7 @@ that inflated Laya CLINC150 to 0.86 was caught and fixed by the full-set rerun.
 **E2 menu headroom (dev n=60/task, TF-IDF top-10 menus, identical rows full-vs-menu).**
 Menu recall@10 is 0.9367 (CLINC150) / 0.9767 (BANKING77) vs random 0.11.
 Restricted-menu Choice beats full-menu Choice in 3/4 paired CIs:
-BANKING77 Laya +0.333 [0.2,0.4667], Vela +0.133 [0.0,0.2667];
+BANKING77 Laya +0.333 [0.2,0.4667], Vela +0.133 [0.0,0.2667] (ns);
 CLINC150 Laya +0.25 [0.1333,0.3667], Vela +0.217 [0.1,0.3333].
 Menus also cut mean latency (e.g. Laya CLINC150 2256→585 ms).
 This is a *fixed-retrieval* effect, not an evolutionary gain.
@@ -331,7 +331,8 @@ manufacture signal the model lacks — it only rations the few correct answers.
 NEAT/multistep remains explicitly BLOCKED, not silently dropped:
 single-step cascade already exhausts the available complementarity (code oracle
 gain comes from switch-only fixes, no sequential decision needed). Train-pool screen:
-best cell code/Vela net +6/60 (binomial p~0.09, ns), all other cells net -1..+1.
+best cell code/Vela net +6/60 (binomial p~0.09, ns), all other cells net -1..+1
+(`results/v4_1/evolution/complementarity_screen.json`).
 A 2026-11-01 literature survey (FrugalGPT, Hybrid LLM, RouteLLM, AutoMix, BEST-Route,
 EvoPrompt, PromptBreeder) finds routers beat best-fixed only with 6-13% cross-model
 disagreement and in-domain n>=200 (up to 100k+ example-evals for GP); no precedent
@@ -350,7 +351,7 @@ excludes zero.
 
 **P0-2 isolation fix (train search → dev report → confirm report).**
 All prior GA-vs-Random numbers were in-sample (search and report on search_dev;
-e.g. code/Laya in-sample best 0.65 in `results/v2/evolution/evo_code_laya.json`).
+e.g. code/Laya in-sample best 0.65 in `results/v4/evolution/evo_code_laya.json`).
 Re-ran GA/Random/ES/NSGA-II on search_train caches (6 new real-call caches, macro-F1
 selection), evaluated frozen winners on search_dev AND confirm with paired CIs.
 The v4.1 train-selected code/Laya policy scores 0.55 on train, 0.45 on dev (gap
@@ -359,8 +360,8 @@ in-sample 0.65 does not survive held-out reporting, i.e. it was pure selection
 bias. Note the 0.65 vs 0.45 figures come from different search pools (v4
 dev-search, accuracy scalar, vs v4.1 train-search, macro-F1 scalar, 0.55 train);
 they are cited together only to show that no selection protocol beats the fixed
-baseline out-of-pool. findver/Vela confirm is 30/44 for GA *and* for fixed
-switch (paired diff exactly 0); the pool's gold rate itself shifted 28/59 dev
+baseline out-of-pool. findver/Vela confirm is 31/44 for GA (0.7045) vs 30/44 for fixed
+switch (paired gap +0.0227, CI includes zero, ns); the pool's gold rate itself shifted 28/59 dev
 to 28/44 confirm (47.5% to 63.6%), so the 0.68 is prevalence plus a fixed-policy
 tie, not an EA win and not a pure prevalence artifact either. Lesson now
 enforced in protocol: never report search-pool best without held-out
@@ -373,7 +374,9 @@ code (0.45/0.633) — model-visible features do not predict switch-fix events,
 replicating the v3 LR==majority finding on new pools; GA beats this failed
 router SIG on code, which credits the fixed rep, not evolution. Math abstention
 vs never-abstain: raw accuracy drops (Vela −0.083 SIG) — abstention rations
-answers, it cannot manufacture accuracy. `traditional_controls.json`.
+answers, it cannot manufacture accuracy. v4.1 dev/confirm paired CIs for
+deployed-abstain vs never-abstain accuracy are all est ≤ 0 (several SIG negative),
+confirming the rationing direction on held-out pools. `traditional_controls.json`.
 
 **v4.1 protocol (train search, macro-F1 selection, dev/confirm report).**
 Fitness scalar switched to the task primary (macro-F1 for code/findver) with
@@ -397,12 +400,12 @@ hyperparameters, so per-seed genome divergence between old and new files cannot
 be attributed to the partial-generation merge fix alone; no fix-only A/B on a
 shared pool was run.
 Budget ladder 24->48 (code/Vela, the only net-positive complementarity cell):
-GA scalar 0.384 vs Random 0.384, gap exactly 0.0; per-seed scalar gaps
+GA scalar 0.384 vs Random 0.384, gap 0.0 to three decimals; per-seed scalar gaps
 -0.0017/0.0/+0.0017 are cost-only (correctness diffs all 0, so the paired
 accuracy CIs are degenerately [0,0], ns; `ga_b48_significance.json` is an
 accuracy CI, cost-blind). GA realized only 22/17/23 uniques under the 48 cap
-(Random consumed 48/48/48); the b24 edge (+0.0052) vanished rather than grew.
-Per stop rule §10, no 96/192 expansion: the budget-insufficiency explanation
+(Random consumed 48/48/48); the b24 edge (+0.0056) vanished rather than grew.
+Per the protocol stop rule (budgets_unique [24, 48] in `configs/v4/protocol_v4_1.yaml`), no 96/192 expansion: the budget-insufficiency explanation
 is empirically excluded. `evo_train_code_vela_b48.json`.
 
 **E5 failure landscape (MAP-Elites-lite over the 18-cell task x model x

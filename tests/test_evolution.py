@@ -383,3 +383,35 @@ def test_budget_param_enforced_without_explicit_tracker():
     r = nsga2_run(ev, smp, cx, mu, budget=6, seed=5, population=4,
                   generations=5, tracker=None)
     assert r["stopped_early"] is True and r["n_unique_evals"] <= 6
+
+
+def test_clean_p_rejects_garbage():
+    from evolution.fitness import clean_p
+    assert clean_p(0.0) == 0.0 and clean_p(1.0) == 1.0 and clean_p(0.5) == 0.5
+    assert clean_p(None) is None
+    assert clean_p(float("nan")) is None
+    assert clean_p(float("inf")) is None
+    assert clean_p(1.5) is None and clean_p(-0.1) is None
+    assert clean_p("bad") is None
+    assert clean_p("0.7") == 0.7  # numeric strings still parse
+
+
+def test_evaluate_garbage_rows_fail_closed_and_empty_raises():
+    g = CascadeGenome(lo=0.0, hi=1.0, use_second=1).repaired()
+    rows = [
+        {"gold": True, "noul_p": 0.9, "switch_correct": True},
+        {"gold": True, "noul_p": float("nan"), "switch_correct": True},
+        {"gold": False, "noul_p": 1.5, "switch_correct": True},
+        {"gold": True, "noul_p": float("inf"), "switch_correct": False},
+        {"gold": False, "noul_p": "bad", "switch_correct": False},
+        {"gold": True, "noul_p": None, "switch_correct": False},
+    ]
+    fit = evaluate(g, rows)
+    assert fit["n"] == 6 and fit["n_missing"] == 5
+    assert fit["accuracy"] == round(1 / 6, 4)  # only the clean row can score
+    assert fit["calls_per_row"] == round(7 / 6, 4)  # clean row costs 2, garbage 1 each
+    assert decide(g, float("nan"), True, True) == (False, 1)
+    assert decide(g, 1.5, True, True) == (False, 1)
+    assert decide(g, -0.2, False, False) == (False, 1)
+    with pytest.raises(ValueError):
+        evaluate(g, [])

@@ -12,6 +12,7 @@ sizes. No model calls.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import os
 import random
@@ -101,7 +102,6 @@ def main():
             def ev(g, _rows=rows):
                 f = evaluate_math(g, _rows)
                 return ((f["sel_accuracy"], f["coverage"]), g.to_vector(), f)
-            import functools
             smp, cx = sample_abstain, cx_abstain
             mu = functools.partial(mu_abstain, sigma=args.sigma)
         t1 = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)

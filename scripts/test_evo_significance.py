@@ -161,6 +161,9 @@ def main():
                 deploy = cands[0][3]
                 rw = rowwise
             # reconstruct random-best with the identical sampling RNG (seed+5000)
+            # FRAGILE COUPLING: this duplicates run_nsga2.sample_cascade/
+            # sample_abstain. Any change there silently invalidates this
+            # reconstruction; keep both in sync or extract a shared sampler.
             from run_nsga2 import sample_abstain as _sa, sample_cascade as _sc  # noqa: E402
             r = random.Random(s + 5000)
             smp = _sa if is_math else _sc

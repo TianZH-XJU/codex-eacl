@@ -59,3 +59,16 @@ def test_findver_choice_normalization_variants():
     assert U.correctness("findver", "noul", {"gold": True}, {"noul": 0.5}) is True
     assert U.correctness("findver", "noul", {"gold": False}, {"noul": 0.4999}) is True
     assert U.correctness("findver", "noul", {"gold": True}, {"noul": "bad"}) is False
+
+
+def test_noul_rejects_nonfinite_and_out_of_range():
+    # NaN/Inf/OOR model outputs must fail closed (False), never silently label.
+    assert U.correctness("findver", "noul", {"gold": True}, {"noul": float("nan")}) is False
+    assert U.correctness("findver", "noul", {"gold": False}, {"noul": float("nan")}) is False
+    assert U.correctness("findver", "noul", {"gold": True}, {"noul": float("inf")}) is False
+    assert U.correctness("findver", "noul", {"gold": True}, {"noul": 1.5}) is False
+    assert U.correctness("findver", "noul", {"gold": False}, {"noul": -0.1}) is False
+    assert U.correctness("codexglue_defect", "noul", {"gold": True}, {"noul": float("nan")}) is False
+    # boundaries still work
+    assert U.correctness("findver", "noul", {"gold": True}, {"noul": 1.0}) is True
+    assert U.correctness("findver", "noul", {"gold": False}, {"noul": 0.0}) is True

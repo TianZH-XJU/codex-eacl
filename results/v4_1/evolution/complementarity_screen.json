@@ -1,0 +1,86 @@
+{
+  "created_utc": "2026-11-01T13:53:42.626429+00:00",
+  "pools": "search_train (in-sample screen; Gate 3a requires a held-out re-check)",
+  "gate_rule": "repair-regression >= +5pp AND disagreement >= 15% AND OOF AUC >= 0.65",
+  "cells": [
+    {
+      "n": 60,
+      "repair": 14,
+      "regression": 15,
+      "net": -1,
+      "net_pp": -1.67,
+      "disagreement": 0.4833,
+      "oracle_acc": 0.7833,
+      "binomial_p": 0.6445,
+      "task": "codexglue_defect",
+      "model": "laya",
+      "noul_acc": 0.55,
+      "switch_acc": 0.5333
+    },
+    {
+      "n": 60,
+      "repair": 10,
+      "regression": 4,
+      "net": 6,
+      "net_pp": 10.0,
+      "disagreement": 0.2333,
+      "oracle_acc": 0.5833,
+      "binomial_p": 0.0898,
+      "task": "codexglue_defect",
+      "model": "vela",
+      "noul_acc": 0.4167,
+      "switch_acc": 0.5167
+    },
+    {
+      "n": 60,
+      "repair": 5,
+      "regression": 6,
+      "net": -1,
+      "net_pp": -1.67,
+      "disagreement": 0.1833,
+      "oracle_acc": 0.6167,
+      "binomial_p": 0.7256,
+      "task": "findver",
+      "model": "laya",
+      "noul_acc": 0.5333,
+      "switch_acc": 0.5167
+    },
+    {
+      "n": 60,
+      "repair": 7,
+      "regression": 6,
+      "net": 1,
+      "net_pp": 1.67,
+      "disagreement": 0.2167,
+      "oracle_acc": 0.65,
+      "binomial_p": 0.5,
+      "task": "findver",
+      "model": "vela",
+      "noul_acc": 0.5333,
+      "switch_acc": 0.55
+    },
+    {
+      "task": "processbench",
+      "model": "laya",
+      "n": 60,
+      "single_rep_acc": 0.2,
+      "note": "single representation: no complementarity pair exists"
+    },
+    {
+      "task": "processbench",
+      "model": "vela",
+      "n": 60,
+      "single_rep_acc": 0.1,
+      "note": "single representation: no complementarity pair exists"
+    }
+  ],
+  "verdict": "KEEP_BLOCKED",
+  "reason": "best cell net +10.00pp clears the point bar but binomial p=0.0898 (ns) and no held-out re-check; all other cells net -1..+1",
+  "git_sha": "37b6523c0829610c339816d5e2164b869cac681f",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/complementarity_screen.json"
+    ]
+  }
+}

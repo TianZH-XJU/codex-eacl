@@ -1,6 +1,6 @@
 """Phase 4 fitness: cache-exact evaluation of cascade genomes.
 
-The cache holds REAL single-call outputs per row (noul p, switch correctness).
+The cache holds REAL single-call outputs per row (noul_p, switch correctness).
 Genome evaluation is a deterministic function of cached outputs plus exact
 call counting — no surrogate error is possible (nothing is approximated).
 Model-call cost of cache construction is recorded separately by the cache
@@ -8,15 +8,34 @@ builder, not hidden here.
 """
 from __future__ import annotations
 
+import math
+
 from .genome import CascadeGenome
 
 
+def clean_p(p):
+    """Usable noul probability or None. Non-numeric, non-finite (NaN/Inf) and
+    out-of-[0,1] values are NOT predictions — they are corrupt outputs and must
+    fail closed downstream, never become silent correct/incorrect labels."""
+    try:
+        v = float(p)
+    except (TypeError, ValueError):
+        return None
+    if not math.isfinite(v) or not 0.0 <= v <= 1.0:
+        return None
+    return v
+
+
 def decide(genome: CascadeGenome, noul_p: float, switch_correct: bool, gold: bool) -> tuple:
-    """Returns (correct: bool, calls: int)."""
+    """Returns (correct: bool, calls: int). Garbage noul_p fails closed as
+    (False, 1): an unusable model output cannot be rescued by any policy."""
     g = genome.repaired()
-    if g.use_second and g.lo <= noul_p <= g.hi:
+    v = clean_p(noul_p)
+    if v is None:
+        return False, 1
+    if g.use_second and g.lo <= v <= g.hi:
         return bool(switch_correct), 2
-    return bool((noul_p >= 0.5) == bool(gold)), 1
+    return bool((v >= 0.5) == bool(gold)), 1
 
 
 def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05,
@@ -26,12 +45,14 @@ def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05,
     the denominator. Reports accuracy, macro-F1 and balanced accuracy over ALL
     rows. scalar = primary - lam*(calls_per_row - 1); primary must be the task
     primary metric (v4.1 protocol). "accuracy" is the v4-frozen legacy."""
+    if not rows:
+        raise ValueError("evaluate: empty rows (fail-closed, no silent scalar)")
     correct, calls = 0, 0
     n = len(rows)
     tp = tn = fp = fn = 0
     n_missing = 0
     for r in rows:
-        if r.get("noul_p") is None:
+        if clean_p(r.get("noul_p")) is None:
             n_missing += 1
             calls += 1
             if bool(r["gold"]):
@@ -51,7 +72,6 @@ def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05,
             fn += 1
         else:
             fp += 1
-    n = max(n, 1)
     prec_pos = tp / max(tp + fp, 1)
     rec_pos = tp / max(tp + fn, 1)
     f1_pos = 2 * prec_pos * rec_pos / max(prec_pos + rec_pos, 1e-12)

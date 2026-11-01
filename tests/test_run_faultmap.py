@@ -113,3 +113,66 @@ def test_end_to_end_on_synthetic_caches(tmp_path):
 def test_is_binary_routing():
     assert FM.is_binary({"noul_p": 0.5}) is True
     assert FM.is_binary({"top1": 0.9}) is False
+
+
+def _write_cache(path, task, model, split, rows):
+    path.write_text(json.dumps({"task": task, "model": model,
+                                "split": split, "rows": rows}),
+                    encoding="utf-8")
+
+
+def test_select_files_excludes_train_confirm_and_test_from_dev(tmp_path):
+    _write_cache(tmp_path / "cache_train_a.json", "codexglue_defect", "laya",
+                 "search_train", _bin_rows())
+    _write_cache(tmp_path / "cache_a.json", "codexglue_defect", "laya",
+                 "search_dev", _bin_rows())
+    _write_cache(tmp_path / "cache_confirm_a.json", "codexglue_defect", "laya",
+                 "confirm", _bin_rows())
+    _write_cache(tmp_path / "cache_test_a.json", "codexglue_defect", "laya",
+                 "test", _bin_rows())
+    tr, dev, conf = FM.select_files(str(tmp_path / "cache_train_*.json"),
+                                    str(tmp_path / "cache_*.json"),
+                                    str(tmp_path / "cache_confirm_*.json"))
+    assert [Path(f).name for f in tr] == ["cache_train_a.json"]
+    assert [Path(f).name for f in dev] == ["cache_a.json"]
+    assert [Path(f).name for f in conf] == ["cache_confirm_a.json"]
+
+
+def test_select_files_excludes_test_from_confirm(tmp_path):
+    _write_cache(tmp_path / "cache_confirm_a.json", "codexglue_defect", "laya",
+                 "confirm", _bin_rows())
+    _write_cache(tmp_path / "cache_test_b.json", "codexglue_defect", "laya",
+                 "test", _bin_rows())
+    tr, dev, conf = FM.select_files(str(tmp_path / "NOMATCH_train*.json"),
+                                    str(tmp_path / "NOMATCH*.json"),
+                                    str(tmp_path / "cache_*.json"))
+    assert all("cache_test_" not in f.replace("\\", "/") for f in conf)
+    assert any(f.endswith("cache_confirm_a.json") for f in conf)
+
+
+def test_bucketize_missing_conf_band_counts_in_denominator():
+    # Same-task missing rows share schema (noul_p key present, value None);
+    # severity routes on rows[0], consistent within a (task, model) cell.
+    rows = [{"gold": True, "noul_p": None, "switch_correct": False},
+            {"gold": True, "noul_p": None, "switch_correct": False},
+            {"gold": True, "noul_p": 0.9, "switch_correct": True}]
+    rooms = {("code", "laya", "missing"): rows}
+    s, n, det = FM.severity(rooms[("code", "laya", "missing")])
+    assert n == 3
+    # both None rows are both-wrong (fail-closed); clean row is both-ok
+    assert det["both_wrong"] == 2 and det["both_ok"] == 1
+    assert s == 2 / 3
+
+
+def test_bucketize_routes_none_conf_to_missing_band(tmp_path):
+    rows = [{"gold": True, "noul_p": None, "switch_correct": False,
+             "group_id": "g1", "key": "k1"},
+            {"gold": False, "noul_p": 0.9, "switch_correct": True,
+             "group_id": "g1", "key": "k2"}]
+    f = tmp_path / "cache_train_m.json"
+    _write_cache(f, "codexglue_defect", "laya", "search_train", rows)
+    rooms = FM.bucketize([str(f)])
+    assert ("code", "laya", "missing") in rooms
+    assert len(rooms[("code", "laya", "missing")]) == 1
+    s, n, det = FM.severity(rooms[("code", "laya", "missing")])
+    assert (n, det["both_wrong"]) == (1, 1)

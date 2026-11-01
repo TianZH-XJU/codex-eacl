@@ -16,6 +16,11 @@ algorithms:
     role: multistep_policy_search
     legacy_reference: scripts/run_neat_cv.py (HISTORICAL single-step BANKING77 failure, not a runner for new tasks)
     status: blocked_pending_complementarity_gate
+    # Gate 3a reopen criteria (lit-backed 2026-11-01, local screen in
+    # results/v4_1/evolution/complementarity_screen.json): on a HELD-OUT pool,
+    # repair-minus-regression >= +5pp with 95% paired-CI excluding 0 AND
+    # disagreement >= 15% AND OOF AUC >= 0.65 at matched mean cost.
+    # Local train pools fail by an order of magnitude (best cell net +6/60, p~0.09).
   nsga2:
     runner: src/evolution/nsga2.py via scripts/run_nsga2.py
     role: quality_latency_multiobjective
@@ -29,5 +34,12 @@ algorithms:
     role: policy_structure_search
     legacy_note: E2 menu-24 space rejected as GP target (exhaustive covers it; see e2_joint_analysis.json)
     status: blocked_pending_tree_grammar
-budgets_eval_counts: [24, 48, 96, 192]
+    # Reopen floor (lit-backed 2026-11-01): >=200/200/200 fresh rows for
+    # search_train/selection_dev/confirm (EvoPrompt min 50/eval x~500 prompt-evals;
+    # PromptBreeder ~100k+ example-evals). The 30-row/12-config pilot (SE~9pp)
+    # cannot support any GP claim.
+budgets_eval_counts: [24, 48]
+# 96/192 removed 2026-11-01: the stop rule (§10 in plan, budgets_unique [24, 48]
+# in protocol_v4_1.yaml) requires sustained gain at 48 first; b48 probe on
+# code/Vela returned gap exactly 0.0, so expansion is not licensed.
 seeds_ladder: {pilot: 3, stability: 5, formal: 10}

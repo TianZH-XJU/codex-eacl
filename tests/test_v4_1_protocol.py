@@ -54,10 +54,14 @@ def test_significance_accepts_v4_1_train_cache_files(tmp_path):
     sys.path.insert(0, str(ROOT / "scripts"))
     import test_evo_significance as S
     out = tmp_path / "sig.json"
+    old = sys.argv
     sys.argv = ["x", "--evo",
                 str(ROOT / "results/v4_1/evolution/evo_train_code_laya.json"),
                 "--out", str(out)]
-    S.main()
+    try:
+        S.main()
+    finally:
+        sys.argv = old
     d = json.loads(out.read_text(encoding="utf-8"))
     assert "evo_train_code_laya" in d
     assert set(d["evo_train_code_laya"]) == {"17", "23", "41"}
@@ -75,6 +79,25 @@ def test_paired_join_rejects_mismatched_rows():
         S.check_paired(a, [{"key": "r2", "gold": True}, {"key": "r1", "gold": False}], label="t")
     with pytest.raises(SystemExit):
         S.check_paired(a, [{"key": "r1", "gold": False}, {"key": "r2", "gold": False}], label="t")
+
+
+def test_paired_join_rejects_mismatched_tuples():
+    # rowwise tuple form: (group_id, correct[, row_key, gold])
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import test_evo_significance as S
+    a = [("g1", 1, "r1", True), ("g1", 0, "r2", False)]
+    assert S.check_paired(a, [tuple(t) for t in a], label="t") is True
+    with pytest.raises(SystemExit):
+        S.check_paired(a, [("g1", 1, "r1", True)], label="t")
+    with pytest.raises(SystemExit):
+        S.check_paired(a, [("g1", 1, "r2", True), ("g1", 0, "r1", False)], label="t")
+    with pytest.raises(SystemExit):
+        S.check_paired(a, [("g1", 1, "r1", False), ("g1", 0, "r2", False)], label="t")
+    # paired_ci funnels through the same guard
+    d = S.paired_ci([("g1", 1, "r1", True)], [("g1", 0, "r1", True)], n=100)
+    assert d["est"] == -1.0
+    with pytest.raises(SystemExit):
+        S.paired_ci([("g1", 1, "r1", True)], [("g1", 0, "r2", True)], n=100)
 
 
 def test_findver_normalization_and_report_grouping():

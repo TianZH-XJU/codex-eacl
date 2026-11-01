@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-11-01T13:54:45.392048+00:00",
+  "git_sha": "37b6523c0829610c339816d5e2164b869cac681f",
+  "scope": "all derived (model-call-free) files under results/v4_1/evolution/",
+  "notes": [
+    "Search files (evo_train_*, es_train_*, nsga2_train_*) carry their own run_manifest + project_git_sha; this log covers derived files only.",
+    "Committed v4 caches (results/v4/evolution/cache_*.json) predate the current builder's provenance fields (no weights-SHA / prompt_version); they are frozen v4 history and are not overwritten. All v4.1 claims that depend on cache identity cite split + n + pool.",
+    "Selection tie-breaks rank (scalar, accuracy) even under macro_f1 primary; exact scalar ties are rare and the effect is deterministic, documented here rather than changed."
+  ],
+  "entries": {
+    "results/v4_1/evolution/ga_vs_random_significance.json": {
+      "producer": "scripts/test_evo_significance.py",
+      "reproduce": "python scripts/test_evo_significance.py --evo results/v4_1/evolution/evo_train_code_laya.json results/v4_1/evolution/evo_train_code_vela.json results/v4_1/evolution/evo_train_findver_laya.json results/v4_1/evolution/evo_train_findver_vela.json --out results/v4_1/evolution/ga_vs_random_significance.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_code_laya.json",
+        "results/v4_1/evolution/evo_train_code_vela.json",
+        "results/v4_1/evolution/evo_train_findver_laya.json",
+        "results/v4_1/evolution/evo_train_findver_vela.json"
+      ],
+      "verified": "12/12 cells ns; spot recompute matches (audit 2026-11-01)"
+    },
+    "results/v4_1/evolution/es_significance.json": {
+      "producer": "scripts/test_evo_significance.py",
+      "reproduce": "python scripts/test_evo_significance.py --evo results/v4_1/evolution/es_train_code_laya.json results/v4_1/evolution/es_train_code_vela.json --out results/v4_1/evolution/es_significance.json",
+      "inputs": [
+        "results/v4_1/evolution/es_train_code_laya.json",
+        "results/v4_1/evolution/es_train_code_vela.json"
+      ],
+      "verified": "6/6 ns incl. stored est/CI bit-match"
+    },
+    "results/v4_1/evolution/nsga2_deploy_significance.json": {
+      "producer": "scripts/test_evo_significance.py",
+      "reproduce": "python scripts/test_evo_significance.py --nsga2 results/v4_1/evolution/nsga2_train_code_laya.json results/v4_1/evolution/nsga2_train_code_vela.json results/v4_1/evolution/nsga2_train_math_laya.json results/v4_1/evolution/nsga2_train_math_vela.json --out results/v4_1/evolution/nsga2_deploy_significance.json",
+      "inputs": [
+        "results/v4_1/evolution/nsga2_train_code_laya.json",
+        "results/v4_1/evolution/nsga2_train_code_vela.json",
+        "results/v4_1/evolution/nsga2_train_math_laya.json",
+        "results/v4_1/evolution/nsga2_train_math_vela.json"
+      ],
+      "verified": "11/12 ns + 1 SIG negative; 12/12 ordered replay matches stored values",
+      "note": "paired CIs are per-seed group-bootstrap with a module-global RandomState: values reproduce for the documented call order"
+    },
+    "results/v4_1/evolution/ga_b48_significance.json": {
+      "producer": "scripts/test_evo_significance.py",
+      "reproduce": "python scripts/test_evo_significance.py --evo results/v4_1/evolution/evo_train_code_vela_b48.json --out results/v4_1/evolution/ga_b48_significance.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_code_vela_b48.json"
+      ],
+      "verified": "3/3 ns degenerate [0,0]; accuracy CI, cost-blind (scalar diffs +-0.0017 exist)"
+    },
+    "results/v4_1/evolution/transfer_matrix.json": {
+      "producer": "scripts/run_policy_transfer.py",
+      "reproduce": "python scripts/run_policy_transfer.py --track v4_1 --out results/v4_1/evolution/transfer_matrix.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_code_laya.json",
+        "results/v4_1/evolution/evo_train_code_vela.json",
+        "results/v4_1/evolution/evo_train_findver_laya.json",
+        "results/v4_1/evolution/evo_train_findver_vela.json"
+      ],
+      "verified": "--track v4 reproduces committed v4 matrix numerically exactly; 16/16 v4_1 cells recomputed"
+    },
+    "results/v4_1/evolution/faultmap.json": {
+      "producer": "scripts/run_faultmap.py",
+      "reproduce": "python scripts/run_faultmap.py --out results/v4_1/evolution/faultmap.json",
+      "inputs": [
+        "results/v4/evolution/cache_train_*.json (6)",
+        "results/v4/evolution/cache_[a-z]*_*.json dev (6)",
+        "results/v4/evolution/cache_confirm_*.json (6)"
+      ],
+      "verified": "15/13/10 cells; top cells recomputed; no missing-band rows in real data"
+    },
+    "results/v4_1/evolution/train_search_dev_eval.json": {
+      "producer": "scripts/eval_trainselected_on_dev.py",
+      "reproduce": "python scripts/eval_trainselected_on_dev.py --report-split search_dev --out results/v4_1/evolution/train_search_dev_eval.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_code_laya.json",
+        "results/v4_1/evolution/evo_train_code_vela.json",
+        "results/v4_1/evolution/evo_train_findver_laya.json",
+        "results/v4_1/evolution/evo_train_findver_vela.json",
+        "results/v4/evolution/nsga2_train_math_{laya,vela}.json",
+        "results/v4/evolution/cache_train_*.json",
+        "results/v4/evolution/cache_[a-z]*_*.json"
+      ],
+      "verified": "math arm gained additive paired CIs 2026-11-01; all pre-existing keys byte-identical after rerun"
+    },
+    "results/v4_1/evolution/train_search_confirm_eval.json": {
+      "producer": "scripts/eval_trainselected_on_dev.py",
+      "reproduce": "python scripts/eval_trainselected_on_dev.py --report-split confirm --out results/v4_1/evolution/train_search_confirm_eval.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_code_laya.json",
+        "results/v4_1/evolution/evo_train_code_vela.json",
+        "results/v4_1/evolution/evo_train_findver_laya.json",
+        "results/v4_1/evolution/evo_train_findver_vela.json",
+        "results/v4/evolution/nsga2_train_math_{laya,vela}.json",
+        "results/v4/evolution/cache_train_*.json",
+        "results/v4/evolution/cache_confirm_*.json"
+      ],
+      "verified": "same as dev file"
+    },
+    "results/v4_1/evolution/complementarity_screen.json": {
+      "producer": "scripts/complementarity_screen.py",
+      "reproduce": "python scripts/complementarity_screen.py --out results/v4_1/evolution/complementarity_screen.json",
+      "inputs": [
+        "results/v4/evolution/cache_train_{code,findver,math}_{laya,vela}.json (6)"
+      ],
+      "verified": "best cell net +6/60 p=0.0898; verdict KEEP_BLOCKED"
+    }
+  }
+}

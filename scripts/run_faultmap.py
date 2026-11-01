@@ -20,8 +20,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-CONF_BANDS = ("low", "mid", "high")
-
 
 def as_bool(x):
     if isinstance(x, bool):
@@ -127,6 +125,25 @@ def wilson_lb(k, n, z=1.96):
     return round(max(0.0, (center - half) / den), 4)
 
 
+def select_files(train_glob, dev_glob, confirm_glob):
+    """Resolve cache globs to (train, dev, confirm) file lists.
+
+    The dev filter excludes train/confirm/test caches: a future
+    cache_test_*.json must never leak into validation pools.
+    """
+    import glob as _glob
+    train_files = sorted(f for f in _glob.glob(str(ROOT / train_glob))
+                         if "/cache_train_" in f.replace("\\", "/"))
+    dev_files = sorted(f for f in _glob.glob(str(ROOT / dev_glob))
+                       if "/cache_train_" not in f.replace("\\", "/")
+                       and "/cache_confirm_" not in f.replace("\\", "/")
+                       and "/cache_test_" not in f.replace("\\", "/")
+                       and "cache_" in f.replace("\\", "/"))
+    conf_files = [f for f in _glob.glob(str(ROOT / confirm_glob))
+                  if "/cache_test_" not in f.replace("\\", "/")]
+    return train_files, dev_files, conf_files
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--train-glob", default="results/v4/evolution/cache_train_*.json")
@@ -137,16 +154,8 @@ def main():
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    import glob as _glob
-    train_files = sorted(f for f in _glob.glob(str(ROOT / args.train_glob))
-                         if "/cache_train_" in f.replace("\\", "/"))
-    dev_files = sorted(f for f in _glob.glob(str(ROOT / args.dev_glob))
-                       if "/cache_train_" not in f.replace("\\", "/")
-                       and "/cache_confirm_" not in f.replace("\\", "/")
-                       and "/cache_test_" not in f.replace("\\", "/")
-                       and "cache_" in f.replace("\\", "/"))
-    conf_files = [f for f in _glob.glob(str(ROOT / args.confirm_glob))
-                  if "/cache_test_" not in f.replace("\\", "/")]
+    train_files, dev_files, conf_files = select_files(
+        args.train_glob, args.dev_glob, args.confirm_glob)
     assert conf_files, f"no confirm caches matched {args.confirm_glob}"
     assert train_files, f"no train caches matched {args.train_glob}"
     disc = bucketize(train_files)

@@ -29,6 +29,24 @@ from tasks.code import CodeAdapter  # noqa: E402
 from tasks.findver import FindverAdapter  # noqa: E402
 from tasks.math import ProcessbenchAdapter  # noqa: E402
 
+
+def clean_noul_p(value):
+    """Validated noul probability from a raw cache payload.
+
+    Returns (float|None, err|None). Non-numeric, non-finite (NaN/Inf) and
+    out-of-[0,1] values are corrupt model outputs: stored as None with a
+    parse_error so downstream fitness fails closed instead of silently
+    labeling them.
+    """
+    import math
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return None, "parse_error:noul_not_numeric"
+    if not math.isfinite(v) or not 0.0 <= v <= 1.0:
+        return None, "parse_error:noul_not_finite_in_[0,1]"
+    return v, None
+
 ES_CONTINUOUS = 0x80000000
 ES_SYSTEM_REQUIRED = 0x00000001
 
@@ -140,9 +158,11 @@ def main():
                 print(f"{pos+1}/{len(rows)} pred={pred} top1={top1} err={[v['error'] for v in rec.values()]}",
                       flush=True)
                 continue
-            try:
-                noul_p = float(rec["noul"]["raw"].get("noul")) if rec["noul"]["error"] is None else None
-            except (TypeError, ValueError):
+            if rec["noul"]["error"] is None:
+                noul_p, noul_err = clean_noul_p(rec["noul"]["raw"].get("noul"))
+                if noul_err is not None:
+                    rec["noul"]["error"] = noul_err
+            else:
                 noul_p = None
             sw = rec["switch"]["raw"] if rec["switch"]["error"] is None else {}
             sw_choice = str(sw.get("choice", "")).replace(" ", "_").lower() if isinstance(sw, dict) else None
