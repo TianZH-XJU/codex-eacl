@@ -26,12 +26,15 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from models.registry import get_adapter  # noqa: E402
 from tasks.code import CodeAdapter  # noqa: E402
 from tasks.findver import FindverAdapter  # noqa: E402
+from tasks.math import ProcessbenchAdapter  # noqa: E402
 
 ES_CONTINUOUS = 0x80000000
 ES_SYSTEM_REQUIRED = 0x00000001
 
-TASKS = {"codexglue_defect": CodeAdapter, "findver": FindverAdapter}
-MODEL_TASKS = {"codexglue_defect": "code_defect", "findver": "findver"}
+TASKS = {"codexglue_defect": CodeAdapter, "findver": FindverAdapter,
+         "processbench": ProcessbenchAdapter}
+MODEL_TASKS = {"codexglue_defect": "code_defect", "findver": "findver",
+               "processbench": "processbench"}
 
 
 def prevent_sleep():
@@ -83,12 +86,14 @@ def main():
         for pos, row in enumerate(rows):
             qs = adapter.build_question(row)
             rec = {}
-            for rep in ("noul", "switch"):
+            reps = ("choice",) if args.task == "processbench" else ("noul", "switch")
+            for rep in reps:
                 t0 = time.perf_counter()
                 err, ans = None, None
                 try:
+                    q = qs if isinstance(qs, dict) and qs.get("type") else qs[rep]
                     ans, _, _ = model.predict(MODEL_TASKS[args.task], {"message": row["text"]},
-                                              {"q": qs[rep]}, prompt_version="policy-cache-v1")
+                                              {"q": q}, prompt_version="policy-cache-v1")
                     inner = ans.get("q", ans) if isinstance(ans, dict) else {}
                 except Exception as e:  # noqa: BLE001
                     err, inner = f"{type(e).__name__}: {e}", {}
@@ -96,6 +101,27 @@ def main():
                 calls += 1
                 rec[rep] = {"ms": round(ms, 1), "error": err, "raw": inner}
                 peak = max(peak, proc.memory_info().rss)
+            if args.task == "processbench":
+                raw = rec["choice"]["raw"] if rec["choice"]["error"] is None else {}
+                probs = raw.get("probabilities", {}) if isinstance(raw, dict) else {}
+                try:
+                    probs = {str(k): float(v) for k, v in probs.items()}
+                except (TypeError, ValueError, AttributeError):
+                    probs = {}
+                order = sorted(probs, key=lambda k: probs[k], reverse=True)
+                top1 = probs[order[0]] if order else None
+                margin = probs[order[0]] - probs[order[1]] if len(order) > 1 else None
+                cands = [f"step {k}" for k in range(len(row["meta"]["steps"]))] + ["ALL_STEPS_CORRECT"]
+                gold_render = cands[row["gold"]].lower().replace("_", " ")
+                pred = str(raw.get("choice", "")).strip().lower().replace("_", " ") if isinstance(raw, dict) else None
+                out.append({"key": row["key"], "gold": row["gold"], "group_id": row["group_id"],
+                            "n_cands": len(cands), "gold_render": gold_render,
+                            "pred": pred, "correct": bool(pred == gold_render) if pred else False,
+                            "top1": top1, "margin": margin, "probs": probs,
+                            "errors": {k: v["error"] for k, v in rec.items()}})
+                print(f"{pos+1}/{len(rows)} pred={pred} top1={top1} err={[v['error'] for v in rec.values()]}",
+                      flush=True)
+                continue
             try:
                 noul_p = float(rec["noul"]["raw"].get("noul")) if rec["noul"]["error"] is None else None
             except (TypeError, ValueError):
@@ -128,8 +154,9 @@ def main():
     out_p = Path(args.out)
     out_p.parent.mkdir(parents=True, exist_ok=True)
     out_p.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    ok = sum(1 for r in out if r["noul_p"] is not None)
-    print(json.dumps({"status": report["status"], "n": len(out), "noul_ok": ok,
+    ok = (sum(1 for r in out if r.get("top1") is not None) if args.task == "processbench"
+          else sum(1 for r in out if r.get("noul_p") is not None))
+    print(json.dumps({"status": report["status"], "n": len(out), "usable_ok": ok,
                       "peak_rss_mb": report["peak_rss_mb"]}, indent=2))
 
 

@@ -6,8 +6,10 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from evolution import (BudgetExceeded, BudgetTracker, CascadeGenome, crossover,  # noqa: E402
-                       decide, diversity, es_run, evaluate, ga_run, mutate,
+from evolution import (AbstainGenome, BudgetExceeded, BudgetTracker,  # noqa: E402
+                       CascadeGenome, crossover, crowding_distance, decide,
+                       diversity, es_run, evaluate, evaluate_math, ga_run,
+                       hypervolume_2d, mutate, nondominated_sort, nsga2_run,
                        random_run, sample_genome)
 
 
@@ -99,8 +101,7 @@ def test_es_deterministic_budgeted_and_second_gene_fixed():
     assert e1["stopped_early"] is True  # mu+lam slots exceed 24 unique
 
 
-def test_es_beats_nothing_claim_is_structural():
-    # On structured cache ES must at least match fixed switch-only; the point
+def test_es_beats_nothing_claim_is_structural():    # On structured cache ES must at least match fixed switch-only; the point
     # is structural validity, not superiority (verdict comes from real caches).
     rows = synth(n=200, seed=1)
     e = es_run(rows, budget=24, seed=17,
@@ -120,3 +121,55 @@ def test_crossover_mutation_diversity():
     assert diversity([a, a]) == 0.0 and diversity([a, b]) > 0.0
     m = mutate(random.Random(0), a, 1.0)
     assert isinstance(m.use_second, int)
+
+
+def test_nsga2_sort_crowding_hypervolume():
+    objs = [(1.0, 0.0), (0.5, 0.5), (0.0, 1.0), (0.2, 0.2)]
+    fronts = nondominated_sort(objs)
+    assert sorted(fronts[0]) == [0, 1, 2]
+    assert fronts[1] == [3]
+    d = crowding_distance(objs, [0, 1, 2])
+    assert d[0] == d[2] == float("inf") and d[1] > 0
+    assert hypervolume_2d([(1.0, 0.0), (0.5, 0.5), (0.0, 1.0)]) == 0.25
+    assert hypervolume_2d([(0.5, 0.5)]) == 0.25
+
+
+def test_nsga2_runs_with_budget_and_seed():
+    import random
+    rows = synth(n=40, seed=9)
+
+    def ev(g):
+        fit = evaluate(g, rows)
+        return ((fit["accuracy"], -fit["calls_per_row"]), g.to_vector(), fit)
+
+    def smp(rng):
+        return sample_genome(rng)
+
+    def cx(rng, a, b, rate):
+        return crossover(rng, a, b, rate)
+
+    def mu(rng, g, rate):
+        return mutate(rng, g, rate)
+
+    t = BudgetTracker(max_unique_evals=12, max_model_calls=0)
+    r1 = nsga2_run(ev, smp, cx, mu, budget=12, seed=11, population=6,
+                   generations=3, tracker=t)
+    r2 = nsga2_run(ev, smp, cx, mu, budget=12, seed=11, population=6,
+                   generations=3,
+                   tracker=BudgetTracker(max_unique_evals=12, max_model_calls=0))
+    assert r1["pareto"] == r2["pareto"] and r1["n_unique_evals"] <= 12
+    assert r1["hypervolume"] >= 0.0
+
+
+def test_selective_policy_math():
+    rows = [{"correct": True, "top1": 0.9, "margin": 0.5},
+            {"correct": False, "top1": 0.4, "margin": 0.05},
+            {"correct": True, "top1": 0.6, "margin": 0.2},
+            {"correct": False, "top1": None, "margin": None}]
+    g = AbstainGenome(t=0.5, use_margin=0, m=0.0).repaired()
+    fit = evaluate_math(g, rows)
+    assert fit == {"sel_accuracy": 1.0, "coverage": 0.5, "n_answered": 2, "n": 4}
+    g2 = AbstainGenome(t=0.5, use_margin=1, m=0.1).repaired()
+    fit2 = evaluate_math(g2, rows)
+    assert fit2["n_answered"] == 2 and fit2["sel_accuracy"] == 1.0
+    assert AbstainGenome.from_vector(g.to_vector()) == g
