@@ -1,0 +1,1417 @@
+{
+  "experiment_id": "EXP-05",
+  "created_utc": "2026-11-01T16:22:40.576754+00:00",
+  "repo_commit": "d5d30b71a54b50f890b1629e03f55d799110e6fd",
+  "protocol_version": "v4.1",
+  "pools": "frozen train-selected genomes -> held-out target dev/confirm; no re-search, no confirm tuning",
+  "matrix": {
+    "code_laya_on_code_laya": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.4486,
+        "mean_acc": 0.45,
+        "vs_switch_paired": {
+          "mean_est": -0.2,
+          "all_ns": false,
+          "per_seed": {
+            "17": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.5489,
+        "mean_acc": 0.55,
+        "vs_switch_paired": {
+          "mean_est": -0.0167,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2167,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_laya_on_code_vela": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.5312,
+        "mean_acc": 0.6333,
+        "vs_switch_paired": {
+          "mean_est": -0.0333,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.446,
+        "mean_acc": 0.5667,
+        "vs_switch_paired": {
+          "mean_est": 0.0,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_laya_on_findver_laya": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.7089,
+        "mean_acc": 0.7119,
+        "vs_switch_paired": {
+          "mean_est": 0.0678,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0588,
+                0.2242
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0625,
+                0.2308
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0625,
+                0.2344
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.4958,
+        "mean_acc": 0.5,
+        "vs_switch_paired": {
+          "mean_est": -0.1364,
+          "all_ns": false,
+          "per_seed": {
+            "17": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.0217
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.0208
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.0208
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_laya_on_findver_vela": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.4201,
+        "mean_acc": 0.4576,
+        "vs_switch_paired": {
+          "mean_est": 0.0,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                -0.1148,
+                0.0938
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.1225,
+                0.0923
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                -0.1176,
+                0.0909
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_code_laya.json"
+        },
+        "mean_macro_f1": 0.6174,
+        "mean_acc": 0.7045,
+        "vs_switch_paired": {
+          "mean_est": 0.0227,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0227,
+              "ci95": [
+                -0.0492,
+                0.1026
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0227,
+              "ci95": [
+                -0.05,
+                0.102
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0227,
+              "ci95": [
+                -0.0488,
+                0.1042
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_vela_on_code_laya": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.5421,
+        "mean_acc": 0.6333,
+        "vs_switch_paired": {
+          "mean_est": -0.0167,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.05,
+              "ci95": [
+                -0.1667,
+                0.0667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.05,
+                0.05
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.4398,
+        "mean_acc": 0.5556,
+        "vs_switch_paired": {
+          "mean_est": -0.0111,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0333,
+              "ci95": [
+                -0.1333,
+                0.0667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_vela_on_code_vela": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.5222,
+        "mean_acc": 0.6611,
+        "vs_switch_paired": {
+          "mean_est": -0.0056,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0167,
+              "ci95": [
+                -0.05,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.4973,
+        "mean_acc": 0.5556,
+        "vs_switch_paired": {
+          "mean_est": -0.0111,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0333,
+              "ci95": [
+                -0.1167,
+                0.05
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_vela_on_findver_laya": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.6567,
+        "mean_acc": 0.661,
+        "vs_switch_paired": {
+          "mean_est": 0.0169,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0169,
+              "ci95": [
+                0.0,
+                0.0508
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0339,
+              "ci95": [
+                -0.0323,
+                0.0938
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.5878,
+        "mean_acc": 0.6137,
+        "vs_switch_paired": {
+          "mean_est": -0.0227,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0682,
+              "ci95": [
+                -0.1429,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "code_vela_on_findver_vela": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.3261,
+        "mean_acc": 0.452,
+        "vs_switch_paired": {
+          "mean_est": -0.0056,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0169,
+              "ci95": [
+                -0.0785,
+                0.0385
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_code_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_code_vela.json"
+        },
+        "mean_macro_f1": 0.5462,
+        "mean_acc": 0.6969,
+        "vs_switch_paired": {
+          "mean_est": 0.0151,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0227,
+              "ci95": [
+                0.0,
+                0.0682
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0227,
+              "ci95": [
+                0.0,
+                0.0698
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_laya_on_code_laya": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.4486,
+        "mean_acc": 0.45,
+        "vs_switch_paired": {
+          "mean_est": -0.2,
+          "all_ns": false,
+          "per_seed": {
+            "17": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.5489,
+        "mean_acc": 0.55,
+        "vs_switch_paired": {
+          "mean_est": -0.0167,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2004,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_laya_on_code_vela": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.5784,
+        "mean_acc": 0.6611,
+        "vs_switch_paired": {
+          "mean_est": -0.0056,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0333,
+              "ci95": [
+                -0.0667,
+                0.1167
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0167,
+              "ci95": [
+                -0.1167,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.4998,
+        "mean_acc": 0.5722,
+        "vs_switch_paired": {
+          "mean_est": 0.0056,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                -0.0833,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0167,
+              "ci95": [
+                -0.1167,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_laya_on_findver_laya": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.6758,
+        "mean_acc": 0.678,
+        "vs_switch_paired": {
+          "mean_est": 0.0339,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0169,
+              "ci95": [
+                -0.0882,
+                0.05
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0508,
+              "ci95": [
+                -0.0625,
+                0.1837
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0625,
+                0.2353
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.5402,
+        "mean_acc": 0.553,
+        "vs_switch_paired": {
+          "mean_est": -0.0833,
+          "all_ns": false,
+          "per_seed": {
+            "17": {
+              "est": -0.0227,
+              "ci95": [
+                -0.0678,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0909,
+              "ci95": [
+                -0.2,
+                0.0222
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.0204
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_laya_on_findver_vela": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.3918,
+        "mean_acc": 0.4576,
+        "vs_switch_paired": {
+          "mean_est": 0.0,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                -0.0702,
+                0.0625
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.0877,
+                0.0715
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                -0.1177,
+                0.0909
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_laya.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_laya.json"
+        },
+        "mean_macro_f1": 0.5801,
+        "mean_acc": 0.6894,
+        "vs_switch_paired": {
+          "mean_est": 0.0076,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.0566,
+                0.069
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0227,
+              "ci95": [
+                -0.0465,
+                0.102
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_vela_on_code_laya": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.4486,
+        "mean_acc": 0.45,
+        "vs_switch_paired": {
+          "mean_est": -0.2,
+          "all_ns": false,
+          "per_seed": {
+            "17": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.2,
+              "ci95": [
+                -0.3833,
+                -0.0167
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.5489,
+        "mean_acc": 0.55,
+        "vs_switch_paired": {
+          "mean_est": -0.0167,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0167,
+              "ci95": [
+                -0.2,
+                0.1667
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_vela_on_code_vela": {
+      "dev": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.5312,
+        "mean_acc": 0.6333,
+        "vs_switch_paired": {
+          "mean_est": -0.0333,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.0333,
+              "ci95": [
+                -0.15,
+                0.0833
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 60,
+        "pool": "results/v4/evolution/cache_confirm_code_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.446,
+        "mean_acc": 0.5667,
+        "vs_switch_paired": {
+          "mean_est": 0.0,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.1333
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                -0.15,
+                0.15
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_vela_on_findver_laya": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.7089,
+        "mean_acc": 0.7119,
+        "vs_switch_paired": {
+          "mean_est": 0.0678,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0625,
+                0.2322
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0625,
+                0.2353
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0678,
+              "ci95": [
+                -0.0588,
+                0.2258
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_laya.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.4958,
+        "mean_acc": 0.5,
+        "vs_switch_paired": {
+          "mean_est": -0.1364,
+          "all_ns": false,
+          "per_seed": {
+            "17": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.0175
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.0208
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": -0.1364,
+              "ci95": [
+                -0.25,
+                -0.02
+              ],
+              "excludes_zero": true,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    },
+    "findver_vela_on_findver_vela": {
+      "dev": {
+        "n": 59,
+        "pool": "results/v4/evolution/cache_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.4201,
+        "mean_acc": 0.4576,
+        "vs_switch_paired": {
+          "mean_est": 0.0,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0,
+              "ci95": [
+                -0.1176,
+                0.0923
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0,
+              "ci95": [
+                -0.1186,
+                0.0923
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0,
+              "ci95": [
+                -0.1186,
+                0.0923
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      },
+      "confirm": {
+        "n": 44,
+        "pool": "results/v4/evolution/cache_confirm_findver_vela.json",
+        "source": {
+          "evo_file": "results/v4_1/evolution/evo_train_findver_vela.json",
+          "train_cache": "results/v4/evolution/cache_train_findver_vela.json"
+        },
+        "mean_macro_f1": 0.6174,
+        "mean_acc": 0.7045,
+        "vs_switch_paired": {
+          "mean_est": 0.0227,
+          "all_ns": true,
+          "per_seed": {
+            "17": {
+              "est": 0.0227,
+              "ci95": [
+                -0.0488,
+                0.102
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "23": {
+              "est": 0.0227,
+              "ci95": [
+                -0.0488,
+                0.102
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            },
+            "41": {
+              "est": 0.0227,
+              "ci95": [
+                -0.05,
+                0.1026
+              ],
+              "excludes_zero": false,
+              "comparison": "transfer_minus_switch"
+            }
+          }
+        }
+      }
+    }
+  }
+}
