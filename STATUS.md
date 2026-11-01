@@ -35,6 +35,7 @@
 | NEAT multistep (Gate 3a) | BLOCKED (lit-backed 2026-11-01) | local: best cell code/Vela net +6/60 (binomial p~0.09, ns), all other cells net -1..+1; routers in lit need MPI 6-13% + in-domain n>=200 (FrugalGPT/AutoMix/RouteLLM survey ses_e6962c962ffeYivpinJdzKndLb); pass requires held-out repair-regression >=+5pp (CI excl 0) AND disag>=15% AND OOF AUC>=0.65; NSGA-II runner itself implemented, only multistep policy search blocked |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
+| Budget 24->48 probe (code/Vela, pre-reg) | STOP AT 48 | GA 0.384 vs RND 0.384, gap 0.0; per-seed scalar gaps cost-only, accuracy CIs degenerately [0,0] ns; GA realized uniques 22/17/23 under cap 48; b24 edge vanished, §10 stops 96/192; `evo_train_code_vela_b48.json` + `ga_b48_significance.json` (accuracy CI, cost-blind) |
 | E5 faultmap (MAP-Elites-lite, train-discover/dev+confirm-validate) | DONE | 15 eligible / 13 dev-confirmed / 10 confirm-confirmed cells; top math/vela/mid S=0.9286 n=14; `results/v4_1/evolution/faultmap.json` + `scripts/run_faultmap.py` + `tests/test_run_faultmap.py` |
 | ONNX parity | not_run | Torch FP32 stable, peak RSS < 2.2 GB; unnecessary |
 

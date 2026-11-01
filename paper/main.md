@@ -396,6 +396,14 @@ Attribution note: the v4.1 reruns differ from the v4 runs in search pool
 hyperparameters, so per-seed genome divergence between old and new files cannot
 be attributed to the partial-generation merge fix alone; no fix-only A/B on a
 shared pool was run.
+Budget ladder 24->48 (code/Vela, the only net-positive complementarity cell):
+GA scalar 0.384 vs Random 0.384, gap exactly 0.0; per-seed scalar gaps
+-0.0017/0.0/+0.0017 are cost-only (correctness diffs all 0, so the paired
+accuracy CIs are degenerately [0,0], ns; `ga_b48_significance.json` is an
+accuracy CI, cost-blind). GA realized only 22/17/23 uniques under the 48 cap
+(Random consumed 48/48/48); the b24 edge (+0.0052) vanished rather than grew.
+Per stop rule §10, no 96/192 expansion: the budget-insufficiency explanation
+is empirically excluded. `evo_train_code_vela_b48.json`.
 
 **E5 failure landscape (MAP-Elites-lite over the 18-cell task x model x
 confidence-band grid, exhaustive fill, train-discover with dev+confirm
