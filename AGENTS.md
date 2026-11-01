@@ -1,5 +1,12 @@
 # Project Instructions — NEAT-Laya EACL Research
 
+> v4.1 amendment (2026-11-01): the live mainline is the v4 EvoTIDE track —
+> unified Laya/Vela adapters (`src/models/`), task adapters (`src/tasks/`),
+> and EA on cache-exact policy fitness (`src/evolution/`) with gated verdicts
+> in `STATUS.md` and `paper/main.md`. The NEAT-controller-over-Laya-actions
+> track below is FROZEN HISTORICAL record (v1–v3): do not extend it, do not
+> re-tune it, cite it only as prior evidence. All guardrails below remain in force.
+
 This file is the persistent project instruction/system-prompt equivalent for coding agents (including Codex agents that read `AGENTS.md`). Follow it before performing research, editing code, installing dependencies or interpreting results.
 
 ## Role and objective

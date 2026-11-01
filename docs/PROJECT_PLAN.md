@@ -1,5 +1,10 @@
 # Full Research Plan: NEAT-Laya Budget-Aware NLP Decisions
 
+> v4.1 note: this document is the frozen v1 historical plan (NEAT controller
+> over Laya SINGLE/WIDE/TOURNAMENT). It stays for reference; the live protocol
+> is `docs/EVOTIDE_PROTOCOL_v3.md` + v4 configs under `configs/v4/` and
+> `configs/{models,tasks,evolution}.yaml`. Do not start new work from this plan.
+
 ## 0. Executive summary
 
 **Working title:** Do Evolved Controllers Help? Budget-Aware Strategy Selection for Frozen System-1 NLP Decisions.

@@ -1,5 +1,13 @@
 # NEAT-Laya Budget-Aware NLP Decisions
 
+> v4.1 track note (2026-11-01): this README describes the frozen v1–v3 NEAT-Laya
+> track (kept as history). The live mainline is v4 EvoTIDE: dual-model
+> (Laya 0.4.16 + Vela-0.3B) unified adapters, code/math/finance task adapters,
+> and GA/ES/NSGA-II vs matched Random Search on cache-exact fitness — see
+> `STATUS.md` (current gate table) and `paper/main.md` §9. Research status is
+> tracked in `STATUS.md`; the "no research-level result" line below is stale
+> for v4 (v4 native baselines and EA verdicts are committed in `results/v4/`).
+
 Research repository for an EACL 2027 Student Research Workshop project: evaluate whether a small NEAT-evolved controller can choose among inference strategies for a frozen Laya System-1 decision model under CPU-only and low-label constraints.
 
 > **Research status:** according to the user's local Windows logs, Python dependencies, the Laya model, 8 pinned dataset files, the 3-dataset five-example smoke test and 3 structural tests are ready/passed. The research computer is AMD Ryzen 5 with 16 GB installed RAM but only about 4 GB may be used by this project. No research-level accuracy/latency result has been established yet. All experiments are local-only; the cloud bootstrap workflow was removed on request.
