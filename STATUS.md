@@ -24,14 +24,14 @@
 | Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
 | Phase 5 cross/elit/lam sweeps | NO PATTERN | 16 configs, GA 0.644-0.717, diffs in noise; `grid_*`, `lam_*` |
 | Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` (IN-SAMPLE; superseded by train/dev split below) |
-| P0-2 isolation (train→dev→confirm) | SELECTION BIAS EXPOSED | code/Laya 0.65→0.45 dev (SIG negative vs switch); confirm prevalence shift documented; eval files committed |
+| P0-2 isolation (train->dev->confirm) | SELECTION BIAS EXPOSED | v4 in-sample best 0.65 (search_dev) does not transfer; v4.1 train-selected 0.55 acc -> 0.45 dev (SIG negative vs switch) -> 0.55 confirm; eval files renamed ga_*_report |
 | Phase 4 2nd family ES (matched 24) | NO EDGE | Laya +0.017, Vela +0.017, both n.s.; agrees with GA |
 | Phase 5 executed ablation | MECHANISM FOUND | gain over noul-only = switch rep itself (code SIG); band adds nothing over always-switch (11/12 ns, 1 seed SIG) |
 | NSGA-II multi-objective (matched 24) | NO EDGE | code HV diff −0.010/−0.007; math abstention Laya −0.013 / Vela +0.021 (noise) |
 | Math EA pilot (abstention) | EXPOSED, NULL | t=0.3 → 0.286 sel-acc at 11.7% cov; no useful operating point |
 | NSGA-II deploy significance | 12/12 ns | paired CIs on deployed front policy; `nsga2_deploy_significance.json` |
 | Traditional controllers | GRID TIES GA; LR COLLAPSES | threshold-best = GA everywhere except 1/12 seeds; LR router = noul-only on code; abstention hurts raw acc |
-| v4.1 protocol (macro-F1, train-search) | NO EDGE | GA vs Random 12/12 ns on train caches; train-selected code/Laya 0.45 dev / 0.55 confirm; results/v4_1/evolution/ |
+| v4.1 protocol (macro-F1, train-search) | NO EDGE | GA vs Random 12/12 ns on train caches; train-selected code/Laya 0.55 train -> 0.45 dev -> 0.55 confirm; findver/Vela confirm 30/44 = fixed switch (paired diff 0; pool gold 28/44 vs 28/59 dev); results/v4_1/evolution/ |
 | NEAT / NSGA-II | BLOCKED WITH CONDITIONS | no sequential structure left; no quality gradient; conditions in `configs/evolution.yaml` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |

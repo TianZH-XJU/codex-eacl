@@ -340,17 +340,18 @@ excludes zero.
 **P0-2 isolation fix (train search → dev report → confirm report).**
 All prior GA-vs-Random numbers were in-sample (search and report on search_dev;
 e.g. code/Laya in-sample best 0.65 in `results/v2/evolution/evo_code_laya.json`).
-Re-ran GA/Random/ES/NSGA-II on search_train caches (6 new real-call caches),
-evaluated frozen winners on search_dev AND confirm with paired CIs. The v4.1
-train-selected code/Laya policy scores 0.45 on dev (gap vs fixed switch −0.20,
-2/3 seeds SIG *negative*) and 0.55 on confirm — the in-sample 0.65 does not
-survive held-out reporting, i.e. it was pure selection bias. Note the two
-0.65/0.45 figures come from different search pools (v4 dev-search vs v4.1
-train-search, accuracy vs macro-F1 scalar); they are cited together only to
-show that no selection protocol beats the fixed baseline out-of-pool.
-findver/Vela confirm 0.68 is mostly label prevalence (28/44 supported vs 28/59
-on dev; +0.16 prevalence shift vs +0.22 accuracy lift — the residual is within
-noise and paired diffs vs fixed stay null), not a model win. Lesson now
+Re-ran GA/Random/ES/NSGA-II on search_train caches (6 new real-call caches, macro-F1
+selection), evaluated frozen winners on search_dev AND confirm with paired CIs.
+The v4.1 train-selected code/Laya policy scores 0.55 on train, 0.45 on dev (gap
+vs fixed switch −0.20, 2/3 seeds SIG *negative*) and 0.55 on confirm — the
+in-sample 0.65 does not survive held-out reporting, i.e. it was pure selection
+bias. Note the 0.65 vs 0.45 figures come from different search pools (v4
+dev-search, accuracy scalar, vs v4.1 train-search, macro-F1 scalar, 0.55 train);
+they are cited together only to show that no selection protocol beats the fixed
+baseline out-of-pool. findver/Vela confirm is 30/44 for GA *and* for fixed
+switch (paired diff exactly 0); the pool's gold rate itself shifted 28/59 dev
+to 28/44 confirm (47.5% to 63.6%), so the 0.68 is prevalence plus a fixed-policy
+tie, not an EA win and not a pure prevalence artifact either. Lesson now
 enforced in protocol: never report search-pool best without held-out
 evaluation. `train_search_dev_eval.json`, `train_search_confirm_eval.json`.
 
