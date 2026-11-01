@@ -1,0 +1,363 @@
+{
+  "created_utc": "2026-11-01T09:10:22.306362+00:00",
+  "protocol": "v4.1",
+  "fitness_version": "v2-task-primary",
+  "train_cache": {
+    "task": "codexglue_defect",
+    "model": "laya",
+    "split": "search_train",
+    "n": 60,
+    "path": "results/v4/evolution/cache_train_code_laya.json"
+  },
+  "dev_cache": {
+    "task": "codexglue_defect",
+    "model": "laya",
+    "split": "search_dev",
+    "n": 60,
+    "path": "results/v4/evolution/cache_code_laya.json"
+  },
+  "confirm_cache": {
+    "task": "codexglue_defect",
+    "model": "laya",
+    "split": "confirm",
+    "n": 60,
+    "path": "results/v4/evolution/cache_confirm_code_laya.json"
+  },
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "ga": {
+        "best": {
+          "lo": 0.026936778790526805,
+          "hi": 0.11016204891721182,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.55,
+          "calls_per_row": 1.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5499,
+          "balanced_accuracy": 0.55,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5499
+        },
+        "unique": 18,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5011,
+            "diversity": 1.1182
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5435,
+            "diversity": 1.2597
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 18,
+          "generated": 22,
+          "duplicate_hits": 4,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.39079548660064756,
+          "hi": 0.5297316258108812,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.2833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5832,
+          "balanced_accuracy": 0.5833,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.569
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.45,
+          "macro_f1": 0.4486
+        },
+        "random": {
+          "accuracy": 0.4833,
+          "macro_f1": 0.4832
+        },
+        "fixed_noul": [
+          0.45,
+          0.4486
+        ],
+        "fixed_switch": [
+          0.65,
+          0.5225
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.55,
+          "macro_f1": 0.5489
+        },
+        "random": {
+          "accuracy": 0.5333,
+          "macro_f1": 0.5333
+        },
+        "fixed_noul": [
+          0.55,
+          0.5489
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.4222
+        ]
+      }
+    },
+    "23": {
+      "ga": {
+        "best": {
+          "lo": 0.9248652516259452,
+          "hi": 0.9486057779931771,
+          "use_second": 0
+        },
+        "fit_train": {
+          "accuracy": 0.55,
+          "calls_per_row": 1.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5499,
+          "balanced_accuracy": 0.55,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5499
+        },
+        "unique": 20,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5219,
+            "diversity": 1.2503
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5229,
+            "diversity": 1.2158
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 20,
+          "generated": 22,
+          "duplicate_hits": 2,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.46639852868741116,
+          "hi": 0.5624701004219349,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.1333,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5804,
+          "balanced_accuracy": 0.5833,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5737
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.45,
+          "macro_f1": 0.4486
+        },
+        "random": {
+          "accuracy": 0.5,
+          "macro_f1": 0.4994
+        },
+        "fixed_noul": [
+          0.45,
+          0.4486
+        ],
+        "fixed_switch": [
+          0.65,
+          0.5225
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.55,
+          "macro_f1": 0.5489
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5662
+        },
+        "fixed_noul": [
+          0.55,
+          0.5489
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.4222
+        ]
+      }
+    },
+    "41": {
+      "ga": {
+        "best": {
+          "lo": 0.23071918631047517,
+          "hi": 0.38102068999577143,
+          "use_second": 0
+        },
+        "fit_train": {
+          "accuracy": 0.55,
+          "calls_per_row": 1.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5499,
+          "balanced_accuracy": 0.55,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5499
+        },
+        "unique": 16,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5091,
+            "diversity": 1.0324
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5472,
+            "diversity": 0.5907
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 16,
+          "generated": 22,
+          "duplicate_hits": 6,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.7010469706738839,
+          "hi": 0.9769711973447701,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.6,
+          "calls_per_row": 1.1167,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.596,
+          "balanced_accuracy": 0.6,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5902
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.45,
+          "macro_f1": 0.4486
+        },
+        "random": {
+          "accuracy": 0.4667,
+          "macro_f1": 0.436
+        },
+        "fixed_noul": [
+          0.45,
+          0.4486
+        ],
+        "fixed_switch": [
+          0.65,
+          0.5225
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.55,
+          "macro_f1": 0.5489
+        },
+        "random": {
+          "accuracy": 0.6167,
+          "macro_f1": 0.5978
+        },
+        "fixed_noul": [
+          0.55,
+          0.5489
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.4222
+        ]
+      }
+    }
+  },
+  "gens_requested": 3,
+  "gens_effective": 2,
+  "run_manifest": {
+    "argv": [
+      "--train-cache",
+      "results/v4/evolution/cache_train_code_laya.json",
+      "--dev-cache",
+      "results/v4/evolution/cache_code_laya.json",
+      "--confirm-cache",
+      "results/v4/evolution/cache_confirm_code_laya.json",
+      "--budget",
+      "24",
+      "--seeds",
+      "17,23,41",
+      "--pop",
+      "8",
+      "--gens",
+      "3",
+      "--metric",
+      "macro_f1",
+      "--out",
+      "results/v4_1/evolution/evo_train_code_laya.json"
+    ],
+    "cpu_threads": null,
+    "project_git_sha": "d11522df3a83110a149a09387166becd5b2f3078",
+    "metric": "macro_f1",
+    "lam": 0.05,
+    "algo": "ga"
+  },
+  "algo": "ga",
+  "ga_train_scalar_mean": 0.5499,
+  "ga_train_scalar_std": 0.0,
+  "random_train_scalar_mean": 0.5776,
+  "random_train_scalar_std": 0.0111,
+  "ga_minus_random_mean": -0.0277
+}

@@ -1,0 +1,363 @@
+{
+  "created_utc": "2026-11-01T09:10:22.547282+00:00",
+  "protocol": "v4.1",
+  "fitness_version": "v2-task-primary",
+  "train_cache": {
+    "task": "codexglue_defect",
+    "model": "vela",
+    "split": "search_train",
+    "n": 60,
+    "path": "results/v4/evolution/cache_train_code_vela.json"
+  },
+  "dev_cache": {
+    "task": "codexglue_defect",
+    "model": "vela",
+    "split": "search_dev",
+    "n": 60,
+    "path": "results/v4/evolution/cache_code_vela.json"
+  },
+  "confirm_cache": {
+    "task": "codexglue_defect",
+    "model": "vela",
+    "split": "confirm",
+    "n": 60,
+    "path": "results/v4/evolution/cache_confirm_code_vela.json"
+  },
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "ga": {
+        "best": {
+          "lo": 0.12021246594783677,
+          "hi": 0.7661074377979527,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 17,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3743,
+            "mean_scalar": 0.3274,
+            "diversity": 1.1182
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3473,
+            "diversity": 0.6807
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 17,
+          "generated": 22,
+          "duplicate_hits": 5,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.1463699892073318,
+          "hi": 0.5702760752039047,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.4833,
+          "calls_per_row": 1.95,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4112,
+          "balanced_accuracy": 0.4833,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3637
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.55,
+          "macro_f1": 0.5107
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    },
+    "23": {
+      "ga": {
+        "best": {
+          "lo": 0.18252732249437265,
+          "hi": 0.9016579987463874,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.9667,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3851
+        },
+        "unique": 17,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3253,
+            "diversity": 1.2503
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3388,
+            "diversity": 0.8936
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 17,
+          "generated": 22,
+          "duplicate_hits": 5,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.13206881370482382,
+          "hi": 0.9695306235907255,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    },
+    "41": {
+      "ga": {
+        "best": {
+          "lo": 0.3188841727935581,
+          "hi": 0.9799709448454504,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.75,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4151,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3776
+        },
+        "unique": 16,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3776,
+            "mean_scalar": 0.3376,
+            "diversity": 1.0324
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3776,
+            "mean_scalar": 0.3478,
+            "diversity": 0.8296
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 16,
+          "generated": 22,
+          "duplicate_hits": 6,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.11374460118100627,
+          "hi": 0.775195775184105,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.65,
+          "macro_f1": 0.4982
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.5333,
+          "macro_f1": 0.4444
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    }
+  },
+  "gens_requested": 3,
+  "gens_effective": 2,
+  "run_manifest": {
+    "argv": [
+      "--train-cache",
+      "results/v4/evolution/cache_train_code_vela.json",
+      "--dev-cache",
+      "results/v4/evolution/cache_code_vela.json",
+      "--confirm-cache",
+      "results/v4/evolution/cache_confirm_code_vela.json",
+      "--budget",
+      "24",
+      "--seeds",
+      "17,23,41",
+      "--pop",
+      "8",
+      "--gens",
+      "3",
+      "--metric",
+      "macro_f1",
+      "--out",
+      "results/v4_1/evolution/evo_train_code_vela.json"
+    ],
+    "cpu_threads": null,
+    "project_git_sha": "d11522df3a83110a149a09387166becd5b2f3078",
+    "metric": "macro_f1",
+    "lam": 0.05,
+    "algo": "ga"
+  },
+  "algo": "ga",
+  "ga_train_scalar_mean": 0.382,
+  "ga_train_scalar_std": 0.0039,
+  "random_train_scalar_mean": 0.3768,
+  "random_train_scalar_std": 0.0114,
+  "ga_minus_random_mean": 0.0052
+}

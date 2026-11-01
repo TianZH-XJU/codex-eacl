@@ -1,0 +1,363 @@
+{
+  "created_utc": "2026-11-01T09:10:22.787333+00:00",
+  "protocol": "v4.1",
+  "fitness_version": "v2-task-primary",
+  "train_cache": {
+    "task": "findver",
+    "model": "laya",
+    "split": "search_train",
+    "n": 60,
+    "path": "results/v4/evolution/cache_train_findver_laya.json"
+  },
+  "dev_cache": {
+    "task": "findver",
+    "model": "laya",
+    "split": "search_dev",
+    "n": 59,
+    "path": "results/v4/evolution/cache_findver_laya.json"
+  },
+  "confirm_cache": {
+    "task": "findver",
+    "model": "laya",
+    "split": "confirm",
+    "n": 44,
+    "path": "results/v4/evolution/cache_confirm_findver_laya.json"
+  },
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "ga": {
+        "best": {
+          "lo": 0.1375414132956192,
+          "hi": 0.4379264024151493,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5667,
+          "calls_per_row": 1.4,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5667,
+          "balanced_accuracy": 0.5724,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5467
+        },
+        "unique": 19,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5286,
+            "mean_scalar": 0.5028,
+            "diversity": 1.1182
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5459,
+            "mean_scalar": 0.5302,
+            "diversity": 1.0653
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 19,
+          "generated": 22,
+          "duplicate_hits": 3,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.12548256273302905,
+          "hi": 0.28382904464909364,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.2167,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5823,
+          "balanced_accuracy": 0.5943,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5715
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.6271,
+          "macro_f1": 0.6244
+        },
+        "random": {
+          "accuracy": 0.7119,
+          "macro_f1": 0.7105
+        },
+        "fixed_noul": [
+          0.7119,
+          0.7089
+        ],
+        "fixed_switch": [
+          0.6441,
+          0.6374
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.6136,
+          "macro_f1": 0.5879
+        },
+        "random": {
+          "accuracy": 0.5455,
+          "macro_f1": 0.5368
+        },
+        "fixed_noul": [
+          0.5,
+          0.4958
+        ],
+        "fixed_switch": [
+          0.6364,
+          0.6071
+        ]
+      }
+    },
+    "23": {
+      "ga": {
+        "best": {
+          "lo": 0.017076601028645166,
+          "hi": 0.30674391555597935,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.4,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5823,
+          "balanced_accuracy": 0.5943,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5623
+        },
+        "unique": 21,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5623,
+            "mean_scalar": 0.5233,
+            "diversity": 1.2503
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5623,
+            "mean_scalar": 0.5202,
+            "diversity": 0.9335
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 21,
+          "generated": 22,
+          "duplicate_hits": 1,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.2225551467368584,
+          "hi": 0.39546408611747186,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.55,
+          "calls_per_row": 1.1833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5489,
+          "balanced_accuracy": 0.5606,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5397
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.6949,
+          "macro_f1": 0.6941
+        },
+        "random": {
+          "accuracy": 0.661,
+          "macro_f1": 0.6609
+        },
+        "fixed_noul": [
+          0.7119,
+          0.7089
+        ],
+        "fixed_switch": [
+          0.6441,
+          0.6374
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.5455,
+          "macro_f1": 0.5368
+        },
+        "random": {
+          "accuracy": 0.5909,
+          "macro_f1": 0.5686
+        },
+        "fixed_noul": [
+          0.5,
+          0.4958
+        ],
+        "fixed_switch": [
+          0.6364,
+          0.6071
+        ]
+      }
+    },
+    "41": {
+      "ga": {
+        "best": {
+          "lo": 0.23071918631047517,
+          "hi": 0.38102068999577143,
+          "use_second": 0
+        },
+        "fit_train": {
+          "accuracy": 0.5333,
+          "calls_per_row": 1.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5286,
+          "balanced_accuracy": 0.5488,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5286
+        },
+        "unique": 16,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5286,
+            "mean_scalar": 0.505,
+            "diversity": 1.0324
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5286,
+            "mean_scalar": 0.5257,
+            "diversity": 0.5907
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 16,
+          "generated": 22,
+          "duplicate_hits": 6,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.23008667499405355,
+          "hi": 0.2946899803424523,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5667,
+          "calls_per_row": 1.0667,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5647,
+          "balanced_accuracy": 0.5791,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5614
+        },
+        "unique": 24
+      },
+      "dev": {
+        "ga": {
+          "accuracy": 0.7119,
+          "macro_f1": 0.7089
+        },
+        "random": {
+          "accuracy": 0.7119,
+          "macro_f1": 0.7105
+        },
+        "fixed_noul": [
+          0.7119,
+          0.7089
+        ],
+        "fixed_switch": [
+          0.6441,
+          0.6374
+        ]
+      },
+      "confirm": {
+        "ga": {
+          "accuracy": 0.5,
+          "macro_f1": 0.4958
+        },
+        "random": {
+          "accuracy": 0.5227,
+          "macro_f1": 0.5165
+        },
+        "fixed_noul": [
+          0.5,
+          0.4958
+        ],
+        "fixed_switch": [
+          0.6364,
+          0.6071
+        ]
+      }
+    }
+  },
+  "gens_requested": 3,
+  "gens_effective": 2,
+  "run_manifest": {
+    "argv": [
+      "--train-cache",
+      "results/v4/evolution/cache_train_findver_laya.json",
+      "--dev-cache",
+      "results/v4/evolution/cache_findver_laya.json",
+      "--confirm-cache",
+      "results/v4/evolution/cache_confirm_findver_laya.json",
+      "--budget",
+      "24",
+      "--seeds",
+      "17,23,41",
+      "--pop",
+      "8",
+      "--gens",
+      "3",
+      "--metric",
+      "macro_f1",
+      "--out",
+      "results/v4_1/evolution/evo_train_findver_laya.json"
+    ],
+    "cpu_threads": null,
+    "project_git_sha": "d11522df3a83110a149a09387166becd5b2f3078",
+    "metric": "macro_f1",
+    "lam": 0.05,
+    "algo": "ga"
+  },
+  "algo": "ga",
+  "ga_train_scalar_mean": 0.5459,
+  "ga_train_scalar_std": 0.0169,
+  "random_train_scalar_mean": 0.5575,
+  "random_train_scalar_std": 0.0162,
+  "ga_minus_random_mean": -0.0116
+}
