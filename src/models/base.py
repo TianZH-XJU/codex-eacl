@@ -34,6 +34,66 @@ class UnsupportedOutputError(ValueError):
     pass
 
 
+def _norm_key(s):
+    return str(s or "").strip().replace(" ", "_").lower()
+
+
+def validate_answers(questions: dict, answers: dict):
+    """Per-question output validation. Returns (parse_ok, failures dict).
+
+    - choice: non-empty string choice; when criteria are given it must match
+      one of them (normalized) else "choice_out_of_criteria".
+    - noul: "noul" must be a finite number in [0, 1].
+    - score: "score" must be a finite number.
+    Missing answers or wrong shapes are parse failures, never silent."""
+    import math
+    failures = {}
+    if not isinstance(answers, dict) or not answers:
+        return False, {"_all": "empty_or_missing_answers"}
+    for name, q in questions.items():
+        if not isinstance(q, dict):
+            failures[name] = "bad_question_schema"
+            continue
+        ans = answers.get(name)
+        if not isinstance(ans, dict):
+            failures[name] = "missing_answer"
+            continue
+        qtype = q.get("type")
+        if ans.get("type") != qtype and "type" in ans:
+            failures[name] = f"type_mismatch:{ans.get('type')}"
+            continue
+        if qtype == "choice":
+            ch = ans.get("choice")
+            if not isinstance(ch, str) or not ch.strip():
+                failures[name] = "empty_choice"
+                continue
+            crit = q.get("criteria")
+            if isinstance(crit, dict) and crit:
+                allowed = {_norm_key(k) for k in crit}
+                if _norm_key(ch) not in allowed:
+                    failures[name] = f"choice_out_of_criteria:{ch!r}"
+                    continue
+        elif qtype == "noul":
+            try:
+                p = float(ans.get("noul"))
+            except (TypeError, ValueError):
+                failures[name] = "noul_not_a_number"
+                continue
+            if not (math.isfinite(p) and 0.0 <= p <= 1.0):
+                failures[name] = f"noul_out_of_range:{ans.get('noul')!r}"
+                continue
+        elif qtype == "score":
+            try:
+                s = float(ans.get("score"))
+            except (TypeError, ValueError):
+                failures[name] = "score_not_a_number"
+                continue
+            if not math.isfinite(s):
+                failures[name] = "score_not_finite"
+                continue
+    return (len(failures) == 0), failures
+
+
 class DecisionModel(abc.ABC):
     name: str = "base"
     revision: str = "unknown"

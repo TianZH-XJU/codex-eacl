@@ -48,6 +48,7 @@ def main():
     shape_ok = ("q" in answers and isinstance(answers["q"], dict)
                 and answers["q"].get("type") == "choice"
                 and "choice" in answers["q"])
+    shape_ok = bool(shape_ok and rec.ok and rec.parse_ok)
     report = {"created_utc": datetime.now(timezone.utc).isoformat(), "model": args.model,
               "load_seconds": round(load_s, 1), "shape_ok": shape_ok,
               "choice": answers.get("q", {}).get("choice"),

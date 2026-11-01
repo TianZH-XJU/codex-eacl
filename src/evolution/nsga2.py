@@ -83,11 +83,18 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
     rng = random.Random(seed)
     pop = [sample(rng) for _ in range(population)]
     archive = []
+    memo = {}
 
     def score(g):
-        objs, key, rec = evaluate(g)
+        key = g.to_vector() if hasattr(g, "to_vector") else tuple(g)
+        if key in memo:
+            if tracker is not None:
+                tracker.charge_eval(key)
+            return memo[key]
         if tracker is not None:
             tracker.charge_eval(key)
+        objs, rkey, rec = evaluate(g)
+        memo[key] = objs
         archive.append({"key": list(key), "objectives": list(objs), **rec})
         return objs
 

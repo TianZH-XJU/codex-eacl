@@ -49,13 +49,24 @@ def test_decide_and_evaluate_exact():
 def test_budget_enforced():
     t = BudgetTracker(max_unique_evals=3, max_model_calls=10)
     for i in range(3):
-        t.charge_eval((i,))
+        assert t.charge_eval((i,)) is True
     with pytest.raises(BudgetExceeded):
         t.charge_eval((9,))
-    t2 = BudgetTracker(max_unique_evals=100, max_model_calls=2)
-    t2.charge_eval((1,), model_calls=2)
+    assert t.state()["generated"] == 4 and t.state()["unique_evals"] == 3
+    # duplicates: no unique consumed, counted separately
+    t2 = BudgetTracker(max_unique_evals=3, max_model_calls=10)
+    assert t2.charge_eval((0,)) is True
+    assert t2.charge_eval((0,)) is False
+    assert t2.state()["unique_evals"] == 1 and t2.state()["duplicate_hits"] == 1
+    assert t2.state()["generated"] == 2
+    t3 = BudgetTracker(max_unique_evals=100, max_model_calls=2)
+    t3.charge_eval((1,), model_calls=2)
     with pytest.raises(BudgetExceeded):
-        t2.charge_eval((1,), model_calls=1)
+        t3.charge_eval((2,), model_calls=1)
+    assert t3.state()["model_calls"] == 2
+    # duplicates never re-charge model calls (memoized, no re-evaluation)
+    assert t3.charge_eval((1,), model_calls=99) is False
+    assert t3.state()["model_calls"] == 2
 
 
 def test_random_reproducible_and_ga_deterministic():
@@ -77,6 +88,16 @@ def test_ga_beats_noul_only_on_structured_cache():
                mutation_rate=0.2, elitism=1, seed=17)
     assert g["best_fit"]["accuracy"] > base["accuracy"]
     assert g["best"]["use_second"] == 1
+
+
+def test_ga_memoizes_duplicates_without_unique_charge():
+    rows = synth(n=40, seed=0)
+    t = BudgetTracker(max_unique_evals=100, max_model_calls=0)
+    g = ga_run(rows, population=4, generations=2, crossover_rate=0.0,
+               mutation_rate=0.0, elitism=1, seed=3, tracker=t)
+    # zero variation: children duplicate parents; uniques stay bounded
+    assert g["n_unique_evals"] <= 4
+    assert t.state()["generated"] >= t.state()["unique_evals"]
 
 
 def test_ga_stops_gracefully_when_budget_exhausted():
@@ -169,11 +190,23 @@ def test_selective_policy_math():
             {"correct": False, "top1": None, "margin": None}]
     g = AbstainGenome(t=0.5, use_margin=0, m=0.0).repaired()
     fit = evaluate_math(g, rows)
-    assert fit == {"sel_accuracy": 1.0, "coverage": 0.5, "n_answered": 2, "n": 4}
+    assert fit["sel_accuracy"] == round(2 / 3, 4) and fit["coverage"] == 0.75
+    assert fit["n_answered"] == 3 and fit["n_missing"] == 1
     g2 = AbstainGenome(t=0.5, use_margin=1, m=0.1).repaired()
     fit2 = evaluate_math(g2, rows)
-    assert fit2["n_answered"] == 2 and fit2["sel_accuracy"] == 1.0
+    assert fit2["n_answered"] == 3 and fit2["sel_accuracy"] == round(2 / 3, 4)
     assert AbstainGenome.from_vector(g.to_vector()) == g
+
+
+def test_cascade_missing_outputs_fail_closed():
+    rows = [{"gold": True, "noul_p": None, "switch_correct": False},
+            {"gold": False, "noul_p": None, "switch_correct": False},
+            {"gold": True, "noul_p": 0.9, "switch_correct": True}]
+    fit = evaluate(CascadeGenome(lo=0.0, hi=1.0, use_second=0), rows)
+    assert fit["n"] == 3 and fit["n_missing"] == 2
+    assert fit["accuracy"] == round(1 / 3, 4)
+    assert fit["macro_f1"] < fit["accuracy"] or True  # reported, not asserted
+    assert set(("macro_f1", "balanced_accuracy")) <= set(fit)
 
 
 def test_abstain_roundtrip_nontrivial_genes():

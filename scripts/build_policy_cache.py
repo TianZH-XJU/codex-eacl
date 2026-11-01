@@ -92,11 +92,17 @@ def main():
                 err, ans = None, None
                 try:
                     q = qs if isinstance(qs, dict) and qs.get("type") else qs[rep]
-                    ans, _, _ = model.predict(MODEL_TASKS[args.task], {"message": row["text"]},
-                                              {"q": q}, prompt_version="policy-cache-v1")
+                    ans, _, rec_one = model.predict(MODEL_TASKS[args.task], {"message": row["text"]},
+                                                    {"q": q}, prompt_version="policy-cache-v1")
                     inner = ans.get("q", ans) if isinstance(ans, dict) else {}
+                    if rec_one is None or not rec_one.ok:
+                        err = f"model_error:{rec_one.error if rec_one else 'no-record'}"
+                        inner = {}
+                    elif not rec_one.parse_ok:
+                        err = f"parse_error:{rec_one.error}"
+                        inner = {}
                 except Exception as e:  # noqa: BLE001
-                    err, inner = f"{type(e).__name__}: {e}", {}
+                    err, inner = f"model_error:{type(e).__name__}: {e}", {}
                 ms = (time.perf_counter() - t0) * 1000.0
                 calls += 1
                 rec[rep] = {"ms": round(ms, 1), "error": err, "raw": inner}

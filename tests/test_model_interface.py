@@ -58,11 +58,76 @@ def test_registry_pins_match_v4_yaml():
     assert set(ADAPTERS) == {"laya", "vela"}
 
 
+def test_vela_weight_pin_matches_adapter_and_verifier():
+    from models.vela_adapter import PINNED_WEIGHT_SHA256, verify_weights
+    assert MODEL_PINS["vela"]["weights_sha256"] == PINNED_WEIGHT_SHA256
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        p = Path(d) / "model.safetensors"
+        p.write_bytes(b"fake-weights")
+        import hashlib
+        good = hashlib.sha256(b"fake-weights").hexdigest()
+        assert verify_weights(d, expected=good)["verified"] is True
+        with pytest.raises(RuntimeError):
+            verify_weights(d, expected="0" * 64)
+
+
 def test_get_adapter_rejects_unknown_and_constructs_pinned():
     assert get_adapter("laya").revision == MODEL_PINS["laya"]["revision"]
     assert get_adapter("vela").revision == MODEL_PINS["vela"]["revision"]
     with pytest.raises(KeyError):
         get_adapter("gptX")
+
+
+def test_validate_answers_rejects_bad_outputs():
+    from models.base import validate_answers
+    ok, _ = validate_answers({"q": {"type": "choice", "criteria": {"a": None, "b": None}}},
+                             {"q": {"type": "choice", "choice": "a"}})
+    assert ok is True
+    ok, f = validate_answers({"q": {"type": "choice", "criteria": {"a": None}}},
+                             {"q": {"type": "choice", "choice": "zzz"}})
+    assert ok is False and "choice_out_of_criteria" in f["q"]
+    ok, f = validate_answers({"q": {"type": "noul"}},
+                             {"q": {"type": "noul", "noul": 1.5}})
+    assert ok is False and "noul_out_of_range" in f["q"]
+    ok, f = validate_answers({"q": {"type": "noul"}}, {"q": {"type": "noul"}})
+    assert ok is False and "noul_not_a_number" in f["q"]
+    ok, _ = validate_answers({"q": {"type": "score"}}, {"q": {"type": "score", "score": 2.5}})
+    assert ok is True
+    ok, _ = validate_answers({"q": {"type": "choice"}}, {})
+    assert ok is False
+
+
+def test_adapters_surface_ok_and_parse_ok_separately():
+    from models.laya_adapter import LayaAdapter
+    from models.vela_adapter import VelaAdapter
+    la, va = LayaAdapter(), VelaAdapter()
+
+    class Boom:
+        def predict(self, *a, **k):
+            raise RuntimeError("backend down")
+        def system_one(self, *a, **k):
+            raise RuntimeError("backend down")
+    la._agent = Boom()
+    _, _, rec = la.predict("intent", {"message": "x"},
+                           {"q": {"type": "choice", "criteria": {"a": None}}})
+    assert rec.ok is False and rec.parse_ok is False and rec.error.startswith("model:")
+    va._agent = Boom()
+    _, _, rec = va.predict("intent", "x", {"q": {"type": "choice", "criteria": {"a": None}}})
+    assert rec.ok is False and rec.parse_ok is False
+
+    class BadChoice:
+        def predict(self, *a, **k):
+            return {"answers": {"q": {"type": "choice", "choice": "zzz"}}}
+        def system_one(self, *a, **k):
+            return {"answers": {"q": {"type": "choice", "choice": "zzz"}}, "usage": {}}
+    la._agent = BadChoice()
+    _, _, rec = la.predict("intent", {"message": "x"},
+                           {"q": {"type": "choice", "criteria": {"a": None}}})
+    assert rec.ok is True and rec.parse_ok is False and rec.error.startswith("parse:")
+    va._agent = BadChoice()
+    _, _, rec = va.predict("intent", "x", {"q": {"type": "choice", "criteria": {"a": None}}})
+    assert rec.ok is True and rec.parse_ok is False
 
 
 def test_record_is_frozen_and_complete():

@@ -31,9 +31,12 @@ class AbstainGenome:
 
 def evaluate_math(genome: AbstainGenome, rows: list) -> dict:
     g = genome.repaired()
-    answered, correct = 0, 0
+    answered, correct, n_missing = 0, 0, 0
     for r in rows:
         if r.get("top1") is None:
+            # Fail-closed: no signal -> forced answer, counted wrong.
+            n_missing += 1
+            answered += 1
             continue
         abstain = r["top1"] < g.t or (g.use_margin and (r.get("margin") or 0.0) < g.m)
         if abstain:
@@ -42,4 +45,5 @@ def evaluate_math(genome: AbstainGenome, rows: list) -> dict:
         correct += int(bool(r.get("correct")))
     cov = answered / max(len(rows), 1)
     return {"sel_accuracy": round(correct / max(answered, 1), 4),
-            "coverage": round(cov, 4), "n_answered": answered, "n": len(rows)}
+            "coverage": round(cov, 4), "n_answered": answered, "n": len(rows),
+            "n_missing": n_missing}

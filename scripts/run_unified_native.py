@@ -162,8 +162,12 @@ def main():
                                                     {"message": row["text"]}, {"q": q},
                                                     prompt_version="unified-native-v1")
                 except Exception as e:  # noqa: BLE001
-                    err = f"{type(e).__name__}: {e}"
-                    rec = None
+                    err, rec = f"model_error:{type(e).__name__}: {e}", None
+                if err is None:
+                    if rec is None or not rec.ok:
+                        err = f"model_error:{rec.error if rec else 'no-record'}"
+                    elif not rec.parse_ok:
+                        err = f"parse_error:{rec.error}"
                 ms = (time.perf_counter() - t0) * 1000.0
                 ans_q = unwrap(ans)
                 ok = False if err else correctness(args.task, rep, row, ans_q)

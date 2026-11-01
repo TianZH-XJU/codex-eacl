@@ -29,7 +29,8 @@ SWITCH_Q = {"type": "choice", "instructions": "Is this function secure or vulner
 class CodeAdapter(TaskAdapter):
     task_id = "codexglue_defect"
     domain = "code"
-    group_unit = "function_or_project"
+    group_unit = "function_text_hash"  # NOT project holdout: exact-duplicate
+    # functions share a group; cross-project leakage is NOT controlled here.
     adapter_version = "src-tasks-v1"
 
     def labels(self):

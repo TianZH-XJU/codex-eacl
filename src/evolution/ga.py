@@ -50,11 +50,18 @@ def run(rows: list, population: int, generations: int, crossover_rate: float,
     rng = random.Random(seed)
     pop = [RS.sample_genome(rng) for _ in range(population)]
     archive = []
+    memo = {}
 
     def score(g):
+        key = g.to_vector()
+        if key in memo:
+            if tracker is not None:
+                tracker.charge_eval(key)
+            return memo[key]
         if tracker is not None:
-            tracker.charge_eval(g.to_vector())
+            tracker.charge_eval(key)
         fit = F.evaluate(g, rows, lam=lam)
+        memo[key] = fit
         archive.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
         return fit
 

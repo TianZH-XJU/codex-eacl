@@ -19,6 +19,8 @@ MODEL_PINS = {
         "repo": "vllm-sr/Vela-2.0-0.3B",
         "revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
         "backend": "torch_fp32_cpu",
+        "weights_file": "model.safetensors",
+        "weights_sha256": "bd37dd0db177d766bc554eded78ae8493bc248172d0480f6a543b30932a0cc8e",
     },
 }
 
