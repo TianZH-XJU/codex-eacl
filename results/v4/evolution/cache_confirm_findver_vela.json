@@ -1,0 +1,546 @@
+{
+  "created_utc": "2026-11-01T08:40:18.953935+00:00",
+  "task": "findver",
+  "model": "vela",
+  "split": "confirm",
+  "seed": 17,
+  "n": 44,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "project_git_sha": "1102f137c0f16a0c5a954932cb5104c70e4ec266",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1752.3,
+  "real_model_calls": 88,
+  "rows": [
+    {
+      "key": "knowledge-val-0",
+      "gold": true,
+      "group_id": "rp:LOOP-2024-01-16_10-Q.json",
+      "noul_p": 0.611780432491131,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-109",
+      "gold": false,
+      "group_id": "rp:HGYN-2024-04-09_10-K.json",
+      "noul_p": 0.04389585333650403,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-21",
+      "gold": false,
+      "group_id": "rp:ASIX-2024-02-16_10-K.json",
+      "noul_p": 0.7365021720943286,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-149",
+      "gold": true,
+      "group_id": "rp:FUST-2024-02-06_10-Q.json",
+      "noul_p": 0.5813804155757182,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-81",
+      "gold": false,
+      "group_id": "rp:ETD-2024-01-24_10-Q.json",
+      "noul_p": 0.616694390704521,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-9",
+      "gold": true,
+      "group_id": "rp:GCBC-2024-02-09_10-Q.json",
+      "noul_p": 0.6516836002163623,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-86",
+      "gold": false,
+      "group_id": "rp:ANGO-2024-04-09_10-Q.json",
+      "noul_p": 0.7464608720568348,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-227",
+      "gold": true,
+      "group_id": "rp:WSTRF-2024-04-16_10-K.json",
+      "noul_p": 0.5024295379165503,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-15",
+      "gold": false,
+      "group_id": "rp:KSCP-2024-04-01_10-K.json",
+      "noul_p": 0.18117626595817238,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-41",
+      "gold": true,
+      "group_id": "rp:HNI-2024-02-27_10-K.json",
+      "noul_p": 0.7342884997611965,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-6",
+      "gold": false,
+      "group_id": "rp:LOOP-2024-01-16_10-Q.json",
+      "noul_p": 0.7388951776681839,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-53",
+      "gold": true,
+      "group_id": "rp:NLIT-2024-04-01_10-K.json",
+      "noul_p": 0.77551506891632,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-238",
+      "gold": true,
+      "group_id": "rp:VPLM-2024-02-14_10-Q.json",
+      "noul_p": 0.6153363775010979,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-198",
+      "gold": true,
+      "group_id": "rp:KSCP-2024-04-01_10-K.json",
+      "noul_p": 0.4495340646334182,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-205",
+      "gold": true,
+      "group_id": "rp:ETD-2024-01-24_10-Q.json",
+      "noul_p": 0.7818986527871125,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-196",
+      "gold": true,
+      "group_id": "rp:KSCP-2024-04-01_10-K.json",
+      "noul_p": 0.5488298367734067,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-102",
+      "gold": false,
+      "group_id": "rp:SOBR-2024-04-01_10-K.json",
+      "noul_p": 0.6907235019771554,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-219",
+      "gold": true,
+      "group_id": "rp:ETD-2024-01-24_10-Q.json",
+      "noul_p": 0.6935911699705468,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-83",
+      "gold": false,
+      "group_id": "rp:LOOP-2024-01-16_10-Q.json",
+      "noul_p": 0.6887319026793185,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-32",
+      "gold": true,
+      "group_id": "rp:NLIT-2024-04-01_10-K.json",
+      "noul_p": 0.7564202573787949,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-106",
+      "gold": false,
+      "group_id": "rp:LOOP-2024-01-16_10-Q.json",
+      "noul_p": 0.5222152542099652,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-110",
+      "gold": false,
+      "group_id": "rp:ETD-2024-01-24_10-Q.json",
+      "noul_p": 0.65805783448236,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-123",
+      "gold": false,
+      "group_id": "rp:GBOX-2024-03-26_10-K.json",
+      "noul_p": 0.5419346701366335,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-53",
+      "gold": false,
+      "group_id": "rp:VPLM-2024-02-14_10-Q.json",
+      "noul_p": 0.7289053320459703,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-223",
+      "gold": true,
+      "group_id": "rp:HNI-2024-02-27_10-K.json",
+      "noul_p": 0.39898607101923894,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-201",
+      "gold": true,
+      "group_id": "rp:HNI-2024-02-27_10-K.json",
+      "noul_p": 0.5116124040172922,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-190",
+      "gold": true,
+      "group_id": "rp:FUST-2024-02-06_10-Q.json",
+      "noul_p": 0.6076163092403778,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-231",
+      "gold": true,
+      "group_id": "rp:KORE-WT-2024-04-15_10-K.json",
+      "noul_p": 0.6850033810547022,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-163",
+      "gold": false,
+      "group_id": "rp:HGYN-2024-04-09_10-K.json",
+      "noul_p": 0.4285473518591501,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-12",
+      "gold": false,
+      "group_id": "rp:KSCP-2024-04-01_10-K.json",
+      "noul_p": 0.8134214083460423,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-138",
+      "gold": true,
+      "group_id": "rp:FUST-2024-02-06_10-Q.json",
+      "noul_p": 0.7606400954767591,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-163",
+      "gold": true,
+      "group_id": "rp:WSTRF-2024-04-16_10-K.json",
+      "noul_p": 0.7744290204182852,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-210",
+      "gold": true,
+      "group_id": "rp:KORE-WT-2024-04-15_10-K.json",
+      "noul_p": 0.5614316141842511,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-115",
+      "gold": false,
+      "group_id": "rp:HGYN-2024-04-09_10-K.json",
+      "noul_p": 0.07011410359971472,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-141",
+      "gold": true,
+      "group_id": "rp:ANGO-2024-04-09_10-Q.json",
+      "noul_p": 0.8222558424275457,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-139",
+      "gold": true,
+      "group_id": "rp:ETD-2024-01-24_10-Q.json",
+      "noul_p": 0.5322573684805616,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-213",
+      "gold": true,
+      "group_id": "rp:HNI-2024-02-27_10-K.json",
+      "noul_p": 0.7604716015221819,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-174",
+      "gold": true,
+      "group_id": "rp:LOOP-2024-01-16_10-Q.json",
+      "noul_p": 0.6667882741431638,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-18",
+      "gold": true,
+      "group_id": "rp:GBOX-2024-03-26_10-K.json",
+      "noul_p": 0.5449756005155126,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-175",
+      "gold": true,
+      "group_id": "rp:HNI-2024-02-27_10-K.json",
+      "noul_p": 0.5188921226819162,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-246",
+      "gold": true,
+      "group_id": "rp:IMAQU-2024-02-23_10-Q.json",
+      "noul_p": 0.7546152447696532,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-200",
+      "gold": true,
+      "group_id": "rp:HNI-2024-02-27_10-K.json",
+      "noul_p": 0.5424336561989388,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-9",
+      "gold": false,
+      "group_id": "rp:KSCP-2024-04-01_10-K.json",
+      "noul_p": 0.443357319072559,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-166",
+      "gold": true,
+      "group_id": "rp:LOOP-2024-01-16_10-Q.json",
+      "noul_p": 0.8236271431823587,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    }
+  ],
+  "status": "passed"
+}
