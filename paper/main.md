@@ -263,6 +263,11 @@ Cross-evaluated every evolved best genome on all four caches (3 seeds each):
 Every off-diagonal transfer loses; cross-model same-task transfer is asymmetric
 and task transfer fails outright. Evolved policies are task×model-specific;
 on collapsed Vela/findver there is nothing to evolve or transfer to.
+v4.1 rerun on train-selected genomes (macro-F1, search_train in-sample,
+`results/v4_1/evolution/transfer_matrix.json`): max off-diagonal gap 0.0
+(two ties), worst -0.1111 — no positive transfer. The findver/Vela best
+genomes are dict-identical to code/Laya on all 3 seeds (convergence to the
+flat noul-only plateau under identical seed RNG), so those matrix rows coincide.
 
 **Phase 5 budget ablation (offline, budget 12 vs 24, same caches).**
 GA means identical at both budgets (converged); GA−Random sign flips by

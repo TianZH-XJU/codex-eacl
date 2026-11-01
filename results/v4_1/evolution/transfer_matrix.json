@@ -1,0 +1,152 @@
+{
+  "matrix": {
+    "code/laya_on_code/laya": {
+      "mean": 0.5499,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.55,
+      "target_own_ga_mean": 0.5499,
+      "gap_to_target_own": 0.0,
+      "diagonal": true
+    },
+    "code/laya_on_code/vela": {
+      "mean": 0.3162,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.4167,
+      "target_own_ga_mean": 0.4273,
+      "gap_to_target_own": -0.1111,
+      "diagonal": false
+    },
+    "code/laya_on_findver/laya": {
+      "mean": 0.5286,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5333,
+      "target_own_ga_mean": 0.5592,
+      "gap_to_target_own": -0.0306,
+      "diagonal": false
+    },
+    "code/laya_on_findver/vela": {
+      "mean": 0.475,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5333,
+      "target_own_ga_mean": 0.475,
+      "gap_to_target_own": -0.0,
+      "diagonal": false
+    },
+    "code/vela_on_code/laya": {
+      "mean": 0.4501,
+      "std": 0.0166,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5278,
+      "target_own_ga_mean": 0.5499,
+      "gap_to_target_own": -0.0998,
+      "diagonal": false
+    },
+    "code/vela_on_code/vela": {
+      "mean": 0.4273,
+      "std": 0.0106,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5167,
+      "target_own_ga_mean": 0.4273,
+      "gap_to_target_own": 0.0,
+      "diagonal": true
+    },
+    "code/vela_on_findver/laya": {
+      "mean": 0.4992,
+      "std": 0.0282,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5,
+      "target_own_ga_mean": 0.5592,
+      "gap_to_target_own": -0.06,
+      "diagonal": false
+    },
+    "code/vela_on_findver/vela": {
+      "mean": 0.3741,
+      "std": 0.0335,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.55,
+      "target_own_ga_mean": 0.475,
+      "gap_to_target_own": -0.1009,
+      "diagonal": false
+    },
+    "findver/laya_on_code/laya": {
+      "mean": 0.5327,
+      "std": 0.0172,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5333,
+      "target_own_ga_mean": 0.5499,
+      "gap_to_target_own": -0.0172,
+      "diagonal": false
+    },
+    "findver/laya_on_code/vela": {
+      "mean": 0.3471,
+      "std": 0.0383,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.4222,
+      "target_own_ga_mean": 0.4273,
+      "gap_to_target_own": -0.0802,
+      "diagonal": false
+    },
+    "findver/laya_on_findver/laya": {
+      "mean": 0.5592,
+      "std": 0.0276,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5611,
+      "target_own_ga_mean": 0.5592,
+      "gap_to_target_own": 0.0,
+      "diagonal": true
+    },
+    "findver/laya_on_findver/vela": {
+      "mean": 0.4418,
+      "std": 0.0554,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5389,
+      "target_own_ga_mean": 0.475,
+      "gap_to_target_own": -0.0332,
+      "diagonal": false
+    },
+    "findver/vela_on_code/laya": {
+      "mean": 0.5499,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.55,
+      "target_own_ga_mean": 0.5499,
+      "gap_to_target_own": 0.0,
+      "diagonal": false
+    },
+    "findver/vela_on_code/vela": {
+      "mean": 0.3162,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.4167,
+      "target_own_ga_mean": 0.4273,
+      "gap_to_target_own": -0.1111,
+      "diagonal": false
+    },
+    "findver/vela_on_findver/laya": {
+      "mean": 0.5286,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5333,
+      "target_own_ga_mean": 0.5592,
+      "gap_to_target_own": -0.0306,
+      "diagonal": false
+    },
+    "findver/vela_on_findver/vela": {
+      "mean": 0.475,
+      "std": 0.0,
+      "metric": "macro_f1",
+      "mean_accuracy": 0.5333,
+      "target_own_ga_mean": 0.475,
+      "gap_to_target_own": -0.0,
+      "diagonal": true
+    }
+  },
+  "track": "v4_1",
+  "metric": "macro_f1",
+  "pool": "search_train (in-sample: same pool as genome search; held-out transfer not claimed)",
+  "note": "cache-exact transfer; no new model calls; seeds 17/23/41"
+}

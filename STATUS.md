@@ -19,7 +19,7 @@
 | E2 menu pilot (real calls) | FLAT IN NOISE | exhaustive-24 + random-12 both models, n=30: Vela 0.633–0.80, Laya 0.667–0.80; cross-process flips (Vela 7/12 ±1 row, Laya 6/12 up to ±3 rows) vs 0 within-process flips; cross-model corr 0.092; norm no-op (effective 12); `results/v2/menu/e2_joint_analysis.json` | GP stays blocked: lit floor is EvoPrompt 50/eval x~500 prompt-evals + full-test confirm, PromptBreeder ~100k+ example-evals; pass requires >=200/200/200 fresh rows (survey ses_e6962c962ffeYivpinJdzKndLb)
 | Phase 4 code EA (GA vs Random, matched 24) | NO ADVANTAGE DEMONSTRATED | Laya GA 0.65 = fixed switch, +0.011 over Random (n.s.); Vela GA 0.689 vs Random 0.683 (n.s.), +0.022 over fixed (in seed noise); `results/v4/evolution/evo_code_*.json` |
 | Phase 4 findver EA (matched 24) | NO ADVANTAGE | Laya GA 0.7175 vs Random 0.7119 (n.s.); Vela GA 0.463 < Random 0.475 | 
-| Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap <= 0.0, worst -0.20; results/v4/evolution/transfer_matrix.json |
+| Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap <= 0.0, worst -0.20; results/v4/evolution/transfer_matrix.json | v4.1 rerun (train-selected, macro-F1, search_train in-sample): max off-diagonal 0.0 (two ties), worst -0.1111, no positive transfer; findver/vela best genomes dict-identical to code/laya (noul-only plateau convergence); `results/v4_1/evolution/transfer_matrix.json`
 | Phase 5 budget 12 vs 24 | NO SYSTEMATIC EDGE | GA flat, GA−Random sign flips by task |
 | Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
 | Phase 5 cross/elit/lam sweeps | NO PATTERN | 16 configs, GA 0.644-0.717, diffs in noise; `grid_*`, `lam_*` |
