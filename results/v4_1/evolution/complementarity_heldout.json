@@ -1,0 +1,271 @@
+{
+  "created_utc": "2026-11-01T21:26:04.125626+00:00",
+  "repo_commit": "c43cffc7b9d4caca8314ed971c3896e6defcd1ce",
+  "protocol_version": "v4.1",
+  "design": "frozen train-selected fixed-action direction; repair/harmful and headroom recomputed on dev and confirm; macro-F1 fixed-action deltas",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/complementarity_heldout.json"
+    ]
+  },
+  "analysis_script": "analyze_complementarity_heldout.py",
+  "analysis_type": "confirmatory",
+  "selection_used": false,
+  "confirm_used": true,
+  "pools": "frozen train direction; dev=selection, confirm=held-out check",
+  "cells": {
+    "code_laya": {
+      "base_action_frozen": "noul",
+      "train_macro_f1": {
+        "noul": 0.5499,
+        "switch": 0.4444
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "train": {
+        "n": 60,
+        "repair": 14,
+        "harmful": 15,
+        "net": -1,
+        "net_pp": -0.0167,
+        "net_ci95": [
+          -0.2,
+          0.1667
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.4833,
+        "oracle_headroom_acc": 0.2333,
+        "macro_f1_noul": 0.5499,
+        "macro_f1_switch": 0.4444,
+        "macro_f1_delta_switch_minus_noul": -0.1055
+      },
+      "dev": {
+        "n": 60,
+        "repair": 23,
+        "harmful": 11,
+        "net": 12,
+        "net_pp": 0.2,
+        "net_ci95": [
+          0.0167,
+          0.3833
+        ],
+        "mcnemar_exact_p": 0.0576,
+        "disagreement": 0.5667,
+        "oracle_headroom_acc": 0.3833,
+        "macro_f1_noul": 0.4486,
+        "macro_f1_switch": 0.5225,
+        "macro_f1_delta_switch_minus_noul": 0.0739
+      },
+      "confirm": {
+        "n": 60,
+        "repair": 17,
+        "harmful": 16,
+        "net": 1,
+        "net_pp": 0.0167,
+        "net_ci95": [
+          -0.1833,
+          0.2
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.55,
+        "oracle_headroom_acc": 0.2833,
+        "macro_f1_noul": 0.5489,
+        "macro_f1_switch": 0.4222,
+        "macro_f1_delta_switch_minus_noul": -0.1267
+      }
+    },
+    "code_vela": {
+      "base_action_frozen": "switch",
+      "train_macro_f1": {
+        "noul": 0.3162,
+        "switch": 0.4334
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "train": {
+        "n": 60,
+        "repair": 4,
+        "harmful": 10,
+        "net": -6,
+        "net_pp": -0.1,
+        "net_ci95": [
+          -0.2167,
+          0.0167
+        ],
+        "mcnemar_exact_p": 0.1796,
+        "disagreement": 0.2333,
+        "oracle_headroom_acc": 0.0667,
+        "macro_f1_noul": 0.3162,
+        "macro_f1_switch": 0.4334,
+        "macro_f1_delta_switch_minus_noul": 0.1172
+      },
+      "dev": {
+        "n": 60,
+        "repair": 5,
+        "harmful": 7,
+        "net": -2,
+        "net_pp": -0.0333,
+        "net_ci95": [
+          -0.15,
+          0.0833
+        ],
+        "mcnemar_exact_p": 0.7744,
+        "disagreement": 0.2,
+        "oracle_headroom_acc": 0.0833,
+        "macro_f1_noul": 0.5312,
+        "macro_f1_switch": 0.5342,
+        "macro_f1_delta_switch_minus_noul": 0.003
+      },
+      "confirm": {
+        "n": 60,
+        "repair": 10,
+        "harmful": 10,
+        "net": 0,
+        "net_pp": 0.0,
+        "net_ci95": [
+          -0.15,
+          0.15
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.3333,
+        "oracle_headroom_acc": 0.1667,
+        "macro_f1_noul": 0.446,
+        "macro_f1_switch": 0.5238,
+        "macro_f1_delta_switch_minus_noul": 0.0778
+      }
+    },
+    "findver_laya": {
+      "base_action_frozen": "noul",
+      "train_macro_f1": {
+        "noul": 0.5286,
+        "switch": 0.5155
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "train": {
+        "n": 60,
+        "repair": 5,
+        "harmful": 6,
+        "net": -1,
+        "net_pp": -0.0167,
+        "net_ci95": [
+          -0.127,
+          0.0862
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.1833,
+        "oracle_headroom_acc": 0.0833,
+        "macro_f1_noul": 0.5286,
+        "macro_f1_switch": 0.5155,
+        "macro_f1_delta_switch_minus_noul": -0.0131
+      },
+      "dev": {
+        "n": 59,
+        "repair": 6,
+        "harmful": 10,
+        "net": -4,
+        "net_pp": -0.0678,
+        "net_ci95": [
+          -0.2333,
+          0.06
+        ],
+        "mcnemar_exact_p": 0.4545,
+        "disagreement": 0.2712,
+        "oracle_headroom_acc": 0.1017,
+        "macro_f1_noul": 0.7089,
+        "macro_f1_switch": 0.6374,
+        "macro_f1_delta_switch_minus_noul": -0.0715
+      },
+      "confirm": {
+        "n": 44,
+        "repair": 7,
+        "harmful": 1,
+        "net": 6,
+        "net_pp": 0.1364,
+        "net_ci95": [
+          0.0204,
+          0.246
+        ],
+        "mcnemar_exact_p": 0.0703,
+        "disagreement": 0.1818,
+        "oracle_headroom_acc": 0.1591,
+        "macro_f1_noul": 0.4958,
+        "macro_f1_switch": 0.6071,
+        "macro_f1_delta_switch_minus_noul": 0.1113
+      }
+    },
+    "findver_vela": {
+      "base_action_frozen": "noul",
+      "train_macro_f1": {
+        "noul": 0.475,
+        "switch": 0.3548
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "train": {
+        "n": 60,
+        "repair": 7,
+        "harmful": 6,
+        "net": 1,
+        "net_pp": 0.0167,
+        "net_ci95": [
+          -0.0833,
+          0.1346
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.2167,
+        "oracle_headroom_acc": 0.1167,
+        "macro_f1_noul": 0.475,
+        "macro_f1_switch": 0.3548,
+        "macro_f1_delta_switch_minus_noul": -0.1202
+      },
+      "dev": {
+        "n": 59,
+        "repair": 6,
+        "harmful": 6,
+        "net": 0,
+        "net_pp": 0.0,
+        "net_ci95": [
+          -0.0909,
+          0.1154
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.2034,
+        "oracle_headroom_acc": 0.1017,
+        "macro_f1_noul": 0.4201,
+        "macro_f1_switch": 0.314,
+        "macro_f1_delta_switch_minus_noul": -0.1061
+      },
+      "confirm": {
+        "n": 44,
+        "repair": 2,
+        "harmful": 3,
+        "net": -1,
+        "net_pp": -0.0227,
+        "net_ci95": [
+          -0.1026,
+          0.05
+        ],
+        "mcnemar_exact_p": 1.0,
+        "disagreement": 0.1136,
+        "oracle_headroom_acc": 0.0455,
+        "macro_f1_noul": 0.6174,
+        "macro_f1_switch": 0.5111,
+        "macro_f1_delta_switch_minus_noul": -0.1063
+      }
+    }
+  }
+}

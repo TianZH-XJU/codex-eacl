@@ -1,0 +1,322 @@
+{
+  "created_utc": "2026-11-01T21:25:21.830966+00:00",
+  "repo_commit": "c43cffc7b9d4caca8314ed971c3896e6defcd1ce",
+  "protocol_version": "v4.1",
+  "design": "frozen dev-selected routing rules from utility_predictability.json; group-bootstrap CIs for net utility on dev and confirm",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/routing_net_cis.json"
+    ]
+  },
+  "cells": {
+    "code_laya": {
+      "champion": "logreg",
+      "dev_t_reported": 0.0033,
+      "n_pos": {
+        "train": 14,
+        "dev": 23,
+        "confirm": 17
+      },
+      "dev_t_unrounded": 0.003312,
+      "dev": {
+        "router": {
+          "net": 0.2,
+          "repair": 23,
+          "regression": 11,
+          "net_ci95": [
+            0.0167,
+            0.3833
+          ],
+          "excludes_zero": true
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": 0.2,
+          "repair": 23,
+          "regression": 11,
+          "net_ci95": [
+            0.0167,
+            0.3833
+          ],
+          "excludes_zero": true
+        },
+        "n_switched": 60
+      },
+      "confirm_t_unrounded": 0.003312,
+      "confirm": {
+        "router": {
+          "net": 0.0167,
+          "repair": 17,
+          "regression": 16,
+          "net_ci95": [
+            -0.1833,
+            0.2
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": 0.0167,
+          "repair": 17,
+          "regression": 16,
+          "net_ci95": [
+            -0.1667,
+            0.2167
+          ],
+          "excludes_zero": false
+        },
+        "n_switched": 60
+      }
+    },
+    "code_vela": {
+      "champion": "logreg",
+      "dev_t_reported": 0.0812,
+      "n_pos": {
+        "train": 10,
+        "dev": 7,
+        "confirm": 10
+      },
+      "dev_t_unrounded": 0.081202,
+      "dev": {
+        "router": {
+          "net": 0.0333,
+          "repair": 7,
+          "regression": 5,
+          "net_ci95": [
+            -0.0833,
+            0.15
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": 0.0333,
+          "repair": 7,
+          "regression": 5,
+          "net_ci95": [
+            -0.0833,
+            0.15
+          ],
+          "excludes_zero": false
+        },
+        "n_switched": 60
+      },
+      "confirm_t_unrounded": 0.081202,
+      "confirm": {
+        "router": {
+          "net": -0.0167,
+          "repair": 9,
+          "regression": 10,
+          "net_ci95": [
+            -0.15,
+            0.1167
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": 0.0,
+          "repair": 10,
+          "regression": 10,
+          "net_ci95": [
+            -0.15,
+            0.15
+          ],
+          "excludes_zero": false
+        },
+        "n_switched": 57
+      }
+    },
+    "findver_laya": {
+      "champion": "tree",
+      "dev_t_reported": 0.5,
+      "n_pos": {
+        "train": 5,
+        "dev": 6,
+        "confirm": 7
+      },
+      "dev_t_unrounded": 0.5,
+      "dev": {
+        "router": {
+          "net": 0.0169,
+          "repair": 1,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0556
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": -0.0678,
+          "repair": 6,
+          "regression": 10,
+          "net_ci95": [
+            -0.2344,
+            0.0625
+          ],
+          "excludes_zero": false
+        },
+        "n_switched": 8
+      },
+      "confirm_t_unrounded": 0.5,
+      "confirm": {
+        "router": {
+          "net": 0.0227,
+          "repair": 1,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0882
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": 0.1364,
+          "repair": 7,
+          "regression": 1,
+          "net_ci95": [
+            0.0208,
+            0.25
+          ],
+          "excludes_zero": true
+        },
+        "n_switched": 7
+      }
+    },
+    "findver_vela": {
+      "champion": "logreg",
+      "dev_t_reported": 0.4281,
+      "n_pos": {
+        "train": 7,
+        "dev": 6,
+        "confirm": 2
+      },
+      "dev_t_unrounded": 0.428065,
+      "dev": {
+        "router": {
+          "net": 0.0339,
+          "repair": 4,
+          "regression": 2,
+          "net_ci95": [
+            -0.0312,
+            0.1
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": 0.0,
+          "repair": 6,
+          "regression": 6,
+          "net_ci95": [
+            -0.0909,
+            0.1176
+          ],
+          "excludes_zero": false
+        },
+        "n_switched": 7
+      },
+      "confirm_t_unrounded": 0.428065,
+      "confirm": {
+        "router": {
+          "net": -0.0227,
+          "repair": 0,
+          "regression": 1,
+          "net_ci95": [
+            -0.0698,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_noul": {
+          "net": 0.0,
+          "repair": 0,
+          "regression": 0,
+          "net_ci95": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false
+        },
+        "fixed_switch": {
+          "net": -0.0227,
+          "repair": 2,
+          "regression": 3,
+          "net_ci95": [
+            -0.1042,
+            0.0488
+          ],
+          "excludes_zero": false
+        },
+        "n_switched": 3
+      }
+    }
+  }
+}
