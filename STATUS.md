@@ -11,7 +11,8 @@
 |---|---|---|
 | A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; full suite 88 passed at `e166e29` (only authoritative count; older counts below are era-labeled history) |
 | Stage 0 E2 evidence audit | PASS | 18/18 offline checks; path corrections; see `docs/AUDIT_V4_1.md` |
-| A1 native | DONE | intent full-label baselines above; TF-IDF baselines recorded; no significant Laya/Vela gap |
+| A1 native | DONE | intent full-label baselines; code/math/findver unified 6/6 matrix (see paper §9): math 0.10 both, Vela findver collapse 0.458, Laya code switch−noul +0.20 sig |
+| Stage 3 unified native | DONE 6/6 | code Laya 0.45/0.65 Vela 0.633/0.667; findver Laya 0.712/0.644 Vela 0.458/0.458; math 0.10/0.10; `results/v4/native/unified_*.summary.json` |
 | A2 schema | DONE | legacy/Choice parser bug fixed; OOD note on wide_max1024 |
 | A3 OFAT | FAILED | h96 zero flips, max384 harmful-only; no ES on budgets |
 | E2 menu headroom | CONFIRMED | recall@10 0.94–0.98; menu beats full in 3/4 paired CIs; `results/v2/native/paired_menu_full.json` |

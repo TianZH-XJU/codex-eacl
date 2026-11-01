@@ -192,3 +192,22 @@ evolve noise. Repeatable selection needs n≈500, whose CPU cost is prohibitive 
 (exhaustive-24 ≈108 min Laya / 30 min Vela; GP-300 ≈22.6 h Laya / 6.3 h Vela, real calls).
 E2 search is therefore BLOCKED pending budget or a narrower space; the fixed-retrieval
 menu effect (3/4 paired CIs) stands unchanged and unclaimed by any evolutionary method.
+
+**Stage 3 unified native matrix (v4.1 adapters, search_dev, n=59–60, group-safe; 2026-11-01).**
+Same rows per task for both models, full label sets, real calls:
+
+| task / rep | Laya | Vela |
+|---|---|---|
+| code noul | 0.45 | 0.633 |
+| code switch | 0.65 | 0.667 |
+| findver noul | 0.712 | 0.458 |
+| findver switch | 0.644 | 0.458 |
+| math choice | 0.10 | 0.10 |
+
+Collapse notes (all verified from committed JSONL, zero errors): both models predict
+"secure" on 55–56/60 code rows; Vela switch predicts "supported" on 58/59 findver rows
+(0.458, below the 0.525 majority); Laya math concentrates on steps 0–5 with no sentinel
+use on this pool, Vela math spreads slightly wider — both 0.10. Only significant
+within-model rep gap: Laya code switch−noul +0.20 CI [0.017,0.38]; Vela code gap n.s.
+Vela is faster per call on short inputs but the gap closes on long code/finance inputs
+(2.3–2.4 s both models). RSS stayed ≤2.2 GB everywhere.
