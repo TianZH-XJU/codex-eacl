@@ -63,3 +63,15 @@ no source files were renamed (history stays stable).
 - [x] STATUS conflict list with fix plan that freezes v3 numbers.
 - [ ] STATUS.md restructure itself → next commit (docs-only, offline).
 - [ ] `run_budgeted_controller_cv.py` still missing → Stage 6, not Stage 0.
+
+## 6. v4.1 addendum (2026-11-01)
+
+- Full suite is now 130 passed (\pytest tests/ -q\); 86 was the count at e4b61d6.
+- Cited CIs re-verified offline into results/v4_1/manifests/recomputed_cis.json
+  (A1 paired diffs [-0.04 CI -0.16/0.08; +0.10 CI -0.02/0.21]; surrogate
+  agreements 0.6167/0.85/0.75/0.7833, all < 0.9 bar). No v4 result file was modified.
+- Train/dev/confirm split discipline enforced by scripts/eval_trainselected_on_dev.py
+  (pool-disjointness assertion) and scripts/test_evo_significance.py (paired-join check).
+- Known wording fixes applied to paper/STATUS: transfer max off-diagonal is 0.0
+  (not -0.006); ablation-vs-switch and traditional ga-vs-threshold are 11/12 ns
+  (not all-ns); there is no results/v4/menu path (always results/v2/menu).

@@ -19,18 +19,18 @@
 | E2 menu pilot (real calls) | FLAT IN NOISE | exhaustive-24 + random-12 both models, n=30: Vela 0.633–0.80, Laya 0.667–0.80; cross-process flips (Vela 7/12 ±1 row, Laya 6/12 up to ±3 rows) vs 0 within-process flips; cross-model corr 0.092; norm no-op (effective 12); `results/v2/menu/e2_joint_analysis.json` |
 | Phase 4 code EA (GA vs Random, matched 24) | NO ADVANTAGE DEMONSTRATED | Laya GA 0.65 = fixed switch, +0.011 over Random (n.s.); Vela GA 0.689 vs Random 0.683 (n.s.), +0.022 over fixed (in seed noise); `results/v4/evolution/evo_code_*.json` |
 | Phase 4 findver EA (matched 24) | NO ADVANTAGE | Laya GA 0.7175 vs Random 0.7119 (n.s.); Vela GA 0.463 < Random 0.475 | 
-| Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap ≤ −0.006, worst −0.20; `transfer_matrix.json` |
+| Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap <= 0.0, worst -0.20; results/v4/evolution/transfer_matrix.json |
 | Phase 5 budget 12 vs 24 | NO SYSTEMATIC EDGE | GA flat, GA−Random sign flips by task |
 | Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
 | Phase 5 cross/elit/lam sweeps | NO PATTERN | 16 configs, GA 0.644-0.717, diffs in noise; `grid_*`, `lam_*` |
 | Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` (IN-SAMPLE; superseded by train/dev split below) |
 | P0-2 isolation (train→dev→confirm) | SELECTION BIAS EXPOSED | code/Laya 0.65→0.45 dev (SIG negative vs switch); confirm prevalence shift documented; eval files committed |
 | Phase 4 2nd family ES (matched 24) | NO EDGE | Laya +0.017, Vela +0.017, both n.s.; agrees with GA |
-| Phase 5 executed ablation | MECHANISM FOUND | gain over noul-only = switch rep itself (code SIG); band adds nothing over always-switch (all ns) |
+| Phase 5 executed ablation | MECHANISM FOUND | gain over noul-only = switch rep itself (code SIG); band adds nothing over always-switch (11/12 ns, 1 seed SIG) |
 | NSGA-II multi-objective (matched 24) | NO EDGE | code HV diff −0.010/−0.007; math abstention Laya −0.013 / Vela +0.021 (noise) |
 | Math EA pilot (abstention) | EXPOSED, NULL | t=0.3 → 0.286 sel-acc at 11.7% cov; no useful operating point |
 | NSGA-II deploy significance | 12/12 ns | paired CIs on deployed front policy; `nsga2_deploy_significance.json` |
-| Traditional controllers | GRID TIES GA; LR COLLAPSES | threshold-best = GA everywhere (ns); LR router = noul-only on code; abstention hurts raw acc |
+| Traditional controllers | GRID TIES GA; LR COLLAPSES | threshold-best = GA everywhere except 1/12 seeds; LR router = noul-only on code; abstention hurts raw acc |
 | NEAT / NSGA-II | BLOCKED WITH CONDITIONS | no sequential structure left; no quality gradient; conditions in `configs/evolution.yaml` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
