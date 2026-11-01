@@ -58,38 +58,35 @@ def run(rows: list, mu: int = 4, lam: int = 8, sigma: float = 0.15,
             raise
     log = []
     gen = 0
-    try:
-        while gen < max_generations:
-            if stopped_early:
+    while gen < max_generations:
+        if stopped_early:
+            break
+        order = sorted(range(len(pop)),
+                       key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
+        log.append({"generation": gen,
+                    "best_scalar": fits[order[0]]["scalar"],
+                    "mean_scalar": round(sum(f["scalar"] for f in fits) / len(fits), 4)})
+        children = []
+        scored = []
+        while len(children) < lam:
+            try:
+                parent = pop[order[rng.randrange(min(mu, len(order)))]]
+                c = mutate(rng, (parent.lo, parent.hi), sigma)
+                f = score(c)
+            except BudgetExceeded:
+                stopped_early = True
                 break
-            order = sorted(range(len(pop)),
-                           key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
-            log.append({"generation": gen,
-                        "best_scalar": fits[order[0]]["scalar"],
-                        "mean_scalar": round(sum(f["scalar"] for f in fits) / len(fits), 4)})
-            children = []
-            scored = []
-            while len(children) < lam:
-                try:
-                    parent = pop[order[rng.randrange(min(mu, len(order)))]]
-                    c = mutate(rng, (parent.lo, parent.hi), sigma)
-                    f = score(c)
-                except BudgetExceeded:
-                    stopped_early = True
-                    break
-                children.append(c)
-                scored.append(f)
-            if children:
-                pool, pool_f = pop + children, fits + scored
-                order = sorted(range(len(pool)),
-                               key=lambda i: (pool_f[i]["scalar"], pool_f[i]["accuracy"]), reverse=True)
-                pop = [pool[i] for i in order[:mu]]
-                fits = [pool_f[i] for i in order[:mu]]
-                gen += 1
-            if stopped_early:
-                break
-    except BudgetExceeded:
-        stopped_early = True
+            children.append(c)
+            scored.append(f)
+        if children:
+            pool, pool_f = pop + children, fits + scored
+            order = sorted(range(len(pool)),
+                           key=lambda i: (pool_f[i]["scalar"], pool_f[i]["accuracy"]), reverse=True)
+            pop = [pool[i] for i in order[:mu]]
+            fits = [pool_f[i] for i in order[:mu]]
+            gen += 1
+        if stopped_early:
+            break
     order = sorted(range(len(pop)),
                    key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
     best = pop[order[0]]

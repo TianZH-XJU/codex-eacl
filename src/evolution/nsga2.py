@@ -112,55 +112,52 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
         if not fits:
             raise
     log, gen = [], 0
-    try:
-        while gen < min(generations, max_generations):
-            if stopped_early:
-                break
-            fronts = nondominated_sort(fits)
-            crowd = {}
-            for f in fronts:
-                crowd.update(crowding_distance(fits, f))
-            rank = {}
-            for r, f in enumerate(fronts):
-                for i in f:
-                    rank[i] = r
+    while gen < min(generations, max_generations):
+        if stopped_early:
+            break
+        fronts = nondominated_sort(fits)
+        crowd = {}
+        for f in fronts:
+            crowd.update(crowding_distance(fits, f))
+        rank = {}
+        for r, f in enumerate(fronts):
+            for i in f:
+                rank[i] = r
 
-            def select():
-                cand = rng.sample(range(len(pop)), min(2, len(pop)))
-                return pop[min(cand, key=lambda i: (rank[i], -crowd[i]))]
+        def select():
+            cand = rng.sample(range(len(pop)), min(2, len(pop)))
+            return pop[min(cand, key=lambda i: (rank[i], -crowd[i]))]
 
-            children = []
-            scored = []
-            while len(children) < lams:
-                a, b = select(), select()
-                try:
-                    c = mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate)
-                    f = score(c)
-                except BudgetExceeded:
-                    stopped_early = True
-                    break
-                children.append(c)
-                scored.append(f)
-            if not children:
+        children = []
+        scored = []
+        while len(children) < lams:
+            a, b = select(), select()
+            try:
+                c = mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate)
+                f = score(c)
+            except BudgetExceeded:
+                stopped_early = True
                 break
-            pool, pool_f = pop + children, fits + scored
-            fronts = nondominated_sort(pool_f)
-            crowd = {}
-            for f in fronts:
-                crowd.update(crowding_distance(pool_f, f))
-            rank = {}
-            for r, f in enumerate(fronts):
-                for i in f:
-                    rank[i] = r
-            order = sorted(range(len(pool)), key=lambda i: (rank[i], -crowd[i]))
-            pop = [pool[i] for i in order[:mu]]
-            fits = [pool_f[i] for i in order[:mu]]
-            fronts0 = nondominated_sort(fits)
-            log.append({"generation": gen, "front0_size": len(fronts0[0]),
-                        "hypervolume": hypervolume_2d(fits, ref)})
-            gen += 1
-    except BudgetExceeded:
-        stopped_early = True
+            children.append(c)
+            scored.append(f)
+        if not children:
+            break
+        pool, pool_f = pop + children, fits + scored
+        fronts = nondominated_sort(pool_f)
+        crowd = {}
+        for f in fronts:
+            crowd.update(crowding_distance(pool_f, f))
+        rank = {}
+        for r, f in enumerate(fronts):
+            for i in f:
+                rank[i] = r
+        order = sorted(range(len(pool)), key=lambda i: (rank[i], -crowd[i]))
+        pop = [pool[i] for i in order[:mu]]
+        fits = [pool_f[i] for i in order[:mu]]
+        fronts0 = nondominated_sort(fits)
+        log.append({"generation": gen, "front0_size": len(fronts0[0]),
+                    "hypervolume": hypervolume_2d(fits, ref)})
+        gen += 1
     fronts = nondominated_sort(fits)
     return {"pareto": [{"genome": pop[i].to_vector() if hasattr(pop[i], "to_vector") else pop[i],
                         "objectives": list(fits[i])} for i in fronts[0]],

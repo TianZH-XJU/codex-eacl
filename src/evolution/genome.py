@@ -30,6 +30,3 @@ class CascadeGenome:
     @staticmethod
     def from_vector(v) -> "CascadeGenome":
         return CascadeGenome(lo=v[0], hi=v[1], use_second=int(round(v[2]))).repaired()
-
-
-GENE_BOUNDS = {"lo": (0.0, 1.0), "hi": (0.0, 1.0), "use_second": (0.0, 1.0)}

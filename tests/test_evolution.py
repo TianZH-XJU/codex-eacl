@@ -107,8 +107,9 @@ def test_ga_stops_gracefully_when_budget_exhausted():
     g = ga_run(rows, population=8, generations=5, crossover_rate=0.8,
                mutation_rate=0.2, elitism=1, seed=5, tracker=t)
     assert g["stopped_early"] is True
-    assert g["n_unique_evals"] <= 10
-    assert g["best_fit"]["accuracy"] >= 0.0
+    assert g["n_unique_evals"] == 10  # cap exactly consumed, no off-by-one
+    # best must come from actually evaluated genomes, not thin air
+    assert g["best_fit"]["scalar"] == max(a["scalar"] for a in g["archive"])
 
 
 def test_seeding_budget_exhaustion_returns_partial_best():
@@ -202,7 +203,11 @@ def test_nsga2_runs_with_budget_and_seed():
                    generations=3,
                    tracker=BudgetTracker(max_unique_evals=12, max_model_calls=0))
     assert r1["pareto"] == r2["pareto"] and r1["n_unique_evals"] <= 12
-    assert r1["hypervolume"] >= 0.0
+    assert r1["pareto"] and all(len(p["objectives"]) == 2 for p in r1["pareto"])
+    # HV is 0.0 by construction here: objectives are (accuracy, -calls) with the
+    # default ref (0, 0), so the second objective never exceeds ref. The nonzero-HV
+    # math is covered by the hypervolume_2d unit tests above.
+    assert r1["hypervolume"] == 0.0
 
 
 def test_nsga2_mulambda_semantics():
