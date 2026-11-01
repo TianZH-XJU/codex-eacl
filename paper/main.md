@@ -211,3 +211,21 @@ use on this pool, Vela math spreads slightly wider — both 0.10. Only significa
 within-model rep gap: Laya code switch−noul +0.20 CI [0.017,0.38]; Vela code gap n.s.
 Vela is faster per call on short inputs but the gap closes on long code/finance inputs
 (2.3–2.4 s both models). RSS stayed ≤2.2 GB everywhere.
+
+**Phase 4 first EA (code task, cascade genome {lo,hi,use_second}, cache-exact fitness).**
+Policy cache built with real calls (60 rows × 2 reps per model, zero errors).
+GA (pop 8, gen 3) vs Random Search, matched budget of 24 unique genomes, seeds 17/23/41:
+
+| model | GA mean (std) | Random mean (std) | fixed switch | fixed noul |
+|---|---|---|---|---|
+| Laya | 0.65 (0.0) | 0.639 (0.035) | 0.65 | 0.45 |
+| Vela | 0.689 (0.051) | 0.683 (0.029) | 0.667 | 0.633 |
+
+GA ties or marginally beats fixed switch (+0.0 Laya, +0.022 Vela, within seed noise)
+and beats Random by +0.011/+0.006 (inside Random's std). Verdict: **no demonstrated
+evolutionary advantage on the code task** — GA rediscovers near-switch-only behavior.
+This is a result, not a failure to report: the method (population, tournament
+selection, uniform crossover, gaussian/flip mutation, elitism, hard unique-eval budget)
+is fully specified in `src/evolution/`, reproducible from committed caches, and the
+negative outcome is owned. Remaining Phase 4 shot: findver (oracle 0.814, gain +0.10);
+math excluded (single rep, no complementarity lever).
