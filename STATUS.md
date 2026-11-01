@@ -16,7 +16,7 @@
 | A2 schema | DONE | legacy/Choice parser bug fixed; OOD note on wide_max1024 |
 | A3 OFAT | FAILED | h96 zero flips, max384 harmful-only; no ES on budgets |
 | E2 menu headroom | CONFIRMED | recall@10 0.94–0.98; menu beats full in 3/4 paired CIs; `results/v2/native/paired_menu_full.json` |
-| E2 menu pilot (real calls) | FLAT IN NOISE | exhaustive-24 + random-12 both models, n=30: Vela 0.633–0.80, Laya 0.667–0.80; cross-process flips (Vela 7/12 ±1 row, Laya 6/12 up to ±3 rows) vs 0 within-process flips; cross-model corr 0.092; norm no-op (effective 12); `results/v2/menu/e2_joint_analysis.json` |
+| E2 menu pilot (real calls) | FLAT IN NOISE | exhaustive-24 + random-12 both models, n=30: Vela 0.633–0.80, Laya 0.667–0.80; cross-process flips (Vela 7/12 ±1 row, Laya 6/12 up to ±3 rows) vs 0 within-process flips; cross-model corr 0.092; norm no-op (effective 12); `results/v2/menu/e2_joint_analysis.json` | GP stays blocked: lit floor is EvoPrompt 50/eval x~500 prompt-evals + full-test confirm, PromptBreeder ~100k+ example-evals; pass requires >=200/200/200 fresh rows (survey ses_e6962c962ffeYivpinJdzKndLb)
 | Phase 4 code EA (GA vs Random, matched 24) | NO ADVANTAGE DEMONSTRATED | Laya GA 0.65 = fixed switch, +0.011 over Random (n.s.); Vela GA 0.689 vs Random 0.683 (n.s.), +0.022 over fixed (in seed noise); `results/v4/evolution/evo_code_*.json` |
 | Phase 4 findver EA (matched 24) | NO ADVANTAGE | Laya GA 0.7175 vs Random 0.7119 (n.s.); Vela GA 0.463 < Random 0.475 | 
 | Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap <= 0.0, worst -0.20; results/v4/evolution/transfer_matrix.json |
@@ -32,7 +32,7 @@
 | NSGA-II deploy significance | v4 12/12 ns; v4.1 11/12 ns + 1 SIG negative | v4 `nsga2_deploy_significance.json`; v4.1 `results/v4_1/evolution/nsga2_deploy_significance.json`: only SIG cell is math/Vela s41 (-0.0833, favors random) |
 | Traditional controllers | GRID TIES GA; LR COLLAPSES | threshold-best = GA everywhere except 1/12 seeds; LR router = noul-only on code; abstention hurts raw acc |
 | v4.1 protocol (macro-F1, train-search) | NO EDGE | GA vs Random 12/12 ns on train caches; train-selected code/Laya 0.55 train -> 0.45 dev -> 0.55 confirm; findver/Vela confirm 30/44 = fixed switch (paired diff 0; pool gold 28/44 vs 28/59 dev); results/v4_1/evolution/ |
-| NEAT / NSGA-II | BLOCKED WITH CONDITIONS | no sequential structure left; no quality gradient; conditions in `configs/evolution.yaml` |
+| NEAT multistep (Gate 3a) | BLOCKED (lit-backed 2026-11-01) | local: best cell code/Vela net +6/60 (binomial p~0.09, ns), all other cells net -1..+1; routers in lit need MPI 6-13% + in-domain n>=200 (FrugalGPT/AutoMix/RouteLLM survey ses_e6962c962ffeYivpinJdzKndLb); pass requires held-out repair-regression >=+5pp (CI excl 0) AND disag>=15% AND OOF AUC>=0.65; NSGA-II runner itself implemented, only multistep policy search blocked |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | E5 faultmap (MAP-Elites-lite, train-discover/dev+confirm-validate) | DONE | 15 eligible / 13 dev-confirmed / 10 confirm-confirmed cells; top math/vela/mid S=0.9286 n=14; `results/v4_1/evolution/faultmap.json` + `scripts/run_faultmap.py` + `tests/test_run_faultmap.py` |

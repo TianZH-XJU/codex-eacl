@@ -325,8 +325,14 @@ manufacture signal the model lacks — it only rations the few correct answers.
 
 NEAT/multistep remains explicitly BLOCKED, not silently dropped:
 single-step cascade already exhausts the available complementarity (code oracle
-gain comes from switch-only fixes, no sequential decision needed). Launch
-conditions (a task with residual sequential structure, a quality gradient) are
+gain comes from switch-only fixes, no sequential decision needed). Train-pool screen:
+best cell code/Vela net +6/60 (binomial p~0.09, ns), all other cells net -1..+1.
+A 2026-11-01 literature survey (FrugalGPT, Hybrid LLM, RouteLLM, AutoMix, BEST-Route,
+EvoPrompt, PromptBreeder) finds routers beat best-fixed only with 6-13% cross-model
+disagreement and in-domain n>=200 (up to 100k+ example-evals for GP); no precedent
+exists for a learned router winning at n~60 with ~0 oracle gap. Reopening Gate 3a
+requires, on a held-out pool: repair-minus-regression >=+5pp (95% CI excludes 0),
+disagreement >=15%, and OOF AUC >=0.65 at matched cost. Launch conditions are
 written in `configs/evolution.yaml`.
 
 **NSGA-II deploy significance (paired group-bootstrap, 5000 reps, per seed).**
