@@ -132,6 +132,7 @@ def test_nsga2_sort_crowding_hypervolume():
     assert d[0] == d[2] == float("inf") and d[1] > 0
     assert hypervolume_2d([(1.0, 0.0), (0.5, 0.5), (0.0, 1.0)]) == 0.25
     assert hypervolume_2d([(0.5, 0.5)]) == 0.25
+    assert hypervolume_2d([(0.65, -1.0), (0.45, -2.0)], ref=(0.0, -2.0)) == 0.65
 
 
 def test_nsga2_runs_with_budget_and_seed():

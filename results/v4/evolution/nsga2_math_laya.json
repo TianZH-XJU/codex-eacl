@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-11-01T01:14:15.955120+00:00",
+  "cache": "results/v4/evolution/cache_math_laya.json",
+  "genome": "abstain",
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "nsga2_hv": 0.1569,
+      "nsga2_front": 8,
+      "nsga2_unique": 24,
+      "nsga2_stopped_early": true,
+      "random_hv": 0.1693,
+      "random_unique": 24
+    },
+    "23": {
+      "nsga2_hv": 0.147,
+      "nsga2_front": 8,
+      "nsga2_unique": 24,
+      "nsga2_stopped_early": true,
+      "random_hv": 0.1652,
+      "random_unique": 24
+    },
+    "41": {
+      "nsga2_hv": 0.1561,
+      "nsga2_front": 8,
+      "nsga2_unique": 24,
+      "nsga2_stopped_early": false,
+      "random_hv": 0.1647,
+      "random_unique": 24
+    }
+  },
+  "nsga2_hv_mean": 0.1533,
+  "nsga2_hv_std": 0.0055,
+  "random_hv_mean": 0.1664,
+  "random_hv_std": 0.0025,
+  "hv_diff_nsga2_minus_random": -0.0131
+}

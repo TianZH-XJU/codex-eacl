@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-11-01T01:14:11.939514+00:00",
+  "cache": "results/v4/evolution/cache_code_vela.json",
+  "genome": "cascade",
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "nsga2_hv": 0.635,
+      "nsga2_front": 8,
+      "nsga2_unique": 22,
+      "nsga2_stopped_early": false,
+      "random_hv": 0.66,
+      "random_unique": 24
+    },
+    "23": {
+      "nsga2_hv": 0.6583,
+      "nsga2_front": 8,
+      "nsga2_unique": 22,
+      "nsga2_stopped_early": false,
+      "random_hv": 0.6716,
+      "random_unique": 24
+    },
+    "41": {
+      "nsga2_hv": 0.6608,
+      "nsga2_front": 8,
+      "nsga2_unique": 21,
+      "nsga2_stopped_early": false,
+      "random_hv": 0.6444,
+      "random_unique": 24
+    }
+  },
+  "nsga2_hv_mean": 0.6514,
+  "nsga2_hv_std": 0.0142,
+  "random_hv_mean": 0.6587,
+  "random_hv_std": 0.0136,
+  "hv_diff_nsga2_minus_random": -0.0073
+}

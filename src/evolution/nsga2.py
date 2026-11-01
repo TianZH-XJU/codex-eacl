@@ -75,7 +75,8 @@ def hypervolume_2d(points: list, ref=(0.0, 0.0)) -> float:
 
 def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
         population: int = 8, generations: int = 3, crossover_rate: float = 0.8,
-        mutation_rate: float = 0.2, tracker=None, max_generations: int = 50) -> dict:
+        mutation_rate: float = 0.2, tracker=None, max_generations: int = 50,
+        ref: tuple = (0.0, 0.0)) -> dict:
     """evaluate(genome) -> (objectives tuple, key tuple, record dict).
     sample(rng)/crossover(rng,a,b,rate)/mutate(rng,g,rate) caller-supplied."""
     from .budget import BudgetExceeded
@@ -126,13 +127,13 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
             fits = [pool_f[i] for i in order[:population]]
             fronts0 = nondominated_sort(fits)
             log.append({"generation": gen, "front0_size": len(fronts0[0]),
-                        "hypervolume": hypervolume_2d(fits)})
+                        "hypervolume": hypervolume_2d(fits, ref)})
             gen += 1
     except BudgetExceeded:
         stopped_early = True
     fronts = nondominated_sort(fits)
     return {"pareto": [{"genome": pop[i].to_vector() if hasattr(pop[i], "to_vector") else pop[i],
                         "objectives": list(fits[i])} for i in fronts[0]],
-            "hypervolume": hypervolume_2d(fits), "generations": log,
+            "hypervolume": hypervolume_2d(fits, ref), "generations": log,
             "stopped_early": stopped_early,
             "n_unique_evals": len({tuple(a["key"]) for a in archive})}

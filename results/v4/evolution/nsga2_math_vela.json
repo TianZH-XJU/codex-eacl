@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-11-01T01:14:16.123073+00:00",
+  "cache": "results/v4/evolution/cache_math_vela.json",
+  "genome": "abstain",
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "nsga2_hv": 0.1688,
+      "nsga2_front": 8,
+      "nsga2_unique": 24,
+      "nsga2_stopped_early": true,
+      "random_hv": 0.1406,
+      "random_unique": 24
+    },
+    "23": {
+      "nsga2_hv": 0.17,
+      "nsga2_front": 8,
+      "nsga2_unique": 24,
+      "nsga2_stopped_early": true,
+      "random_hv": 0.1333,
+      "random_unique": 24
+    },
+    "41": {
+      "nsga2_hv": 0.1489,
+      "nsga2_front": 8,
+      "nsga2_unique": 24,
+      "nsga2_stopped_early": true,
+      "random_hv": 0.1513,
+      "random_unique": 24
+    }
+  },
+  "nsga2_hv_mean": 0.1626,
+  "nsga2_hv_std": 0.0119,
+  "random_hv_mean": 0.1417,
+  "random_hv_std": 0.0091,
+  "hv_diff_nsga2_minus_random": 0.0209
+}

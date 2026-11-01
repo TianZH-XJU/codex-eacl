@@ -1,0 +1,1467 @@
+{
+  "created_utc": "2026-11-01T01:13:32.734517+00:00",
+  "task": "processbench",
+  "model": "vela",
+  "split": "search_dev",
+  "seed": 17,
+  "n": 60,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "project_git_sha": "74441fc026143d4cb3969d330ba5bc686ec390c1",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1735.9,
+  "real_model_calls": 60,
+  "rows": [
+    {
+      "key": "math-208",
+      "gold": 1,
+      "group_id": "pb:15a2276684142e31",
+      "n_cands": 9,
+      "gold_render": "step 1",
+      "pred": "step 7",
+      "correct": false,
+      "top1": 0.16914115489043796,
+      "margin": 0.031175410616637672,
+      "probs": {
+        "step 0": 0.04576956130220604,
+        "step 1": 0.09165104465065668,
+        "step 2": 0.0989181503068239,
+        "step 3": 0.11403856476699024,
+        "step 4": 0.10960525024254959,
+        "step 5": 0.11144731052344004,
+        "step 6": 0.1379657442738003,
+        "step 7": 0.16914115489043796,
+        "ALL STEPS CORRECT": 0.12146321904309523
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-709",
+      "gold": 6,
+      "group_id": "pb:15a2276684142e31",
+      "n_cands": 7,
+      "gold_render": "all steps correct",
+      "pred": "step 5",
+      "correct": false,
+      "top1": 0.22641339370968866,
+      "margin": 0.037761837186448655,
+      "probs": {
+        "step 0": 0.07137765054776529,
+        "step 1": 0.10699709272953459,
+        "step 2": 0.12953545738878403,
+        "step 3": 0.1432107953349324,
+        "step 4": 0.18865155652324,
+        "step 5": 0.22641339370968866,
+        "ALL STEPS CORRECT": 0.13381405376605496
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-682",
+      "gold": 1,
+      "group_id": "pb:a36123ce498099b2",
+      "n_cands": 12,
+      "gold_render": "step 1",
+      "pred": "step 10",
+      "correct": false,
+      "top1": 0.11346797530649361,
+      "margin": 0.0018786528060875246,
+      "probs": {
+        "step 0": 0.06793404497781833,
+        "step 1": 0.11158932250040608,
+        "step 2": 0.0936485919476704,
+        "step 3": 0.07309672634461842,
+        "step 4": 0.08284338936708859,
+        "step 5": 0.07601032689029959,
+        "step 6": 0.0821963181110483,
+        "step 7": 0.07313311717885305,
+        "step 8": 0.06903920302211168,
+        "step 9": 0.08317937627610776,
+        "step 10": 0.11346797530649361,
+        "ALL STEPS CORRECT": 0.0738616080774843
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-858",
+      "gold": 3,
+      "group_id": "pb:300d6a6ecdb60f41",
+      "n_cands": 8,
+      "gold_render": "step 3",
+      "pred": "all steps correct",
+      "correct": false,
+      "top1": 0.19491397797794907,
+      "margin": 0.020911094224898896,
+      "probs": {
+        "step 0": 0.055747531929521074,
+        "step 1": 0.08665735074367868,
+        "step 2": 0.09970202772655225,
+        "step 3": 0.14304676474796532,
+        "step 4": 0.11752586471906276,
+        "step 5": 0.12840359840222068,
+        "step 6": 0.17400288375305017,
+        "ALL STEPS CORRECT": 0.19491397797794907
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-355",
+      "gold": 5,
+      "group_id": "pb:9f2e88ada68bd30d",
+      "n_cands": 7,
+      "gold_render": "step 5",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.18722231380023113,
+      "margin": 0.019825184083985897,
+      "probs": {
+        "step 0": 0.08361371902338789,
+        "step 1": 0.15572396339203928,
+        "step 2": 0.16739712971624524,
+        "step 3": 0.18722231380023113,
+        "step 4": 0.15489356311755922,
+        "step 5": 0.13202859214717869,
+        "ALL STEPS CORRECT": 0.11912071880335844
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-818",
+      "gold": 12,
+      "group_id": "pb:9f2e88ada68bd30d",
+      "n_cands": 13,
+      "gold_render": "all steps correct",
+      "pred": "step 9",
+      "correct": false,
+      "top1": 0.10400092132682995,
+      "margin": 0.0029132738913650313,
+      "probs": {
+        "step 0": 0.03966037679152437,
+        "step 1": 0.058671014086431626,
+        "step 2": 0.05905040791033294,
+        "step 3": 0.05618431309653523,
+        "step 4": 0.07067355893934207,
+        "step 5": 0.08084191155090914,
+        "step 6": 0.08222765871289799,
+        "step 7": 0.08303383848161068,
+        "step 8": 0.1005919384907667,
+        "step 9": 0.10400092132682995,
+        "step 10": 0.10108764743546492,
+        "step 11": 0.08920069890170268,
+        "ALL STEPS CORRECT": 0.07477571427565159
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-975",
+      "gold": 8,
+      "group_id": "pb:9f2e88ada68bd30d",
+      "n_cands": 9,
+      "gold_render": "all steps correct",
+      "pred": "step 5",
+      "correct": false,
+      "top1": 0.18718080180810778,
+      "margin": 0.02701596184501684,
+      "probs": {
+        "step 0": 0.04250589441876058,
+        "step 1": 0.06546374805986013,
+        "step 2": 0.07968686845207455,
+        "step 3": 0.11152213706579477,
+        "step 4": 0.15829712409089006,
+        "step 5": 0.18718080180810778,
+        "step 6": 0.16016483996309094,
+        "step 7": 0.1144704900223039,
+        "ALL STEPS CORRECT": 0.08070809611911722
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-581",
+      "gold": 2,
+      "group_id": "pb:d1c9cde932510127",
+      "n_cands": 3,
+      "gold_render": "all steps correct",
+      "pred": "step 0",
+      "correct": false,
+      "top1": 0.3876109450951694,
+      "margin": 0.04910040154334494,
+      "probs": {
+        "step 0": 0.3876109450951694,
+        "step 1": 0.33851054355182447,
+        "ALL STEPS CORRECT": 0.2738785113530063
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-336",
+      "gold": 5,
+      "group_id": "pb:acd9ee67b008efe4",
+      "n_cands": 6,
+      "gold_render": "all steps correct",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.23806994513891547,
+      "margin": 0.01897779126680299,
+      "probs": {
+        "step 0": 0.08103989340552771,
+        "step 1": 0.14621672972089864,
+        "step 2": 0.1696499552846646,
+        "step 3": 0.23806994513891547,
+        "step 4": 0.21909215387211248,
+        "ALL STEPS CORRECT": 0.14593132257788108
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-197",
+      "gold": 2,
+      "group_id": "pb:0b59168f42837a8f",
+      "n_cands": 8,
+      "gold_render": "step 2",
+      "pred": "step 2",
+      "correct": true,
+      "top1": 0.2479008139874523,
+      "margin": 0.10001215354681889,
+      "probs": {
+        "step 0": 0.058401624050510956,
+        "step 1": 0.14788866044063342,
+        "step 2": 0.2479008139874523,
+        "step 3": 0.14772248526722712,
+        "step 4": 0.11085540852071525,
+        "step 5": 0.10328060463769495,
+        "step 6": 0.12339564940163494,
+        "ALL STEPS CORRECT": 0.060554753694131075
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-669",
+      "gold": 9,
+      "group_id": "pb:0b59168f42837a8f",
+      "n_cands": 10,
+      "gold_render": "all steps correct",
+      "pred": "step 8",
+      "correct": false,
+      "top1": 0.16708500391087885,
+      "margin": 0.04184439314503194,
+      "probs": {
+        "step 0": 0.032890603826602964,
+        "step 1": 0.07263598889246521,
+        "step 2": 0.10211730528842723,
+        "step 3": 0.08769818410085202,
+        "step 4": 0.09240238009025702,
+        "step 5": 0.12169480323186818,
+        "step 6": 0.12524061076584692,
+        "step 7": 0.12432839734688396,
+        "step 8": 0.16708500391087885,
+        "ALL STEPS CORRECT": 0.07390672254591778
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-13",
+      "gold": 0,
+      "group_id": "pb:5adb698c9eee9492",
+      "n_cands": 6,
+      "gold_render": "step 0",
+      "pred": "step 0",
+      "correct": true,
+      "top1": 0.3646290194883985,
+      "margin": 0.20398946568225002,
+      "probs": {
+        "step 0": 0.3646290194883985,
+        "step 1": 0.16063955380614847,
+        "step 2": 0.13293540345993995,
+        "step 3": 0.1258214432732142,
+        "step 4": 0.12275598367831334,
+        "ALL STEPS CORRECT": 0.09321859629398546
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-308",
+      "gold": 6,
+      "group_id": "pb:449e6e4019c72ce6",
+      "n_cands": 12,
+      "gold_render": "step 6",
+      "pred": "step 7",
+      "correct": false,
+      "top1": 0.11247295972167283,
+      "margin": 0.0021302906915023206,
+      "probs": {
+        "step 0": 0.03215814653215973,
+        "step 1": 0.058281873756900984,
+        "step 2": 0.059029459312465955,
+        "step 3": 0.0797949865555563,
+        "step 4": 0.08511690929129624,
+        "step 5": 0.09270418169239612,
+        "step 6": 0.10281124833513595,
+        "step 7": 0.11247295972167283,
+        "step 8": 0.10862471877028164,
+        "step 9": 0.11034266903017051,
+        "step 10": 0.1016779389271891,
+        "ALL STEPS CORRECT": 0.05698490807477479
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-492",
+      "gold": 4,
+      "group_id": "pb:88e73c2eef2d6974",
+      "n_cands": 8,
+      "gold_render": "step 4",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.17202781652676266,
+      "margin": 0.003325652364549958,
+      "probs": {
+        "step 0": 0.05511656060849449,
+        "step 1": 0.10695562937324991,
+        "step 2": 0.12991964188077385,
+        "step 3": 0.17202781652676266,
+        "step 4": 0.15535801018937548,
+        "step 5": 0.14526704391311993,
+        "step 6": 0.1687021641622127,
+        "ALL STEPS CORRECT": 0.06665313334601108
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-652",
+      "gold": 2,
+      "group_id": "pb:1fec48a71c31795e",
+      "n_cands": 9,
+      "gold_render": "step 2",
+      "pred": "step 2",
+      "correct": true,
+      "top1": 0.1665524394396629,
+      "margin": 0.029355034485553738,
+      "probs": {
+        "step 0": 0.04527698310298873,
+        "step 1": 0.12979779601883412,
+        "step 2": 0.1665524394396629,
+        "step 3": 0.13719740495410918,
+        "step 4": 0.12593823603381543,
+        "step 5": 0.13388661106386845,
+        "step 6": 0.11514176499460321,
+        "step 7": 0.09394353529615408,
+        "ALL STEPS CORRECT": 0.0522652290959639
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-520",
+      "gold": 8,
+      "group_id": "pb:737d322cf30c6133",
+      "n_cands": 9,
+      "gold_render": "all steps correct",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.2476044304739679,
+      "margin": 0.06231149077452383,
+      "probs": {
+        "step 0": 0.02376604584745802,
+        "step 1": 0.05775167722421939,
+        "step 2": 0.08423874160489925,
+        "step 3": 0.11791856097500708,
+        "step 4": 0.13560288049374006,
+        "step 5": 0.18529293969944408,
+        "step 6": 0.2476044304739679,
+        "step 7": 0.10244511576489253,
+        "ALL STEPS CORRECT": 0.0453796079163715
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-103",
+      "gold": 2,
+      "group_id": "pb:a937db18df217fc9",
+      "n_cands": 8,
+      "gold_render": "step 2",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.23318994929997158,
+      "margin": 0.0743244748381616,
+      "probs": {
+        "step 0": 0.061364611524545296,
+        "step 1": 0.08587327493776929,
+        "step 2": 0.10549111184396835,
+        "step 3": 0.15886547446180999,
+        "step 4": 0.12937448441072652,
+        "step 5": 0.15171554212330565,
+        "step 6": 0.23318994929997158,
+        "ALL STEPS CORRECT": 0.07412555139790318
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-970",
+      "gold": 4,
+      "group_id": "pb:b6a18af303d3d47b",
+      "n_cands": 5,
+      "gold_render": "all steps correct",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.2541219072673891,
+      "margin": 0.011164604273976336,
+      "probs": {
+        "step 0": 0.0739882270624585,
+        "step 1": 0.21637848688938638,
+        "step 2": 0.2541219072673891,
+        "step 3": 0.24295730299341275,
+        "ALL STEPS CORRECT": 0.2125540757873533
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-561",
+      "gold": 3,
+      "group_id": "pb:35d9f5309727dbff",
+      "n_cands": 18,
+      "gold_render": "step 3",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.17125397395798478,
+      "margin": 0.05483481255541002,
+      "probs": {
+        "step 0": 0.01591450745516685,
+        "step 1": 0.029485934758016467,
+        "step 2": 0.048770414139873354,
+        "step 3": 0.11641916140257476,
+        "step 4": 0.17125397395798478,
+        "step 5": 0.056485779914719994,
+        "step 6": 0.04442749711780743,
+        "step 7": 0.040643607711063706,
+        "step 8": 0.04399081872028771,
+        "step 9": 0.04565120645605141,
+        "step 10": 0.03821773583132581,
+        "step 11": 0.030618897190105968,
+        "step 12": 0.0316274564920068,
+        "step 13": 0.040664538138538084,
+        "step 14": 0.05462425487778456,
+        "step 15": 0.07199188425860041,
+        "step 16": 0.09749548037383927,
+        "ALL STEPS CORRECT": 0.021716851204252645
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-346",
+      "gold": 1,
+      "group_id": "pb:93683a444fe99ae7",
+      "n_cands": 4,
+      "gold_render": "step 1",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.3525291915324653,
+      "margin": 0.028531223025385022,
+      "probs": {
+        "step 0": 0.09535788160969606,
+        "step 1": 0.2281149583507584,
+        "step 2": 0.3525291915324653,
+        "ALL STEPS CORRECT": 0.3239979685070803
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-15",
+      "gold": 7,
+      "group_id": "pb:36561c96807acfb3",
+      "n_cands": 10,
+      "gold_render": "step 7",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.14502089240029348,
+      "margin": 0.017123227721110634,
+      "probs": {
+        "step 0": 0.047522487923341135,
+        "step 1": 0.12789766467918284,
+        "step 2": 0.14502089240029348,
+        "step 3": 0.11143763857128454,
+        "step 4": 0.10262580925398225,
+        "step 5": 0.1118715135448666,
+        "step 6": 0.12536445152463604,
+        "step 7": 0.0971478579409837,
+        "step 8": 0.09105875605302467,
+        "ALL STEPS CORRECT": 0.040052928108404745
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-644",
+      "gold": 2,
+      "group_id": "pb:450cedd0262eea20",
+      "n_cands": 13,
+      "gold_render": "step 2",
+      "pred": "step 11",
+      "correct": false,
+      "top1": 0.12304017402086406,
+      "margin": 0.033057701289510355,
+      "probs": {
+        "step 0": 0.03844561594699853,
+        "step 1": 0.08415363357053945,
+        "step 2": 0.06772275524738965,
+        "step 3": 0.06536363756960273,
+        "step 4": 0.07082772452748827,
+        "step 5": 0.08020778585377568,
+        "step 6": 0.08155483107822888,
+        "step 7": 0.07791770120097188,
+        "step 8": 0.08998247273135371,
+        "step 9": 0.08199649325578431,
+        "step 10": 0.08958349005151003,
+        "step 11": 0.12304017402086406,
+        "ALL STEPS CORRECT": 0.04920368494549274
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-525",
+      "gold": 3,
+      "group_id": "pb:0d45d48889931cd6",
+      "n_cands": 8,
+      "gold_render": "step 3",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.25392871649689125,
+      "margin": 0.017092202845148563,
+      "probs": {
+        "step 0": 0.04838530324386429,
+        "step 1": 0.10235691770119028,
+        "step 2": 0.1304369578265856,
+        "step 3": 0.23683651365174269,
+        "step 4": 0.25392871649689125,
+        "step 5": 0.11294117940188829,
+        "step 6": 0.08260376901873032,
+        "ALL STEPS CORRECT": 0.03251064265910729
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-824",
+      "gold": 5,
+      "group_id": "pb:7190b19dc8085353",
+      "n_cands": 6,
+      "gold_render": "all steps correct",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.2075284839580662,
+      "margin": 0.01333289102819879,
+      "probs": {
+        "step 0": 0.09994746762732064,
+        "step 1": 0.1941955929298674,
+        "step 2": 0.16153485931392875,
+        "step 3": 0.15880084133975778,
+        "step 4": 0.2075284839580662,
+        "ALL STEPS CORRECT": 0.1779927548310592
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-180",
+      "gold": 1,
+      "group_id": "pb:26bdd222972a611c",
+      "n_cands": 6,
+      "gold_render": "step 1",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.21221040113095813,
+      "margin": 0.00975842530688839,
+      "probs": {
+        "step 0": 0.1459447739225941,
+        "step 1": 0.16774728209644318,
+        "step 2": 0.1818664945594117,
+        "step 3": 0.21221040113095813,
+        "step 4": 0.20245197582406974,
+        "ALL STEPS CORRECT": 0.0897790724665231
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-219",
+      "gold": 1,
+      "group_id": "pb:7067a161cf1ba243",
+      "n_cands": 7,
+      "gold_render": "step 1",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.2285458813620642,
+      "margin": 0.03629025472419539,
+      "probs": {
+        "step 0": 0.05340953485642565,
+        "step 1": 0.120259794710218,
+        "step 2": 0.15587159592112568,
+        "step 3": 0.1922556266378688,
+        "step 4": 0.2285458813620642,
+        "step 5": 0.17919985287278462,
+        "ALL STEPS CORRECT": 0.07045771363951317
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-591",
+      "gold": 7,
+      "group_id": "pb:fdba5b43894f390b",
+      "n_cands": 8,
+      "gold_render": "all steps correct",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.19996687771748708,
+      "margin": 0.013776736068880635,
+      "probs": {
+        "step 0": 0.055251472897335535,
+        "step 1": 0.07786658172325028,
+        "step 2": 0.08882657309376697,
+        "step 3": 0.13999534831555388,
+        "step 4": 0.1795653320340048,
+        "step 5": 0.18619014164860645,
+        "step 6": 0.19996687771748708,
+        "ALL STEPS CORRECT": 0.07233767256999503
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-526",
+      "gold": 2,
+      "group_id": "pb:b15c7c322e9387dd",
+      "n_cands": 8,
+      "gold_render": "step 2",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.19403306563118794,
+      "margin": 0.0034412560410336246,
+      "probs": {
+        "step 0": 0.04157774902843227,
+        "step 1": 0.09606918897069765,
+        "step 2": 0.11145512441747982,
+        "step 3": 0.1606379249882633,
+        "step 4": 0.19403306563118794,
+        "step 5": 0.19059180959015432,
+        "step 6": 0.12334999258246318,
+        "ALL STEPS CORRECT": 0.08228514479132168
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-134",
+      "gold": 1,
+      "group_id": "pb:b8ef5dec533b9ddb",
+      "n_cands": 6,
+      "gold_render": "step 1",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.21995625456128629,
+      "margin": 0.027756102318997333,
+      "probs": {
+        "step 0": 0.11141148839324819,
+        "step 1": 0.15685554607500027,
+        "step 2": 0.18075854363281485,
+        "step 3": 0.19220015224228895,
+        "step 4": 0.21995625456128629,
+        "ALL STEPS CORRECT": 0.13881801509536157
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-592",
+      "gold": 4,
+      "group_id": "pb:9cffad4dda94a185",
+      "n_cands": 5,
+      "gold_render": "all steps correct",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.2965676380617471,
+      "margin": 0.04303349414368196,
+      "probs": {
+        "step 0": 0.09770367988655439,
+        "step 1": 0.20731865980831862,
+        "step 2": 0.2535341439180651,
+        "step 3": 0.2965676380617471,
+        "ALL STEPS CORRECT": 0.14487587832531473
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-84",
+      "gold": 4,
+      "group_id": "pb:aea57d1d5c3b65ed",
+      "n_cands": 7,
+      "gold_render": "step 4",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.20759124495540485,
+      "margin": 0.005185105811908924,
+      "probs": {
+        "step 0": 0.07404688235926525,
+        "step 1": 0.20240613914349592,
+        "step 2": 0.1976262151085027,
+        "step 3": 0.20759124495540485,
+        "step 4": 0.11791043159617012,
+        "step 5": 0.10757685046860996,
+        "ALL STEPS CORRECT": 0.09284223636855135
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-464",
+      "gold": 1,
+      "group_id": "pb:2e8d18406c6f7bed",
+      "n_cands": 7,
+      "gold_render": "step 1",
+      "pred": "step 5",
+      "correct": false,
+      "top1": 0.2446005802382631,
+      "margin": 0.010359457934018212,
+      "probs": {
+        "step 0": 0.08095679088163527,
+        "step 1": 0.07963766348750727,
+        "step 2": 0.0995526730361644,
+        "step 3": 0.20210866222302767,
+        "step 4": 0.23424112230424488,
+        "step 5": 0.2446005802382631,
+        "ALL STEPS CORRECT": 0.058902507829157416
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-947",
+      "gold": 5,
+      "group_id": "pb:ed50ce130e6da290",
+      "n_cands": 6,
+      "gold_render": "all steps correct",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.342591176978218,
+      "margin": 0.15244810586577257,
+      "probs": {
+        "step 0": 0.06837440332039509,
+        "step 1": 0.19014307111244544,
+        "step 2": 0.342591176978218,
+        "step 3": 0.12754230270238293,
+        "step 4": 0.13264963559143989,
+        "ALL STEPS CORRECT": 0.13869941029511862
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-456",
+      "gold": 9,
+      "group_id": "pb:7fc08c6956bab301",
+      "n_cands": 13,
+      "gold_render": "step 9",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.09466622880708357,
+      "margin": 0.0018682725135353295,
+      "probs": {
+        "step 0": 0.0361348373975576,
+        "step 1": 0.06618853824249869,
+        "step 2": 0.07523298121497216,
+        "step 3": 0.0728548220461559,
+        "step 4": 0.07505116737655193,
+        "step 5": 0.08593507654590021,
+        "step 6": 0.09466622880708357,
+        "step 7": 0.0766562686716826,
+        "step 8": 0.0890300880760352,
+        "step 9": 0.0899486282373115,
+        "step 10": 0.09279795629354824,
+        "step 11": 0.09168904187781052,
+        "ALL STEPS CORRECT": 0.053814365212892
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-204",
+      "gold": 1,
+      "group_id": "pb:39583f22b4c7d951",
+      "n_cands": 4,
+      "gold_render": "step 1",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.42542091249914993,
+      "margin": 0.15086036381220613,
+      "probs": {
+        "step 0": 0.07629787025142791,
+        "step 1": 0.2237206685624784,
+        "step 2": 0.42542091249914993,
+        "ALL STEPS CORRECT": 0.2745605486869438
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-566",
+      "gold": 7,
+      "group_id": "pb:f82ca61162089b0c",
+      "n_cands": 8,
+      "gold_render": "all steps correct",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.2576943457888293,
+      "margin": 0.08896406704827667,
+      "probs": {
+        "step 0": 0.040357207340196995,
+        "step 1": 0.09754336270976749,
+        "step 2": 0.16873027874055266,
+        "step 3": 0.2576943457888293,
+        "step 4": 0.12539371002453575,
+        "step 5": 0.1286140086341827,
+        "step 6": 0.13041836758360253,
+        "ALL STEPS CORRECT": 0.051248719178332555
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-357",
+      "gold": 4,
+      "group_id": "pb:9ef4bdeda0b9b726",
+      "n_cands": 5,
+      "gold_render": "all steps correct",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.29763032441935267,
+      "margin": 0.05976202633754091,
+      "probs": {
+        "step 0": 0.09443314055096784,
+        "step 1": 0.17588237423520672,
+        "step 2": 0.23786829808181176,
+        "step 3": 0.29763032441935267,
+        "ALL STEPS CORRECT": 0.19418586271266103
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-763",
+      "gold": 2,
+      "group_id": "pb:016851140f5a2f06",
+      "n_cands": 3,
+      "gold_render": "all steps correct",
+      "pred": "all steps correct",
+      "correct": true,
+      "top1": 0.5430686919076133,
+      "margin": 0.19192030029611418,
+      "probs": {
+        "step 0": 0.10578291648088754,
+        "step 1": 0.35114839161149913,
+        "ALL STEPS CORRECT": 0.5430686919076133
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-517",
+      "gold": 1,
+      "group_id": "pb:621889f77bca80eb",
+      "n_cands": 5,
+      "gold_render": "step 1",
+      "pred": "step 1",
+      "correct": true,
+      "top1": 0.25663685439484957,
+      "margin": 0.029470865941794266,
+      "probs": {
+        "step 0": 0.13358869365016804,
+        "step 1": 0.25663685439484957,
+        "step 2": 0.22098641502502248,
+        "step 3": 0.2271659884530553,
+        "ALL STEPS CORRECT": 0.16162204847690462
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-235",
+      "gold": 6,
+      "group_id": "pb:93899a6c3fde211c",
+      "n_cands": 7,
+      "gold_render": "all steps correct",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.1989689009549361,
+      "margin": 0.0031517968778592698,
+      "probs": {
+        "step 0": 0.08295223293047535,
+        "step 1": 0.11611394564961924,
+        "step 2": 0.12462142648510133,
+        "step 3": 0.18694071015084696,
+        "step 4": 0.1989689009549361,
+        "step 5": 0.19581710407707684,
+        "ALL STEPS CORRECT": 0.09458567975194405
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-206",
+      "gold": 4,
+      "group_id": "pb:41dc09e982dd62e8",
+      "n_cands": 13,
+      "gold_render": "step 4",
+      "pred": "step 7",
+      "correct": false,
+      "top1": 0.20283992585141858,
+      "margin": 0.03441360749783376,
+      "probs": {
+        "step 0": 0.012866167515562984,
+        "step 1": 0.038737176394106336,
+        "step 2": 0.05043994221959815,
+        "step 3": 0.0448537401765701,
+        "step 4": 0.04505544776507564,
+        "step 5": 0.0643611149949342,
+        "step 6": 0.13320129206205916,
+        "step 7": 0.20283992585141858,
+        "step 8": 0.16842631835358482,
+        "step 9": 0.06624749816978265,
+        "step 10": 0.06605736465464204,
+        "step 11": 0.07642548961700865,
+        "ALL STEPS CORRECT": 0.03048852222565656
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-166",
+      "gold": 0,
+      "group_id": "pb:9512d083f7557210",
+      "n_cands": 9,
+      "gold_render": "step 0",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.1817084478077328,
+      "margin": 0.04014852898307794,
+      "probs": {
+        "step 0": 0.04050501855796129,
+        "step 1": 0.079289684315942,
+        "step 2": 0.0895279093947337,
+        "step 3": 0.11023815076375129,
+        "step 4": 0.10875801385749863,
+        "step 5": 0.12658806483949758,
+        "step 6": 0.1817084478077328,
+        "step 7": 0.14155991882465485,
+        "ALL STEPS CORRECT": 0.12182479163822789
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-604",
+      "gold": 4,
+      "group_id": "pb:ab5fca2eb432f8f5",
+      "n_cands": 5,
+      "gold_render": "all steps correct",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.26167771612978596,
+      "margin": 0.019412328644573068,
+      "probs": {
+        "step 0": 0.09303298488316729,
+        "step 1": 0.2101663370378809,
+        "step 2": 0.2422653874852129,
+        "step 3": 0.26167771612978596,
+        "ALL STEPS CORRECT": 0.19285757446395294
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-121",
+      "gold": 2,
+      "group_id": "pb:f94b39adcb0e12bd",
+      "n_cands": 11,
+      "gold_render": "step 2",
+      "pred": "step 9",
+      "correct": false,
+      "top1": 0.15841887419283102,
+      "margin": 0.02319147163045715,
+      "probs": {
+        "step 0": 0.03908745288554442,
+        "step 1": 0.0745639906368759,
+        "step 2": 0.06954557407453012,
+        "step 3": 0.07140903807752365,
+        "step 4": 0.07718617979722014,
+        "step 5": 0.09263965881310036,
+        "step 6": 0.13522740256237387,
+        "step 7": 0.1119281953081937,
+        "step 8": 0.11229848361209005,
+        "step 9": 0.15841887419283102,
+        "ALL STEPS CORRECT": 0.05769515003971667
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-602",
+      "gold": 9,
+      "group_id": "pb:f94b39adcb0e12bd",
+      "n_cands": 10,
+      "gold_render": "all steps correct",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.11633971904374467,
+      "margin": 0.0002965691836254586,
+      "probs": {
+        "step 0": 0.06413587773175057,
+        "step 1": 0.11604314986011921,
+        "step 2": 0.11633971904374467,
+        "step 3": 0.10392151564582129,
+        "step 4": 0.08970256636351374,
+        "step 5": 0.11273948968317593,
+        "step 6": 0.10962112633207582,
+        "step 7": 0.10177514461975777,
+        "step 8": 0.10538119998553931,
+        "ALL STEPS CORRECT": 0.08034021073450169
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-197",
+      "gold": 2,
+      "group_id": "pb:1aea626b4cf5a0a1",
+      "n_cands": 8,
+      "gold_render": "step 2",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.178325762643435,
+      "margin": 0.03972222087976676,
+      "probs": {
+        "step 0": 0.1011322829601408,
+        "step 1": 0.109323248142558,
+        "step 2": 0.11871612361976887,
+        "step 3": 0.13860354176366824,
+        "step 4": 0.1165993668074075,
+        "step 5": 0.1358343188691558,
+        "step 6": 0.178325762643435,
+        "ALL STEPS CORRECT": 0.1014653551938657
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-838",
+      "gold": 0,
+      "group_id": "pb:dde88a8de094f999",
+      "n_cands": 7,
+      "gold_render": "step 0",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.22187240933319766,
+      "margin": 0.01849356304232999,
+      "probs": {
+        "step 0": 0.06461252477780638,
+        "step 1": 0.11412531645373244,
+        "step 2": 0.20337884629086767,
+        "step 3": 0.22187240933319766,
+        "step 4": 0.1737517858211072,
+        "step 5": 0.12789604866485216,
+        "ALL STEPS CORRECT": 0.09436306865843637
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-262",
+      "gold": 0,
+      "group_id": "pb:85ad3d141c86a2c7",
+      "n_cands": 7,
+      "gold_render": "step 0",
+      "pred": "step 3",
+      "correct": false,
+      "top1": 0.21236189134271788,
+      "margin": 0.03993063817255171,
+      "probs": {
+        "step 0": 0.08287049991030361,
+        "step 1": 0.11584362918895258,
+        "step 2": 0.1590190095638367,
+        "step 3": 0.21236189134271788,
+        "step 4": 0.17243125317016617,
+        "step 5": 0.16424908618898018,
+        "ALL STEPS CORRECT": 0.09322463063504284
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-669",
+      "gold": 5,
+      "group_id": "pb:ff0a0aff894c6abf",
+      "n_cands": 6,
+      "gold_render": "all steps correct",
+      "pred": "step 2",
+      "correct": false,
+      "top1": 0.22765586041810995,
+      "margin": 0.011456176611101737,
+      "probs": {
+        "step 0": 0.06915588738355578,
+        "step 1": 0.17911121136014815,
+        "step 2": 0.22765586041810995,
+        "step 3": 0.2161996838070082,
+        "step 4": 0.18471251211506906,
+        "ALL STEPS CORRECT": 0.12316484491610892
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-808",
+      "gold": 8,
+      "group_id": "pb:ec1de2aacc3917c5",
+      "n_cands": 9,
+      "gold_render": "all steps correct",
+      "pred": "step 7",
+      "correct": false,
+      "top1": 0.16410854168264327,
+      "margin": 0.010696908573268327,
+      "probs": {
+        "step 0": 0.05863404334460934,
+        "step 1": 0.08899495497118615,
+        "step 2": 0.08556646509121159,
+        "step 3": 0.09060877641874344,
+        "step 4": 0.0971679846684244,
+        "step 5": 0.13283722347066187,
+        "step 6": 0.15341163310937495,
+        "step 7": 0.16410854168264327,
+        "ALL STEPS CORRECT": 0.12867037724314498
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-419",
+      "gold": 1,
+      "group_id": "pb:4abd8e9508188768",
+      "n_cands": 6,
+      "gold_render": "step 1",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.20472215598896132,
+      "margin": 0.02366303932274022,
+      "probs": {
+        "step 0": 0.1057021175433532,
+        "step 1": 0.1810591166662211,
+        "step 2": 0.17991140690784166,
+        "step 3": 0.1704502600957686,
+        "step 4": 0.20472215598896132,
+        "ALL STEPS CORRECT": 0.15815494279785408
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-73",
+      "gold": 2,
+      "group_id": "pb:916443122fc0d97c",
+      "n_cands": 11,
+      "gold_render": "step 2",
+      "pred": "step 5",
+      "correct": false,
+      "top1": 0.1413396165338717,
+      "margin": 0.007459676494187051,
+      "probs": {
+        "step 0": 0.03868519037608582,
+        "step 1": 0.04599168260124124,
+        "step 2": 0.05925638617371328,
+        "step 3": 0.08339275100621152,
+        "step 4": 0.09834152358741617,
+        "step 5": 0.1413396165338717,
+        "step 6": 0.13387994003968465,
+        "step 7": 0.12211995225439498,
+        "step 8": 0.1290471710746179,
+        "step 9": 0.10821472931070192,
+        "ALL STEPS CORRECT": 0.039731057042060806
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "gsm8k-137",
+      "gold": 2,
+      "group_id": "pb:70d0e6bca2ef7b68",
+      "n_cands": 6,
+      "gold_render": "step 2",
+      "pred": "step 4",
+      "correct": false,
+      "top1": 0.2119848542944011,
+      "margin": 0.003804565569374946,
+      "probs": {
+        "step 0": 0.07171509356777281,
+        "step 1": 0.1526399255743977,
+        "step 2": 0.17741062731167076,
+        "step 3": 0.20818028872502614,
+        "step 4": 0.2119848542944011,
+        "ALL STEPS CORRECT": 0.17806921052673153
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-71",
+      "gold": 6,
+      "group_id": "pb:bc7c61d1bfc93e5b",
+      "n_cands": 12,
+      "gold_render": "step 6",
+      "pred": "step 10",
+      "correct": false,
+      "top1": 0.24033365231391118,
+      "margin": 0.11526929877640765,
+      "probs": {
+        "step 0": 0.050822512470321324,
+        "step 1": 0.048441420846813375,
+        "step 2": 0.044881202669029965,
+        "step 3": 0.04503655847495299,
+        "step 4": 0.04936786858658279,
+        "step 5": 0.059377777682495664,
+        "step 6": 0.08399092314364678,
+        "step 7": 0.10244025140303374,
+        "step 8": 0.0987776077719681,
+        "step 9": 0.12506435353750353,
+        "step 10": 0.24033365231391118,
+        "ALL STEPS CORRECT": 0.05146587109974054
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-266",
+      "gold": 3,
+      "group_id": "pb:e487ddbc2d06b87c",
+      "n_cands": 10,
+      "gold_render": "step 3",
+      "pred": "step 8",
+      "correct": false,
+      "top1": 0.1356585690841313,
+      "margin": 0.007301841396559788,
+      "probs": {
+        "step 0": 0.04481681661637806,
+        "step 1": 0.09956889975342766,
+        "step 2": 0.11852686572953489,
+        "step 3": 0.12400160074765727,
+        "step 4": 0.08535462791587323,
+        "step 5": 0.09176183819620248,
+        "step 6": 0.1283567276875715,
+        "step 7": 0.1165513823517618,
+        "step 8": 0.1356585690841313,
+        "ALL STEPS CORRECT": 0.055402671917461795
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "omnimath-433",
+      "gold": 3,
+      "group_id": "pb:d3c57340310f3b75",
+      "n_cands": 8,
+      "gold_render": "step 3",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.18333932497355063,
+      "margin": 0.028646906503719927,
+      "probs": {
+        "step 0": 0.05426969727999563,
+        "step 1": 0.11723294105788079,
+        "step 2": 0.12387960344104508,
+        "step 3": 0.1546924184698307,
+        "step 4": 0.1282965025704277,
+        "step 5": 0.13403709896503999,
+        "step 6": 0.18333932497355063,
+        "ALL STEPS CORRECT": 0.10425241324222957
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-690",
+      "gold": 12,
+      "group_id": "pb:5eaa88d9f060301f",
+      "n_cands": 13,
+      "gold_render": "all steps correct",
+      "pred": "step 11",
+      "correct": false,
+      "top1": 0.18057060942657432,
+      "margin": 0.08202742248331799,
+      "probs": {
+        "step 0": 0.02949722106197175,
+        "step 1": 0.06222816216583036,
+        "step 2": 0.05902008235780504,
+        "step 3": 0.05695329116045431,
+        "step 4": 0.060038811173184756,
+        "step 5": 0.07194745528474357,
+        "step 6": 0.07153551414733453,
+        "step 7": 0.05815049160717707,
+        "step 8": 0.06511493188419729,
+        "step 9": 0.09854318694325634,
+        "step 10": 0.09359409785327738,
+        "step 11": 0.18057060942657432,
+        "ALL STEPS CORRECT": 0.09280614493419326
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-2",
+      "gold": 3,
+      "group_id": "pb:18e428a0bda6dcbc",
+      "n_cands": 6,
+      "gold_render": "step 3",
+      "pred": "step 0",
+      "correct": false,
+      "top1": 0.3000183951958921,
+      "margin": 0.12858604629053738,
+      "probs": {
+        "step 0": 0.3000183951958921,
+        "step 1": 0.12937887468607454,
+        "step 2": 0.12130016644961683,
+        "step 3": 0.13400858142368166,
+        "step 4": 0.1714323489053547,
+        "ALL STEPS CORRECT": 0.14386163333938026
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "math-502",
+      "gold": 9,
+      "group_id": "pb:18e428a0bda6dcbc",
+      "n_cands": 10,
+      "gold_render": "all steps correct",
+      "pred": "step 6",
+      "correct": false,
+      "top1": 0.140707908005233,
+      "margin": 0.005706842870132317,
+      "probs": {
+        "step 0": 0.04494924085645041,
+        "step 1": 0.07171899704890432,
+        "step 2": 0.07928897693533361,
+        "step 3": 0.10844866125911552,
+        "step 4": 0.11455890149984099,
+        "step 5": 0.12455905261225293,
+        "step 6": 0.140707908005233,
+        "step 7": 0.13500106513510068,
+        "step 8": 0.12216113041840153,
+        "ALL STEPS CORRECT": 0.05860606622936698
+      },
+      "errors": {
+        "choice": null
+      }
+    },
+    {
+      "key": "olympiadbench-17",
+      "gold": 6,
+      "group_id": "pb:065eab71c578452c",
+      "n_cands": 9,
+      "gold_render": "step 6",
+      "pred": "step 6",
+      "correct": true,
+      "top1": 0.26129370957576653,
+      "margin": 0.09762997737229975,
+      "probs": {
+        "step 0": 0.0327221336833827,
+        "step 1": 0.06478862807065434,
+        "step 2": 0.07561871312267811,
+        "step 3": 0.09497649188494679,
+        "step 4": 0.11423539316264776,
+        "step 5": 0.16366373220346678,
+        "step 6": 0.26129370957576653,
+        "step 7": 0.13247475084571025,
+        "ALL STEPS CORRECT": 0.06022644745074676
+      },
+      "errors": {
+        "choice": null
+      }
+    }
+  ],
+  "status": "passed"
+}
