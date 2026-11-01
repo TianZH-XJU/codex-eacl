@@ -66,6 +66,9 @@ def main():
     ap.add_argument("--seeds", default="17,23,41")
     ap.add_argument("--pop", type=int, default=8)
     ap.add_argument("--gens", type=int, default=3)
+    ap.add_argument("--mu", type=int, default=4)
+    ap.add_argument("--lams", type=int, default=8)
+    ap.add_argument("--sigma", type=float, default=0.15)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
@@ -111,12 +114,11 @@ def main():
                 continue
             seen.add(key)
             pts.append(ev(g)[0])
-        from evolution import hypervolume_2d as _hv
         res["per_seed"][seed] = {
             "nsga2_hv": n["hypervolume"], "nsga2_front": len(n["pareto"]),
             "nsga2_unique": n["n_unique_evals"], "nsga2_stopped_early": n["stopped_early"],
             "pareto": n["pareto"],
-            "random_hv": _hv(pts, ref),
+            "random_hv": hypervolume_2d(pts, ref),
             "random_unique": len(seen)}
     for algo in ("nsga2_hv", "random_hv"):
         vs = [res["per_seed"][s][algo] for s in seeds]

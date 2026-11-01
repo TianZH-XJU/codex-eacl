@@ -78,7 +78,10 @@ def main():
     report = {}
     for ef in args.evo:
         d = json.loads(Path(ef).read_text(encoding="utf-8"))
-        cache = json.loads((ROOT / d["cache"]).read_text(encoding="utf-8"))
+        cache_path = d.get("cache") or (d.get("train_cache") or {}).get("path")
+        if not cache_path:
+            raise SystemExit(f"evo file {ef} has neither cache nor train_cache.path")
+        cache = json.loads((ROOT / cache_path).read_text(encoding="utf-8"))
         rows = cache["rows"]
         per_seed = {}
         for s in d["seeds"]:

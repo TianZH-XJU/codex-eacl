@@ -86,27 +86,7 @@ def main():
             f = evaluate_math(gg, _rows)
             return ((f["sel_accuracy"], f["coverage"]), gg.to_vector(), f)
 
-        def smp(rr):
-            import random as _r
-            return AbstainGenome(t=rr.random(), use_margin=rr.randint(0, 1), m=rr.random())
-
-        import random as _rr
-        from evolution import crossover as _cx0, mutate as _mu0
-
-        def cx(rr, a, b, rate):
-            va, vb = a.to_vector(), b.to_vector()
-            return AbstainGenome.from_vector(
-                tuple(x if rr.random() < 0.5 else y for x, y in zip(va, vb)) if rr.random() < rate else va)
-
-        def mu(rr, g, rate):
-            t, um, mm = g.t, g.use_margin, g.m
-            if rr.random() < rate:
-                t += rr.gauss(0, 0.1)
-            if rr.random() < rate:
-                mm += rr.gauss(0, 0.1)
-            if rr.random() < rate:
-                um = 1 - um
-            return AbstainGenome(t=t, use_margin=um, m=mm).repaired()
+        from run_nsga2 import cx_abstain as cx, mu_abstain as mu, sample_abstain as smp  # noqa: E402
 
         per_seed = {}
         for s in seeds:

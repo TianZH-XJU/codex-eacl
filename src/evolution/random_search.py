@@ -15,20 +15,27 @@ def sample_genome(rng: random.Random) -> CascadeGenome:
 
 def run(rows: list, budget: int, seed: int, tracker: BudgetTracker | None = None,
         lam: float = 0.05, metric: str = "accuracy") -> dict:
+    from .budget import BudgetExceeded
     rng = random.Random(seed)
     best, best_fit, history = None, None, []
     seen = set()
-    while len(seen) < budget:
-        g = sample_genome(rng)
-        key = g.to_vector()
-        if key in seen:
-            continue
-        seen.add(key)
-        if tracker is not None:
-            tracker.charge_eval(key)
-        fit = F.evaluate(g, rows, lam=lam, primary=metric)
-        history.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
-        if best_fit is None or (fit["scalar"], fit["accuracy"]) > (best_fit["scalar"], best_fit["accuracy"]):
-            best, best_fit = g, fit
+    stopped_early = False
+    try:
+        while len(seen) < budget:
+            g = sample_genome(rng)
+            key = g.to_vector()
+            if key in seen:
+                continue
+            seen.add(key)
+            if tracker is not None:
+                tracker.charge_eval(key)
+            fit = F.evaluate(g, rows, lam=lam, primary=metric)
+            history.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
+            if best_fit is None or (fit["scalar"], fit["accuracy"]) > (best_fit["scalar"], best_fit["accuracy"]):
+                best, best_fit = g, fit
+    except BudgetExceeded:
+        stopped_early = True
+    if best is None:
+        raise BudgetExceeded("budget exhausted before any evaluation")
     return {"best": {"lo": best.lo, "hi": best.hi, "use_second": best.use_second}, "best_fit": best_fit,
-            "n_evals": len(seen), "history": history}
+            "n_evals": len(seen), "history": history, "stopped_early": stopped_early}

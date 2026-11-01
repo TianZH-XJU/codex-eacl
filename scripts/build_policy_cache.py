@@ -95,8 +95,8 @@ def main():
                     ans, _, rec_one = model.predict(MODEL_TASKS[args.task], {"message": row["text"]},
                                                     {"q": q}, prompt_version="policy-cache-v1")
                     inner = ans.get("q", ans) if isinstance(ans, dict) else {}
-                    if rec_one is None or not rec_one.ok:
-                        err = f"model_error:{rec_one.error if rec_one else 'no-record'}"
+                    if not rec_one.ok:
+                        err = f"model_error:{rec_one.error}"
                         inner = {}
                     elif not rec_one.parse_ok:
                         err = f"parse_error:{rec_one.error}"
@@ -153,6 +153,10 @@ def main():
               "device": "cpu", "threads": args.threads,
               "model_revision": get_adapter(args.model).revision,
               "project_git_sha": git_sha(ROOT),
+              "run_manifest": {"argv": sys.argv[1:], "cpu_threads": args.threads,
+                               "project_git_sha": git_sha(ROOT), "protocol": "v4.1",
+                               "prompt_version": "policy-cache-v1",
+                               "adapter_versions": "src-v1"},
               "windows_sleep_prevention_active": sleep_on,
               "peak_rss_mb": round(peak / 2**20, 1),
               "real_model_calls": calls, "rows": out,

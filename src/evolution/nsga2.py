@@ -79,8 +79,10 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
         ref: tuple = (0.0, 0.0)) -> dict:
     """evaluate(genome) -> (objectives tuple, key tuple, record dict).
     sample(rng)/crossover(rng,a,b,rate)/mutate(rng,g,rate) caller-supplied."""
-    from .budget import BudgetExceeded
+    from .budget import BudgetExceeded, BudgetTracker
     rng = random.Random(seed)
+    if tracker is None:
+        tracker = BudgetTracker(max_unique_evals=budget, max_model_calls=10 ** 9)
     pop = [sample(rng) for _ in range(population)]
     archive = []
     memo = {}
@@ -88,20 +90,28 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
     def score(g):
         key = g.to_vector() if hasattr(g, "to_vector") else tuple(g)
         if key in memo:
-            if tracker is not None:
-                tracker.charge_eval(key)
-            return memo[key]
-        if tracker is not None:
             tracker.charge_eval(key)
+            return memo[key]
+        tracker.charge_eval(key)
         objs, rkey, rec = evaluate(g)
         memo[key] = objs
         archive.append({"key": list(key), "objectives": list(objs), **rec})
         return objs
 
-    fits = [score(g) for g in pop]
-    log, gen, stopped_early = [], 0, False
+    stopped_early = False
+    try:
+        fits = [score(g) for g in pop]
+    except BudgetExceeded:
+        stopped_early = True
+        pop = pop[:len(archive)] or pop[:1]
+        fits = [a for a in [memo.get(g.to_vector() if hasattr(g, "to_vector") else tuple(g)) for g in pop] if a is not None] or []
+        if not fits:
+            raise
+    log, gen = [], 0
     try:
         while gen < min(generations, max_generations):
+            if stopped_early:
+                break
             fronts = nondominated_sort(fits)
             crowd = {}
             for f in fronts:

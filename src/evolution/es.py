@@ -28,6 +28,9 @@ def run(rows: list, mu: int = 4, lam: int = 8, sigma: float = 0.15,
         tracker: BudgetTracker | None = None, lam_w: float = 0.05,
         max_generations: int = 50, metric: str = "accuracy") -> dict:
     rng = random.Random(seed)
+    if tracker is None:
+        from .budget import BudgetTracker as _BT
+        tracker = _BT(max_unique_evals=budget, max_model_calls=10 ** 9)
     pop = [CascadeGenome(lo=rng.random(), hi=rng.random(), use_second=1).repaired()
            for _ in range(mu)]
     archive = []
@@ -36,21 +39,29 @@ def run(rows: list, mu: int = 4, lam: int = 8, sigma: float = 0.15,
     def score(g):
         key = g.to_vector()
         if key in memo:
-            if tracker is not None:
-                tracker.charge_eval(key)
-            return memo[key]
-        if tracker is not None:
             tracker.charge_eval(key)
+            return memo[key]
+        tracker.charge_eval(key)
         fit = F.evaluate(g, rows, lam=lam_w, primary=metric)
         memo[key] = fit
         archive.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
         return fit
 
-    fits = [score(g) for g in pop]
+    stopped_early = False
+    try:
+        fits = [score(g) for g in pop]
+    except BudgetExceeded:
+        stopped_early = True
+        pop = pop[:len(archive)] or pop[:1]
+        fits = [a for a in [memo.get(g.to_vector()) for g in pop] if a is not None] or []
+        if not fits:
+            raise
     log = []
-    gen, stopped_early = 0, False
+    gen = 0
     try:
         while gen < max_generations:
+            if stopped_early:
+                break
             order = sorted(range(len(pop)),
                            key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
             log.append({"generation": gen,

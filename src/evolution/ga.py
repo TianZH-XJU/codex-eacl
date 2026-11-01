@@ -49,6 +49,10 @@ def run(rows: list, population: int, generations: int, crossover_rate: float,
         tracker: BudgetTracker | None = None, lam: float = 0.05,
         metric: str = "accuracy") -> dict:
     rng = random.Random(seed)
+    if tracker is None:
+        # Budget is always enforced, even without a caller-supplied tracker.
+        from .budget import BudgetTracker as _BT
+        tracker = _BT(max_unique_evals=10 ** 9, max_model_calls=10 ** 9)
     pop = [RS.sample_genome(rng) for _ in range(population)]
     archive = []
     memo = {}
@@ -56,20 +60,27 @@ def run(rows: list, population: int, generations: int, crossover_rate: float,
     def score(g):
         key = g.to_vector()
         if key in memo:
-            if tracker is not None:
-                tracker.charge_eval(key)
-            return memo[key]
-        if tracker is not None:
             tracker.charge_eval(key)
+            return memo[key]
+        tracker.charge_eval(key)
         fit = F.evaluate(g, rows, lam=lam, primary=metric)
         memo[key] = fit
         archive.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
         return fit
 
-    fits = [score(g) for g in pop]
-    log = []
     stopped_early = False
+    try:
+        fits = [score(g) for g in pop]
+    except BudgetExceeded:
+        stopped_early = True
+        pop = pop[:len(archive)] or pop[:1]
+        fits = [a for a in [memo.get(g.to_vector()) for g in pop] if a is not None] or []
+        if not fits:
+            raise
+    log = []
     for gen in range(generations):
+        if stopped_early:
+            break
         order = sorted(range(len(pop)), key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
         log.append({"generation": gen,
                     "best_scalar": fits[order[0]]["scalar"],

@@ -111,6 +111,27 @@ def test_ga_stops_gracefully_when_budget_exhausted():
     assert g["best_fit"]["accuracy"] >= 0.0
 
 
+def test_seeding_budget_exhaustion_returns_partial_best():
+    from evolution import BudgetTracker, es_run, nsga2_run
+    rows = synth(n=30, seed=2)
+    t = BudgetTracker(max_unique_evals=3, max_model_calls=0)
+    g = ga_run(rows, population=8, generations=5, crossover_rate=0.8,
+               mutation_rate=0.2, elitism=1, seed=5, tracker=t)
+    assert g["stopped_early"] is True and g["n_unique_evals"] <= 3
+    t = BudgetTracker(max_unique_evals=3, max_model_calls=0)
+    e = es_run(rows, mu=4, lam=8, budget=24, seed=5, tracker=t)
+    assert e["stopped_early"] is True and e["n_unique_evals"] <= 3
+
+
+def test_budget_always_enforced_without_caller_tracker():
+    rows = synth(n=30, seed=2)
+    g = ga_run(rows, population=8, generations=3, crossover_rate=0.8,
+               mutation_rate=0.2, elitism=1, seed=5)
+    # 8 seeding + 3*7 children = 29 slots max; unique bounded by slots taken
+    assert g["n_unique_evals"] <= 8 + 3 * 7
+    assert g["stopped_early"] is False  # internal cap (1e9) not hit
+
+
 def test_es_deterministic_budgeted_and_second_gene_fixed():
     rows = synth(n=80, seed=4)
     t = BudgetTracker(max_unique_evals=24, max_model_calls=0)
