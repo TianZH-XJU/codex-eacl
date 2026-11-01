@@ -8,8 +8,24 @@ CPU-only; one model resident at a time (enforced by caller, not here).
 from __future__ import annotations
 
 import abc
+import math
 import time
 from dataclasses import dataclass, field
+
+
+def validate_prob_map(probs) -> tuple:
+    """Validate a {label: p} map: finite floats in [0, 1].
+    Returns (clean_dict, error_or_None). Never raises."""
+    if not isinstance(probs, dict) or not probs:
+        return {}, "empty_or_not_a_map"
+    try:
+        clean = {str(k): float(v) for k, v in probs.items()}
+    except (TypeError, ValueError, AttributeError):
+        return {}, "not_numeric"
+    for v in clean.values():
+        if not (math.isfinite(v) and 0.0 <= v <= 1.0):
+            return {}, f"out_of_range_or_nonfinite:{v!r}"
+    return clean, None
 
 
 @dataclass(frozen=True)
@@ -45,8 +61,9 @@ def validate_answers(questions: dict, answers: dict):
       one of them (normalized) else "choice_out_of_criteria".
     - noul: "noul" must be a finite number in [0, 1].
     - score: "score" must be a finite number.
+    - span/set: declared-but-unverified (no experiment has issued span/set
+      questions); fail closed with "unvalidated_type".
     Missing answers or wrong shapes are parse failures, never silent."""
-    import math
     failures = {}
     if not isinstance(answers, dict) or not answers:
         return False, {"_all": "empty_or_missing_answers"}
@@ -91,6 +108,15 @@ def validate_answers(questions: dict, answers: dict):
             if not math.isfinite(s):
                 failures[name] = "score_not_finite"
                 continue
+        elif qtype in ("span", "set"):
+            # Declared-but-unverified: no experiment has ever issued span/set
+            # questions, so no response schema has been observed. Fail closed
+            # rather than silently accept an unchecked shape.
+            failures[name] = f"unvalidated_type:{qtype}"
+            continue
+        else:
+            failures[name] = f"unknown_question_type:{qtype!r}"
+            continue
     return (len(failures) == 0), failures
 
 

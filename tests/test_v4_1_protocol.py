@@ -63,6 +63,20 @@ def test_significance_accepts_v4_1_train_cache_files(tmp_path):
     assert set(d["evo_train_code_laya"]) == {"17", "23", "41"}
 
 
+def test_paired_join_rejects_mismatched_rows():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import test_evo_significance as S
+    a = [{"key": "r1", "gold": True}, {"key": "r2", "gold": False}]
+    b_ok = [{"key": "r1", "gold": True}, {"key": "r2", "gold": False}]
+    assert S.check_paired(a, b_ok, label="t") is True
+    with pytest.raises(SystemExit):
+        S.check_paired(a, [{"key": "r1", "gold": True}], label="t")
+    with pytest.raises(SystemExit):
+        S.check_paired(a, [{"key": "r2", "gold": True}, {"key": "r1", "gold": False}], label="t")
+    with pytest.raises(SystemExit):
+        S.check_paired(a, [{"key": "r1", "gold": False}, {"key": "r2", "gold": False}], label="t")
+
+
 def test_findver_normalization_and_report_grouping():
     a = FindverAdapter()
     assert a.labels() == ["not_supported", "supported"]

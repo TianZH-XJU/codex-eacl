@@ -41,3 +41,21 @@ def test_correctness_rules():
                          {"gold": 1, "meta": {"steps": ["a"]}},
                          {"choice": "ALL STEPS CORRECT"})
     assert not U.correctness("findver", "noul", {"gold": True}, {})
+
+
+def test_findver_choice_normalization_variants():
+    n = U.norm
+    assert n("not_supported") == n("not supported") == n("Not Supported") == "not supported"
+    assert n("SUPPORTED") == "supported"
+    row_neg = {"gold": False}
+    row_pos = {"gold": True}
+    assert U.correctness("findver", "switch", row_neg, {"choice": "not_supported"}) is True
+    assert U.correctness("findver", "switch", row_neg, {"choice": "not supported"}) is True
+    assert U.correctness("findver", "switch", row_neg, {"choice": "Not Supported"}) is True
+    assert U.correctness("findver", "switch", row_neg, {"choice": "supported"}) is False
+    assert U.correctness("findver", "switch", row_pos, {"choice": "supported"}) is True
+    assert U.correctness("findver", "switch", row_pos, {"choice": "unclear"}) is False
+    assert U.correctness("findver", "switch", row_neg, {"choice": None}) is False
+    assert U.correctness("findver", "noul", {"gold": True}, {"noul": 0.5}) is True
+    assert U.correctness("findver", "noul", {"gold": False}, {"noul": 0.4999}) is True
+    assert U.correctness("findver", "noul", {"gold": True}, {"noul": "bad"}) is False

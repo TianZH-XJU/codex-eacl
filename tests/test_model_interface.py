@@ -138,3 +138,34 @@ def test_record_is_frozen_and_complete():
     with pytest.raises(Exception):
         rec.ok = False
     assert rec.error is None and rec.extra == {}
+
+
+def test_span_set_rejected_as_unverified():
+    from models.base import validate_answers
+    ok, errs = validate_answers(
+        {"q": {"type": "span"}}, {"q": {"type": "span", "spans": []}})
+    assert ok is False and errs["q"].startswith("unvalidated_type:")
+    ok, errs = validate_answers(
+        {"q": {"type": "set"}}, {"q": {"type": "set", "items": []}})
+    assert ok is False and errs["q"].startswith("unvalidated_type:")
+    ok, errs = validate_answers(
+        {"q": {"type": "mystery"}}, {"q": {"type": "mystery"}})
+    assert ok is False and errs["q"].startswith("unknown_question_type:")
+
+
+def test_validate_prob_map():
+    from models.base import validate_prob_map
+    clean, err = validate_prob_map({"a": 0.7, "b": 0.3})
+    assert err is None and clean == {"a": 0.7, "b": 0.3}
+    clean, err = validate_prob_map({"a": 1.5})
+    assert clean == {} and err is not None
+    clean, err = validate_prob_map({"a": float("nan")})
+    assert clean == {} and err is not None
+    clean, err = validate_prob_map({"a": float("inf")})
+    assert clean == {} and err is not None
+    clean, err = validate_prob_map({"a": "x"})
+    assert clean == {} and err is not None
+    clean, err = validate_prob_map({})
+    assert clean == {} and err is not None
+    clean, err = validate_prob_map(None)
+    assert clean == {} and err is not None

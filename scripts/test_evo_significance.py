@@ -43,14 +43,15 @@ def check_paired(a, b, label=""):
 
 
 def rowwise(g, rows):
-    """Per-row correctness of a cascade genome on binary-task cache rows."""
+    """Per-row correctness of a cascade genome on binary-task cache rows.
+    Returns (group_id, correct, row_key, gold) so paired_ci can validate joins."""
     out = []
     for r in rows:
         if r.get("noul_p") is None:
-            out.append((r["group_id"], 0))
+            out.append((r["group_id"], 0, r["key"], r["gold"]))
             continue
         ok, _ = decide(g, r["noul_p"], bool(r.get("switch_correct", False)), r["gold"])
-        out.append((r["group_id"], int(ok)))
+        out.append((r["group_id"], int(ok), r["key"], r["gold"]))
     return out
 
 
@@ -59,23 +60,33 @@ def rowwise_math(g, rows):
     out = []
     for r in rows:
         if r.get("top1") is None:
-            out.append((r["group_id"], 0))
+            out.append((r["group_id"], 0, r["key"], r.get("gold")))
             continue
         abstain = r["top1"] < g.t or (g.use_margin and (r.get("margin") or 0.0) < g.m)
-        out.append((r["group_id"], 0 if abstain else int(bool(r.get("correct", False)))))
+        out.append((r["group_id"], 0 if abstain else int(bool(r.get("correct", False))), r["key"], r.get("gold")))
     return out
 
 
 def paired_ci(a, b, n=5000):
     if len(a) != len(b):
         raise SystemExit(f"paired_ci: length mismatch {len(a)} != {len(b)}")
-    ga = sorted(g for g, _ in a)
-    gb = sorted(g for g, _ in b)
+    # Row-identity join check: same rows in the same order with the same golds.
+    # Tuples are (group_id, correct[, row_key, gold]).
+    ka = [t[2] if len(t) > 2 else None for t in a]
+    kb = [t[2] if len(t) > 2 else None for t in b]
+    if any(k is not None for k in ka + kb) and ka != kb:
+        raise SystemExit("paired_ci: row-id order mismatch (unpaired comparison refused)")
+    ga_ = [t[3] if len(t) > 3 else None for t in a]
+    gb_ = [t[3] if len(t) > 3 else None for t in b]
+    if any(g is not None for g in ga_ + gb_) and ga_ != gb_:
+        raise SystemExit("paired_ci: gold mismatch (unpaired comparison refused)")
+    ga = sorted(g for g, *_ in a)
+    gb = sorted(g for g, *_ in b)
     if ga != gb:
         raise SystemExit("paired_ci: group multiset mismatch (unpaired comparison refused)")
-    groups = sorted({g for g, _ in a})
-    da = {g: [v for gg, v in a if gg == g] for g in groups}
-    db = {g: [v for gg, v in b if gg == g] for g in groups}
+    groups = sorted({g for g, *_ in a})
+    da = {g: [v for gg, v, *_ in a if gg == g] for g in groups}
+    db = {g: [v for gg, v, *_ in b if gg == g] for g in groups}
     diffs = [db[g][i] - da[g][i] for g in groups for i in range(len(da[g]))]
     est = float(np.mean(diffs))
     boots = []

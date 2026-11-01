@@ -250,8 +250,9 @@ def test_cascade_missing_outputs_fail_closed():
     fit = evaluate(CascadeGenome(lo=0.0, hi=1.0, use_second=0), rows)
     assert fit["n"] == 3 and fit["n_missing"] == 2
     assert fit["accuracy"] == round(1 / 3, 4)
-    assert fit["macro_f1"] < fit["accuracy"] or True  # reported, not asserted
-    assert set(("macro_f1", "balanced_accuracy")) <= set(fit)
+    # TP=1, FP=1, FN=1, TN=0 -> F1_pos=0.5, F1_neg=0.0
+    assert fit["macro_f1"] == 0.25
+    assert fit["balanced_accuracy"] == 0.25
 
 
 def test_abstain_roundtrip_nontrivial_genes():
@@ -292,3 +293,88 @@ def test_primary_metric_drives_scalar():
     assert fa["macro_f1"] != fa["accuracy"]  # imbalanced: metrics differ
     with pytest.raises(ValueError):
         evaluate(g, rows, primary="nope")
+
+
+def test_nsga2_mulambda_args_take_effect():
+    import random
+    rows = synth(n=30, seed=4)
+
+    def ev(g):
+        fit = evaluate(g, rows)
+        return ((fit["accuracy"], -fit["calls_per_row"]), g.to_vector(), fit)
+
+    def smp(rng):
+        return sample_genome(rng)
+
+    def cx(rng, a, b, rate):
+        return crossover(rng, a, b, rate)
+
+    def mu(rng, g, rate):
+        return mutate(rng, g, rate)
+    from evolution import BudgetTracker
+    t = BudgetTracker(max_unique_evals=100, max_model_calls=10 ** 9)
+    r = nsga2_run(ev, smp, cx, mu, budget=100, seed=1, population=8,
+                  generations=1, tracker=t, mu=3, lams=9)
+    # mu=3 parents kept; one generation creates at most 9 children
+    assert r["n_unique_evals"] <= 3 + 9
+    assert all(len(g["genome"]) == 3 for g in r["pareto"])
+
+
+def test_mid_generation_budget_keeps_scored_children_es():
+    # Budget exhausts mid-generation: already-scored children must be merged
+    # into selection, not discarded with the unfilled generation.
+    rows = synth(n=40, seed=11)
+    t = BudgetTracker(max_unique_evals=6, max_model_calls=0)
+    e = es_run(rows, mu=4, lam=8, budget=6, seed=5, tracker=t)
+    assert e["stopped_early"] is True
+    assert e["n_unique_evals"] == 6
+    # best must come from the archive (all evaluated genomes), not thin air
+    arch_best = max(a["scalar"] for a in e["archive"])
+    assert abs(e["best_fit"]["scalar"] - arch_best) < 1e-9
+
+
+def test_mid_generation_budget_keeps_scored_children_nsga2():
+    rows = synth(n=40, seed=11)
+
+    def ev(g):
+        fit = evaluate(g, rows)
+        return ((fit["accuracy"], -fit["calls_per_row"]), g.to_vector(), fit)
+
+    def smp(rng):
+        return sample_genome(rng)
+
+    def cx(rng, a, b, rate):
+        return crossover(rng, a, b, rate)
+
+    def mu(rng, g, rate):
+        return mutate(rng, g, rate)
+    t = BudgetTracker(max_unique_evals=6, max_model_calls=0)
+    r = nsga2_run(ev, smp, cx, mu, budget=6, seed=5, population=4,
+                  generations=5, tracker=t)
+    assert r["stopped_early"] is True
+    assert r["n_unique_evals"] == 6
+    arch_objs = {tuple(a["objectives"]) for a in r["archive"]}
+    assert all(tuple(g["objectives"]) in arch_objs for g in r["pareto"])
+
+
+def test_budget_param_enforced_without_explicit_tracker():
+    # es/nsga2 must respect `budget` even when tracker is None (auto-tracker).
+    rows = synth(n=40, seed=11)
+
+    def ev(g):
+        fit = evaluate(g, rows)
+        return ((fit["accuracy"], -fit["calls_per_row"]), g.to_vector(), fit)
+
+    def smp(rng):
+        return sample_genome(rng)
+
+    def cx(rng, a, b, rate):
+        return crossover(rng, a, b, rate)
+
+    def mu(rng, g, rate):
+        return mutate(rng, g, rate)
+    e = es_run(rows, mu=4, lam=8, budget=6, seed=5, tracker=None)
+    assert e["stopped_early"] is True and e["n_unique_evals"] <= 6
+    r = nsga2_run(ev, smp, cx, mu, budget=6, seed=5, population=4,
+                  generations=5, tracker=None)
+    assert r["stopped_early"] is True and r["n_unique_evals"] <= 6

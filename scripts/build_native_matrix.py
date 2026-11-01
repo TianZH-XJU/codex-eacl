@@ -79,6 +79,21 @@ def tfidf_baselines(texts_train, y_train, texts_dev, y_dev, average="binary"):
     return out
 
 
+def code_rows_for_groups(manifest, raw, groups, valid_idx, test_idx):
+    """Resolve group ids to (func, target) rows using ONLY manifest members
+    (official-train indices). Raises AssertionError on any valid/test/leaked
+    index (P0-2 leak guard). Pure function: unit-testable without raw files."""
+    leaked = set(manifest.get("excluded_cross_split_leaked_idx", []))
+    members = manifest.get("members")
+    assert members is not None, "manifest must pin train-only members"
+    rows = []
+    for g in groups:
+        for i in members.get(g, []):
+            assert i not in valid_idx and i not in test_idx and i not in leaked, f"non-train idx {i}"
+            rows.append((raw[i]["func"], raw[i]["target"]))
+    return rows
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out-dir", default="results/v2/native_baselines")
@@ -106,17 +121,9 @@ def main():
     raw = js.loads((ROOT / "data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))
     valid_idx = {int(x) for x in (ROOT / "data/raw/codexglue_defect/valid.txt").read_text(encoding="utf-8").split()}
     test_idx = {int(x) for x in (ROOT / "data/raw/codexglue_defect/test.txt").read_text(encoding="utf-8").split()}
-    leaked = set(v2.get("excluded_cross_split_leaked_idx", []))
     assert valid_idx.isdisjoint({int(x) for x in (ROOT / "data/raw/codexglue_defect/train.txt").read_text(encoding="utf-8").split()})
-    members = v2.get("members")
-    assert members is not None, "manifest must pin train-only members"
     def rows_for(groups):
-        rows = []
-        for g in groups:
-            for i in members.get(g, []):
-                assert i not in valid_idx and i not in test_idx and i not in leaked, f"non-train idx {i}"
-                rows.append((raw[i]["func"], raw[i]["target"]))
-        return rows
+        return code_rows_for_groups(v2, raw, groups, valid_idx, test_idx)
     tr = rows_for(v2["splits"]["search_train"])
     de = rows_for(v2["splits"]["search_dev"])
     code_scores = tfidf_baselines([t for t, _ in tr], [y for _, y in tr],

@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
+from models.base import validate_prob_map  # noqa: E402
 from models.registry import get_adapter  # noqa: E402
 from tasks.code import CodeAdapter  # noqa: E402
 from tasks.findver import FindverAdapter  # noqa: E402
@@ -78,6 +79,19 @@ def main():
     adapter = TASKS[args.task]()
     rows = adapter.load_rows(args.split, args.limit, args.seed)
     model = get_adapter(args.model).load(device="cpu")
+    import math as _math
+    if args.model == "vela":
+        _w = getattr(model, "_weights", {}) or {}
+        provenance = {"weights_verified": bool(_w.get("verified", False)),
+                      "weights_sha256": _w.get("sha256"),
+                      "weights_skipped": bool(_w.get("skipped", False)),
+                      "revision": model.revision}
+    else:
+        provenance = {"weights_verified": None, "weights_sha256": None,
+                      "weights_skipped": False,
+                      "laya_pkg": getattr(model, "_pkg_version", None),
+                      "revision": model.revision,
+                      "note": "Laya weights resolve via HF cache; package version pinned, snapshot hash N/A"}
     proc = psutil.Process()
     peak = proc.memory_info().rss
     sleep_on = prevent_sleep()
@@ -110,10 +124,9 @@ def main():
             if args.task == "processbench":
                 raw = rec["choice"]["raw"] if rec["choice"]["error"] is None else {}
                 probs = raw.get("probabilities", {}) if isinstance(raw, dict) else {}
-                try:
-                    probs = {str(k): float(v) for k, v in probs.items()}
-                except (TypeError, ValueError, AttributeError):
-                    probs = {}
+                probs, probs_err = validate_prob_map(probs)
+                if probs_err is not None:
+                    rec["choice"]["error"] = f"parse_error:probs_{probs_err}"
                 order = sorted(probs, key=lambda k: probs[k], reverse=True)
                 top1 = probs[order[0]] if order else None
                 margin = probs[order[0]] - probs[order[1]] if len(order) > 1 else None
@@ -152,6 +165,7 @@ def main():
               "model": args.model, "split": args.split, "seed": args.seed, "n": len(out),
               "device": "cpu", "threads": args.threads,
               "model_revision": get_adapter(args.model).revision,
+              "model_provenance": provenance,
               "project_git_sha": git_sha(ROOT),
               "run_manifest": {"argv": sys.argv[1:], "cpu_threads": args.threads,
                                "project_git_sha": git_sha(ROOT), "protocol": "v4.1",

@@ -130,11 +130,20 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
                 return pop[min(cand, key=lambda i: (rank[i], -crowd[i]))]
 
             children = []
+            scored = []
             while len(children) < lams:
                 a, b = select(), select()
-                children.append(mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate))
-            scored = [(c, score(c)) for c in children]
-            pool, pool_f = pop + [c for c, _ in scored], fits + [f for _, f in scored]
+                try:
+                    c = mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate)
+                    f = score(c)
+                except BudgetExceeded:
+                    stopped_early = True
+                    break
+                children.append(c)
+                scored.append(f)
+            if not children:
+                break
+            pool, pool_f = pop + children, fits + scored
             fronts = nondominated_sort(pool_f)
             crowd = {}
             for f in fronts:
@@ -156,5 +165,5 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
     return {"pareto": [{"genome": pop[i].to_vector() if hasattr(pop[i], "to_vector") else pop[i],
                         "objectives": list(fits[i])} for i in fronts[0]],
             "hypervolume": hypervolume_2d(fits, ref), "generations": log,
-            "stopped_early": stopped_early,
+            "stopped_early": stopped_early, "archive": archive,
             "n_unique_evals": len({tuple(a["key"]) for a in archive})}

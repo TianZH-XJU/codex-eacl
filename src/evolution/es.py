@@ -70,17 +70,24 @@ def run(rows: list, mu: int = 4, lam: int = 8, sigma: float = 0.15,
             children = []
             scored = []
             while len(children) < lam:
-                parent = pop[order[rng.randrange(min(mu, len(order)))]]
-                c = mutate(rng, (parent.lo, parent.hi), sigma)
-                f = score(c)  # may raise BudgetExceeded -> stop, keep scored so far
+                try:
+                    parent = pop[order[rng.randrange(min(mu, len(order)))]]
+                    c = mutate(rng, (parent.lo, parent.hi), sigma)
+                    f = score(c)
+                except BudgetExceeded:
+                    stopped_early = True
+                    break
                 children.append(c)
                 scored.append(f)
-            pool, pool_f = pop + children, fits + scored
-            order = sorted(range(len(pool)),
-                           key=lambda i: (pool_f[i]["scalar"], pool_f[i]["accuracy"]), reverse=True)
-            pop = [pool[i] for i in order[:mu]]
-            fits = [pool_f[i] for i in order[:mu]]
-            gen += 1
+            if children:
+                pool, pool_f = pop + children, fits + scored
+                order = sorted(range(len(pool)),
+                               key=lambda i: (pool_f[i]["scalar"], pool_f[i]["accuracy"]), reverse=True)
+                pop = [pool[i] for i in order[:mu]]
+                fits = [pool_f[i] for i in order[:mu]]
+                gen += 1
+            if stopped_early:
+                break
     except BudgetExceeded:
         stopped_early = True
     order = sorted(range(len(pop)),

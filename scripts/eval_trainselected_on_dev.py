@@ -85,19 +85,19 @@ def main():
                 per_seed[str(s)] = {
                     "ga_train_best": evo["per_seed"][str(s)][algo]["best"],
                     "ga_train_fit": evo["per_seed"][str(s)][algo]["fit_train"],
-                    "ga_dev_acc": round(float(np.mean([v for _, v in gb_d])), 4),
+                    "ga_report_acc": round(float(np.mean([v for _, v in gb_d])), 4),
                     "random_train_best": evo["per_seed"][str(s)]["random"]["best"],
-                    "random_dev_acc": round(float(np.mean([v for _, v in rb_d])), 4),
-                    "ga_minus_noulonly_dev": paired_ci(n_d, gb_d),
-                    "ga_minus_switchonly_dev": paired_ci(s_d, gb_d),
-                    "ga_minus_random_dev": paired_ci(rb_d, gb_d)}
-            accs = [per_seed[str(s)]["ga_dev_acc"] for s in seeds]
+                    "random_report_acc": round(float(np.mean([v for _, v in rb_d])), 4),
+                    "ga_minus_noulonly_report": paired_ci(n_d, gb_d),
+                    "ga_minus_switchonly_report": paired_ci(s_d, gb_d),
+                    "ga_minus_random_report": paired_ci(rb_d, gb_d)}
+            accs = [per_seed[str(s)]["ga_report_acc"] for s in seeds]
             report["tasks"][f"{t}_{m}"] = {
                 "evo_source": f"evo_train_{t}_{m}.json",
                 "selection_metric": evo.get("run_manifest", {}).get("metric", "accuracy"),
                 "per_seed": per_seed,
-                "ga_dev_mean": round(float(np.mean(accs)), 4),
-                "ga_dev_std": round(float(np.std(accs, ddof=1)), 4) if len(accs) > 1 else 0.0}
+                "ga_report_mean": round(float(np.mean(accs)), 4),
+                "ga_report_std": round(float(np.std(accs, ddof=1)), 4) if len(accs) > 1 else 0.0}
     for m in ("laya", "vela"):
         train = load(f"cache_train_math_{m}.json")
         dev = load(dev_file("math", m))
@@ -130,18 +130,18 @@ def main():
             for tt in (0.3, 0.5, 0.7):
                 th[str(tt)] = evaluate_math(AbstainGenome(t=tt, use_margin=0, m=0.0), dev)
             per_seed[str(s)] = {"deploy": {"t": deploy.t, "use_margin": deploy.use_margin, "m": deploy.m},
-                                "deploy_dev": fd, "never_abstain_dev": f0, "thresholds_dev": th,
+                                "deploy_report": fd, "never_abstain_report": f0, "thresholds_report": th,
                                 "hypervolume_train": n["hypervolume"]}
         report["tasks"][f"math_{m}"] = {"per_seed": per_seed}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     for k, v in report["tasks"].items():
-        if "ga_dev_mean" in v:
-            print(k, "GA-dev:", v["ga_dev_mean"], v["ga_dev_std"],
-                  {s: (d["ga_minus_switchonly_dev"]["est"], d["ga_minus_switchonly_dev"]["ci95"])
+        if "ga_report_mean" in v:
+            print(k, "GA-report:", v["ga_report_mean"], v["ga_report_std"],
+                  {s: (d["ga_minus_switchonly_report"]["est"], d["ga_minus_switchonly_report"]["ci95"])
                    for s, d in v["per_seed"].items()})
         else:
-            print(k, {s: d["deploy_dev"] for s, d in v["per_seed"].items()})
+            print(k, {s: d["deploy_report"] for s, d in v["per_seed"].items()})
 
 
 if __name__ == "__main__":
