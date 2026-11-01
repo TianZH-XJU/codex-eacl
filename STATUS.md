@@ -9,7 +9,7 @@
 
 | Gate | Verdict | Evidence |
 |---|---|---|
-| A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; full suite 199 passed at `29a9499` (only authoritative count; older counts below are era-labeled history) |
+| A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; full suite 199 passed at `42458fd` (only authoritative count; older counts below are era-labeled history) |
 | Stage 0 E2 evidence audit | PASS | 18/18 offline checks; path corrections; see `docs/AUDIT_V4_1.md` |
 | A1 native | DONE | intent full-label baselines; code/math/findver unified 6/6 matrix (see paper §9): math 0.10 both, Vela findver collapse 0.458, Laya code switch−noul +0.20 sig |
 | Stage 3 unified native | DONE 6/6 | code Laya 0.45/0.65 Vela 0.633/0.667; findver Laya 0.712/0.644 Vela 0.458/0.458; math 0.10/0.10; `results/v4/native/unified_*.summary.json` |
