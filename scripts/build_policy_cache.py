@@ -79,7 +79,6 @@ def main():
     adapter = TASKS[args.task]()
     rows = adapter.load_rows(args.split, args.limit, args.seed)
     model = get_adapter(args.model).load(device="cpu")
-    import math as _math
     if args.model == "vela":
         _w = getattr(model, "_weights", {}) or {}
         provenance = {"weights_verified": bool(_w.get("verified", False)),

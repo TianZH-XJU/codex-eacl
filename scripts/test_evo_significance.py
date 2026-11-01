@@ -28,16 +28,23 @@ rng = np.random.RandomState(17)
 
 def check_paired(a, b, label=""):
     """Paired-join validation: same rows in the same order with same golds.
-    Raises SystemExit on mismatch (fail-closed: never compare unpaired rows)."""
+    Accepts raw row dicts ({key, gold}) or rowwise tuples
+    (group_id, correct[, row_key, gold]). Raises SystemExit on mismatch
+    (fail-closed: never compare unpaired rows)."""
+    def _key_gold(x):
+        if isinstance(x, dict):
+            return (x.get("key"), x.get("gold"))
+        # rowwise tuple: (group_id, correct[, row_key, gold])
+        return ((x[2] if len(x) > 2 else None), (x[3] if len(x) > 3 else None))
     if len(a) != len(b):
         raise SystemExit(f"paired join failed {label}: length {len(a)} != {len(b)}")
-    ka = [r["key"] for r in a]
-    kb = [r["key"] for r in b]
-    if ka != kb:
+    ka = [_key_gold(r)[0] for r in a]
+    kb = [_key_gold(r)[0] for r in b]
+    if any(k is not None for k in ka + kb) and ka != kb:
         raise SystemExit(f"paired join failed {label}: row-id order mismatch")
-    ga = [r.get("gold") for r in a]
-    gb = [r.get("gold") for r in b]
-    if ga != gb:
+    ga = [_key_gold(r)[1] for r in a]
+    gb = [_key_gold(r)[1] for r in b]
+    if any(g is not None for g in ga + gb) and ga != gb:
         raise SystemExit(f"paired join failed {label}: gold mismatch")
     return True
 
@@ -68,18 +75,9 @@ def rowwise_math(g, rows):
 
 
 def paired_ci(a, b, n=5000):
-    if len(a) != len(b):
-        raise SystemExit(f"paired_ci: length mismatch {len(a)} != {len(b)}")
-    # Row-identity join check: same rows in the same order with the same golds.
-    # Tuples are (group_id, correct[, row_key, gold]).
-    ka = [t[2] if len(t) > 2 else None for t in a]
-    kb = [t[2] if len(t) > 2 else None for t in b]
-    if any(k is not None for k in ka + kb) and ka != kb:
-        raise SystemExit("paired_ci: row-id order mismatch (unpaired comparison refused)")
-    ga_ = [t[3] if len(t) > 3 else None for t in a]
-    gb_ = [t[3] if len(t) > 3 else None for t in b]
-    if any(g is not None for g in ga_ + gb_) and ga_ != gb_:
-        raise SystemExit("paired_ci: gold mismatch (unpaired comparison refused)")
+    # Row-identity join (row-id order + gold) enforced by check_paired;
+    # group-multiset check below guards the cluster bootstrap.
+    check_paired(a, b, label="paired_ci")
     ga = sorted(g for g, *_ in a)
     gb = sorted(g for g, *_ in b)
     if ga != gb:

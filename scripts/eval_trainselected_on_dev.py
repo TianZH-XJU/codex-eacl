@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from evolution import (AbstainGenome, BudgetTracker, CascadeGenome, evaluate,  # noqa: E402
-                       evaluate_math, ga_run, nsga2_run, random_run)
+from evolution import (AbstainGenome, BudgetTracker, CascadeGenome,  # noqa: E402
+                       evaluate_math, nsga2_run)
 from test_evo_significance import paired_ci, rowwise  # noqa: E402
 
 EV = ROOT / "results" / "v4" / "evolution"

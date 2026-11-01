@@ -1,0 +1,468 @@
+{
+  "discover": "search_train caches",
+  "validate": [
+    "search_dev",
+    "confirm"
+  ],
+  "min_n": 8,
+  "tol": 0.15,
+  "n_cells_eligible": 15,
+  "n_confirmed_dev": 13,
+  "n_confirmed_confirm": 10,
+  "cells": [
+    {
+      "cell": [
+        "math",
+        "vela",
+        "mid"
+      ],
+      "n_discover": 14,
+      "severity_discover": 0.9286,
+      "wilson_lb_discover": 0.6853,
+      "detail_discover": {
+        "acc": 0.0714
+      },
+      "n_dev": 10,
+      "severity_dev": 0.8,
+      "confirmed_dev": true,
+      "n_confirm": 12,
+      "severity_confirm": 0.8333,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "math",
+        "laya",
+        "mid"
+      ],
+      "n_discover": 13,
+      "severity_discover": 0.9231,
+      "wilson_lb_discover": 0.6669,
+      "detail_discover": {
+        "acc": 0.0769
+      },
+      "n_dev": 15,
+      "severity_dev": 0.8667,
+      "confirmed_dev": true,
+      "n_confirm": 16,
+      "severity_confirm": 0.875,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "math",
+        "vela",
+        "low"
+      ],
+      "n_discover": 45,
+      "severity_discover": 0.8889,
+      "wilson_lb_discover": 0.765,
+      "detail_discover": {
+        "acc": 0.1111
+      },
+      "n_dev": 46,
+      "severity_dev": 0.9565,
+      "confirmed_dev": true,
+      "n_confirm": 47,
+      "severity_confirm": 0.9362,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "math",
+        "laya",
+        "high"
+      ],
+      "n_discover": 41,
+      "severity_discover": 0.7561,
+      "wilson_lb_discover": 0.6066,
+      "detail_discover": {
+        "acc": 0.2439
+      },
+      "n_dev": 35,
+      "severity_dev": 0.9143,
+      "confirmed_dev": true,
+      "n_confirm": 38,
+      "severity_confirm": 0.8947,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "code",
+        "vela",
+        "mid"
+      ],
+      "n_discover": 30,
+      "severity_discover": 0.5,
+      "wilson_lb_discover": 0.3315,
+      "detail_discover": {
+        "both_wrong": 15,
+        "only_noul": 2,
+        "only_switch": 3,
+        "both_ok": 10
+      },
+      "n_dev": 33,
+      "severity_dev": 0.2121,
+      "confirmed_dev": false,
+      "n_confirm": 32,
+      "severity_confirm": 0.2188,
+      "confirmed_confirm": false,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "findver",
+        "laya",
+        "low"
+      ],
+      "n_discover": 14,
+      "severity_discover": 0.4286,
+      "wilson_lb_discover": 0.2138,
+      "detail_discover": {
+        "both_wrong": 6,
+        "only_noul": 4,
+        "only_switch": 2,
+        "both_ok": 2
+      },
+      "n_dev": 15,
+      "severity_dev": 0.0,
+      "confirmed_dev": false,
+      "n_confirm": 4,
+      "severity_confirm": 0.5,
+      "confirmed_confirm": false,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "findver",
+        "vela",
+        "mid"
+      ],
+      "n_discover": 30,
+      "severity_discover": 0.4,
+      "wilson_lb_discover": 0.2459,
+      "detail_discover": {
+        "both_wrong": 12,
+        "only_noul": 3,
+        "only_switch": 3,
+        "both_ok": 12
+      },
+      "n_dev": 25,
+      "severity_dev": 0.36,
+      "confirmed_dev": true,
+      "n_confirm": 17,
+      "severity_confirm": 0.4706,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "findver",
+        "laya",
+        "mid"
+      ],
+      "n_discover": 18,
+      "severity_discover": 0.3889,
+      "wilson_lb_discover": 0.203,
+      "detail_discover": {
+        "both_wrong": 7,
+        "only_noul": 2,
+        "only_switch": 1,
+        "both_ok": 8
+      },
+      "n_dev": 17,
+      "severity_dev": 0.2941,
+      "confirmed_dev": true,
+      "n_confirm": 16,
+      "severity_confirm": 0.4375,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "findver",
+        "laya",
+        "high"
+      ],
+      "n_discover": 28,
+      "severity_discover": 0.3571,
+      "wilson_lb_discover": 0.2071,
+      "detail_discover": {
+        "both_wrong": 10,
+        "only_noul": 0,
+        "only_switch": 2,
+        "both_ok": 16
+      },
+      "n_dev": 27,
+      "severity_dev": 0.2222,
+      "confirmed_dev": true,
+      "n_confirm": 24,
+      "severity_confirm": 0.25,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "code",
+        "laya",
+        "low"
+      ],
+      "n_discover": 25,
+      "severity_discover": 0.32,
+      "wilson_lb_discover": 0.172,
+      "detail_discover": {
+        "both_wrong": 8,
+        "only_noul": 6,
+        "only_switch": 5,
+        "both_ok": 6
+      },
+      "n_dev": 17,
+      "severity_dev": 0.2353,
+      "confirmed_dev": true,
+      "n_confirm": 22,
+      "severity_confirm": 0.1364,
+      "confirmed_confirm": false,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "findver",
+        "vela",
+        "high"
+      ],
+      "n_discover": 19,
+      "severity_discover": 0.3158,
+      "wilson_lb_discover": 0.1536,
+      "detail_discover": {
+        "both_wrong": 6,
+        "only_noul": 1,
+        "only_switch": 1,
+        "both_ok": 11
+      },
+      "n_dev": 20,
+      "severity_dev": 0.6,
+      "confirmed_dev": true,
+      "n_confirm": 13,
+      "severity_confirm": 0.0769,
+      "confirmed_confirm": false,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "code",
+        "laya",
+        "high"
+      ],
+      "n_discover": 14,
+      "severity_discover": 0.2857,
+      "wilson_lb_discover": 0.1172,
+      "detail_discover": {
+        "both_wrong": 4,
+        "only_noul": 3,
+        "only_switch": 4,
+        "both_ok": 3
+      },
+      "n_dev": 24,
+      "severity_dev": 0.1667,
+      "confirmed_dev": true,
+      "n_confirm": 17,
+      "severity_confirm": 0.1176,
+      "confirmed_confirm": false,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "code",
+        "vela",
+        "low"
+      ],
+      "n_discover": 25,
+      "severity_discover": 0.28,
+      "wilson_lb_discover": 0.1428,
+      "detail_discover": {
+        "both_wrong": 7,
+        "only_noul": 2,
+        "only_switch": 6,
+        "both_ok": 10
+      },
+      "n_dev": 26,
+      "severity_dev": 0.2692,
+      "confirmed_dev": true,
+      "n_confirm": 25,
+      "severity_confirm": 0.32,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "findver",
+        "vela",
+        "low"
+      ],
+      "n_discover": 11,
+      "severity_discover": 0.2727,
+      "wilson_lb_discover": 0.0975,
+      "detail_discover": {
+        "both_wrong": 3,
+        "only_noul": 2,
+        "only_switch": 3,
+        "both_ok": 3
+      },
+      "n_dev": 14,
+      "severity_dev": 0.3571,
+      "confirmed_dev": true,
+      "n_confirm": 14,
+      "severity_confirm": 0.1429,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    },
+    {
+      "cell": [
+        "code",
+        "laya",
+        "mid"
+      ],
+      "n_discover": 21,
+      "severity_discover": 0.0476,
+      "wilson_lb_discover": 0.0085,
+      "detail_discover": {
+        "both_wrong": 1,
+        "only_noul": 6,
+        "only_switch": 5,
+        "both_ok": 9
+      },
+      "n_dev": 19,
+      "severity_dev": 0.1053,
+      "confirmed_dev": true,
+      "n_confirm": 21,
+      "severity_confirm": 0.2381,
+      "confirmed_confirm": true,
+      "genome": {
+        "kind": "cell_index",
+        "space": [
+          "task",
+          "model",
+          "conf"
+        ],
+        "note": "exhaustive 18-cell evaluation = full archive fill"
+      }
+    }
+  ],
+  "status": "passed"
+}
