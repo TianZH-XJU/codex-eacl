@@ -100,6 +100,8 @@ def main():
                              "objectives": "quality-vs-cost HV", "per_seed": seeds}
     report = {"experiment_id": "EXP-03", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
+              "analysis_script": "analyze_search_landscape.py",
+              "analysis_type": "exploratory", "selection_used": False, "confirm_used": False,
               "pools": "search_train logs only; no new search",
               "run_manifest": {"argv": sys.argv[1:]},
               "unavailable_from_logs": {

@@ -127,6 +127,8 @@ def main():
         cells[key] = st
     report = {"experiment_id": "EXP-01", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
+              "analysis_script": "analyze_action_complementarity.py",
+              "analysis_type": "exploratory", "selection_used": False, "confirm_used": False,
               "pools": "search_train (in-sample screen; headroom is an upper bound, not a method)",
               "run_manifest": {"argv": sys.argv[1:]},
               "ci_method": ("group-level percentile bootstrap (5000 resamples, module RandomState(17), "

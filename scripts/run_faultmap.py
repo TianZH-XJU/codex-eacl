@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import subprocess
 import sys
 from pathlib import Path
 
@@ -156,6 +157,12 @@ def main():
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
+    try:
+        sha = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "HEAD"],
+                             check=True, capture_output=True, text=True).stdout.strip()
+    except Exception:
+        sha = None
+
     train_files, dev_files, conf_files = select_files(
         args.train_glob, args.dev_glob, args.confirm_glob)
     assert conf_files, f"no confirm caches matched {args.confirm_glob}"
@@ -191,7 +198,11 @@ def main():
               "n_confirmed_dev": sum(1 for c in cells if c["confirmed_dev"]),
               "n_confirmed_confirm": sum(1 for c in cells if c["confirmed_confirm"]),
               "cells": cells,
-              "status": "passed" if cells else "empty_archive"}
+              "status": "passed" if cells else "empty_archive",
+              "experiment_id": "E5", "repo_commit": sha, "protocol_version": "v4.1",
+              "analysis_script": "run_faultmap.py",
+              "analysis_type": "exploratory", "selection_used": False, "confirm_used": True,
+              "run_manifest": {"argv": sys.argv[1:]}}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     for c in cells[:8]:

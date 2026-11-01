@@ -1,7 +1,7 @@
 {
   "experiment_id": "S-06",
-  "created_utc": "2026-11-01T16:24:31.921333+00:00",
-  "repo_commit": "40260fb99660291baea0151ac05fb807e9711847",
+  "created_utc": "2026-11-01T16:33:36.296355+00:00",
+  "repo_commit": "c8b2414544b550ec0f2a1ac4b66f3e26e6292367",
   "protocol_version": "v4.1",
   "note": "index only: missing fields omitted, never inferred",
   "files": {
@@ -165,10 +165,12 @@
     },
     "faultmap": {
       "file": "faultmap.json",
+      "experiment_id": "E5",
       "status": "passed",
+      "protocol_version": "v4.1",
       "n_cells": 15,
-      "has_run_manifest": false,
-      "has_git_sha": false
+      "has_run_manifest": true,
+      "has_git_sha": true
     },
     "ga_b48_significance": {
       "file": "ga_b48_significance.json",
@@ -318,7 +320,7 @@
       "protocol_version": "v4.1",
       "pools": "frozen train-selected genomes -> held-out target dev/confirm; no re-search, no confirm tuning",
       "n_cells": 16,
-      "has_run_manifest": false,
+      "has_run_manifest": true,
       "has_git_sha": true
     },
     "transfer_matrix": {

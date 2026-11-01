@@ -1,8 +1,18 @@
 {
   "experiment_id": "EXP-05",
-  "created_utc": "2026-11-01T16:22:40.576754+00:00",
-  "repo_commit": "d5d30b71a54b50f890b1629e03f55d799110e6fd",
+  "created_utc": "2026-11-01T16:33:14.034421+00:00",
+  "repo_commit": "c8b2414544b550ec0f2a1ac4b66f3e26e6292367",
   "protocol_version": "v4.1",
+  "analysis_script": "analyze_transfer_heldout.py",
+  "analysis_type": "exploratory",
+  "selection_used": false,
+  "confirm_used": true,
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/transfer_heldout.json"
+    ]
+  },
   "pools": "frozen train-selected genomes -> held-out target dev/confirm; no re-search, no confirm tuning",
   "matrix": {
     "code_laya_on_code_laya": {

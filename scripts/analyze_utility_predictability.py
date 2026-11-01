@@ -193,6 +193,8 @@ def main():
                       "champion_tie_break": "fixed candidate order logreg>tree>threshold, first-max wins"}
     report = {"experiment_id": "EXP-02", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
+              "analysis_script": "analyze_utility_predictability.py",
+              "analysis_type": "exploratory", "selection_used": True, "confirm_used": True,
               "pools": "train OOF -> dev select (model+threshold) -> confirm frozen eval",
               "selection_rule": ("champion = argmax dev net utility over 3 candidates "
                                  "(logreg/tree/threshold; majority excluded as baseline-only); "

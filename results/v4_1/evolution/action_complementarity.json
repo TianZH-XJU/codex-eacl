@@ -1,8 +1,12 @@
 {
   "experiment_id": "EXP-01",
-  "created_utc": "2026-11-01T14:31:40.537366+00:00",
-  "repo_commit": "f06b867dddc82eb39282d82ce2b0994f2c186cf5",
+  "created_utc": "2026-11-01T16:29:58.501438+00:00",
+  "repo_commit": "c8b2414544b550ec0f2a1ac4b66f3e26e6292367",
   "protocol_version": "v4.1",
+  "analysis_script": "analyze_action_complementarity.py",
+  "analysis_type": "exploratory",
+  "selection_used": false,
+  "confirm_used": false,
   "pools": "search_train (in-sample screen; headroom is an upper bound, not a method)",
   "run_manifest": {
     "argv": [

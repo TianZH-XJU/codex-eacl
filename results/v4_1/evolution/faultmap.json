@@ -464,5 +464,18 @@
       }
     }
   ],
-  "status": "passed"
+  "status": "passed",
+  "experiment_id": "E5",
+  "repo_commit": "c8b2414544b550ec0f2a1ac4b66f3e26e6292367",
+  "protocol_version": "v4.1",
+  "analysis_script": "run_faultmap.py",
+  "analysis_type": "exploratory",
+  "selection_used": false,
+  "confirm_used": true,
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/faultmap.json"
+    ]
+  }
 }

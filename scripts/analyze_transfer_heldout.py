@@ -96,6 +96,9 @@ def main():
             matrix[f"{st}_on_{tt}"] = cell
     report = {"experiment_id": "EXP-05", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
+              "analysis_script": "analyze_transfer_heldout.py",
+              "analysis_type": "exploratory", "selection_used": False, "confirm_used": True,
+              "run_manifest": {"argv": sys.argv[1:]},
               "pools": "frozen train-selected genomes -> held-out target dev/confirm; no re-search, no confirm tuning",
               "matrix": matrix}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
