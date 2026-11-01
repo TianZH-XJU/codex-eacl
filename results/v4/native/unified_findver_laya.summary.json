@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-11-01T00:23:56.911013+00:00",
+  "task": "findver",
+  "model": "laya",
+  "split": "search_dev",
+  "seed": 17,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "project_git_sha": "e46cc063180a02684d66038d0912f1d9d610908e",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2117.3,
+  "by_rep": {
+    "noul": {
+      "n": 59,
+      "accuracy": 0.7119,
+      "mean_ms": 2767.7
+    },
+    "switch": {
+      "n": 59,
+      "accuracy": 0.6441,
+      "mean_ms": 2740.6
+    }
+  },
+  "status": "passed"
+}
