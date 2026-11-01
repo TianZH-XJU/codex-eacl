@@ -21,6 +21,7 @@
 | Phase 4 findver EA (matched 24) | NO ADVANTAGE | Laya GA 0.7175 vs Random 0.7119 (n.s.); Vela GA 0.463 < Random 0.475 | 
 | Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap ≤ −0.006, worst −0.20; `transfer_matrix.json` |
 | Phase 5 budget 12 vs 24 | NO SYSTEMATIC EDGE | GA flat, GA−Random sign flips by task |
+| Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | E5 active / ES / NEAT / locked test | BLOCKED | per gates; bank fully measured (exhaustive), no repeatable signal from configs |

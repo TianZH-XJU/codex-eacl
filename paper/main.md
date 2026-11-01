@@ -255,3 +255,20 @@ task/budget (+0.078/−0.022/+0.006/−0.017): no systematic edge at either budg
 Full 4-task × 2-model × 2-budget × 2-algorithm × 3-seed evidence is committed in
 `results/v4/evolution/`; the verdict is owned: **evolution does not beat matched
 Random Search or the best fixed rep anywhere measured**.
+
+**Phase 5 parameter sensitivity (offline, code/Laya cache, 3 seeds each).**
+pop/gens/mut grid at fixed budget 24:
+
+| config | GA mean (std) | Random | GA−Random |
+|---|---|---|---|
+| p4/g2/m0.2 | 0.583 (0.116) | 0.639 | −0.056 |
+| p8/g2/m0.2 | 0.65 (0.0) | 0.639 | +0.011 |
+| p4/g4/m0.2 | 0.583 (0.116) | 0.639 | −0.056 |
+| p8/g3/m0.1 | 0.661 (0.010) | 0.639 | +0.022 |
+| p8/g3/m0.3 | 0.656 (0.010) | 0.639 | +0.017 |
+
+pop 8 converges to the fixed-switch level regardless of mutation rate; pop 4 is
+unstable and worse than Random. No setting unlocks anything above 0.65–0.66:
+parameter choice changes stability, not the ceiling. Per-gene ablation is moot —
+the winning genomes are near-switch-only, so there is no multi-gene interaction
+to ablate; this is stated as a finding, not skipped work.
