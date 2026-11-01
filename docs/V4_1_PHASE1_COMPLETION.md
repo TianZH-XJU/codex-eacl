@@ -48,6 +48,29 @@ every derived file is logged in `results/v4_1/manifests/derived_provenance.json`
 
 All 8 rows applied in `paper/main.md` v0.3 + §6/§7/§8 rewrite (H1/H2/H3 + EXP-01..05 numbers). No "no evolutionary search" narrative remains; NEAT/GP blocking stated with reopen criteria.
 
+## Paper statement mapping (plan 1.4 table, all applied in paper/main.md v0.3+)
+
+| Original / risky claim | Current wording |
+|---|---|
+| No evolutionary search stage was reached | v0.3 header + intro: GA/ES/NSGA-II ran under matched budgets with paired CIs |
+| Four optimizers failed | Three optimizers (GA/ES/NSGA-II) + E5 diagnostic map; NEAT/GP blocked with criteria |
+| Search completely fails | "No stable, repeatable advantage in current fixed model/task/action space" |
+| No transfer exists | "No positive off-diagonal transfer" (in-sample max 0.0; held-out 6/32 SIG all negative) |
+| Budget 48 proves larger budget useless | "Cap raised, no gain; uniques 22/17/23 did not exhaust cap — underutilized, not proven sufficient" |
+| NSGA-II one significant negative deploy | In-sample 11/12 ns + 1 SIG neg, superseded by dev-selected deploy (dev 5/12 SIG neg, confirm 1/12) |
+| E5 is a fourth optimizer | "Diagnostic confidence-stratified fault map (MAP-Elites-inspired, not an evolutionary optimizer)" everywhere |
+| GA overfits (pure selection bias) | "Selection-and-evaluation differences; causal attribution stays partial" |
+
+## Experiment-caliber record (E-01..E-07 evidence grades)
+
+- GA: train exploratory (12/12 ns) / dev selection / confirm pre-fixed validation.
+- ES: train 6/6 ns + frozen-best dev/confirm (`es_deploy_devconfirm.json`).
+- NSGA-II: in-sample superseded; held-out deploy from `nsga2_deploy_devconfirm.json`.
+- Transfer: in-sample exploratory + frozen held-out (`transfer_heldout.json`).
+- Budget: 24->48 cap probe, gap 0.0, underutilized cap.
+- E5: diagnostic cell counts 15/13/10 with group CIs (`group_faultmap.json`).
+- Mechanism: EXP-01..03 + figures; decision-table mapping in paper §6.
+
 ## Phase-1 gate verdict
 
 - [x] No known code P0/P1 open (4 audit rounds closed; suite green).

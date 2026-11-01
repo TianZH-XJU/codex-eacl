@@ -9,7 +9,7 @@
 
 | Gate | Verdict | Evidence |
 |---|---|---|
-| A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; full suite 165 passed at `df7e03b` (only authoritative count; older counts era-labeled history; older counts below are era-labeled history) |
+| A0 audit | PASS | group manifests with train-only members, zero-overlap tests, parser fixes; full suite 165 passed at `df7e03b` (only authoritative count; older counts below are era-labeled history) |
 | Stage 0 E2 evidence audit | PASS | 18/18 offline checks; path corrections; see `docs/AUDIT_V4_1.md` |
 | A1 native | DONE | intent full-label baselines; code/math/findver unified 6/6 matrix (see paper §9): math 0.10 both, Vela findver collapse 0.458, Laya code switch−noul +0.20 sig |
 | Stage 3 unified native | DONE 6/6 | code Laya 0.45/0.65 Vela 0.633/0.667; findver Laya 0.712/0.644 Vela 0.458/0.458; math 0.10/0.10; `results/v4/native/unified_*.summary.json` |
@@ -37,6 +37,12 @@
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | Budget 24->48 probe (code/Vela, pre-reg) | STOP AT 48 | GA 0.384 vs RND 0.384, gap 0.0 to three decimals; per-seed scalar gaps cost-only, accuracy CIs degenerately [0,0] ns; GA realized uniques 22/17/23 under cap 48; b24 edge vanished, protocol budgets_unique stops 96/192 (cap underutilized, not proven sufficient); `evo_train_code_vela_b48.json` + `ga_b48_significance.json` (accuracy CI, cost-blind) |
 | E5 diagnostic fault map (exhaustive confidence-stratified, MAP-Elites-inspired) | DONE | 15 eligible / 13 dev-confirmed / 10 confirm-confirmed cells; top math/vela/mid S=0.9286 n=14; `results/v4_1/evolution/faultmap.json` + `scripts/run_faultmap.py` + `tests/test_run_faultmap.py` |
+| EXP-01 complementarity+oracle (H1) | HEADROOM, NO NET | code/Laya headroom 0.233 repair 14/harmful 15 (net -1); others 0.067-0.10 net ≤ 0; math 0.0; group CIs; `action_complementarity.json` + `scripts/analyze_action_complementarity.py` |
+| EXP-02 predictability OOF->dev->confirm (H2) | RANKS, NO TRANSFER | OOF AUROC up to 0.92 (findver/Vela) / 0.67-0.74 (code/Laya) -> confirm nets ~0 or negative; `utility_predictability.json` + `scripts/analyze_utility_predictability.py` |
+| EXP-03 search landscape (H3) | FLAT, UNDERUSED | plateau-gen-0 in 15/21 runs; b48 uniques 22/17/23 of 48; `search_landscape.json` + `scripts/analyze_search_landscape.py` |
+| EXP-04 group fault CIs | STABLE FAILURE | math high-severity cells group-CI LBs ≥ 0.5 across discover/dev/confirm; `group_faultmap.json` + `scripts/analyze_group_faultmap.py` |
+| EXP-05 held-out transfer | 6/32 SIG, ALL NEGATIVE | frozen train genomes -> target dev/confirm, no re-search; none favor transfer; `transfer_heldout.json` + `scripts/analyze_transfer_heldout.py` |
+| Mechanism figures | DONE | `paper/figures/{headroom,predictability,faultmap}.png` via `scripts/plot_mechanism_evidence.py` (deterministic, Agg) |
 | ONNX parity | not_run | Torch FP32 stable, peak RSS < 2.2 GB; unnecessary |
 
 > Track separation (Stage 0): the gate table + header above are the CURRENT v4 track.
