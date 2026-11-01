@@ -24,6 +24,8 @@
 | Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
 | Phase 5 cross/elit/lam sweeps | NO PATTERN | 16 configs, GA 0.644-0.717, diffs in noise; `grid_*`, `lam_*` |
 | Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` |
+| Phase 4 2nd family ES (matched 24) | NO EDGE | Laya +0.017, Vela +0.017, both n.s.; agrees with GA |
+| Phase 5 executed ablation | MECHANISM FOUND | gain over noul-only = switch rep itself (code SIG); band adds nothing over always-switch (all ns) |
 | NEAT / NSGA-II | BLOCKED WITH CONDITIONS | no sequential structure left; no quality gradient; conditions in `configs/evolution.yaml` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |

@@ -286,6 +286,18 @@ per-seed CIs (4 caches × 3 seeds) include zero, three are degenerate [0,0]
 (identical policies). Formal verdict: **no significant GA−Random difference
 anywhere**. `results/v4/evolution/ga_vs_random_significance.json`.
 
+**Second EA family: (4+8)-ES on continuous (lo,hi), use_second fixed=1.**
+Same cache-exact fitness, matched 24-eval budget, 3 seeds: code/Laya ES 0.6556
+vs Random 0.639 (+0.017, n.s.); code/Vela ES 0.70 (std 0.0) vs Random 0.683
+(+0.017, n.s.). ES agrees with GA: no family breaks the fixed ceiling.
+
+**Executed ablation (replaces the declared-moot claim).**
+GA-best vs forced use_second=0 (noul-only), paired CIs: code/Laya +0.20 all
+seeds SIG, code/Vela 2/3 SIG, findver both ns. GA-best vs forced full-band
+(always-switch): all ns except one seed. Mechanism, measured: the gain over
+noul-only is entirely the switch rep itself; the evolved band adds nothing over
+always-switch. `ablation_vs_noulonly.json`, `ablation_vs_switchonly.json`.
+
 NEAT/multistep and NSGA-II remain explicitly BLOCKED, not silently dropped:
 single-step cascade already exhausts the available complementarity (code oracle
 gain comes from switch-only fixes, no sequential decision needed); with zero
