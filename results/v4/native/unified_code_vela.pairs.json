@@ -1,0 +1,53 @@
+{
+  "n_positions": 60,
+  "reps": [
+    "noul",
+    "switch"
+  ],
+  "per_rep": {
+    "noul": {
+      "accuracy": {
+        "est": 0.6333,
+        "ci95": [
+          0.5,
+          0.75
+        ]
+      },
+      "mean_ms": 2437.4
+    },
+    "switch": {
+      "accuracy": {
+        "est": 0.6667,
+        "ci95": [
+          0.55,
+          0.7833
+        ]
+      },
+      "mean_ms": 2340.7
+    }
+  },
+  "paired": {
+    "switch_minus_noul": {
+      "est": 0.0333,
+      "ci95": [
+        -0.0833,
+        0.15
+      ]
+    },
+    "oracle_accuracy": {
+      "est": 0.75,
+      "ci95": [
+        0.6333,
+        0.85
+      ]
+    },
+    "oracle_gain_over_best": 0.0833,
+    "ci_note": null,
+    "only_fix": {
+      "noul": 5,
+      "switch": 7
+    },
+    "both_wrong": 15,
+    "both_correct": 33
+  }
+}
