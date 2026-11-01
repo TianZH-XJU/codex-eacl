@@ -1,0 +1,738 @@
+{
+  "created_utc": "2026-11-01T07:54:19.671669+00:00",
+  "task": "codexglue_defect",
+  "model": "laya",
+  "split": "search_train",
+  "seed": 17,
+  "n": 60,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "project_git_sha": "f31c11294cbf3b139f8d2127346fd7cc6a94f3ca",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2118.5,
+  "real_model_calls": 120,
+  "rows": [
+    {
+      "key": "idx:8228",
+      "gold": true,
+      "group_id": "fn:05d3b551e667831c",
+      "noul_p": 0.6547,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:24481",
+      "gold": false,
+      "group_id": "fn:fd0ef0d98a4a773f",
+      "noul_p": 0.4699,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:13980",
+      "gold": true,
+      "group_id": "fn:2c79fa481cc40946",
+      "noul_p": 0.594,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:9646",
+      "gold": false,
+      "group_id": "fn:4adf72d07c9d7c27",
+      "noul_p": 0.4252,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:2391",
+      "gold": false,
+      "group_id": "fn:11f69cc638d3acc8",
+      "noul_p": 0.4933,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:21260",
+      "gold": false,
+      "group_id": "fn:feaf5e48081899ff",
+      "noul_p": 0.74,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:9361",
+      "gold": false,
+      "group_id": "fn:693de983ceeef8c2",
+      "noul_p": 0.619,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:26732",
+      "gold": true,
+      "group_id": "fn:247a7a90d3550633",
+      "noul_p": 1.0,
+      "switch_choice": "vulnerable",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:4162",
+      "gold": true,
+      "group_id": "fn:a8ce503d53146235",
+      "noul_p": 0.6965,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:6721",
+      "gold": false,
+      "group_id": "fn:a703d1988396d97c",
+      "noul_p": 0.3833,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:2788",
+      "gold": false,
+      "group_id": "fn:21d67d9d8bd5bdc1",
+      "noul_p": 0.5358,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:935",
+      "gold": true,
+      "group_id": "fn:dea07b0e7597e8ab",
+      "noul_p": 0.5365,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:2122",
+      "gold": true,
+      "group_id": "fn:91302eda8602a848",
+      "noul_p": 0.4556,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:10850",
+      "gold": true,
+      "group_id": "fn:2c60506e42c4b670",
+      "noul_p": 0.6257,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:23973",
+      "gold": true,
+      "group_id": "fn:fa6f0eb5ca91317d",
+      "noul_p": 0.2453,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:9758",
+      "gold": false,
+      "group_id": "fn:8ca75b21edfa1ae4",
+      "noul_p": 0.4628,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:17151",
+      "gold": false,
+      "group_id": "fn:f4b9601edc53131b",
+      "noul_p": 0.6768,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:17912",
+      "gold": true,
+      "group_id": "fn:96c377972194b1a7",
+      "noul_p": 0.811,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:1679",
+      "gold": true,
+      "group_id": "fn:521c7656cc4775b0",
+      "noul_p": 0.1747,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:21467",
+      "gold": true,
+      "group_id": "fn:07cc250a02d7537f",
+      "noul_p": 0.5773,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:7876",
+      "gold": false,
+      "group_id": "fn:0168999808da4776",
+      "noul_p": 0.217,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:9332",
+      "gold": true,
+      "group_id": "fn:deecae09b0bce782",
+      "noul_p": 0.5544,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:22550",
+      "gold": false,
+      "group_id": "fn:890335d6188aafb0",
+      "noul_p": 0.5822,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:10879",
+      "gold": false,
+      "group_id": "fn:e8e8dd8038c6f91a",
+      "noul_p": 0.7746,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:17608",
+      "gold": true,
+      "group_id": "fn:0ea17189a2a3eadd",
+      "noul_p": 0.2456,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:1116",
+      "gold": false,
+      "group_id": "fn:f6d93e26970c4409",
+      "noul_p": 0.5252,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:26411",
+      "gold": false,
+      "group_id": "fn:4fcc113cfcbe04ad",
+      "noul_p": 0.5343,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:26488",
+      "gold": false,
+      "group_id": "fn:762e7af7ac9ecfa3",
+      "noul_p": 0.2543,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:3852",
+      "gold": false,
+      "group_id": "fn:85e90f901ea27bba",
+      "noul_p": 0.1354,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:1544",
+      "gold": false,
+      "group_id": "fn:df0fa793a4fae4f0",
+      "noul_p": 0.4108,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:4929",
+      "gold": false,
+      "group_id": "fn:f88b6b79266ec945",
+      "noul_p": 0.2886,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:525",
+      "gold": true,
+      "group_id": "fn:7ce673b325efacb8",
+      "noul_p": 0.6653,
+      "switch_choice": "vulnerable",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:15727",
+      "gold": false,
+      "group_id": "fn:a1579f738b60875b",
+      "noul_p": 0.2815,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:13199",
+      "gold": true,
+      "group_id": "fn:b9e8414e70614944",
+      "noul_p": 0.6876,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:22323",
+      "gold": true,
+      "group_id": "fn:95efa7c32edb2383",
+      "noul_p": 0.5826,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:9618",
+      "gold": true,
+      "group_id": "fn:9ce5e8601e1cddb7",
+      "noul_p": 0.3676,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:9202",
+      "gold": false,
+      "group_id": "fn:64392f3d4a24caf7",
+      "noul_p": 0.956,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:19705",
+      "gold": true,
+      "group_id": "fn:0fa5c33837e900d4",
+      "noul_p": 0.4363,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:5961",
+      "gold": true,
+      "group_id": "fn:6471f243f8b8a607",
+      "noul_p": 0.4609,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:5520",
+      "gold": true,
+      "group_id": "fn:afce13d82ae898f4",
+      "noul_p": 0.1896,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:7647",
+      "gold": true,
+      "group_id": "fn:d0bc108973c126ef",
+      "noul_p": 0.6599,
+      "switch_choice": "vulnerable",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:7095",
+      "gold": false,
+      "group_id": "fn:c1571941b5a3e5c6",
+      "noul_p": 0.3076,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:7857",
+      "gold": false,
+      "group_id": "fn:cbfe458248c6c296",
+      "noul_p": 0.4526,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:8525",
+      "gold": true,
+      "group_id": "fn:d21b39c268ba51c8",
+      "noul_p": 0.6577,
+      "switch_choice": "vulnerable",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:22439",
+      "gold": true,
+      "group_id": "fn:7969779b9ebd5153",
+      "noul_p": 0.4645,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:18715",
+      "gold": true,
+      "group_id": "fn:4d068618ea1bea78",
+      "noul_p": 0.6765,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:16954",
+      "gold": false,
+      "group_id": "fn:5f550e2b99042526",
+      "noul_p": 0.3119,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:6692",
+      "gold": true,
+      "group_id": "fn:885ae8840bbdba4f",
+      "noul_p": 0.4203,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:3085",
+      "gold": true,
+      "group_id": "fn:d36deafd19d86980",
+      "noul_p": 0.5837,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:16100",
+      "gold": true,
+      "group_id": "fn:f535434b5ac2c9d7",
+      "noul_p": 0.7872,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:12474",
+      "gold": false,
+      "group_id": "fn:0b7c514b000608f6",
+      "noul_p": 0.5295,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:22284",
+      "gold": false,
+      "group_id": "fn:21962f34138b5262",
+      "noul_p": 0.6068,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:6001",
+      "gold": true,
+      "group_id": "fn:42b51c871a70e007",
+      "noul_p": 0.4385,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:313",
+      "gold": false,
+      "group_id": "fn:c1de99a634d6b31a",
+      "noul_p": 0.8382,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:2231",
+      "gold": false,
+      "group_id": "fn:32de62cfafc8c306",
+      "noul_p": 0.3952,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:23300",
+      "gold": true,
+      "group_id": "fn:ca70addc209943a1",
+      "noul_p": 0.4277,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:23362",
+      "gold": false,
+      "group_id": "fn:33f109c6b13c665b",
+      "noul_p": 0.6555,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:10227",
+      "gold": false,
+      "group_id": "fn:6d2354787d6c117f",
+      "noul_p": 0.8989,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:17974",
+      "gold": false,
+      "group_id": "fn:3b7ec5ff6c779422",
+      "noul_p": 0.1353,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "idx:24666",
+      "gold": true,
+      "group_id": "fn:5f0a9094986384b9",
+      "noul_p": 0.4398,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    }
+  ],
+  "status": "passed"
+}
