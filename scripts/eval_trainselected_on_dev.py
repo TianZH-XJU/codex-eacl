@@ -38,16 +38,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=int, default=24)
     ap.add_argument("--seeds", default="17,23,41")
+    ap.add_argument("--report-split", default="search_dev", choices=["search_dev", "confirm"],
+                    help="split to REPORT on (never select on). search_train is always the search pool.")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
     seeds = [int(x) for x in args.seeds.split(",")]
-    report = {"budget_unique": args.budget, "seeds": seeds, "tasks": {}}
+    report = {"budget_unique": args.budget, "seeds": seeds,
+              "search_pool": "search_train", "report_split": args.report_split, "tasks": {}}
+    dev_tag = "" if args.report_split == "search_dev" else "_confirm"
+    dev_file = lambda t, m: f"cache{dev_tag}_{t}_{m}.json"
 
     for t in ("code", "findver"):
         tcache = {"code": "codexglue_defect", "findver": "findver"}[t]
         for m in ("laya", "vela"):
             train = load(f"cache_train_{t}_{m}.json")
-            dev = load(f"cache_{t}_{m}.json")
+            dev = load(dev_file(t, m))
             per_seed = {}
             for s in seeds:
                 tg = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)
@@ -75,7 +80,7 @@ def main():
                 "ga_dev_std": round(float(np.std(accs, ddof=1)), 4) if len(accs) > 1 else 0.0}
     for m in ("laya", "vela"):
         train = load(f"cache_train_math_{m}.json")
-        dev = load(f"cache_math_{m}.json")
+        dev = load(dev_file("math", m))
 
         def ev(gg, _rows=train):
             f = evaluate_math(gg, _rows)
