@@ -1,0 +1,212 @@
+{
+  "created_utc": "2026-11-01T10:01:45.666241+00:00",
+  "cache": "results/v4/evolution/cache_train_code_laya.json",
+  "genome": "cascade",
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "params": {
+    "pop": 8,
+    "gens": 3,
+    "mu": 4,
+    "lams": 8,
+    "sigma": 0.15
+  },
+  "run_manifest": {
+    "argv": [
+      "--cache",
+      "results/v4/evolution/cache_train_code_laya.json",
+      "--genome",
+      "cascade",
+      "--budget",
+      "24",
+      "--seeds",
+      "17,23,41",
+      "--pop",
+      "8",
+      "--gens",
+      "3",
+      "--mu",
+      "4",
+      "--lams",
+      "8",
+      "--out",
+      "results/v4_1/evolution/nsga2_train_code_laya.json"
+    ],
+    "cpu_threads": null,
+    "project_git_sha": "dd9a2656cc7bde4e20c8da5b57932f4554f7b3ca",
+    "protocol": "v4.1"
+  },
+  "per_seed": {
+    "17": {
+      "nsga2_hv": 0.55,
+      "nsga2_front": 4,
+      "nsga2_unique": 19,
+      "nsga2_stopped_early": false,
+      "pareto": [
+        {
+          "genome": [
+            0.026936778790526805,
+            0.11016204891721182,
+            1.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.3287680996504705,
+            0.8151860888778805,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.026936778790526805,
+            0.18716363057070373,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.11016204891721182,
+            0.5219839097124932,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        }
+      ],
+      "random_hv": 0.5808,
+      "random_unique": 24
+    },
+    "23": {
+      "nsga2_hv": 0.5814,
+      "nsga2_front": 4,
+      "nsga2_unique": 15,
+      "nsga2_stopped_early": false,
+      "pareto": [
+        {
+          "genome": [
+            0.9248652516259452,
+            0.9486057779931771,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.7210903557667632,
+            0.9486057779931771,
+            1.0
+          ],
+          "objectives": [
+            0.5833,
+            -1.1
+          ]
+        },
+        {
+          "genome": [
+            0.9248652516259452,
+            0.9486057779931771,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.8479457462469855,
+            0.9486057779931771,
+            1.0
+          ],
+          "objectives": [
+            0.5667,
+            -1.0167
+          ]
+        }
+      ],
+      "random_hv": 0.5802,
+      "random_unique": 24
+    },
+    "41": {
+      "nsga2_hv": 0.5817,
+      "nsga2_front": 4,
+      "nsga2_unique": 21,
+      "nsga2_stopped_early": false,
+      "pareto": [
+        {
+          "genome": [
+            0.23071918631047517,
+            0.38102068999577143,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.345206344876686,
+            0.5530594756959841,
+            1.0
+          ],
+          "objectives": [
+            0.6,
+            -1.3667
+          ]
+        },
+        {
+          "genome": [
+            0.6615809723574216,
+            0.7812095675548225,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        },
+        {
+          "genome": [
+            0.345206344876686,
+            0.5811153788238869,
+            0.0
+          ],
+          "objectives": [
+            0.55,
+            -1.0
+          ]
+        }
+      ],
+      "random_hv": 0.55,
+      "random_unique": 24
+    }
+  },
+  "nsga2_hv_mean": 0.571,
+  "nsga2_hv_std": 0.0182,
+  "random_hv_mean": 0.5703,
+  "random_hv_std": 0.0176,
+  "hv_diff_nsga2_minus_random": 0.0007
+}

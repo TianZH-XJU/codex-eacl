@@ -85,9 +85,9 @@ def main():
                 per_seed[str(s)] = {
                     "ga_train_best": evo["per_seed"][str(s)][algo]["best"],
                     "ga_train_fit": evo["per_seed"][str(s)][algo]["fit_train"],
-                    "ga_report_acc": round(float(np.mean([v for _, v in gb_d])), 4),
+                    "ga_report_acc": round(float(np.mean([v for _, v, _, _ in gb_d])), 4),
                     "random_train_best": evo["per_seed"][str(s)]["random"]["best"],
-                    "random_report_acc": round(float(np.mean([v for _, v in rb_d])), 4),
+                    "random_report_acc": round(float(np.mean([v for _, v, _, _ in rb_d])), 4),
                     "ga_minus_noulonly_report": paired_ci(n_d, gb_d),
                     "ga_minus_switchonly_report": paired_ci(s_d, gb_d),
                     "ga_minus_random_report": paired_ci(rb_d, gb_d)}

@@ -1,0 +1,256 @@
+{
+  "created_utc": "2026-11-01T10:01:34.535461+00:00",
+  "protocol": "v4.1",
+  "fitness_version": "v2-task-primary",
+  "train_cache": {
+    "task": "codexglue_defect",
+    "model": "laya",
+    "split": "search_train",
+    "n": 60,
+    "path": "results/v4/evolution/cache_train_code_laya.json"
+  },
+  "dev_cache": null,
+  "confirm_cache": null,
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "es": {
+        "best": {
+          "lo": 0.7061195700584616,
+          "hi": 1.0,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.6,
+          "calls_per_row": 1.1333,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.596,
+          "balanced_accuracy": 0.6,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5893
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5659,
+            "mean_scalar": 0.4683
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5893,
+            "mean_scalar": 0.5603
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.5893,
+            "mean_scalar": 0.5689
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.39079548660064756,
+          "hi": 0.5297316258108812,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.2833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5832,
+          "balanced_accuracy": 0.5833,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.569
+        },
+        "unique": 24
+      }
+    },
+    "23": {
+      "es": {
+        "best": {
+          "lo": 0.9181139363822808,
+          "hi": 1.0,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5667,
+          "calls_per_row": 1.0333,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5667,
+          "balanced_accuracy": 0.5667,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.565
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.4925
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.538
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.5499,
+            "mean_scalar": 0.5423
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.46639852868741116,
+          "hi": 0.5624701004219349,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.1333,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5804,
+          "balanced_accuracy": 0.5833,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5737
+        },
+        "unique": 24
+      }
+    },
+    "41": {
+      "es": {
+        "best": {
+          "lo": 0.40358504880964347,
+          "hi": 0.5434264261706129,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.6,
+          "calls_per_row": 1.3167,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5982,
+          "balanced_accuracy": 0.6,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5824
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.5815,
+            "mean_scalar": 0.4954
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.5815,
+            "mean_scalar": 0.5555
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.5815,
+            "mean_scalar": 0.5561
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        }
+      },
+      "random": {
+        "best": {
+          "lo": 0.7010469706738839,
+          "hi": 0.9769711973447701,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.6,
+          "calls_per_row": 1.1167,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.596,
+          "balanced_accuracy": 0.6,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5902
+        },
+        "unique": 24
+      }
+    }
+  },
+  "gens_requested": 3,
+  "gens_effective": 2,
+  "run_manifest": {
+    "argv": [
+      "--train-cache",
+      "results/v4/evolution/cache_train_code_laya.json",
+      "--algo",
+      "es",
+      "--budget",
+      "24",
+      "--seeds",
+      "17,23,41",
+      "--pop",
+      "8",
+      "--gens",
+      "3",
+      "--mu",
+      "4",
+      "--lams",
+      "8",
+      "--sigma",
+      "0.15",
+      "--metric",
+      "macro_f1",
+      "--out",
+      "results/v4_1/evolution/es_train_code_laya.json"
+    ],
+    "cpu_threads": null,
+    "project_git_sha": "dd9a2656cc7bde4e20c8da5b57932f4554f7b3ca",
+    "metric": "macro_f1",
+    "lam": 0.05,
+    "algo": "es"
+  },
+  "algo": "es",
+  "es_train_scalar_mean": 0.5789,
+  "es_train_scalar_std": 0.0125,
+  "random_train_scalar_mean": 0.5776,
+  "random_train_scalar_std": 0.0111,
+  "es_minus_random_mean": 0.0013
+}
