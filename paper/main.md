@@ -374,6 +374,26 @@ same train caches: all 12 paired CIs include zero
 code/Laya policy scores 0.45 on dev (paired gap vs fixed switch -0.20, 2/3
 seeds SIG negative) and 0.55 on confirm — the v4 in-sample 0.65 does not
 survive held-out reporting under either accuracy or macro-F1 selection.
-NSGA-II deploy-vs-random on train-selected fronts: 12/12 ns. No evolutionary
-method beats matched Random or the best fixed rep on any task, model, split,
-or metric tried.
+NSGA-II deploy-vs-random on train-selected fronts: 11/12 ns, with the single
+significant cell (math/Vela seed 41, est -0.0833, CI [-0.1525,-0.0189]) favoring
+random over NSGA-II (`results/v4_1/evolution/nsga2_deploy_significance.json`).
+ES rerun on the same train caches: 6/6 ns (scalar diff +0.0013 Laya, +0.0074
+Vela; `es_significance.json`). Every significant paired difference in the v4.1
+reruns favors a fixed or random baseline over evolution, never the reverse.
+Attribution note: the v4.1 reruns differ from the v4 runs in search pool
+(search_train vs search_dev), fitness scalar (macro-F1 vs accuracy) and NSGA-II
+hyperparameters, so per-seed genome divergence between old and new files cannot
+be attributed to the partial-generation merge fix alone; no fix-only A/B on a
+shared pool was run.
+
+**E5 failure landscape (MAP-Elites-lite over the 18-cell task x model x
+confidence-band grid, exhaustive fill, train-discover with dev+confirm
+validation; fail-closed on missing outputs).** 15 cells meet the minimum-n
+gate, 13 confirm on dev and 10 on confirm (tolerance 0.15). The hardest
+confirmed cells are math/mid-band (Vela S=0.9286 n=14, Laya S=0.9231 n=13)
+and math/low+high bands; code/Vela/mid (S=0.5, n=30) does not confirm beyond
+tolerance, i.e. its joint-failure rate is pool-sensitive. No cell shows a
+deployable repair signal: severity is highest exactly where both
+representations fail together, which is the complementarity analysis (Gate 3a)
+result restated as a landscape — the reason NEAT stays blocked.
+`results/v4_1/evolution/faultmap.json`, `scripts/run_faultmap.py`.
