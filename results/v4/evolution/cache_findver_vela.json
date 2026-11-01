@@ -1,0 +1,726 @@
+{
+  "created_utc": "2026-11-01T00:59:26.196193+00:00",
+  "task": "findver",
+  "model": "vela",
+  "split": "search_dev",
+  "seed": 17,
+  "n": 59,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "d6f03aa9baca4f9017fa8f8e9c2764d3bed3f409",
+  "project_git_sha": "ecec672ee95730246cae5f2803e89bb083faa776",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1796.3,
+  "real_model_calls": 118,
+  "rows": [
+    {
+      "key": "knowledge-val-129",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.6453160452710142,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-221",
+      "gold": true,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.28151402351253185,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-90",
+      "gold": false,
+      "group_id": "rp:KIRK-2024-03-29_10-K.json",
+      "noul_p": 0.6503621610396062,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-58",
+      "gold": false,
+      "group_id": "rp:YOTA-2024-04-15_10-K.json",
+      "noul_p": 0.7875957810570126,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-165",
+      "gold": false,
+      "group_id": "rp:BGXX-2024-04-16_10-K.json",
+      "noul_p": 0.6965418084099679,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-245",
+      "gold": true,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.686538323423006,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-99",
+      "gold": false,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.2837437923805473,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-69",
+      "gold": false,
+      "group_id": "rp:ALV-2024-04-26_10-Q.json",
+      "noul_p": 0.7591263832159636,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-120",
+      "gold": false,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.8595648718881735,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-105",
+      "gold": false,
+      "group_id": "rp:ZETA-2024-02-28_10-K.json",
+      "noul_p": 0.7810200750991408,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-49",
+      "gold": true,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.6232167012048832,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-197",
+      "gold": true,
+      "group_id": "rp:CRDF-2024-02-29_10-K.json",
+      "noul_p": 0.736808152727469,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-75",
+      "gold": false,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.4624056181972403,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-153",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.78598848471551,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-161",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.7186504033666478,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-165",
+      "gold": true,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.35908749211146423,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-29",
+      "gold": false,
+      "group_id": "rp:YOTA-2024-04-15_10-K.json",
+      "noul_p": 0.8174255948136623,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-67",
+      "gold": false,
+      "group_id": "rp:CRDF-2024-02-29_10-K.json",
+      "noul_p": 0.7368878515440437,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-134",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.6717470315544003,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-240",
+      "gold": true,
+      "group_id": "rp:ALV-2024-04-26_10-Q.json",
+      "noul_p": 0.3124801318343398,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-235",
+      "gold": true,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.4997146924257863,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-114",
+      "gold": false,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.8400981780555717,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-38",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.7881095981888854,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-143",
+      "gold": true,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.19070591967425224,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-189",
+      "gold": true,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.8295832636750291,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-6",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.7883972778616536,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-132",
+      "gold": true,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.7256507207621116,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-126",
+      "gold": true,
+      "group_id": "rp:KIRK-2024-03-29_10-K.json",
+      "noul_p": 0.5992296736308642,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-239",
+      "gold": true,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.5478251434436882,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-211",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.7767797045058213,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-122",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.7755457694028111,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-55",
+      "gold": false,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.5157039373888836,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-186",
+      "gold": true,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.4751313182293578,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-117",
+      "gold": false,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.7349851354070246,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-40",
+      "gold": true,
+      "group_id": "rp:BGXX-2024-04-16_10-K.json",
+      "noul_p": 0.7252349972017156,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-8",
+      "gold": false,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.7653226284263248,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-143",
+      "gold": true,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.847679705469428,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-92",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.8167759397571499,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-143",
+      "gold": false,
+      "group_id": "rp:FREEW-2024-03-12_10-K.json",
+      "noul_p": 0.583495319682719,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-167",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.7966240383470493,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-88",
+      "gold": true,
+      "group_id": "rp:FLWS-2024-02-08_10-Q.json",
+      "noul_p": 0.6283641416496589,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-56",
+      "gold": false,
+      "group_id": "rp:ZETA-2024-02-28_10-K.json",
+      "noul_p": 0.5434954125801542,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-43",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.49044627651284634,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-10",
+      "gold": true,
+      "group_id": "rp:FLWS-2024-02-08_10-Q.json",
+      "noul_p": 0.6544509910173952,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-211",
+      "gold": true,
+      "group_id": "rp:ALV-2024-04-26_10-Q.json",
+      "noul_p": 0.5352457007241369,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-61",
+      "gold": false,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.24503775855834992,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-148",
+      "gold": false,
+      "group_id": "rp:FLWS-2024-02-08_10-Q.json",
+      "noul_p": 0.599116981366217,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-109",
+      "gold": false,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.40160406881911087,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-249",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.6089263409124317,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-117",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.5163569349877474,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-103",
+      "gold": false,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.6556766689397917,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-107",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.39708391094667483,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-152",
+      "gold": true,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.7047407847355279,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-62",
+      "gold": true,
+      "group_id": "rp:FREEW-2024-03-12_10-K.json",
+      "noul_p": 0.7718624321496602,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-214",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.5780067402910134,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-101",
+      "gold": false,
+      "group_id": "rp:FREEW-2024-03-12_10-K.json",
+      "noul_p": 0.7473456897169598,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-118",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.6353287151787804,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-161",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.7287341113392994,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-208",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.21690778949573206,
+      "switch_choice": "not_supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    }
+  ],
+  "status": "passed"
+}
