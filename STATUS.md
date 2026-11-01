@@ -23,7 +23,8 @@
 | Phase 5 budget 12 vs 24 | NO SYSTEMATIC EDGE | GA flat, GA−Random sign flips by task |
 | Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
 | Phase 5 cross/elit/lam sweeps | NO PATTERN | 16 configs, GA 0.644-0.717, diffs in noise; `grid_*`, `lam_*` |
-| Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` |
+| Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` (IN-SAMPLE; superseded by train/dev split below) |
+| P0-2 isolation (train→dev→confirm) | SELECTION BIAS EXPOSED | code/Laya 0.65→0.45 dev (SIG negative vs switch); confirm prevalence shift documented; eval files committed |
 | Phase 4 2nd family ES (matched 24) | NO EDGE | Laya +0.017, Vela +0.017, both n.s.; agrees with GA |
 | Phase 5 executed ablation | MECHANISM FOUND | gain over noul-only = switch rep itself (code SIG); band adds nothing over always-switch (all ns) |
 | NSGA-II multi-objective (matched 24) | NO EDGE | code HV diff −0.010/−0.007; math abstention Laya −0.013 / Vela +0.021 (noise) |

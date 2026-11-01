@@ -322,6 +322,17 @@ NSGA-II-deploy minus random-best, 12/12 CIs include zero (two degenerate [0,0]):
 EA-vs-control comparison in the project now carries a paired CI, and none
 excludes zero.
 
+**P0-2 isolation fix (train search → dev report → confirm report).**
+All prior GA-vs-Random numbers were in-sample (search and report on search_dev).
+Re-ran GA/Random/ES/NSGA-II on search_train caches (6 new real-call caches),
+evaluated frozen winners on search_dev AND confirm with paired CIs:
+code/Laya train-best 0.65 → dev 0.45 → confirm 0.55 (dev gap vs switch −0.20,
+2/3 seeds SIG *negative* — in-sample gain was pure selection bias);
+findver/Vela confirm 0.68 is label prevalence (28/44 supported vs 28/59 on dev),
+not a model win — paired diffs vs fixed stay null. Lesson now enforced in
+protocol: never report search-pool best without held-out evaluation.
+`train_search_dev_eval.json`, `train_search_confirm_eval.json`.
+
 **Traditional controllers (threshold grid + in-sample LR router, paired CIs).**
 Fixed-band grid ties GA everywhere (all ns except one seed): the simplest
 classical control matches evolution. The LR router collapses to noul-only on
