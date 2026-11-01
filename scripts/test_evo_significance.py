@@ -120,7 +120,10 @@ def main():
         report[Path(ef).stem] = per_seed
     for nf in args.nsga2 or []:
         d = json.loads(Path(nf).read_text(encoding="utf-8"))
-        cache = json.loads((ROOT / d["cache"]).read_text(encoding="utf-8"))
+        cache_path = d.get("cache") or (d.get("train_cache") or {}).get("path")
+        if not cache_path:
+            raise SystemExit(f"nsga2 file {nf} has neither cache nor train_cache.path")
+        cache = json.loads((ROOT / cache_path).read_text(encoding="utf-8"))
         rows = cache["rows"]
         is_math = "top1" in rows[0]
         per_seed = {}

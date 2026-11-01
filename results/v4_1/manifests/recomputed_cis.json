@@ -1,7 +1,7 @@
 {
-  "created_utc": "2026-11-01T09:21:56.126735+00:00",
-  "method": "grouped rows as stored (intent rows carry group_id); paired bootstrap, seed 17, 5000 reps",
-  "project_git_sha": "9b36ea26111c17042ea224c53c24714b02c41d1e",
+  "created_utc": "2026-11-01T09:30:09.084759+00:00",
+  "method": "row-level paired bootstrap, seed 17, 5000 reps. Intent paired files carry no group structure, so this is row-level (not group-clustered); group-level CIs for code/math/findver live in the per-task paired analyses.",
+  "project_git_sha": "60b991ab6d7a378cf88853b651c50dc6dabe4649",
   "a1_paired": {
     "paired_clinc150": {
       "n": 100,

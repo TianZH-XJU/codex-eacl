@@ -39,7 +39,10 @@ def paired_ci(diffs, n=5000):
 
 def main():
     out = {"created_utc": datetime.now(timezone.utc).isoformat(),
-           "method": "grouped rows as stored (intent rows carry group_id); paired bootstrap, seed 17, 5000 reps",
+           "method": ("row-level paired bootstrap, seed 17, 5000 reps. Intent paired "
+                      "files carry no group structure, so this is row-level (not "
+                      "group-clustered); group-level CIs for code/math/findver live "
+                      "in the per-task paired analyses."),
            "project_git_sha": git_sha(ROOT), "a1_paired": {}, "surrogate": {}}
     for name in ("paired_clinc150", "paired_banking77"):
         d = json.loads((ROOT / "results/v4/native" / f"{name}.json").read_text(encoding="utf-8"))

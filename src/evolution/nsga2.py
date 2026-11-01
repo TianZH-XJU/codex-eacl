@@ -76,14 +76,18 @@ def hypervolume_2d(points: list, ref=(0.0, 0.0)) -> float:
 def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
         population: int = 8, generations: int = 3, crossover_rate: float = 0.8,
         mutation_rate: float = 0.2, tracker=None, max_generations: int = 50,
-        ref: tuple = (0.0, 0.0)) -> dict:
+        ref: tuple = (0.0, 0.0), mu: int | None = None, lams: int | None = None) -> dict:
     """evaluate(genome) -> (objectives tuple, key tuple, record dict).
-    sample(rng)/crossover(rng,a,b,rate)/mutate(rng,g,rate) caller-supplied."""
+    sample(rng)/crossover(rng,a,b,rate)/mutate(rng,g,rate) caller-supplied.
+    (mu+lambda) semantics: mu parents survive per generation, lam children
+    created; defaults to population for both when unset."""
     from .budget import BudgetExceeded, BudgetTracker
     rng = random.Random(seed)
     if tracker is None:
         tracker = BudgetTracker(max_unique_evals=budget, max_model_calls=10 ** 9)
-    pop = [sample(rng) for _ in range(population)]
+    mu = population if mu is None else mu
+    lams = population if lams is None else lams
+    pop = [sample(rng) for _ in range(mu)]
     archive = []
     memo = {}
 
@@ -126,7 +130,7 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
                 return pop[min(cand, key=lambda i: (rank[i], -crowd[i]))]
 
             children = []
-            while len(children) < population:
+            while len(children) < lams:
                 a, b = select(), select()
                 children.append(mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate))
             scored = [(c, score(c)) for c in children]
@@ -140,8 +144,8 @@ def run(evaluate, sample, crossover, mutate, budget: int, seed: int,
                 for i in f:
                     rank[i] = r
             order = sorted(range(len(pool)), key=lambda i: (rank[i], -crowd[i]))
-            pop = [pool[i] for i in order[:population]]
-            fits = [pool_f[i] for i in order[:population]]
+            pop = [pool[i] for i in order[:mu]]
+            fits = [pool_f[i] for i in order[:mu]]
             fronts0 = nondominated_sort(fits)
             log.append({"generation": gen, "front0_size": len(fronts0[0]),
                         "hypervolume": hypervolume_2d(fits, ref)})

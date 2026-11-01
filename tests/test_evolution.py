@@ -205,6 +205,29 @@ def test_nsga2_runs_with_budget_and_seed():
     assert r1["hypervolume"] >= 0.0
 
 
+def test_nsga2_mulambda_semantics():
+    import random
+    rows = synth(n=40, seed=9)
+
+    def ev(g):
+        fit = evaluate(g, rows)
+        return ((fit["accuracy"], -fit["calls_per_row"]), g.to_vector(), fit)
+
+    def smp(rng):
+        return sample_genome(rng)
+
+    def cx(rng, a, b, rate):
+        return crossover(rng, a, b, rate)
+
+    def mu(rng, g, rate):
+        return mutate(rng, g, rate)
+    t = BudgetTracker(max_unique_evals=100, max_model_calls=0)
+    r = nsga2_run(ev, smp, cx, mu, budget=100, seed=11, population=8,
+                  generations=2, tracker=t, mu=4, lams=6)
+    assert all(len(g["objectives"]) == 2 for g in r["pareto"])
+    assert r["n_unique_evals"] <= 100
+
+
 def test_selective_policy_math():
     rows = [{"correct": True, "top1": 0.9, "margin": 0.5},
             {"correct": False, "top1": 0.4, "margin": 0.05},

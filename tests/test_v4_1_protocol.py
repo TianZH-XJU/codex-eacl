@@ -50,6 +50,19 @@ def test_processbench_mapping_matches_official_adapter():
         assert (r["gold"] == len(raw["steps"])) == (raw["label"] == -1)
 
 
+def test_significance_accepts_v4_1_train_cache_files(tmp_path):
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import test_evo_significance as S
+    out = tmp_path / "sig.json"
+    sys.argv = ["x", "--evo",
+                str(ROOT / "results/v4_1/evolution/evo_train_code_laya.json"),
+                "--out", str(out)]
+    S.main()
+    d = json.loads(out.read_text(encoding="utf-8"))
+    assert "evo_train_code_laya" in d
+    assert set(d["evo_train_code_laya"]) == {"17", "23", "41"}
+
+
 def test_findver_normalization_and_report_grouping():
     a = FindverAdapter()
     assert a.labels() == ["not_supported", "supported"]

@@ -68,7 +68,8 @@ def main():
     ap.add_argument("--gens", type=int, default=3)
     ap.add_argument("--mu", type=int, default=4)
     ap.add_argument("--lams", type=int, default=8)
-    ap.add_argument("--sigma", type=float, default=0.15)
+    ap.add_argument("--sigma", type=float, default=0.15,
+                    help="gaussian sigma for abstain-genome mutation (cascade mutate uses fixed sigma)")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
@@ -100,10 +101,13 @@ def main():
             def ev(g, _rows=rows):
                 f = evaluate_math(g, _rows)
                 return ((f["sel_accuracy"], f["coverage"]), g.to_vector(), f)
-            smp, cx, mu = sample_abstain, cx_abstain, mu_abstain
+            import functools
+            smp, cx = sample_abstain, cx_abstain
+            mu = functools.partial(mu_abstain, sigma=args.sigma)
         t1 = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)
         n = nsga2_run(ev, smp, cx, mu, budget=args.budget, seed=seed,
-                      population=args.pop, generations=args.gens, tracker=t1, ref=ref)
+                      population=args.pop, generations=args.gens, tracker=t1, ref=ref,
+                      mu=args.mu, lams=args.lams)
         # random multi-objective sampling, same unique budget
         rng = random.Random(seed + 5000)
         seen, pts = set(), []
