@@ -50,6 +50,21 @@ of this project tried evolving a post-hoc router over frozen Laya actions (SINGL
 TOURNAMENT) and likewise found no learnable signal; those experiments are retained as
 preliminary evidence and are not reused here.
 
+**Routing/cascading literature and where we differ.** EvoPrompt (Guo et al., ICLR 2024)
+and Promptbreeder (Fernando et al., ICML 2024) evolve discrete natural-language
+prompts; our genomes evolve executed decision policies over typed model calls, not
+prompt strings. Cost-aware routing (Hybrid LLM, Ding et al., ICLR 2024; AutoMix,
+Aggarwal et al., NeurIPS 2024; BEST-Route, Ding et al., ICML 2025) shows cascades
+beat fixed policies only with a reliable verifier/scorer — FrugalGPT needs a learned
+DistilBERT scorer, AutoMix needs few-shot self-verification plus a POMDP router
+because raw confidence is noisy, Self-REF (ICML 2025) fine-tunes for calibrated
+confidence. Our escalation signal is the frozen model's own Noul probability, and
+we test exactly the literature's failure condition: when that signal cannot
+separate fixable from breakable rows, no cascade — evolved or hand-tuned — can win.
+Cascade Routing (ICML 2025) unifies routing and cascading; our two-stage
+noul→switch policy is the minimal instance, which lets us attribute any gap
+precisely instead of hiding it in a large policy space.
+
 ## 3. Method
 
 **Models (frozen).** Laya 0.4.16 (source `b9fe351`), checkpoint
