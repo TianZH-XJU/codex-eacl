@@ -128,6 +128,7 @@ def main():
     report = {"experiment_id": "EXP-01", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
               "pools": "search_train (in-sample screen; headroom is an upper bound, not a method)",
+              "run_manifest": {"argv": sys.argv[1:]},
               "ci_method": ("group-level percentile bootstrap (5000 resamples, module RandomState(17), "
                             "fixed TASKS call order); singleton groups (code: 60/60) reduce to row "
                             "bootstrap with on-grid CIs, multi-row groups (findver: 41 pools) give off-grid CIs"),

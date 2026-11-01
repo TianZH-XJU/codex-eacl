@@ -74,6 +74,7 @@ def main():
         cells.append(entry)
     report = {"experiment_id": "EXP-04", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
+              "run_manifest": {"argv": sys.argv[1:]},
               "method": ("group-level percentile bootstrap of cell severity (5000 resamples, "
                          "module RandomState(17) consumed in fixed cell order; "
                          "singleton groups yield degenerate point CIs [est,est] — no false precision implied; "

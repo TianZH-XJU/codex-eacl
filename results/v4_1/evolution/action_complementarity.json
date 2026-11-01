@@ -1,9 +1,15 @@
 {
   "experiment_id": "EXP-01",
-  "created_utc": "2026-11-01T14:19:08.262306+00:00",
-  "repo_commit": "f7fa969b7bd9cf35fc044fb8bfcf5fe74e74828e",
+  "created_utc": "2026-11-01T14:31:40.537366+00:00",
+  "repo_commit": "f06b867dddc82eb39282d82ce2b0994f2c186cf5",
   "protocol_version": "v4.1",
   "pools": "search_train (in-sample screen; headroom is an upper bound, not a method)",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/action_complementarity.json"
+    ]
+  },
   "ci_method": "group-level percentile bootstrap (5000 resamples, module RandomState(17), fixed TASKS call order); singleton groups (code: 60/60) reduce to row bootstrap with on-grid CIs, multi-row groups (findver: 41 pools) give off-grid CIs",
   "cells": {
     "code_laya": {

@@ -197,7 +197,7 @@ def main():
               "selection_rule": ("champion = argmax dev net utility over 3 candidates "
                                  "(logreg/tree/threshold; majority excluded as baseline-only); "
                                  "ties broken by fixed candidate order logreg>tree>threshold, first-max wins"),
-              "lam_cost": LAM, "cells": cells}
+              "lam_cost": LAM, "run_manifest": {"argv": sys.argv[1:]}, "cells": cells}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     for k, c in cells.items():

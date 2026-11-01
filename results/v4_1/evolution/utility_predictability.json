@@ -1,11 +1,17 @@
 {
   "experiment_id": "EXP-02",
-  "created_utc": "2026-11-01T14:23:28.420551+00:00",
-  "repo_commit": "c69ac592e7c5eeac5a1f6357c710e8f47689d9a5",
+  "created_utc": "2026-11-01T14:31:20.253529+00:00",
+  "repo_commit": "f06b867dddc82eb39282d82ce2b0994f2c186cf5",
   "protocol_version": "v4.1",
   "pools": "train OOF -> dev select (model+threshold) -> confirm frozen eval",
   "selection_rule": "champion = argmax dev net utility over 3 candidates (logreg/tree/threshold; majority excluded as baseline-only); ties broken by fixed candidate order logreg>tree>threshold, first-max wins",
   "lam_cost": 0.05,
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/utility_predictability.json"
+    ]
+  },
   "cells": {
     "code_laya": {
       "n_train": 60,

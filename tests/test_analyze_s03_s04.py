@@ -32,7 +32,7 @@ def test_group_severity_ci_degenerate_and_empty():
 def test_committed_landscape_unavailable_marked():
     d = json.loads((ROOT / "results/v4_1/evolution/search_landscape.json").read_text(encoding="utf-8"))
     assert d["experiment_id"] == "EXP-03"
-    assert set(d["unavailable_from_logs"]) == {"parent_child_correlation", "train_dev_rank_correlation", "random_trajectories", "nsga2_per_generation_trajectories"}
+    assert set(d["unavailable_from_logs"]) == {"parent_child_correlation", "neutral_mutation_rate", "train_dev_rank_correlation", "random_trajectories", "nsga2_per_generation_trajectories"}
     f = d["families"]["evo_train_code_vela_b48"]["per_seed"]["17"]["ga"]
     assert f["unique"] == 22 and f["generated"] == 43
     assert f["best_so_far"]["plateau_gen"] == 1

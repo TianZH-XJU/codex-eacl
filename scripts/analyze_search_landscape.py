@@ -14,6 +14,7 @@ import argparse
 import glob
 import json
 import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -100,8 +101,10 @@ def main():
     report = {"experiment_id": "EXP-03", "created_utc": datetime.now(timezone.utc).isoformat(),
               "repo_commit": sha, "protocol_version": "v4.1",
               "pools": "search_train logs only; no new search",
+              "run_manifest": {"argv": sys.argv[1:]},
               "unavailable_from_logs": {
                   "parent_child_correlation": "per-child fitness not stored; needs score-level logging rerun",
+                  "neutral_mutation_rate": "no per-mutation fitness deltas stored; same rerun as above",
                   "train_dev_rank_correlation": "no per-genome dev scores stored (only best reported); needs archive-eval rerun",
                   "random_trajectories": "random_search stores endpoint only, no history",
                   "nsga2_per_generation_trajectories": "nsga2_train files store endpoint HV/front only; per-generation front logs need a run_nsga2.py logging change + rerun"},

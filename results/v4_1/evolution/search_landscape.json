@@ -1,11 +1,18 @@
 {
   "experiment_id": "EXP-03",
-  "created_utc": "2026-11-01T14:29:48.935513+00:00",
-  "repo_commit": "ca2ff7ef1fcd49c8e3963d2995309c5c4da2a61a",
+  "created_utc": "2026-11-01T15:46:12.481663+00:00",
+  "repo_commit": "f06b867dddc82eb39282d82ce2b0994f2c186cf5",
   "protocol_version": "v4.1",
   "pools": "search_train logs only; no new search",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/search_landscape.json"
+    ]
+  },
   "unavailable_from_logs": {
     "parent_child_correlation": "per-child fitness not stored; needs score-level logging rerun",
+    "neutral_mutation_rate": "no per-mutation fitness deltas stored; same rerun as above",
     "train_dev_rank_correlation": "no per-genome dev scores stored (only best reported); needs archive-eval rerun",
     "random_trajectories": "random_search stores endpoint only, no history",
     "nsga2_per_generation_trajectories": "nsga2_train files store endpoint HV/front only; per-generation front logs need a run_nsga2.py logging change + rerun"
