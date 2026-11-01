@@ -4,9 +4,10 @@
 Matched unique-genome budget, multiple seeds. Fitness is cache-exact.
 v4.1 rules enforced here:
 - selection metric comes from --metric (task primary; code/findver: macro_f1).
-- generations are derived from the unique-eval budget: gens_eff =
-  min(gens, (budget - pop) // max(pop - elit, 1)); requested vs effective
-  recorded, never silently overflowing.
+- generations are derived from the unique-eval budget for GA (gens_eff =
+  min(gens, (budget-pop)//(pop-elit))); ES ignores this cap and runs to
+  unique-budget exhaustion, with actual logged generations recorded post-hoc;
+  requested vs effective recorded, never silently overflowing.
 - per-seed best is evaluated on dev/confirm caches WITHOUT selection there.
 - run_manifest records CLI, env, code SHA, protocol version.
 No model calls.
