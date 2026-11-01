@@ -163,6 +163,15 @@
         "results/v4/evolution/cache_confirm_code_{laya,vela}.json"
       ],
       "verified": "dev 2/3 SIG negative (code_laya), confirm all ns; code_vela all 0.0 (behavioral identity with switch-only)"
+    },
+    "results/v4_1/evolution/macro_f1_deploy_cis.json": {
+      "producer": "scripts/paired_macro_f1_ci.py",
+      "reproduce": "python scripts/paired_macro_f1_ci.py --out results/v4_1/evolution/macro_f1_deploy_cis.json [--reps 5000]",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_{code,findver}_{laya,vela}.json (frozen bests)",
+        "train/dev/confirm caches for code+findver x laya/vela"
+      ],
+      "verified": "macro_f1 matches fitness.evaluate to 1e-4; join guards raise; 3 SIG cells all findver_vela train vs-switch (+0.1202); GA-vs-random all ns; dev/confirm all ns"
     }
   }
 }
