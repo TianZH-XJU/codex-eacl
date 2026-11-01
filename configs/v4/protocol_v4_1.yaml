@@ -1,0 +1,31 @@
+# EvoTIDE v4.1 protocol (maintenance + evidence completion, 2026-11-01).
+# v4 results under results/v4/ are FROZEN. All new protocol-driven runs write
+# to results/v4_1/. Old files stay valid history; supersessions are noted per file.
+track: v4_1
+base_protocol: configs/v4/protocol.yaml
+splits:
+  search_train: {use: [fitness_search, threshold_fit], note: "EA fitness only here"}
+  selection_dev: {use: [model_selection, topk, pareto_point], note: "select once; no feedback into search space"}
+  confirm: {use: [frozen_candidate_check], note: "evaluate only; any change consumes it"}
+  locked_test: {use: [final_once], note: "frozen code+config, run once, never tune"}
+metrics:
+  codexglue_defect: {primary: macro_f1, secondary: [accuracy, balanced_accuracy]}
+  findver: {primary: macro_f1, secondary: [accuracy, balanced_accuracy]}
+  processbench: {primary: step_accuracy, secondary: [coverage, sel_accuracy]}
+  rule: fitness scalar MUST use the task primary metric; accuracy-only scalars are v4-frozen legacy
+fitness:
+  form: quality - lam * normalized_cost
+  lam_default: 0.05
+  lam_grid: [0.0, 0.05, 0.1]
+budgets_unique_genomes: [24, 48]
+budget_rule: B ~= P + G*(P-E); runner caps generations to fit B, records stopped_early
+seeds_pilot: [17, 23, 41]
+seeds_formal: [17, 23, 41, 59, 73]
+group_units: {code: function_text_hash, math: problem_text, finance: report_id, intent: normalized_utterance}
+statistics: {reps: 5000, method: group_paired_bootstrap, multi_compare: holm_or_preregistered_single}
+resource: {device: cpu, cpu_threads: 2, single_model_residency: true, rss_target_mb: 3072, rss_hard_stop_mb: 3584}
+gates:
+  neat_multistep: blocked_pending_complementarity_predictability
+  gp_structural: blocked_pending_grammar_and_space_gate
+  e5_faultmap: approved_minimal_archive_version
+  locked_test: blocked_until_confirm_freeze

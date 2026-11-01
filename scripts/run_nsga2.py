@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import sys
 from datetime import datetime, timezone
@@ -71,11 +72,19 @@ def main():
     cache = json.loads(Path(args.cache).read_text(encoding="utf-8"))
     rows = cache["rows"]
     seeds = [int(x) for x in args.seeds.split(",")]
+    import subprocess as _sp
+    try:
+        _sha = _sp.run(["git", "-C", str(ROOT), "rev-parse", "HEAD"],
+                       check=True, capture_output=True, text=True).stdout.strip()
+    except Exception:
+        _sha = None
     res = {"created_utc": datetime.now(timezone.utc).isoformat(), "cache": args.cache,
            "genome": args.genome, "budget_unique": args.budget, "seeds": seeds,
            "params": {"pop": args.pop, "gens": args.gens,
                       "mu": getattr(args, "mu", None), "lams": getattr(args, "lams", None),
                       "sigma": getattr(args, "sigma", None)},
+           "run_manifest": {"argv": sys.argv[1:], "cpu_threads": os.getenv("OMP_NUM_THREADS"),
+                            "project_git_sha": _sha, "protocol": "v4.1"},
            "per_seed": {}}
     for seed in seeds:
         ref = (0.0, -2.0) if args.genome == "cascade" else (0.0, 0.0)

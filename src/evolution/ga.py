@@ -46,7 +46,8 @@ def diversity(pop: list) -> float:
 
 def run(rows: list, population: int, generations: int, crossover_rate: float,
         mutation_rate: float, elitism: int, seed: int,
-        tracker: BudgetTracker | None = None, lam: float = 0.05) -> dict:
+        tracker: BudgetTracker | None = None, lam: float = 0.05,
+        metric: str = "accuracy") -> dict:
     rng = random.Random(seed)
     pop = [RS.sample_genome(rng) for _ in range(population)]
     archive = []
@@ -60,7 +61,7 @@ def run(rows: list, population: int, generations: int, crossover_rate: float,
             return memo[key]
         if tracker is not None:
             tracker.charge_eval(key)
-        fit = F.evaluate(g, rows, lam=lam)
+        fit = F.evaluate(g, rows, lam=lam, primary=metric)
         memo[key] = fit
         archive.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
         return fit

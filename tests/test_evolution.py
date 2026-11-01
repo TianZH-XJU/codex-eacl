@@ -122,7 +122,8 @@ def test_es_deterministic_budgeted_and_second_gene_fixed():
     assert e1["stopped_early"] is True  # mu+lam slots exceed 24 unique
 
 
-def test_es_beats_nothing_claim_is_structural():    # On structured cache ES must at least match fixed switch-only; the point
+def test_es_beats_nothing_claim_is_structural():
+    # On structured cache ES must at least match fixed switch-only; the point
     # is structural validity, not superiority (verdict comes from real caches).
     rows = synth(n=200, seed=1)
     e = es_run(rows, budget=24, seed=17,
@@ -234,3 +235,16 @@ def test_crossover_uses_correct_gene_positions():
         assert AbstainGenome.from_vector(c.to_vector()) == c
         m = mu_abstain(rng, c, 1.0)
         assert AbstainGenome.from_vector(m.to_vector()) == m
+
+
+def test_primary_metric_drives_scalar():
+    rows = ([{"gold": True, "noul_p": 0.9, "switch_correct": True}] * 6
+            + [{"gold": False, "noul_p": 0.9, "switch_correct": False}] * 2
+            + [{"gold": False, "noul_p": 0.1, "switch_correct": True}] * 2)
+    g = CascadeGenome(lo=0.0, hi=1.0, use_second=0).repaired()
+    fa = evaluate(g, rows, primary="accuracy")
+    fm = evaluate(g, rows, primary="macro_f1")
+    assert fa["scalar"] == fa["accuracy"] and fm["scalar"] == fm["macro_f1"]
+    assert fa["macro_f1"] != fa["accuracy"]  # imbalanced: metrics differ
+    with pytest.raises(ValueError):
+        evaluate(g, rows, primary="nope")

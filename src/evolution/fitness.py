@@ -19,11 +19,13 @@ def decide(genome: CascadeGenome, noul_p: float, switch_correct: bool, gold: boo
     return bool((noul_p >= 0.5) == bool(gold)), 1
 
 
-def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05) -> dict:
+def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05,
+             primary: str = "accuracy") -> dict:
     """rows: [{gold: bool, noul_p: float|None, switch_correct: bool|None}].
     Fail-closed: rows with missing outputs count as WRONG (1 call) and stay in
     the denominator. Reports accuracy, macro-F1 and balanced accuracy over ALL
-    rows. scalar = accuracy - lam*(calls_per_row - 1): lam prices the 2nd call."""
+    rows. scalar = primary - lam*(calls_per_row - 1); primary must be the task
+    primary metric (v4.1 protocol). "accuracy" is the v4-frozen legacy."""
     correct, calls = 0, 0
     n = len(rows)
     tp = tn = fp = fn = 0
@@ -57,10 +59,21 @@ def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05) -> dict:
     rec_neg = tn / max(tn + fp, 1)
     f1_neg = 2 * prec_neg * rec_neg / max(prec_neg + rec_neg, 1e-12)
     tnr = tn / max(tn + fp, 1)
-    return {"accuracy": round(correct / n, 4),
+    macro_f1 = round((f1_pos + f1_neg) / 2, 4)
+    bal_acc = round((rec_pos + tnr) / 2, 4)
+    acc = round(correct / n, 4)
+    if primary == "macro_f1":
+        quality = macro_f1
+    elif primary == "balanced_accuracy":
+        quality = bal_acc
+    elif primary == "accuracy":
+        quality = acc
+    else:
+        raise ValueError(f"unknown primary metric {primary!r}")
+    return {"accuracy": acc,
             "calls_per_row": round(calls / n, 4),
             "n": n, "n_missing": n_missing,
-            "macro_f1": round((f1_pos + f1_neg) / 2, 4),
-            "balanced_accuracy": round((rec_pos + tnr) / 2, 4),
-            "lam": lam,
-            "scalar": round(correct / n - lam * (calls / n - 1.0), 4)}
+            "macro_f1": macro_f1,
+            "balanced_accuracy": bal_acc,
+            "lam": lam, "primary": primary,
+            "scalar": round(quality - lam * (calls / n - 1.0), 4)}

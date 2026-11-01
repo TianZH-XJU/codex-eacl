@@ -26,7 +26,7 @@ def mutate(rng: random.Random, x: tuple, sigma: float) -> CascadeGenome:
 def run(rows: list, mu: int = 4, lam: int = 8, sigma: float = 0.15,
         budget: int = 24, seed: int = 17,
         tracker: BudgetTracker | None = None, lam_w: float = 0.05,
-        max_generations: int = 50) -> dict:
+        max_generations: int = 50, metric: str = "accuracy") -> dict:
     rng = random.Random(seed)
     pop = [CascadeGenome(lo=rng.random(), hi=rng.random(), use_second=1).repaired()
            for _ in range(mu)]
@@ -41,7 +41,7 @@ def run(rows: list, mu: int = 4, lam: int = 8, sigma: float = 0.15,
             return memo[key]
         if tracker is not None:
             tracker.charge_eval(key)
-        fit = F.evaluate(g, rows, lam=lam_w)
+        fit = F.evaluate(g, rows, lam=lam_w, primary=metric)
         memo[key] = fit
         archive.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
         return fit
