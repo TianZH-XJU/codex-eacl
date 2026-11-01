@@ -19,19 +19,19 @@
   },
   "codexglue_tfidf_searchdev": {
     "tfidf_logreg": {
-      "accuracy": 0.6136,
-      "balanced_accuracy": 0.6055,
-      "macro_f1": 0.6051
+      "accuracy": 0.6122,
+      "balanced_accuracy": 0.6043,
+      "macro_f1": 0.6038
     },
     "tfidf_linearsvm": {
-      "accuracy": 0.6042,
-      "balanced_accuracy": 0.5995,
-      "macro_f1": 0.5997
+      "accuracy": 0.6049,
+      "balanced_accuracy": 0.6002,
+      "macro_f1": 0.6004
     },
     "majority": {
-      "accuracy": 0.5424,
+      "accuracy": 0.5422,
       "balanced_accuracy": 0.5,
-      "macro_f1": 0.3517
+      "macro_f1": 0.3516
     }
   },
   "findver_tfidf_searchdev": {

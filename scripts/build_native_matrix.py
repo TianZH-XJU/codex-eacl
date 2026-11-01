@@ -99,18 +99,22 @@ def main():
         matrix.append({"task": "processbench", "split": split, "model": "laya-default-single", **{k: v for k, v in m.items() if k in ("laya_single_acc", "harmonic_f1")}})
 
     # Code TF-IDF on track-clean function groups (search_train -> search_dev).
+    # Uses ONLY manifest members (official-train indices); group hashes that
+    # collide across splits must never resolve to valid/test rows (P0 audit).
     import json as js
     v2 = js.loads((ROOT / "results/v2/data_manifest/codexglue_function_groups.json").read_text(encoding="utf-8"))
     raw = js.loads((ROOT / "data/raw/codexglue_defect/function.json").read_text(encoding="utf-8"))
-    from group_oof import function_group_id
-    g2idx = {}
-    for i, r in enumerate(raw):
-        g2idx.setdefault(function_group_id(r["func"]), []).append(i)
-    # map group hash prefix back: manifest stores full "fn:<16hex>"
+    valid_idx = {int(x) for x in (ROOT / "data/raw/codexglue_defect/valid.txt").read_text(encoding="utf-8").split()}
+    test_idx = {int(x) for x in (ROOT / "data/raw/codexglue_defect/test.txt").read_text(encoding="utf-8").split()}
+    leaked = set(v2.get("excluded_cross_split_leaked_idx", []))
+    assert valid_idx.isdisjoint({int(x) for x in (ROOT / "data/raw/codexglue_defect/train.txt").read_text(encoding="utf-8").split()})
+    members = v2.get("members")
+    assert members is not None, "manifest must pin train-only members"
     def rows_for(groups):
         rows = []
         for g in groups:
-            for i in g2idx.get(g, []):
+            for i in members.get(g, []):
+                assert i not in valid_idx and i not in test_idx and i not in leaked, f"non-train idx {i}"
                 rows.append((raw[i]["func"], raw[i]["target"]))
         return rows
     tr = rows_for(v2["splits"]["search_train"])
