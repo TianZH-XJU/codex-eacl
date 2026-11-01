@@ -11,7 +11,8 @@ tasks:
     repo: mteb/banking77
     revision: 18072d2685ea682290f7b8924d94c62acc19c0b2
     role: sanity_and_menu_track
-    adapter: missing
+    adapter: src/tasks/intent.py
+    adapter_status: implemented
     legacy: [scripts/prepare_v4_intent.py, scripts/run_intent_baseline.py, scripts/run_evo_menu_pilot.py]
     group_unit: normalized_utterance
     status: native_baseline_done
@@ -22,7 +23,8 @@ tasks:
     repo: clinc/clinc_oos
     revision: 155b9c710419136e17307b80d0a13e68cd46b4ec
     role: sanity_and_menu_track
-    adapter: missing
+    adapter: src/tasks/intent.py
+    adapter_status: implemented
     legacy: [scripts/prepare_v4_intent.py, scripts/run_intent_baseline.py]
     group_unit: normalized_utterance
     oos_eval_separate: true
@@ -45,7 +47,8 @@ tasks:
     action_adapter: single-first cascade (same cost definition as BANKING77)
     budgets: [1.00x, 1.25x, 1.50x, 2.00x]
     role: primary
-    adapter: missing
+    adapter: src/tasks/math.py
+    adapter_status: implemented
     legacy: [scripts/prepare_processbench.py, scripts/build_processbench_cache.py, scripts/make_processbench_split.py]
     group_unit: problem_text
     status: gate1_failed_neat_paused
@@ -59,7 +62,8 @@ tasks:
     label_mapping: null
     laya_actions: [single]
     role: primary
-    adapter: missing
+    adapter: src/tasks/code.py
+    adapter_status: implemented
     legacy: [scripts/prepare_codexglue_defect.py, scripts/build_binary_cache.py, scripts/make_codexglue_split.py]
     group_unit: function_or_project
     status: gate1_failed_neat_paused
@@ -73,7 +77,8 @@ tasks:
     label_mapping: null
     laya_actions: [single]
     role: primary
-    adapter: missing
+    adapter: src/tasks/findver.py
+    adapter_status: implemented
     legacy: [scripts/prepare_findver.py, scripts/build_binary_cache.py, scripts/make_findver_split.py]
     group_unit: report_id
     status: gate1_failed_neat_paused
