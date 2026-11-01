@@ -1,0 +1,661 @@
+{
+  "experiment_id": "EXP-03",
+  "created_utc": "2026-11-01T14:29:48.935513+00:00",
+  "repo_commit": "ca2ff7ef1fcd49c8e3963d2995309c5c4da2a61a",
+  "protocol_version": "v4.1",
+  "pools": "search_train logs only; no new search",
+  "unavailable_from_logs": {
+    "parent_child_correlation": "per-child fitness not stored; needs score-level logging rerun",
+    "train_dev_rank_correlation": "no per-genome dev scores stored (only best reported); needs archive-eval rerun",
+    "random_trajectories": "random_search stores endpoint only, no history",
+    "nsga2_per_generation_trajectories": "nsga2_train files store endpoint HV/front only; per-generation front logs need a run_nsga2.py logging change + rerun"
+  },
+  "families": {
+    "evo_train_code_laya": {
+      "algo": "ga",
+      "budget_unique": 24,
+      "per_seed": {
+        "17": {
+          "ga": {
+            "unique": 18,
+            "generated": 22,
+            "duplicates": 4,
+            "best_so_far": {
+              "first": 0.5499,
+              "last": 0.5499,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.5499,
+                0.5499
+              ]
+            },
+            "diversity_first": 1.1182,
+            "diversity_last": 1.2597,
+            "mean_last": 0.5435
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0277
+        },
+        "23": {
+          "ga": {
+            "unique": 20,
+            "generated": 22,
+            "duplicates": 2,
+            "best_so_far": {
+              "first": 0.5499,
+              "last": 0.5499,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.5499,
+                0.5499
+              ]
+            },
+            "diversity_first": 1.2503,
+            "diversity_last": 1.2158,
+            "mean_last": 0.5229
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0277
+        },
+        "41": {
+          "ga": {
+            "unique": 16,
+            "generated": 22,
+            "duplicates": 6,
+            "best_so_far": {
+              "first": 0.5499,
+              "last": 0.5499,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.5499,
+                0.5499
+              ]
+            },
+            "diversity_first": 1.0324,
+            "diversity_last": 0.5907,
+            "mean_last": 0.5472
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0277
+        }
+      }
+    },
+    "evo_train_code_vela": {
+      "algo": "ga",
+      "budget_unique": 24,
+      "per_seed": {
+        "17": {
+          "ga": {
+            "unique": 17,
+            "generated": 22,
+            "duplicates": 5,
+            "best_so_far": {
+              "first": 0.3743,
+              "last": 0.3834,
+              "plateau_gen": 1,
+              "n_gen_logs": 2,
+              "series": [
+                0.3743,
+                0.3834
+              ]
+            },
+            "diversity_first": 1.1182,
+            "diversity_last": 0.6807,
+            "mean_last": 0.3473
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": 0.0052
+        },
+        "23": {
+          "ga": {
+            "unique": 17,
+            "generated": 22,
+            "duplicates": 5,
+            "best_so_far": {
+              "first": 0.3834,
+              "last": 0.3834,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.3834,
+                0.3834
+              ]
+            },
+            "diversity_first": 1.2503,
+            "diversity_last": 0.8936,
+            "mean_last": 0.3388
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": 0.0052
+        },
+        "41": {
+          "ga": {
+            "unique": 16,
+            "generated": 22,
+            "duplicates": 6,
+            "best_so_far": {
+              "first": 0.3776,
+              "last": 0.3776,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.3776,
+                0.3776
+              ]
+            },
+            "diversity_first": 1.0324,
+            "diversity_last": 0.8296,
+            "mean_last": 0.3478
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": 0.0052
+        }
+      }
+    },
+    "evo_train_code_vela_b48": {
+      "algo": "ga",
+      "budget_unique": 48,
+      "per_seed": {
+        "17": {
+          "ga": {
+            "unique": 22,
+            "generated": 43,
+            "duplicates": 21,
+            "best_so_far": {
+              "first": 0.3743,
+              "last": 0.3834,
+              "plateau_gen": 1,
+              "n_gen_logs": 5,
+              "series": [
+                0.3743,
+                0.3834,
+                0.3834,
+                0.3834,
+                0.3834
+              ]
+            },
+            "diversity_first": 1.1182,
+            "diversity_last": 0.2625,
+            "mean_last": 0.375
+          },
+          "random": {
+            "unique": 48,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": 0.0
+        },
+        "23": {
+          "ga": {
+            "unique": 17,
+            "generated": 43,
+            "duplicates": 26,
+            "best_so_far": {
+              "first": 0.3834,
+              "last": 0.3834,
+              "plateau_gen": 0,
+              "n_gen_logs": 5,
+              "series": [
+                0.3834,
+                0.3834,
+                0.3834,
+                0.3834,
+                0.3834
+              ]
+            },
+            "diversity_first": 1.2503,
+            "diversity_last": 0.2865,
+            "mean_last": 0.375
+          },
+          "random": {
+            "unique": 48,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": 0.0
+        },
+        "41": {
+          "ga": {
+            "unique": 23,
+            "generated": 43,
+            "duplicates": 20,
+            "best_so_far": {
+              "first": 0.3776,
+              "last": 0.3776,
+              "plateau_gen": 0,
+              "n_gen_logs": 5,
+              "series": [
+                0.3776,
+                0.3776,
+                0.3776,
+                0.3776,
+                0.3776
+              ]
+            },
+            "diversity_first": 1.0324,
+            "diversity_last": 0.0665,
+            "mean_last": 0.374
+          },
+          "random": {
+            "unique": 48,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": 0.0
+        }
+      }
+    },
+    "evo_train_findver_laya": {
+      "algo": "ga",
+      "budget_unique": 24,
+      "per_seed": {
+        "17": {
+          "ga": {
+            "unique": 19,
+            "generated": 22,
+            "duplicates": 3,
+            "best_so_far": {
+              "first": 0.5286,
+              "last": 0.5459,
+              "plateau_gen": 1,
+              "n_gen_logs": 2,
+              "series": [
+                0.5286,
+                0.5459
+              ]
+            },
+            "diversity_first": 1.1182,
+            "diversity_last": 1.0653,
+            "mean_last": 0.5302
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0116
+        },
+        "23": {
+          "ga": {
+            "unique": 21,
+            "generated": 22,
+            "duplicates": 1,
+            "best_so_far": {
+              "first": 0.5623,
+              "last": 0.5623,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.5623,
+                0.5623
+              ]
+            },
+            "diversity_first": 1.2503,
+            "diversity_last": 0.9335,
+            "mean_last": 0.5202
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0116
+        },
+        "41": {
+          "ga": {
+            "unique": 16,
+            "generated": 22,
+            "duplicates": 6,
+            "best_so_far": {
+              "first": 0.5286,
+              "last": 0.5286,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.5286,
+                0.5286
+              ]
+            },
+            "diversity_first": 1.0324,
+            "diversity_last": 0.5907,
+            "mean_last": 0.5257
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0116
+        }
+      }
+    },
+    "evo_train_findver_vela": {
+      "algo": "ga",
+      "budget_unique": 24,
+      "per_seed": {
+        "17": {
+          "ga": {
+            "unique": 18,
+            "generated": 22,
+            "duplicates": 4,
+            "best_so_far": {
+              "first": 0.475,
+              "last": 0.475,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.475,
+                0.475
+              ]
+            },
+            "diversity_first": 1.1182,
+            "diversity_last": 1.2597,
+            "mean_last": 0.4618
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0114
+        },
+        "23": {
+          "ga": {
+            "unique": 20,
+            "generated": 22,
+            "duplicates": 2,
+            "best_so_far": {
+              "first": 0.475,
+              "last": 0.475,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.475,
+                0.475
+              ]
+            },
+            "diversity_first": 1.2503,
+            "diversity_last": 1.2158,
+            "mean_last": 0.4205
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0114
+        },
+        "41": {
+          "ga": {
+            "unique": 16,
+            "generated": 22,
+            "duplicates": 6,
+            "best_so_far": {
+              "first": 0.475,
+              "last": 0.475,
+              "plateau_gen": 0,
+              "n_gen_logs": 2,
+              "series": [
+                0.475,
+                0.475
+              ]
+            },
+            "diversity_first": 1.0324,
+            "diversity_last": 0.5907,
+            "mean_last": 0.4745
+          },
+          "random": {
+            "unique": 24,
+            "note": "no per-gen history stored for random: endpoint only"
+          },
+          "gap_minus_random": -0.0114
+        }
+      }
+    },
+    "es_train_code_laya": {
+      "algo": "es",
+      "budget_unique": 24,
+      "per_seed": {
+        "17": {
+          "unique": 24,
+          "best_so_far": {
+            "first": 0.5659,
+            "last": 0.5893,
+            "plateau_gen": 1,
+            "n_gen_logs": 3,
+            "series": [
+              0.5659,
+              0.5893,
+              0.5893
+            ]
+          },
+          "diversity_first": null,
+          "diversity_last": null
+        },
+        "23": {
+          "unique": 24,
+          "best_so_far": {
+            "first": 0.5499,
+            "last": 0.5499,
+            "plateau_gen": 0,
+            "n_gen_logs": 3,
+            "series": [
+              0.5499,
+              0.5499,
+              0.5499
+            ]
+          },
+          "diversity_first": null,
+          "diversity_last": null
+        },
+        "41": {
+          "unique": 24,
+          "best_so_far": {
+            "first": 0.5815,
+            "last": 0.5815,
+            "plateau_gen": 0,
+            "n_gen_logs": 3,
+            "series": [
+              0.5815,
+              0.5815,
+              0.5815
+            ]
+          },
+          "diversity_first": null,
+          "diversity_last": null
+        }
+      }
+    },
+    "es_train_code_vela": {
+      "algo": "es",
+      "budget_unique": 24,
+      "per_seed": {
+        "17": {
+          "unique": 24,
+          "best_so_far": {
+            "first": 0.3834,
+            "last": 0.3842,
+            "plateau_gen": 2,
+            "n_gen_logs": 3,
+            "series": [
+              0.3834,
+              0.3834,
+              0.3842
+            ]
+          },
+          "diversity_first": null,
+          "diversity_last": null
+        },
+        "23": {
+          "unique": 24,
+          "best_so_far": {
+            "first": 0.3834,
+            "last": 0.3842,
+            "plateau_gen": 2,
+            "n_gen_logs": 3,
+            "series": [
+              0.3834,
+              0.3834,
+              0.3842
+            ]
+          },
+          "diversity_first": null,
+          "diversity_last": null
+        },
+        "41": {
+          "unique": 24,
+          "best_so_far": {
+            "first": 0.3842,
+            "last": 0.3842,
+            "plateau_gen": 0,
+            "n_gen_logs": 3,
+            "series": [
+              0.3842,
+              0.3842,
+              0.3842
+            ]
+          },
+          "diversity_first": null,
+          "diversity_last": null
+        }
+      }
+    },
+    "nsga2_train_code_laya": {
+      "algo": "nsga2",
+      "budget_unique": 24,
+      "objectives": "quality-vs-cost HV",
+      "per_seed": {
+        "17": {
+          "unique": 19,
+          "stopped_early": false,
+          "hypervolume": 0.55,
+          "front_size": 4,
+          "random_hv": 0.5808,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "23": {
+          "unique": 15,
+          "stopped_early": false,
+          "hypervolume": 0.5814,
+          "front_size": 4,
+          "random_hv": 0.5802,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "41": {
+          "unique": 21,
+          "stopped_early": false,
+          "hypervolume": 0.5817,
+          "front_size": 4,
+          "random_hv": 0.55,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        }
+      }
+    },
+    "nsga2_train_code_vela": {
+      "algo": "nsga2",
+      "budget_unique": 24,
+      "objectives": "quality-vs-cost HV",
+      "per_seed": {
+        "17": {
+          "unique": 17,
+          "stopped_early": false,
+          "hypervolume": 0.435,
+          "front_size": 4,
+          "random_hv": 0.4533,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "23": {
+          "unique": 16,
+          "stopped_early": false,
+          "hypervolume": 0.4167,
+          "front_size": 4,
+          "random_hv": 0.4928,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "41": {
+          "unique": 19,
+          "stopped_early": false,
+          "hypervolume": 0.4667,
+          "front_size": 4,
+          "random_hv": 0.4942,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        }
+      }
+    },
+    "nsga2_train_math_laya": {
+      "algo": "nsga2",
+      "budget_unique": 24,
+      "objectives": "quality-vs-cost HV",
+      "per_seed": {
+        "17": {
+          "unique": 20,
+          "stopped_early": false,
+          "hypervolume": 0.23,
+          "front_size": 4,
+          "random_hv": 0.239,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "23": {
+          "unique": 19,
+          "stopped_early": false,
+          "hypervolume": 0.23,
+          "front_size": 4,
+          "random_hv": 0.21,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "41": {
+          "unique": 11,
+          "stopped_early": false,
+          "hypervolume": 0.2433,
+          "front_size": 4,
+          "random_hv": 0.2433,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        }
+      }
+    },
+    "nsga2_train_math_vela": {
+      "algo": "nsga2",
+      "budget_unique": 24,
+      "objectives": "quality-vs-cost HV",
+      "per_seed": {
+        "17": {
+          "unique": 18,
+          "stopped_early": false,
+          "hypervolume": 0.1038,
+          "front_size": 4,
+          "random_hv": 0.1122,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "23": {
+          "unique": 22,
+          "stopped_early": false,
+          "hypervolume": 0.1193,
+          "front_size": 4,
+          "random_hv": 0.1167,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        },
+        "41": {
+          "unique": 14,
+          "stopped_early": false,
+          "hypervolume": 0.0,
+          "front_size": 4,
+          "random_hv": 0.1383,
+          "note": "endpoint only: per-generation HV/front trajectories were not stored by run_nsga2.py; see unavailable_from_logs"
+        }
+      }
+    }
+  }
+}

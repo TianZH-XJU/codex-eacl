@@ -122,6 +122,27 @@
         "confirm cache_confirm_{code,findver}_{laya,vela}.json"
       ],
       "verified": "OOF AUROC exact recompute (findver_vela logreg 0.9191); champion dev/conf nets exact; no dev/confirm rows in any fit"
+    },
+    "results/v4_1/evolution/search_landscape.json": {
+      "producer": "scripts/analyze_search_landscape.py",
+      "reproduce": "python scripts/analyze_search_landscape.py --out results/v4_1/evolution/search_landscape.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_*.json",
+        "results/v4_1/evolution/es_train_*.json",
+        "results/v4_1/evolution/nsga2_train_*.json"
+      ],
+      "verified": "plateau/diversity/unique recompute match; 15/21 plateau-gen-0; unavailable items confirmed absent"
+    },
+    "results/v4_1/evolution/group_faultmap.json": {
+      "producer": "scripts/analyze_group_faultmap.py",
+      "reproduce": "python scripts/analyze_group_faultmap.py --out results/v4_1/evolution/group_faultmap.json",
+      "inputs": [
+        "results/v4/evolution/cache_train_*.json",
+        "dev cache_[a-z]*_*.json",
+        "confirm cache_confirm_*.json",
+        "results/v4_1/evolution/faultmap.json (eligible set)"
+      ],
+      "verified": "est==faultmap severity 15/15; independent-seed recompute matches; math/vela/mid group LBs>=0.5"
     }
   }
 }
