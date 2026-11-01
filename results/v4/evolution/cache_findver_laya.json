@@ -1,0 +1,726 @@
+{
+  "created_utc": "2026-11-01T00:54:16.439045+00:00",
+  "task": "findver",
+  "model": "laya",
+  "split": "search_dev",
+  "seed": 17,
+  "n": 59,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "project_git_sha": "38da75942915c111e151c8da64840dcedd8f5087",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2117.7,
+  "real_model_calls": 118,
+  "rows": [
+    {
+      "key": "knowledge-val-129",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.4106,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-221",
+      "gold": true,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.7274,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-90",
+      "gold": false,
+      "group_id": "rp:KIRK-2024-03-29_10-K.json",
+      "noul_p": 0.2103,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-58",
+      "gold": false,
+      "group_id": "rp:YOTA-2024-04-15_10-K.json",
+      "noul_p": 0.1927,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-165",
+      "gold": false,
+      "group_id": "rp:BGXX-2024-04-16_10-K.json",
+      "noul_p": 0.3306,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-245",
+      "gold": true,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.8402,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-99",
+      "gold": false,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.1083,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-69",
+      "gold": false,
+      "group_id": "rp:ALV-2024-04-26_10-Q.json",
+      "noul_p": 0.0781,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-120",
+      "gold": false,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.1856,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-105",
+      "gold": false,
+      "group_id": "rp:ZETA-2024-02-28_10-K.json",
+      "noul_p": 0.8132,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-49",
+      "gold": true,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.5775,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-197",
+      "gold": true,
+      "group_id": "rp:CRDF-2024-02-29_10-K.json",
+      "noul_p": 0.6996,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-75",
+      "gold": false,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.0924,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-153",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.3567,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-161",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.3928,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-165",
+      "gold": true,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.2391,
+      "switch_choice": "not_supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-29",
+      "gold": false,
+      "group_id": "rp:YOTA-2024-04-15_10-K.json",
+      "noul_p": 0.8017,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-67",
+      "gold": false,
+      "group_id": "rp:CRDF-2024-02-29_10-K.json",
+      "noul_p": 0.4261,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-134",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.33,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-240",
+      "gold": true,
+      "group_id": "rp:ALV-2024-04-26_10-Q.json",
+      "noul_p": 0.8276,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-235",
+      "gold": true,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.5538,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-114",
+      "gold": false,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.4716,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-38",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.6653,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-143",
+      "gold": true,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.8396,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-189",
+      "gold": true,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.5939,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-6",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.316,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-132",
+      "gold": true,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.7048,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-126",
+      "gold": true,
+      "group_id": "rp:KIRK-2024-03-29_10-K.json",
+      "noul_p": 0.8286,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-239",
+      "gold": true,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.2412,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-211",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.4678,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-122",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.2266,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-55",
+      "gold": false,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.2432,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-186",
+      "gold": true,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.7079,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-117",
+      "gold": false,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.8516,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-40",
+      "gold": true,
+      "group_id": "rp:BGXX-2024-04-16_10-K.json",
+      "noul_p": 0.8126,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-8",
+      "gold": false,
+      "group_id": "rp:OSG-2024-03-11_10-K.json",
+      "noul_p": 0.6152,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-143",
+      "gold": true,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.1101,
+      "switch_choice": "not_supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-92",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.6907,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-143",
+      "gold": false,
+      "group_id": "rp:FREEW-2024-03-12_10-K.json",
+      "noul_p": 0.7411,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-167",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.4648,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-88",
+      "gold": true,
+      "group_id": "rp:FLWS-2024-02-08_10-Q.json",
+      "noul_p": 0.2035,
+      "switch_choice": "not_supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-56",
+      "gold": false,
+      "group_id": "rp:ZETA-2024-02-28_10-K.json",
+      "noul_p": 0.2847,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-43",
+      "gold": false,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.6178,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-10",
+      "gold": true,
+      "group_id": "rp:FLWS-2024-02-08_10-Q.json",
+      "noul_p": 0.5104,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-211",
+      "gold": true,
+      "group_id": "rp:ALV-2024-04-26_10-Q.json",
+      "noul_p": 0.4071,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-61",
+      "gold": false,
+      "group_id": "rp:BRAC-2024-03-14_10-K.json",
+      "noul_p": 0.161,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-148",
+      "gold": false,
+      "group_id": "rp:FLWS-2024-02-08_10-Q.json",
+      "noul_p": 0.1245,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-109",
+      "gold": false,
+      "group_id": "rp:PKTX-2024-03-20_10-K.json",
+      "noul_p": 0.3362,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-249",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.3879,
+      "switch_choice": "not_supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-117",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.1124,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-103",
+      "gold": false,
+      "group_id": "rp:PMD-2024-03-28_10-K.json",
+      "noul_p": 0.122,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-107",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.1771,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-152",
+      "gold": true,
+      "group_id": "rp:COLM-2024-02-26_10-K.json",
+      "noul_p": 0.594,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-62",
+      "gold": true,
+      "group_id": "rp:FREEW-2024-03-12_10-K.json",
+      "noul_p": 0.5189,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "ie-val-214",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.4445,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-101",
+      "gold": false,
+      "group_id": "rp:FREEW-2024-03-12_10-K.json",
+      "noul_p": 0.4373,
+      "switch_choice": "supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "knowledge-val-118",
+      "gold": false,
+      "group_id": "rp:THWWW-2024-03-13_10-K.json",
+      "noul_p": 0.2389,
+      "switch_choice": "not_supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-161",
+      "gold": true,
+      "group_id": "rp:HLI-2024-02-08_10-Q.json",
+      "noul_p": 0.752,
+      "switch_choice": "supported",
+      "switch_correct": true,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    },
+    {
+      "key": "numeric-val-208",
+      "gold": true,
+      "group_id": "rp:LTBR-2024-03-04_10-K.json",
+      "noul_p": 0.5274,
+      "switch_choice": "not_supported",
+      "switch_correct": false,
+      "errors": {
+        "noul": null,
+        "switch": null
+      }
+    }
+  ],
+  "status": "passed"
+}
