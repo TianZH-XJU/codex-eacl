@@ -1,0 +1,172 @@
+{
+  "experiment_id": "EXP-01",
+  "created_utc": "2026-11-01T14:19:08.262306+00:00",
+  "repo_commit": "f7fa969b7bd9cf35fc044fb8bfcf5fe74e74828e",
+  "protocol_version": "v4.1",
+  "pools": "search_train (in-sample screen; headroom is an upper bound, not a method)",
+  "ci_method": "group-level percentile bootstrap (5000 resamples, module RandomState(17), fixed TASKS call order); singleton groups (code: 60/60) reduce to row bootstrap with on-grid CIs, multi-row groups (findver: 41 pools) give off-grid CIs",
+  "cells": {
+    "code_laya": {
+      "n": 60,
+      "base_action": "noul",
+      "base_acc": 0.55,
+      "alt_acc": 0.5333,
+      "oracle_acc": 0.7833,
+      "headroom": 0.2333,
+      "repairable": 14,
+      "harmful": 15,
+      "neutral": 31,
+      "disagreement": 0.4833,
+      "oracle_acc_ci": {
+        "est": 0.7833,
+        "ci95": [
+          0.6833,
+          0.8833
+        ]
+      },
+      "headroom_ci": {
+        "est": 0.2333,
+        "ci95": [
+          0.1333,
+          0.35
+        ]
+      },
+      "net_repair": -1,
+      "net_repair_ci": {
+        "est": -0.0167,
+        "ci95": [
+          -0.2,
+          0.1667
+        ]
+      },
+      "n_groups": 60,
+      "split": "search_train"
+    },
+    "code_vela": {
+      "n": 60,
+      "base_action": "switch",
+      "base_acc": 0.5167,
+      "alt_acc": 0.4167,
+      "oracle_acc": 0.5833,
+      "headroom": 0.0667,
+      "repairable": 4,
+      "harmful": 10,
+      "neutral": 46,
+      "disagreement": 0.2333,
+      "oracle_acc_ci": {
+        "est": 0.5833,
+        "ci95": [
+          0.45,
+          0.7
+        ]
+      },
+      "headroom_ci": {
+        "est": 0.0667,
+        "ci95": [
+          0.0167,
+          0.1333
+        ]
+      },
+      "net_repair": -6,
+      "net_repair_ci": {
+        "est": -0.1,
+        "ci95": [
+          -0.2167,
+          0.0167
+        ]
+      },
+      "n_groups": 60,
+      "split": "search_train"
+    },
+    "findver_laya": {
+      "n": 60,
+      "base_action": "noul",
+      "base_acc": 0.5333,
+      "alt_acc": 0.5167,
+      "oracle_acc": 0.6167,
+      "headroom": 0.0833,
+      "repairable": 5,
+      "harmful": 6,
+      "neutral": 49,
+      "disagreement": 0.1833,
+      "oracle_acc_ci": {
+        "est": 0.6167,
+        "ci95": [
+          0.4923,
+          0.7458
+        ]
+      },
+      "headroom_ci": {
+        "est": 0.0833,
+        "ci95": [
+          0.0182,
+          0.1538
+        ]
+      },
+      "net_repair": -1,
+      "net_repair_ci": {
+        "est": -0.0167,
+        "ci95": [
+          -0.1356,
+          0.0896
+        ]
+      },
+      "n_groups": 41,
+      "split": "search_train"
+    },
+    "findver_vela": {
+      "n": 60,
+      "base_action": "switch",
+      "base_acc": 0.55,
+      "alt_acc": 0.5333,
+      "oracle_acc": 0.65,
+      "headroom": 0.1,
+      "repairable": 6,
+      "harmful": 7,
+      "neutral": 47,
+      "disagreement": 0.2167,
+      "oracle_acc_ci": {
+        "est": 0.65,
+        "ci95": [
+          0.5224,
+          0.7705
+        ]
+      },
+      "headroom_ci": {
+        "est": 0.1,
+        "ci95": [
+          0.0351,
+          0.1692
+        ]
+      },
+      "net_repair": -1,
+      "net_repair_ci": {
+        "est": -0.0167,
+        "ci95": [
+          -0.1311,
+          0.087
+        ]
+      },
+      "n_groups": 41,
+      "split": "search_train"
+    },
+    "math_laya": {
+      "n": 60,
+      "split": "search_train",
+      "n_groups": 43,
+      "note": "single representation: best fixed == oracle",
+      "base_acc": 0.2,
+      "oracle_acc": 0.2,
+      "headroom": 0.0
+    },
+    "math_vela": {
+      "n": 60,
+      "split": "search_train",
+      "n_groups": 43,
+      "note": "single representation: best fixed == oracle",
+      "base_acc": 0.1,
+      "oracle_acc": 0.1,
+      "headroom": 0.0
+    }
+  }
+}

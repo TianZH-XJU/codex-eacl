@@ -104,6 +104,14 @@
         "results/v4/evolution/cache_train_{code,findver,math}_{laya,vela}.json (6)"
       ],
       "verified": "best cell net +6/60 p=0.0898; verdict KEEP_BLOCKED"
+    },
+    "results/v4_1/evolution/action_complementarity.json": {
+      "producer": "scripts/analyze_action_complementarity.py",
+      "reproduce": "python scripts/analyze_action_complementarity.py [--boots 5000] --out results/v4_1/evolution/action_complementarity.json",
+      "inputs": [
+        "results/v4/evolution/cache_train_{code,findver,math}_{laya,vela}.json (6)"
+      ],
+      "verified": "cell_stats fuzz + 12-cell recompute match; headroom==repair/n identity; group-CI est==point"
     }
   }
 }
