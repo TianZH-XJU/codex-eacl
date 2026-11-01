@@ -30,6 +30,8 @@ def main():
     ap.add_argument("--gens", type=int, default=3)
     ap.add_argument("--mut", type=float, default=0.2)
     ap.add_argument("--cross", type=float, default=0.8)
+    ap.add_argument("--lam", type=float, default=0.05)
+    ap.add_argument("--elit", type=int, default=1)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
@@ -42,10 +44,10 @@ def main():
     for seed in seeds:
         t_ga = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)
         g = ga_run(rows, population=args.pop, generations=args.gens,
-                   crossover_rate=args.cross, mutation_rate=args.mut, elitism=1,
-                   seed=seed, tracker=t_ga)
+                   crossover_rate=args.cross, mutation_rate=args.mut, elitism=args.elit,
+                   seed=seed, tracker=t_ga, lam=args.lam)
         t_rs = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)
-        r = random_run(rows, budget=args.budget, seed=seed + 1000, tracker=t_rs)
+        r = random_run(rows, budget=args.budget, seed=seed + 1000, tracker=t_rs, lam=args.lam)
         res["per_seed"][seed] = {"ga": {"best": g["best"], "fit": g["best_fit"],
                                         "unique": g["n_unique_evals"], "log": g["generations"]},
                                  "random": {"best": r["best"], "fit": r["best_fit"],

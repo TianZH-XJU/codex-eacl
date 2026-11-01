@@ -19,9 +19,10 @@ def decide(genome: CascadeGenome, noul_p: float, switch_correct: bool, gold: boo
     return bool((noul_p >= 0.5) == bool(gold)), 1
 
 
-def evaluate(genome: CascadeGenome, rows: list) -> dict:
+def evaluate(genome: CascadeGenome, rows: list, lam: float = 0.05) -> dict:
     """rows: [{gold: bool, noul_p: float|None, switch_correct: bool|None}].
-    Rows with missing outputs count as wrong with 1 call (fail-closed)."""
+    Rows with missing outputs count as wrong with 1 call (fail-closed).
+    scalar = accuracy - lam * (extra calls/row): lam prices the 2nd call."""
     correct, calls, usable = 0, 0, 0
     for r in rows:
         if r.get("noul_p") is None:
@@ -35,4 +36,5 @@ def evaluate(genome: CascadeGenome, rows: list) -> dict:
     return {"accuracy": round(correct / n, 4),
             "calls_per_row": round(calls / n, 4),
             "n": usable,
-            "scalar": round(correct / n - 0.05 * (calls / n - 1.0), 4)}
+            "lam": lam,
+            "scalar": round(correct / n - lam * (calls / n - 1.0), 4)}

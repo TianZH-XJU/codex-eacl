@@ -272,3 +272,23 @@ unstable and worse than Random. No setting unlocks anything above 0.65–0.66:
 parameter choice changes stability, not the ceiling. Per-gene ablation is moot —
 the winning genomes are near-switch-only, so there is no multi-gene interaction
 to ablate; this is stated as a finding, not skipped work.
+
+**Phase 5 crossover/elitism/cost-weight sweeps (offline, 3 seeds each).**
+cross {0.6, 0.9} × elitism {1, 2} on code caches: GA 0.644–0.689, no systematic
+pattern (elitism 1 vs 2 identical on Laya). Cost weight lam {0.0, 0.05, 0.1}:
+flat on 3 of 4 caches; lam=0.0 lifts Vela/code GA to 0.717 (accuracy-only fitness
+uses the 2nd call freely) but stays within seed noise of matched Random (+0.028)
+and above the fixed-switch call budget — cost counted, not hidden.
+
+**Phase 5 significance (paired group-bootstrap, 5000 reps, per seed).**
+GA-best vs Random-best re-evaluated row-by-row on shared caches: all 12
+per-seed CIs (4 caches × 3 seeds) include zero, three are degenerate [0,0]
+(identical policies). Formal verdict: **no significant GA−Random difference
+anywhere**. `results/v4/evolution/ga_vs_random_significance.json`.
+
+NEAT/multistep and NSGA-II remain explicitly BLOCKED, not silently dropped:
+single-step cascade already exhausts the available complementarity (code oracle
+gain comes from switch-only fixes, no sequential decision needed); with zero
+quality gradient, NSGA-II's front collapses to a cost line. Launch conditions
+(a task with residual sequential structure, a quality gradient) are written in
+`configs/evolution.yaml`.

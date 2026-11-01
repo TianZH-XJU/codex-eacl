@@ -1,0 +1,186 @@
+{
+  "created_utc": "2026-11-01T01:02:43.476205+00:00",
+  "cache": "results/v4/evolution/cache_findver_vela.json",
+  "task": "findver",
+  "model": "vela",
+  "n_rows": 59,
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "ga": {
+        "best": {
+          "lo": 0.5219839097124932,
+          "hi": 0.8066907771186791,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.4576,
+          "calls_per_row": 1.6441,
+          "n": 59,
+          "lam": 0.0,
+          "scalar": 0.4576
+        },
+        "unique": 22,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 1.1182
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 1.0408
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 0.907
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.10717293668638306,
+          "hi": 0.39324733831574343,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.4915,
+          "calls_per_row": 1.1186,
+          "n": 59,
+          "lam": 0.0,
+          "scalar": 0.4915
+        },
+        "unique": 24
+      }
+    },
+    "23": {
+      "ga": {
+        "best": {
+          "lo": 0.9248652516259452,
+          "hi": 0.9486057779931771,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.4576,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "lam": 0.0,
+          "scalar": 0.4576
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 1.2503
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4555,
+            "diversity": 1.0483
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 1.0997
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.34548400929457457,
+          "hi": 0.36014215921975234,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.4746,
+          "calls_per_row": 1.0169,
+          "n": 59,
+          "lam": 0.0,
+          "scalar": 0.4746
+        },
+        "unique": 24
+      }
+    },
+    "41": {
+      "ga": {
+        "best": {
+          "lo": 0.23071918631047517,
+          "hi": 0.38102068999577143,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.4576,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "lam": 0.0,
+          "scalar": 0.4576
+        },
+        "unique": 20,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4512,
+            "diversity": 1.0324
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 0.5907
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.4576,
+            "mean_scalar": 0.4576,
+            "diversity": 0.3943
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.4431483981034664,
+          "hi": 0.45315359817126366,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.4576,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "lam": 0.0,
+          "scalar": 0.4576
+        },
+        "unique": 24
+      }
+    }
+  },
+  "ga_acc_mean": 0.4576,
+  "ga_acc_std": 0.0,
+  "random_acc_mean": 0.4746,
+  "random_acc_std": 0.017,
+  "fixed_noul_only": {
+    "accuracy": 0.4576,
+    "calls_per_row": 1.0,
+    "n": 59,
+    "lam": 0.05,
+    "scalar": 0.4576
+  },
+  "fixed_switch_only": {
+    "accuracy": 0.4576
+  },
+  "ga_minus_random_mean": -0.017
+}

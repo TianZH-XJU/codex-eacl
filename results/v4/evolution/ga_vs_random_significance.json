@@ -1,0 +1,106 @@
+{
+  "evo_code_laya": {
+    "17": {
+      "est": 0.05,
+      "ci95": [
+        -0.0333,
+        0.1333
+      ],
+      "excludes_zero": false
+    },
+    "23": {
+      "est": 0.0,
+      "ci95": [
+        -0.0833,
+        0.0833
+      ],
+      "excludes_zero": false
+    },
+    "41": {
+      "est": -0.0167,
+      "ci95": [
+        -0.05,
+        0.0
+      ],
+      "excludes_zero": false
+    }
+  },
+  "evo_code_vela": {
+    "17": {
+      "est": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "excludes_zero": false
+    },
+    "23": {
+      "est": 0.0333,
+      "ci95": [
+        -0.0333,
+        0.1
+      ],
+      "excludes_zero": false
+    },
+    "41": {
+      "est": -0.0167,
+      "ci95": [
+        -0.05,
+        0.0
+      ],
+      "excludes_zero": false
+    }
+  },
+  "evo_findver_laya": {
+    "17": {
+      "est": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "excludes_zero": false
+    },
+    "23": {
+      "est": 0.0169,
+      "ci95": [
+        -0.04,
+        0.0695
+      ],
+      "excludes_zero": false
+    },
+    "41": {
+      "est": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "excludes_zero": false
+    }
+  },
+  "evo_findver_vela": {
+    "17": {
+      "est": -0.0169,
+      "ci95": [
+        -0.0769,
+        0.0385
+      ],
+      "excludes_zero": false
+    },
+    "23": {
+      "est": -0.0169,
+      "ci95": [
+        -0.0545,
+        0.0
+      ],
+      "excludes_zero": false
+    },
+    "41": {
+      "est": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "excludes_zero": false
+    }
+  }
+}

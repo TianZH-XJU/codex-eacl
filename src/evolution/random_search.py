@@ -13,7 +13,8 @@ def sample_genome(rng: random.Random) -> CascadeGenome:
                          use_second=rng.randint(0, 1)).repaired()
 
 
-def run(rows: list, budget: int, seed: int, tracker: BudgetTracker | None = None) -> dict:
+def run(rows: list, budget: int, seed: int, tracker: BudgetTracker | None = None,
+        lam: float = 0.05) -> dict:
     rng = random.Random(seed)
     best, best_fit, history = None, None, []
     seen = set()
@@ -25,7 +26,7 @@ def run(rows: list, budget: int, seed: int, tracker: BudgetTracker | None = None
         seen.add(key)
         if tracker is not None:
             tracker.charge_eval(key)
-        fit = F.evaluate(g, rows)
+        fit = F.evaluate(g, rows, lam=lam)
         history.append({"genome": {"lo": g.lo, "hi": g.hi, "use_second": g.use_second}, **fit})
         if best_fit is None or (fit["scalar"], fit["accuracy"]) > (best_fit["scalar"], best_fit["accuracy"]):
             best, best_fit = g, fit

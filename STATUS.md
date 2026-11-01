@@ -22,6 +22,9 @@
 | Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap ≤ −0.006, worst −0.20; `transfer_matrix.json` |
 | Phase 5 budget 12 vs 24 | NO SYSTEMATIC EDGE | GA flat, GA−Random sign flips by task |
 | Phase 5 pop/mut sensitivity (code/Laya) | STABILITY NOT CEILING | pop8→0.65-0.66 at any mut; pop4 unstable 0.583; `sens_code_laya_*.json` |
+| Phase 5 cross/elit/lam sweeps | NO PATTERN | 16 configs, GA 0.644-0.717, diffs in noise; `grid_*`, `lam_*` |
+| Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` |
+| NEAT / NSGA-II | BLOCKED WITH CONDITIONS | no sequential structure left; no quality gradient; conditions in `configs/evolution.yaml` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | E5 active / ES / NEAT / locked test | BLOCKED | per gates; bank fully measured (exhaustive), no repeatable signal from configs |
