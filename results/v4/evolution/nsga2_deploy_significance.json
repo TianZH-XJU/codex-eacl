@@ -1,0 +1,118 @@
+{
+  "nsga2_code_laya_deploy_sig": {
+    "17": {
+      "est": 0.0167,
+      "ci95": [
+        -0.05,
+        0.0833
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "23": {
+      "est": 0.0,
+      "ci95": [
+        -0.0833,
+        0.1
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "41": {
+      "est": -0.0167,
+      "ci95": [
+        -0.0833,
+        0.0333
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    }
+  },
+  "nsga2_code_vela_deploy_sig": {
+    "17": {
+      "est": -0.0167,
+      "ci95": [
+        -0.1167,
+        0.0833
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "23": {
+      "est": -0.0167,
+      "ci95": [
+        -0.1,
+        0.0667
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "41": {
+      "est": 0.0167,
+      "ci95": [
+        -0.0833,
+        0.1167
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    }
+  },
+  "nsga2_math_laya_deploy_sig": {
+    "17": {
+      "est": -0.0167,
+      "ci95": [
+        -0.0536,
+        0.0
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "23": {
+      "est": -0.0167,
+      "ci95": [
+        -0.0526,
+        0.0
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "41": {
+      "est": -0.0167,
+      "ci95": [
+        -0.0526,
+        0.0
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    }
+  },
+  "nsga2_math_vela_deploy_sig": {
+    "17": {
+      "est": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "23": {
+      "est": -0.0167,
+      "ci95": [
+        -0.0526,
+        0.0
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    },
+    "41": {
+      "est": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "excludes_zero": false,
+      "comparison": "nsga2deploy_minus_randombest"
+    }
+  }
+}

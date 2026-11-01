@@ -72,7 +72,11 @@ def main():
     rows = cache["rows"]
     seeds = [int(x) for x in args.seeds.split(",")]
     res = {"created_utc": datetime.now(timezone.utc).isoformat(), "cache": args.cache,
-           "genome": args.genome, "budget_unique": args.budget, "seeds": seeds, "per_seed": {}}
+           "genome": args.genome, "budget_unique": args.budget, "seeds": seeds,
+           "params": {"pop": args.pop, "gens": args.gens,
+                      "mu": getattr(args, "mu", None), "lams": getattr(args, "lams", None),
+                      "sigma": getattr(args, "sigma", None)},
+           "per_seed": {}}
     for seed in seeds:
         ref = (0.0, -2.0) if args.genome == "cascade" else (0.0, 0.0)
         if args.genome == "cascade":
@@ -102,6 +106,7 @@ def main():
         res["per_seed"][seed] = {
             "nsga2_hv": n["hypervolume"], "nsga2_front": len(n["pareto"]),
             "nsga2_unique": n["n_unique_evals"], "nsga2_stopped_early": n["stopped_early"],
+            "pareto": n["pareto"],
             "random_hv": _hv(pts, ref),
             "random_unique": len(seen)}
     for algo in ("nsga2_hv", "random_hv"):
