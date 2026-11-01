@@ -1,9 +1,15 @@
 {
-  "created_utc": "2026-11-01T14:12:25.567501+00:00",
+  "created_utc": "2026-11-01T15:52:02.983876+00:00",
   "protocol": "v4.1 C-14: frozen train pareto -> dev select -> confirm report",
   "deploy_rule": {
     "cascade": "max dev accuracy, tie-break fewer calls, then genome order",
     "abstain": "max dev sel_accuracy, tie-break coverage, then genome order"
+  },
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/nsga2_deploy_devconfirm.json"
+    ]
   },
   "tasks": {
     "code_laya": {
@@ -1095,6 +1101,6 @@
       "candidate_source": "nsga2_train_math_vela.json frozen train pareto"
     }
   },
-  "git_sha": "e88b150e5230d1f15005000549ef5ec2aafe769b",
+  "git_sha": "f06b867dddc82eb39282d82ce2b0994f2c186cf5",
   "note": "search optimized accuracy-HV (cascade) as run; macro-F1 reported alongside; confirm is report-only, never re-selected"
 }

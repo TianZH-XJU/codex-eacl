@@ -1,0 +1,347 @@
+{
+  "experiment_id": "S-06",
+  "created_utc": "2026-11-01T15:52:07.971464+00:00",
+  "repo_commit": "f06b867dddc82eb39282d82ce2b0994f2c186cf5",
+  "protocol_version": "v4.1",
+  "note": "index only: missing fields omitted, never inferred",
+  "files": {
+    "action_complementarity": {
+      "file": "action_complementarity.json",
+      "experiment_id": "EXP-01",
+      "protocol_version": "v4.1",
+      "pools": "search_train (in-sample screen; headroom is an upper bound, not a method)",
+      "cells": [
+        "code_laya",
+        "code_vela",
+        "findver_laya",
+        "findver_vela",
+        "math_laya",
+        "math_vela"
+      ],
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "complementarity_screen": {
+      "file": "complementarity_screen.json",
+      "pools": "search_train (in-sample screen; Gate 3a requires a held-out re-check)",
+      "verdict": "KEEP_BLOCKED",
+      "n_cells": 6,
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "es_deploy_devconfirm": {
+      "file": "es_deploy_devconfirm.json",
+      "protocol": "v4.1 E-02: frozen train-selected ES best -> dev/confirm report; paired CIs are accuracy diffs; point dicts carry both accuracy and macro_f1 (train selection used macro_f1 per es_train manifest, dev/confirm computed with accuracy default)",
+      "tasks": [
+        "code_laya",
+        "code_vela"
+      ],
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "es_significance": {
+      "file": "es_significance.json",
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "es_train_code_laya": {
+      "file": "es_train_code_laya.json",
+      "protocol": "v4.1",
+      "budget_unique": 24,
+      "gens_effective": 3,
+      "gens_rule": "es-actual-logged-generations: search runs to unique-budget exhaustion; the GA budget-derived cap does not apply",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_code_laya.json",
+      "dev_cache": null,
+      "confirm_cache": null,
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "es_train_code_vela": {
+      "file": "es_train_code_vela.json",
+      "protocol": "v4.1",
+      "budget_unique": 24,
+      "gens_effective": 3,
+      "gens_rule": "es-actual-logged-generations: search runs to unique-budget exhaustion; the GA budget-derived cap does not apply",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_code_vela.json",
+      "dev_cache": null,
+      "confirm_cache": null,
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "evo_train_code_laya": {
+      "file": "evo_train_code_laya.json",
+      "protocol": "v4.1",
+      "budget_unique": 24,
+      "gens_effective": 2,
+      "gens_rule": "ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); unique evals still hard-capped by the tracker",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_code_laya.json",
+      "dev_cache": "results/v4/evolution/cache_code_laya.json",
+      "confirm_cache": "results/v4/evolution/cache_confirm_code_laya.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "evo_train_code_vela": {
+      "file": "evo_train_code_vela.json",
+      "protocol": "v4.1",
+      "budget_unique": 24,
+      "gens_effective": 2,
+      "gens_rule": "ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); unique evals still hard-capped by the tracker",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_code_vela.json",
+      "dev_cache": "results/v4/evolution/cache_code_vela.json",
+      "confirm_cache": "results/v4/evolution/cache_confirm_code_vela.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "evo_train_code_vela_b48": {
+      "file": "evo_train_code_vela_b48.json",
+      "protocol": "v4.1",
+      "budget_unique": 48,
+      "gens_effective": 5,
+      "gens_rule": "ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); unique evals still hard-capped by the tracker",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_code_vela.json",
+      "dev_cache": null,
+      "confirm_cache": null,
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "evo_train_findver_laya": {
+      "file": "evo_train_findver_laya.json",
+      "protocol": "v4.1",
+      "budget_unique": 24,
+      "gens_effective": 2,
+      "gens_rule": "ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); unique evals still hard-capped by the tracker",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_findver_laya.json",
+      "dev_cache": "results/v4/evolution/cache_findver_laya.json",
+      "confirm_cache": "results/v4/evolution/cache_confirm_findver_laya.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "evo_train_findver_vela": {
+      "file": "evo_train_findver_vela.json",
+      "protocol": "v4.1",
+      "budget_unique": 24,
+      "gens_effective": 2,
+      "gens_rule": "ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); unique evals still hard-capped by the tracker",
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "train_cache": "results/v4/evolution/cache_train_findver_vela.json",
+      "dev_cache": "results/v4/evolution/cache_findver_vela.json",
+      "confirm_cache": "results/v4/evolution/cache_confirm_findver_vela.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "faultmap": {
+      "file": "faultmap.json",
+      "status": "passed",
+      "n_cells": 15,
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "ga_b48_significance": {
+      "file": "ga_b48_significance.json",
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "ga_vs_random_significance": {
+      "file": "ga_vs_random_significance.json",
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "group_faultmap": {
+      "file": "group_faultmap.json",
+      "experiment_id": "EXP-04",
+      "protocol_version": "v4.1",
+      "n_cells": 15,
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "nsga2_deploy_devconfirm": {
+      "file": "nsga2_deploy_devconfirm.json",
+      "protocol": "v4.1 C-14: frozen train pareto -> dev select -> confirm report",
+      "tasks": [
+        "code_laya",
+        "code_vela",
+        "math_laya",
+        "math_vela"
+      ],
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "nsga2_deploy_significance": {
+      "file": "nsga2_deploy_significance.json",
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "nsga2_train_code_laya": {
+      "file": "nsga2_train_code_laya.json",
+      "budget_unique": 24,
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "cache": "results/v4/evolution/cache_train_code_laya.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "nsga2_train_code_vela": {
+      "file": "nsga2_train_code_vela.json",
+      "budget_unique": 24,
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "cache": "results/v4/evolution/cache_train_code_vela.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "nsga2_train_math_laya": {
+      "file": "nsga2_train_math_laya.json",
+      "budget_unique": 24,
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "cache": "results/v4/evolution/cache_train_math_laya.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "nsga2_train_math_vela": {
+      "file": "nsga2_train_math_vela.json",
+      "budget_unique": 24,
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "cache": "results/v4/evolution/cache_train_math_vela.json",
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "search_landscape": {
+      "file": "search_landscape.json",
+      "experiment_id": "EXP-03",
+      "protocol_version": "v4.1",
+      "pools": "search_train logs only; no new search",
+      "families": [
+        "es_train_code_laya",
+        "es_train_code_vela",
+        "evo_train_code_laya",
+        "evo_train_code_vela",
+        "evo_train_code_vela_b48",
+        "evo_train_findver_laya",
+        "evo_train_findver_vela",
+        "nsga2_train_code_laya",
+        "nsga2_train_code_vela",
+        "nsga2_train_math_laya",
+        "nsga2_train_math_vela"
+      ],
+      "has_run_manifest": true,
+      "has_git_sha": true
+    },
+    "train_search_confirm_eval": {
+      "file": "train_search_confirm_eval.json",
+      "budget_unique": 24,
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "tasks": [
+        "code_laya",
+        "code_vela",
+        "findver_laya",
+        "findver_vela",
+        "math_laya",
+        "math_vela"
+      ],
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "train_search_dev_eval": {
+      "file": "train_search_dev_eval.json",
+      "budget_unique": 24,
+      "seeds": [
+        17,
+        23,
+        41
+      ],
+      "tasks": [
+        "code_laya",
+        "code_vela",
+        "findver_laya",
+        "findver_vela",
+        "math_laya",
+        "math_vela"
+      ],
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "transfer_heldout": {
+      "file": "transfer_heldout.json",
+      "experiment_id": "EXP-05",
+      "protocol_version": "v4.1",
+      "pools": "frozen train-selected genomes -> held-out target dev/confirm; no re-search, no confirm tuning",
+      "n_cells": 16,
+      "has_run_manifest": false,
+      "has_git_sha": true
+    },
+    "transfer_matrix": {
+      "file": "transfer_matrix.json",
+      "track": "v4_1",
+      "metric": "macro_f1",
+      "n_cells": 16,
+      "has_run_manifest": false,
+      "has_git_sha": false
+    },
+    "utility_predictability": {
+      "file": "utility_predictability.json",
+      "experiment_id": "EXP-02",
+      "protocol_version": "v4.1",
+      "pools": "train OOF -> dev select (model+threshold) -> confirm frozen eval",
+      "cells": [
+        "code_laya",
+        "code_vela",
+        "findver_laya",
+        "findver_vela"
+      ],
+      "has_run_manifest": true,
+      "has_git_sha": true
+    }
+  }
+}

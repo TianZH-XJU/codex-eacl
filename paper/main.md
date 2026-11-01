@@ -136,37 +136,81 @@ significantly *harmful* (Δ CI [−0.14,−0.01], 57 flips); order_reverse Δ [�
 improves quality repeatably. **Gate 4 FAILED** → no Stage 5 ES comparison, no Stage 9
 locked test. Optimizer packages (cma/optuna/…) were deliberately never installed.
 
-## 6. Analysis: why there is nothing to search
+## 6. Analysis: which bottleneck binds (H1/H2/H3 with mechanism evidence)
 
-The pilot prediction distributions explain the nulls. On ProcessBench both models'
-choices collapse onto early steps (Laya: 113/120 on steps 0–5, zero sentinel predictions;
-Vela similar with slight spread, also zero sentinel). When the base policy cannot even
-represent whole regions of the label space (late steps, all-correct), budget parameters
-can only reshuffle mass within the collapsed region — hence identical tournament/single
-outcomes and unpredictable gains. Vela's 8k context and newer encoder do not rescue the
-task: its accuracy is *lower* than Laya's. The binding constraint is the models'
-task behavior, not the search budget — consistent with the failed-gate decision to not
-run evolution at all.
+We separate three ordered hypotheses. H1: the action space lacks complementary
+utility (nothing to repair). H2: repair opportunities exist but are not
+predictable from deployment-visible features. H3: predictable opportunities
+exist but search cannot exploit them. The evidence below decides between them
+instead of re-stating the null.
+
+**H1 — complementarity and oracle headroom (EXP-01).** On train pools with
+group-bootstrap CIs, per-example oracle vs best-fixed headroom is 0.0 for math
+(single representation), 0.067 for code/Vela, 0.08–0.10 for findver, and 0.233
+for code/Laya — but code/Laya's headroom comes with repair 14 vs harmful 15
+(net −1, paired CI includes zero). Every cell's net repair is ≤ 0 with CIs
+covering or below zero (`action_complementarity.json`). An independent
+noul-baseline screen agrees (best cell net +6/60, binomial p~0.09, ns;
+`complementarity_screen.json`). Verdict: H1 holds in its strong form for math
+(zero headroom) and in net terms everywhere else — gross headroom exists on
+code/Laya only alongside equal-or-larger regression.
+
+**H2 — predictability of incremental utility (EXP-02).** Group-aware OOF on
+train finds ranking signal (AUROC up to 0.92 findver/Vela, 0.67–0.74 code/Laya),
+but frozen-threshold utility collapses on held-out pools: findver/Vela champion
+dev +0.0339 → confirm −0.0227 (2 vs 1 repairs on 44 rows); code/Laya dev +0.20
+(a degenerate switch-all policy) → confirm +0.0167; findver/Laya never rises
+above noise (OOF AUROC ~0.45). With 2–7 positive training rows per cell, even
+the in-sample ranking is fragile, and zero transferable utility survives
+(`utility_predictability.json`). Verdict: H2 holds — whatever ranking exists
+does not transfer to deployment decisions.
+
+**H3 — search dynamics (EXP-03) and conditional failure (EXP-04/05).**
+Best-so-far plateaus at generation 0 in 15/21 runs (71%); the b48 probe used
+only 22/17/23 of 48 uniques; dev-selected NSGA-II deploy is significantly
+*worse* than fixed switch in 5/12 cells and never better. Search has no gradient
+to climb — consistent with, and secondary to, H1. Group-level fault CIs confirm
+stable conditional failure (math/Vela/mid severity 0.93/0.80/0.83 across
+discover/dev/confirm, group-CI lower bounds ≥ 0.5), and held-out transfer shows
+6/32 SIG cells, all negative, none favoring the transferred policy.
+
+Net assessment: H1 is the binding constraint (no per-example net repair signal);
+H2 explains why the gross headroom that exists cannot be routed; H3 is
+consistent (flat landscape, underused budget) but would be moot even with a
+perfect optimizer. No cell of the decision table supports "predictable,
+exploitable gain missed by search."
 
 ## 7. Limitations
 
-Small pilots (n=60–120) limit precision, but CIs are reported throughout and the verdicts
-rely on replication (train *and* dev), not point estimates. We did not test shortlist or
-long-window paths (no evidence they were needed; shortlist needs recall@k validation first).
-Vela's training-data provenance (includes MASSIVE; router-style synthetic decisions) is
-disclosed; we excluded MASSIVE as a confirmatory benchmark. Test splits remain locked and
-unused — a consequence, not an oversight, of gated protocol.
+Small pools (n=44–60, 2–17 positive rows per cell) limit precision; every claim
+carries a paired or group bootstrap CI, and "not significant" is never written
+as "equivalent". Confirm pools were pre-fixed but have been used by multiple
+analyses, so they are validation sets, not a untouched test set — the locked
+test is reserved for the frozen pipeline and has not been run. Vela's
+training-data provenance (includes MASSIVE; router-style synthetic decisions) is
+disclosed; we excluded MASSIVE as a confirmatory benchmark. We did not test
+shortlist or long-window paths. NSGA-II searched an accuracy-HV front while
+v4.1 selection uses macro-F1; deployment was re-selected on dev under the
+pre-registered accuracy rule with macro-F1 reported, and the mismatch is
+documented rather than hidden. Per-genome dev scores and per-mutation fitness
+were not stored, so train-dev rank correlation and neutrality rates are marked
+unavailable instead of estimated.
 
 ## 8. Conclusion
 
-We asked whether evolutionary search can find better native inference configurations for
-frozen structured decision models. Our gated protocol answered an earlier question first —
-*is there anything responsive to tune?* — and the answer, replicated across models,
-tasks, and splits, was no. The contribution is the audit trail: pinned revisions,
-paired inputs, cost-accounted configs, pre-registered gates, and published failures.
-For these tasks, the next step is not more search but better task adaptation (e.g.
-counteracting position collapse) or honest model comparison — both laid out as explicit
-follow-ups, not claims.
+We asked whether evolutionary search can find better native inference
+configurations for frozen structured decision models — and, finding no stable
+advantage, which bottleneck binds. The answer, replicated across models, tasks,
+and splits with paired statistics, is: (H1) the action space offers no
+per-example net repair signal; (2) whatever ranking signal exists does not
+transfer to deployment utility; (3) search dynamics are flat and budgets go
+underused, consistently with (1). The contribution is the audit trail: pinned
+revisions, paired inputs, train/dev/confirm separation with a held-out NSGA-II
+re-selection, cost accounting, pre-registered gates with literature-backed
+reopen criteria, and published failures including the significant-negative
+cells. For these tasks, the next step is not more search but task adaptation
+or honest model comparison — and any future claim must pass the gates defined
+here.
 
 ## 9. v4 addendum: intent track — menu restriction helps, surrogate fitness rejected (2026-11-01)
 

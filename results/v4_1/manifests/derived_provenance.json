@@ -143,6 +143,16 @@
         "results/v4_1/evolution/faultmap.json (eligible set)"
       ],
       "verified": "est==faultmap severity 15/15; independent-seed recompute matches; math/vela/mid group LBs>=0.5"
+    },
+    "results/v4_1/evolution/transfer_heldout.json": {
+      "producer": "scripts/analyze_transfer_heldout.py",
+      "reproduce": "python scripts/analyze_transfer_heldout.py --out results/v4_1/evolution/transfer_heldout.json",
+      "inputs": [
+        "results/v4_1/evolution/evo_train_{code,findver}_{laya,vela}.json (frozen bests)",
+        "target dev cache_{code,findver}_{laya,vela}.json",
+        "target confirm cache_confirm_{code,findver}_{laya,vela}.json"
+      ],
+      "verified": "pending dual-subagent review at generation time; diagonal==train_search_confirm_eval est (CI order-noise only)"
     }
   }
 }

@@ -93,6 +93,7 @@ def main():
               "protocol": "v4.1 C-14: frozen train pareto -> dev select -> confirm report",
               "deploy_rule": {"cascade": "max dev accuracy, tie-break fewer calls, then genome order",
                               "abstain": "max dev sel_accuracy, tie-break coverage, then genome order"},
+              "run_manifest": {"argv": sys.argv[1:]},
               "tasks": {}, "git_sha": sha,
               "note": ("search optimized accuracy-HV (cascade) as run; macro-F1 reported "
                        "alongside; confirm is report-only, never re-selected")}
