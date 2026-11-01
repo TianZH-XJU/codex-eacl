@@ -77,6 +77,17 @@ def test_ga_beats_noul_only_on_structured_cache():
     assert g["best"]["use_second"] == 1
 
 
+def test_ga_stops_gracefully_when_budget_exhausted():
+    from evolution import BudgetTracker
+    rows = synth(n=30, seed=2)
+    t = BudgetTracker(max_unique_evals=10, max_model_calls=0)
+    g = ga_run(rows, population=8, generations=5, crossover_rate=0.8,
+               mutation_rate=0.2, elitism=1, seed=5, tracker=t)
+    assert g["stopped_early"] is True
+    assert g["n_unique_evals"] <= 10
+    assert g["best_fit"]["accuracy"] >= 0.0
+
+
 def test_crossover_mutation_diversity():
     import random
     rng = random.Random(0)

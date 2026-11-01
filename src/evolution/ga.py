@@ -9,7 +9,7 @@ import random
 
 from . import fitness as F
 from . import random_search as RS
-from .budget import BudgetTracker
+from .budget import BudgetExceeded, BudgetTracker
 from .genome import CascadeGenome
 
 
@@ -60,6 +60,7 @@ def run(rows: list, population: int, generations: int, crossover_rate: float,
 
     fits = [score(g) for g in pop]
     log = []
+    stopped_early = False
     for gen in range(generations):
         order = sorted(range(len(pop)), key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
         log.append({"generation": gen,
@@ -72,14 +73,23 @@ def run(rows: list, population: int, generations: int, crossover_rate: float,
             cand = rng.sample(range(len(pop)), min(3, len(pop)))
             return pop[max(cand, key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]))]
 
-        children = []
-        while len(children) < population - elitism:
-            a, b = select(), select()
-            children.append(mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate))
-        pop = elites + children
-        fits = [score(g) for g in pop]
+        new_pop = list(elites)
+        new_fits = [fits[i] for i in order[:elitism]]
+        try:
+            while len(new_pop) < population:
+                a, b = select(), select()
+                c = mutate(rng, crossover(rng, a, b, crossover_rate), mutation_rate)
+                f = score(c)
+                new_pop.append(c)
+                new_fits.append(f)
+        except BudgetExceeded:
+            stopped_early = True
+        pop, fits = new_pop, new_fits
+        if stopped_early:
+            break
     order = sorted(range(len(pop)), key=lambda i: (fits[i]["scalar"], fits[i]["accuracy"]), reverse=True)
     best = pop[order[0]]
     return {"best": {"lo": best.lo, "hi": best.hi, "use_second": best.use_second},
             "best_fit": fits[order[0]], "generations": log, "archive": archive,
+            "stopped_early": stopped_early,
             "n_unique_evals": len({(a["genome"]["lo"], a["genome"]["hi"], a["genome"]["use_second"]) for a in archive})}
