@@ -321,3 +321,12 @@ NSGA-II-deploy minus random-best, 12/12 CIs include zero (two degenerate [0,0]):
 `nsga2_deploy_significance.json`. This closes the last significance gap — every
 EA-vs-control comparison in the project now carries a paired CI, and none
 excludes zero.
+
+**Traditional controllers (threshold grid + in-sample LR router, paired CIs).**
+Fixed-band grid ties GA everywhere (all ns except one seed): the simplest
+classical control matches evolution. The LR router collapses to noul-only on
+code (0.45/0.633) — model-visible features do not predict switch-fix events,
+replicating the v3 LR==majority finding on new pools; GA beats this failed
+router SIG on code, which credits the fixed rep, not evolution. Math abstention
+vs never-abstain: raw accuracy drops (Vela −0.083 SIG) — abstention rations
+answers, it cannot manufacture accuracy. `traditional_controls.json`.
