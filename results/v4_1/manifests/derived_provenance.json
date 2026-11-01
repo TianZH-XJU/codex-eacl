@@ -112,6 +112,16 @@
         "results/v4/evolution/cache_train_{code,findver,math}_{laya,vela}.json (6)"
       ],
       "verified": "cell_stats fuzz + 12-cell recompute match; headroom==repair/n identity; group-CI est==point"
+    },
+    "results/v4_1/evolution/utility_predictability.json": {
+      "producer": "scripts/analyze_utility_predictability.py",
+      "reproduce": "python scripts/analyze_utility_predictability.py --out results/v4_1/evolution/utility_predictability.json",
+      "inputs": [
+        "results/v4/evolution/cache_train_{code,findver}_{laya,vela}.json",
+        "dev cache_{code,findver}_{laya,vela}.json",
+        "confirm cache_confirm_{code,findver}_{laya,vela}.json"
+      ],
+      "verified": "OOF AUROC exact recompute (findver_vela logreg 0.9191); champion dev/conf nets exact; no dev/confirm rows in any fit"
     }
   }
 }
