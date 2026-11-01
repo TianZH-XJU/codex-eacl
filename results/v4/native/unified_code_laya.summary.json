@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-11-01T00:12:29.122389+00:00",
+  "task": "codexglue_defect",
+  "model": "laya",
+  "split": "search_dev",
+  "seed": 17,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "project_git_sha": "d43c7c84d2dbc0f572ac43fdd33083d1a4b7f460",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2113.6,
+  "by_rep": {
+    "noul": {
+      "n": 60,
+      "accuracy": 0.45,
+      "mean_ms": 2303.7
+    },
+    "switch": {
+      "n": 60,
+      "accuracy": 0.65,
+      "mean_ms": 2239.1
+    }
+  },
+  "status": "passed"
+}
