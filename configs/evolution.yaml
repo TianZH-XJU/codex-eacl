@@ -2,28 +2,28 @@
 # Budgets count REAL model evaluations (genome evals AND per-sample calls, both recorded).
 algorithms:
   ga:
-    runner: missing
+    runner: src/evolution/ga.py via scripts/run_policy_evolution.py --algo ga
     role: primary_single_task_search
     pilot_params: {population: [8, 12, 16], generations: [3, 5, 8], crossover: [0.6, 0.8], mutation: [0.05, 0.10, 0.20], elitism: [1, 2]}
     seeds_pilot: [17, 23, 41]
-    status: blocked_pending_task_adapters
+    status: implemented
   random_search:
-    runner: missing
+    runner: src/evolution/random_search.py via scripts/run_policy_evolution.py
     role: mandatory_matched_budget_control
-    status: blocked_pending_task_adapters
+    status: implemented
   neat_multistep:
     runner: missing
     role: multistep_policy_search
     legacy_reference: scripts/run_neat_cv.py (HISTORICAL single-step BANKING77 failure, not a runner for new tasks)
     status: blocked_pending_complementarity_gate
   nsga2:
-    runner: missing
+    runner: src/evolution/nsga2.py via scripts/run_nsga2.py
     role: quality_latency_multiobjective
-    status: blocked_pending_single_objective_signal
+    status: implemented
   es:
-    runner: missing
+    runner: src/evolution/es.py via scripts/run_policy_evolution.py --algo es
     role: continuous_params_only
-    status: blocked_pending_numeric_space
+    status: implemented
   gp_structural:
     runner: missing
     role: policy_structure_search

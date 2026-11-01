@@ -64,8 +64,8 @@ tasks:
     role: primary
     adapter: src/tasks/code.py
     adapter_status: implemented
+    group_unit: function_text_hash (NOT project holdout; see AUDIT_V4_1)
     legacy: [scripts/prepare_codexglue_defect.py, scripts/build_binary_cache.py, scripts/make_codexglue_split.py]
-    group_unit: function_or_project
     status: gate1_failed_neat_paused
     gate: Gate 1 FAILED 2026-10-30 — switch net +1 (34→37/60) but LR OOF below majority; wide zero net gain. NEAT paused for code.
   findver:

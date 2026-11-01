@@ -22,6 +22,8 @@ models:
     smoke_evidence: results/v4/native/adapter_smoke_vela.json
     natives: [choice, noul, score, span, set]
     common_subspace: [choice, noul, score]
+    weights_file: model.safetensors
+    weights_sha256: bd37dd0db177d766bc554eded78ae8493bc248172d0480f6a543b30932a0cc8e
     disallowed_as_search_knobs: [max_len, head_max_len, group_size, shortlist_k, window_overlap, internal_constants]
 runtime:
   device: cpu
