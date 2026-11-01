@@ -1,0 +1,118 @@
+{
+  "evo_code_laya": {
+    "17": {
+      "est": 0.0,
+      "ci95": [
+        -0.0833,
+        0.0833
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "23": {
+      "est": 0.0,
+      "ci95": [
+        -0.05,
+        0.05
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "41": {
+      "est": 0.0,
+      "ci95": [
+        -0.05,
+        0.05
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    }
+  },
+  "evo_code_vela": {
+    "17": {
+      "est": 0.0333,
+      "ci95": [
+        -0.05,
+        0.1333
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "23": {
+      "est": 0.0667,
+      "ci95": [
+        0.0167,
+        0.1333
+      ],
+      "excludes_zero": true,
+      "comparison": "ga_minus_switchonly"
+    },
+    "41": {
+      "est": -0.0333,
+      "ci95": [
+        -0.15,
+        0.0833
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    }
+  },
+  "evo_findver_laya": {
+    "17": {
+      "est": 0.0678,
+      "ci95": [
+        -0.0606,
+        0.2364
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "23": {
+      "est": 0.0847,
+      "ci95": [
+        -0.039,
+        0.2373
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "41": {
+      "est": 0.0678,
+      "ci95": [
+        -0.0615,
+        0.2281
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    }
+  },
+  "evo_findver_vela": {
+    "17": {
+      "est": 0.0169,
+      "ci95": [
+        -0.0769,
+        0.0943
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "23": {
+      "est": 0.0,
+      "ci95": [
+        -0.1154,
+        0.0923
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    },
+    "41": {
+      "est": 0.0,
+      "ci95": [
+        -0.1177,
+        0.0896
+      ],
+      "excludes_zero": false,
+      "comparison": "ga_minus_switchonly"
+    }
+  }
+}

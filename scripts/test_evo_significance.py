@@ -54,6 +54,7 @@ def paired_ci(a, b, n=5000):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--evo", nargs="+", required=True)
+    ap.add_argument("--fixed", default=None, choices=[None, "noul-only", "switch-only"])
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
     report = {}
@@ -63,10 +64,16 @@ def main():
         rows = cache["rows"]
         per_seed = {}
         for s in d["seeds"]:
-            gb = CascadeGenome(**d["per_seed"][str(s)]["ga"]["best"])
-            rb = CascadeGenome(**d["per_seed"][str(s)]["random"]["best"])
-            # GA-best minus Random-best with paired rows: positive favors GA
-            per_seed[str(s)] = paired_ci(rowwise(rb, rows), rowwise(gb, rows))
+            gb = CascadeGenome(**d["per_seed"][str(s)][d.get("algo", "ga")]["best"])
+            if args.fixed == "noul-only":
+                other, tag = CascadeGenome(lo=0.0, hi=1.0, use_second=0), "ga_minus_noulonly"
+            elif args.fixed == "switch-only":
+                other, tag = CascadeGenome(lo=0.0, hi=1.0, use_second=1), "ga_minus_switchonly"
+            else:
+                other = CascadeGenome(**d["per_seed"][str(s)]["random"]["best"])
+                tag = "ga_minus_random"
+            per_seed[str(s)] = paired_ci(rowwise(other, rows), rowwise(gb, rows))
+            per_seed[str(s)]["comparison"] = tag
         report[Path(ef).stem] = per_seed
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

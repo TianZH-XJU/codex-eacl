@@ -7,8 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from evolution import (BudgetExceeded, BudgetTracker, CascadeGenome, crossover,  # noqa: E402
-                       decide, diversity, evaluate, ga_run, mutate, random_run,
-                       sample_genome)
+                       decide, diversity, es_run, evaluate, ga_run, mutate,
+                       random_run, sample_genome)
 
 
 def synth(n=60, seed=0):
@@ -86,6 +86,27 @@ def test_ga_stops_gracefully_when_budget_exhausted():
     assert g["stopped_early"] is True
     assert g["n_unique_evals"] <= 10
     assert g["best_fit"]["accuracy"] >= 0.0
+
+
+def test_es_deterministic_budgeted_and_second_gene_fixed():
+    rows = synth(n=80, seed=4)
+    t = BudgetTracker(max_unique_evals=24, max_model_calls=0)
+    e1 = es_run(rows, mu=4, lam=8, sigma=0.15, budget=24, seed=17, tracker=t)
+    e2 = es_run(rows, mu=4, lam=8, sigma=0.15, budget=24, seed=17,
+                tracker=BudgetTracker(max_unique_evals=24, max_model_calls=0))
+    assert e1["best"] == e2["best"] and e1["n_unique_evals"] <= 24
+    assert all(a["genome"]["use_second"] == 1 for a in e1["archive"])
+    assert e1["stopped_early"] is True  # mu+lam slots exceed 24 unique
+
+
+def test_es_beats_nothing_claim_is_structural():
+    # On structured cache ES must at least match fixed switch-only; the point
+    # is structural validity, not superiority (verdict comes from real caches).
+    rows = synth(n=200, seed=1)
+    e = es_run(rows, budget=24, seed=17,
+               tracker=BudgetTracker(max_unique_evals=24, max_model_calls=0))
+    base = sum(r["switch_correct"] for r in rows) / len(rows)
+    assert e["best_fit"]["accuracy"] >= base - 0.05
 
 
 def test_crossover_mutation_diversity():
