@@ -1,7 +1,7 @@
 {
   "experiment_id": "S-06",
-  "created_utc": "2026-11-01T16:33:36.296355+00:00",
-  "repo_commit": "c8b2414544b550ec0f2a1ac4b66f3e26e6292367",
+  "created_utc": "2026-11-01T16:34:29.611233+00:00",
+  "repo_commit": "13e38c69c5811c26113d35cfd05a525c75c82cbe",
   "protocol_version": "v4.1",
   "note": "index only: missing fields omitted, never inferred",
   "files": {
