@@ -26,6 +26,22 @@ from evolution import evaluate as cascade_evaluate  # noqa: E402
 rng = np.random.RandomState(17)
 
 
+def check_paired(a, b, label=""):
+    """Paired-join validation: same rows in the same order with same golds.
+    Raises SystemExit on mismatch (fail-closed: never compare unpaired rows)."""
+    if len(a) != len(b):
+        raise SystemExit(f"paired join failed {label}: length {len(a)} != {len(b)}")
+    ka = [r["key"] for r in a]
+    kb = [r["key"] for r in b]
+    if ka != kb:
+        raise SystemExit(f"paired join failed {label}: row-id order mismatch")
+    ga = [r.get("gold") for r in a]
+    gb = [r.get("gold") for r in b]
+    if ga != gb:
+        raise SystemExit(f"paired join failed {label}: gold mismatch")
+    return True
+
+
 def rowwise(g, rows):
     """Per-row correctness of a cascade genome on binary-task cache rows."""
     out = []
@@ -51,6 +67,12 @@ def rowwise_math(g, rows):
 
 
 def paired_ci(a, b, n=5000):
+    if len(a) != len(b):
+        raise SystemExit(f"paired_ci: length mismatch {len(a)} != {len(b)}")
+    ga = sorted(g for g, _ in a)
+    gb = sorted(g for g, _ in b)
+    if ga != gb:
+        raise SystemExit("paired_ci: group multiset mismatch (unpaired comparison refused)")
     groups = sorted({g for g, _ in a})
     da = {g: [v for gg, v in a if gg == g] for g in groups}
     db = {g: [v for gg, v in b if gg == g] for g in groups}

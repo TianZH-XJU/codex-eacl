@@ -30,3 +30,32 @@ def test_v4_1_evo_files_carry_train_cache_paths():
         d = json.loads(p.read_text(encoding="utf-8"))
         assert "train_cache" in d and Path(ROOT / d["train_cache"]["path"]).exists()
         assert d.get("run_manifest", {}).get("metric") == "macro_f1"
+
+
+def test_processbench_mapping_matches_official_adapter():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from prepare_processbench import to_choice_task
+    a = ProcessbenchAdapter()
+    rows = a.load_rows("search_dev", 8, 17)
+    assert len(rows) == 8
+    by_id = {}
+    for fn in ("gsm8k.json", "math.json", "olympiadbench.json", "omnimath.json"):
+        for r in json.loads((ROOT / "data/raw/processbench" / fn).read_text(encoding="utf-8")):
+            by_id[r["id"]] = r
+    for r in rows:
+        raw = by_id[r["key"]]
+        task = to_choice_task(raw)
+        assert r["gold"] == task["gold_index"], r["key"]
+        assert a.candidates(r)[-1] == "ALL_STEPS_CORRECT"
+        assert (r["gold"] == len(raw["steps"])) == (raw["label"] == -1)
+
+
+def test_findver_normalization_and_report_grouping():
+    a = FindverAdapter()
+    assert a.labels() == ["not_supported", "supported"]
+    rows = a.load_rows("search_dev", 20, 17)
+    assert len(rows) == 20
+    manifest = json.loads((ROOT / "results/v2/data_manifest/findver_report_groups.json").read_text(encoding="utf-8"))
+    dev_reports = set(manifest["splits"]["search_dev"])
+    assert {r["group_id"][3:] for r in rows} <= dev_reports
+    assert all(isinstance(r["gold"], bool) for r in rows)

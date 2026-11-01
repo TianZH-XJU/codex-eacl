@@ -34,53 +34,74 @@ def load(cache):
     return d["rows"]
 
 
+def assert_disjoint_pool(train_rows, report_rows, report_name):
+    """Leakage guard: report rows must share no row keys with the search pool."""
+    tr = {r["key"] for r in train_rows}
+    rp = {r["key"] for r in report_rows}
+    overlap = tr & rp
+    if overlap:
+        raise SystemExit(f"pool leak: {len(overlap)} keys shared with {report_name}: "
+                         f"{sorted(overlap)[:5]}")
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=int, default=24)
     ap.add_argument("--seeds", default="17,23,41")
     ap.add_argument("--report-split", default="search_dev", choices=["search_dev", "confirm"],
                     help="split to REPORT on (never select on). search_train is always the search pool.")
+    ap.add_argument("--evo-dir", default="results/v4_1/evolution",
+                    help="directory with evo_train_*.json holding the train-selected best genomes")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
     seeds = [int(x) for x in args.seeds.split(",")]
     report = {"budget_unique": args.budget, "seeds": seeds,
-              "search_pool": "search_train", "report_split": args.report_split, "tasks": {}}
+              "search_pool": "search_train", "report_split": args.report_split, "tasks": {},
+              "selection_source": "train-selected best genomes from evo files (no re-search here)"}
     dev_tag = "" if args.report_split == "search_dev" else "_confirm"
     dev_file = lambda t, m: f"cache{dev_tag}_{t}_{m}.json"
 
+    def load_evo(task, model):
+        p = ROOT / args.evo_dir / f"evo_train_{task}_{model}.json"
+        return json.loads(Path(p).read_text(encoding="utf-8"))
+
     for t in ("code", "findver"):
-        tcache = {"code": "codexglue_defect", "findver": "findver"}[t]
         for m in ("laya", "vela"):
             train = load(f"cache_train_{t}_{m}.json")
             dev = load(dev_file(t, m))
+            assert_disjoint_pool(train, dev, dev_file(t, m))
+            evo = load_evo(t, m)
+            algo = evo.get("algo", "ga")
             per_seed = {}
             for s in seeds:
-                tg = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)
-                g = ga_run(train, population=8, generations=3, crossover_rate=0.8,
-                           mutation_rate=0.2, elitism=1, seed=s, tracker=tg, lam=0.05)
-                tr = BudgetTracker(max_unique_evals=args.budget, max_model_calls=0)
-                r = random_run(train, budget=args.budget, seed=s + 1000, tracker=tr, lam=0.05)
-                gb = CascadeGenome(**g["best"])
-                rb = CascadeGenome(**r["best"])
+                gb = CascadeGenome(**evo["per_seed"][str(s)][algo]["best"])
+                rb = CascadeGenome(**evo["per_seed"][str(s)]["random"]["best"])
                 base_n = CascadeGenome(lo=0.0, hi=1.0, use_second=0)
                 base_s = CascadeGenome(lo=0.0, hi=1.0, use_second=1)
                 gb_d, rb_d = rowwise(gb, dev), rowwise(rb, dev)
                 n_d = rowwise(base_n, dev)
                 s_d = rowwise(base_s, dev)
                 per_seed[str(s)] = {
-                    "ga_train_best": g["best"], "ga_dev_acc": round(float(np.mean([v for _, v in gb_d])), 4),
-                    "random_train_best": r["best"], "random_dev_acc": round(float(np.mean([v for _, v in rb_d])), 4),
+                    "ga_train_best": evo["per_seed"][str(s)][algo]["best"],
+                    "ga_train_fit": evo["per_seed"][str(s)][algo]["fit_train"],
+                    "ga_dev_acc": round(float(np.mean([v for _, v in gb_d])), 4),
+                    "random_train_best": evo["per_seed"][str(s)]["random"]["best"],
+                    "random_dev_acc": round(float(np.mean([v for _, v in rb_d])), 4),
                     "ga_minus_noulonly_dev": paired_ci(n_d, gb_d),
                     "ga_minus_switchonly_dev": paired_ci(s_d, gb_d),
                     "ga_minus_random_dev": paired_ci(rb_d, gb_d)}
             accs = [per_seed[str(s)]["ga_dev_acc"] for s in seeds]
             report["tasks"][f"{t}_{m}"] = {
+                "evo_source": f"evo_train_{t}_{m}.json",
+                "selection_metric": evo.get("run_manifest", {}).get("metric", "accuracy"),
                 "per_seed": per_seed,
                 "ga_dev_mean": round(float(np.mean(accs)), 4),
                 "ga_dev_std": round(float(np.std(accs, ddof=1)), 4) if len(accs) > 1 else 0.0}
     for m in ("laya", "vela"):
         train = load(f"cache_train_math_{m}.json")
         dev = load(dev_file("math", m))
+        assert_disjoint_pool(train, dev, dev_file("math", m))
 
         def ev(gg, _rows=train):
             f = evaluate_math(gg, _rows)
