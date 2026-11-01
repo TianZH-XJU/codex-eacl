@@ -128,3 +128,54 @@ _Generated from committed result JSONs; numbers identical to main-text claims. A
 ## I. Reproducibility index
 
 See `results/v4_1/manifests/protocol_metrics_index.json` (machine-readable file inventory) and `results/v4_1/manifests/derived_provenance.json` (generator commands per derived file). Full test log: `results/v4_1/manifests/pytest_full_*.log`.
+## J. Intent-track supplement (fixed-retrieval effects, not evolutionary gains)
+
+Moved here from §9 to keep the main results focused on the evolutionary-routing
+question. On a separate intent track (CLINC150/BANKING77, v4 group manifests,
+full label sets, same-row Laya/Vela pairs; no GP/NSGA-II search run; no test
+split touched):
+
+**A1 native baselines (full label sets, search_train n=100/row-matched).**
+CLINC150: Laya 0.61 vs Vela 0.57 (paired diff −0.04, 95% CI [−0.16,+0.08]).
+BANKING77: Laya 0.44 vs Vela 0.54 (diff +0.10, CI [−0.02,+0.21]).
+Neither gap is significant; Vela is 2.5–4× faster per call. A subset-candidate pilot
+that inflated Laya CLINC150 to 0.86 was caught and fixed by the full-set rerun.
+
+**E2 menu headroom (dev n=60/task, TF-IDF top-10 menus, identical rows full-vs-menu).**
+Menu recall@10 is 0.9367 (CLINC150) / 0.9767 (BANKING77) vs random 0.11.
+Restricted-menu Choice beats full-menu Choice in 3/4 paired CIs:
+BANKING77 Laya +0.333 [0.2,0.4667], Vela +0.133 [0.0,0.2667] (ns);
+CLINC150 Laya +0.25 [0.1333,0.3667], Vela +0.217 [0.1,0.3333].
+Menus also cut mean latency (e.g. Laya CLINC150 2256→585 ms).
+This is a *fixed-retrieval* effect, not an evolutionary gain.
+
+## K. Paired macro-F1 CIs, GA-best vs fixed switch and vs random (all pools)
+
+| task | pool | comp | SIG seeds (est [CI]) |
+|---|---|---|---|
+| code_laya | train | ga_minus_switchonly | all ns |
+| code_laya | train | ga_minus_random | all ns |
+| code_laya | dev | ga_minus_switchonly | all ns |
+| code_laya | dev | ga_minus_random | all ns |
+| code_laya | confirm | ga_minus_switchonly | all ns |
+| code_laya | confirm | ga_minus_random | all ns |
+| code_vela | train | ga_minus_switchonly | all ns |
+| code_vela | train | ga_minus_random | all ns |
+| code_vela | dev | ga_minus_switchonly | all ns |
+| code_vela | dev | ga_minus_random | all ns |
+| code_vela | confirm | ga_minus_switchonly | all ns |
+| code_vela | confirm | ga_minus_random | all ns |
+| findver_laya | train | ga_minus_switchonly | all ns |
+| findver_laya | train | ga_minus_random | all ns |
+| findver_laya | dev | ga_minus_switchonly | all ns |
+| findver_laya | dev | ga_minus_random | all ns |
+| findver_laya | confirm | ga_minus_switchonly | all ns |
+| findver_laya | confirm | ga_minus_random | all ns |
+| findver_vela | train | ga_minus_switchonly | 17: 0.1202 [0.0043, 0.2271]; 23: 0.1202 [0.0062, 0.2282]; 41: 0.1202 [0.0067, 0.2229] |
+| findver_vela | train | ga_minus_random | all ns |
+| findver_vela | dev | ga_minus_switchonly | all ns |
+| findver_vela | dev | ga_minus_random | all ns |
+| findver_vela | confirm | ga_minus_switchonly | all ns |
+| findver_vela | confirm | ga_minus_random | all ns |
+
+Primary comparison (pre-registered): GA vs fixed switch on confirm, macro-F1 paired CI: all 12 cells ns. All other cells exploratory, no family-wise control.

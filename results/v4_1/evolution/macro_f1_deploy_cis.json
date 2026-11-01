@@ -1,0 +1,814 @@
+{
+  "created_utc": "2026-11-01T17:20:33.284566+00:00",
+  "repo_commit": "70f0aa7480c380531a1cc0a50676b794623c8666",
+  "protocol_version": "v4.1",
+  "method": "paired group-bootstrap (5000 resamples) macro-F1 difference; CIs are macro-F1 CIs, unlike test_evo_significance accuracy CIs",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/evolution/macro_f1_deploy_cis.json"
+    ]
+  },
+  "tasks": {
+    "code_laya": {
+      "per_seed": {
+        "17": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.1054,
+              "ci95": [
+                -0.0513,
+                0.2658
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0333,
+              "ci95": [
+                -0.0869,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": -0.0739,
+              "ci95": [
+                -0.243,
+                0.0947
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0346,
+              "ci95": [
+                -0.0896,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.1266,
+              "ci95": [
+                -0.0398,
+                0.2839
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0155,
+              "ci95": [
+                -0.0389,
+                0.073
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          }
+        },
+        "23": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.1054,
+              "ci95": [
+                -0.0547,
+                0.2613
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0305,
+              "ci95": [
+                -0.1108,
+                0.0508
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": -0.0739,
+              "ci95": [
+                -0.2422,
+                0.0971
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0508,
+              "ci95": [
+                -0.1252,
+                0.0159
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.1266,
+              "ci95": [
+                -0.0394,
+                0.2818
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0173,
+              "ci95": [
+                -0.09,
+                0.0518
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          }
+        },
+        "41": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.1054,
+              "ci95": [
+                -0.0615,
+                0.2661
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0461,
+              "ci95": [
+                -0.1297,
+                0.0332
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": -0.0739,
+              "ci95": [
+                -0.2474,
+                0.0985
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0127,
+              "ci95": [
+                -0.1087,
+                0.1389
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.1266,
+              "ci95": [
+                -0.045,
+                0.2778
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0489,
+              "ci95": [
+                -0.1734,
+                0.0772
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          }
+        }
+      },
+      "source": "evo_train_code_laya.json frozen train bests"
+    },
+    "code_vela": {
+      "per_seed": {
+        "17": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0222,
+              "ci95": [
+                0.0,
+                0.0583
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0131,
+              "ci95": [
+                0.0,
+                0.0428
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          }
+        },
+        "23": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          }
+        },
+        "41": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": -0.0183,
+              "ci95": [
+                -0.086,
+                0.0282
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0183,
+              "ci95": [
+                -0.0861,
+                0.026
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": -0.036,
+              "ci95": [
+                -0.1182,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.036,
+              "ci95": [
+                -0.1146,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": -0.0794,
+              "ci95": [
+                -0.1853,
+                0.0133
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0794,
+              "ci95": [
+                -0.1784,
+                0.0123
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          }
+        }
+      },
+      "source": "evo_train_code_vela.json frozen train bests"
+    },
+    "findver_laya": {
+      "per_seed": {
+        "17": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.0512,
+              "ci95": [
+                -0.0149,
+                0.1278
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0156,
+              "ci95": [
+                -0.0738,
+                0.0382
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": -0.013,
+              "ci95": [
+                -0.0796,
+                0.0532
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0861,
+              "ci95": [
+                -0.1973,
+                0.0235
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 59
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": -0.0193,
+              "ci95": [
+                -0.0514,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.051,
+              "ci95": [
+                -0.0425,
+                0.1352
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 44
+          }
+        },
+        "23": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.0668,
+              "ci95": [
+                -0.0178,
+                0.1627
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0334,
+              "ci95": [
+                0.0,
+                0.0866
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.0567,
+              "ci95": [
+                -0.0498,
+                0.1798
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0332,
+              "ci95": [
+                -0.0268,
+                0.0908
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 59
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": -0.0703,
+              "ci95": [
+                -0.1609,
+                0.0387
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0318,
+              "ci95": [
+                -0.1259,
+                0.0683
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 44
+          }
+        },
+        "41": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.0132,
+              "ci95": [
+                -0.0856,
+                0.1248
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0361,
+              "ci95": [
+                -0.09,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.0715,
+              "ci95": [
+                -0.0488,
+                0.2195
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0017,
+              "ci95": [
+                -0.051,
+                0.0509
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 59
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": -0.1113,
+              "ci95": [
+                -0.2171,
+                0.0094
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0207,
+              "ci95": [
+                -0.0785,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 44
+          }
+        }
+      },
+      "source": "evo_train_findver_laya.json frozen train bests"
+    },
+    "findver_vela": {
+      "per_seed": {
+        "17": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.1202,
+              "ci95": [
+                0.0043,
+                0.2271
+              ],
+              "excludes_zero": true,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.1062,
+              "ci95": [
+                -0.0233,
+                0.2008
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 59
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.1063,
+              "ci95": [
+                -0.0151,
+                0.2202
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 44
+          }
+        },
+        "23": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.1202,
+              "ci95": [
+                0.0062,
+                0.2282
+              ],
+              "excludes_zero": true,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0122,
+              "ci95": [
+                -0.0406,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.1062,
+              "ci95": [
+                -0.0201,
+                0.2026
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 59
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.1063,
+              "ci95": [
+                -0.0153,
+                0.2196
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 44
+          }
+        },
+        "41": {
+          "train": {
+            "ga_minus_switchonly": {
+              "est": 0.1202,
+              "ci95": [
+                0.0067,
+                0.2229
+              ],
+              "excludes_zero": true,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": -0.0244,
+              "ci95": [
+                -0.0626,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 60
+          },
+          "dev": {
+            "ga_minus_switchonly": {
+              "est": 0.1062,
+              "ci95": [
+                -0.0165,
+                0.2009
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0369,
+              "ci95": [
+                0.0,
+                0.0956
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 59
+          },
+          "confirm": {
+            "ga_minus_switchonly": {
+              "est": 0.1063,
+              "ci95": [
+                -0.0151,
+                0.2214
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_switchonly_macro_f1"
+            },
+            "ga_minus_random": {
+              "est": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "excludes_zero": false,
+              "comparison": "ga_minus_random_macro_f1"
+            },
+            "n": 44
+          }
+        }
+      },
+      "source": "evo_train_findver_vela.json frozen train bests"
+    }
+  }
+}

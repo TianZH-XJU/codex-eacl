@@ -1,4 +1,4 @@
-# Evolving Inference Configurations for Frozen Structured Decision Models: A Negative Result with a Failure-Mechanism Analysis
+# When Evolutionary Routing Fails: Complementarity, Utility Predictability, and Search Diagnostics for Frozen Structured Decision Models
 
 *Draft v0.3 — 2026-11-01 (v4.1 EvoTIDE track: GA/ES/NSGA-II executed under a fixed train/dev/confirm protocol; NEAT and grammar-GP stay blocked behind pre-registered gates). Work-in-progress short paper for EACL 2027 SRW.
 All numbers below are measured on the author's local CPU machine; nothing is simulated.
@@ -27,9 +27,12 @@ instructive. We ran the search: GA, ES and NSGA-II under a frozen train/dev/conf
 protocol with matched unique-eval budgets, paired group-bootstrap CIs, fixed-strategy
 and random controls, plus cross-task/model transfer, a budget-ladder probe and an
 exhaustive diagnostic fault map. We find that (1) no optimizer beats matched random or
-the best fixed representation on any task/model/split/metric tried (12/12, 6/6 and
-11/12+1-negative paired CIs); (2) the significant differences found anywhere all favor
-the fixed or random baseline, never evolution; (3) a newer, larger-context model
+the best fixed representation on any task/model/split/metric tried (12/12 GA-vs-random
+train ns, 6/6 ES ns, held-out deploys never better than fixed); (2) the only
+significant differences favoring evolution appear in-sample on the search pool
+itself (findver/Vela train GA-vs-switch macro-F1 +0.12, 3/3 seeds SIG) and vanish
+out-of-pool — textbook selection bias, not a deployable gain; every other
+significant difference favors the fixed or random baseline; (3) a newer, larger-context model
 (Vela 2.0 0.3B) does not beat the older baseline on these tasks either; (4) the failure
 is diagnosable: complementarity is ~zero (best cell net +6/60, binomial p~0.09, ns),
 so there is no per-example repair signal for any router — learned or evolved — to exploit.
@@ -84,18 +87,31 @@ precisely instead of hiding it in a large policy space.
 snapshot, SHA-256 manifest committed). One model resident at a time; CPU-only, 2 threads,
 per-process RSS ceiling 3.5 GB (observed peaks ≤ 2.2 GB).
 
-**Configuration space (pre-registered).** Direct path: `max_len`, `head_max_len` bins;
-option-order templates (ORIGINAL/REVERSE/...); tournament `group_size`; shortlist `k`;
-long-window `window`/`stride` (long inputs only). Every candidate passes through a
-`validate_and_repair` gate (group_size ≥ 2, no incompatible shortlist+order combos,
-no out-of-checkpoint budgets). Costs are cumulative (SINGLE + upgrades) with real rounds,
-windows, and embedding calls counted — never "one API call = one forward".
+**Search space (pre-registered, actually searched).** The v4.1 search does not
+tune prompts, context lengths, or model weights. It searches *policies* over a
+fixed two-action set per task. For binary tasks (code, finance) the genome is
+a cascade threshold band `g=(lo, hi, use_second)`: always run the cheap noul
+(pass `[0,1]` verdict), and run the expensive switch (second representation)
+iff `use_second=1` and the noul confidence `p` falls in `[lo, hi]`
+(`src/evolution/genome.py: CascadeGenome.to_vector/from_vector`, round-trip
+tested). For math the genome is an abstention rule `g=(t, use_margin, m)`:
+answer the top choice unless confidence `top1 < t` (and `margin < m` when
+`use_margin=1`), else abstain (`src/evolution/selective.py: AbstainGenome`,
+round-trip tested). Fitness is cache-exact: all candidate outputs were
+generated once by real frozen-model calls into immutable caches; evolution
+only replays them. Every candidate pays its measured cost
+(`calls_per_row`; switch costs 2 calls, noul 1).
 
-**Gates.** Gate 0: API smoke. Gate 1: strategy complementarity on a small pilot
-(error overlap, only-A fixes, predictability of gains). Gate 4: configuration sensitivity
-— at least one config must change quality repeatably (paired bootstrap CI excluding zero
-on train *and* dev). Only then would a full ES comparison (Stage 5) run. Locked test sets
-exist but were never touched, as no gate passed.
+**Gates (v4.1).** Search runs on `search_train`; selection on `selection_dev`;
+independent check on `confirm`; locked test reserved and untouched. Gate 3a
+(required for NEAT multistep control): strategies must repair each other's
+errors (net repair significantly positive) AND incremental gain must be
+predictable OOF (AUC ≥ 0.65). It failed (best cell net +6/60, binomial p~0.09;
+see §6), so full NEAT stays blocked, with E5's diagnostic fault map as the
+gated fallback. Gate 2 (grammar-GP) requires ≥200/200/200 fresh rows; the
+30-row/12-config E2 pilot does not pass, so GP stays blocked. Reference points,
+seeds (17/23/41), budgets (24/48 unique evals) and the macro-F1 task primary
+are pinned in `configs/v4/protocol_v4_1.yaml`.
 
 ## 4. Experimental Setup
 
@@ -121,25 +137,30 @@ covers zero or favors Laya. Vela runs 256–8192 input tokens on CPU within 1.7�
 latency grows super-linearly (2.4 s at 256 tokens → 41 s at 8192), so long-doc sweeps
 would be honest but impractical — a resource finding in itself.
 
-**Gate 1 (complementarity, pilots n=50–120).** Math: tournament's correct set is *identical*
+**Gate 1 (complementarity, pilots n=50–120; HISTORICAL — pre-v4.1 motivation, superseded by EXP-01 in §6).** Math: tournament's correct set is *identical*
 to single's (only-fix 0, new errors 0); wide fixes 2, breaks 11; oracle headroom +0.017;
 gain-predicting LR equals majority. Code: upgrades fix 1 each, break 15 each; LR below
 majority. Finance: switch +0.05 raw but unpredictable (LR below majority); wide net zero.
 Verdict on all three: no exploitable complementarity → no NEAT routing, no controller
 training. (Recorded before the present study; retained as motivation.)
 
-**Gate 4 (config sensitivity, math, n=100 train + n=60 dev).** Train: five of six configs
+**Gate 4 (config sensitivity, math, n=100 train + n=60 dev; HISTORICAL — the v1–v3
+native-configuration pilot; the v4.1 search space in §3 replaces it).** Train: five of six configs
 have Δ CIs exactly [0,0] (predictions unchanged, only added cost); wide_max1024 is
 significantly *harmful* (Δ CI [−0.14,−0.01], 57 flips); order_reverse Δ [−0.02,+0.06]
 (18 flips, CI covers zero). Dev replication: wide_max1024 harm does *not* replicate
 ([−0.1,+0.1]); tournament_g8 flips from neutral to harmful ([−0.133,−0.017]); nothing
-improves quality repeatably. **Gate 4 FAILED** → no Stage 5 ES comparison, no Stage 9
+improves quality repeatably. **Gate 4 FAILED** (historical verdict) → at the time, no Stage 5 ES comparison, no Stage 9
 locked test. Optimizer packages (cma/optuna/…) were deliberately never installed.
+(The v4.1 track re-ran the question with real evolutionary optimizers under the
+protocol in §3; see §9 and the v4.1 rows below — the historical FAILED gate is
+retained here as motivation, not as the current claim.)
 
 ## 6. Analysis: which bottleneck binds (H1/H2/H3 with mechanism evidence)
 
-We separate three ordered hypotheses. H1: the action space lacks complementary
-utility (nothing to repair). H2: repair opportunities exist but are not
+We separate three ordered hypotheses. H1: the action space lacks *net*
+complementary utility (gross repairs, if any, are offset by regressions).
+H2: repair opportunities exist but are not
 predictable from deployment-visible features. H3: predictable opportunities
 exist but search cannot exploit them. The evidence below decides between them
 instead of re-stating the null.
@@ -151,9 +172,13 @@ for code/Laya — but code/Laya's headroom comes with repair 14 vs harmful 15
 (net −1, paired CI includes zero). Every cell's net repair is ≤ 0 with CIs
 covering or below zero (`action_complementarity.json`). An independent
 noul-baseline screen agrees (best cell net +6/60, binomial p~0.09, ns;
-`complementarity_screen.json`). Verdict: H1 holds in its strong form for math
-(zero headroom) and in net terms everywhere else — gross headroom exists on
-code/Laya only alongside equal-or-larger regression.
+`complementarity_screen.json`). Verdict: H1 holds as *no positive net utility*,
+not as "nothing to repair" — some gross per-example repair opportunities exist
+(e.g. 14 repairs on code/Laya), but they are offset by harmful switches (15),
+leaving no statistically supported positive net gain under the evaluated action
+pairs. H1 is not uniform across tasks: math shows no room for improvement
+(headroom 0.0, routing moot); code/Laya's binding difficulty is H2 (gross
+headroom exists but net gain is unpredictable).
 
 **H2 — predictability of incremental utility (EXP-02).** Group-aware OOF on
 train finds ranking signal (champion-matched AUROC up to 0.92 findver/Vela,
@@ -167,18 +192,25 @@ the in-sample ranking is fragile, and zero transferable utility survives
 does not transfer to deployment decisions.
 
 **H3 — search dynamics (EXP-03) and conditional failure (EXP-04/05).**
-Best-so-far plateaus at generation 0 in 15/21 runs (71%); the b48 probe used
+Best-so-far plateaus at generation 0 in 15/21 logged runs (71%); the b48 probe used
 only 22/17/23 of 48 uniques; dev-selected NSGA-II deploy is significantly
-*worse* than fixed switch in 5/12 cells and never better. Search has no gradient
-to climb — consistent with, and secondary to, H1. Group-level fault CIs confirm
+*worse* than fixed switch in 5/12 cells (paired accuracy CIs) and never better.
+The logged runs are consistent with a flat, hard-to-climb landscape — but that
+is a consistency statement, not a proof: per-mutation neutrality, parent-child
+fitness correlation and train-dev rank correlation were not stored and are
+marked unavailable rather than estimated (`search_landscape.json`). H3 is
+therefore a secondary, bounded claim: observed stagnation plus underused budget,
+conditional on H1's binding constraint. Group-level fault CIs confirm
 stable conditional failure (math/Vela/mid severity 0.93/0.80/0.83 across
 discover/dev/confirm, group-CI lower bounds ≥ 0.5), and held-out transfer shows
 6/32 SIG cells, all negative, none favoring the transferred policy.
 
-Net assessment: H1 is the binding constraint (no per-example net repair signal);
-H2 explains why the gross headroom that exists cannot be routed; H3 is
-consistent (flat landscape, underused budget) but would be moot even with a
-perfect optimizer. No cell of the decision table supports "predictable,
+Net assessment: H1 is the binding constraint (no statistically supported
+positive net repair signal; gross repairs exist but are offset); H2 explains
+why the gross headroom that exists cannot be routed (and is the binding
+difficulty for code/Laya); H3 is consistent but secondary — observed stagnation
+plus underused budget, not a proven-flat landscape — and would be moot even
+with a perfect optimizer given H1. No cell of the decision table supports "predictable,
 exploitable gain missed by search." Decision-table mapping: math matches the
 low-headroom row (headroom 0.0, routing moot); code/Laya matches the
 high-headroom/low-predictability/flat row (0.233 gross headroom, zero
@@ -203,8 +235,9 @@ consistent-but-secondary (they cannot rescue H1's binding constraint).
 
 | Method | Pool / metric | Result | Grade |
 |---|---|---|---|
-| GA vs Random | train, macro-F1, n=60, 12 cells | 12/12 ns | exploratory (search pool) |
-| GA train-best | dev + confirm, acc/macro-F1, paired CI | dev 2-3/3 SIG *negative*, conf ns | selection + pre-fixed validation |
+| GA vs Random | train, macro-F1, n=60, 12 cells | 12/12 ns (accuracy and macro-F1 CIs) | exploratory (search pool) |
+| GA train-best | dev + confirm, acc/macro-F1, paired CI | dev 2-3/3 SIG *negative* (accuracy; macro-F1 ns), conf ns | selection + pre-fixed validation |
+| GA vs switch (macro-F1) | train/dev/confirm, 12 cells each | train: 3 SIG positive in-sample (findver/Vela +0.12); dev+confirm all ns | in-sample = selection bias demo; held-out = null |
 | ES vs Random | train, macro-F1 scalar, 6 cells | 6/6 ns | exploratory |
 | ES frozen best | dev + confirm, acc + paired CI | dev 2/3 SIG negative, conf ns | selection + pre-fixed validation |
 | NSGA-II deploy | dev-selected, confirm-held-out, paired CI | dev 5/12 SIG neg, conf 1/12 SIG neg, none for deploy | held-out deployment |
@@ -256,23 +289,18 @@ here.
 
 ## 9. v4 addendum: intent track — menu restriction helps, surrogate fitness rejected (2026-11-01)
 
-v3 is frozen above and unchanged. On a new intent track (CLINC150/BANKING77, v4 group
-manifests, full label sets, same-row Laya/Vela pairs) we report three measured outcomes.
-No GP/NSGA-II search has run; no test split was touched.
+v3 is frozen above and unchanged. The intent track (CLINC150/BANKING77) produced
+two fixed-retrieval (non-evolutionary) findings — full-label native baselines and
+the menu-restriction effect — now housed in Appendix J to keep the main results
+focused on the evolutionary-routing question. What stays here is methodology and
+gate evidence: surrogate-cache rejection, determinism diagnostics, and the E2
+menu-parameter pilot that keeps GP blocked.
 
-**A1 native baselines (full label sets, search_train n=100/row-matched).**
-CLINC150: Laya 0.61 vs Vela 0.57 (paired diff −0.04, 95% CI [−0.16,+0.08]).
-BANKING77: Laya 0.44 vs Vela 0.54 (diff +0.10, CI [−0.02,+0.21]).
-Neither gap is significant; Vela is 2.5–4× faster per call. A subset-candidate pilot
-that inflated Laya CLINC150 to 0.86 was caught and fixed by the full-set rerun.
-
-**E2 menu headroom (dev n=60/task, TF-IDF top-10 menus, identical rows full-vs-menu).**
-Menu recall@10 is 0.9367 (CLINC150) / 0.9767 (BANKING77) vs random 0.11.
-Restricted-menu Choice beats full-menu Choice in 3/4 paired CIs:
-BANKING77 Laya +0.333 [0.2,0.4667], Vela +0.133 [0.0,0.2667] (ns);
-CLINC150 Laya +0.25 [0.1333,0.3667], Vela +0.217 [0.1,0.3333].
-Menus also cut mean latency (e.g. Laya CLINC150 2256→585 ms).
-This is a *fixed-retrieval* effect, not an evolutionary gain.
+**A1 native baselines and E2 menu headroom: moved to Appendix J.** In brief:
+CLINC150 Laya 0.61 vs Vela 0.57 (ns); BANKING77 Laya 0.44 vs Vela 0.54 (ns);
+menu recall@10 0.9367/0.9767; restricted-menu Choice wins in 3 of 4 paired CIs
+(Vela/BANKING77 +0.133 ns) with latency cuts. Fixed-retrieval effects, not
+evolutionary gains — full tables in Appendix J.
 
 **Surrogate rejection (three-way: full-real vs restricted-real vs cached-restriction, n=30).**
 Restricted-real vs cached-restriction agreement is 0.62 (Laya/banking77), 0.75
@@ -368,8 +396,11 @@ genomes are dict-identical to code/Laya on all 3 seeds (convergence to the
 flat noul-only plateau under identical seed RNG), so those matrix rows coincide.
 Frozen train-selected genomes applied to held-out target dev/confirm
 (`transfer_heldout.json`, 16 pairs × 2 pools, no re-search, no confirm tuning):
-6/32 cells SIG, all negative (transfer worse than target fixed switch), none
-positive — the no-transfer verdict holds outside the search pool too.
+report diagonal (same-task) checks separately from off-diagonal transfer —
+diagonals reproduce the per-task deploy-vs-switch gaps by construction, while
+off-diagonal cells are the transfer test: 4/24 off-diagonal cells SIG, all
+negative (transfer worse than target fixed switch), none positive — the
+no-transfer verdict holds outside the search pool too.
 
 **Phase 5 budget ablation (offline, budget 12 vs 24, same caches).**
 GA means identical at both budgets (converged); GA−Random sign flips by
@@ -503,7 +534,8 @@ is superseded by a protocol-fixed re-selection: frozen train Pareto candidates,
 one deployment point per task/model/seed chosen on selection_dev under a
 pre-registered rule (max dev accuracy/sel_accuracy, tie-break fewer calls/coverage),
 frozen point evaluated on dev AND confirm (`nsga2_deploy_devconfirm.json`). Under
-legal selection, deploy never beats the fixed baseline anywhere: dev shows 5/12 SIG
+legal selection, deploy never beats the fixed baseline anywhere (paired accuracy
+CIs; not recomputed in macro-F1): dev shows 5/12 SIG
 negative (code/Laya s17/s23, math/Vela s17/s23/s41), confirm 1/12 SIG negative
 (math/Vela s41, est -0.0833), the rest ns — the old in-sample SIG-negative cell
 reproduces on held-out pools, now joined by dev-negative cells that revert on confirm.
@@ -511,8 +543,25 @@ ES rerun on the same train caches: 6/6 ns (scalar diff +0.0013 Laya, +0.0074
 Vela; `es_significance.json`). Frozen train-selected ES bests evaluated on
 held-out dev/confirm (`es_deploy_devconfirm.json`): code/Laya dev 2/3 SIG
 negative, confirm all ns; code/Vela all six cells exactly 0.0 (deploy ==
-switch-only behaviorally). Every significant paired difference in the v4.1
-reruns favors a fixed or random baseline over evolution, never the reverse.
+switch-only behaviorally).
+
+**Primary-metric CIs (macro-F1, paired group-bootstrap, recomputed offline from
+the same caches; `macro_f1_deploy_cis.json`).** The `paired_ci` CIs cited above
+are *accuracy*-difference CIs (bootstrap over per-row correctness). Recomputing
+the same paired comparisons as macro-F1 differences: GA-vs-random is ns in all
+36 cells (train/dev/confirm × 4 tasks × 3 seeds), matching the accuracy verdict.
+GA-vs-fixed-switch is ns everywhere *except* the in-sample train pool for
+findver/Vela (+0.1202, CI [0.0043,0.2271] all 3 seeds) — the single
+significant positive in the project, appearing exactly where selection bias
+predicts (train-selected best evaluated on its own train pool) and vanishing on
+dev (+0.106, ns) and confirm (+0.106, ns). Code/Laya's two accuracy-SIG-negative
+dev cells revert to ns under macro-F1 (−0.074 [−0.243,0.095]). Pre-registered
+primary comparison for deployment: train-selected GA vs fixed switch-only on
+confirm, macro-F1 paired CI — ns on all 4 task/models. All other CIs are
+exploratory per-cell results with no family-wise error control; since every
+held-out verdict is null or negative-direction, multiplicity cannot manufacture
+the conclusion (it could only add false positives, of which there are none
+out-of-pool).
 Attribution note: the v4.1 reruns differ from the v4 runs in search pool
 (search_train vs search_dev), fitness scalar (macro-F1 vs accuracy) and NSGA-II
 hyperparameters, so per-seed genome divergence between old and new files cannot
