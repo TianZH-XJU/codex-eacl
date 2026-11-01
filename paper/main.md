@@ -1,14 +1,17 @@
-# Configuration Sensitivity, Not Search: A Negative Result on Evolving Inference Configurations for Frozen Structured Decision Models
+# Evolving Inference Configurations for Frozen Structured Decision Models: A Negative Result with a Failure-Mechanism Analysis
 
-*Draft v0.1 — 2026-10-31. Work-in-progress short paper for EACL 2027 SRW.
+*Draft v0.3 — 2026-11-01 (v4.1 EvoTIDE track: GA/ES/NSGA-II executed under a fixed train/dev/confirm protocol; NEAT and grammar-GP stay blocked behind pre-registered gates). Work-in-progress short paper for EACL 2027 SRW.
 All numbers below are measured on the author's local CPU machine; nothing is simulated.
-Test splits were never used for tuning. No evolutionary search stage was reached: every
-search gate failed, so this paper reports sensitivity, baselines, and a failed-gate analysis.*
+Test splits were never used for tuning. Evolutionary search RAN — GA, ES and NSGA-II
+under matched budgets with paired group-bootstrap CIs — and found no stable advantage
+over fixed or random baselines; the paper reports the negative result plus the
+diagnostic evidence on where the advantage fails to materialize.*
 
 *Addendum v0.2 — 2026-11-01 (v4 EvoTIDE track, frozen v3 unchanged). New intent-track
 results (CLINC150/BANKING77, full label sets, paired Laya/Vela) and a validated menu-restriction
-effect are reported in §9. No GP/NSGA-II search has run; surrogate-cache fitness was rejected
-after three-way validation, so any future E2 search must use real model calls.*
+effect are reported in §9. No GP/NEAT search has run (blocked behind Gate 3a/2 with
+literature-backed reopen criteria); surrogate-cache fitness was rejected
+after three-way validation, so any E2 search must use real model calls.*
 
 ## 1. Introduction
 
@@ -19,22 +22,31 @@ by black-box search, improving accuracy at matched compute cost. We set out to t
 this: can evolutionary search discover better native inference configurations for frozen
 structured decision models under CPU and memory constraints?
 
-Our answer, on three intent/judgment-style tasks and one mathematical error-localization
-task, is negative — but instructive. We find that (1) the candidate configurations barely
-move predictions at all, except when they make them worse; (2) where movement exists, it
-does not replicate across data splits; (3) a newer, larger-context model (Vela 2.0 0.3B)
-does not beat the older baseline on these tasks either. Because our protocol pre-registered
-gates that block search when no tunable signal exists, we stopped *before* running any
-large evolutionary comparison, rather than after burning the budget. We argue this is the
-correct outcome of a gated protocol, and we release the full audit trail so the negative
-result is checkable.
+Our answer, on code, math and finance tasks for both models, is negative — but
+instructive. We ran the search: GA, ES and NSGA-II under a frozen train/dev/confirm
+protocol with matched unique-eval budgets, paired group-bootstrap CIs, fixed-strategy
+and random controls, plus cross-task/model transfer, a budget-ladder probe and an
+exhaustive diagnostic fault map. We find that (1) no optimizer beats matched random or
+the best fixed representation on any task/model/split/metric tried (12/12, 6/6 and
+11/12+1-negative paired CIs); (2) the significant differences found anywhere all favor
+the fixed or random baseline, never evolution; (3) a newer, larger-context model
+(Vela 2.0 0.3B) does not beat the older baseline on these tasks either; (4) the failure
+is diagnosable: complementarity is ~zero (best cell net +6/60, binomial p~0.09, ns),
+so there is no per-example repair signal for any router — learned or evolved — to exploit.
+NEAT multistep control and grammar-guided GP were NOT run: with no complementarity and a
+30-row/12-config pilot respectively, the pre-registered gates block them, and a literature
+survey confirms no precedent for wins under those conditions. We argue the gated negative
+result, with its audit trail, is the contribution: it locates the bottleneck in the
+action space, not in the optimizer.
 
 Contributions: (i) a frozen, auditable evaluation protocol for native inference
-configurations (single-process CPU, pinned revisions, per-config cost accounting);
-(ii) paired Laya-vs-Vela baselines on identical rows across three tasks; (iii) a
-pre-registered configuration-sensitivity study with a failed Gate 4; (iv) evidence that
-on step-localization Choice tasks both models collapse to early options, which explains
-why configuration search has nothing to work with.
+configurations (single-process CPU, pinned revisions, train/dev/confirm separation,
+per-config cost accounting); (ii) paired Laya-vs-Vela baselines on identical rows across
+three tasks; (iii) GA/ES/NSGA-II searches with matched-budget random and fixed controls,
+all reported with paired CIs including a held-out NSGA-II deployment re-selection;
+(iv) cross-task/model transfer and budget-ladder evidence that the null result is not a
+budget artifact; (v) a diagnostic confidence-stratified fault map and a complementarity
+screen that attribute the null to missing per-example repair signal.
 
 ## 2. Related Work
 
@@ -260,7 +272,7 @@ Cross-evaluated every evolved best genome on all four caches (3 seeds each):
 | findver/Laya → code/Laya | 0.456 | −0.194 |
 | cross-task to findver/Vela | ~0.458 | −0.006 (sink: nothing to transfer) |
 
-Every off-diagonal transfer loses; cross-model same-task transfer is asymmetric
+No off-diagonal transfer wins; cross-model same-task transfer is asymmetric
 and task transfer fails outright. Evolved policies are task×model-specific;
 on collapsed Vela/findver there is nothing to evolve or transfer to.
 v4.1 rerun on train-selected genomes (macro-F1, search_train in-sample,
@@ -356,8 +368,10 @@ Re-ran GA/Random/ES/NSGA-II on search_train caches (6 new real-call caches, macr
 selection), evaluated frozen winners on search_dev AND confirm with paired CIs.
 The v4.1 train-selected code/Laya policy scores 0.55 on train, 0.45 on dev (gap
 vs fixed switch −0.20, 2/3 seeds SIG *negative*) and 0.55 on confirm — the
-in-sample 0.65 does not survive held-out reporting, i.e. it was pure selection
-bias. Note the 0.65 vs 0.45 figures come from different search pools (v4
+in-sample 0.65 does not survive held-out reporting, i.e. the search-pool best
+overstates what the same selection protocol delivers out-of-pool (selection bias
+contributes, alongside the pool/metric shift, without a clean separate measure).
+Note the 0.65 vs 0.45 figures come from different search pools (v4
 dev-search, accuracy scalar, vs v4.1 train-search, macro-F1 scalar, 0.55 train);
 they are cited together only to show that no selection protocol beats the fixed
 baseline out-of-pool. findver/Vela confirm is 31/44 for GA (0.7045) vs 30/44 for fixed
@@ -387,10 +401,22 @@ same train caches: all 12 paired CIs include zero
 (`results/v4_1/evolution/ga_vs_random_significance.json`). The train-selected
 code/Laya policy scores 0.45 on dev (paired gap vs fixed switch -0.20, 2/3
 seeds SIG negative) and 0.55 on confirm — the v4 in-sample 0.65 does not
-survive held-out reporting under either accuracy or macro-F1 selection.
+survive held-out reporting under either accuracy or macro-F1 selection,
+consistent with selection-and-evaluation differences between search and report pools
+(the design cannot fully separate selection bias from pool/metric shift, so the
+causal attribution stays partial).
 NSGA-II deploy-vs-random on train-selected fronts: 11/12 ns, with the single
 significant cell (math/Vela seed 41, est -0.0833, CI [-0.1525,-0.0189]) favoring
 random over NSGA-II (`results/v4_1/evolution/nsga2_deploy_significance.json`).
+That comparison is in-sample (deploy selected AND evaluated on the train pool) and
+is superseded by a protocol-fixed re-selection: frozen train Pareto candidates,
+one deployment point per task/model/seed chosen on selection_dev under a
+pre-registered rule (max dev accuracy/sel_accuracy, tie-break fewer calls/coverage),
+frozen point evaluated on dev AND confirm (`nsga2_deploy_devconfirm.json`). Under
+legal selection, deploy never beats the fixed baseline anywhere: dev shows 5/12 SIG
+negative (code/Laya s17/s23, math/Vela s17/s23/s41), confirm 1/12 SIG negative
+(math/Vela s41, est -0.0833), the rest ns — the old in-sample SIG-negative cell
+reproduces on held-out pools, now joined by dev-negative cells that revert on confirm.
 ES rerun on the same train caches: 6/6 ns (scalar diff +0.0013 Laya, +0.0074
 Vela; `es_significance.json`). Every significant paired difference in the v4.1
 reruns favors a fixed or random baseline over evolution, never the reverse.
@@ -405,13 +431,11 @@ GA scalar 0.384 vs Random 0.384, gap 0.0 to three decimals; per-seed scalar gaps
 accuracy CIs are degenerately [0,0], ns; `ga_b48_significance.json` is an
 accuracy CI, cost-blind). GA realized only 22/17/23 uniques under the 48 cap
 (Random consumed 48/48/48); the b24 edge (+0.0056) vanished rather than grew.
-Per the protocol stop rule (budgets_unique [24, 48] in `configs/v4/protocol_v4_1.yaml`), no 96/192 expansion: the budget-insufficiency explanation
-is empirically excluded. `evo_train_code_vela_b48.json`.
+Per the protocol stop rule (budgets_unique [24, 48] in `configs/v4/protocol_v4_1.yaml`), no 96/192 expansion. The correct reading is narrower than "larger budgets are useless": under the current GA configuration, raising the maximum budget cap produced no performance gain, while the GA's unique-proposal count (22/17/23) did not exhaust the raised cap — the budget was underutilized, not proven sufficient. `evo_train_code_vela_b48.json`.
 
-**E5 failure landscape (MAP-Elites-lite over the 18-cell task x model x
-confidence-band grid, exhaustive fill, train-discover with dev+confirm
-validation; fail-closed on missing outputs).** 15 cells meet the minimum-n
-gate, 13 confirm on dev and 10 on confirm (tolerance 0.15). The hardest
+**E5 diagnostic fault map (exhaustive confidence-stratified map; MAP-Elites-inspired,
+not an evolutionary optimizer: no population, mutation, crossover or selection).**
+15 cells meet the minimum-n gate, 13 confirm on dev and 10 on confirm (tolerance 0.15) — cell counts, not failure units. The hardest
 confirmed cells are math/mid-band (Vela S=0.9286 n=14, Laya S=0.9231 n=13)
 and math/low+high bands; code/Vela/mid (S=0.5, n=30) does not confirm beyond
 tolerance, i.e. its joint-failure rate is pool-sensitive. No cell shows a

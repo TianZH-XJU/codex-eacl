@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""E5 minimal failure-landscape mapper (MAP-Elites-lite, fully offline).
+"""E5 diagnostic fault map (MAP-Elites-inspired exhaustive confidence-
+stratified map -- not an evolutionary optimizer: no population, mutation,
+crossover or selection).
 
 Descriptor grid: (task, model, conf-band). Cell severity = hard joint-failure
 rate for binary tasks (both noul and switch wrong), 1 - accuracy for math.
