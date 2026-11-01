@@ -26,7 +26,7 @@ class AbstainGenome:
 
     @staticmethod
     def from_vector(v) -> "AbstainGenome":
-        return AbstainGenome(t=v[0], use_margin=int(round(v[2])), m=v[1]).repaired()
+        return AbstainGenome(t=v[0], use_margin=int(round(v[1])), m=v[2]).repaired()
 
 
 def evaluate_math(genome: AbstainGenome, rows: list) -> dict:

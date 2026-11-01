@@ -174,3 +174,30 @@ def test_selective_policy_math():
     fit2 = evaluate_math(g2, rows)
     assert fit2["n_answered"] == 2 and fit2["sel_accuracy"] == 1.0
     assert AbstainGenome.from_vector(g.to_vector()) == g
+
+
+def test_abstain_roundtrip_nontrivial_genes():
+    # Regression for the swapped use_margin/m bug: non-zero genes must survive.
+    for g in (AbstainGenome(t=0.3, use_margin=1, m=0.7),
+              AbstainGenome(t=0.9, use_margin=1, m=0.1),
+              AbstainGenome(t=0.0, use_margin=0, m=1.0),
+              AbstainGenome(t=0.62, use_margin=1, m=0.44)):
+        assert AbstainGenome.from_vector(g.to_vector()) == g.repaired(), g
+
+
+def test_crossover_uses_correct_gene_positions():
+    # cx_abstain path (mirrors run_nsga2) must preserve gene semantics.
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from run_nsga2 import cx_abstain, mu_abstain
+    import random
+    rng = random.Random(0)
+    a = AbstainGenome(t=0.2, use_margin=0, m=0.9).repaired()
+    b = AbstainGenome(t=0.8, use_margin=1, m=0.1).repaired()
+    for _ in range(20):
+        c = cx_abstain(rng, a, b, 1.0)
+        assert c.use_margin in (0, 1)
+        assert 0.0 <= c.t <= 1.0 and 0.0 <= c.m <= 1.0
+        assert AbstainGenome.from_vector(c.to_vector()) == c
+        m = mu_abstain(rng, c, 1.0)
+        assert AbstainGenome.from_vector(m.to_vector()) == m
