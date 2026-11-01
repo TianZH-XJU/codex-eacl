@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-01T00:31:59.804136+00:00",
+  "task": "processbench",
+  "model": "laya",
+  "split": "search_dev",
+  "seed": 17,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "project_git_sha": "57c22bbe2fcb78ac470bb2ab8a4cf7e75926d3be",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 2123.8,
+  "by_rep": {
+    "choice": {
+      "n": 60,
+      "accuracy": 0.1,
+      "mean_ms": 2615.8
+    }
+  },
+  "status": "passed"
+}
