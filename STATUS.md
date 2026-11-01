@@ -18,6 +18,9 @@
 | E2 menu headroom | CONFIRMED | recall@10 0.94–0.98; menu beats full in 3/4 paired CIs; `results/v2/native/paired_menu_full.json` |
 | E2 menu pilot (real calls) | FLAT IN NOISE | exhaustive-24 + random-12 both models, n=30: Vela 0.633–0.80, Laya 0.667–0.80; cross-process flips (Vela 7/12 ±1 row, Laya 6/12 up to ±3 rows) vs 0 within-process flips; cross-model corr 0.092; norm no-op (effective 12); `results/v2/menu/e2_joint_analysis.json` |
 | Phase 4 code EA (GA vs Random, matched 24) | NO ADVANTAGE DEMONSTRATED | Laya GA 0.65 = fixed switch, +0.011 over Random (n.s.); Vela GA 0.689 vs Random 0.683 (n.s.), +0.022 over fixed (in seed noise); `results/v4/evolution/evo_code_*.json` |
+| Phase 4 findver EA (matched 24) | NO ADVANTAGE | Laya GA 0.7175 vs Random 0.7119 (n.s.); Vela GA 0.463 < Random 0.475 | 
+| Phase 5 transfer (offline) | ALL LOSE | every off-diagonal gap ≤ −0.006, worst −0.20; `transfer_matrix.json` |
+| Phase 5 budget 12 vs 24 | NO SYSTEMATIC EDGE | GA flat, GA−Random sign flips by task |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
 | E5 active / ES / NEAT / locked test | BLOCKED | per gates; bank fully measured (exhaustive), no repeatable signal from configs |

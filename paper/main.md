@@ -229,3 +229,29 @@ selection, uniform crossover, gaussian/flip mutation, elitism, hard unique-eval 
 is fully specified in `src/evolution/`, reproducible from committed caches, and the
 negative outcome is owned. Remaining Phase 4 shot: findver (oracle 0.814, gain +0.10);
 math excluded (single rep, no complementarity lever).
+
+**Phase 4 findver EA (same protocol, matched budget 24, seeds 17/23/41).**
+Laya: GA 0.7175 (0.010) vs Random 0.7119 (= fixed noul) vs fixed switch 0.644 —
+GA +0.006, not significant. Vela: GA 0.463 vs Random 0.475 vs fixed 0.458 —
+GA slightly worse. Both models: no evolutionary advantage.
+
+**Phase 5 transfer (offline, cache-exact, zero new calls).**
+Cross-evaluated every evolved best genome on all four caches (3 seeds each):
+
+| source → target | transferred | gap to target's own GA |
+|---|---|---|
+| code/Laya → code/Vela | 0.622 | −0.067 |
+| code/Vela → code/Laya | 0.456 | −0.194 |
+| findver/Laya → code/Laya | 0.456 | −0.194 |
+| cross-task to findver/Vela | ~0.458 | −0.006 (sink: nothing to transfer) |
+
+Every off-diagonal transfer loses; cross-model same-task transfer is asymmetric
+and task transfer fails outright. Evolved policies are task×model-specific;
+on collapsed Vela/findver there is nothing to evolve or transfer to.
+
+**Phase 5 budget ablation (offline, budget 12 vs 24, same caches).**
+GA means identical at both budgets (converged); GA−Random sign flips by
+task/budget (+0.078/−0.022/+0.006/−0.017): no systematic edge at either budget.
+Full 4-task × 2-model × 2-budget × 2-algorithm × 3-seed evidence is committed in
+`results/v4/evolution/`; the verdict is owned: **evolution does not beat matched
+Random Search or the best fixed rep anywhere measured**.

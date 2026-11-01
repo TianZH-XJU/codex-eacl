@@ -1,0 +1,117 @@
+{
+  "matrix": {
+    "code/laya_on_code/laya": {
+      "mean": 0.65,
+      "std": 0.0,
+      "target_own_ga_mean": 0.65,
+      "gap_to_target_own": 0.0,
+      "diagonal": true
+    },
+    "code/laya_on_code/vela": {
+      "mean": 0.6222,
+      "std": 0.0385,
+      "target_own_ga_mean": 0.6889,
+      "gap_to_target_own": -0.0667,
+      "diagonal": false
+    },
+    "code/laya_on_findver/laya": {
+      "mean": 0.678,
+      "std": 0.0339,
+      "target_own_ga_mean": 0.7175,
+      "gap_to_target_own": -0.0395,
+      "diagonal": false
+    },
+    "code/laya_on_findver/vela": {
+      "mean": 0.4576,
+      "std": 0.017,
+      "target_own_ga_mean": 0.4633,
+      "gap_to_target_own": -0.0057,
+      "diagonal": false
+    },
+    "code/vela_on_code/laya": {
+      "mean": 0.4556,
+      "std": 0.0096,
+      "target_own_ga_mean": 0.65,
+      "gap_to_target_own": -0.1944,
+      "diagonal": false
+    },
+    "code/vela_on_code/vela": {
+      "mean": 0.6889,
+      "std": 0.0509,
+      "target_own_ga_mean": 0.6889,
+      "gap_to_target_own": -0.0,
+      "diagonal": true
+    },
+    "code/vela_on_findver/laya": {
+      "mean": 0.6667,
+      "std": 0.0427,
+      "target_own_ga_mean": 0.7175,
+      "gap_to_target_own": -0.0508,
+      "diagonal": false
+    },
+    "code/vela_on_findver/vela": {
+      "mean": 0.4576,
+      "std": 0.0,
+      "target_own_ga_mean": 0.4633,
+      "gap_to_target_own": -0.0057,
+      "diagonal": false
+    },
+    "findver/laya_on_code/laya": {
+      "mean": 0.4556,
+      "std": 0.0096,
+      "target_own_ga_mean": 0.65,
+      "gap_to_target_own": -0.1944,
+      "diagonal": false
+    },
+    "findver/laya_on_code/vela": {
+      "mean": 0.6444,
+      "std": 0.0193,
+      "target_own_ga_mean": 0.6889,
+      "gap_to_target_own": -0.0445,
+      "diagonal": false
+    },
+    "findver/laya_on_findver/laya": {
+      "mean": 0.7175,
+      "std": 0.0098,
+      "target_own_ga_mean": 0.7175,
+      "gap_to_target_own": 0.0,
+      "diagonal": true
+    },
+    "findver/laya_on_findver/vela": {
+      "mean": 0.4633,
+      "std": 0.0098,
+      "target_own_ga_mean": 0.4633,
+      "gap_to_target_own": -0.0,
+      "diagonal": false
+    },
+    "findver/vela_on_code/laya": {
+      "mean": 0.45,
+      "std": 0.0,
+      "target_own_ga_mean": 0.65,
+      "gap_to_target_own": -0.2,
+      "diagonal": false
+    },
+    "findver/vela_on_code/vela": {
+      "mean": 0.6333,
+      "std": 0.0,
+      "target_own_ga_mean": 0.6889,
+      "gap_to_target_own": -0.0556,
+      "diagonal": false
+    },
+    "findver/vela_on_findver/laya": {
+      "mean": 0.7062,
+      "std": 0.0098,
+      "target_own_ga_mean": 0.7175,
+      "gap_to_target_own": -0.0113,
+      "diagonal": false
+    },
+    "findver/vela_on_findver/vela": {
+      "mean": 0.4633,
+      "std": 0.0098,
+      "target_own_ga_mean": 0.4633,
+      "gap_to_target_own": -0.0,
+      "diagonal": true
+    }
+  },
+  "note": "cache-exact transfer; no new model calls; seeds 17/23/41"
+}

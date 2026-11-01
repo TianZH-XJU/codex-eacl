@@ -1,0 +1,143 @@
+{
+  "created_utc": "2026-11-01T01:00:09.754607+00:00",
+  "cache": "results/v4/evolution/cache_findver_laya.json",
+  "task": "findver",
+  "model": "laya",
+  "n_rows": 59,
+  "budget_unique": 12,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "ga": {
+        "best": {
+          "lo": 0.1375414132956192,
+          "hi": 0.5511844088300525,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.7119,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "scalar": 0.7119
+        },
+        "unique": 12,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.7119,
+            "mean_scalar": 0.695,
+            "diversity": 1.1182
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.48131574622039175,
+          "hi": 0.6352003323059805,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.7119,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "scalar": 0.7119
+        },
+        "unique": 12
+      }
+    },
+    "23": {
+      "ga": {
+        "best": {
+          "lo": 0.4212483616141941,
+          "hi": 0.512633924392356,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.7288,
+          "calls_per_row": 1.1186,
+          "n": 59,
+          "scalar": 0.7229
+        },
+        "unique": 12,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.7229,
+            "mean_scalar": 0.6927,
+            "diversity": 1.2503
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.45182721672938053,
+          "hi": 0.48856228379980204,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.7119,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "scalar": 0.7119
+        },
+        "unique": 12
+      }
+    },
+    "41": {
+      "ga": {
+        "best": {
+          "lo": 0.23071918631047517,
+          "hi": 0.38102068999577143,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.7119,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "scalar": 0.7119
+        },
+        "unique": 12,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.7119,
+            "mean_scalar": 0.6856,
+            "diversity": 1.0324
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.4431483981034664,
+          "hi": 0.45315359817126366,
+          "use_second": 0
+        },
+        "fit": {
+          "accuracy": 0.7119,
+          "calls_per_row": 1.0,
+          "n": 59,
+          "scalar": 0.7119
+        },
+        "unique": 12
+      }
+    }
+  },
+  "ga_acc_mean": 0.7175,
+  "ga_acc_std": 0.0098,
+  "random_acc_mean": 0.7119,
+  "random_acc_std": 0.0,
+  "fixed_noul_only": {
+    "accuracy": 0.7119,
+    "calls_per_row": 1.0,
+    "n": 59,
+    "scalar": 0.7119
+  },
+  "fixed_switch_only": {
+    "accuracy": 0.6441
+  },
+  "ga_minus_random_mean": 0.0056
+}
