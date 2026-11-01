@@ -298,6 +298,16 @@ seeds SIG, code/Vela 2/3 SIG, findver both ns. GA-best vs forced full-band
 noul-only is entirely the switch rep itself; the evolved band adds nothing over
 always-switch. `ablation_vs_noulonly.json`, `ablation_vs_switchonly.json`.
 
+**Multi-objective: NSGA-II executed (non-dominated sort + crowding distance).**
+Code cascade genome, objectives (accuracy, −calls): hypervolume NSGA-II vs
+random — Laya 0.571 vs 0.580 (−0.010), Vela 0.651 vs 0.659 (−0.007). No MO edge.
+**Math abstention EA (first EA exposure for the math task).** Genome
+{t, use_margin, m} on saved choice distributions, objectives (selective
+accuracy, coverage): Laya HV diff −0.013, Vela +0.021 — both within seed noise.
+Vela risk-coverage curve is honest but useless: t=0.3 → 0.286 selective accuracy
+at 11.7% coverage; t=0.5 → 1.0 on a single row; base 0.10. Abstention cannot
+manufacture signal the model lacks — it only rations the few correct answers.
+
 NEAT/multistep and NSGA-II remain explicitly BLOCKED, not silently dropped:
 single-step cascade already exhausts the available complementarity (code oracle
 gain comes from switch-only fixes, no sequential decision needed); with zero

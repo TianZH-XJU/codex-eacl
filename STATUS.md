@@ -26,6 +26,8 @@
 | Phase 5 GA-vs-Random significance | 12/12 ns | paired group-bootstrap CIs all include zero; `ga_vs_random_significance.json` |
 | Phase 4 2nd family ES (matched 24) | NO EDGE | Laya +0.017, Vela +0.017, both n.s.; agrees with GA |
 | Phase 5 executed ablation | MECHANISM FOUND | gain over noul-only = switch rep itself (code SIG); band adds nothing over always-switch (all ns) |
+| NSGA-II multi-objective (matched 24) | NO EDGE | code HV diff −0.010/−0.007; math abstention Laya −0.013 / Vela +0.021 (noise) |
+| Math EA pilot (abstention) | EXPOSED, NULL | t=0.3 → 0.286 sel-acc at 11.7% cov; no useful operating point |
 | NEAT / NSGA-II | BLOCKED WITH CONDITIONS | no sequential structure left; no quality gradient; conditions in `configs/evolution.yaml` |
 | E2 surrogate | REJECTED | three-way agreement 0.62/0.75/0.85/0.78 < 0.9 bar; E2 GP must use real calls, needs budget approval |
 | Batching distinct-view | DIAGNOSTIC ONLY | 4/4 categorical match but continuous shifts large; single-sample, fixed order; `results/v2/vela_batching_distinct*.json` |
