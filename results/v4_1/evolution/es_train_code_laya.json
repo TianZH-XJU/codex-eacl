@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-01T10:01:34.535461+00:00",
+  "created_utc": "2026-11-01T14:01:44.841856+00:00",
   "protocol": "v4.1",
   "fitness_version": "v2-task-primary",
   "train_cache": {
@@ -61,7 +61,8 @@
           "model_calls": 0,
           "max_unique_evals": 24,
           "max_model_calls": 0
-        }
+        },
+        "generations_actual": 3
       },
       "random": {
         "best": {
@@ -126,7 +127,8 @@
           "model_calls": 0,
           "max_unique_evals": 24,
           "max_model_calls": 0
-        }
+        },
+        "generations_actual": 3
       },
       "random": {
         "best": {
@@ -191,7 +193,8 @@
           "model_calls": 0,
           "max_unique_evals": 24,
           "max_model_calls": 0
-        }
+        },
+        "generations_actual": 3
       },
       "random": {
         "best": {
@@ -215,7 +218,7 @@
     }
   },
   "gens_requested": 3,
-  "gens_effective": 2,
+  "gens_effective": 3,
   "run_manifest": {
     "argv": [
       "--train-cache",
@@ -242,11 +245,12 @@
       "results/v4_1/evolution/es_train_code_laya.json"
     ],
     "cpu_threads": null,
-    "project_git_sha": "dd9a2656cc7bde4e20c8da5b57932f4554f7b3ca",
+    "project_git_sha": "35a4412c6dd5e5a286cf0a2c995e1dd2c29d0fea",
     "metric": "macro_f1",
     "lam": 0.05,
     "algo": "es"
   },
+  "gens_rule": "es-actual-logged-generations: search runs to unique-budget exhaustion; the GA budget-derived cap does not apply",
   "algo": "es",
   "es_train_scalar_mean": 0.5789,
   "es_train_scalar_std": 0.0125,

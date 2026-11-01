@@ -7,7 +7,7 @@
         0.1167
       ],
       "excludes_zero": false,
-      "comparison": "ga_minus_random"
+      "comparison": "es_minus_random"
     },
     "23": {
       "est": -0.0167,
@@ -16,7 +16,7 @@
         0.0667
       ],
       "excludes_zero": false,
-      "comparison": "ga_minus_random"
+      "comparison": "es_minus_random"
     },
     "41": {
       "est": 0.0,
@@ -25,7 +25,7 @@
         0.1167
       ],
       "excludes_zero": false,
-      "comparison": "ga_minus_random"
+      "comparison": "es_minus_random"
     }
   },
   "es_train_code_vela": {
@@ -36,7 +36,7 @@
         0.0833
       ],
       "excludes_zero": false,
-      "comparison": "ga_minus_random"
+      "comparison": "es_minus_random"
     },
     "23": {
       "est": 0.0,
@@ -45,7 +45,7 @@
         0.0
       ],
       "excludes_zero": false,
-      "comparison": "ga_minus_random"
+      "comparison": "es_minus_random"
     },
     "41": {
       "est": 0.0,
@@ -54,7 +54,7 @@
         0.0
       ],
       "excludes_zero": false,
-      "comparison": "ga_minus_random"
+      "comparison": "es_minus_random"
     }
   }
 }

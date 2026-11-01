@@ -116,14 +116,15 @@ def main():
         rows = cache["rows"]
         per_seed = {}
         for s in d["seeds"]:
-            gb = CascadeGenome(**d["per_seed"][str(s)][d.get("algo", "ga")]["best"])
+            algo = d.get("algo", "ga")
+            gb = CascadeGenome(**d["per_seed"][str(s)][algo]["best"])
             if args.fixed == "noul-only":
-                other, tag = CascadeGenome(lo=0.0, hi=1.0, use_second=0), "ga_minus_noulonly"
+                other, tag = CascadeGenome(lo=0.0, hi=1.0, use_second=0), f"{algo}_minus_noulonly"
             elif args.fixed == "switch-only":
-                other, tag = CascadeGenome(lo=0.0, hi=1.0, use_second=1), "ga_minus_switchonly"
+                other, tag = CascadeGenome(lo=0.0, hi=1.0, use_second=1), f"{algo}_minus_switchonly"
             else:
                 other = CascadeGenome(**d["per_seed"][str(s)]["random"]["best"])
-                tag = "ga_minus_random"
+                tag = f"{algo}_minus_random"
             per_seed[str(s)] = paired_ci(rowwise(other, rows), rowwise(gb, rows))
             per_seed[str(s)]["comparison"] = tag
         report[Path(ef).stem] = per_seed

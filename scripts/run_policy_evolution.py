@@ -45,6 +45,13 @@ def load_rows(cache_path):
                        "n": len(d["rows"]), "path": str(cache_path)}
 
 
+def ga_gens_effective(budget, pop, elit, gens):
+    """GA generation cap derived from the unique-eval budget:
+    B ~= P + G*(P-E). GA-only; ES ignores this (see gens_rule)."""
+    denom = max(pop - elit, 1)
+    return min(gens, max(0, (budget - pop) // denom))
+
+
 def acc_of(genome, rows):
     f = evaluate(genome, rows)
     return f["accuracy"], f["macro_f1"]
@@ -85,16 +92,16 @@ def main():
     if conf_rows is not None:
         assert_disjoint_pool(rows, conf_rows, f"confirm-cache {args.confirm_cache}")
 
-    # B ~= P + G*(P-E): cap generations to the budget, record both values.
-    denom = max(args.pop - args.elit, 1)
-    gens_eff = min(args.gens, max(0, (args.budget - args.pop) // denom))
+    # B ~= P + G*(P-E): cap generations to the budget (GA rule only).
+    # ES ignores this cap and runs to unique-budget exhaustion; its effective
+    # generations are read back from the per-seed logs after the search.
+    gens_eff = ga_gens_effective(args.budget, args.pop, args.elit, args.gens)
     seeds = [int(x) for x in args.seeds.split(",")]
     res = {"created_utc": datetime.now(timezone.utc).isoformat(),
            "protocol": "v4.1", "fitness_version": "v2-task-primary",
            "train_cache": train_meta, "dev_cache": dev_meta, "confirm_cache": conf_meta,
            "budget_unique": args.budget, "seeds": seeds, "per_seed": {},
-           "gens_requested": args.gens, "gens_effective": gens_eff,
-           "run_manifest": {"argv": sys.argv[1:], "cpu_threads": os.getenv("OMP_NUM_THREADS"),
+           "gens_requested": args.gens, "run_manifest": {"argv": sys.argv[1:], "cpu_threads": os.getenv("OMP_NUM_THREADS"),
                             "project_git_sha": git_sha(ROOT),
                             "metric": args.metric, "lam": args.lam, "algo": args.algo}}
     for seed in seeds:
@@ -121,11 +128,23 @@ def main():
             if eval_rows is None:
                 continue
             entry[tag] = {
-                "ga": {"accuracy": acc_of(gb, eval_rows)[0], "macro_f1": acc_of(gb, eval_rows)[1]},
+                args.algo: {"accuracy": acc_of(gb, eval_rows)[0], "macro_f1": acc_of(gb, eval_rows)[1]},
                 "random": {"accuracy": acc_of(rb, eval_rows)[0], "macro_f1": acc_of(rb, eval_rows)[1]},
                 "fixed_noul": acc_of(CascadeGenome(lo=0.0, hi=1.0, use_second=0), eval_rows),
                 "fixed_switch": acc_of(CascadeGenome(lo=0.0, hi=1.0, use_second=1), eval_rows)}
         res["per_seed"][seed] = entry
+    if args.algo == "es":
+        # ES generations come from the actual run logs, not the GA formula.
+        actual = {s: len(res["per_seed"][s]["es"]["log"]) for s in seeds}
+        gens_eff = max(actual.values())
+        for s in seeds:
+            res["per_seed"][s]["es"]["generations_actual"] = actual[s]
+        res["gens_rule"] = ("es-actual-logged-generations: search runs to unique-budget "
+                            "exhaustion; the GA budget-derived cap does not apply")
+    else:
+        res["gens_rule"] = ("ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); "
+                            "unique evals still hard-capped by the tracker")
+    res["gens_effective"] = gens_eff
     res["algo"] = args.algo
     for algo in (args.algo, "random"):
         accs = [res["per_seed"][s][algo]["fit_train"]["scalar"] for s in seeds]

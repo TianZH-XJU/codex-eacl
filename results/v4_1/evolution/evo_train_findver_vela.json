@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-01T09:10:23.039384+00:00",
+  "created_utc": "2026-11-01T14:02:01.409093+00:00",
   "protocol": "v4.1",
   "fitness_version": "v2-task-primary",
   "train_cache": {
@@ -349,11 +349,12 @@
       "results/v4_1/evolution/evo_train_findver_vela.json"
     ],
     "cpu_threads": null,
-    "project_git_sha": "d11522df3a83110a149a09387166becd5b2f3078",
+    "project_git_sha": "35a4412c6dd5e5a286cf0a2c995e1dd2c29d0fea",
     "metric": "macro_f1",
     "lam": 0.05,
     "algo": "ga"
   },
+  "gens_rule": "ga-budget-derived: gens_eff = min(gens, (budget-pop)//(pop-elit)); unique evals still hard-capped by the tracker",
   "algo": "ga",
   "ga_train_scalar_mean": 0.475,
   "ga_train_scalar_std": 0.0,
