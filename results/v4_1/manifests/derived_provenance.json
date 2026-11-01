@@ -152,7 +152,17 @@
         "target dev cache_{code,findver}_{laya,vela}.json",
         "target confirm cache_confirm_{code,findver}_{laya,vela}.json"
       ],
-      "verified": "pending dual-subagent review at generation time; diagonal==train_search_confirm_eval est (CI order-noise only)"
+      "verified": "foreground inline recompute: 48/48 frozen-genome cells checked; diagonal==eval est; 16 SIG-neg/0 SIG-pos per-seed; in-sample max -0.0 coherent"
+    },
+    "results/v4_1/evolution/es_deploy_devconfirm.json": {
+      "producer": "scripts/eval_es_deploy.py",
+      "reproduce": "python scripts/eval_es_deploy.py --out results/v4_1/evolution/es_deploy_devconfirm.json",
+      "inputs": [
+        "results/v4_1/evolution/es_train_code_{laya,vela}.json (frozen bests)",
+        "results/v4/evolution/cache_code_{laya,vela}.json",
+        "results/v4/evolution/cache_confirm_code_{laya,vela}.json"
+      ],
+      "verified": "dev 2/3 SIG negative (code_laya), confirm all ns; code_vela all 0.0 (behavioral identity with switch-only)"
     }
   }
 }

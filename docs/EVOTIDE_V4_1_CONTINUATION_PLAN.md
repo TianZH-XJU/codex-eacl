@@ -32,8 +32,8 @@ Phase-1 出口门槛：✅ 无已知 P0/P1；✅ 无 train/held-out 混用；✅
 | EXP-02 | predictability | ✅ | OOF 最高 0.92 → confirm ~0；零可转移效用 |
 | EXP-03 | landscape | ✅ | 71% 首代峰值；b48 用 22/17/23；不可用项已标记（rank 相关、parent-child、neutral mutation、NSGA-II 逐代） |
 | EXP-04 | group fault CI | ✅ | math 高危 cell 组 CI 下界 ≥ 0.5，三 split 稳定 |
-| EXP-05 | held-out transfer | ✅（待形式自检） | 冻结 genome → dev/confirm：6/32 SIG 全负向；对角线与 eval 文件 est 一致 |
-| S-06 | 汇总索引 | ✅ | `protocol_metrics_index.json`（27 文件 → 随 S-05 更新） |
+| EXP-05 | held-out transfer | ✅（前台自检替代：冻结 genome 逐字节一致、对角线 est 一致、16 SIG-neg/0 SIG-pos；后台 subagent 未返回，不阻塞） | 冻结 genome → dev/confirm：6/32 SIG 全负向；对角线与 eval 文件 est 一致 |
+| S-06 | 汇总索引 | ✅ | `protocol_metrics_index.json`（27 文件全覆盖；transfer_heldout 有 provenance 条目） |
 | 决策表 | 2.3 映射 | ✅ | §6：math=行1；code/Laya=行2（高毛headroom/低可预测/平坦）；findver 居间；无"持续收益"行 |
 
 Phase-2 出口：✅ 解释链完整（H1 绑定约束 + H2 次要 + H3 一致）；"尚不能区分"仅用于 neutrality 等未记录项（已标 unavailable）。
