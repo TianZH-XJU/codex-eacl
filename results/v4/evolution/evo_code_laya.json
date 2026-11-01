@@ -1,0 +1,179 @@
+{
+  "created_utc": "2026-11-01T00:41:31.232989+00:00",
+  "cache": "results/v4/evolution/cache_code_laya.json",
+  "task": "codexglue_defect",
+  "model": "laya",
+  "n_rows": 60,
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "per_seed": {
+    "17": {
+      "ga": {
+        "best": {
+          "lo": 0.41956642458128746,
+          "hi": 0.8151860888778805,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.65,
+          "calls_per_row": 1.65,
+          "n": 60,
+          "scalar": 0.6175
+        },
+        "unique": 19,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.6175,
+            "mean_scalar": 0.5156,
+            "diversity": 1.1182
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.6175,
+            "mean_scalar": 0.5557,
+            "diversity": 0.6595
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.6175,
+            "mean_scalar": 0.5647,
+            "diversity": 0.5372
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.4352415642484817,
+          "hi": 0.7701542647561787,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.6,
+          "calls_per_row": 1.5167,
+          "n": 60,
+          "scalar": 0.5742
+        },
+        "unique": 24
+      }
+    },
+    "23": {
+      "ga": {
+        "best": {
+          "lo": 0.24232833238375023,
+          "hi": 0.9181096083538874,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.65,
+          "calls_per_row": 1.8667,
+          "n": 60,
+          "scalar": 0.6067
+        },
+        "unique": 21,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.6033,
+            "mean_scalar": 0.4691,
+            "diversity": 1.2503
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.6033,
+            "mean_scalar": 0.4895,
+            "diversity": 0.8504
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.6042,
+            "mean_scalar": 0.5459,
+            "diversity": 0.5927
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.03963400118256455,
+          "hi": 0.807440641695153,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.65,
+          "calls_per_row": 1.8333,
+          "n": 60,
+          "scalar": 0.6083
+        },
+        "unique": 24
+      }
+    },
+    "41": {
+      "ga": {
+        "best": {
+          "lo": 0.4684838903521444,
+          "hi": 0.9190238745798287,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.65,
+          "calls_per_row": 1.6833,
+          "n": 60,
+          "scalar": 0.6158
+        },
+        "unique": 18,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.6108,
+            "mean_scalar": 0.4889,
+            "diversity": 1.0324
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.6117,
+            "mean_scalar": 0.5597,
+            "diversity": 0.7536
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.6117,
+            "mean_scalar": 0.6101,
+            "diversity": 0.1835
+          }
+        ]
+      },
+      "random": {
+        "best": {
+          "lo": 0.30174140074293454,
+          "hi": 0.8689554080898861,
+          "use_second": 1
+        },
+        "fit": {
+          "accuracy": 0.6667,
+          "calls_per_row": 1.8167,
+          "n": 60,
+          "scalar": 0.6258
+        },
+        "unique": 24
+      }
+    }
+  },
+  "ga_acc_mean": 0.65,
+  "ga_acc_std": 0.0,
+  "random_acc_mean": 0.6389,
+  "random_acc_std": 0.0347,
+  "fixed_noul_only": {
+    "accuracy": 0.45,
+    "calls_per_row": 1.0,
+    "n": 60,
+    "scalar": 0.45
+  },
+  "fixed_switch_only": {
+    "accuracy": 0.65
+  },
+  "ga_minus_random_mean": 0.0111
+}
