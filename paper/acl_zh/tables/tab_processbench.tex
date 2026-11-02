@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\caption{ProcessBench 在 confirm 上的选择性预测。各列为全覆盖、50\% 目标覆盖与
+25\% 目标覆盖下的选择性准确率；括号内为实际 confirm 覆盖率。阈值在
+\texttt{selection\_dev} 上选择并冻结。AURC 为风险—覆盖曲线下面积（越低越好）。}
+\label{tab:processbench}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+模型 & 全覆盖 & 50\% 目标 & 25\% 目标 & AURC \\
+\midrule
+Laya & 0.133 (1.00) & 0.100 (0.50) & 0.105 (0.32) & 0.894 \\
+Vela & 0.083 (1.00) & 0.069 (0.48) & 0.143 (0.23) & 0.883 \\
+\bottomrule
+\end{tabular}
+\end{table}

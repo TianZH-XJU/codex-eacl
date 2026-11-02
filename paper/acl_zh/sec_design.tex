@@ -10,7 +10,11 @@
 分别含 60、59 与 44 条主张 \citep{zhao2024findver}。官方 FinDVer 测试标签
 不用于控制器搜索。ProcessBench 含 2{,}842 道数学题上的 3{,}400 条标注记录；
 其池按问题分组，每池 60 条 \citep{zheng2025processbench,cobbe2021gsm8k,lightman2024verify,uesato2022process}。
-任务是找出最早错误步骤，或确认推理链正确。
+FinDVer 行来自官方 testmini 划分，按报告分组（41/16/16 组；60/59/44 条主张）；
+state 为 \texttt{Claim:} 行、空行、再由相关段落组成的 \texttt{Evidence:} 块，
+搜索从不读取 testmini 标签。CodeXGLUE state 为原始函数文本（正类比例
+0.50/0.40/0.45）。ProcessBench 的问题是“哪一步包含最早错误？”；state 为
+问题加 \texttt{[k] step} 行，并以 \texttt{ALL STEPS CORRECT} 哨兵结尾。
 
 所有推理在一台 Windows 机器上进行，CPU-only PyTorch，FP32，两个线程，同一
 时间只驻留一个模型。Laya 固定到源码修订 \texttt{b9fe351} 与检查点修订

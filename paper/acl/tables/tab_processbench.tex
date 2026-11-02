@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\caption{ProcessBench selective prediction on confirm. Columns are selective
+accuracy at full coverage, at a 50\% target and at a 25\% target; parentheses
+show achieved confirm coverage. Thresholds are selected on
+\texttt{selection\_dev} and frozen. AURC is the area under the risk-coverage
+curve (lower is better).}
+\label{tab:processbench}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Model & Full & 50\% target & 25\% target & AURC \\
+\midrule
+Laya & 0.133 (1.00) & 0.100 (0.50) & 0.105 (0.32) & 0.894 \\
+Vela & 0.083 (1.00) & 0.069 (0.48) & 0.143 (0.23) & 0.883 \\
+\bottomrule
+\end{tabular}
+\end{table}

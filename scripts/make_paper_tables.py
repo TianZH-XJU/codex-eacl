@@ -224,6 +224,85 @@ Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev net & Confirm net (9
     write("tab_predictability.tex", body)
 
 
+def tab_processbench() -> None:
+    d = jload("results/v4_1/final/processbench_selective.json")["cells"]
+    rows = []
+    for key, label in (("math_laya", "Laya"), ("math_vela", "Vela")):
+        c = d[key]
+        pts = {round(p["target_coverage"], 2): p for p in c["points"]}
+        full = c["full_coverage"]
+        p50 = pts[0.5]["confirm"]
+        p25 = pts[0.25]["confirm"]
+        rows.append(
+            f"{label} & {full['selective_accuracy']:.3f} ({full['coverage']:.2f}) & "
+            f"{p50['selective_accuracy']:.3f} ({p50['coverage']:.2f}) & "
+            f"{p25['selective_accuracy']:.3f} ({p25['coverage']:.2f}) & "
+            f"{c['aurc_confirm']:.3f} \\\\"
+        )
+    body = (
+        r"""\begin{table}[t]
+\centering
+\small
+\caption{ProcessBench selective prediction on confirm. Columns are selective
+accuracy at full coverage, at a 50\% target and at a 25\% target; parentheses
+show achieved confirm coverage. Thresholds are selected on
+\texttt{selection\_dev} and frozen. AURC is the area under the risk-coverage
+curve (lower is better).}
+\label{tab:processbench}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Model & Full & 50\% target & 25\% target & AURC \\
+\midrule
+"""
+        + "\n".join(rows)
+        + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+"""
+    )
+    write("tab_processbench.tex", body)
+
+
+def zh_processbench() -> None:
+    d = jload("results/v4_1/final/processbench_selective.json")["cells"]
+    rows = []
+    for key, label in (("math_laya", "Laya"), ("math_vela", "Vela")):
+        c = d[key]
+        pts = {round(p["target_coverage"], 2): p for p in c["points"]}
+        full = c["full_coverage"]
+        p50 = pts[0.5]["confirm"]
+        p25 = pts[0.25]["confirm"]
+        rows.append(
+            f"{label} & {full['selective_accuracy']:.3f} ({full['coverage']:.2f}) & "
+            f"{p50['selective_accuracy']:.3f} ({p50['coverage']:.2f}) & "
+            f"{p25['selective_accuracy']:.3f} ({p25['coverage']:.2f}) & "
+            f"{c['aurc_confirm']:.3f} \\\\"
+        )
+    body = (
+        r"""\begin{table}[t]
+\centering
+\small
+\caption{ProcessBench 在 confirm 上的选择性预测。各列为全覆盖、50\% 目标覆盖与
+25\% 目标覆盖下的选择性准确率；括号内为实际 confirm 覆盖率。阈值在
+\texttt{selection\_dev} 上选择并冻结。AURC 为风险—覆盖曲线下面积（越低越好）。}
+\label{tab:processbench}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+模型 & 全覆盖 & 50\% 目标 & 25\% 目标 & AURC \\
+\midrule
+"""
+        + "\n".join(rows)
+        + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+"""
+    )
+    (OUT_ZH / "tab_processbench.tex").write_text(body, encoding="utf-8")
+    print("wrote paper/acl_zh/tables/tab_processbench.tex")
+
+
 def zh_predictability() -> None:
     """Chinese review version of the signed-utility table."""
     d = jload("results/v4_1/final/signed_utility.json")["cells"]
@@ -475,6 +554,8 @@ if __name__ == "__main__":
     tab_native()
     tab_complementarity()
     tab_predictability()
+    tab_processbench()
+    zh_processbench()
     zh_predictability()
     tab_calibration()
     tab_search()

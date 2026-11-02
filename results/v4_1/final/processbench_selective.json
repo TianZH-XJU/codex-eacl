@@ -1,0 +1,181 @@
+{
+  "experiment_id": "EXP-05B",
+  "created_utc": "2026-11-02T09:28:09.821517+00:00",
+  "repo_commit": "14474a3f2ee84aa5e33be5b66eca0a2aee408222",
+  "protocol_version": "v4.1",
+  "analysis_script": "analyze_processbench_selective.py",
+  "analysis_type": "exploratory",
+  "policy": "answer if top1 >= threshold; threshold selected on selection_dev",
+  "cells": {
+    "math_laya": {
+      "n_dev": 60,
+      "n_confirm": 60,
+      "n_groups": {
+        "dev": 54,
+        "confirm": 49
+      },
+      "splits": {
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "full_coverage": {
+        "coverage": 1.0,
+        "selective_accuracy": 0.1333,
+        "risk": 0.8667,
+        "n": 60
+      },
+      "aurc_confirm": 0.8942,
+      "points": [
+        {
+          "target_coverage": 1.0,
+          "dev_threshold": 0.2049,
+          "dev": {
+            "coverage": 1.0,
+            "selective_accuracy": 0.1,
+            "risk": 0.9,
+            "n": 60
+          },
+          "confirm": {
+            "coverage": 1.0,
+            "selective_accuracy": 0.1333,
+            "risk": 0.8667,
+            "n": 60
+          }
+        },
+        {
+          "target_coverage": 0.75,
+          "dev_threshold": 0.3273,
+          "dev": {
+            "coverage": 0.75,
+            "selective_accuracy": 0.0667,
+            "risk": 0.9333,
+            "n": 45
+          },
+          "confirm": {
+            "coverage": 0.7667,
+            "selective_accuracy": 0.087,
+            "risk": 0.913,
+            "n": 46
+          }
+        },
+        {
+          "target_coverage": 0.5,
+          "dev_threshold": 0.4246,
+          "dev": {
+            "coverage": 0.5,
+            "selective_accuracy": 0.1,
+            "risk": 0.9,
+            "n": 30
+          },
+          "confirm": {
+            "coverage": 0.5,
+            "selective_accuracy": 0.1,
+            "risk": 0.9,
+            "n": 30
+          }
+        },
+        {
+          "target_coverage": 0.25,
+          "dev_threshold": 0.6461,
+          "dev": {
+            "coverage": 0.2667,
+            "selective_accuracy": 0.1875,
+            "risk": 0.8125,
+            "n": 16
+          },
+          "confirm": {
+            "coverage": 0.3167,
+            "selective_accuracy": 0.1053,
+            "risk": 0.8947,
+            "n": 19
+          }
+        }
+      ]
+    },
+    "math_vela": {
+      "n_dev": 60,
+      "n_confirm": 60,
+      "n_groups": {
+        "dev": 54,
+        "confirm": 49
+      },
+      "splits": {
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "full_coverage": {
+        "coverage": 1.0,
+        "selective_accuracy": 0.0833,
+        "risk": 0.9167,
+        "n": 60
+      },
+      "aurc_confirm": 0.8828,
+      "points": [
+        {
+          "target_coverage": 1.0,
+          "dev_threshold": 0.0947,
+          "dev": {
+            "coverage": 1.0,
+            "selective_accuracy": 0.1,
+            "risk": 0.9,
+            "n": 60
+          },
+          "confirm": {
+            "coverage": 0.9667,
+            "selective_accuracy": 0.0862,
+            "risk": 0.9138,
+            "n": 58
+          }
+        },
+        {
+          "target_coverage": 0.75,
+          "dev_threshold": 0.1713,
+          "dev": {
+            "coverage": 0.75,
+            "selective_accuracy": 0.1111,
+            "risk": 0.8889,
+            "n": 45
+          },
+          "confirm": {
+            "coverage": 0.6833,
+            "selective_accuracy": 0.0732,
+            "risk": 0.9268,
+            "n": 41
+          }
+        },
+        {
+          "target_coverage": 0.5,
+          "dev_threshold": 0.2076,
+          "dev": {
+            "coverage": 0.5,
+            "selective_accuracy": 0.1667,
+            "risk": 0.8333,
+            "n": 30
+          },
+          "confirm": {
+            "coverage": 0.4833,
+            "selective_accuracy": 0.069,
+            "risk": 0.931,
+            "n": 29
+          }
+        },
+        {
+          "target_coverage": 0.25,
+          "dev_threshold": 0.2539,
+          "dev": {
+            "coverage": 0.25,
+            "selective_accuracy": 0.2667,
+            "risk": 0.7333,
+            "n": 15
+          },
+          "confirm": {
+            "coverage": 0.2333,
+            "selective_accuracy": 0.1429,
+            "risk": 0.8571,
+            "n": 14
+          }
+        }
+      ]
+    }
+  }
+}

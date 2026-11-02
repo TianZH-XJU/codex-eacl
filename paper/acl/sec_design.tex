@@ -13,8 +13,13 @@ claims \citep{zhao2024findver}. The official FinDVer test labels are not used
 for controller search. ProcessBench contains 3{,}400 annotated records over
 2{,}842 mathematical problems; its pools are grouped by problem and contain 60
 records each \citep{zheng2025processbench,cobbe2021gsm8k,lightman2024verify,uesato2022process}.
-The task is to identify the earliest erroneous step or to certify that the chain
-is correct.
+FinDVer rows come from the official testmini split and are grouped by report
+(41/16/16 groups; 60/59/44 claims); the state is a \texttt{Claim:} line, a
+blank line, then an \texttt{Evidence:} block of relevant passages, and testmini
+labels are never read for search. CodeXGLUE state is raw function text
+(positive rates 0.50/0.40/0.45). ProcessBench asks ``Which step contains the
+earliest error?''; its state is the problem plus \texttt{[k] step} lines and an
+\texttt{ALL STEPS CORRECT} sentinel.
 
 All inference runs on one Windows machine with CPU-only PyTorch in FP32, two
 threads and one model resident at a time. Laya is pinned to source revision

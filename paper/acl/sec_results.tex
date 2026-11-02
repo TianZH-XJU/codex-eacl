@@ -122,14 +122,17 @@ close the gap: the GA evaluates only 22, 17 and 23 unique genomes under a cap of
 48, while random search uses all 48.
 
 The boundary checks ask whether these conclusions are artefacts of one pool or
-task. Transfer is uniformly unhelpful: of 32 source--target by split units, six have a
-significant paired difference against the target's fixed switch policy, and all
-six are negative (two diagonal, four off-diagonal). The fault map is more
-nuanced: of 15 eligible cells, 13 are confirmed on dev and 10 on confirm. The
-highest confirm severities are on ProcessBench (Vela/mid 0.833, Laya/mid 0.875,
-Vela/low 0.936, Laya/high 0.895). The mid-confidence cells are not simply the
-low-confidence tail: a model can be moderately confident and still fail, and the
-second representation fails on the same rows, so no gate on the first action's
-probability can create a repair.
+task. Transfer is uniformly unhelpful: of 32 source--target by split units, six
+have a significant paired difference and all six are negative (two diagonal,
+four off-diagonal). The fault map confirms 13 of 15 eligible cells on dev and 10
+on confirm; the stable high-severity region is the mid-confidence ProcessBench
+band, where both models fail on the same rows.
+
+Table~\ref{tab:processbench} reports the selective baseline. Selective accuracy
+is 0.133/0.083 at full coverage, 0.100/0.069 at 50\%, and 0.105/0.143 at 25\%;
+AURC is 0.894/0.883. Confidence does not order errors well enough for
+abstention to buy accuracy.
+
+\input{tables/tab_processbench}
 
 

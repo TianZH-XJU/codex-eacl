@@ -65,15 +65,10 @@ non-differentiable object and the objective is a cached replay. Genetic
 algorithms, evolution strategies and NSGA-II cover single-objective and Pareto
 formulations \citep{deb2002nsga2,hansen2001cmaes,stanley2002neat}, and
 regularised evolution has been used for architecture search
-\citep{real2019regularized,elsken2019nas}. In NLP, EvoPrompt and Promptbreeder
-evolve prompts or mutation instructions with language models in the loop
-\citep{guo2024evoprompt,fernando2024promptbreeder}. Those systems search over
-text that changes what the model sees; we hold the model and the question
-template fixed and search over a two-parameter gate that decides whether a
-second typed question is asked. Prompt search can improve a single call, whereas
-our search can only exploit complementarity that already exists between two
-fixed actions. A flat landscape is therefore a finding about the action set, not
-merely about optimiser strength.
+\citep{real2019regularized,elsken2019nas}. In NLP, EvoPrompt and Promptbreeder evolve prompts with language models in the loop
+\citep{guo2024evoprompt,fernando2024promptbreeder}. Those systems change what the
+model sees; we hold the model and template fixed and search a two-parameter gate
+over two fixed actions.
 
 Our protocol follows the variance-aware reporting practices of
 \citet{henderson2018matters}, \citet{bouthillier2021variance} and
