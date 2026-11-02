@@ -129,51 +129,71 @@ def net_utility(rows, mask):
     rep = int(np.sum((d > 0) & mask))
     reg = int(np.sum((d < 0) & mask))
     switched = int(np.sum(mask))
-    net = float(np.sum(d * mask)) / n
+    raw = float(np.sum(d * mask)) / n
+    cost = raw - LAM * switched / n
     return {
-        "net": round(net, 4),
-        "net_pp": round(100.0 * net, 2),
+        "raw": round(raw, 4),
+        "raw_pp": round(100.0 * raw, 2),
+        "cost": round(cost, 4),
+        "cost_pp": round(100.0 * cost, 2),
         "repair": rep,
         "regression": reg,
         "n_switched": switched,
-        "cost_adjusted": round(net - LAM * switched / n, 4),
     }
 
 
 def select_threshold(rows, scores):
-    """Maximise dev net utility; ties prefer fewer switches."""
+    """Maximise dev cost-adjusted utility; ties prefer fewer switches."""
     best_t, best = float("inf"), net_utility(rows, np.zeros(len(rows), dtype=bool))
     for t in sorted(set(np.round(scores, 6).tolist())):
         mask = scores >= t
         cur = net_utility(rows, mask)
-        if cur["net"] > best["net"] or (
-            cur["net"] == best["net"] and cur["n_switched"] < best["n_switched"]
+        if cur["cost"] > best["cost"] or (
+            cur["cost"] == best["cost"] and cur["n_switched"] < best["n_switched"]
         ):
             best_t, best = float(t), cur
     return best_t, best
 
 
-def bootstrap_net_ci(rows, mask, n_boot=5000):
+def bootstrap_net_cis(rows, mask, n_boot=5000):
     by_group = {}
     for r, m, d in zip(rows, mask, delta(rows)):
         by_group.setdefault(r["group_id"], []).append((int(m), int(d)))
     groups = sorted(by_group)
     if not groups:
-        return {"est": 0.0, "ci95": [0.0, 0.0]}
-    boots = []
+        return {"raw_ci95_pp": [0.0, 0.0], "cost_ci95_pp": [0.0, 0.0]}
+    raw_b, cost_b = [], []
     for _ in range(n_boot):
         sample = RNG.choice(groups, size=len(groups), replace=True)
         vals = [v for g in sample for v in by_group[g]]
         n = len(vals)
-        boots.append(sum(d for m, d in vals if m) / n - LAM * sum(m for m, d in vals) / n)
-    lo, hi = np.percentile(boots, [2.5, 97.5])
-    est = float(np.sum(delta(rows) * mask)) / len(rows) - LAM * float(np.sum(mask)) / len(rows)
-    return {
-        "est": round(est, 4),
-        "ci95": [round(float(lo), 4), round(float(hi), 4)],
-        "est_pp": round(100.0 * est, 2),
-        "ci95_pp": [round(100.0 * float(lo), 2), round(100.0 * float(hi), 2)],
-    }
+        raw = sum(d for m, d in vals if m) / n
+        raw_b.append(raw)
+        cost_b.append(raw - LAM * sum(m for m, d in vals) / n)
+    rlo, rhi = np.percentile(raw_b, [2.5, 97.5])
+    clo, chi = np.percentile(cost_b, [2.5, 97.5])
+    return {"raw_ci95_pp": [round(100.0 * float(rlo), 2), round(100.0 * float(rhi), 2)],
+            "cost_ci95_pp": [round(100.0 * float(clo), 2), round(100.0 * float(chi), 2)]}
+
+
+def bootstrap_spearman(y, scores, groups, n_boot=2000):
+    by_group = {}
+    for i, g in enumerate(groups):
+        by_group.setdefault(g, []).append(i)
+    keys = sorted(by_group)
+    vals = []
+    for _ in range(n_boot):
+        sample = RNG.choice(keys, size=len(keys), replace=True)
+        idx = [i for g in sample for i in by_group[g]]
+        if len(set(y[idx].tolist())) < 2:
+            continue
+        rho = spearmanr(scores[idx], y[idx]).statistic
+        if np.isfinite(rho):
+            vals.append(float(rho))
+    if not vals:
+        return [0.0, 0.0]
+    lo, hi = np.percentile(vals, [2.5, 97.5])
+    return [round(float(lo), 4), round(float(hi), 4)]
 
 
 def main():
@@ -202,6 +222,7 @@ def main():
             rho = spearmanr(sc, ytr).statistic
             models[kind] = {
                 "oof_spearman": round(float(rho), 4) if np.isfinite(rho) else 0.0,
+                "oof_spearman_ci95": bootstrap_spearman(ytr, sc, groups, n_boot=2000),
                 "oof_auroc_repair": safe_auroc((ytr == 1).astype(int), sc),
                 "oof_auroc_regression": safe_auroc((ytr == -1).astype(int), -sc),
                 "oof_auroc_positive": safe_auroc((ytr > 0).astype(int), sc),
@@ -229,13 +250,13 @@ def main():
             conf_sc = fn(Xconf)
             mask = conf_sc >= t
             conf_net = net_utility(conf, mask)
-            conf_net["ci95_pp"] = bootstrap_net_ci(conf, mask, n_boot=args.boots)["ci95_pp"]
+            conf_net.update(bootstrap_net_cis(conf, mask, n_boot=args.boots))
             candidates[kind] = {
                 "dev_t": round(float(t), 4),
                 "dev_net": dev_net,
                 "confirm_net": conf_net,
             }
-        champ = max(candidates, key=lambda k: candidates[k]["dev_net"]["net"])
+        champ = max(candidates, key=lambda k: candidates[k]["dev_net"]["cost"])
         # Baselines on confirm.
         never = net_utility(conf, np.zeros(len(conf), dtype=bool))
         always = net_utility(conf, np.ones(len(conf), dtype=bool))
@@ -274,9 +295,11 @@ def main():
         m = c["models"]
         print(k, "OOF rho", {x: m[x]["oof_spearman"] for x in m},
               "| champ", c["champion"],
-              "dev", c["candidates"][c["champion"]]["dev_net"]["net_pp"],
-              "confirm", c["candidates"][c["champion"]]["confirm_net"]["net_pp"],
-              c["candidates"][c["champion"]]["confirm_net"]["ci95_pp"])
+              "dev raw/cost", c["candidates"][c["champion"]]["dev_net"]["raw_pp"],
+              c["candidates"][c["champion"]]["dev_net"]["cost_pp"],
+              "confirm raw/cost", c["candidates"][c["champion"]]["confirm_net"]["raw_pp"],
+              c["candidates"][c["champion"]]["confirm_net"]["cost_pp"],
+              c["candidates"][c["champion"]]["confirm_net"]["cost_ci95_pp"])
 
 
 if __name__ == "__main__":

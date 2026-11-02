@@ -1,7 +1,7 @@
 {
   "experiment_id": "EXP-02B",
-  "created_utc": "2026-11-02T08:50:08.570549+00:00",
-  "repo_commit": "5b38bb15be6ab501726afbc194158653f8656d07",
+  "created_utc": "2026-11-02T22:24:02.369648+00:00",
+  "repo_commit": "b9559323ef654a30d32286ef8b4a60bd3c913079",
   "protocol_version": "v4.1",
   "analysis_script": "analyze_signed_utility.py",
   "analysis_type": "exploratory",
@@ -48,6 +48,10 @@
       "models": {
         "logreg3": {
           "oof_spearman": -0.3785,
+          "oof_spearman_ci95": [
+            -0.6239,
+            -0.089
+          ],
           "oof_auroc_repair": 0.3525,
           "oof_auroc_regression": 0.237,
           "oof_auroc_positive": 0.3525,
@@ -116,6 +120,10 @@
         },
         "tree3": {
           "oof_spearman": -0.0227,
+          "oof_spearman_ci95": [
+            -0.3292,
+            0.2922
+          ],
           "oof_auroc_repair": 0.3602,
           "oof_auroc_regression": 0.6074,
           "oof_auroc_positive": 0.3602,
@@ -184,6 +192,10 @@
         },
         "ridge": {
           "oof_spearman": -0.2819,
+          "oof_spearman_ci95": [
+            -0.5398,
+            -0.003
+          ],
           "oof_auroc_repair": 0.4239,
           "oof_auroc_regression": 0.2726,
           "oof_auroc_positive": 0.4239,
@@ -255,69 +267,87 @@
         "logreg3": {
           "dev_t": -0.0347,
           "dev_net": {
-            "net": 0.2,
-            "net_pp": 20.0,
+            "raw": 0.2,
+            "raw_pp": 20.0,
+            "cost": 0.1617,
+            "cost_pp": 16.17,
             "repair": 23,
             "regression": 11,
-            "n_switched": 46,
-            "cost_adjusted": 0.1617
+            "n_switched": 46
           },
           "confirm_net": {
-            "net": 0.0167,
-            "net_pp": 1.67,
+            "raw": 0.0167,
+            "raw_pp": 1.67,
+            "cost": -0.0167,
+            "cost_pp": -1.67,
             "repair": 17,
             "regression": 16,
             "n_switched": 40,
-            "cost_adjusted": -0.0167,
-            "ci95_pp": [
-              -21.17,
-              16.59
+            "raw_ci95_pp": [
+              -16.67,
+              20.0
+            ],
+            "cost_ci95_pp": [
+              -20.08,
+              17.08
             ]
           }
         },
         "tree3": {
           "dev_t": -0.0909,
           "dev_net": {
-            "net": 0.2167,
-            "net_pp": 21.67,
+            "raw": 0.2167,
+            "raw_pp": 21.67,
+            "cost": 0.1775,
+            "cost_pp": 17.75,
             "repair": 21,
             "regression": 8,
-            "n_switched": 47,
-            "cost_adjusted": 0.1775
+            "n_switched": 47
           },
           "confirm_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": -0.035,
+            "cost_pp": -3.5,
             "repair": 12,
             "regression": 12,
             "n_switched": 42,
-            "cost_adjusted": -0.035,
-            "ci95_pp": [
-              -18.83,
-              13.0
+            "raw_ci95_pp": [
+              -16.67,
+              16.67
+            ],
+            "cost_ci95_pp": [
+              -19.92,
+              12.84
             ]
           }
         },
         "ridge": {
           "dev_t": -0.0462,
           "dev_net": {
-            "net": 0.2,
-            "net_pp": 20.0,
+            "raw": 0.2,
+            "raw_pp": 20.0,
+            "cost": 0.16,
+            "cost_pp": 16.0,
             "repair": 23,
             "regression": 11,
-            "n_switched": 48,
-            "cost_adjusted": 0.16
+            "n_switched": 48
           },
           "confirm_net": {
-            "net": 0.0167,
-            "net_pp": 1.67,
+            "raw": 0.0167,
+            "raw_pp": 1.67,
+            "cost": -0.0183,
+            "cost_pp": -1.83,
             "repair": 17,
             "regression": 16,
             "n_switched": 42,
-            "cost_adjusted": -0.0183,
-            "ci95_pp": [
-              -21.42,
-              16.42
+            "raw_ci95_pp": [
+              -18.33,
+              20.0
+            ],
+            "cost_ci95_pp": [
+              -21.17,
+              16.67
             ]
           }
         }
@@ -325,20 +355,22 @@
       "champion": "tree3",
       "baselines_confirm": {
         "never_switch": {
-          "net": 0.0,
-          "net_pp": 0.0,
+          "raw": 0.0,
+          "raw_pp": 0.0,
+          "cost": 0.0,
+          "cost_pp": 0.0,
           "repair": 0,
           "regression": 0,
-          "n_switched": 0,
-          "cost_adjusted": 0.0
+          "n_switched": 0
         },
         "always_switch": {
-          "net": 0.0167,
-          "net_pp": 1.67,
+          "raw": 0.0167,
+          "raw_pp": 1.67,
+          "cost": -0.0333,
+          "cost_pp": -3.33,
           "repair": 17,
           "regression": 16,
-          "n_switched": 60,
-          "cost_adjusted": -0.0333
+          "n_switched": 60
         }
       }
     },
@@ -376,6 +408,10 @@
       "models": {
         "logreg3": {
           "oof_spearman": 0.1876,
+          "oof_spearman_ci95": [
+            -0.1423,
+            0.4767
+          ],
           "oof_auroc_repair": 0.744,
           "oof_auroc_regression": 0.3348,
           "oof_auroc_positive": 0.744,
@@ -444,6 +480,10 @@
         },
         "tree3": {
           "oof_spearman": 0.1635,
+          "oof_spearman_ci95": [
+            -0.1743,
+            0.479
+          ],
           "oof_auroc_repair": 0.68,
           "oof_auroc_regression": 0.3996,
           "oof_auroc_positive": 0.68,
@@ -512,6 +552,10 @@
         },
         "ridge": {
           "oof_spearman": 0.1285,
+          "oof_spearman_ci95": [
+            -0.2109,
+            0.4417
+          ],
           "oof_auroc_repair": 0.688,
           "oof_auroc_regression": 0.3348,
           "oof_auroc_positive": 0.688,
@@ -581,71 +625,89 @@
       },
       "candidates": {
         "logreg3": {
-          "dev_t": 0.0225,
+          "dev_t": Infinity,
           "dev_net": {
-            "net": 0.0333,
-            "net_pp": 3.33,
-            "repair": 7,
-            "regression": 5,
-            "n_switched": 54,
-            "cost_adjusted": -0.0117
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
+            "repair": 0,
+            "regression": 0,
+            "n_switched": 0
           },
           "confirm_net": {
-            "net": -0.0167,
-            "net_pp": -1.67,
-            "repair": 9,
-            "regression": 10,
-            "n_switched": 54,
-            "cost_adjusted": -0.0617,
-            "ci95_pp": [
-              -19.75,
-              8.5
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
+            "repair": 0,
+            "regression": 0,
+            "n_switched": 0,
+            "raw_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "cost_ci95_pp": [
+              0.0,
+              0.0
             ]
           }
         },
         "tree3": {
-          "dev_t": 0.0,
+          "dev_t": Infinity,
           "dev_net": {
-            "net": 0.0333,
-            "net_pp": 3.33,
-            "repair": 6,
-            "regression": 4,
-            "n_switched": 58,
-            "cost_adjusted": -0.015
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
+            "repair": 0,
+            "regression": 0,
+            "n_switched": 0
           },
           "confirm_net": {
-            "net": -0.0167,
-            "net_pp": -1.67,
-            "repair": 9,
-            "regression": 10,
-            "n_switched": 59,
-            "cost_adjusted": -0.0658,
-            "ci95_pp": [
-              -21.5,
-              8.33
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
+            "repair": 0,
+            "regression": 0,
+            "n_switched": 0,
+            "raw_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "cost_ci95_pp": [
+              0.0,
+              0.0
             ]
           }
         },
         "ridge": {
-          "dev_t": -0.0035,
+          "dev_t": Infinity,
           "dev_net": {
-            "net": 0.0333,
-            "net_pp": 3.33,
-            "repair": 7,
-            "regression": 5,
-            "n_switched": 49,
-            "cost_adjusted": -0.0075
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
+            "repair": 0,
+            "regression": 0,
+            "n_switched": 0
           },
           "confirm_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
-            "repair": 7,
-            "regression": 7,
-            "n_switched": 47,
-            "cost_adjusted": -0.0392,
-            "ci95_pp": [
-              -15.92,
-              8.17
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
+            "repair": 0,
+            "regression": 0,
+            "n_switched": 0,
+            "raw_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "cost_ci95_pp": [
+              0.0,
+              0.0
             ]
           }
         }
@@ -653,20 +715,22 @@
       "champion": "logreg3",
       "baselines_confirm": {
         "never_switch": {
-          "net": 0.0,
-          "net_pp": 0.0,
+          "raw": 0.0,
+          "raw_pp": 0.0,
+          "cost": 0.0,
+          "cost_pp": 0.0,
           "repair": 0,
           "regression": 0,
-          "n_switched": 0,
-          "cost_adjusted": 0.0
+          "n_switched": 0
         },
         "always_switch": {
-          "net": 0.0,
-          "net_pp": 0.0,
+          "raw": 0.0,
+          "raw_pp": 0.0,
+          "cost": -0.05,
+          "cost_pp": -5.0,
           "repair": 10,
           "regression": 10,
-          "n_switched": 60,
-          "cost_adjusted": -0.05
+          "n_switched": 60
         }
       }
     },
@@ -704,6 +768,10 @@
       "models": {
         "logreg3": {
           "oof_spearman": 0.1264,
+          "oof_spearman_ci95": [
+            -0.1575,
+            0.3852
+          ],
           "oof_auroc_repair": 0.4582,
           "oof_auroc_regression": 0.7068,
           "oof_auroc_positive": 0.4582,
@@ -772,6 +840,10 @@
         },
         "tree3": {
           "oof_spearman": 0.0741,
+          "oof_spearman_ci95": [
+            -0.1948,
+            0.3704
+          ],
           "oof_auroc_repair": 0.3509,
           "oof_auroc_regression": 0.7176,
           "oof_auroc_positive": 0.3509,
@@ -840,6 +912,10 @@
         },
         "ridge": {
           "oof_spearman": 0.0978,
+          "oof_spearman_ci95": [
+            -0.1645,
+            0.3618
+          ],
           "oof_auroc_repair": 0.3782,
           "oof_auroc_regression": 0.7346,
           "oof_auroc_positive": 0.3782,
@@ -911,22 +987,28 @@
         "logreg3": {
           "dev_t": 0.0872,
           "dev_net": {
-            "net": 0.0169,
-            "net_pp": 1.69,
+            "raw": 0.0169,
+            "raw_pp": 1.69,
+            "cost": 0.0153,
+            "cost_pp": 1.53,
             "repair": 1,
             "regression": 0,
-            "n_switched": 2,
-            "cost_adjusted": 0.0153
+            "n_switched": 2
           },
           "confirm_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": -0.0011,
+            "cost_pp": -0.11,
             "repair": 0,
             "regression": 0,
             "n_switched": 1,
-            "cost_adjusted": -0.0011,
-            "ci95_pp": [
-              -0.32,
+            "raw_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "cost_ci95_pp": [
+              -0.33,
               0.0
             ]
           }
@@ -934,44 +1016,56 @@
         "tree3": {
           "dev_t": 0.75,
           "dev_net": {
-            "net": 0.0169,
-            "net_pp": 1.69,
+            "raw": 0.0169,
+            "raw_pp": 1.69,
+            "cost": 0.0102,
+            "cost_pp": 1.02,
             "repair": 1,
             "regression": 0,
-            "n_switched": 8,
-            "cost_adjusted": 0.0102
+            "n_switched": 8
           },
           "confirm_net": {
-            "net": 0.0227,
-            "net_pp": 2.27,
+            "raw": 0.0227,
+            "raw_pp": 2.27,
+            "cost": 0.0148,
+            "cost_pp": 1.48,
             "repair": 1,
             "regression": 0,
             "n_switched": 7,
-            "cost_adjusted": 0.0148,
-            "ci95_pp": [
+            "raw_ci95_pp": [
+              0.0,
+              8.57
+            ],
+            "cost_ci95_pp": [
               -1.02,
-              7.55
+              7.8
             ]
           }
         },
         "ridge": {
           "dev_t": Infinity,
           "dev_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
             "repair": 0,
             "regression": 0,
-            "n_switched": 0,
-            "cost_adjusted": 0.0
+            "n_switched": 0
           },
           "confirm_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
             "repair": 0,
             "regression": 0,
             "n_switched": 0,
-            "cost_adjusted": 0.0,
-            "ci95_pp": [
+            "raw_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "cost_ci95_pp": [
               0.0,
               0.0
             ]
@@ -981,20 +1075,22 @@
       "champion": "logreg3",
       "baselines_confirm": {
         "never_switch": {
-          "net": 0.0,
-          "net_pp": 0.0,
+          "raw": 0.0,
+          "raw_pp": 0.0,
+          "cost": 0.0,
+          "cost_pp": 0.0,
           "repair": 0,
           "regression": 0,
-          "n_switched": 0,
-          "cost_adjusted": 0.0
+          "n_switched": 0
         },
         "always_switch": {
-          "net": 0.1364,
-          "net_pp": 13.64,
+          "raw": 0.1364,
+          "raw_pp": 13.64,
+          "cost": 0.0864,
+          "cost_pp": 8.64,
           "repair": 7,
           "regression": 1,
-          "n_switched": 44,
-          "cost_adjusted": 0.0864
+          "n_switched": 44
         }
       }
     },
@@ -1032,6 +1128,10 @@
       "models": {
         "logreg3": {
           "oof_spearman": -0.1578,
+          "oof_spearman_ci95": [
+            -0.4986,
+            0.2079
+          ],
           "oof_auroc_repair": 0.4232,
           "oof_auroc_regression": 0.3519,
           "oof_auroc_positive": 0.4232,
@@ -1100,6 +1200,10 @@
         },
         "tree3": {
           "oof_spearman": -0.3922,
+          "oof_spearman_ci95": [
+            -0.6343,
+            -0.243
+          ],
           "oof_auroc_repair": 0.4205,
           "oof_auroc_regression": 0.409,
           "oof_auroc_positive": 0.4205,
@@ -1168,6 +1272,10 @@
         },
         "ridge": {
           "oof_spearman": -0.1725,
+          "oof_spearman_ci95": [
+            -0.4809,
+            0.1759
+          ],
           "oof_auroc_repair": 0.3962,
           "oof_auroc_regression": 0.3611,
           "oof_auroc_positive": 0.3962,
@@ -1239,22 +1347,28 @@
         "logreg3": {
           "dev_t": 0.0684,
           "dev_net": {
-            "net": 0.0169,
-            "net_pp": 1.69,
+            "raw": 0.0169,
+            "raw_pp": 1.69,
+            "cost": 0.0153,
+            "cost_pp": 1.53,
             "repair": 1,
             "regression": 0,
-            "n_switched": 2,
-            "cost_adjusted": 0.0153
+            "n_switched": 2
           },
           "confirm_net": {
-            "net": -0.0227,
-            "net_pp": -2.27,
+            "raw": -0.0227,
+            "raw_pp": -2.27,
+            "cost": -0.0261,
+            "cost_pp": -2.61,
             "repair": 0,
             "regression": 1,
             "n_switched": 3,
-            "cost_adjusted": -0.0261,
-            "ci95_pp": [
-              -7.44,
+            "raw_ci95_pp": [
+              -6.82,
+              0.0
+            ],
+            "cost_ci95_pp": [
+              -7.39,
               0.0
             ]
           }
@@ -1262,21 +1376,27 @@
         "tree3": {
           "dev_t": Infinity,
           "dev_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
             "repair": 0,
             "regression": 0,
-            "n_switched": 0,
-            "cost_adjusted": 0.0
+            "n_switched": 0
           },
           "confirm_net": {
-            "net": 0.0,
-            "net_pp": 0.0,
+            "raw": 0.0,
+            "raw_pp": 0.0,
+            "cost": 0.0,
+            "cost_pp": 0.0,
             "repair": 0,
             "regression": 0,
             "n_switched": 0,
-            "cost_adjusted": 0.0,
-            "ci95_pp": [
+            "raw_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "cost_ci95_pp": [
               0.0,
               0.0
             ]
@@ -1285,23 +1405,29 @@
         "ridge": {
           "dev_t": 0.0563,
           "dev_net": {
-            "net": 0.0339,
-            "net_pp": 3.39,
+            "raw": 0.0339,
+            "raw_pp": 3.39,
+            "cost": 0.0263,
+            "cost_pp": 2.63,
             "repair": 5,
             "regression": 3,
-            "n_switched": 9,
-            "cost_adjusted": 0.0263
+            "n_switched": 9
           },
           "confirm_net": {
-            "net": -0.0227,
-            "net_pp": -2.27,
+            "raw": -0.0227,
+            "raw_pp": -2.27,
+            "cost": -0.0284,
+            "cost_pp": -2.84,
             "repair": 0,
             "regression": 1,
             "n_switched": 5,
-            "cost_adjusted": -0.0284,
-            "ci95_pp": [
-              -7.67,
-              -0.13
+            "raw_ci95_pp": [
+              -6.82,
+              0.0
+            ],
+            "cost_ci95_pp": [
+              -7.5,
+              -0.12
             ]
           }
         }
@@ -1309,20 +1435,22 @@
       "champion": "ridge",
       "baselines_confirm": {
         "never_switch": {
-          "net": 0.0,
-          "net_pp": 0.0,
+          "raw": 0.0,
+          "raw_pp": 0.0,
+          "cost": 0.0,
+          "cost_pp": 0.0,
           "repair": 0,
           "regression": 0,
-          "n_switched": 0,
-          "cost_adjusted": 0.0
+          "n_switched": 0
         },
         "always_switch": {
-          "net": -0.0227,
-          "net_pp": -2.27,
+          "raw": -0.0227,
+          "raw_pp": -2.27,
+          "cost": -0.0727,
+          "cost_pp": -7.27,
           "repair": 2,
           "regression": 3,
-          "n_switched": 44,
-          "cost_adjusted": -0.0727
+          "n_switched": 44
         }
       }
     }

@@ -1,22 +1,25 @@
 \begin{table}[t]
 \centering
-\footnotesize
+\scriptsize
 \caption{有符号增量效用预测。目标为
 $\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ 正确}]-
 \mathbf{1}[\textsc{Noul}_i\text{ 正确}]\in\{-1,0,+1\}$。折外 $\rho$ 是
 \texttt{search\_train} 上分组感知三折交叉验证中预测与真实 $\Delta$ 的
-Spearman 相关；阈值在 \texttt{search\_dev} 上选择并冻结用于
-\texttt{confirm}。净效用为平均 $\Delta$ 减去每次切换 $\lambda=0.05$，单位为
-百分点，区间为 95\% 分组自助法。最后一列为 confirm 行中的切换数。}
+Spearman 相关；阈值在 \texttt{search\_dev} 上按成本调整效用选择，冻结后用
+于 \texttt{confirm}。原始净值为平均 $\Delta$；成本调整净值为原始净值减去
+每次切换 $\lambda=0.05$；单位为百分点，区间为 95\% 分组自助法。最后一列为
+confirm 行中的切换数。}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrrrrr@{}}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
-任务 / 模型 & 折外 $\rho$ & 修复 AUROC & 退化 AUROC & dev 净 & confirm 净 (95\% CI) & 切换/行 \\
+任务 / 模型 & 折外 $\rho$ & 修复 AUROC & 退化 AUROC & dev 成本 & confirm 原始 (95\% CI) & confirm 成本 (95\% CI) & 切换/行 \\
 \midrule
-CodeXGLUE / Laya & -0.02 & 0.360 & 0.607 & +21.7 & +0.0 [-18.8, +13.0] & 42/60 \\
-CodeXGLUE / Vela & +0.19 & 0.744 & 0.335 & +3.3 & -1.7 [-19.8, +8.5] & 54/60 \\
-FinDVer / Laya & +0.13 & 0.458 & 0.707 & +1.7 & +0.0 [-0.3, +0.0] & 1/44 \\
-FinDVer / Vela & -0.17 & 0.396 & 0.361 & +3.4 & -2.3 [-7.7, -0.1] & 5/44 \\
+CodeXGLUE / Laya & -0.02 & 0.360 & 0.607 & +17.8 & +0.0 [-16.7, +16.7] & -3.5 [-19.9, +12.8] & 42/60 \\
+CodeXGLUE / Vela & +0.19 & 0.744 & 0.335 & +0.0 & +0.0 [+0.0, +0.0] & +0.0 [+0.0, +0.0] & 0/60 \\
+FinDVer / Laya & +0.13 & 0.458 & 0.707 & +1.5 & +0.0 [+0.0, +0.0] & -0.1 [-0.3, +0.0] & 1/44 \\
+FinDVer / Vela & -0.17 & 0.396 & 0.361 & +2.6 & -2.3 [-6.8, +0.0] & -2.8 [-7.5, -0.1] & 5/44 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}

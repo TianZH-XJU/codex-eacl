@@ -56,10 +56,10 @@ moment of decision: $p$, $|p-0.5|$ and the binary entropy $-p\log p -
 We compare logistic regression, a shallow decision tree, a single confidence
 threshold and a never-switch majority baseline. Training uses group-aware
 three-fold out-of-fold predictions; the predictor and threshold are then chosen
-together on \texttt{selection\_dev} by net utility, frozen, and evaluated once
-on \texttt{confirm}. Net utility is (repairs $-$ regressions) divided by the
-number of rows; the cost-adjusted variant subtracts $\lambda=0.05$ per extra
-call. A champion that switches every row is retained, because it reveals
+together on \texttt{selection\_dev} by cost-adjusted net utility, frozen, and
+evaluated once on \texttt{confirm}. Net utility is (repairs $-$ regressions)
+divided by the number of rows; the cost-adjusted variant subtracts
+$\lambda=0.05$ per switch. A champion that switches every row is retained, because it reveals
 whether the predictor adds anything beyond fixed switching.
 
 E3 compares optimisers under a matched evaluation budget. GA, ES and NSGA-II

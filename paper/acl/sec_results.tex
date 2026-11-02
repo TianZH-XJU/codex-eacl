@@ -65,18 +65,20 @@ repairable rows from the middle of the distribution to the low-confidence tail.
 
 The second question is whether the signed incremental value of \choice{} is
 predictable from the first call. Table~\ref{tab:predictability} uses
-$\Delta_i=\\mathbf{1}[\choice_i\text{ correct}]-
-\\mathbf{1}[\noul_i\text{ correct}]\in\{-1,0,+1\}$. Out-of-fold Spearman
+$\Delta_i=\mathbf{1}[\choice_i\text{ correct}]-
+\mathbf{1}[\noul_i\text{ correct}]\in\{-1,0,+1\}$. Out-of-fold Spearman
 correlation between predicted and realised $\Delta$ is $-0.02$, $+0.19$,
-$+0.13$ and $-0.17$ for the selected models; repair AUROC is 0.36, 0.74, 0.46
-and 0.40, and regression AUROC 0.61, 0.33, 0.71 and 0.36. The dev-selected
-thresholds yield confirm net utilities of $0.0$, $-1.7$, $0.0$ and $-2.3$
-points; no cell is positive, and the FinDVer/Vela interval $[-7.7,-0.1]$
-excludes zero on the negative side. The always-switch baseline is $+1.7$,
-$0.0$, $+13.6$ and $-2.3$, so the predictor forgoes the entire $+13.6$ gain in
-FinDVer/Laya and the $+1.7$ gain in CodeXGLUE/Laya. A repair-target predictor
-reaches higher repair AUROC (up to 0.92) but has the same confirm failure:
-ranking repairs is not ranking net utility.
+$+0.13$ and $-0.17$; every group-bootstrap interval includes zero.
+Signed-$\Delta$ repair AUROC is 0.36, 0.74, 0.46 and 0.40, and regression
+AUROC 0.61, 0.33, 0.71 and 0.36. The dev-selected thresholds yield confirm raw
+nets of $0.0$, $0.0$, $0.0$ and $-2.3$ points, and cost-adjusted nets of
+$0.0$, $0.0$, $-0.1$ and $-2.8$ points; no cell is positive, and
+FinDVer/Vela's cost interval $[-7.5,-0.1]$ is negative. CodeXGLUE/Vela never
+switches (0/60). The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
+$-2.3$, so the predictor forgoes the $+13.6$ gain in FinDVer/Laya and $+1.7$
+in CodeXGLUE/Laya. A repair-target predictor reaches 0.92 repair AUROC but
+also fails on confirm; calibration below uses raw probability, a different
+quantity.
 
 \input{tables/tab_predictability}
 
@@ -110,9 +112,8 @@ across seeds and is treated as exploratory. NSGA-II deployment is significantly
 worse than the fixed baseline in five dev cells and one confirm cell, with no
 positive cell. No optimiser beats the better fixed action at this budget.
 
-On 60 official test rows per cell, with
-templates and GA genomes frozen before any test call, GA versus fixed switch
-macro-F1 is $+0.008$ $[-0.148,+0.163]$ (CodeXGLUE/Laya), $0.000$
+With templates and genomes frozen, 60 official test rows per cell give GA
+versus fixed switch macro-F1 $+0.008$ $[-0.148,+0.163]$ (CodeXGLUE/Laya), $0.000$
 $[0.000,0.000]$ (CodeXGLUE/Vela), $0.000$ $[-0.046,+0.045]$ (FinDVer/Laya),
 and $+0.243$ $[+0.138,+0.318]$ (FinDVer/Vela). The last gain is against the
 worse fixed action: fixed switch scores 0.413 macro-F1 versus 0.677 for fixed

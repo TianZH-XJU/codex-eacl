@@ -189,12 +189,14 @@ def tab_predictability() -> None:
         cand = c["candidates"][champ]
         dev = cand["dev_net"]
         conf = cand["confirm_net"]
-        lo, hi = conf["ci95_pp"]
+        rlo, rhi = conf["raw_ci95_pp"]
+        clo, chi = conf["cost_ci95_pp"]
         rows.append(
             f"{CELL_TEX[cell]} & {m['oof_spearman']:+.2f} & "
             f"{f3(m['oof_auroc_repair'])} & {f3(m['oof_auroc_regression'])} & "
-            f"{dev['net_pp']:+.1f} & {conf['net_pp']:+.1f} "
-            f"[{lo:+.1f}, {hi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
+            f"{dev['cost_pp']:+.1f} & {conf['raw_pp']:+.1f} "
+            f"[{rlo:+.1f}, {rhi:+.1f}] & {conf['cost_pp']:+.1f} "
+            f"[{clo:+.1f}, {chi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
         )
     body = (
         r"""\begin{table*}[t]
@@ -202,16 +204,15 @@ def tab_predictability() -> None:
 \scriptsize
 \caption{Signed incremental-utility prediction. Target
 $\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ correct}]-
-\mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ is the
-Spearman correlation under group-aware three-fold CV on \texttt{search\_train};
-the threshold is selected on \texttt{search\_dev} and frozen for
-\texttt{confirm}. Net utility is mean $\Delta$ minus $\lambda=0.05$ per switch,
-in points, with a 95\% group-bootstrap interval; the last column is
-switches/rows.}
+\mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ uses
+group-aware three-fold CV on \texttt{search\_train}; the threshold is selected
+on \texttt{search\_dev} by cost-adjusted utility and frozen. Raw net is mean
+$\Delta$; cost-adjusted net subtracts $\lambda=0.05$ per switch; both are in
+points with 95\% group-bootstrap CIs. Last column: switches/rows.}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
-Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev net & Confirm net (95\% CI) & Switches \\
+Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev cost & Confirm raw (95\% CI) & Confirm cost (95\% CI) & Switches \\
 \midrule
 """
         + "\n".join(rows)
@@ -314,34 +315,39 @@ def zh_predictability() -> None:
         cand = c["candidates"][champ]
         dev = cand["dev_net"]
         conf = cand["confirm_net"]
-        lo, hi = conf["ci95_pp"]
+        rlo, rhi = conf["raw_ci95_pp"]
+        clo, chi = conf["cost_ci95_pp"]
         rows.append(
             f"{CELL_TEX[cell]} & {m['oof_spearman']:+.2f} & "
             f"{f3(m['oof_auroc_repair'])} & {f3(m['oof_auroc_regression'])} & "
-            f"{dev['net_pp']:+.1f} & {conf['net_pp']:+.1f} "
-            f"[{lo:+.1f}, {hi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
+            f"{dev['cost_pp']:+.1f} & {conf['raw_pp']:+.1f} "
+            f"[{rlo:+.1f}, {rhi:+.1f}] & {conf['cost_pp']:+.1f} "
+            f"[{clo:+.1f}, {chi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
         )
     body = (
         r"""\begin{table}[t]
 \centering
-\footnotesize
+\scriptsize
 \caption{有符号增量效用预测。目标为
 $\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ 正确}]-
 \mathbf{1}[\textsc{Noul}_i\text{ 正确}]\in\{-1,0,+1\}$。折外 $\rho$ 是
 \texttt{search\_train} 上分组感知三折交叉验证中预测与真实 $\Delta$ 的
-Spearman 相关；阈值在 \texttt{search\_dev} 上选择并冻结用于
-\texttt{confirm}。净效用为平均 $\Delta$ 减去每次切换 $\lambda=0.05$，单位为
-百分点，区间为 95\% 分组自助法。最后一列为 confirm 行中的切换数。}
+Spearman 相关；阈值在 \texttt{search\_dev} 上按成本调整效用选择，冻结后用
+于 \texttt{confirm}。原始净值为平均 $\Delta$；成本调整净值为原始净值减去
+每次切换 $\lambda=0.05$；单位为百分点，区间为 95\% 分组自助法。最后一列为
+confirm 行中的切换数。}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrrrrr@{}}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
-任务 / 模型 & 折外 $\rho$ & 修复 AUROC & 退化 AUROC & dev 净 & confirm 净 (95\% CI) & 切换/行 \\
+任务 / 模型 & 折外 $\rho$ & 修复 AUROC & 退化 AUROC & dev 成本 & confirm 原始 (95\% CI) & confirm 成本 (95\% CI) & 切换/行 \\
 \midrule
 """
         + "\n".join(rows)
         + r"""
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 """
     )
