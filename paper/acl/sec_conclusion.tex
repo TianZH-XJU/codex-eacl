@@ -1,26 +1,20 @@
 \section{Conclusion}
 
-Structured decision models promise that a probability returned with every typed
-judgment can decide when a second judgment is worth buying. Our experiments on
-frozen Laya and Vela models, across code defect detection, financial claim
-verification and mathematical reasoning-error localisation, do not support that
-promise. Evolutionary search over band policies produces no held-out advantage
-over fixed policies or budget-matched random search, and the failure is visible
-in the action set, in the predictability of the alternative action's value, and
-in the search landscape.
+A probability returned with every typed judgment should decide when a second
+judgment is worth buying. Our experiments on frozen Laya and Vela across three
+tasks do not support that promise: evolutionary search produces no held-out
+advantage over fixed policies or budget-matched random search.
 
 Gross complementarity is real---a per-row oracle gains up to 23.3 accuracy
-points---but repairs are offset by harmful switches, and the net balance is
-small, metric-dependent and unstable across pools. Repairs concentrate at mid
-and high \noul{} probability, while confidence cascades switch at low
-probability. Calibration and action-value prediction dissociate: temperature
-scaling improves ECE and Brier but cannot change the ordering of rows, and in
-both FinDVer cells the probability ranks repairable rows below chance. The
-search landscape is flat: most mutations are neutral and most runs plateau at
-generation zero, so the training ranking does not predict the dev ranking where
-it matters.
+points---but harmful switches offset repairs, and the net balance is small,
+metric-dependent and unstable across pools. Repairs concentrate at mid and high
+\noul{} probability, whereas confidence cascades switch at low probability.
+Calibration and action-value prediction dissociate: temperature scaling
+improves ECE and Brier but not row order, and in both FinDVer cells the
+probability ranks repairable rows below chance. The search landscape is flat:
+most mutations are neutral, most runs plateau at generation zero, and the
+training ranking does not predict the dev ranking.
 
-The limits are part of the result: the pools are small, the \noul{} template was
-not audited, only two open models were run, and the locked test has not been
-run. The next step is a supervision target that predicts the incremental value
-of the alternative action and is judged by held-out net utility.
+Limits are part of the result: pools are small, the \noul{} template was not
+audited, only two open models were run, and the locked test remains unrun. The
+next step is a supervision target judged by held-out net utility.

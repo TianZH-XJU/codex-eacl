@@ -26,16 +26,15 @@ CPU-only execution envelope.
 gross and net repair counts behind Table~\ref{tab:complementarity}, including
 the train-selected direction applied unchanged to dev and confirm.
 
-\begin{figure*}[t]
-\centering
+\begin{center}
 \includegraphics[width=0.86\linewidth]{figures/fig_headroom.pdf}
-\caption{Action complementarity. (a) On the training pool, the second action
-repairs errors but also breaks correct answers; the net count is printed above
-each pair. (b) The same train-selected direction applied to dev and confirm:
-the sign of net repair changes across pools, and only one confirm cell has an
-interval above zero.}
+\captionof{figure}{Action complementarity. (a) On the training pool, the second
+action repairs errors but also breaks correct answers; the net count is printed
+above each pair. (b) The same train-selected direction applied to dev and
+confirm: the sign of net repair changes across pools, and only one confirm cell
+has an interval above zero.}
 \label{fig:headroom}
-\end{figure*}
+\end{center}
 
 \textbf{Repair profile.} Figure~\ref{fig:repair} shows the repair rate of the
 second action as a function of the \noul{} probability bin, separately for the
@@ -45,14 +44,13 @@ at least eight rows fall in the bin. The figure motivates the claim in
 Section~\ref{sec:results} that repairs concentrate at mid and high probability
 rather than in the low-confidence tail.
 
-\begin{figure*}[t]
-\centering
+\begin{center}
 \includegraphics[width=0.92\linewidth]{figures/fig_repair_profile.pdf}
-\caption{Repair rate by \noul{} probability bin for the four binary cells.
-Repairs are rare in the lowest bin and concentrate around $p\in[0.4,0.8]$,
-where a confidence cascade is least likely to switch.}
+\captionof{figure}{Repair rate by \noul{} probability bin for the four binary
+cells. Repairs are rare in the lowest bin and concentrate around
+$p\in[0.4,0.8]$, where a confidence cascade is least likely to switch.}
 \label{fig:repair}
-\end{figure*}
+\end{center}
 
 \textbf{Calibration details.} Table~\ref{tab:calibration} reports calibration
 and its relation to routing; Figure~\ref{fig:calibration} plots reliability
@@ -64,32 +62,30 @@ of band policies available to the router.
 
 \input{tables/tab_calibration}
 
-\begin{figure*}[t]
-\centering
+\begin{center}
 \includegraphics[width=0.92\linewidth]{figures/fig_calibration.pdf}
-\caption{Reliability diagrams on the confirm pool for the four binary cells.
-Grey is the raw \noul{} probability, blue is temperature-scaled. Temperature
-scaling reduces the calibration error, but it is a monotone map: the ordering
-of rows, and therefore the set of band policies available up to a
+\captionof{figure}{Reliability diagrams on the confirm pool for the four binary
+cells. Grey is the raw \noul{} probability, blue is temperature-scaled.
+Temperature scaling reduces the calibration error, but it is a monotone map:
+the ordering of rows, and therefore the set of band policies available up to a
 reparameterisation, is unchanged.}
 \label{fig:calibration}
-\end{figure*}
+\end{center}
 
 \textbf{Search diagnostics.} Figure~\ref{fig:search} collects the three
 trajectory diagnostics discussed in Section~\ref{sec:results}: the neutral
 mutation rate, the rank correlation between training and dev fitness across the
 archive, and best-so-far training fitness for seed 17.
 
-\begin{figure*}[t]
-\centering
+\begin{center}
 \includegraphics[width=0.92\linewidth]{figures/fig_search.pdf}
-\caption{Search diagnostics. (a) Between 68\% and 73\% of single-gene mutations
-leave training fitness unchanged. (b) Rank correlation between training and dev
-fitness across the archive is negative for both CodeXGLUE cells and positive for
-FinDVer. (c) Best-so-far training fitness for seed 17; most runs improve at most
-once, and several are flat from generation zero.}
+\captionof{figure}{Search diagnostics. (a) Between 68\% and 73\% of single-gene
+mutations leave training fitness unchanged. (b) Rank correlation between
+training and dev fitness across the archive is negative for both CodeXGLUE cells
+and positive for FinDVer. (c) Best-so-far training fitness for seed 17; most
+runs improve at most once, and several are flat from generation zero.}
 \label{fig:search}
-\end{figure*}
+\end{center}
 
 \textbf{Ranking versus policy value.} Figure~\ref{fig:predictability} plots
 out-of-fold AUROC against the confirm net utility of the frozen dev-selected
@@ -99,15 +95,6 @@ with the strongest ranking signal (FinDVer/Vela) has a negative confirm net, and
 the cell with the best confirm net (FinDVer/Laya) has near-chance ranking
 signal.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.72\linewidth]{figures/fig_predictability.pdf}
-\caption{OOF AUROC versus confirm net utility. The dashed horizontal line is
-zero net utility; the dotted vertical line is chance-level AUROC. Ranking
-quality and policy value are not the same quantity.}
-\label{fig:predictability}
-\end{figure}
-
 \label{app:boundary}
 
 \textbf{Boundary checks.} Table~\ref{tab:boundary} reports the transfer counts
@@ -116,15 +103,25 @@ the full confirm-pool severity map by task, model and confidence band.
 
 \input{tables/tab_boundary}
 
-\begin{figure}[t]
+\begin{center}
+\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=0.72\linewidth]{figures/fig_faultmap.pdf}
-\caption{Confirm-pool failure severity by task, model and confidence band.
-Asterisks mark cells that were not confirmed within the 0.15 tolerance. The
-stable high-severity region is the mid-confidence band on ProcessBench, where
-both representations fail together.}
+\includegraphics[width=\linewidth]{figures/fig_predictability.pdf}
+\captionof{figure}{OOF AUROC versus confirm net utility. The dashed horizontal
+line is zero net utility; the dotted vertical line is chance-level AUROC.
+Ranking quality and policy value are not the same quantity.}
+\label{fig:predictability}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{figures/fig_faultmap.pdf}
+\captionof{figure}{Confirm-pool failure severity by task, model and confidence
+band. Asterisks mark cells that were not confirmed within the 0.15 tolerance.
+The stable high-severity region is the mid-confidence band on ProcessBench,
+where both representations fail together.}
 \label{fig:faultmap}
-\end{figure}
+\end{minipage}
+\end{center}
 
 \textbf{Reproducibility details.} All results in this paper are derived from
 committed JSON files. The per-row caches are one JSON file per pool, named

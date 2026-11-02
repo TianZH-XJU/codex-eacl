@@ -75,10 +75,11 @@ action reverses between dev and confirm. Utility prediction repeats the pattern:
 out-of-fold AUROC reaches 0.92 for FinDVer with Vela, yet the threshold chosen
 on dev produces a negative net utility on confirm, and the best dev policy for
 CodeXGLUE with Laya degenerates to switching on every row. Search does not
-rescue the signal: GA beats random search in none of 60 paired macro-F1
-comparisons, its five significant wins over fixed switching all occur on the
-FinDVer/Vela training pool, and NSGA-II deployment is significantly worse than
-the fixed baseline in six cells. Calibration is poor---confirm ECE ranges from
+rescue the signal: GA has no significant win over random search in any of 60
+paired macro-F1 comparisons, its five significant wins over fixed switching all
+occur on the FinDVer/Vela training pool and are not reproduced on dev or
+confirm, and NSGA-II deployment is significantly worse than the fixed baseline
+in six cells. Calibration is poor---confirm ECE ranges from
 0.09 to 0.29---but temperature scaling leaves the routing outcome unchanged or
 worse, because a monotone recalibration cannot create signal the band policy
 class could not already express.

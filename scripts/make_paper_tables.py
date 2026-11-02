@@ -151,14 +151,13 @@ def tab_complementarity() -> None:
         r"""\begin{table*}[t]
 \centering
 \footnotesize
-\caption{Action complementarity with the train-selected fixed-action
-direction frozen across pools ($n=60$ per cell). \emph{Headroom} is the
-accuracy gain of a per-row oracle over the better fixed action on
-\texttt{search\_train}; \emph{repair/harmful} counts rows where the alternative
-fixes or breaks the base decision. Net repair is the paired difference in
-percentage points (alternative minus base) with a 95\% group-bootstrap
-interval on dev and confirm. Positive headroom is an upper bound, not a
-deployable gain.}
+\caption{Action complementarity with the train-selected direction frozen across
+pools ($n=60$ per cell). \emph{Headroom} is the accuracy gain of a per-row
+oracle over the better fixed action on \texttt{search\_train};
+\emph{repair/harmful} counts rows where the alternative fixes or breaks the
+base decision. Net repair is the paired difference in percentage points
+(alternative minus base) with a 95\% group-bootstrap interval on dev and
+confirm. Headroom is an upper bound, not a deployable gain.}
 \label{tab:complementarity}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
@@ -197,13 +196,12 @@ def tab_predictability() -> None:
     body = (
         r"""\begin{table*}[t]
 \centering
-\small
-\caption{Incremental-utility prediction. OOF AUROC is computed with
-group-aware three-fold cross-validation on \texttt{search\_train}; the
-champion predictor and threshold are chosen on \texttt{search\_dev} and frozen
-for \texttt{confirm}. Net utility is (repairs $-$ regressions)$/n$ in
-percentage points; the cost-adjusted column subtracts $\lambda=0.05$ per extra
-call. Repair/regression counts are in parentheses.}
+\footnotesize
+\caption{Incremental-utility prediction. OOF AUROC uses group-aware three-fold
+cross-validation on \texttt{search\_train}; the champion and threshold are
+chosen on \texttt{search\_dev} and frozen for \texttt{confirm}. Net utility is
+(repairs $-$ regressions)$/n$ in percentage points, with counts in parentheses;
+the last column subtracts $\lambda=0.05$ per extra call.}
 \label{tab:predictability}
 \begin{tabular}{@{}lrrlrrr@{}}
 \toprule
@@ -297,9 +295,6 @@ def tab_search() -> None:
     es_rnd = count("es", "vs_random")
     es_sw = count("es", "vs_switch")
 
-    def fmt(x):
-        return f"{x[0]} & {x[1]} & {x[2]}"
-
     # NSGA-II deployment counts (accuracy, dev/confirm)
     n2 = jload("results/v4_1/evolution/nsga2_deploy_devconfirm.json")["tasks"]
     n2_dev = n2_cf = n2_tot = 0
@@ -316,38 +311,37 @@ def tab_search() -> None:
                             n2_cf += 1
 
     body = (
-        r"""\begin{table*}[t]
+        r"""\begin{table}[t]
 \centering
 \small
 \caption{Search comparisons under the pre-registered protocol. Counts are
-paired group-bootstrap 95\% intervals that exclude zero; ``positive'' means
-the evolved policy beats the stated baseline. GA and ES rows use macro-F1 on
-all three pools with five seeds (17, 23, 41, 59, 73); the NSGA-II row uses
-accuracy on 12 dev and 12 confirm cells because its Pareto search optimises
-accuracy and cost.}
+paired group-bootstrap 95\% intervals that exclude zero; ``positive'' means the
+evolved policy beats the stated baseline. GA and ES rows use macro-F1 on all
+three pools with five seeds; the NSGA-II row uses accuracy on 12 dev and 12
+confirm cells.}
 \label{tab:search}
-\begin{tabular}{@{}llrrl@{}}
+\begin{tabular}{@{}lrrl@{}}
 \toprule
-Comparison & Scope & Sig. pos. & Sig. neg. & Reading \\
+Comparison & Pos. & Neg. & Reading \\
 \midrule
 GA vs.\ random & """
-        + fmt(ga_rnd)
-        + r""" & No advantage \\
-GA vs.\ fixed switch & """
-        + fmt(ga_sw)
-        + r""" & Train-only; 0/40 dev+confirm \\
+        + f"{ga_rnd[1]} & {ga_rnd[2]} & no advantage ({ga_rnd[0]})"
+        + r""" \\
+GA vs.\ fixed & """
+        + f"{ga_sw[1]} & {ga_sw[2]} & train-only ({ga_sw[0]})"
+        + r""" \\
 ES vs.\ random & """
-        + fmt(es_rnd)
-        + r""" & No advantage \\
-ES vs.\ fixed switch & """
-        + fmt(es_sw)
-        + r""" & One confirm cell \\
-NSGA-II deploy vs.\ fixed & """
-        + f"{n2_tot} & 0 & {n2_dev + n2_cf}"
-        + r""" & 5 dev / 1 confirm negative \\
+        + f"{es_rnd[1]} & {es_rnd[2]} & no advantage ({es_rnd[0]})"
+        + r""" \\
+ES vs.\ fixed & """
+        + f"{es_sw[1]} & {es_sw[2]} & one confirm ({es_sw[0]})"
+        + r""" \\
+NSGA-II vs.\ fixed & """
+        + f"0 & {n2_dev + n2_cf} & {n2_dev} dev, {n2_cf} confirm"
+        + r""" \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 """
     )
     write("tab_search.tex", body)

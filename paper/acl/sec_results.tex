@@ -124,10 +124,7 @@ Taken together, the three questions describe a routing problem that fails before
 the optimiser is asked to solve it: RQ1 finds gross but no stable net
 complementarity, RQ2 finds ranking signal without reliable policy value, and RQ3
 finds no held-out advantage because the landscape is flat and the training
-ranking does not predict the dev ranking where it matters. Calibration improves
-a different quantity: a model can report better probabilities for the question
-it answered and still have nothing to say about whether a different question
-would be answered better.
+ranking does not predict the dev ranking where it matters.
 
 The practical implication is a change in the order of work. Before building a
 router, measure whether the action set has net complementarity on held-out

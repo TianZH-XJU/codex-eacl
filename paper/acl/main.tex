@@ -15,6 +15,7 @@
 \usepackage{microtype}
 \usepackage{inconsolata}
 \usepackage{graphicx}
+\usepackage{capt-of}
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -60,9 +61,9 @@ action---but net repair is sparse and pool-dependent: only one of four confirm
 cells has a positive accuracy interval, and its macro-F1 interval still spans
 zero. Probability features rank repairable rows above chance in some pools
 (out-of-fold AUROC up to 0.92), yet frozen thresholds do not gain on held-out
-data. The genetic algorithm never beats random search in 60 paired comparisons,
-and its five significant training-pool wins over fixed switching vanish on dev
-and confirm. Search plateaus at generation zero in 15 of 21 runs. Temperature
+data. The genetic algorithm achieves no significant win over random search in 60
+paired comparisons, and its five significant training-pool wins over fixed
+switching are not reproduced on dev and confirm. Search plateaus at generation zero in 15 of 21 runs. Temperature
 scaling reduces calibration error but cannot create routing signal, because
 monotone recalibration leaves the band policy class unchanged. Routing value
 requires complementary actions and a deployable estimate of incremental action
