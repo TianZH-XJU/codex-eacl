@@ -56,4 +56,6 @@ paper/**/*.log
 paper/**/*.out
 paper/**/*.blg
 paper/acl/acl_sample.*
+paper/**/errors-*.json
+paper/**/errors-*.png
 texput.log
