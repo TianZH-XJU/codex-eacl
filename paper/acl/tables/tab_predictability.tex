@@ -5,9 +5,9 @@
 $\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ correct}]-
 \mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ uses
 group-aware three-fold CV on \texttt{search\_train}; the threshold is selected
-on \texttt{search\_dev} by cost-adjusted utility and frozen. Raw net is mean
-$\Delta$; cost-adjusted net subtracts $\lambda=0.05$ per switch; both are in
-points with 95\% group-bootstrap CIs. Last column: switches/rows.}
+on \texttt{search\_dev} by cost-adjusted utility. Raw net is mean $\Delta$;
+cost-adjusted net subtracts $\lambda=0.05$ per switch; 95\% group-bootstrap
+CIs. Last column: switches/rows.}
 \label{tab:predictability}
 \begin{tabular}{@{}lrrrrrrr@{}}
 \toprule

@@ -2,12 +2,10 @@
 \centering
 \footnotesize
 \caption{Action complementarity with the train-selected direction frozen across
-pools ($n=60$ per training cell; FinDVer dev/confirm: 59/44). \emph{Headroom} is the accuracy gain of a per-row
-oracle over the better fixed action on \texttt{search\_train};
-\emph{repair/harmful} counts rows where the alternative fixes or breaks the
-base decision. Net repair is the paired difference in percentage points
-(alternative minus base) with a 95\% group-bootstrap interval on dev and
-confirm. Headroom is an upper bound, not a deployable gain.}
+pools ($n=60$ training; FinDVer dev/confirm 59/44). \emph{Headroom} is the
+oracle gain over the better fixed action; \emph{repair/harmful} counts fixes and
+breaks. Net repair is the paired difference in points with 95\% group-bootstrap
+CIs. Headroom is an upper bound, not a deployable gain.}
 \label{tab:complementarity}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule

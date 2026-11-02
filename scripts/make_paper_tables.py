@@ -154,12 +154,10 @@ def tab_complementarity() -> None:
 \centering
 \footnotesize
 \caption{Action complementarity with the train-selected direction frozen across
-pools ($n=60$ per training cell; FinDVer dev/confirm: 59/44). \emph{Headroom} is the accuracy gain of a per-row
-oracle over the better fixed action on \texttt{search\_train};
-\emph{repair/harmful} counts rows where the alternative fixes or breaks the
-base decision. Net repair is the paired difference in percentage points
-(alternative minus base) with a 95\% group-bootstrap interval on dev and
-confirm. Headroom is an upper bound, not a deployable gain.}
+pools ($n=60$ training; FinDVer dev/confirm 59/44). \emph{Headroom} is the
+oracle gain over the better fixed action; \emph{repair/harmful} counts fixes and
+breaks. Net repair is the paired difference in points with 95\% group-bootstrap
+CIs. Headroom is an upper bound, not a deployable gain.}
 \label{tab:complementarity}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
@@ -206,9 +204,9 @@ def tab_predictability() -> None:
 $\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ correct}]-
 \mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ uses
 group-aware three-fold CV on \texttt{search\_train}; the threshold is selected
-on \texttt{search\_dev} by cost-adjusted utility and frozen. Raw net is mean
-$\Delta$; cost-adjusted net subtracts $\lambda=0.05$ per switch; both are in
-points with 95\% group-bootstrap CIs. Last column: switches/rows.}
+on \texttt{search\_dev} by cost-adjusted utility. Raw net is mean $\Delta$;
+cost-adjusted net subtracts $\lambda=0.05$ per switch; 95\% group-bootstrap
+CIs. Last column: switches/rows.}
 \label{tab:predictability}
 \begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
@@ -241,10 +239,9 @@ def tab_locked() -> None:
         r"""\begin{table}[t]
 \centering
 \scriptsize
-\caption{Locked test: 60 official test rows per cell, templates and GA genomes
-frozen before any test call. Macro-F1 for fixed \noul{}, fixed \choice{}
-(always switch, two calls) and GA seed 17; seeds 23 and 41 show the same
-pattern. Paired differences and CIs are in the text.}
+\caption{Locked test: 60 official test rows per cell, frozen templates and
+genomes. Macro-F1 for fixed \noul{}, fixed \choice{} (always switch, two calls)
+and GA seed 17; seeds 23/41 show the same pattern. Differences are in the text.}
 \label{tab:locked}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -280,11 +277,9 @@ def tab_processbench() -> None:
         r"""\begin{table}[t]
 \centering
 \small
-\caption{ProcessBench selective prediction on confirm. Columns are selective
-accuracy at full coverage, at a 50\% target and at a 25\% target; parentheses
-show achieved confirm coverage. Thresholds are selected on
-\texttt{selection\_dev} and frozen. AURC is the area under the risk-coverage
-curve (lower is better).}
+\caption{ProcessBench selective prediction on confirm. Selective accuracy at
+full, 50\% and 25\% target coverage; parentheses show achieved coverage.
+Thresholds are selected on \texttt{selection\_dev}; AURC lower is better.}
 \label{tab:processbench}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule

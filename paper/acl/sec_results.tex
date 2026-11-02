@@ -1,9 +1,10 @@
 \section{Results and Discussion}
 \label{sec:results}
 
+\input{tables/tab_complementarity}
+
 The first question is whether the action set offers anything to route. Table
-\ref{tab:complementarity} and Figure~\ref{fig:headroom} answer it at the level
-of individual rows. Gross
+\ref{tab:complementarity} answers it at the level of individual rows. Gross
 complementarity is not scarce. On CodeXGLUE with Laya, \choice{} repairs 14 of
 the 60 \noul{} errors, and the per-row oracle reaches 0.783 accuracy against
 0.550 for the better fixed action, a headroom of 0.233. The same cell shows why
@@ -39,19 +40,6 @@ $-0.106$ $[-0.204,+0.021]$ and $-0.106$ $[-0.217,+0.015]$ for Vela on FinDVer.
 Every interval includes zero, so no fixed-action macro-F1 difference is
 significant; the positive accuracy-level net repair on FinDVer with Laya does
 not become a macro-F1 gain.
-
-\input{tables/tab_complementarity}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.74\linewidth]{figures/fig_headroom.pdf}
-\caption{Action complementarity. (a) On the training pool, the second action
-repairs errors but also breaks correct answers; the net count is printed above
-each pair. (b) The same train-selected direction applied to dev and confirm:
-the sign of net repair changes across pools, and only one confirm cell has an
-interval above zero.}
-\label{fig:headroom}
-\end{figure*}
 
 The location of the repairs matters as much as their count. Repairs
 concentrate in the middle and high bands,
