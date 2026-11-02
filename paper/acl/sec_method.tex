@@ -87,8 +87,7 @@ $\Delta(x)$:
 When the required confidence fields are missing, the evaluator fails closed:
 the row is forced to answer and is counted as incorrect rather than silently
 dropped. We report coverage (the fraction of rows answered) and selective
-accuracy (accuracy on answered rows). The two genomes never share an action set
-or a cost model, so we never pool their accuracy numbers.
+accuracy (accuracy on answered rows).
 
 Fitness combines task quality with the cost of the second call:
 \begin{equation}
@@ -102,8 +101,7 @@ class-imbalanced; accuracy is reported alongside it. The first \noul{} call is
 charged to every policy, including \noul-only, so the cost term isolates the
 incremental call rather than the total inference bill. Model outputs are
 generated once and replayed from an immutable JSON cache, which makes candidate
-evaluation deterministic and cheap. We measure end-to-end latency for the native
-actions but do not claim it for every searched policy.
+evaluation deterministic and cheap.
 
 The GA uses tournament selection, uniform crossover, Gaussian mutation and bit
 flips on $u$. The ES is a $(\mu+\lambda)$ strategy that mutates the two

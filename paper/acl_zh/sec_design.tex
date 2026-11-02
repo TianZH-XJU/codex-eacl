@@ -15,7 +15,7 @@
 所有推理在一台 Windows 机器上进行，CPU-only PyTorch，FP32，两个线程，同一
 时间只驻留一个模型。Laya 固定到源码修订 \texttt{b9fe351} 与检查点修订
 \texttt{7b928d8}；Vela 固定到修订 \texttt{d6f03aa}。峰值常驻内存低于
-2.2~GB。\texttt{search\_dev} 上的原生单动作基线见附录~\ref{app:native}：
+2.2~GB。\texttt{search\_dev} 上的原生单动作基线如下：
 CodeXGLUE 上 Laya 的准确率为 0.450/0.650（\noul/\choice），Vela 为
 0.633/0.667；FinDVer 上 Laya 为 0.712/0.644，Vela 为 0.458/0.458；
 ProcessBench 上两个模型的 \choice{} 准确率均为 0.10。两种表示的每次调用

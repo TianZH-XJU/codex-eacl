@@ -311,7 +311,7 @@ def tab_search() -> None:
                             n2_cf += 1
 
     body = (
-        r"""\begin{table}[t]
+        r"""\begin{table}[!b]
 \centering
 \small
 \caption{Search comparisons under the pre-registered protocol. Counts are

@@ -2,7 +2,7 @@
 \label{sec:results}
 
 第一个问题是动作集是否有值得路由的东西。表~\ref{tab:complementarity} 与
-图~\ref{fig:headroom}（附录~\ref{app:extra}）在逐行层面回答这个问题。总互补
+图~\ref{fig:headroom} 在逐行层面回答这个问题。总互补
 性并不稀缺。在 CodeXGLUE 与 Laya 上，\choice{} 修复了 60 个 \noul{} 错误中
 的 14 个，逐行 oracle 达到 0.783 准确率，而更好的固定动作为 0.550，上限为
 0.233。同一单元也说明上限为什么是一个糟糕的承诺：\choice{} 破坏了 15 个
@@ -25,8 +25,17 @@ Vela 在 confirm 上为负（$-2.3$ 点）。互补性存在于动作集中，�
 
 \input{tables/tab_complementarity}
 
-修复出现的位置与数量同样重要。图~\ref{fig:repair}（附录~\ref{app:extra}）
-画出修复率对 \noul{} 概率分箱的关系。修复集中在中间与高带，约
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{../acl/figures/fig_headroom.pdf}
+\caption{动作互补性。(a) 在训练池上，第二个动作修复错误，但也破坏正确答案；
+每对柱上方印有净计数。(b) 同一 train 选出方向应用到 dev 与 confirm：净修复
+的符号跨池变化，只有一个 confirm 单元的区间高于零。}
+\label{fig:headroom}
+\end{figure}
+
+修复出现的位置与数量同样重要。把修复率对 \noul{} 概率分箱作图，
+修复集中在中间与高带，约
 $p\in[0.4,0.8]$，在最低带接近零。这与置信度级联的假设相反：阈值规则在
 模型不确定时切换，而这恰恰是 \choice{} 最不可能修复任何东西的地方，因为
 它能修复的行是 \noul{} 自信却错误的地方。这也解释了为什么校准救不了路由：
@@ -47,9 +56,8 @@ Vela 在 dev 上为正（$+3.3$），在 confirm 上为负（$-1.7$）。没有�
 
 \input{tables/tab_predictability}
 
-校准是对基于概率的路由失败最自然的解释，因此它作为对照。表~\ref{tab:calibration}
-与附录~\ref{app:extra} 中的图~\ref{fig:calibration} 表明，原始概率在 confirm
-上校准很差：ECE 从 0.090 到 0.290，Brier 从 0.218 到 0.287。在
+校准是对基于概率的路由失败最自然的解释，因此它作为对照。原始概率在
+confirm 上校准很差：ECE 从 0.090 到 0.290，Brier 从 0.218 到 0.287。在
 \texttt{search\_train} 上拟合的温度缩放在四个单元中的三个降低 ECE（到
 0.045--0.169），并在四个单元中全部降低 Brier。路由不受影响：原始概率给出的
 confirm 净修复为 $-5.0$、$0.0$、$+2.3$ 与 $-2.3$ 点，温度缩放后为 $-1.7$、
@@ -80,8 +88,7 @@ FinDVer 单元为 $+0.44$ 与 $+0.99$。把 CodeXGLUE/Vela 的预算从 24 提�
 48 并没有缩小差距：GA 在 48 的上限下只评估了 22、17 与 23 个唯一基因组，
 而随机搜索用满了 48 个。搜索不只是调参不足，而是信息不足。
 
-边界检查问这些结论是否是某个池或任务的产物。附录~\ref{app:boundary} 报告
-迁移表与故障图。迁移一致地没有帮助：在 32 个源—目标乘划分单元中，有六个
+边界检查问这些结论是否是某个池或任务的产物。迁移一致地没有帮助：在 32 个源—目标乘划分单元中，有六个
 相对目标的固定切换策略存在显著配对差异，且六个全部为负（两个对角线，四个
 非对角线）。故障图更细致：15 个合格单元中，13 个在 dev 上被确认，10 个在
 confirm 上被确认。confirm 严重度最高的是 ProcessBench（Vela/中 0.833，

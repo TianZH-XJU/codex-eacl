@@ -7,14 +7,13 @@ advantage over fixed policies or budget-matched random search.
 
 Gross complementarity is real---a per-row oracle gains up to 23.3 accuracy
 points---but harmful switches offset repairs, and the net balance is small,
-metric-dependent and unstable across pools. Repairs concentrate at mid and high
-\noul{} probability, whereas confidence cascades switch at low probability.
-Calibration and action-value prediction dissociate: temperature scaling
+metric-dependent and unstable across pools. Calibration and action-value
+prediction dissociate: temperature scaling
 improves ECE and Brier but not row order, and in both FinDVer cells the
 probability ranks repairable rows below chance. The search landscape is flat:
 most mutations are neutral, most runs plateau at generation zero, and the
 training ranking does not predict the dev ranking.
 
 Limits are part of the result: pools are small, the \noul{} template was not
-audited, only two open models were run, and the locked test remains unrun. The
-next step is a supervision target judged by held-out net utility.
+audited, only two open models were run, and the locked test remains unrun. Next:
+a supervision target judged by held-out net utility.

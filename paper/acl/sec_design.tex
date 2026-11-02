@@ -7,8 +7,7 @@ only from the official training split, and functions are grouped by an exact
 hash of their text so that identical functions cannot cross the internal
 \texttt{search\_train}, \texttt{selection\_dev} and \texttt{confirm} pools
 \citep{lu2021codexglue,zhou2019devign}. Each internal pool contains 60
-functions. This controls duplicate-function leakage but is not a project-level
-holdout. FinDVer provides financial claims with \texttt{supported}/\texttt{not
+functions. This controls duplicate-function leakage. FinDVer provides financial claims with \texttt{supported}/\texttt{not
 supported} labels; its pools are grouped by report, and contain 60, 59 and 44
 claims \citep{zhao2024findver}. The official FinDVer test labels are not used
 for controller search. ProcessBench contains 3{,}400 annotated records over
@@ -21,8 +20,8 @@ All inference runs on one Windows machine with CPU-only PyTorch in FP32, two
 threads and one model resident at a time. Laya is pinned to source revision
 \texttt{b9fe351} and checkpoint revision \texttt{7b928d8}; Vela is pinned to
 revision \texttt{d6f03aa}. Peak resident memory stays below 2.2~GB. The native
-single-action baselines on \texttt{search\_dev} are reported in
-Appendix~\ref{app:native}: CodeXGLUE accuracy is 0.450/0.650 for Laya
+single-action baselines on \texttt{search\_dev} are as follows: CodeXGLUE
+accuracy is 0.450/0.650 for Laya
 (\noul/\choice) and 0.633/0.667 for Vela; FinDVer is 0.712/0.644 for Laya and
 0.458/0.458 for Vela; ProcessBench \choice{} accuracy is 0.10 for both models.
 The near-identical per-call latency of the two representations (about
@@ -70,8 +69,7 @@ search trajectory itself: best-so-far fitness per generation, the number of
 unique genomes actually evaluated, the fraction of single-gene mutations that
 leave fitness unchanged, the rank correlation between train and dev fitness
 across the archive, and the effect of raising the budget cap from 24 to 48 on
-CodeXGLUE with Vela. These diagnostics use existing logs and caches and add no
-model calls.
+CodeXGLUE with Vela.
 
 E5 checks two boundaries. The transfer experiment freezes each source-task
 genome and applies it to every target task and pool without re-searching;

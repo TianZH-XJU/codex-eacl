@@ -2,8 +2,8 @@
 \label{sec:results}
 
 The first question is whether the action set offers anything to route. Table
-\ref{tab:complementarity} and Figure~\ref{fig:headroom}
-(Appendix~\ref{app:extra}) answer it at the level of individual rows. Gross
+\ref{tab:complementarity} and Figure~\ref{fig:headroom} answer it at the level
+of individual rows. Gross
 complementarity is not scarce. On CodeXGLUE with Laya, \choice{} repairs 14 of
 the 60 \noul{} errors, and the per-row oracle reaches 0.783 accuracy against
 0.550 for the better fixed action, a headroom of 0.233. The same cell shows why
@@ -23,8 +23,8 @@ $[+2.0,+24.6]$, and the fixed-action accuracy difference is $+0.136$
 $[+0.020,+0.246]$. The corresponding macro-F1 difference, however, is $+0.111$
 with an interval that crosses zero, and the better fixed action reverses from
 \noul{} on dev to \choice{} on confirm. The cell therefore contains a real
-accuracy-level repair signal on confirm, but not a macro-F1 gain, and not a
-direction that a train-selected policy could have known to exploit. CodeXGLUE
+accuracy-level repair signal on confirm, but no macro-F1 gain and no direction
+a train-selected policy could have exploited. CodeXGLUE
 with Vela moves the other way: the frozen direction is \choice{}-to-\noul{},
 the train net is $-6$, and confirm is exactly zero. FinDVer with Vela is negative
 on confirm ($-2.3$ points). Complementarity exists in the action set, but it is
@@ -32,9 +32,19 @@ sparse, metric-dependent and pool-dependent.
 
 \input{tables/tab_complementarity}
 
-The location of the repairs matters as much as their count. Figure
-\ref{fig:repair} (Appendix~\ref{app:extra}) plots the repair rate against the
-\noul{} probability bin. Repairs concentrate in the middle and high bands,
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.74\linewidth]{figures/fig_headroom.pdf}
+\caption{Action complementarity. (a) On the training pool, the second action
+repairs errors but also breaks correct answers; the net count is printed above
+each pair. (b) The same train-selected direction applied to dev and confirm:
+the sign of net repair changes across pools, and only one confirm cell has an
+interval above zero.}
+\label{fig:headroom}
+\end{figure*}
+
+The location of the repairs matters as much as their count. Repairs
+concentrate in the middle and high bands,
 around $p\in[0.4,0.8]$, and are close to zero in the lowest band. This is the
 opposite of what a confidence cascade assumes: a threshold rule switches when
 the model is uncertain, which is precisely where \choice{} is least likely to
@@ -46,11 +56,11 @@ repairable rows from the middle of the distribution to the low-confidence tail.
 The second question is whether the incremental value of \choice{} is
 predictable from the first call. Table~\ref{tab:predictability} reports
 out-of-fold ranking quality and the net utility of the frozen dev-selected
-policy. Ranking quality varies widely. Logistic regression reaches 0.674 on
+policy. Logistic regression reaches 0.674 on
 CodeXGLUE with Laya and 0.919 on FinDVer with Vela; the tree reaches 0.739 on
 CodeXGLUE with Laya. On FinDVer with Laya both predictors are near chance (0.455
 and 0.466), unsurprising given that the cell has only five training repairs. The
-policy results are weaker than the ranking results. The best dev policy for
+best dev policy for
 CodeXGLUE with Laya is logistic regression with a threshold that switches every
 row: dev net $+20.0$ points, confirm net $+1.7$ points and a cost-adjusted
 $-3.3$. The FinDVer/Vela cell, despite the highest OOF AUROC, chooses a policy
@@ -64,9 +74,8 @@ and estimated with enough support to matter.
 \input{tables/tab_predictability}
 
 Calibration is the most natural explanation for a failed probability-based
-router, so it serves as a control. Table~\ref{tab:calibration} and
-Figure~\ref{fig:calibration} in Appendix~\ref{app:extra} show that raw
-probabilities are poorly calibrated on confirm: ECE ranges from 0.090 to 0.290
+router, so it serves as a control. Raw probabilities are poorly calibrated on
+confirm: ECE ranges from 0.090 to 0.290
 and Brier scores from 0.218 to 0.287. Temperature scaling, fitted on
 \texttt{search\_train}, reduces ECE in three of four cells (to 0.045--0.169) and
 Brier in all four. Routing is unaffected: raw probabilities give confirm net
@@ -109,8 +118,7 @@ close the gap: the GA evaluates only 22, 17 and 23 unique genomes under a cap of
 under-informed.
 
 The boundary checks ask whether these conclusions are artefacts of one pool or
-task. Appendix~\ref{app:boundary} reports the transfer table and fault map.
-Transfer is uniformly unhelpful: of 32 source--target by split units, six have a
+task. Transfer is uniformly unhelpful: of 32 source--target by split units, six have a
 significant paired difference against the target's fixed switch policy, and all
 six are negative (two diagonal, four off-diagonal). The fault map is more
 nuanced: of 15 eligible cells, 13 are confirmed on dev and 10 on confirm. The
@@ -123,12 +131,9 @@ probability can create a repair.
 Taken together, the three questions describe a routing problem that fails before
 the optimiser is asked to solve it: RQ1 finds gross but no stable net
 complementarity, RQ2 finds ranking signal without reliable policy value, and RQ3
-finds no held-out advantage because the landscape is flat and the training
-ranking does not predict the dev ranking where it matters.
+finds no held-out advantage because train fitness does not identify dev-better
+policies.
 
-The practical implication is a change in the order of work. Before building a
-router, measure whether the action set has net complementarity on held-out
-groups and whether the candidate features rank repairable rows above chance. If
-either check fails, a stronger optimiser will not help; if both pass, the
-optimiser comparison can be run under a matched budget with a pre-registered
-confirm comparison.
+Practically, measure net complementarity on held-out groups and whether
+candidate features rank repairable rows consistently before building a router;
+if either check fails, a stronger optimiser will not help.
