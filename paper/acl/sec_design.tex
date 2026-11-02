@@ -37,7 +37,7 @@ the cost term in Equation~\ref{eq:fitness}. The native numbers already contain a
 on the task and the model, and on FinDVer the two Vela actions are
 indistinguishable at the aggregate level.
 
-E1 measures action complementarity without training a router. For each
+The first experiment measures action complementarity without training a router. For each
 task--model cell we take the better fixed action on \texttt{search\_train} and
 freeze that direction; we then count rows where the alternative action repairs a
 base error, rows where it breaks a correct base answer, and their difference.
@@ -50,9 +50,10 @@ fixed \noul{} on the same rows. ProcessBench has only one evaluated
 representation, so its headroom is zero by construction and it is excluded from
 the binary complementarity table.
 
-E2 asks whether the incremental utility of the second action is predictable
-before that action is executed. The prediction target is whether switching
-would repair the current \noul{} error. The features are deployable at the
+The second experiment asks whether the signed incremental value of the second
+action is predictable before that action is executed. The target is
+$\Delta_i=\mathbf{1}[\choice_i\text{ correct}]-
+\mathbf{1}[\noul_i\text{ correct}]\in\{-1,0,+1\}$. The features are deployable at the
 moment of decision: $p$, $|p-0.5|$ and the binary entropy $-p\log p -
 (1-p)\log(1-p)$; no \choice{} output, gold label or downstream feature is used.
 We compare logistic regression, a shallow decision tree, a single confidence
@@ -64,21 +65,21 @@ divided by the number of rows; the cost-adjusted variant subtracts
 $\lambda=0.05$ per switch. A champion that switches every row is retained, because it reveals
 whether the predictor adds anything beyond fixed switching.
 
-E3 compares optimisers under a matched evaluation budget. GA, ES and NSGA-II
+The search comparison runs optimisers under a matched evaluation budget. GA, ES and NSGA-II
 are run on the cached pools with 24 unique genome evaluations and seeds 17, 23
 and 41; the five-seed extension adds 59 and 73. Random search receives the same
 budget. The primary deployment comparison is pre-specified: the GA genome
 selected on \texttt{search\_train} is frozen and compared with fixed
 switch-only on \texttt{confirm} using paired group-bootstrap macro-F1 intervals.
 All other cell-level comparisons are exploratory and are reported with effect
-estimates and intervals rather than as significance claims. E4 examines the
+estimates and intervals rather than as significance claims. We then examine the
 search trajectory itself: best-so-far fitness per generation, the number of
 unique genomes actually evaluated, the fraction of single-gene mutations that
 leave fitness unchanged, the rank correlation between train and dev fitness
 across the archive, and the effect of raising the budget cap from 24 to 48 on
 CodeXGLUE with Vela.
 
-E5 checks two boundaries. The transfer experiment freezes each source-task
+Two boundary checks test whether the conclusions generalise. The transfer experiment freezes each source-task
 genome and applies it to every target task and pool without re-searching;
 diagonal cells are same-task deployment checks, off-diagonal cells are true
 transfer. The fault map partitions rows by task, model and a confidence band

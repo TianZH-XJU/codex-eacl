@@ -21,10 +21,10 @@ OUT_ZH.mkdir(parents=True, exist_ok=True)
 
 CELLS = ["code_laya", "code_vela", "findver_laya", "findver_vela"]
 CELL_TEX = {
-    "code_laya": "CodeXGLUE / Laya",
-    "code_vela": "CodeXGLUE / Vela",
-    "findver_laya": "FinDVer / Laya",
-    "findver_vela": "FinDVer / Vela",
+    "code_laya": "CodeXGLUE (Laya)",
+    "code_vela": "CodeXGLUE (Vela)",
+    "findver_laya": "FinDVer (Laya)",
+    "findver_vela": "FinDVer (Vela)",
 }
 TASK_TEX = {"code": "CodeXGLUE", "findver": "FinDVer", "math": "ProcessBench"}
 

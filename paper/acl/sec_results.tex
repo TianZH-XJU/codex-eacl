@@ -13,8 +13,8 @@ The other three binary cells have smaller gross opportunities (headroom
 0.067--0.100) and net counts between $-6$ and $+1$. Across the four cells, the
 training pool never produces a net repair distinguishable from zero.
 
-Held-out pools do not turn the gross opportunity into a stable net gain. The
-CodeXGLUE/Laya cell gains 20.0 points on \texttt{selection\_dev}
+Held-out pools do not turn the gross opportunity into a stable net gain.
+Laya on CodeXGLUE gains 20.0 points on \texttt{selection\_dev}
 ($[+1.7,+38.3]$), but the same frozen direction gains only 1.7 points on confirm
 ($[-18.3,+20.0]$). That gap is a selection-pool effect, not a routing effect:
 dev is the pool on which the direction was chosen. FinDVer with Laya is the
@@ -32,13 +32,13 @@ sparse, metric-dependent and pool-dependent.
 
 Because macro-F1 is the primary metric, we also compute the fixed-action
 difference on dev and confirm. \choice{} minus \noul{} is $+0.074$
-$[-0.093,+0.248]$ and $-0.127$ $[-0.287,+0.034]$ for CodeXGLUE/Laya; $+0.003$
-$[-0.194,+0.197]$ and $+0.078$ $[-0.111,+0.253]$ for CodeXGLUE/Vela; $-0.072$
-$[-0.220,+0.046]$ and $+0.111$ $[-0.007,+0.218]$ for FinDVer/Laya; and
-$-0.106$ $[-0.204,+0.021]$ and $-0.106$ $[-0.217,+0.015]$ for FinDVer/Vela.
+$[-0.093,+0.248]$ and $-0.127$ $[-0.287,+0.034]$ for Laya on CodeXGLUE; $+0.003$
+$[-0.194,+0.197]$ and $+0.078$ $[-0.111,+0.253]$ for Vela on CodeXGLUE; $-0.072$
+$[-0.220,+0.046]$ and $+0.111$ $[-0.007,+0.218]$ for Laya on FinDVer; and
+$-0.106$ $[-0.204,+0.021]$ and $-0.106$ $[-0.217,+0.015]$ for Vela on FinDVer.
 Every interval includes zero, so no fixed-action macro-F1 difference is
-significant; the positive accuracy-level FinDVer/Laya net repair does not
-become a macro-F1 gain.
+significant; the positive accuracy-level net repair on FinDVer with Laya does
+not become a macro-F1 gain.
 
 \input{tables/tab_complementarity}
 
@@ -73,10 +73,10 @@ $+0.13$ and $-0.17$; every group-bootstrap interval includes zero.
 Signed-$\Delta$ repair AUROC is 0.36, 0.74, 0.46 and 0.40, and regression
 AUROC 0.61, 0.33, 0.71 and 0.36. The dev-selected thresholds yield confirm raw
 nets of $0.0$, $0.0$, $0.0$ and $-2.3$ points, and cost-adjusted nets of
-$0.0$, $0.0$, $-0.1$ and $-2.8$ points; no cell is positive, and
-FinDVer/Vela's cost interval $[-7.5,-0.1]$ is negative. CodeXGLUE/Vela never
-switches (0/60). The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
-$-2.3$, so it forgoes the $+13.6$ FinDVer/Laya gain. A repair-target predictor
+$0.0$, $0.0$, $-0.1$ and $-2.8$ points; no cell is positive, and the cost
+interval for Vela on FinDVer, $[-7.5,-0.1]$, is negative. Vela on CodeXGLUE
+never switches (0/60). The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
+$-2.3$, so it forgoes the $+13.6$ gain on FinDVer with Laya. A repair-target predictor
 reaches 0.92 repair AUROC but also fails on confirm.
 
 \input{tables/tab_predictability}
@@ -86,7 +86,7 @@ router, so it serves as a control. Raw probabilities are poorly calibrated on
 confirm: ECE ranges from 0.090 to 0.290
 and Brier scores \citep{brier1950verification} from 0.218 to 0.287. Temperature scaling, fitted on
 \texttt{search\_train}, reduces ECE in three of four cells (to 0.045--0.169) and
-Brier in three of four; both rise slightly on FinDVer/Vela. The achievable band
+Brier in three of four; both rise slightly for Vela on FinDVer. The achievable band
 class is unchanged, but the selected policies move: raw probabilities give
 confirm net repairs of $-5.0$, $0.0$, $+2.3$ and $-2.3$ points, temperature-scaled
 ones give $-1.7$, $+1.7$, $0.0$ and $0.0$, consistent with threshold-selection
@@ -100,19 +100,19 @@ GA versus
 random search is the cleanest test of optimiser value: with five seeds, four
 task--model cells and three pools, there are 60 paired macro-F1 comparisons, and
 none has an interval that excludes zero. GA versus fixed switch-only has five
-significant positive cells, all on the FinDVer/Vela training pool and all with
+significant positive cells, all on the FinDVer training pool with Vela and all with
 an effect near $+0.12$; on dev and confirm, none of the 40 comparisons is
 significant. The pre-specified deployment comparison---train-selected GA
 against fixed switch-only on confirm---is null in every seed-level cell. ES
 versus random search is null in all 30 comparisons; ES versus fixed switching
 has three significant training cells and one positive seed-level estimate on
-confirm (CodeXGLUE/Laya, seed 17, $+0.176$). That estimate is not replicated
+confirm (CodeXGLUE with Laya, seed 17, $+0.176$). That estimate is not replicated
 across seeds and is treated as exploratory. NSGA-II deployment is significantly
 worse than the fixed baseline in five dev cells and one confirm cell, with no
 positive cell. No optimiser beats the better fixed action at this budget.
 
 Table~\ref{tab:locked} reports the one-shot locked test. GA beats fixed
-\choice{} only in FinDVer/Vela ($+0.243$ $[+0.138,+0.318]$), where \choice{} is
+\choice{} only for Vela on FinDVer ($+0.243$ $[+0.138,+0.318]$), where \choice{} is
 the worse action (0.413 vs 0.677 for fixed \noul{}); the GA stays on \noul{}
 (1.00--1.05 calls/row) and does not beat \noul{} ($-0.021$ $[-0.081,0.000]$).
 No GA genome beats the better fixed action in any cell; seeds 23 and 41 show
