@@ -1,4 +1,4 @@
-\begin{thebibliography}{44}
+\begin{thebibliography}{47}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Aggarwal et~al.(2024)Aggarwal, Madaan, Yang
@@ -14,6 +14,11 @@ Xavier Bouthillier, Pierre Delaunay, Mirko Bronzi, Assya Trofimov, Jordan
 \newblock Accounting for variance in machine learning benchmarks.
 \newblock In \emph{Proceedings of Machine Learning and Systems}, volume~3.
 
+\bibitem[{Brier(1950)}]{brier1950verification}
+Glenn~W. Brier. 1950.
+\newblock Verification of forecasts expressed in terms of probability.
+\newblock \emph{Monthly Weather Review}, 78(1):1--3.
+
 \bibitem[{Chen et~al.(2024)Chen, Zaharia, and Zou}]{chen2024frugalgpt}
 Lingjiao Chen, Matei Zaharia, and James Zou. 2024.
 \newblock {FrugalGPT}: How to use large language models while reducing cost and
@@ -24,6 +29,14 @@ Lingjiao Chen, Matei Zaharia, and James Zou. 2024.
 C.~K. Chow. 1970.
 \newblock On optimum recognition error and reject tradeoff.
 \newblock \emph{IEEE Transactions on Information Theory}, 16(1):41--46.
+
+\bibitem[{Chuang et~al.(2025)Chuang, Sarma, Gopalan, Boccio, Bolouki, Hu, and
+  Zhou}]{chuang2025learning}
+Yu-Neng Chuang, Prathusha~Kameswara Sarma, Parikshit Gopalan, John Boccio, Sara
+  Bolouki, Xia Hu, and Helen Zhou. 2025.
+\newblock Learning to route {LLM}s with confidence tokens.
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine
+  Learning}, volume 267 of \emph{PMLR}, pages 10859--10878.
 
 \bibitem[{Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, Chen, Jun, Kaiser,
   Plappert, Tworek, Hilton, Nakano, Hesse, and Schulman}]{cobbe2021gsm8k}
@@ -205,6 +218,12 @@ Quinn McNemar. 1947.
 \newblock Note on the sampling error of the difference between correlated
   proportions or percentages.
 \newblock \emph{Psychometrika}, 12(2):153--157.
+
+\bibitem[{Mozannar and Sontag(2020)}]{mozannar2020consistent}
+Hussein Mozannar and David Sontag. 2020.
+\newblock Consistent estimators for learning to defer to an expert.
+\newblock In \emph{Proceedings of the 37th International Conference on Machine
+  Learning}, volume 119 of \emph{PMLR}.
 
 \bibitem[{Ong et~al.(2024)Ong, Almahairi, Wu et~al.}]{ong2024routellm}
 Isaac Ong, Amjad Almahairi, Vincent Wu, et~al. 2024.

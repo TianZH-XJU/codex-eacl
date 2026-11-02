@@ -1,19 +1,22 @@
 \begin{table}[t]
 \centering
 \footnotesize
-\caption{增量效用预测。折外 AUROC 在 \texttt{search\_train} 上使用分组感知
-三折交叉验证；冠军模型与阈值在 \texttt{search\_dev} 上选择，冻结后用于
-\texttt{confirm}。净效用为（修复 $-$ 退化）$/n$，单位为百分点，括号内为
-计数；最后一列每次额外调用减去 $\lambda=0.05$。}
+\caption{有符号增量效用预测。目标为
+$\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ 正确}]-
+\mathbf{1}[\textsc{Noul}_i\text{ 正确}]\in\{-1,0,+1\}$。折外 $\rho$ 是
+\texttt{search\_train} 上分组感知三折交叉验证中预测与真实 $\Delta$ 的
+Spearman 相关；阈值在 \texttt{search\_dev} 上选择并冻结用于
+\texttt{confirm}。净效用为平均 $\Delta$ 减去每次切换 $\lambda=0.05$，单位为
+百分点，区间为 95\% 分组自助法。最后一列为 confirm 行中的切换数。}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrlrrr@{}}
+\begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-任务 / 模型 & LogReg 折外 & 树 折外 & 冠军 & dev 净 & confirm 净 & confirm 成本调整 \\
+任务 / 模型 & 折外 $\rho$ & 修复 AUROC & 退化 AUROC & dev 净 & confirm 净 (95\% CI) & 切换/行 \\
 \midrule
-CodeXGLUE / Laya & 0.674 & 0.739 & logreg & +20.0 (23/11) & +1.7 (17/16) & -3.3 \\
-CodeXGLUE / Vela & 0.716 & 0.646 & logreg & +3.3 (7/5) & -1.7 (9/10) & -6.4 \\
-FinDVer / Laya & 0.455 & 0.466 & tree & +1.7 (1/0) & +2.3 (1/0) & +1.5 \\
-FinDVer / Vela & 0.919 & 0.794 & logreg & +3.4 (4/2) & -2.3 (0/1) & -2.6 \\
+CodeXGLUE / Laya & -0.02 & 0.360 & 0.607 & +21.7 & +0.0 [-18.8, +13.0] & 42/60 \\
+CodeXGLUE / Vela & +0.19 & 0.744 & 0.335 & +3.3 & -1.7 [-19.8, +8.5] & 54/60 \\
+FinDVer / Laya & +0.13 & 0.458 & 0.707 & +1.7 & +0.0 [-0.3, +0.0] & 1/44 \\
+FinDVer / Vela & -0.17 & 0.396 & 0.361 & +3.4 & -2.3 [-7.7, -0.1] & 5/44 \\
 \bottomrule
 \end{tabular}
 \end{table}

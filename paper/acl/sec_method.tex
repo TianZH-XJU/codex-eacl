@@ -48,10 +48,10 @@ fitness $J$. The dashed path is offline; the solid path is the deployed policy.}
 For the binary tasks, CodeXGLUE and FinDVer, the first action is \noul{}: the
 model answers a yes/no question and returns $p(x)=P(\text{true}\mid x)$. The
 second action is \choice{}: the model selects between two named labels. In
-CodeXGLUE the questions are whether a function contains a vulnerability and
-whether it should be labelled \texttt{secure} or \texttt{vulnerable}; in
-FinDVer they are whether a claim is supported and whether it should be labelled
-\texttt{supported} or \texttt{not supported}. The cascade always pays for
+CodeXGLUE the \noul{} question is ``Does this function contain a
+vulnerability?'' and the \choice{} options are \texttt{secure} and
+\texttt{vulnerable}; in FinDVer they are ``Is the claim supported by the
+report?'' and \texttt{supported}/\texttt{not supported}. The cascade always pays for
 \noul{} first and pays for \choice{} only when the gate opens. A policy is a
 genome $g_{\mathrm{cas}}=(\ell,h,u)$ with $\ell,h\in[0,1]$ and
 $u\in\{0,1\}$:

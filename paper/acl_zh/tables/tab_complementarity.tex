@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \footnotesize
-\caption{动作互补性，train 选出的方向跨池冻结（每单元 $n=60$）。\emph{上限}
+\caption{动作互补性，train 选出的方向跨池冻结（每训练单元 $n=60$；FinDVer dev/confirm：59/44）。\emph{上限}
 是逐行 oracle 相对 \texttt{search\_train} 上更好固定动作的准确率增益；
 \emph{修复/有害}统计替代动作修复或破坏基础决策的行数。净修复是配对差值
 （百分点，替代动作减基础动作），dev 与 confirm 上给出 95\% 分组自助法区间。
@@ -12,9 +12,9 @@
 任务 / 模型 & 方向 & 上限 & 修复/有害 & dev 净 (95\% CI) & confirm 净 (95\% CI) \\
 \midrule
 CodeXGLUE / Laya & Noul$\to$Choice & 0.233 & 14/15 & +20.0 [+1.7, +38.3] & +1.7 [-18.3, +20.0] \\
-CodeXGLUE / Vela & Switch$\to$Noul & 0.067 & 4/10 & -3.3 [-15.0, +8.3] & +0.0 [-15.0, +15.0] \\
+CodeXGLUE / Vela & Choice$\to$Noul & 0.067 & 4/10 & -3.3 [-15.0, +8.3] & +0.0 [-15.0, +15.0] \\
 FinDVer / Laya & Noul$\to$Choice & 0.083 & 5/6 & -6.8 [-23.3, +6.0] & +13.6 [+2.0, +24.6] \\
-FinDVer / Vela & Switch$\to$Noul & 0.100 & 6/7 & +0.0 [-9.1, +11.5] & -2.3 [-10.3, +5.0] \\
+FinDVer / Vela & Choice$\to$Noul & 0.100 & 6/7 & +0.0 [-9.1, +11.5] & -2.3 [-10.3, +5.0] \\
 \bottomrule
 \end{tabular}
 \end{table}

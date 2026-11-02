@@ -59,9 +59,9 @@ the second action's incremental utility. Gross repair opportunities exist---a
 per-row oracle gains up to 23.3 accuracy points over the better fixed
 action---but net repair is sparse and pool-dependent: only one of four confirm
 cells has a positive accuracy interval, and its macro-F1 interval still spans
-zero. Probability features rank repairable rows above chance in some pools
-(out-of-fold AUROC up to 0.92), yet frozen thresholds do not gain on held-out
-data. The genetic algorithm achieves no significant win over random search in 60
+zero. A predictor trained on signed incremental utility ranks no better than
+chance out of fold ($|\text{Spearman}|\le 0.19$) and yields non-positive
+confirm net utility in all four cells. The genetic algorithm achieves no significant win over random search in 60
 paired comparisons, and its five significant training-pool wins over fixed
 switching are not reproduced on dev and confirm. Search plateaus at generation zero in 15 of 21 runs. Temperature
 scaling reduces calibration error but cannot create routing signal, because

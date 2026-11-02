@@ -2,7 +2,7 @@
 \centering
 \footnotesize
 \caption{Action complementarity with the train-selected direction frozen across
-pools ($n=60$ per cell). \emph{Headroom} is the accuracy gain of a per-row
+pools ($n=60$ per training cell; FinDVer dev/confirm: 59/44). \emph{Headroom} is the accuracy gain of a per-row
 oracle over the better fixed action on \texttt{search\_train};
 \emph{repair/harmful} counts rows where the alternative fixes or breaks the
 base decision. Net repair is the paired difference in percentage points
@@ -14,9 +14,9 @@ confirm. Headroom is an upper bound, not a deployable gain.}
 Task / model & Direction & Headroom & Repair/harmful & Net dev (95\% CI) & Net confirm (95\% CI) \\
 \midrule
 CodeXGLUE / Laya & Noul$\to$Choice & 0.233 & 14/15 & +20.0 [+1.7, +38.3] & +1.7 [-18.3, +20.0] \\
-CodeXGLUE / Vela & Switch$\to$Noul & 0.067 & 4/10 & -3.3 [-15.0, +8.3] & +0.0 [-15.0, +15.0] \\
+CodeXGLUE / Vela & Choice$\to$Noul & 0.067 & 4/10 & -3.3 [-15.0, +8.3] & +0.0 [-15.0, +15.0] \\
 FinDVer / Laya & Noul$\to$Choice & 0.083 & 5/6 & -6.8 [-23.3, +6.0] & +13.6 [+2.0, +24.6] \\
-FinDVer / Vela & Switch$\to$Noul & 0.100 & 6/7 & +0.0 [-9.1, +11.5] & -2.3 [-10.3, +5.0] \\
+FinDVer / Vela & Choice$\to$Noul & 0.100 & 6/7 & +0.0 [-9.1, +11.5] & -2.3 [-10.3, +5.0] \\
 \bottomrule
 \end{tabular}
 \end{table*}

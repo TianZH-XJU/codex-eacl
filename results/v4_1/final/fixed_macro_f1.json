@@ -1,0 +1,267 @@
+{
+  "experiment_id": "EXP-01B",
+  "created_utc": "2026-11-02T08:57:57.602252+00:00",
+  "repo_commit": "5b38bb15be6ab501726afbc194158653f8656d07",
+  "protocol_version": "v4.1",
+  "analysis_script": "analyze_fixed_macro_f1.py",
+  "analysis_type": "exploratory",
+  "target": "fixed Noul vs fixed Choice macro-F1 on held-out pools",
+  "cells": {
+    "code_laya": {
+      "n_dev": 60,
+      "n_confirm": 60,
+      "n_groups": {
+        "dev": 60,
+        "confirm": 60
+      },
+      "splits": {
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "dev": {
+        "noul": {
+          "macro_f1": 0.4486,
+          "accuracy": 0.45
+        },
+        "choice": {
+          "macro_f1": 0.5225,
+          "accuracy": 0.65
+        },
+        "delta_macro_f1": {
+          "est": 0.0739,
+          "ci95": [
+            -0.0928,
+            0.2481
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": 0.2,
+          "ci95": [
+            0.0167,
+            0.3833
+          ],
+          "n_boot": 5000
+        }
+      },
+      "confirm": {
+        "noul": {
+          "macro_f1": 0.5489,
+          "accuracy": 0.55
+        },
+        "choice": {
+          "macro_f1": 0.4222,
+          "accuracy": 0.5667
+        },
+        "delta_macro_f1": {
+          "est": -0.1267,
+          "ci95": [
+            -0.2868,
+            0.0341
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": 0.0167,
+          "ci95": [
+            -0.1833,
+            0.2
+          ],
+          "n_boot": 5000
+        }
+      }
+    },
+    "code_vela": {
+      "n_dev": 60,
+      "n_confirm": 60,
+      "n_groups": {
+        "dev": 60,
+        "confirm": 60
+      },
+      "splits": {
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "dev": {
+        "noul": {
+          "macro_f1": 0.5312,
+          "accuracy": 0.6333
+        },
+        "choice": {
+          "macro_f1": 0.5342,
+          "accuracy": 0.6667
+        },
+        "delta_macro_f1": {
+          "est": 0.003,
+          "ci95": [
+            -0.1941,
+            0.1968
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": 0.0334,
+          "ci95": [
+            -0.0833,
+            0.15
+          ],
+          "n_boot": 5000
+        }
+      },
+      "confirm": {
+        "noul": {
+          "macro_f1": 0.446,
+          "accuracy": 0.5667
+        },
+        "choice": {
+          "macro_f1": 0.5238,
+          "accuracy": 0.5667
+        },
+        "delta_macro_f1": {
+          "est": 0.0778,
+          "ci95": [
+            -0.1105,
+            0.253
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": 0.0,
+          "ci95": [
+            -0.15,
+            0.1334
+          ],
+          "n_boot": 5000
+        }
+      }
+    },
+    "findver_laya": {
+      "n_dev": 59,
+      "n_confirm": 44,
+      "n_groups": {
+        "dev": 16,
+        "confirm": 16
+      },
+      "splits": {
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "dev": {
+        "noul": {
+          "macro_f1": 0.7089,
+          "accuracy": 0.7119
+        },
+        "choice": {
+          "macro_f1": 0.6374,
+          "accuracy": 0.6441
+        },
+        "delta_macro_f1": {
+          "est": -0.0715,
+          "ci95": [
+            -0.2199,
+            0.0457
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": -0.0678,
+          "ci95": [
+            -0.2353,
+            0.0615
+          ],
+          "n_boot": 5000
+        }
+      },
+      "confirm": {
+        "noul": {
+          "macro_f1": 0.4958,
+          "accuracy": 0.5
+        },
+        "choice": {
+          "macro_f1": 0.6071,
+          "accuracy": 0.6364
+        },
+        "delta_macro_f1": {
+          "est": 0.1113,
+          "ci95": [
+            -0.0067,
+            0.2176
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": 0.1364,
+          "ci95": [
+            0.0204,
+            0.25
+          ],
+          "n_boot": 5000
+        }
+      }
+    },
+    "findver_vela": {
+      "n_dev": 59,
+      "n_confirm": 44,
+      "n_groups": {
+        "dev": 16,
+        "confirm": 16
+      },
+      "splits": {
+        "dev": "search_dev",
+        "confirm": "confirm"
+      },
+      "dev": {
+        "noul": {
+          "macro_f1": 0.4201,
+          "accuracy": 0.4576
+        },
+        "choice": {
+          "macro_f1": 0.314,
+          "accuracy": 0.4576
+        },
+        "delta_macro_f1": {
+          "est": -0.1061,
+          "ci95": [
+            -0.2035,
+            0.0213
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": 0.0,
+          "ci95": [
+            -0.091,
+            0.1132
+          ],
+          "n_boot": 5000
+        }
+      },
+      "confirm": {
+        "noul": {
+          "macro_f1": 0.6174,
+          "accuracy": 0.7045
+        },
+        "choice": {
+          "macro_f1": 0.5111,
+          "accuracy": 0.6818
+        },
+        "delta_macro_f1": {
+          "est": -0.1063,
+          "ci95": [
+            -0.2171,
+            0.0153
+          ],
+          "n_boot": 5000
+        },
+        "delta_accuracy": {
+          "est": -0.0227,
+          "ci95": [
+            -0.1,
+            0.0488
+          ],
+          "n_boot": 5000
+        }
+      }
+    }
+  }
+}

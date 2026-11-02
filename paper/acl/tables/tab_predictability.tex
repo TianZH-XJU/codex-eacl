@@ -1,20 +1,23 @@
 \begin{table*}[t]
 \centering
-\footnotesize
-\caption{Incremental-utility prediction. OOF AUROC uses group-aware three-fold
-cross-validation on \texttt{search\_train}; the champion and threshold are
-chosen on \texttt{search\_dev} and frozen for \texttt{confirm}. Net utility is
-(repairs $-$ regressions)$/n$ in percentage points, with counts in parentheses;
-the last column subtracts $\lambda=0.05$ per extra call.}
+\scriptsize
+\caption{Signed incremental-utility prediction. Target
+$\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ correct}]-
+\mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ is the
+Spearman correlation under group-aware three-fold CV on \texttt{search\_train};
+the threshold is selected on \texttt{search\_dev} and frozen for
+\texttt{confirm}. Net utility is mean $\Delta$ minus $\lambda=0.05$ per switch,
+in points, with a 95\% group-bootstrap interval; the last column is
+switches/rows.}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrlrrr@{}}
+\begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Task / model & LogReg OOF & Tree OOF & Champion & Dev net & Confirm net & Confirm cost-adj. \\
+Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev net & Confirm net (95\% CI) & Switches \\
 \midrule
-CodeXGLUE / Laya & 0.674 & 0.739 & logreg & +20.0 (23/11) & +1.7 (17/16) & -3.3 \\
-CodeXGLUE / Vela & 0.716 & 0.646 & logreg & +3.3 (7/5) & -1.7 (9/10) & -6.4 \\
-FinDVer / Laya & 0.455 & 0.466 & tree & +1.7 (1/0) & +2.3 (1/0) & +1.5 \\
-FinDVer / Vela & 0.919 & 0.794 & logreg & +3.4 (4/2) & -2.3 (0/1) & -2.6 \\
+CodeXGLUE / Laya & -0.02 & 0.360 & 0.607 & +21.7 & +0.0 [-18.8, +13.0] & 42/60 \\
+CodeXGLUE / Vela & +0.19 & 0.744 & 0.335 & +3.3 & -1.7 [-19.8, +8.5] & 54/60 \\
+FinDVer / Laya & +0.13 & 0.458 & 0.707 & +1.7 & +0.0 [-0.3, +0.0] & 1/44 \\
+FinDVer / Vela & -0.17 & 0.396 & 0.361 & +3.4 & -2.3 [-7.7, -0.1] & 5/44 \\
 \bottomrule
 \end{tabular}
 \end{table*}

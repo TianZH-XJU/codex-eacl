@@ -16,6 +16,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "paper" / "acl" / "tables"
 OUT.mkdir(parents=True, exist_ok=True)
+OUT_ZH = ROOT / "paper" / "acl_zh" / "tables"
+OUT_ZH.mkdir(parents=True, exist_ok=True)
 
 CELLS = ["code_laya", "code_vela", "findver_laya", "findver_vela"]
 CELL_TEX = {
@@ -138,8 +140,8 @@ def tab_complementarity() -> None:
     for cell in CELLS:
         c = comp[cell]
         h = held[cell]
-        alt = "Choice" if c["base_action"] == "noul" else "Noul"
-        base = c["base_action"].capitalize()
+        base = "Choice" if c["base_action"] == "switch" else "Noul"
+        alt = "Noul" if base == "Choice" else "Choice"
         dv, cf = h["dev"], h["confirm"]
         rows.append(
             f"{CELL_TEX[cell]} & {base}$\\to${alt} & "
@@ -152,7 +154,7 @@ def tab_complementarity() -> None:
 \centering
 \footnotesize
 \caption{Action complementarity with the train-selected direction frozen across
-pools ($n=60$ per cell). \emph{Headroom} is the accuracy gain of a per-row
+pools ($n=60$ per training cell; FinDVer dev/confirm: 59/44). \emph{Headroom} is the accuracy gain of a per-row
 oracle over the better fixed action on \texttt{search\_train};
 \emph{repair/harmful} counts rows where the alternative fixes or breaks the
 base decision. Net repair is the paired difference in percentage points
@@ -178,34 +180,38 @@ Task / model & Direction & Headroom & Repair/harmful & Net dev (95\% CI) & Net c
 # Table 4: incremental-utility predictability
 # --------------------------------------------------------------------------
 def tab_predictability() -> None:
-    d = jload("results/v4_1/evolution/utility_predictability.json")["cells"]
+    d = jload("results/v4_1/final/signed_utility.json")["cells"]
     rows = []
     for cell in CELLS:
         c = d[cell]
-        lr = c["models"]["logreg"]["oof_auroc"]
-        tr = c["models"]["tree"]["oof_auroc"]
-        ch = c["candidates"][c["champion"]]
-        dn = ch["dev_net"]
-        cn = ch["confirm_net"]
+        champ = c["champion"]
+        m = c["models"][champ]
+        cand = c["candidates"][champ]
+        dev = cand["dev_net"]
+        conf = cand["confirm_net"]
+        lo, hi = conf["ci95_pp"]
         rows.append(
-            f"{CELL_TEX[cell]} & {f3(lr)} & {f3(tr)} & {c['champion']} & "
-            f"{pct(dn['net'])} ({dn['repair']}/{dn['regression']}) & "
-            f"{pct(cn['net'])} ({cn['repair']}/{cn['regression']}) & "
-            f"{pct(cn['cost_adjusted'])} \\\\"
+            f"{CELL_TEX[cell]} & {m['oof_spearman']:+.2f} & "
+            f"{f3(m['oof_auroc_repair'])} & {f3(m['oof_auroc_regression'])} & "
+            f"{dev['net_pp']:+.1f} & {conf['net_pp']:+.1f} "
+            f"[{lo:+.1f}, {hi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
         )
     body = (
         r"""\begin{table*}[t]
 \centering
-\footnotesize
-\caption{Incremental-utility prediction. OOF AUROC uses group-aware three-fold
-cross-validation on \texttt{search\_train}; the champion and threshold are
-chosen on \texttt{search\_dev} and frozen for \texttt{confirm}. Net utility is
-(repairs $-$ regressions)$/n$ in percentage points, with counts in parentheses;
-the last column subtracts $\lambda=0.05$ per extra call.}
+\scriptsize
+\caption{Signed incremental-utility prediction. Target
+$\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ correct}]-
+\mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ is the
+Spearman correlation under group-aware three-fold CV on \texttt{search\_train};
+the threshold is selected on \texttt{search\_dev} and frozen for
+\texttt{confirm}. Net utility is mean $\Delta$ minus $\lambda=0.05$ per switch,
+in points, with a 95\% group-bootstrap interval; the last column is
+switches/rows.}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrlrrr@{}}
+\begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Task / model & LogReg OOF & Tree OOF & Champion & Dev net & Confirm net & Confirm cost-adj. \\
+Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev net & Confirm net (95\% CI) & Switches \\
 \midrule
 """
         + "\n".join(rows)
@@ -216,6 +222,52 @@ Task / model & LogReg OOF & Tree OOF & Champion & Dev net & Confirm net & Confir
 """
     )
     write("tab_predictability.tex", body)
+
+
+def zh_predictability() -> None:
+    """Chinese review version of the signed-utility table."""
+    d = jload("results/v4_1/final/signed_utility.json")["cells"]
+    rows = []
+    for cell in CELLS:
+        c = d[cell]
+        champ = c["champion"]
+        m = c["models"][champ]
+        cand = c["candidates"][champ]
+        dev = cand["dev_net"]
+        conf = cand["confirm_net"]
+        lo, hi = conf["ci95_pp"]
+        rows.append(
+            f"{CELL_TEX[cell]} & {m['oof_spearman']:+.2f} & "
+            f"{f3(m['oof_auroc_repair'])} & {f3(m['oof_auroc_regression'])} & "
+            f"{dev['net_pp']:+.1f} & {conf['net_pp']:+.1f} "
+            f"[{lo:+.1f}, {hi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
+        )
+    body = (
+        r"""\begin{table}[t]
+\centering
+\footnotesize
+\caption{有符号增量效用预测。目标为
+$\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ 正确}]-
+\mathbf{1}[\textsc{Noul}_i\text{ 正确}]\in\{-1,0,+1\}$。折外 $\rho$ 是
+\texttt{search\_train} 上分组感知三折交叉验证中预测与真实 $\Delta$ 的
+Spearman 相关；阈值在 \texttt{search\_dev} 上选择并冻结用于
+\texttt{confirm}。净效用为平均 $\Delta$ 减去每次切换 $\lambda=0.05$，单位为
+百分点，区间为 95\% 分组自助法。最后一列为 confirm 行中的切换数。}
+\label{tab:predictability}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+任务 / 模型 & 折外 $\rho$ & 修复 AUROC & 退化 AUROC & dev 净 & confirm 净 (95\% CI) & 切换/行 \\
+\midrule
+"""
+        + "\n".join(rows)
+        + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+"""
+    )
+    (OUT_ZH / "tab_predictability.tex").write_text(body, encoding="utf-8")
+    print("wrote paper/acl_zh/tables/tab_predictability.tex")
 
 
 # --------------------------------------------------------------------------
@@ -314,7 +366,7 @@ def tab_search() -> None:
         r"""\begin{table}[!b]
 \centering
 \small
-\caption{Search comparisons under the pre-registered protocol. Counts are
+\caption{Search comparisons under the pre-specified protocol. Counts are
 paired group-bootstrap 95\% intervals that exclude zero; ``positive'' means the
 evolved policy beats the stated baseline. GA and ES rows use macro-F1 on all
 three pools with five seeds; the NSGA-II row uses accuracy on 12 dev and 12
@@ -423,6 +475,7 @@ if __name__ == "__main__":
     tab_native()
     tab_complementarity()
     tab_predictability()
+    zh_predictability()
     tab_calibration()
     tab_search()
     tab_boundary()

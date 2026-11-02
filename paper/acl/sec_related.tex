@@ -50,16 +50,15 @@ routing and cascading in one objective \citep{dekoninck2025unified}. The
 theoretical caution comes from \citet{jitkrittum2023cascade}: confidence-based
 deferral is optimal only when downstream errors are sufficiently tied to
 upstream confidence, and it can fail under specialised downstream errors, label
-noise or distribution shift. \citet{damani2025hard} argue that computation should
+noise or distribution shift. That warning is central to learning-to-defer work
+as well \citep{mozannar2020consistent,chuang2025learning}.
+\citet{damani2025hard} argue that computation should
 follow expected benefit rather than surface difficulty. Our experiments
 instantiate this warning in a structured decision model: the second action is a
 different question to the same frozen network, not a larger model, and its value
 depends on an error structure that the first probability does not encode. For
-ProcessBench, selective prediction supplies the abstention framing:
-\citet{chow1970optimum} derives the optimal reject rule under known
-distributions, and \citet{geifman2017selective}, \citet{kamath2020selective} and
-\citet{xin2021art} study selective classification, question answering and the
-separation of coverage from conditional accuracy.
+ProcessBench, selective prediction supplies the abstention framing
+\citep{chow1970optimum,geifman2017selective,kamath2020selective,xin2021art}.
 
 Evolutionary methods are a reasonable choice when the policy is a small
 non-differentiable object and the objective is a cached replay. Genetic
