@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Locked test: 60 official test rows per cell, templates and GA genomes
+frozen before any test call. Macro-F1 for fixed \noul{}, fixed \choice{}
+(always switch, two calls) and GA seed 17; seeds 23 and 41 show the same
+pattern. Paired differences and CIs are in the text.}
+\label{tab:locked}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Cell & \noul{} & \choice{} & GA \\
+\midrule
+CodeXGLUE / Laya & 0.383 & 0.375 & 0.383 \\
+CodeXGLUE / Vela & 0.422 & 0.477 & 0.477 \\
+FinDVer / Laya & 0.608 & 0.583 & 0.583 \\
+FinDVer / Vela & 0.677 & 0.413 & 0.656 \\
+\bottomrule
+\end{tabular}
+\end{table}

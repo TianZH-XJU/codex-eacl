@@ -111,31 +111,25 @@ across seeds and is treated as exploratory. NSGA-II deployment is significantly
 worse than the fixed baseline in five dev cells and one confirm cell, with no
 positive cell. No optimiser beats the better fixed action at this budget.
 
-With templates and genomes frozen, 60 official test rows per cell give GA
-versus fixed switch macro-F1 $+0.008$ $[-0.148,+0.163]$ (CodeXGLUE/Laya), $0.000$
-$[0.000,0.000]$ (CodeXGLUE/Vela), $0.000$ $[-0.046,+0.045]$ (FinDVer/Laya),
-and $+0.243$ $[+0.138,+0.318]$ (FinDVer/Vela). The last gain is against the
-worse fixed action: fixed switch scores 0.413 macro-F1 versus 0.677 for fixed
-\noul{}, while the GA stays on \noul{} (1.00--1.05 calls/row) and does not beat
-\noul{} ($-0.021$ $[-0.081,0.000]$ for seed 17; $0.000$ for seeds 23 and 41).
-No GA genome beats the better fixed action on any cell.
+Table~\ref{tab:locked} reports the one-shot locked test. GA beats fixed
+\choice{} only in FinDVer/Vela ($+0.243$ $[+0.138,+0.318]$), where \choice{} is
+the worse action (0.413 vs 0.677 for fixed \noul{}); the GA stays on \noul{}
+(1.00--1.05 calls/row) and does not beat \noul{} ($-0.021$ $[-0.081,0.000]$).
+No GA genome beats the better fixed action in any cell; seeds 23 and 41 show
+the same pattern.
+
+\input{tables/tab_locked}
 
 The trajectory diagnostics explain why more search does not help. In 15 of 21
-logged GA/ES runs, best-so-far fitness does not improve after generation zero.
-The neutral-mutation rate is 0.68--0.73, so most mutations produce a candidate
-with exactly the same training score. The train--dev rank correlation is $-0.56$
-and $-0.51$ for the two CodeXGLUE cells, meaning that candidates which look
-better on train tend to look worse on dev, and $+0.44$ and $+0.99$ for the
-FinDVer cells. Raising the budget from 24 to 48 on CodeXGLUE with Vela does not
-close the gap: the GA evaluates only 22, 17 and 23 unique genomes under a cap of
-48, while random search uses all 48.
+runs best-so-far fitness does not improve after generation zero; neutral
+mutations are 0.68--0.73. Train--dev rank correlations are negative on
+CodeXGLUE ($-0.56$, $-0.51$) and positive on FinDVer ($+0.44$, $+0.99$); at
+budget 48 the GA evaluates only 22, 17 and 23 unique genomes.
 
-The boundary checks ask whether these conclusions are artefacts of one pool or
-task. Transfer is uniformly unhelpful: of 32 source--target by split units, six
-have a significant paired difference and all six are negative (two diagonal,
-four off-diagonal). The fault map confirms 13 of 15 eligible cells on dev and 10
-on confirm; the stable high-severity region is the mid-confidence ProcessBench
-band, where both models fail on the same rows.
+Transfer is uniformly unhelpful: six of the 32 source--target units are
+significantly negative, none positive. The fault map confirms 13/15 cells on
+dev and 10/15 on confirm; the stable high-severity region is the mid-confidence
+ProcessBench band.
 
 Table~\ref{tab:processbench} reports the selective baseline. Selective accuracy
 is 0.133/0.083 at full coverage, 0.100/0.069 at 50\%, and 0.105/0.143 at 25\%;

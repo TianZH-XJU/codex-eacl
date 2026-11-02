@@ -225,6 +225,42 @@ Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev cost & Confirm raw (
     write("tab_predictability.tex", body)
 
 
+def tab_locked() -> None:
+    d = jload("results/v4_1/locked_test/locked_test_results.json")["cells"]
+    labels = {"code_laya": "CodeXGLUE / Laya", "code_vela": "CodeXGLUE / Vela",
+              "findver_laya": "FinDVer / Laya", "findver_vela": "FinDVer / Vela"}
+    rows = []
+    for cell in ("code_laya", "code_vela", "findver_laya", "findver_vela"):
+        c = d[cell]
+        g = c["ga"]["17"]
+        rows.append(
+            f"{labels[cell]} & {c['fixed_noul']['macro_f1']:.3f} & "
+            f"{c['fixed_switch']['macro_f1']:.3f} & {g['macro_f1']:.3f} \\\\"
+        )
+    body = (
+        r"""\begin{table}[t]
+\centering
+\scriptsize
+\caption{Locked test: 60 official test rows per cell, templates and GA genomes
+frozen before any test call. Macro-F1 for fixed \noul{}, fixed \choice{}
+(always switch, two calls) and GA seed 17; seeds 23 and 41 show the same
+pattern. Paired differences and CIs are in the text.}
+\label{tab:locked}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Cell & \noul{} & \choice{} & GA \\
+\midrule
+"""
+        + "\n".join(rows)
+        + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+"""
+    )
+    write("tab_locked.tex", body)
+
+
 def tab_processbench() -> None:
     d = jload("results/v4_1/final/processbench_selective.json")["cells"]
     rows = []
@@ -560,6 +596,7 @@ if __name__ == "__main__":
     tab_native()
     tab_complementarity()
     tab_predictability()
+    tab_locked()
     tab_processbench()
     zh_processbench()
     zh_predictability()
