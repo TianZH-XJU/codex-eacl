@@ -1,0 +1,140 @@
+{
+  "created_utc": "2026-11-02T09:39:06.467513+00:00",
+  "status": "frozen_before_test_calls",
+  "test_sources": {
+    "code": {
+      "source": "data/raw/codexglue_defect/test.txt",
+      "sha256": "1a8d296cf66da247a91fc567d8303de59850a652c3e0811b941571140aca02c0",
+      "n": 60
+    },
+    "findver": {
+      "source": "external/FinDVer/data/test.json",
+      "sha256": "02602d5dc540b85cbc6710b6d209f9fc2179eb92b3370f2874260af90b63ea03",
+      "n": 60
+    }
+  },
+  "templates": {
+    "code": {
+      "noul": {
+        "type": "noul",
+        "instructions": "Is this function vulnerable?"
+      },
+      "choice": {
+        "type": "choice",
+        "instructions": "Is this function secure or vulnerable?",
+        "criteria": {
+          "secure": null,
+          "vulnerable": null
+        }
+      }
+    },
+    "findver": {
+      "noul": {
+        "type": "noul",
+        "instructions": "Is the claim supported by the evidence?"
+      },
+      "choice": {
+        "type": "choice",
+        "instructions": "Is the claim supported by the evidence?",
+        "criteria": {
+          "supported": null,
+          "not supported": null
+        }
+      }
+    }
+  },
+  "genomes": {
+    "code_laya": {
+      "17": {
+        "lo": 0.026936778790526805,
+        "hi": 0.11016204891721182,
+        "use_second": 1
+      },
+      "23": {
+        "lo": 0.9248652516259452,
+        "hi": 0.9486057779931771,
+        "use_second": 0
+      },
+      "41": {
+        "lo": 0.23071918631047517,
+        "hi": 0.38102068999577143,
+        "use_second": 0
+      }
+    },
+    "code_vela": {
+      "17": {
+        "lo": 0.12021246594783677,
+        "hi": 0.7661074377979527,
+        "use_second": 1
+      },
+      "23": {
+        "lo": 0.18252732249437265,
+        "hi": 0.9016579987463874,
+        "use_second": 1
+      },
+      "41": {
+        "lo": 0.3188841727935581,
+        "hi": 0.9799709448454504,
+        "use_second": 1
+      }
+    },
+    "findver_laya": {
+      "17": {
+        "lo": 0.1375414132956192,
+        "hi": 0.4379264024151493,
+        "use_second": 1
+      },
+      "23": {
+        "lo": 0.017076601028645166,
+        "hi": 0.30674391555597935,
+        "use_second": 1
+      },
+      "41": {
+        "lo": 0.23071918631047517,
+        "hi": 0.38102068999577143,
+        "use_second": 0
+      }
+    },
+    "findver_vela": {
+      "17": {
+        "lo": 0.026936778790526805,
+        "hi": 0.11016204891721182,
+        "use_second": 1
+      },
+      "23": {
+        "lo": 0.9248652516259452,
+        "hi": 0.9486057779931771,
+        "use_second": 0
+      },
+      "41": {
+        "lo": 0.23071918631047517,
+        "hi": 0.38102068999577143,
+        "use_second": 0
+      }
+    }
+  },
+  "metrics": [
+    "accuracy",
+    "macro_f1",
+    "net_repair",
+    "calls_per_row"
+  ],
+  "primary_comparison": "GA (train-selected, seed 17/23/41) minus fixed switch-only, macro-F1",
+  "secondary_comparisons": [
+    "GA minus fixed Noul",
+    "fixed switch minus fixed Noul"
+  ],
+  "bootstrap": {
+    "resamples": 5000,
+    "seed": 17,
+    "unit": "group_id",
+    "ci": 0.95
+  },
+  "cost": {
+    "lambda": 0.05,
+    "fixed_switch_calls": 2,
+    "ga_calls": "1 + switch"
+  },
+  "stop_rule": "one-shot evaluation; no threshold, prompt, genome or metric changes after this file is written",
+  "protocol_sha256": "4283f1be0b56ed7d773169084ee001de32a92fb621e2773eb786320fe3fd2b3b"
+}

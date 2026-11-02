@@ -2,7 +2,7 @@
 
 A returned probability should decide when a second judgment is worth buying.
 Our experiments on frozen Laya and Vela across three tasks do not support that
-promise: evolutionary search produces no held-out advantage over fixed policies
+promise: evolutionary search produces no advantage over the better fixed action
 or budget-matched random search.
 
 Gross complementarity is real---a per-row oracle gains up to 23.3 accuracy
@@ -13,6 +13,6 @@ improves ECE and Brier but not row order, and in both FinDVer cells the
 probability ranks repairable rows below chance.
 
 \textbf{Limitations.} Pools are small, the \noul{} template was not audited,
-only two open models were run, and the locked test remains unrun. Next: a
-supervision target judged by held-out net utility. Code, data and analysis
-scripts are at \url{https://anonymous.4open.science/r/codex-eacl-8E1E/}.
+only two open models were run, and the locked test is a single frozen run.
+Next: a supervision target judged by held-out net utility. Code and data:
+\url{https://anonymous.4open.science/r/codex-eacl-8E1E/}.

@@ -58,4 +58,6 @@ paper/**/*.blg
 paper/acl/acl_sample.*
 paper/**/errors-*.json
 paper/**/errors-*.png
+results/v4_1/locked_test/manifest_*.json
+results/v4_1/locked_test/*_run.log
 texput.log

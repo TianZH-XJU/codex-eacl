@@ -1,0 +1,492 @@
+{
+  "created_utc": "2026-11-02T10:09:22.509705+00:00",
+  "protocol_sha256": "4283f1be0b56ed7d773169084ee001de32a92fb621e2773eb786320fe3fd2b3b",
+  "analysis_script": "evaluate_locked_test.py",
+  "status": "one_shot_locked_test",
+  "cells": {
+    "code_laya": {
+      "n": 60,
+      "n_groups": 60,
+      "fixed_noul": {
+        "accuracy": 0.4,
+        "macro_f1": 0.3829,
+        "calls_per_row": 1.0
+      },
+      "fixed_switch": {
+        "accuracy": 0.4833,
+        "macro_f1": 0.3748,
+        "calls_per_row": 2.0
+      },
+      "ga": {
+        "17": {
+          "genome": {
+            "lo": 0.026936778790526805,
+            "hi": 0.11016204891721182,
+            "use_second": 1
+          },
+          "accuracy": 0.4,
+          "macro_f1": 0.3829,
+          "calls_per_row": 1.033,
+          "switch_rate": 0.033,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0081,
+            "ci95": [
+              -0.1482,
+              0.163
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        },
+        "23": {
+          "genome": {
+            "lo": 0.9248652516259452,
+            "hi": 0.9486057779931771,
+            "use_second": 0
+          },
+          "accuracy": 0.4,
+          "macro_f1": 0.3829,
+          "calls_per_row": 1.0,
+          "switch_rate": 0.0,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0081,
+            "ci95": [
+              -0.1474,
+              0.1607
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        },
+        "41": {
+          "genome": {
+            "lo": 0.23071918631047517,
+            "hi": 0.38102068999577143,
+            "use_second": 0
+          },
+          "accuracy": 0.4,
+          "macro_f1": 0.3829,
+          "calls_per_row": 1.0,
+          "switch_rate": 0.0,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0081,
+            "ci95": [
+              -0.1466,
+              0.1615
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        }
+      }
+    },
+    "code_vela": {
+      "n": 60,
+      "n_groups": 60,
+      "fixed_noul": {
+        "accuracy": 0.5667,
+        "macro_f1": 0.4222,
+        "calls_per_row": 1.0
+      },
+      "fixed_switch": {
+        "accuracy": 0.5833,
+        "macro_f1": 0.4775,
+        "calls_per_row": 2.0
+      },
+      "ga": {
+        "17": {
+          "genome": {
+            "lo": 0.12021246594783677,
+            "hi": 0.7661074377979527,
+            "use_second": 1
+          },
+          "accuracy": 0.5833,
+          "macro_f1": 0.4775,
+          "calls_per_row": 2.0,
+          "switch_rate": 1.0,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0553,
+            "ci95": [
+              -0.0778,
+              0.187
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0167,
+            "ci95": [
+              -0.0833,
+              0.1167
+            ],
+            "n_boot": 5000
+          }
+        },
+        "23": {
+          "genome": {
+            "lo": 0.18252732249437265,
+            "hi": 0.9016579987463874,
+            "use_second": 1
+          },
+          "accuracy": 0.5833,
+          "macro_f1": 0.4775,
+          "calls_per_row": 1.983,
+          "switch_rate": 0.983,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0553,
+            "ci95": [
+              -0.0821,
+              0.1852
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0167,
+            "ci95": [
+              -0.0833,
+              0.1167
+            ],
+            "n_boot": 5000
+          }
+        },
+        "41": {
+          "genome": {
+            "lo": 0.3188841727935581,
+            "hi": 0.9799709448454504,
+            "use_second": 1
+          },
+          "accuracy": 0.6,
+          "macro_f1": 0.4667,
+          "calls_per_row": 1.717,
+          "switch_rate": 0.717,
+          "delta_macro_f1_vs_switch": {
+            "est": -0.0109,
+            "ci95": [
+              -0.0872,
+              0.0443
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0444,
+            "ci95": [
+              -0.0778,
+              0.1669
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0333,
+            "ci95": [
+              -0.05,
+              0.1167
+            ],
+            "n_boot": 5000
+          }
+        }
+      }
+    },
+    "findver_laya": {
+      "n": 60,
+      "n_groups": 14,
+      "fixed_noul": {
+        "accuracy": 0.6167,
+        "macro_f1": 0.6078,
+        "calls_per_row": 1.0
+      },
+      "fixed_switch": {
+        "accuracy": 0.5833,
+        "macro_f1": 0.5832,
+        "calls_per_row": 2.0
+      },
+      "ga": {
+        "17": {
+          "genome": {
+            "lo": 0.1375414132956192,
+            "hi": 0.4379264024151493,
+            "use_second": 1
+          },
+          "accuracy": 0.5833,
+          "macro_f1": 0.5832,
+          "calls_per_row": 1.467,
+          "switch_rate": 0.467,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0,
+            "ci95": [
+              -0.0459,
+              0.0448
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": -0.0246,
+            "ci95": [
+              -0.1339,
+              0.0744
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": -0.0333,
+            "ci95": [
+              -0.151,
+              0.0588
+            ],
+            "n_boot": 5000
+          }
+        },
+        "23": {
+          "genome": {
+            "lo": 0.017076601028645166,
+            "hi": 0.30674391555597935,
+            "use_second": 1
+          },
+          "accuracy": 0.6,
+          "macro_f1": 0.5982,
+          "calls_per_row": 1.5,
+          "switch_rate": 0.5,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.015,
+            "ci95": [
+              -0.0804,
+              0.1154
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": -0.0096,
+            "ci95": [
+              -0.1089,
+              0.0677
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": -0.0167,
+            "ci95": [
+              -0.1186,
+              0.0572
+            ],
+            "n_boot": 5000
+          }
+        },
+        "41": {
+          "genome": {
+            "lo": 0.23071918631047517,
+            "hi": 0.38102068999577143,
+            "use_second": 0
+          },
+          "accuracy": 0.6167,
+          "macro_f1": 0.6078,
+          "calls_per_row": 1.0,
+          "switch_rate": 0.0,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.0246,
+            "ci95": [
+              -0.0897,
+              0.1578
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        }
+      }
+    },
+    "findver_vela": {
+      "n": 60,
+      "n_groups": 14,
+      "fixed_noul": {
+        "accuracy": 0.7,
+        "macro_f1": 0.677,
+        "calls_per_row": 1.0
+      },
+      "fixed_switch": {
+        "accuracy": 0.55,
+        "macro_f1": 0.4128,
+        "calls_per_row": 2.0
+      },
+      "ga": {
+        "17": {
+          "genome": {
+            "lo": 0.026936778790526805,
+            "hi": 0.11016204891721182,
+            "use_second": 1
+          },
+          "accuracy": 0.6833,
+          "macro_f1": 0.6557,
+          "calls_per_row": 1.05,
+          "switch_rate": 0.05,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.2429,
+            "ci95": [
+              0.1376,
+              0.3184
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": -0.0213,
+            "ci95": [
+              -0.0814,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": -0.0167,
+            "ci95": [
+              -0.0577,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        },
+        "23": {
+          "genome": {
+            "lo": 0.9248652516259452,
+            "hi": 0.9486057779931771,
+            "use_second": 0
+          },
+          "accuracy": 0.7,
+          "macro_f1": 0.677,
+          "calls_per_row": 1.0,
+          "switch_rate": 0.0,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.2642,
+            "ci95": [
+              0.1681,
+              0.3338
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        },
+        "41": {
+          "genome": {
+            "lo": 0.23071918631047517,
+            "hi": 0.38102068999577143,
+            "use_second": 0
+          },
+          "accuracy": 0.7,
+          "macro_f1": 0.677,
+          "calls_per_row": 1.0,
+          "switch_rate": 0.0,
+          "delta_macro_f1_vs_switch": {
+            "est": 0.2642,
+            "ci95": [
+              0.1663,
+              0.3365
+            ],
+            "n_boot": 5000
+          },
+          "delta_macro_f1_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          },
+          "delta_accuracy_vs_noul": {
+            "est": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 5000
+          }
+        }
+      }
+    }
+  }
+}

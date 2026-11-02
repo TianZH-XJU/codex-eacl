@@ -1,0 +1,800 @@
+{
+  "created_utc": "2026-11-02T09:48:13.208591+00:00",
+  "task": "codexglue_defect",
+  "model": "laya",
+  "split": "official_test_locked",
+  "seed": 20261102,
+  "n": 60,
+  "device": "cpu",
+  "threads": 2,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "project_git_sha": "e94a3af8247a5789899e7fc1d1d15943c6ebae7b",
+  "protocol_sha256": "4283f1be0b56ed7d773169084ee001de32a92fb621e2773eb786320fe3fd2b3b",
+  "manifest_sha256": "1a8d296cf66da247a91fc567d8303de59850a652c3e0811b941571140aca02c0",
+  "windows_sleep_prevention_active": true,
+  "peak_rss_mb": 1811.3,
+  "real_model_calls": 120,
+  "rows": [
+    {
+      "key": "idx:2818",
+      "gold": false,
+      "group_id": "fn:a1cd1a8e2ddf24b0",
+      "meta": {
+        "idx": 2818,
+        "project": "qemu"
+      },
+      "noul_p": 0.8659,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:26100",
+      "gold": true,
+      "group_id": "fn:2f314149ffec8b91",
+      "meta": {
+        "idx": 26100,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.2539,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:16755",
+      "gold": true,
+      "group_id": "fn:1de400b7cb08b3a7",
+      "meta": {
+        "idx": 16755,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.5412,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:2429",
+      "gold": false,
+      "group_id": "fn:a12f232381024ed3",
+      "meta": {
+        "idx": 2429,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.5453,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:23186",
+      "gold": true,
+      "group_id": "fn:8856c8697d7c4097",
+      "meta": {
+        "idx": 23186,
+        "project": "qemu"
+      },
+      "noul_p": 0.2222,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:7579",
+      "gold": false,
+      "group_id": "fn:3a2ef0b59e2bb617",
+      "meta": {
+        "idx": 7579,
+        "project": "qemu"
+      },
+      "noul_p": 0.2316,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:11642",
+      "gold": false,
+      "group_id": "fn:914058d0f4a982be",
+      "meta": {
+        "idx": 11642,
+        "project": "qemu"
+      },
+      "noul_p": 0.4397,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:4524",
+      "gold": false,
+      "group_id": "fn:ce84f84cba35b9a5",
+      "meta": {
+        "idx": 4524,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.6302,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:15654",
+      "gold": false,
+      "group_id": "fn:eaa495d308f5242b",
+      "meta": {
+        "idx": 15654,
+        "project": "qemu"
+      },
+      "noul_p": 0.5652,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:7326",
+      "gold": false,
+      "group_id": "fn:e9b8e575d1d5041e",
+      "meta": {
+        "idx": 7326,
+        "project": "qemu"
+      },
+      "noul_p": 0.6596,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:17641",
+      "gold": false,
+      "group_id": "fn:d7532e98c62ee1cd",
+      "meta": {
+        "idx": 17641,
+        "project": "qemu"
+      },
+      "noul_p": 0.3174,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:18578",
+      "gold": true,
+      "group_id": "fn:eb65645efe4d227b",
+      "meta": {
+        "idx": 18578,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.7382,
+      "switch_choice": "vulnerable",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:19721",
+      "gold": false,
+      "group_id": "fn:3e0fc23e602d44e2",
+      "meta": {
+        "idx": 19721,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.4356,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:5198",
+      "gold": false,
+      "group_id": "fn:cbb67802bec7c10b",
+      "meta": {
+        "idx": 5198,
+        "project": "qemu"
+      },
+      "noul_p": 0.7043,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:21050",
+      "gold": true,
+      "group_id": "fn:d816daa4f7a8928b",
+      "meta": {
+        "idx": 21050,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.724,
+      "switch_choice": "vulnerable",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:11501",
+      "gold": true,
+      "group_id": "fn:9652b80a934c6c22",
+      "meta": {
+        "idx": 11501,
+        "project": "qemu"
+      },
+      "noul_p": 0.3667,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:5490",
+      "gold": true,
+      "group_id": "fn:e249cc0f5ba9c587",
+      "meta": {
+        "idx": 5490,
+        "project": "qemu"
+      },
+      "noul_p": 0.0999,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:9255",
+      "gold": false,
+      "group_id": "fn:22e2366a53d36a41",
+      "meta": {
+        "idx": 9255,
+        "project": "qemu"
+      },
+      "noul_p": 0.765,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:22875",
+      "gold": true,
+      "group_id": "fn:27a39014e5f15501",
+      "meta": {
+        "idx": 22875,
+        "project": "qemu"
+      },
+      "noul_p": 0.8295,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:10253",
+      "gold": false,
+      "group_id": "fn:bcf13b1ef17f53bf",
+      "meta": {
+        "idx": 10253,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.6315,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:14141",
+      "gold": true,
+      "group_id": "fn:a5f1df7f41d33c61",
+      "meta": {
+        "idx": 14141,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.678,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:8815",
+      "gold": true,
+      "group_id": "fn:1751f8e43d209935",
+      "meta": {
+        "idx": 8815,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.5508,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:22759",
+      "gold": false,
+      "group_id": "fn:a2cfb25f1197bcd2",
+      "meta": {
+        "idx": 22759,
+        "project": "qemu"
+      },
+      "noul_p": 0.6457,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:24103",
+      "gold": false,
+      "group_id": "fn:fca5b9e765877ef8",
+      "meta": {
+        "idx": 24103,
+        "project": "qemu"
+      },
+      "noul_p": 0.5633,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:21306",
+      "gold": false,
+      "group_id": "fn:905bac801e41bc8d",
+      "meta": {
+        "idx": 21306,
+        "project": "qemu"
+      },
+      "noul_p": 0.6219,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:23184",
+      "gold": false,
+      "group_id": "fn:a1d362a85705ec85",
+      "meta": {
+        "idx": 23184,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.7179,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:8931",
+      "gold": false,
+      "group_id": "fn:53494f249aac85b3",
+      "meta": {
+        "idx": 8931,
+        "project": "qemu"
+      },
+      "noul_p": 0.8543,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:5826",
+      "gold": false,
+      "group_id": "fn:53eed45a3d760386",
+      "meta": {
+        "idx": 5826,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.6768,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:13672",
+      "gold": true,
+      "group_id": "fn:30a5d45ffce38184",
+      "meta": {
+        "idx": 13672,
+        "project": "qemu"
+      },
+      "noul_p": 0.6157,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:26884",
+      "gold": false,
+      "group_id": "fn:c9cbf25ddd66f520",
+      "meta": {
+        "idx": 26884,
+        "project": "qemu"
+      },
+      "noul_p": 0.6164,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:14846",
+      "gold": false,
+      "group_id": "fn:7bac742dfac22cae",
+      "meta": {
+        "idx": 14846,
+        "project": "qemu"
+      },
+      "noul_p": 0.673,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:21740",
+      "gold": false,
+      "group_id": "fn:4d863f06d4338822",
+      "meta": {
+        "idx": 21740,
+        "project": "qemu"
+      },
+      "noul_p": 0.6607,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:18512",
+      "gold": true,
+      "group_id": "fn:98f62504be80ca0c",
+      "meta": {
+        "idx": 18512,
+        "project": "qemu"
+      },
+      "noul_p": 0.7849,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:12616",
+      "gold": false,
+      "group_id": "fn:e95c3e020572ebc5",
+      "meta": {
+        "idx": 12616,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.5683,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:19927",
+      "gold": false,
+      "group_id": "fn:bbb8c7c802f6f11c",
+      "meta": {
+        "idx": 19927,
+        "project": "qemu"
+      },
+      "noul_p": 0.5949,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:12548",
+      "gold": true,
+      "group_id": "fn:3d67610d3a445874",
+      "meta": {
+        "idx": 12548,
+        "project": "qemu"
+      },
+      "noul_p": 0.6523,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:11080",
+      "gold": false,
+      "group_id": "fn:3271e7f6769a8aac",
+      "meta": {
+        "idx": 11080,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.6052,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:24371",
+      "gold": false,
+      "group_id": "fn:99a4e76be772e45c",
+      "meta": {
+        "idx": 24371,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.3519,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:24744",
+      "gold": false,
+      "group_id": "fn:d4b0a13b7612cde8",
+      "meta": {
+        "idx": 24744,
+        "project": "qemu"
+      },
+      "noul_p": 0.8966,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:11748",
+      "gold": true,
+      "group_id": "fn:f6dd7bdf2bf631a7",
+      "meta": {
+        "idx": 11748,
+        "project": "qemu"
+      },
+      "noul_p": 0.5566,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:4488",
+      "gold": false,
+      "group_id": "fn:244157c71447301b",
+      "meta": {
+        "idx": 4488,
+        "project": "qemu"
+      },
+      "noul_p": 0.6342,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:5718",
+      "gold": true,
+      "group_id": "fn:2698785b2f9faef2",
+      "meta": {
+        "idx": 5718,
+        "project": "qemu"
+      },
+      "noul_p": 0.1464,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:1435",
+      "gold": true,
+      "group_id": "fn:5600b27c050c7860",
+      "meta": {
+        "idx": 1435,
+        "project": "qemu"
+      },
+      "noul_p": 0.5405,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:7670",
+      "gold": true,
+      "group_id": "fn:c4fe810972f98c4c",
+      "meta": {
+        "idx": 7670,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.4852,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:3956",
+      "gold": true,
+      "group_id": "fn:d5a1d8a7262b4442",
+      "meta": {
+        "idx": 3956,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.6066,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:14680",
+      "gold": true,
+      "group_id": "fn:8c9fd8c97ca5d74e",
+      "meta": {
+        "idx": 14680,
+        "project": "qemu"
+      },
+      "noul_p": 0.8057,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:26836",
+      "gold": true,
+      "group_id": "fn:98d9b48f63a281f7",
+      "meta": {
+        "idx": 26836,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.2554,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:7754",
+      "gold": false,
+      "group_id": "fn:637017490a8d839b",
+      "meta": {
+        "idx": 7754,
+        "project": "qemu"
+      },
+      "noul_p": 0.6383,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:18759",
+      "gold": true,
+      "group_id": "fn:0abb84371f75b2db",
+      "meta": {
+        "idx": 18759,
+        "project": "qemu"
+      },
+      "noul_p": 0.5375,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:17909",
+      "gold": true,
+      "group_id": "fn:fca119b2bb646426",
+      "meta": {
+        "idx": 17909,
+        "project": "qemu"
+      },
+      "noul_p": 0.0814,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:12846",
+      "gold": false,
+      "group_id": "fn:eca9292ff62a9ec1",
+      "meta": {
+        "idx": 12846,
+        "project": "qemu"
+      },
+      "noul_p": 0.8485,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:14076",
+      "gold": false,
+      "group_id": "fn:95ab6032c56ed67d",
+      "meta": {
+        "idx": 14076,
+        "project": "qemu"
+      },
+      "noul_p": 0.3577,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:26031",
+      "gold": true,
+      "group_id": "fn:9e647450baa8b160",
+      "meta": {
+        "idx": 26031,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.7912,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:8568",
+      "gold": false,
+      "group_id": "fn:ba92848c190a9e3a",
+      "meta": {
+        "idx": 8568,
+        "project": "qemu"
+      },
+      "noul_p": 0.7303,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:906",
+      "gold": false,
+      "group_id": "fn:9747d490cb15a47c",
+      "meta": {
+        "idx": 906,
+        "project": "qemu"
+      },
+      "noul_p": 0.5574,
+      "switch_choice": "vulnerable",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:19274",
+      "gold": false,
+      "group_id": "fn:6ad2e1bb4c676ab3",
+      "meta": {
+        "idx": 19274,
+        "project": "qemu"
+      },
+      "noul_p": 0.6082,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:5229",
+      "gold": false,
+      "group_id": "fn:20cb70c78ddb6227",
+      "meta": {
+        "idx": 5229,
+        "project": "qemu"
+      },
+      "noul_p": 0.2031,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:3838",
+      "gold": false,
+      "group_id": "fn:5aa3a96f2667e97f",
+      "meta": {
+        "idx": 3838,
+        "project": "qemu"
+      },
+      "noul_p": 0.7885,
+      "switch_choice": "secure",
+      "switch_correct": true,
+      "errors": {}
+    },
+    {
+      "key": "idx:3561",
+      "gold": true,
+      "group_id": "fn:4c601be6a8e3c5ad",
+      "meta": {
+        "idx": 3561,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.5996,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    },
+    {
+      "key": "idx:7168",
+      "gold": true,
+      "group_id": "fn:9252967c720353de",
+      "meta": {
+        "idx": 7168,
+        "project": "FFmpeg"
+      },
+      "noul_p": 0.7052,
+      "switch_choice": "secure",
+      "switch_correct": false,
+      "errors": {}
+    }
+  ],
+  "status": "passed"
+}

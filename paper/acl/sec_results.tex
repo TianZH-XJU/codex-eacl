@@ -94,7 +94,8 @@ for the four cells; in the last two the probability ranks repairable rows
 \emph{below} chance.
 
 The third question is whether search converts the available signal into a
-deployable policy. Table~\ref{tab:search} summarises the comparison. GA versus
+deployable policy. The comparison uses five seeds, four cells and three pools.
+GA versus
 random search is the cleanest test of optimiser value: with five seeds, four
 task--model cells and three pools, there are 60 paired macro-F1 comparisons, and
 none has an interval that excludes zero. GA versus fixed switch-only has five
@@ -107,9 +108,17 @@ has three significant training cells and one positive seed-level estimate on
 confirm (CodeXGLUE/Laya, seed 17, $+0.176$). That estimate is not replicated
 across seeds and is treated as exploratory. NSGA-II deployment is significantly
 worse than the fixed baseline in five dev cells and one confirm cell, with no
-positive cell. No optimiser finds a stable held-out signal at this budget.
+positive cell. No optimiser beats the better fixed action at this budget.
 
-\input{tables/tab_search}
+On 60 official test rows per cell, with
+templates and GA genomes frozen before any test call, GA versus fixed switch
+macro-F1 is $+0.008$ $[-0.148,+0.163]$ (CodeXGLUE/Laya), $0.000$
+$[0.000,0.000]$ (CodeXGLUE/Vela), $0.000$ $[-0.046,+0.045]$ (FinDVer/Laya),
+and $+0.243$ $[+0.138,+0.318]$ (FinDVer/Vela). The last gain is against the
+worse fixed action: fixed switch scores 0.413 macro-F1 versus 0.677 for fixed
+\noul{}, while the GA stays on \noul{} (1.00--1.05 calls/row) and does not beat
+\noul{} ($-0.021$ $[-0.081,0.000]$ for seed 17; $0.000$ for seeds 23 and 41).
+No GA genome beats the better fixed action on any cell.
 
 The trajectory diagnostics explain why more search does not help. In 15 of 21
 logged GA/ES runs, best-so-far fitness does not improve after generation zero.

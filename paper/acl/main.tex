@@ -61,9 +61,10 @@ action---but net repair is sparse and pool-dependent: only one of four confirm
 cells has a positive accuracy interval, and its macro-F1 interval still spans
 zero. A predictor trained on signed incremental utility ranks no better than
 chance out of fold ($|\text{Spearman}|\le 0.19$) and yields non-positive
-confirm net utility in all four cells. The genetic algorithm achieves no significant win over random search in 60
-paired comparisons, and its five significant training-pool wins over fixed
-switching are not reproduced on dev and confirm. Search plateaus at generation zero in 15 of 21 runs. Temperature
+confirm net utility in all four cells. The genetic algorithm never significantly
+beats random search, its training-pool wins do not reproduce, and a one-shot
+locked test finds no gain over the better fixed action. Search plateaus at
+generation zero in 15 of 21 runs. Temperature
 scaling reduces calibration error but cannot create routing signal, because
 monotone recalibration leaves the band policy class unchanged. Routing value
 requires complementary actions and a deployable estimate of incremental action
