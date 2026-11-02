@@ -53,9 +53,10 @@ Jasper Dekoninck, Maximilian Baader, and Martin Vechev. 2025.
 \newblock In \emph{Proceedings of the 42nd International Conference on Machine
   Learning}, volume 267 of \emph{PMLR}, pages 12987--13010.
 
-\bibitem[{Deu{\ss}er et~al.(2026)Deu{\ss}er, Sparrenberg, and
+\bibitem[{Deu{\ss}er et~al.(2026)Deu{\ss}er, Ramamurthy, Sparrenberg, and
   Sifa}]{deusser2026jev}
-Tobias Deu{\ss}er, Lars Sparrenberg, and Rafet Sifa. 2026.
+Tobias Deu{\ss}er, Rajkumar Ramamurthy, Lorenz Sparrenberg, and Rafet Sifa.
+  2026.
 \newblock \href {https://arxiv.org/abs/2609.37647} {Evaluating and benchmarking
   the {System One} model {Jev}}.
 \newblock \emph{Preprint}, arXiv:2609.37647.
@@ -95,7 +96,7 @@ Chrisantha Fernando, Dylan~S. Banarse, Henryk Michalewski, Simon Osindero, and
   Learning}, volume 235 of \emph{PMLR}.
 
 \bibitem[{Gao and Wang(2026)}]{gao2026openjev}
-Zihan Gao and Peng Wang. 2026.
+Zhimin Gao and Pichao Wang. 2026.
 \newblock \href {https://arxiv.org/abs/2609.38850} {{OpenJev-RLCD}: A working
   {RLCD} implementation}.
 \newblock \emph{Preprint}, arXiv:2609.38850.
@@ -128,8 +129,8 @@ Qingyan Guo, Rui Wang, Junliang Guo, Bei Li, Kaitao Song, Xu~Tan, Guoqing Liu,
 
 \bibitem[{Guo et~al.(2026)Guo, Liu, Deng, Li, Zhao, Wu, Chen, Zhang, and
   Zhang}]{guo2026justask}
-Rui Guo, Yu~Liu, Gelei Deng, Yu~Li, Lei Zhao, Yang Wu, Siheng Chen, Yang Zhang,
-  and Linfeng~Y. Zhang. 2026.
+Ruoqi Guo, Yi~Liu, Gelei Deng, Yuekang Li, Lida Zhao, Yutao Wu, Simin Chen,
+  Ying Zhang, and Leo~Yu Zhang. 2026.
 \newblock \href {https://arxiv.org/abs/2609.29429} {Just ask {Jev}:
   Reinforcement learning for calibrated decisions as a zero-shot detector of
   {AI} alignment failures}.

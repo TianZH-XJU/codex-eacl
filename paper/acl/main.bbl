@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{44}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Aggarwal et~al.(2024)Aggarwal, Madaan, Yang
@@ -53,9 +53,10 @@ Jasper Dekoninck, Maximilian Baader, and Martin Vechev. 2025.
 \newblock In \emph{Proceedings of the 42nd International Conference on Machine
   Learning}, volume 267 of \emph{PMLR}, pages 12987--13010.
 
-\bibitem[{Deu{\ss}er et~al.(2026)Deu{\ss}er, Sparrenberg, and
+\bibitem[{Deu{\ss}er et~al.(2026)Deu{\ss}er, Ramamurthy, Sparrenberg, and
   Sifa}]{deusser2026jev}
-Tobias Deu{\ss}er, Lars Sparrenberg, and Rafet Sifa. 2026.
+Tobias Deu{\ss}er, Rajkumar Ramamurthy, Lorenz Sparrenberg, and Rafet Sifa.
+  2026.
 \newblock \href {https://arxiv.org/abs/2609.37647} {Evaluating and benchmarking
   the {System One} model {Jev}}.
 \newblock \emph{Preprint}, arXiv:2609.37647.
@@ -95,7 +96,7 @@ Chrisantha Fernando, Dylan~S. Banarse, Henryk Michalewski, Simon Osindero, and
   Learning}, volume 235 of \emph{PMLR}.
 
 \bibitem[{Gao and Wang(2026)}]{gao2026openjev}
-Zihan Gao and Peng Wang. 2026.
+Zhimin Gao and Pichao Wang. 2026.
 \newblock \href {https://arxiv.org/abs/2609.38850} {{OpenJev-RLCD}: A working
   {RLCD} implementation}.
 \newblock \emph{Preprint}, arXiv:2609.38850.
@@ -128,8 +129,8 @@ Qingyan Guo, Rui Wang, Junliang Guo, Bei Li, Kaitao Song, Xu~Tan, Guoqing Liu,
 
 \bibitem[{Guo et~al.(2026)Guo, Liu, Deng, Li, Zhao, Wu, Chen, Zhang, and
   Zhang}]{guo2026justask}
-Rui Guo, Yu~Liu, Gelei Deng, Yu~Li, Lei Zhao, Yang Wu, Siheng Chen, Yang Zhang,
-  and Linfeng~Y. Zhang. 2026.
+Ruoqi Guo, Yi~Liu, Gelei Deng, Yuekang Li, Lida Zhao, Yutao Wu, Simin Chen,
+  Ying Zhang, and Leo~Yu Zhang. 2026.
 \newblock \href {https://arxiv.org/abs/2609.29429} {Just ask {Jev}:
   Reinforcement learning for calibrated decisions as a zero-shot detector of
   {AI} alignment failures}.
@@ -147,11 +148,6 @@ Peter Henderson, Riashat Islam, Philip Bachman, Joelle Pineau, Doina Precup,
 \newblock Deep reinforcement learning that matters.
 \newblock In \emph{Proceedings of the AAAI Conference on Artificial
   Intelligence}, volume~32.
-
-\bibitem[{Ioannidis(2005)}]{ioannidis2005}
-John P.~A. Ioannidis. 2005.
-\newblock Why most published research findings are false.
-\newblock \emph{PLoS Medicine}, 2(8):e124.
 
 \bibitem[{Jitkrittum et~al.(2023)Jitkrittum, Gupta, Menon, Narasimhan, Rawat,
   and Kumar}]{jitkrittum2023cascade}
@@ -209,14 +205,6 @@ Quinn McNemar. 1947.
 \newblock Note on the sampling error of the difference between correlated
   proportions or percentages.
 \newblock \emph{Psychometrika}, 12(2):153--157.
-
-\bibitem[{Nosek et~al.(2018)Nosek, Ebersole, DeHaven, and
-  Mellor}]{nosek2018prereg}
-Brian~A. Nosek, Charles~R. Ebersole, Alexander~C. DeHaven, and David~T. Mellor.
-  2018.
-\newblock The preregistration revolution.
-\newblock \emph{Proceedings of the National Academy of Sciences},
-  115(11):2600--2606.
 
 \bibitem[{Ong et~al.(2024)Ong, Almahairi, Wu et~al.}]{ong2024routellm}
 Isaac Ong, Amjad Almahairi, Vincent Wu, et~al. 2024.
