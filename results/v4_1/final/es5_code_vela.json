@@ -1,0 +1,578 @@
+{
+  "created_utc": "2026-11-01T22:22:16.328150+00:00",
+  "protocol": "v4.1",
+  "fitness_version": "v2-task-primary",
+  "train_cache": {
+    "task": "codexglue_defect",
+    "model": "vela",
+    "split": "search_train",
+    "n": 60,
+    "path": "results/v4/evolution/cache_train_code_vela.json"
+  },
+  "dev_cache": {
+    "task": "codexglue_defect",
+    "model": "vela",
+    "split": "search_dev",
+    "n": 60,
+    "path": "results/v4/evolution/cache_code_vela.json"
+  },
+  "confirm_cache": {
+    "task": "codexglue_defect",
+    "model": "vela",
+    "split": "confirm",
+    "n": 60,
+    "path": "results/v4/evolution/cache_confirm_code_vela.json"
+  },
+  "budget_unique": 24,
+  "seeds": [
+    17,
+    23,
+    41,
+    59,
+    73
+  ],
+  "per_seed": {
+    "17": {
+      "es": {
+        "best": {
+          "lo": 0.1603730914033059,
+          "hi": 0.8039045889825545,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.9833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3842
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3557
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3811
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3838
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        },
+        "generations_actual": 3
+      },
+      "random": {
+        "best": {
+          "lo": 0.1463699892073318,
+          "hi": 0.5702760752039047,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.4833,
+          "calls_per_row": 1.95,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4112,
+          "balanced_accuracy": 0.4833,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3637
+        },
+        "unique": 24
+      },
+      "dev": {
+        "es": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "es": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.55,
+          "macro_f1": 0.5107
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    },
+    "23": {
+      "es": {
+        "best": {
+          "lo": 0.15493815542356618,
+          "hi": 0.6422836678487861,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.9833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3842
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3381
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3724
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3836
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        },
+        "generations_actual": 3
+      },
+      "random": {
+        "best": {
+          "lo": 0.13206881370482382,
+          "hi": 0.9695306235907255,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 24
+      },
+      "dev": {
+        "es": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "es": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    },
+    "41": {
+      "es": {
+        "best": {
+          "lo": 0.1660367243141352,
+          "hi": 0.913833434772713,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.9833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3842
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3429
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3756
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3836
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        },
+        "generations_actual": 3
+      },
+      "random": {
+        "best": {
+          "lo": 0.11374460118100627,
+          "hi": 0.775195775184105,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 24
+      },
+      "dev": {
+        "es": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "es": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    },
+    "59": {
+      "es": {
+        "best": {
+          "lo": 0.1575857635232027,
+          "hi": 1.0,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.9833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3842
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3603
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3838
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.3842,
+            "mean_scalar": 0.3838
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        },
+        "generations_actual": 3
+      },
+      "random": {
+        "best": {
+          "lo": 0.06633187788901795,
+          "hi": 0.9722798671204994,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 24
+      },
+      "dev": {
+        "es": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "es": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    },
+    "73": {
+      "es": {
+        "best": {
+          "lo": 0.0,
+          "hi": 0.6575860977499932,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3834
+        },
+        "unique": 24,
+        "log": [
+          {
+            "generation": 0,
+            "best_scalar": 0.3398,
+            "mean_scalar": 0.3199
+          },
+          {
+            "generation": 1,
+            "best_scalar": 0.3731,
+            "mean_scalar": 0.3508
+          },
+          {
+            "generation": 2,
+            "best_scalar": 0.3834,
+            "mean_scalar": 0.3706
+          }
+        ],
+        "budget_state": {
+          "unique_evals": 24,
+          "generated": 25,
+          "duplicate_hits": 0,
+          "model_calls": 0,
+          "max_unique_evals": 24,
+          "max_model_calls": 0
+        },
+        "generations_actual": 3
+      },
+      "random": {
+        "best": {
+          "lo": 0.14626272340703006,
+          "hi": 0.7365909574776146,
+          "use_second": 1
+        },
+        "fit_train": {
+          "accuracy": 0.5167,
+          "calls_per_row": 1.9833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4334,
+          "balanced_accuracy": 0.5167,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3842
+        },
+        "unique": 24
+      },
+      "dev": {
+        "es": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "random": {
+          "accuracy": 0.6667,
+          "macro_f1": 0.5342
+        },
+        "fixed_noul": [
+          0.6333,
+          0.5312
+        ],
+        "fixed_switch": [
+          0.6667,
+          0.5342
+        ]
+      },
+      "confirm": {
+        "es": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "random": {
+          "accuracy": 0.5667,
+          "macro_f1": 0.5238
+        },
+        "fixed_noul": [
+          0.5667,
+          0.446
+        ],
+        "fixed_switch": [
+          0.5667,
+          0.5238
+        ]
+      }
+    }
+  },
+  "gens_requested": 3,
+  "run_manifest": {
+    "argv": [
+      "--train-cache",
+      "results/v4/evolution/cache_train_code_vela.json",
+      "--dev-cache",
+      "results/v4/evolution/cache_code_vela.json",
+      "--confirm-cache",
+      "results/v4/evolution/cache_confirm_code_vela.json",
+      "--seeds",
+      "17,23,41,59,73",
+      "--algo",
+      "es",
+      "--metric",
+      "macro_f1",
+      "--out",
+      "results/v4_1/final/es5_code_vela.json"
+    ],
+    "cpu_threads": null,
+    "project_git_sha": "79656c76f6a8d95524e2b0660f4edf34989d219b",
+    "metric": "macro_f1",
+    "lam": 0.05,
+    "algo": "es"
+  },
+  "gens_rule": "es-actual-logged-generations: search runs to unique-budget exhaustion; the GA budget-derived cap does not apply",
+  "gens_effective": 3,
+  "algo": "es",
+  "es_train_scalar_mean": 0.384,
+  "es_train_scalar_std": 0.0004,
+  "random_train_scalar_mean": 0.3796,
+  "random_train_scalar_std": 0.0089,
+  "es_minus_random_mean": 0.0044
+}

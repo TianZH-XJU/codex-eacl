@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper,fontset=windows]{ctexart}
+
+\usepackage{geometry}
+\geometry{left=2.6cm,right=2.6cm,top=2.6cm,bottom=2.6cm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\setlength{\tabcolsep}{4pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\textfloatsep}{10pt plus 3pt minus 3pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+
+\newcommand{\noul}{\textsc{Noul}}
+\newcommand{\choice}{\textsc{Choice}}
+\newcommand{\score}{\textsc{Score}}
+\newcommand{\spanact}{\textsc{Span}}
+\newcommand{\setact}{\textsc{Set}}
+
+\title{当演化路由失效：\\ 结构化决策模型中的动作互补性与效用预测}
+\author{中文审阅版}
+\date{2026 年 11 月}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+结构化决策模型（如 Jev）把一次语言模型调用变成带类型的概率判断：二元
+\noul{} 判定、候选 \choice{} 选择或有序 \score{} 评分。这一接口让推理期
+路由显得很有吸引力：先问一个廉价的 \noul{} 问题，只有当第一个答案看起来
+不确定时，才购买第二个、以不同方式表述的 \choice{} 视角。我们用冻结的
+开源模型检验这一直觉。在 CodeXGLUE 缺陷检测、FinDVer 金融主张核验和
+ProcessBench 推理错误定位三个任务上，使用 Laya 0.4.16 与 Vela 2.0 0.3B，
+把遗传算法、进化策略和 NSGA-II 与固定策略、预算匹配的随机搜索进行比较，
+并测量路由真正需要的两个量：逐样本的动作互补性，以及第二个动作增量效用
+的可预测性。总互补机会确实存在——逐行 oracle 相对更好的固定动作最多可
+提升 23.3 个准确率点——但净修复稀疏且依赖数据池：四个 confirm 单元中只有
+一个的准确率区间为正，其 macro-F1 区间仍然跨零。概率特征在某些池中能把
+可修复行排到随机水平之上（折外 AUROC 最高 0.92），但冻结阈值在留出数据
+上不带来收益。遗传算法在 60 组配对比较中从未胜过随机搜索；它对固定切换
+的 5 次显著胜利全部出现在训练池，在 dev 与 confirm 上消失。21 次搜索中有
+15 次在第 0 代就停止改进。温度缩放能降低校准误差，却无法创造路由信号，
+因为单调重校准不改变带策略类。路由价值需要互补动作与可部署的增量动作
+价值估计；校准置信度本身二者都不提供。
+\end{abstract}
+
+\input{sec_intro}
+\input{sec_related}
+\input{sec_method}
+\input{sec_design}
+\input{sec_results}
+\input{sec_conclusion}
+
+\bibliographystyle{../acl/acl_natbib}
+\bibliography{../acl/references}
+
+\appendix
+\input{appendix}
+
+\end{document}

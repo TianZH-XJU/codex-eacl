@@ -1,0 +1,30 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Boundary checks. Top: frozen-genome transfer, counting significant
+paired accuracy differences against the target's fixed switch-only policy;
+diagonal cells are same-task deployment checks, off-diagonal cells are true
+transfer. Bottom: the four highest-severity fault-map cells, with severity
+defined as the error rate in the cell.}
+\label{tab:boundary}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Transfer & Sig. positive & Sig. negative \\
+\midrule
+Diagonal (same task) & 0 & 2 \\
+Off-diagonal (true transfer) & 0 & 4 \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Fault-map cell & $n$ disc. & Severity & $n$ dev & Severity & $n$ conf. & Severity \\
+\midrule
+ProcessBench / Vela / mid & 14 & 0.929 & 10 & 0.800 & 12 & 0.833 \\
+ProcessBench / Laya / mid & 13 & 0.923 & 15 & 0.867 & 16 & 0.875 \\
+ProcessBench / Vela / low & 45 & 0.889 & 46 & 0.957 & 47 & 0.936 \\
+ProcessBench / Laya / high & 41 & 0.756 & 35 & 0.914 & 38 & 0.895 \\
+\bottomrule
+\end{tabular}
+\end{table*}

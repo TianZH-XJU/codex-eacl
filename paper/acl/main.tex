@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+
+% ACL submission style (review mode: anonymised, line numbers).
+% Build with -jobname=main_camera "\def\CAMERAREADY{}\input{main.tex}"
+% to obtain the camera-ready layout used by aclpubcheck.
+\newif\ifaclreview
+\aclreviewtrue
+\ifdefined\CAMERAREADY\aclreviewfalse\fi
+\ifaclreview\usepackage[review]{acl}\else\usepackage[final]{acl}\fi
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{url}
+
+\setlength{\tabcolsep}{4pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+
+\newcommand{\noul}{\textsc{Noul}}
+\newcommand{\choice}{\textsc{Choice}}
+\newcommand{\score}{\textsc{Score}}
+\newcommand{\spanact}{\textsc{Span}}
+\newcommand{\setact}{\textsc{Set}}
+\newcommand{\eg}{e.g.,}
+\newcommand{\ie}{i.e.,}
+
+\title{When Evolutionary Routing Fails:\\ Action Complementarity and Utility Prediction in Structured Decision Models}
+
+\author{Anonymous ACL submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Structured decision models such as Jev turn a language-model call into a typed
+probabilistic judgment: a binary \noul{} decision, a candidate \choice{}, or a
+\score{}. This interface makes inference-time routing attractive: ask a cheap
+\noul{} question first and buy a second, differently framed \choice{} view only
+when the first answer looks uncertain. We test that intuition with frozen open
+models. Using Laya 0.4.16 and Vela 2.0 0.3B on CodeXGLUE defect detection,
+FinDVer claim verification and ProcessBench reasoning-error localisation, we
+compare a genetic algorithm, an evolution strategy and NSGA-II against fixed
+policies and budget-matched random search, and we measure the two quantities
+routing requires: per-example action complementarity and the predictability of
+the second action's incremental utility. Gross repair opportunities exist---a
+per-row oracle gains up to 23.3 accuracy points over the better fixed
+action---but net repair is sparse and pool-dependent: only one of four confirm
+cells has a positive accuracy interval, and its macro-F1 interval still spans
+zero. Probability features rank repairable rows above chance in some pools
+(out-of-fold AUROC up to 0.92), yet frozen thresholds do not gain on held-out
+data. The genetic algorithm never beats random search in 60 paired comparisons,
+and its five significant training-pool wins over fixed switching vanish on dev
+and confirm. Search plateaus at generation zero in 15 of 21 runs. Temperature
+scaling reduces calibration error but cannot create routing signal, because
+monotone recalibration leaves the band policy class unchanged. Routing value
+requires complementary actions and a deployable estimate of incremental action
+value; calibrated confidence supplies neither by itself.
+\end{abstract}
+
+\input{sec_intro}
+\input{sec_related}
+\input{sec_method}
+\input{sec_design}
+\input{sec_results}
+\input{sec_conclusion}
+
+\bibliography{references}
+
+\appendix
+\input{appendix}
+
+\end{document}

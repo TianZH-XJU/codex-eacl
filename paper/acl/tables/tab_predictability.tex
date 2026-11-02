@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Incremental-utility prediction. OOF AUROC uses group-aware three-fold
+cross-validation on \texttt{search\_train}; the champion and threshold are
+chosen on \texttt{search\_dev} and frozen for \texttt{confirm}. Net utility is
+(repairs $-$ regressions)$/n$ in percentage points, with counts in parentheses;
+the last column subtracts $\lambda=0.05$ per extra call.}
+\label{tab:predictability}
+\begin{tabular}{@{}lrrlrrr@{}}
+\toprule
+Task / model & LogReg OOF & Tree OOF & Champion & Dev net & Confirm net & Confirm cost-adj. \\
+\midrule
+CodeXGLUE / Laya & 0.674 & 0.739 & logreg & +20.0 (23/11) & +1.7 (17/16) & -3.3 \\
+CodeXGLUE / Vela & 0.716 & 0.646 & logreg & +3.3 (7/5) & -1.7 (9/10) & -6.4 \\
+FinDVer / Laya & 0.455 & 0.466 & tree & +1.7 (1/0) & +2.3 (1/0) & +1.5 \\
+FinDVer / Vela & 0.919 & 0.794 & logreg & +3.4 (4/2) & -2.3 (0/1) & -2.6 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,137 @@
+\section{Results and Discussion}
+\label{sec:results}
+
+The first question is whether the action set offers anything to route. Table
+\ref{tab:complementarity} and Figure~\ref{fig:headroom}
+(Appendix~\ref{app:extra}) answer it at the level of individual rows. Gross
+complementarity is not scarce. On CodeXGLUE with Laya, \choice{} repairs 14 of
+the 60 \noul{} errors, and the per-row oracle reaches 0.783 accuracy against
+0.550 for the better fixed action, a headroom of 0.233. The same cell shows why
+headroom is a poor promise: \choice{} breaks 15 correct \noul{} answers, so the
+net count on the training pool is $-1$ and the net-repair interval spans zero.
+The other three binary cells have smaller gross opportunities (headroom
+0.067--0.100) and net counts between $-6$ and $+1$. Across the four cells, the
+training pool never produces a net repair distinguishable from zero.
+
+Held-out pools do not turn the gross opportunity into a stable net gain. The
+CodeXGLUE/Laya cell gains 20.0 points on \texttt{selection\_dev}
+($[+1.7,+38.3]$), but the same frozen direction gains only 1.7 points on confirm
+($[-18.3,+20.0]$). That gap is a selection-pool effect, not a routing effect:
+dev is the pool on which the direction was chosen. FinDVer with Laya is the
+exception that tests the narrative. Its confirm net repair is $+13.6$ points
+$[+2.0,+24.6]$, and the fixed-action accuracy difference is $+0.136$
+$[+0.020,+0.246]$. The corresponding macro-F1 difference, however, is $+0.111$
+with an interval that crosses zero, and the better fixed action reverses from
+\noul{} on dev to \choice{} on confirm. The cell therefore contains a real
+accuracy-level repair signal on confirm, but not a macro-F1 gain, and not a
+direction that a train-selected policy could have known to exploit. CodeXGLUE
+with Vela moves the other way: the frozen direction is \choice{}-to-\noul{},
+the train net is $-6$, and confirm is exactly zero. FinDVer with Vela is negative
+on confirm ($-2.3$ points). Complementarity exists in the action set, but it is
+sparse, metric-dependent and pool-dependent.
+
+\input{tables/tab_complementarity}
+
+The location of the repairs matters as much as their count. Figure
+\ref{fig:repair} (Appendix~\ref{app:extra}) plots the repair rate against the
+\noul{} probability bin. Repairs concentrate in the middle and high bands,
+around $p\in[0.4,0.8]$, and are close to zero in the lowest band. This is the
+opposite of what a confidence cascade assumes: a threshold rule switches when
+the model is uncertain, which is precisely where \choice{} is least likely to
+fix anything, because the rows it can repair are rows where \noul{} was
+confident and wrong. It also explains why calibration cannot rescue the router:
+recalibration moves probability mass monotonically, but it does not move
+repairable rows from the middle of the distribution to the low-confidence tail.
+
+The second question is whether the incremental value of \choice{} is
+predictable from the first call. Table~\ref{tab:predictability} reports
+out-of-fold ranking quality and the net utility of the frozen dev-selected
+policy. Ranking quality varies widely. Logistic regression reaches 0.674 on
+CodeXGLUE with Laya and 0.919 on FinDVer with Vela; the tree reaches 0.739 on
+CodeXGLUE with Laya. On FinDVer with Laya both predictors are near chance (0.455
+and 0.466), unsurprising given that the cell has only five training repairs. The
+policy results are weaker than the ranking results. The best dev policy for
+CodeXGLUE with Laya is logistic regression with a threshold that switches every
+row: dev net $+20.0$ points, confirm net $+1.7$ points and a cost-adjusted
+$-3.3$. The FinDVer/Vela cell, despite the highest OOF AUROC, chooses a policy
+with dev net $+3.4$ and confirm net $-2.3$ (zero repairs, one regression).
+FinDVer with Laya selects a tree that switches one row and gains 2.3 points on
+confirm, a point estimate built on a single decision. CodeXGLUE with Vela is
+positive on dev ($+3.3$) and negative on confirm ($-1.7$). In no cell does a
+high ranking score translate into a confirm net utility that is both positive
+and estimated with enough support to matter.
+
+\input{tables/tab_predictability}
+
+Calibration is the most natural explanation for a failed probability-based
+router, so it serves as a control. Table~\ref{tab:calibration} and
+Figure~\ref{fig:calibration} in Appendix~\ref{app:extra} show that raw
+probabilities are poorly calibrated on confirm: ECE ranges from 0.090 to 0.290
+and Brier scores from 0.218 to 0.287. Temperature scaling, fitted on
+\texttt{search\_train}, reduces ECE in three of four cells (to 0.045--0.169) and
+Brier in all four. Routing is unaffected: raw probabilities give confirm net
+repairs of $-5.0$, $0.0$, $+2.3$ and $-2.3$ points, temperature-scaled ones give
+$-1.7$, $+1.7$, $0.0$ and $0.0$, as the invariance argument in
+Section~\ref{sec:method} predicts. The repair AUROC makes the point directly:
+0.791, 0.444, 0.336 and 0.095 for the four cells; in the last two the
+probability ranks repairable rows \emph{below} chance. A calibrated probability
+of the current answer is not a calibrated probability of the alternative
+action's value.
+
+The third question is whether search converts the available signal into a
+deployable policy. Table~\ref{tab:search} summarises the comparison. GA versus
+random search is the cleanest test of optimiser value: with five seeds, four
+task--model cells and three pools, there are 60 paired macro-F1 comparisons, and
+none has an interval that excludes zero. GA versus fixed switch-only has five
+significant positive cells, all on the FinDVer/Vela training pool and all with
+an effect near $+0.12$; on dev and confirm, none of the 40 comparisons is
+significant. The pre-registered deployment comparison---train-selected GA
+against fixed switch-only on confirm---is null in every seed-level cell. ES
+versus random search is null in all 30 comparisons; ES versus fixed switching
+has three significant training cells and one significant confirm cell
+(CodeXGLUE/Laya, seed 17, $+0.176$), the only confirm-level positive result, and
+it is not replicated across seeds. NSGA-II deployment is significantly worse
+than the fixed baseline in five dev cells and one confirm cell, with no positive
+cell. The search problem has no stable held-out signal for any optimiser to
+find.
+
+\input{tables/tab_search}
+
+The trajectory diagnostics explain why more search does not help. In 15 of 21
+logged GA/ES runs, best-so-far fitness does not improve after generation zero.
+The neutral-mutation rate is 0.68--0.73, so most mutations produce a candidate
+with exactly the same training score. The train--dev rank correlation is $-0.56$
+and $-0.51$ for the two CodeXGLUE cells, meaning that candidates which look
+better on train tend to look worse on dev, and $+0.44$ and $+0.99$ for the
+FinDVer cells. Raising the budget from 24 to 48 on CodeXGLUE with Vela does not
+close the gap: the GA evaluates only 22, 17 and 23 unique genomes under a cap of
+48, while random search uses all 48. The search is not merely under-tuned; it is
+under-informed.
+
+The boundary checks ask whether these conclusions are artefacts of one pool or
+task. Appendix~\ref{app:boundary} reports the transfer table and fault map.
+Transfer is uniformly unhelpful: of 32 source--target by split units, six have a
+significant paired difference against the target's fixed switch policy, and all
+six are negative (two diagonal, four off-diagonal). The fault map is more
+nuanced: of 15 eligible cells, 13 are confirmed on dev and 10 on confirm. The
+highest confirm severities are on ProcessBench (Vela/mid 0.833, Laya/mid 0.875,
+Vela/low 0.936, Laya/high 0.895). The mid-confidence cells are not simply the
+low-confidence tail: a model can be moderately confident and still fail, and the
+second representation fails on the same rows, so no gate on the first action's
+probability can create a repair.
+
+Taken together, the three questions describe a routing problem that fails before
+the optimiser is asked to solve it: RQ1 finds gross but no stable net
+complementarity, RQ2 finds ranking signal without reliable policy value, and RQ3
+finds no held-out advantage because the landscape is flat and the training
+ranking does not predict the dev ranking where it matters. Calibration improves
+a different quantity: a model can report better probabilities for the question
+it answered and still have nothing to say about whether a different question
+would be answered better.
+
+The practical implication is a change in the order of work. Before building a
+router, measure whether the action set has net complementarity on held-out
+groups and whether the candidate features rank repairable rows above chance. If
+either check fails, a stronger optimiser will not help; if both pass, the
+optimiser comparison can be run under a matched budget with a pre-registered
+confirm comparison.

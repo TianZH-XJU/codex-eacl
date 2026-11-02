@@ -1,0 +1,300 @@
+\begin{thebibliography}{44}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Aggarwal et~al.(2024)Aggarwal, Madaan, Yang
+  et~al.}]{aggarwal2024automix}
+Pranjal Aggarwal, Aman Madaan, Yiming Yang, et~al. 2024.
+\newblock {AutoMix}: Automatically mixing language models.
+\newblock In \emph{Advances in Neural Information Processing Systems 37}.
+
+\bibitem[{Bouthillier et~al.(2021)Bouthillier, Delaunay, Bronzi, Trofimov,
+  Vasiljevic, Di~Bello et~al.}]{bouthillier2021variance}
+Xavier Bouthillier, Pierre Delaunay, Mirko Bronzi, Assya Trofimov, Jordan
+  Vasiljevic, C{\'e}sar Di~Bello, et~al. 2021.
+\newblock Accounting for variance in machine learning benchmarks.
+\newblock In \emph{Proceedings of Machine Learning and Systems}, volume~3.
+
+\bibitem[{Chen et~al.(2024)Chen, Zaharia, and Zou}]{chen2024frugalgpt}
+Lingjiao Chen, Matei Zaharia, and James Zou. 2024.
+\newblock {FrugalGPT}: How to use large language models while reducing cost and
+  improving performance.
+\newblock \emph{Transactions on Machine Learning Research}.
+
+\bibitem[{Chow(1970)}]{chow1970optimum}
+C.~K. Chow. 1970.
+\newblock On optimum recognition error and reject tradeoff.
+\newblock \emph{IEEE Transactions on Information Theory}, 16(1):41--46.
+
+\bibitem[{Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, Chen, Jun, Kaiser,
+  Plappert, Tworek, Hilton, Nakano, Hesse, and Schulman}]{cobbe2021gsm8k}
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz
+  Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano,
+  Christopher Hesse, and John Schulman. 2021.
+\newblock \href {https://arxiv.org/abs/2110.14168} {Training verifiers to solve
+  math word problems}.
+\newblock \emph{Preprint}, arXiv:2110.14168.
+
+\bibitem[{Damani et~al.(2025)Damani, Shenfeld, Peng, Bobu, and
+  Andreas}]{damani2025hard}
+Mehul Damani, Idan Shenfeld, Andi Peng, Andreea Bobu, and Jacob Andreas. 2025.
+\newblock Learning how hard to think: Input-adaptive allocation of {LM}
+  computation.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Deb et~al.(2002)Deb, Pratap, Agarwal, and Meyarivan}]{deb2002nsga2}
+Kalyanmoy Deb, Amrit Pratap, Sameer Agarwal, and T.~Meyarivan. 2002.
+\newblock A fast and elitist multiobjective genetic algorithm: {NSGA-II}.
+\newblock \emph{IEEE Transactions on Evolutionary Computation}, 6(2):182--197.
+
+\bibitem[{Dekoninck et~al.(2025)Dekoninck, Baader, and
+  Vechev}]{dekoninck2025unified}
+Jasper Dekoninck, Maximilian Baader, and Martin Vechev. 2025.
+\newblock A unified approach to routing and cascading for {LLMs}.
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine
+  Learning}, volume 267 of \emph{PMLR}, pages 12987--13010.
+
+\bibitem[{Deu{\ss}er et~al.(2026)Deu{\ss}er, Sparrenberg, and
+  Sifa}]{deusser2026jev}
+Tobias Deu{\ss}er, Lars Sparrenberg, and Rafet Sifa. 2026.
+\newblock \href {https://arxiv.org/abs/2609.37647} {Evaluating and benchmarking
+  the {System One} model {Jev}}.
+\newblock \emph{Preprint}, arXiv:2609.37647.
+
+\bibitem[{Ding et~al.(2025)}]{ding2025bestroute}
+Dujian Ding et~al. 2025.
+\newblock {BEST-Route}: Adaptive {LLM} routing with test-time optimal compute.
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine
+  Learning}, volume 267 of \emph{PMLR}, pages 13870--13884.
+
+\bibitem[{Dodge et~al.(2019)Dodge, Gururangan, Card, Schwartz, and
+  Smith}]{dodge2019show}
+Jesse Dodge, Suchin Gururangan, Dallas Card, Roy Schwartz, and Noah~A. Smith.
+  2019.
+\newblock Show your work: Improved reporting of experimental results.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing and the 9th International Joint Conference on
+  Natural Language Processing}, pages 2185--2194.
+
+\bibitem[{Efron and Tibshirani(1993)}]{efron1993bootstrap}
+Bradley Efron and Robert~J. Tibshirani. 1993.
+\newblock \emph{An Introduction to the Bootstrap}.
+\newblock Chapman and Hall/CRC.
+
+\bibitem[{Elsken et~al.(2019)Elsken, Metzen, and Hutter}]{elsken2019nas}
+Thomas Elsken, Jan~Hendrik Metzen, and Frank Hutter. 2019.
+\newblock Neural architecture search: A survey.
+\newblock \emph{Journal of Machine Learning Research}, 20(55):1--21.
+
+\bibitem[{Fernando et~al.(2024)Fernando, Banarse, Michalewski, Osindero, and
+  Rockt{\"a}schel}]{fernando2024promptbreeder}
+Chrisantha Fernando, Dylan~S. Banarse, Henryk Michalewski, Simon Osindero, and
+  Tim Rockt{\"a}schel. 2024.
+\newblock Promptbreeder: Self-referential self-improvement via prompt
+  evolution.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{PMLR}.
+
+\bibitem[{Gao and Wang(2026)}]{gao2026openjev}
+Zihan Gao and Peng Wang. 2026.
+\newblock \href {https://arxiv.org/abs/2609.38850} {{OpenJev-RLCD}: A working
+  {RLCD} implementation}.
+\newblock \emph{Preprint}, arXiv:2609.38850.
+
+\bibitem[{Geifman and El-Yaniv(2017)}]{geifman2017selective}
+Yonatan Geifman and Ran El-Yaniv. 2017.
+\newblock Selective classification for deep neural networks.
+\newblock In \emph{Advances in Neural Information Processing Systems 30}.
+
+\bibitem[{Gneiting and Raftery(2007)}]{gneiting2007scoring}
+Tilmann Gneiting and Adrian~E. Raftery. 2007.
+\newblock Strictly proper scoring rules, prediction, and estimation.
+\newblock \emph{Journal of the American Statistical Association},
+  102(477):359--378.
+
+\bibitem[{Guo et~al.(2017)Guo, Pleiss, Sun, and
+  Weinberger}]{guo2017calibration}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger. 2017.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine
+  Learning}, volume~70 of \emph{PMLR}, pages 1321--1330.
+
+\bibitem[{Guo et~al.(2024)Guo, Wang, Guo, Li, Song, Tan, Liu, Bian, and
+  Yang}]{guo2024evoprompt}
+Qingyan Guo, Rui Wang, Junliang Guo, Bei Li, Kaitao Song, Xu~Tan, Guoqing Liu,
+  Jiang Bian, and Yujiu Yang. 2024.
+\newblock Connecting large language models with evolutionary algorithms yields
+  powerful prompt optimizers.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Guo et~al.(2026)Guo, Liu, Deng, Li, Zhao, Wu, Chen, Zhang, and
+  Zhang}]{guo2026justask}
+Rui Guo, Yu~Liu, Gelei Deng, Yu~Li, Lei Zhao, Yang Wu, Siheng Chen, Yang Zhang,
+  and Linfeng~Y. Zhang. 2026.
+\newblock \href {https://arxiv.org/abs/2609.29429} {Just ask {Jev}:
+  Reinforcement learning for calibrated decisions as a zero-shot detector of
+  {AI} alignment failures}.
+\newblock \emph{Preprint}, arXiv:2609.29429.
+
+\bibitem[{Hansen and Ostermeier(2001)}]{hansen2001cmaes}
+Nikolaus Hansen and Andreas Ostermeier. 2001.
+\newblock Completely derandomized self-adaptation in evolution strategies.
+\newblock \emph{Evolutionary Computation}, 9(2):159--195.
+
+\bibitem[{Henderson et~al.(2018)Henderson, Islam, Bachman, Pineau, Precup, and
+  Meger}]{henderson2018matters}
+Peter Henderson, Riashat Islam, Philip Bachman, Joelle Pineau, Doina Precup,
+  and David Meger. 2018.
+\newblock Deep reinforcement learning that matters.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~32.
+
+\bibitem[{Jitkrittum et~al.(2023)Jitkrittum, Gupta, Menon, Narasimhan, Rawat,
+  and Kumar}]{jitkrittum2023cascade}
+Wittawat Jitkrittum, Neha Gupta, Aditya~Krishna Menon, Harikrishna Narasimhan,
+  Ankit~Singh Rawat, and Sanjiv Kumar. 2023.
+\newblock When does confidence-based cascade deferral suffice?
+\newblock In \emph{Advances in Neural Information Processing Systems 36}.
+
+\bibitem[{Kadavath et~al.(2022)Kadavath, Conerly, Askell, Henighan, Drain,
+  Perez, Schiefer, Hatfield-Dodds, DasSarma, Tran-Johnson
+  et~al.}]{kadavath2022know}
+Saurav Kadavath, Tom Conerly, Amanda Askell, Tom Henighan, Dawn Drain, Ethan
+  Perez, Nicholas Schiefer, Zac Hatfield-Dodds, Nova DasSarma, Eli
+  Tran-Johnson, et~al. 2022.
+\newblock \href {https://arxiv.org/abs/2207.05221} {Language models (mostly)
+  know what they know}.
+\newblock \emph{Preprint}, arXiv:2207.05221.
+
+\bibitem[{Kamath et~al.(2020)Kamath, Jia, and Liang}]{kamath2020selective}
+Amita Kamath, Robin Jia, and Percy Liang. 2020.
+\newblock Selective question answering under domain shift.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 5684--5696.
+
+\bibitem[{{Laya Project}(2026)}]{laya2026}
+{Laya Project}. 2026.
+\newblock Laya: Non-autoregressive {System 1} decision engine, version 0.4.16.
+\newblock
+  \url{https://github.com/NandhaKishorM/laya/tree/b9fe351ce81e2d974bca2bf219c1e4030c0a05ea}.
+\newblock Source revision b9fe351; accessed 2026-11-01.
+
+\bibitem[{{Laya Studio}(2026)}]{layastudio2026}
+{Laya Studio}. 2026.
+\newblock Proper scoring rules: How to reward honest probabilities.
+\newblock \url{https://laya.studio/learn/proper-scoring-rules}.
+\newblock Accessed 2026-11-01.
+
+\bibitem[{Lightman et~al.(2024)Lightman, Kosaraju, Burda, Edwards, Baker, Lee,
+  Leike, Schulman, Sutskever, and Cobbe}]{lightman2024verify}
+Hunter Lightman, Vineet Kosaraju, Yura Burda, Harrison Edwards, Bowen Baker,
+  Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. 2024.
+\newblock Let's verify step by step.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Lu et~al.(2021)Lu, Guo, Ren, Huang, Svyatkovskiy, Blanco, Clement,
+  Drain, Jiang, Tang et~al.}]{lu2021codexglue}
+Shuai Lu, Daya Guo, Shuo Ren, Junjie Huang, Alexey Svyatkovskiy, Ambrosio
+  Blanco, Colin Clement, Dawn Drain, Daxin Jiang, Duyu Tang, et~al. 2021.
+\newblock {CodeXGLUE}: A machine learning benchmark dataset for code
+  understanding and generation.
+\newblock In \emph{NeurIPS 2021 Datasets and Benchmarks Track}.
+
+\bibitem[{McNemar(1947)}]{mcnemar1947}
+Quinn McNemar. 1947.
+\newblock Note on the sampling error of the difference between correlated
+  proportions or percentages.
+\newblock \emph{Psychometrika}, 12(2):153--157.
+
+\bibitem[{Ong et~al.(2024)Ong, Almahairi, Wu et~al.}]{ong2024routellm}
+Isaac Ong, Amjad Almahairi, Vincent Wu, et~al. 2024.
+\newblock \href {https://arxiv.org/abs/2406.18665} {{RouteLLM}: Learning to
+  route {LLMs} with preference data}.
+\newblock \emph{Preprint}, arXiv:2406.18665.
+
+\bibitem[{Real et~al.(2019)Real, Aggarwal, Huang, and Le}]{real2019regularized}
+Esteban Real, Alok Aggarwal, Yanping Huang, and Quoc~V. Le. 2019.
+\newblock Regularized evolution for image classifier architecture search.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~33, pages 4780--4789.
+
+\bibitem[{Stanley and Miikkulainen(2002)}]{stanley2002neat}
+Kenneth~O. Stanley and Risto Miikkulainen. 2002.
+\newblock Evolving neural networks through augmenting topologies.
+\newblock \emph{Evolutionary Computation}, 10(2):99--127.
+
+\bibitem[{{TypeSafe AI}(2026)}]{typesafe2026}
+{TypeSafe AI}. 2026.
+\newblock Introducing {System One} models and {Jev}.
+\newblock \url{https://typesafe.ai/blog/introducing-system-one-models-and-jev}.
+\newblock Accessed 2026-11-01.
+
+\bibitem[{Uesato et~al.(2022)Uesato, Kushman, Kumar, Song, Siegel, Wang,
+  Creswell, Irving, and Higgins}]{uesato2022process}
+Jonathan Uesato, Nate Kushman, Ramana Kumar, Francis Song, Noah Siegel, Lisa
+  Wang, Antonia Creswell, Geoffrey Irving, and Irina Higgins. 2022.
+\newblock \href {https://arxiv.org/abs/2211.14275} {Solving math word problems
+  with process- and outcome-based feedback}.
+\newblock \emph{Preprint}, arXiv:2211.14275.
+
+\bibitem[{Viola and Jones(2001)}]{viola2001rapid}
+Paul Viola and Michael Jones. 2001.
+\newblock Rapid object detection using a boosted cascade of simple features.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 511--518.
+
+\bibitem[{{vllm-sr}(2026)}]{vllm2026vela}
+{vllm-sr}. 2026.
+\newblock Vela 2.0 0.3b: Model card and training details.
+\newblock \url{https://huggingface.co/vllm-sr/Vela-2.0-0.3B}.
+\newblock Model revision d6f03aa; accessed 2026-11-01.
+
+\bibitem[{Warner et~al.(2024)Warner, Chaffin, Clavi{\'e}, Weller,
+  Hallstr{\"o}m, Taghadouini et~al.}]{warner2024modernbert}
+Benjamin Warner, Antoine Chaffin, Benjamin Clavi{\'e}, Orion Weller, Oskar
+  Hallstr{\"o}m, Said Taghadouini, et~al. 2024.
+\newblock \href {https://arxiv.org/abs/2412.13663} {Smarter, better, faster,
+  longer: A modern bidirectional encoder for fast, memory efficient, and long
+  context finetuning and inference}.
+\newblock \emph{Preprint}, arXiv:2412.13663.
+
+\bibitem[{Wilson(1927)}]{wilson1927}
+Edwin~B. Wilson. 1927.
+\newblock Probable inference, the law of succession, and statistical inference.
+\newblock \emph{Journal of the American Statistical Association},
+  22(158):209--212.
+
+\bibitem[{Xin et~al.(2021)Xin, Tang, Lee, and Lin}]{xin2021art}
+Ji~Xin, Raphael Tang, Yaoliang Lee, and Jimmy Lin. 2021.
+\newblock The art of abstention: Selective prediction and error conditioning in
+  question answering.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association
+  for Computational Linguistics and the 11th International Joint Conference on
+  Natural Language Processing}, pages 1040--1051.
+
+\bibitem[{Yang et~al.(2023)Yang, Klein, Celikyilmaz, Peng, and
+  Tian}]{yang2023rlcd}
+Kevin Yang, Dan Klein, Asli Celikyilmaz, Nanyun Peng, and Yuandong Tian. 2023.
+\newblock \href {https://arxiv.org/abs/2307.12950} {{RLCD}: Reinforcement
+  learning from contrast distillation for language model alignment}.
+\newblock \emph{Preprint}, arXiv:2307.12950.
+
+\bibitem[{Zhao et~al.(2024)}]{zhao2024findver}
+Yilun Zhao et~al. 2024.
+\newblock {FinDVer}: Explainable claim verification over long and
+  hybrid-content financial documents.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, pages 14739--14752.
+
+\bibitem[{Zheng et~al.(2025)}]{zheng2025processbench}
+Chujie Zheng et~al. 2025.
+\newblock {ProcessBench}: Identifying process errors in mathematical reasoning.
+\newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association
+  for Computational Linguistics}, pages 1009--1024.
+
+\bibitem[{Zhou et~al.(2019)Zhou, Liu, Siow, Du, and Liu}]{zhou2019devign}
+Yaqin Zhou, Shangqing Liu, Jingkai Siow, Xiaoning Du, and Yang Liu. 2019.
+\newblock Devign: Effective vulnerability identification by learning
+  comprehensive program semantics via graph neural networks.
+\newblock In \emph{Advances in Neural Information Processing Systems 32}.
+
+\end{thebibliography}

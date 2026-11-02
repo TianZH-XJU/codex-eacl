@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\caption{预注册协议下的搜索比较。计数为排除零的配对分组自助法 95\% 区间数；
+“正”表示演化策略胜过所述基线。GA 与 ES 行在三个池、五个种子上使用
+macro-F1；NSGA-II 行在 12 个 dev 与 12 个 confirm 单元上使用准确率。}
+\label{tab:search}
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+比较 & 正 & 负 & 解读 \\
+\midrule
+GA 对随机 & 0 & 0 & 无优势 (60) \\
+GA 对固定 & 5 & 0 & 仅训练池 (60) \\
+ES 对随机 & 0 & 0 & 无优势 (30) \\
+ES 对固定 & 4 & 0 & 一个 confirm (30) \\
+NSGA-II 对固定 & 0 & 6 & 5 dev, 1 confirm \\
+\bottomrule
+\end{tabular}
+\end{table}

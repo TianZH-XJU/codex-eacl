@@ -1,0 +1,900 @@
+{
+  "experiment_id": "P0-CALIB",
+  "created_utc": "2026-11-01T22:21:19.391182+00:00",
+  "repo_commit": "79656c76f6a8d95524e2b0660f4edf34989d219b",
+  "protocol_version": "v4.1",
+  "analysis_script": "analyze_calibration.py",
+  "analysis_type": "exploratory",
+  "selection_used": true,
+  "confirm_used": true,
+  "pools": "T/slope fit on search_train; dev used only to select the band; confirm frozen",
+  "run_manifest": {
+    "argv": [
+      "--out",
+      "results/v4_1/final/calibration.json"
+    ]
+  },
+  "notes": "Temperature scaling and linear-in-logit recalibration are strictly monotone on (0,1); the band policy class {lo<=p<=hi} is therefore invariant up to threshold reparameterisation. The routing rows verify this numerically rather than assuming it.",
+  "cells": {
+    "code_laya": {
+      "n": {
+        "train": 60,
+        "dev": 60,
+        "confirm": 60
+      },
+      "temperature": {
+        "T": 6.0316,
+        "train_nll_at_T": 0.6839,
+        "fold_T": [
+          26.0,
+          0.8803,
+          14.2828
+        ]
+      },
+      "slope_intercept": {
+        "a": -1345.6894,
+        "b": 21.0831
+      },
+      "raw": {
+        "train": {
+          "n": 60,
+          "brier": 0.2694,
+          "nll": 0.7621,
+          "ece15": 0.2266,
+          "ece_adapt10": 0.1947,
+          "auroc_gold": 0.5733,
+          "mean_p": 0.5169,
+          "pos_rate": 0.5
+        },
+        "dev": {
+          "n": 60,
+          "brier": 0.3248,
+          "nll": 0.8836,
+          "ece15": 0.3422,
+          "ece_adapt10": 0.2948,
+          "auroc_gold": 0.5046,
+          "mean_p": 0.597,
+          "pos_rate": 0.4
+        },
+        "confirm": {
+          "n": 60,
+          "brier": 0.2868,
+          "nll": 0.7913,
+          "ece15": 0.2298,
+          "ece_adapt10": 0.2404,
+          "auroc_gold": 0.5499,
+          "mean_p": 0.5571,
+          "pos_rate": 0.45
+        }
+      },
+      "temp_scaled": {
+        "train_crossfit": {
+          "n": 60,
+          "brier": 0.2949,
+          "nll": 0.835,
+          "ece15": 0.1224,
+          "ece_adapt10": 0.1425,
+          "auroc_gold": 0.5522,
+          "mean_p": 0.5257,
+          "pos_rate": 0.5
+        },
+        "train_insample": {
+          "n": 60,
+          "brier": 0.2462,
+          "nll": 0.6839,
+          "ece15": 0.0727,
+          "ece_adapt10": 0.1515,
+          "auroc_gold": 0.5733,
+          "mean_p": 0.5089,
+          "pos_rate": 0.5
+        },
+        "dev": {
+          "n": 60,
+          "brier": 0.2558,
+          "nll": 0.7048,
+          "ece15": 0.1449,
+          "ece_adapt10": 0.1636,
+          "auroc_gold": 0.5046,
+          "mean_p": 0.5196,
+          "pos_rate": 0.4
+        },
+        "confirm": {
+          "n": 60,
+          "brier": 0.25,
+          "nll": 0.6931,
+          "ece15": 0.0758,
+          "ece_adapt10": 0.1575,
+          "auroc_gold": 0.5499,
+          "mean_p": 0.5121,
+          "pos_rate": 0.45
+        }
+      },
+      "linear_recal": {
+        "train": {
+          "n": 60,
+          "brier": 0.55,
+          "nll": 7.5985,
+          "ece15": 0.55,
+          "ece_adapt10": 0.5167,
+          "auroc_gold": 0.45,
+          "mean_p": 0.4833,
+          "pos_rate": 0.5
+        },
+        "dev": {
+          "n": 60,
+          "brier": 0.4667,
+          "nll": 6.4472,
+          "ece15": 0.4667,
+          "ece_adapt10": 0.4667,
+          "auroc_gold": 0.5122,
+          "mean_p": 0.3667,
+          "pos_rate": 0.4
+        },
+        "confirm": {
+          "n": 60,
+          "brier": 0.55,
+          "nll": 7.5985,
+          "ece15": 0.55,
+          "ece_adapt10": 0.55,
+          "auroc_gold": 0.4545,
+          "mean_p": 0.4,
+          "pos_rate": 0.45
+        }
+      },
+      "utility_vs_calibration": {
+        "auroc_p_for_gold_train": 0.5733,
+        "auroc_p_for_repair_train": 0.8028,
+        "auroc_p_for_gold_confirm": 0.5499,
+        "auroc_p_for_repair_confirm": 0.7907,
+        "n_repair": {
+          "train": 14,
+          "dev": 23,
+          "confirm": 17
+        }
+      },
+      "routing_raw_p": {
+        "dev_selected": {
+          "lo": 0.6,
+          "hi": 0.7,
+          "dev_scalar": 0.6031,
+          "dev_macro_f1": 0.6114,
+          "dev_accuracy": 0.6167,
+          "dev_calls_per_row": 1.1667
+        },
+        "confirm": {
+          "accuracy": 0.5,
+          "calls_per_row": 1.0833,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4994,
+          "balanced_accuracy": 0.5017,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.4952
+        },
+        "confirm_net": {
+          "repair": 1,
+          "regression": 4,
+          "net": -0.05,
+          "n_switched": 5
+        }
+      },
+      "routing_temp_p": {
+        "dev_selected": {
+          "lo": 0.5,
+          "hi": 0.55,
+          "dev_scalar": 0.5412,
+          "dev_macro_f1": 0.5604,
+          "dev_accuracy": 0.6,
+          "dev_calls_per_row": 1.3833
+        },
+        "confirm": {
+          "accuracy": 0.5333,
+          "calls_per_row": 1.4,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.475,
+          "balanced_accuracy": 0.5051,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.455
+        },
+        "confirm_net": {
+          "repair": 11,
+          "regression": 12,
+          "net": -0.0167,
+          "n_switched": 24
+        }
+      },
+      "fixed_confirm": {
+        "noul_only": {
+          "accuracy": 0.55,
+          "calls_per_row": 1.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5489,
+          "balanced_accuracy": 0.5606,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5489
+        },
+        "switch_only": {
+          "accuracy": 0.5667,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.4222,
+          "balanced_accuracy": 0.5219,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.3722
+        }
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      }
+    },
+    "code_vela": {
+      "n": {
+        "train": 60,
+        "dev": 60,
+        "confirm": 60
+      },
+      "temperature": {
+        "T": 26.0,
+        "train_nll_at_T": 0.6955,
+        "fold_T": [
+          26.0,
+          26.0,
+          26.0
+        ]
+      },
+      "slope_intercept": {
+        "a": -1.2986,
+        "b": -0.6471
+      },
+      "raw": {
+        "train": {
+          "n": 60,
+          "brier": 0.2997,
+          "nll": 0.8065,
+          "ece15": 0.2268,
+          "ece_adapt10": 0.2338,
+          "auroc_gold": 0.3667,
+          "mean_p": 0.3826,
+          "pos_rate": 0.5
+        },
+        "dev": {
+          "n": 60,
+          "brier": 0.2353,
+          "nll": 0.6637,
+          "ece15": 0.0532,
+          "ece_adapt10": 0.1556,
+          "auroc_gold": 0.5903,
+          "mean_p": 0.3947,
+          "pos_rate": 0.4
+        },
+        "confirm": {
+          "n": 60,
+          "brier": 0.2601,
+          "nll": 0.7198,
+          "ece15": 0.0899,
+          "ece_adapt10": 0.1563,
+          "auroc_gold": 0.5219,
+          "mean_p": 0.3807,
+          "pos_rate": 0.45
+        }
+      },
+      "temp_scaled": {
+        "train_crossfit": {
+          "n": 60,
+          "brier": 0.2512,
+          "nll": 0.6955,
+          "ece15": 0.0048,
+          "ece_adapt10": 0.1691,
+          "auroc_gold": 0.3667,
+          "mean_p": 0.4952,
+          "pos_rate": 0.5
+        },
+        "train_insample": {
+          "n": 60,
+          "brier": 0.2512,
+          "nll": 0.6955,
+          "ece15": 0.0048,
+          "ece_adapt10": 0.1691,
+          "auroc_gold": 0.3667,
+          "mean_p": 0.4952,
+          "pos_rate": 0.5
+        },
+        "dev": {
+          "n": 60,
+          "brier": 0.2488,
+          "nll": 0.6907,
+          "ece15": 0.0958,
+          "ece_adapt10": 0.1659,
+          "auroc_gold": 0.5903,
+          "mean_p": 0.4958,
+          "pos_rate": 0.4
+        },
+        "confirm": {
+          "n": 60,
+          "brier": 0.2496,
+          "nll": 0.6923,
+          "ece15": 0.0451,
+          "ece_adapt10": 0.1502,
+          "auroc_gold": 0.5219,
+          "mean_p": 0.4951,
+          "pos_rate": 0.45
+        }
+      },
+      "linear_recal": {
+        "train": {
+          "n": 60,
+          "brier": 0.2333,
+          "nll": 0.6562,
+          "ece15": 0.2077,
+          "ece_adapt10": 0.1418,
+          "auroc_gold": 0.6333,
+          "mean_p": 0.5,
+          "pos_rate": 0.5
+        },
+        "dev": {
+          "n": 60,
+          "brier": 0.2714,
+          "nll": 0.738,
+          "ece15": 0.2072,
+          "ece_adapt10": 0.2112,
+          "auroc_gold": 0.4097,
+          "mean_p": 0.4816,
+          "pos_rate": 0.4
+        },
+        "confirm": {
+          "n": 60,
+          "brier": 0.2669,
+          "nll": 0.7275,
+          "ece15": 0.1797,
+          "ece_adapt10": 0.187,
+          "auroc_gold": 0.4781,
+          "mean_p": 0.5022,
+          "pos_rate": 0.45
+        }
+      },
+      "utility_vs_calibration": {
+        "auroc_p_for_gold_train": 0.3667,
+        "auroc_p_for_repair_train": 0.75,
+        "auroc_p_for_gold_confirm": 0.5219,
+        "auroc_p_for_repair_confirm": 0.444,
+        "n_repair": {
+          "train": 10,
+          "dev": 7,
+          "confirm": 10
+        }
+      },
+      "routing_raw_p": {
+        "dev_selected": {
+          "lo": 0.25,
+          "hi": 0.4,
+          "dev_scalar": 0.6154,
+          "dev_macro_f1": 0.6429,
+          "dev_accuracy": 0.7,
+          "dev_calls_per_row": 1.55
+        },
+        "confirm": {
+          "accuracy": 0.5667,
+          "calls_per_row": 1.5167,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5238,
+          "balanced_accuracy": 0.5421,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.498
+        },
+        "confirm_net": {
+          "repair": 5,
+          "regression": 5,
+          "net": 0.0,
+          "n_switched": 31
+        }
+      },
+      "routing_temp_p": {
+        "dev_selected": {
+          "lo": 0.0,
+          "hi": 0.5,
+          "dev_scalar": 0.5996,
+          "dev_macro_f1": 0.6429,
+          "dev_accuracy": 0.7,
+          "dev_calls_per_row": 1.8667
+        },
+        "confirm": {
+          "accuracy": 0.5833,
+          "calls_per_row": 1.9167,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5628,
+          "balanced_accuracy": 0.5673,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.517
+        },
+        "confirm_net": {
+          "repair": 8,
+          "regression": 7,
+          "net": 0.0167,
+          "n_switched": 55
+        }
+      },
+      "fixed_confirm": {
+        "noul_only": {
+          "accuracy": 0.5667,
+          "calls_per_row": 1.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.446,
+          "balanced_accuracy": 0.5253,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.446
+        },
+        "switch_only": {
+          "accuracy": 0.5667,
+          "calls_per_row": 2.0,
+          "n": 60,
+          "n_missing": 0,
+          "macro_f1": 0.5238,
+          "balanced_accuracy": 0.5421,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.4738
+        }
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      }
+    },
+    "findver_laya": {
+      "n": {
+        "train": 60,
+        "dev": 59,
+        "confirm": 44
+      },
+      "temperature": {
+        "T": 6.2945,
+        "train_nll_at_T": 0.6879,
+        "fold_T": [
+          26.0,
+          2.3327,
+          11.3848
+        ]
+      },
+      "slope_intercept": {
+        "a": 0.2527,
+        "b": 0.3241
+      },
+      "raw": {
+        "train": {
+          "n": 60,
+          "brier": 0.2912,
+          "nll": 0.8132,
+          "ece15": 0.2355,
+          "ece_adapt10": 0.2666,
+          "auroc_gold": 0.5701,
+          "mean_p": 0.4083,
+          "pos_rate": 0.55
+        },
+        "dev": {
+          "n": 59,
+          "brier": 0.2096,
+          "nll": 0.6103,
+          "ece15": 0.1724,
+          "ece_adapt10": 0.1359,
+          "auroc_gold": 0.7396,
+          "mean_p": 0.4533,
+          "pos_rate": 0.4746
+        },
+        "confirm": {
+          "n": 44,
+          "brier": 0.2855,
+          "nll": 0.7906,
+          "ece15": 0.2901,
+          "ece_adapt10": 0.2801,
+          "auroc_gold": 0.6027,
+          "mean_p": 0.4756,
+          "pos_rate": 0.6364
+        }
+      },
+      "temp_scaled": {
+        "train_crossfit": {
+          "n": 60,
+          "brier": 0.2611,
+          "nll": 0.7181,
+          "ece15": 0.1519,
+          "ece_adapt10": 0.1802,
+          "auroc_gold": 0.5679,
+          "mean_p": 0.4668,
+          "pos_rate": 0.55
+        },
+        "train_insample": {
+          "n": 60,
+          "brier": 0.2474,
+          "nll": 0.6879,
+          "ece15": 0.0992,
+          "ece_adapt10": 0.2211,
+          "auroc_gold": 0.5701,
+          "mean_p": 0.4816,
+          "pos_rate": 0.55
+        },
+        "dev": {
+          "n": 59,
+          "brier": 0.2331,
+          "nll": 0.6592,
+          "ece15": 0.1299,
+          "ece_adapt10": 0.2171,
+          "auroc_gold": 0.7396,
+          "mean_p": 0.4903,
+          "pos_rate": 0.4746
+        },
+        "confirm": {
+          "n": 44,
+          "brier": 0.2459,
+          "nll": 0.685,
+          "ece15": 0.1412,
+          "ece_adapt10": 0.1981,
+          "auroc_gold": 0.6027,
+          "mean_p": 0.4952,
+          "pos_rate": 0.6364
+        }
+      },
+      "linear_recal": {
+        "train": {
+          "n": 60,
+          "brier": 0.2423,
+          "nll": 0.6769,
+          "ece15": 0.1106,
+          "ece_adapt10": 0.2086,
+          "auroc_gold": 0.5701,
+          "mean_p": 0.55,
+          "pos_rate": 0.55
+        },
+        "dev": {
+          "n": 59,
+          "brier": 0.2333,
+          "nll": 0.6594,
+          "ece15": 0.1079,
+          "ece_adapt10": 0.2184,
+          "auroc_gold": 0.7396,
+          "mean_p": 0.5638,
+          "pos_rate": 0.4746
+        },
+        "confirm": {
+          "n": 44,
+          "brier": 0.2295,
+          "nll": 0.6509,
+          "ece15": 0.0654,
+          "ece_adapt10": 0.1727,
+          "auroc_gold": 0.6027,
+          "mean_p": 0.571,
+          "pos_rate": 0.6364
+        }
+      },
+      "utility_vs_calibration": {
+        "auroc_p_for_gold_train": 0.5701,
+        "auroc_p_for_repair_train": 0.4218,
+        "auroc_p_for_gold_confirm": 0.6027,
+        "auroc_p_for_repair_confirm": 0.3359,
+        "n_repair": {
+          "train": 5,
+          "dev": 6,
+          "confirm": 7
+        }
+      },
+      "routing_raw_p": {
+        "dev_selected": {
+          "lo": 0.45,
+          "hi": 0.5,
+          "dev_scalar": 0.7256,
+          "dev_macro_f1": 0.7281,
+          "dev_accuracy": 0.7288,
+          "dev_calls_per_row": 1.0508
+        },
+        "confirm": {
+          "accuracy": 0.5227,
+          "calls_per_row": 1.0227,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.5165,
+          "balanced_accuracy": 0.5312,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5154
+        },
+        "confirm_net": {
+          "repair": 1,
+          "regression": 0,
+          "net": 0.0227,
+          "n_switched": 1
+        }
+      },
+      "routing_temp_p": {
+        "dev_selected": {
+          "lo": 0.0,
+          "hi": 0.0,
+          "dev_scalar": 0.7089,
+          "dev_macro_f1": 0.7089,
+          "dev_accuracy": 0.7119,
+          "dev_calls_per_row": 1.0
+        },
+        "confirm": {
+          "accuracy": 0.5,
+          "calls_per_row": 1.0,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.4958,
+          "balanced_accuracy": 0.5134,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.4958
+        },
+        "confirm_net": {
+          "repair": 0,
+          "regression": 0,
+          "net": 0.0,
+          "n_switched": 0
+        }
+      },
+      "fixed_confirm": {
+        "noul_only": {
+          "accuracy": 0.5,
+          "calls_per_row": 1.0,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.4958,
+          "balanced_accuracy": 0.5134,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.4958
+        },
+        "switch_only": {
+          "accuracy": 0.6364,
+          "calls_per_row": 2.0,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.6071,
+          "balanced_accuracy": 0.6071,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5571
+        }
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      }
+    },
+    "findver_vela": {
+      "n": {
+        "train": 60,
+        "dev": 59,
+        "confirm": 44
+      },
+      "temperature": {
+        "T": 5.1574,
+        "train_nll_at_T": 0.6888,
+        "fold_T": [
+          26.0,
+          3.8413,
+          2.8154
+        ]
+      },
+      "slope_intercept": {
+        "a": 0.1058,
+        "b": 0.1374
+      },
+      "raw": {
+        "train": {
+          "n": 60,
+          "brier": 0.2752,
+          "nll": 0.7576,
+          "ece15": 0.1911,
+          "ece_adapt10": 0.1637,
+          "auroc_gold": 0.523,
+          "mean_p": 0.6335,
+          "pos_rate": 0.55
+        },
+        "dev": {
+          "n": 59,
+          "brier": 0.3238,
+          "nll": 0.8692,
+          "ece15": 0.2555,
+          "ece_adapt10": 0.249,
+          "auroc_gold": 0.4286,
+          "mean_p": 0.6261,
+          "pos_rate": 0.4746
+        },
+        "confirm": {
+          "n": 44,
+          "brier": 0.2176,
+          "nll": 0.6206,
+          "ece15": 0.1473,
+          "ece_adapt10": 0.1917,
+          "auroc_gold": 0.6049,
+          "mean_p": 0.605,
+          "pos_rate": 0.6364
+        }
+      },
+      "temp_scaled": {
+        "train_crossfit": {
+          "n": 60,
+          "brier": 0.2536,
+          "nll": 0.7006,
+          "ece15": 0.1168,
+          "ece_adapt10": 0.1238,
+          "auroc_gold": 0.4736,
+          "mean_p": 0.5291,
+          "pos_rate": 0.55
+        },
+        "train_insample": {
+          "n": 60,
+          "brier": 0.2478,
+          "nll": 0.6888,
+          "ece15": 0.021,
+          "ece_adapt10": 0.1204,
+          "auroc_gold": 0.523,
+          "mean_p": 0.529,
+          "pos_rate": 0.55
+        },
+        "dev": {
+          "n": 59,
+          "brier": 0.2585,
+          "nll": 0.7103,
+          "ece15": 0.0972,
+          "ece_adapt10": 0.1527,
+          "auroc_gold": 0.4286,
+          "mean_p": 0.5273,
+          "pos_rate": 0.4746
+        },
+        "confirm": {
+          "n": 44,
+          "brier": 0.2344,
+          "nll": 0.6616,
+          "ece15": 0.1688,
+          "ece_adapt10": 0.197,
+          "auroc_gold": 0.6049,
+          "mean_p": 0.5203,
+          "pos_rate": 0.6364
+        }
+      },
+      "linear_recal": {
+        "train": {
+          "n": 60,
+          "brier": 0.2471,
+          "nll": 0.6873,
+          "ece15": 0.0072,
+          "ece_adapt10": 0.1191,
+          "auroc_gold": 0.523,
+          "mean_p": 0.55,
+          "pos_rate": 0.55
+        },
+        "dev": {
+          "n": 59,
+          "brier": 0.258,
+          "nll": 0.7093,
+          "ece15": 0.0745,
+          "ece_adapt10": 0.1544,
+          "auroc_gold": 0.4286,
+          "mean_p": 0.5491,
+          "pos_rate": 0.4746
+        },
+        "confirm": {
+          "n": 44,
+          "brier": 0.2334,
+          "nll": 0.6598,
+          "ece15": 0.1603,
+          "ece_adapt10": 0.1988,
+          "auroc_gold": 0.6049,
+          "mean_p": 0.5452,
+          "pos_rate": 0.6364
+        }
+      },
+      "utility_vs_calibration": {
+        "auroc_p_for_gold_train": 0.523,
+        "auroc_p_for_repair_train": 0.062,
+        "auroc_p_for_gold_confirm": 0.6049,
+        "auroc_p_for_repair_confirm": 0.0952,
+        "n_repair": {
+          "train": 7,
+          "dev": 6,
+          "confirm": 2
+        }
+      },
+      "routing_raw_p": {
+        "dev_selected": {
+          "lo": 0.0,
+          "hi": 0.2,
+          "dev_scalar": 0.4321,
+          "dev_macro_f1": 0.4329,
+          "dev_accuracy": 0.4746,
+          "dev_calls_per_row": 1.0169
+        },
+        "confirm": {
+          "accuracy": 0.6818,
+          "calls_per_row": 1.0682,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.5758,
+          "balanced_accuracy": 0.5893,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.5724
+        },
+        "confirm_net": {
+          "repair": 0,
+          "regression": 1,
+          "net": -0.0227,
+          "n_switched": 3
+        }
+      },
+      "routing_temp_p": {
+        "dev_selected": {
+          "lo": 0.0,
+          "hi": 0.0,
+          "dev_scalar": 0.4201,
+          "dev_macro_f1": 0.4201,
+          "dev_accuracy": 0.4576,
+          "dev_calls_per_row": 1.0
+        },
+        "confirm": {
+          "accuracy": 0.7045,
+          "calls_per_row": 1.0,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.6174,
+          "balanced_accuracy": 0.6205,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.6174
+        },
+        "confirm_net": {
+          "repair": 0,
+          "regression": 0,
+          "net": 0.0,
+          "n_switched": 0
+        }
+      },
+      "fixed_confirm": {
+        "noul_only": {
+          "accuracy": 0.7045,
+          "calls_per_row": 1.0,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.6174,
+          "balanced_accuracy": 0.6205,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.6174
+        },
+        "switch_only": {
+          "accuracy": 0.6818,
+          "calls_per_row": 2.0,
+          "n": 44,
+          "n_missing": 0,
+          "macro_f1": 0.5111,
+          "balanced_accuracy": 0.5625,
+          "lam": 0.05,
+          "primary": "macro_f1",
+          "scalar": 0.4611
+        }
+      },
+      "splits": {
+        "train": "search_train",
+        "dev": "search_dev",
+        "confirm": "confirm"
+      }
+    }
+  }
+}

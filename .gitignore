@@ -48,3 +48,12 @@ external/laya/
 external/ProcessBench/
 # Upstream FinDVer checkout pins data + code for inspection; raw reports stay local.
 external/FinDVer/
+
+# LaTeX build intermediates and rendered page previews
+paper/**/preview/
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.out
+paper/**/*.blg
+paper/acl/acl_sample.*
+texput.log

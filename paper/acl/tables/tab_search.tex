@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Search comparisons under the pre-registered protocol. Counts are
+paired group-bootstrap 95\% intervals that exclude zero; ``positive'' means the
+evolved policy beats the stated baseline. GA and ES rows use macro-F1 on all
+three pools with five seeds; the NSGA-II row uses accuracy on 12 dev and 12
+confirm cells.}
+\label{tab:search}
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+Comparison & Pos. & Neg. & Reading \\
+\midrule
+GA vs.\ random & 0 & 0 & no advantage (60) \\
+GA vs.\ fixed & 5 & 0 & train-only (60) \\
+ES vs.\ random & 0 & 0 & no advantage (30) \\
+ES vs.\ fixed & 4 & 0 & one confirm (30) \\
+NSGA-II vs.\ fixed & 0 & 6 & 5 dev, 1 confirm \\
+\bottomrule
+\end{tabular}
+\end{table}

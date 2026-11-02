@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\caption{本文讨论的三个结构化决策模型。只有 Laya 与 Vela 在本地运行；
+Jev 定义商业参考点，本文不评测。}
+\label{tab:models}
+\begin{tabular}{@{}p{1.3cm}p{3.7cm}p{4.4cm}p{3.7cm}@{}}
+\toprule
+模型 & 接口 & 训练路线 & 本文角色 \\
+\midrule
+Jev & 一次调用返回带类型的 \textsc{Noul}、\textsc{Choice} 与 \textsc{Score} 决策及概率 & TypeSafe 称其为 RLCD 与适当评分目标；完整配方未公开 & RLCD / System One 家族的参考点；未运行 \\
+Laya 0.4.16 & ModernBERT-large 编码器加决策头，约 4.21 亿参数；\textsc{Noul}、\textsc{Choice}、\textsc{Score} & 上游称配方为 RLCD，使用 log、spherical 与 ranked probability 分数 & 所有实验中使用的开放 RLCD 模型 \\
+Vela 2.0 0.3B & 22 层 ModernBERT，768 隐藏维，8{,}192 token；\textsc{Noul}、\textsc{Choice}、\textsc{Score}、\textsc{Span}、\textsc{Set} & 从 Decision-1.0-Kai 的 Choice 路径初始化，任务特定损失与路由数据；未称 RLCD & 接口匹配、配方不同的对照模型 \\
+\bottomrule
+\end{tabular}
+\end{table}

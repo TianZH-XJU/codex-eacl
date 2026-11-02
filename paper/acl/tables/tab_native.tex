@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Native single-action baselines on the 60-row selection pools
+(\texttt{search\_dev}, seed 17). Latency is the per-call mean on the local CPU
+and is reported only to show that the two representations cost roughly the
+same; it is not used in the fitness function.}
+\label{tab:native}
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Task & Model & $n$ & \textsc{Noul} acc. & \textsc{Choice} acc. & \textsc{Noul} ms & \textsc{Choice} ms & Peak RSS (MB) \\
+\midrule
+CodeXGLUE & Laya & 60 & 0.450 & 0.650 & 2304 & 2239 & 2114 \\
+CodeXGLUE & Vela & 60 & 0.633 & 0.667 & 2437 & 2341 & 1931 \\
+FinDVer & Laya & 59 & 0.712 & 0.644 & 2768 & 2741 & 2117 \\
+FinDVer & Vela & 59 & 0.458 & 0.458 & 2394 & 2263 & 1795 \\
+ProcessBench & Laya & 60 & 0.100 & -- & 2616 & -- & 2124 \\
+ProcessBench & Vela & 60 & 0.100 & -- & 1577 & -- & 1747 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,9 +1,34 @@
 # Execution Status
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 **Current phase:** v4 EvoTIDE track active; A0 audit PASS; A1 native baselines done (math/code/findver/intent, Laya+Vela paired); A2 schema ablation DONE; A3 OFAT FAILED; E2 menu headroom CONFIRMED (3/4 paired CIs) but E2 pilot shows landscape flat within cross-process noise on n=30 (norm no-op, cross-model corr 0.092, both models 0 within-process flips) so E2 GP search BLOCKED pending n≈500 budget (GP-scale Laya ~22.6 h prohibitive); surrogate fitness REJECTED (0.62/0.75/0.85/0.78 < 0.9); distinct-view batching diagnostic done; A4+ ES rerun DONE (6/6 ns); E5 faultmap DONE (15/13/10); conditional NEAT and locked test BLOCKED per gates.
 **Research result status:** no repeatable learned-controller or config gain anywhere yet. Intent A1: CLINC150 Laya 0.61 vs Vela 0.57 (diff -0.04 CI [-0.16,+0.08]); BANKING77 Laya 0.44 vs Vela 0.54 (diff +0.10 CI [-0.02,+0.21]); no significant gap, Vela 2.5-4x faster per call. Subset-candidate pilot had inflated Laya CLINC150 to 0.86 (fixed by full-set rerun). E2: TF-IDF menu recall@10 0.94-0.98; menu-restricted Choice beats full Choice (BANKING77 Laya +0.333 [0.2,0.4667]; CLINC150 Laya +0.25 [0.1333,0.3667], Vela +0.217 [0.1,0.3333]); fixed-retrieval effect only, no evolutionary gain claimed.
 **Active plan:** docs/BLSC_RESEARCH_PLAN_20261027.md
+
+## v4.1 paper wrap-up (2026-11-02)
+
+**Deliverables built.** English ACL review paper at `paper/acl/main.pdf` (15 pages total; main content pages 1-8, references start p.9, appendix p.11-15), with six top-level sections and no subsection headings. Chinese review version at `paper/acl_zh/main.pdf` (18 pages, xelatex + ctex, same six sections, translated tables and captions). Both PDFs compile without undefined references, overfull hboxes or LaTeX errors.
+
+**New supplementary analyses (cache-only, no model calls).** `results/v4_1/final/calibration.json` (raw vs temperature-scaled ECE/Brier/NLL/AUROC; T = 6.03/26.0/6.29/5.16; repair AUROC 0.791/0.444/0.336/0.095; routing unchanged or worse after scaling), `seed_extension.json` (5 seeds 17/23/41/59/73; GA vs random 0/60 significant; GA vs fixed 5 significant all FinDVer/Vela train, 0/40 dev+confirm; ES vs fixed 4 significant, one confirm cell code/Laya seed 17 +0.176), `fixed_action_cis.json` (FinDVer/Laya confirm accuracy +0.1364 [0.0204,0.246] significant, macro-F1 +0.111 ns; action ranking flips dev to confirm), and `search_dynamics.json` (neutral mutation 0.68-0.73; train-dev Spearman -0.56/-0.51/+0.44/+0.99; 15/21 runs plateau at generation 0; b48 uniques 22/17/23 of 48).
+
+**Artifacts.** Six vector figures in `paper/acl/figures/` and seven LaTeX tables in `paper/acl/tables/`, all generated from committed JSONs by `scripts/plot_paper_figures.py` and `scripts/make_paper_tables.py`; no hand-copied numbers. `paper/acl/references.bib` has 46 entries.
+
+**Typesetting checks.** `aclpubcheck` was installed into `.venv` and run through `scripts/run_aclpubcheck.py`, which monkeypatches pdfplumber's ImageMagick renderer with PyMuPDF (ImageMagick is not installed on this machine). Result on the camera-ready build `paper/acl/main_camera.pdf`: `All Clear!` (0 errors, 0 warnings). The review build keeps line numbers, which aclpubcheck correctly treats as margin text; the camera-ready build is the one that passes.
+
+**Commands run.**
+```powershell
+pdflatex -interaction=nonstopmode main.tex
+bibtex main
+pdflatex -interaction=nonstopmode main.tex
+pdflatex -interaction=nonstopmode main.tex
+pdflatex -interaction=nonstopmode -jobname=main_camera "\def\CAMERAREADY{}\input{main.tex}"
+bibtex main_camera
+pdflatex -interaction=nonstopmode -jobname=main_camera "\def\CAMERAREADY{}\input{main.tex}"  # twice
+.venv\Scripts\python.exe scripts\run_aclpubcheck.py paper/acl/main_camera.pdf --paper_type long --output_dir paper/acl
+cd paper\acl_zh; xelatex main.tex; bibtex main; xelatex main.tex; xelatex main.tex
+```
+
+**Not run / blocked.** Locked test (requires frozen templates, policy class and statistics first), Noul template wording audit, real end-to-end latency for every searched policy, Jev external evaluation, and larger sample pools all require new model calls or API budget and are reported as not run rather than filled with proxy numbers. The only positive confirm net-repair cell is FinDVer/Laya; it is reported as a lead for replication, not as a deployable gain.
 
 ## v4 gate table (2026-11-01; v3 frozen, no rewrite of old numbers)
 

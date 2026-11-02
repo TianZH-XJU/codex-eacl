@@ -1,0 +1,158 @@
+\section{Appendix}
+\label{app:models}
+
+\textbf{Model and action interfaces.} Table~\ref{tab:models} summarises the
+three structured decision models discussed in the paper. Only Laya and Vela are
+run locally; Jev defines the commercial reference point and is not evaluated
+here.
+
+\input{tables/tab_models}
+
+\label{app:native}
+
+\textbf{Native single-action baselines.} Table~\ref{tab:native} reports the
+accuracy and mean per-call latency of the two native actions on the
+\texttt{search\_dev} pools. These numbers define the fixed policies that every
+searched policy is compared against. The two representations have similar
+per-call cost, which is why the fitness function uses call count rather than a
+model-specific latency term. Peak resident memory is included to document the
+CPU-only execution envelope.
+
+\input{tables/tab_native}
+
+\label{app:extra}
+
+\textbf{Complementarity overview.} Figure~\ref{fig:headroom} visualises the
+gross and net repair counts behind Table~\ref{tab:complementarity}, including
+the train-selected direction applied unchanged to dev and confirm.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.86\linewidth]{figures/fig_headroom.pdf}
+\caption{Action complementarity. (a) On the training pool, the second action
+repairs errors but also breaks correct answers; the net count is printed above
+each pair. (b) The same train-selected direction applied to dev and confirm:
+the sign of net repair changes across pools, and only one confirm cell has an
+interval above zero.}
+\label{fig:headroom}
+\end{figure*}
+
+\textbf{Repair profile.} Figure~\ref{fig:repair} shows the repair rate of the
+second action as a function of the \noul{} probability bin, separately for the
+training, dev and confirm pools. Each point is the fraction of rows in that bin
+where \noul{} was wrong and \choice{} was correct. Bin counts are printed when
+at least eight rows fall in the bin. The figure motivates the claim in
+Section~\ref{sec:results} that repairs concentrate at mid and high probability
+rather than in the low-confidence tail.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig_repair_profile.pdf}
+\caption{Repair rate by \noul{} probability bin for the four binary cells.
+Repairs are rare in the lowest bin and concentrate around $p\in[0.4,0.8]$,
+where a confidence cascade is least likely to switch.}
+\label{fig:repair}
+\end{figure*}
+
+\textbf{Calibration details.} Table~\ref{tab:calibration} reports calibration
+and its relation to routing; Figure~\ref{fig:calibration} plots reliability
+diagrams on confirm for the four binary cells, before and after temperature
+scaling. The scaling parameters are fitted on \texttt{search\_train} and applied
+unchanged to confirm. Because temperature scaling is monotone, it changes the
+numerical probabilities but not the ordering of rows, and therefore not the set
+of band policies available to the router.
+
+\input{tables/tab_calibration}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig_calibration.pdf}
+\caption{Reliability diagrams on the confirm pool for the four binary cells.
+Grey is the raw \noul{} probability, blue is temperature-scaled. Temperature
+scaling reduces the calibration error, but it is a monotone map: the ordering
+of rows, and therefore the set of band policies available up to a
+reparameterisation, is unchanged.}
+\label{fig:calibration}
+\end{figure*}
+
+\textbf{Search diagnostics.} Figure~\ref{fig:search} collects the three
+trajectory diagnostics discussed in Section~\ref{sec:results}: the neutral
+mutation rate, the rank correlation between training and dev fitness across the
+archive, and best-so-far training fitness for seed 17.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig_search.pdf}
+\caption{Search diagnostics. (a) Between 68\% and 73\% of single-gene mutations
+leave training fitness unchanged. (b) Rank correlation between training and dev
+fitness across the archive is negative for both CodeXGLUE cells and positive for
+FinDVer. (c) Best-so-far training fitness for seed 17; most runs improve at most
+once, and several are flat from generation zero.}
+\label{fig:search}
+\end{figure*}
+
+\textbf{Ranking versus policy value.} Figure~\ref{fig:predictability} plots
+out-of-fold AUROC against the confirm net utility of the frozen dev-selected
+policy for each cell. Points to the right of 0.5 have ranking signal; points
+below zero have negative policy value. The dissociation is visible: the cell
+with the strongest ranking signal (FinDVer/Vela) has a negative confirm net, and
+the cell with the best confirm net (FinDVer/Laya) has near-chance ranking
+signal.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/fig_predictability.pdf}
+\caption{OOF AUROC versus confirm net utility. The dashed horizontal line is
+zero net utility; the dotted vertical line is chance-level AUROC. Ranking
+quality and policy value are not the same quantity.}
+\label{fig:predictability}
+\end{figure}
+
+\label{app:boundary}
+
+\textbf{Boundary checks.} Table~\ref{tab:boundary} reports the transfer counts
+and the four highest-severity fault-map cells. Figure~\ref{fig:faultmap} shows
+the full confirm-pool severity map by task, model and confidence band.
+
+\input{tables/tab_boundary}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/fig_faultmap.pdf}
+\caption{Confirm-pool failure severity by task, model and confidence band.
+Asterisks mark cells that were not confirmed within the 0.15 tolerance. The
+stable high-severity region is the mid-confidence band on ProcessBench, where
+both representations fail together.}
+\label{fig:faultmap}
+\end{figure}
+
+\textbf{Reproducibility details.} All results in this paper are derived from
+committed JSON files. The per-row caches are one JSON file per pool, named
+\texttt{cache\_<split>\_<task>\_<model>.json} under
+\texttt{results/v4/evolution/}; the analyses are produced by
+\texttt{scripts/analyze\_action\_\allowbreak complementarity.py},
+\texttt{analyze\_complementarity\_heldout.py},
+\texttt{analyze\_utility\_predictability.py},
+\texttt{analyze\_search\_landscape.py},
+\texttt{analyze\_transfer\_heldout.py},
+\texttt{analyze\_calibration.py},
+\texttt{analyze\_seed\_extension.py},
+\texttt{analyze\_fixed\_action\_cis.py} and
+\texttt{analyze\_search\_dynamics.py}. The tables are generated by
+\texttt{scripts/make\_paper\_tables.py} and the figures by
+\texttt{scripts/plot\_paper\_figures.py}; neither script contains a hand-copied
+number. The GA/ES/NSGA-II runners are in \texttt{src/evolution/}. Model
+revisions, dataset revisions, seeds and CPU thread counts are recorded in each
+result file's metadata. The five-seed extension uses seeds 17, 23, 41, 59 and
+73; the budget probe uses the same cache with a cap of 48 unique genomes. No
+hosted CI runner is used: every model call was executed on the local Windows
+machine, and the cached outputs are the only inputs to the analyses reported
+here.
+
+\textbf{What is not reported.} The locked test was not run, the \noul{} template
+was not audited against alternative wordings, real end-to-end latency was not
+measured for every searched policy, and Jev was not evaluated. These omissions
+are stated in the main text and are not filled with proxy numbers. The
+FinDVer/Laya confirm cell is the only cell with a positive net-repair accuracy
+interval; it should be treated as a lead for a larger replication, not as a
+deployable result.

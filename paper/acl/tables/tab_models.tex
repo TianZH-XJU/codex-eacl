@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{The three structured decision models discussed in this paper. Only
+Laya and Vela are run locally; Jev defines the commercial reference point and
+is not evaluated here.}
+\label{tab:models}
+\begin{tabular}{@{}p{1.5cm}p{4.1cm}p{4.6cm}p{4.4cm}@{}}
+\toprule
+Model & Interface & Training route & Role in this study \\
+\midrule
+Jev & One call returns typed \textsc{Noul}, \textsc{Choice} and \textsc{Score} decisions with probabilities & TypeSafe names RLCD and a proper-scoring objective; the full recipe is not public & Reference point for the RLCD / System One family; not run \\
+Laya 0.4.16 & ModernBERT-large encoder with decision heads, $\approx$421M parameters; \textsc{Noul}, \textsc{Choice}, \textsc{Score} & Upstream describes the recipe as RLCD with log, spherical and ranked probability scores & Open RLCD model used in all experiments \\
+Vela 2.0 0.3B & 22-layer ModernBERT, 768 hidden, 8{,}192 tokens; \textsc{Noul}, \textsc{Choice}, \textsc{Score}, \textsc{Span}, \textsc{Set} & Initialised from Decision-1.0-Kai Choice path, task-specific losses, routing data; not called RLCD & Interface-matched comparison model with a different recipe \\
+\bottomrule
+\end{tabular}
+\end{table*}

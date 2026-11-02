@@ -1,0 +1,126 @@
+\section{Method and Decision Rules}
+\label{sec:method}
+
+We study a frozen model $M$ and a fixed action set $\mathcal{A}$. An input $x$
+is rendered by a task adapter into a state string and a typed question; the
+model returns a schema-validated decision with a probability. The policy reads
+only the first call and decides whether to issue a second call. Model weights,
+question templates and candidate label sets are never modified during search.
+This isolates inference-time control from fine-tuning the backbone on the
+routing objective.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  >=Stealth,
+  node distance=6mm,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=4pt,
+              minimum height=8.5mm, fill=white},
+  arr/.style={->, thick},
+  dashedarr/.style={->, thick, dashed}
+]
+\node[box] (x) {input $x$};
+\node[box, right=of x] (m) {frozen model $M$};
+\node[box, right=of m] (p) {\noul{} call\\$p(x)$};
+\node[box, right=of p] (g) {band gate\\$\ell \le p \le h$};
+\node[box, right=of g, yshift=12mm] (c) {\choice{} call\\second view};
+\node[box, right=of g, yshift=-12mm] (n) {\noul{} label\\no second call};
+\draw[arr] (x) -- (m);
+\draw[arr] (m) -- (p);
+\draw[arr] (p) -- (g);
+\draw[arr] (g) -- node[above, font=\scriptsize]{$u=1$} (c);
+\draw[arr] (g) -- node[below left, font=\scriptsize]{else} (n);
+\node[box, below=10mm of p, fill=gray!8] (fit) {$J(g)=Q(g)-\lambda\,C(g)$};
+\node[box, left=of fit, fill=gray!8] (cache) {immutable output cache};
+\node[box, right=of fit, fill=gray!8] (search) {GA / ES / NSGA-II};
+\draw[dashedarr] (cache) -- (fit);
+\draw[dashedarr] (fit) -- (search);
+\end{tikzpicture}
+\caption{The routing setting. A frozen model answers a first \noul{} question;
+a two-parameter gate decides whether the same model is asked a second
+\choice{} question. Search operates entirely on cached outputs: a candidate
+genome is scored by replaying the cache, and the optimiser only sees the scalar
+fitness $J$. The dashed path is offline; the solid path is the deployed policy.}
+\label{fig:pipeline}
+\end{figure*}
+
+For the binary tasks, CodeXGLUE and FinDVer, the first action is \noul{}: the
+model answers a yes/no question and returns $p(x)=P(\text{true}\mid x)$. The
+second action is \choice{}: the model selects between two named labels. In
+CodeXGLUE the questions are whether a function contains a vulnerability and
+whether it should be labelled \texttt{secure} or \texttt{vulnerable}; in
+FinDVer they are whether a claim is supported and whether it should be labelled
+\texttt{supported} or \texttt{not supported}. The cascade always pays for
+\noul{} first and pays for \choice{} only when the gate opens. A policy is a
+genome $g_{\mathrm{cas}}=(\ell,h,u)$ with $\ell,h\in[0,1]$ and
+$u\in\{0,1\}$:
+\begin{equation}
+\pi_{g}(x)=
+\begin{cases}
+\choice(x), & u=1\!\land\!\ell\le p(x)\le h,\\
+\noul(x), & \text{otherwise}.
+\end{cases}
+\label{eq:cascade}
+\end{equation}
+The gate uses the positive-class probability rather than symmetric confidence,
+because a \noul{} question has a designated true label. Genome repair clips
+$\ell$ and $h$ to $[0,1]$, swaps them when $\ell>h$, and maps $u$ to $\{0,1\}$.
+Two fixed policies are special cases: $u=0$ is \noul-only, and
+$u=1,\ell=0,h=1$ is fixed switch-only, which still pays for the first \noul{}
+call and therefore costs two calls per row.
+
+ProcessBench has a different action space. The model returns a ranked list of
+candidate steps, and the policy decides whether to answer with the top-1 step or
+to abstain. A genome $g_{\mathrm{abs}}=(t,v,m)$ with $t,m\in[0,1]$ and
+$v\in\{0,1\}$ uses the top-1 probability $s_1(x)$ and the top-1/top-2 margin
+$\Delta(x)$:
+\begin{equation}
+\mathrm{abstain}(x)=
+\begin{cases}
+\text{true}, & s_1(x)<t,\\
+\text{true}, & v=1\,\land\,\Delta(x)<m,\\
+\text{false}, & \text{otherwise}.
+\end{cases}
+\label{eq:abstain}
+\end{equation}
+When the required confidence fields are missing, the evaluator fails closed:
+the row is forced to answer and is counted as incorrect rather than silently
+dropped. We report coverage (the fraction of rows answered) and selective
+accuracy (accuracy on answered rows). The two genomes never share an action set
+or a cost model, so we never pool their accuracy numbers.
+
+Fitness combines task quality with the cost of the second call:
+\begin{equation}
+J(g)=Q(g)-\lambda\,C(g),
+\label{eq:fitness}
+\end{equation}
+where $Q$ is macro-F1 on the binary tasks and step accuracy on ProcessBench,
+$C(g)$ is the mean number of model calls per row minus one, and $\lambda=0.05$
+is fixed before search. Macro-F1 is primary because both binary datasets are
+class-imbalanced; accuracy is reported alongside it. The first \noul{} call is
+charged to every policy, including \noul-only, so the cost term isolates the
+incremental call rather than the total inference bill. Model outputs are
+generated once and replayed from an immutable JSON cache, which makes candidate
+evaluation deterministic and cheap. We measure end-to-end latency for the native
+actions but do not claim it for every searched policy.
+
+The GA uses tournament selection, uniform crossover, Gaussian mutation and bit
+flips on $u$. The ES is a $(\mu+\lambda)$ strategy that mutates the two
+endpoints and fixes $u=1$. NSGA-II maintains a non-dominated front, optimising
+accuracy and negative call cost on the binary tasks and selective accuracy and
+coverage on ProcessBench; because its quality objective is accuracy rather than
+macro-F1, we keep its intervals separate. The main budget is 24 unique genome
+evaluations with seeds 17, 23 and 41; a five-seed extension adds 59 and 73. A
+probe raises the CodeXGLUE/Vela budget to 48. Random search uses the same budget
+and cache.
+
+One property of the policy class shapes the calibration experiment. The gate
+depends on $p(x)$ only through the interval $\ell\le p\le h$. Any strictly
+monotone transformation of $p$---temperature scaling, for example---maps the
+interval to another interval and induces the same set of switched rows up to a
+reparameterisation of the endpoints. A monotone recalibration therefore cannot
+change the best achievable band policy on a fixed pool. It can move rows between
+bands, but it cannot create a distinction between repairable and harmful rows
+that the raw ordering did not already contain. Calibration and routing are
+therefore evaluated separately.

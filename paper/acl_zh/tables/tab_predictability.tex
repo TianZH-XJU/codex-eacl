@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{增量效用预测。折外 AUROC 在 \texttt{search\_train} 上使用分组感知
+三折交叉验证；冠军模型与阈值在 \texttt{search\_dev} 上选择，冻结后用于
+\texttt{confirm}。净效用为（修复 $-$ 退化）$/n$，单位为百分点，括号内为
+计数；最后一列每次额外调用减去 $\lambda=0.05$。}
+\label{tab:predictability}
+\begin{tabular}{@{}lrrlrrr@{}}
+\toprule
+任务 / 模型 & LogReg 折外 & 树 折外 & 冠军 & dev 净 & confirm 净 & confirm 成本调整 \\
+\midrule
+CodeXGLUE / Laya & 0.674 & 0.739 & logreg & +20.0 (23/11) & +1.7 (17/16) & -3.3 \\
+CodeXGLUE / Vela & 0.716 & 0.646 & logreg & +3.3 (7/5) & -1.7 (9/10) & -6.4 \\
+FinDVer / Laya & 0.455 & 0.466 & tree & +1.7 (1/0) & +2.3 (1/0) & +1.5 \\
+FinDVer / Vela & 0.919 & 0.794 & logreg & +3.4 (4/2) & -2.3 (0/1) & -2.6 \\
+\bottomrule
+\end{tabular}
+\end{table}

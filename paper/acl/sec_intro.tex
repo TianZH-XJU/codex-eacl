@@ -1,0 +1,94 @@
+\section{Introduction}
+
+A claims analyst asks a model whether a sentence is supported by a financial
+report; a security engineer asks whether a C function contains a vulnerability;
+a mathematician asks where the first invalid step occurs. In each case the
+downstream system wants a decision it can branch on, not a paragraph a human
+must parse. System One models answer that demand directly. Given a state and a
+typed question, Jev returns a binary \noul{}, a candidate \choice{}, or an
+ordered \score{} with probability information, and the calling program can act
+on the result without a second interpretation step
+\citep{typesafe2026,deusser2026jev}. Laya and Vela expose similar interfaces in
+open weights \citep{laya2026,vllm2026vela}. Uncertainty becomes a first-class
+value that software can read.
+
+That value suggests an obvious control policy. Ask the cheap binary question
+first, inspect the returned probability, and spend a second call on a
+differently framed \choice{} question only when the first answer looks shaky.
+The policy is easy to implement, needs no labels at deployment, and matches how
+practitioners already use confidence thresholds. It also rests on an assumption
+that is rarely stated: that the probability attached to the current decision
+tells us something about the value of a different decision. A model can be
+unsure and still be right, or confident and about to switch from a correct
+\noul{} answer to an incorrect \choice{} one. What matters for routing is not
+$P(\text{current answer is correct})$ but the incremental utility of the
+alternative action, $U(\choice \mid x) - U(\noul \mid x)$.
+
+The two quantities are easy to conflate because both are probabilities over the
+same label set, but they are learned from different supervision. RLCD, the
+recipe behind Jev and the one Laya documents, optimises the honesty of the
+reported distribution with strictly proper scoring rules
+\citep{typesafe2026,laya2026,gneiting2007scoring}. It teaches the model to say
+$0.7$ when it is right about seventy percent of the time. Nothing in that
+objective asks the model to predict whether a \choice{} question would have
+produced a better answer, so a well-calibrated head can coexist with a router
+that has no useful signal. Cascades inherit the problem:
+\citet{jitkrittum2023cascade} show that confidence-based deferral is optimal
+only under restrictive assumptions about how downstream errors relate to
+upstream confidence, and that specialised downstream errors, label noise or
+distribution shift can break the rule.
+
+We measure the distinction instead of assuming it. Two structured decision
+models, Laya 0.4.16 and Vela 2.0 0.3B, are frozen, and inference-time routing is
+studied on three tasks with different decision interfaces: CodeXGLUE defect
+detection \citep{lu2021codexglue}, FinDVer financial claim verification
+\citep{zhao2024findver} and ProcessBench reasoning-error localisation
+\citep{zheng2025processbench}. On the binary tasks the action set is
+\{\noul, \choice\}: the policy always pays for \noul{} and may pay again for
+\choice{}. On ProcessBench it decides whether to answer or abstain from the
+top-1 step, using candidate probability and the top-1/top-2 margin. Band
+policies are searched with a genetic algorithm (GA), an evolution strategy (ES)
+and NSGA-II, each compared with fixed policies and with random search under the
+same number of unique candidate evaluations. All outputs are generated once on
+CPU and replayed from an immutable cache, so every comparison sees exactly the
+same rows.
+
+The design separates three questions. RQ1 asks whether the action set contains
+net complementarity: does the second action fix more rows than it breaks? RQ2
+asks whether the incremental utility of the second action is predictable from
+signals available before it is executed. RQ3 asks whether evolutionary search
+converts whatever signal exists into a policy that beats fixed and random
+baselines on held-out data. A negative answer to RQ1 makes RQ3 uninteresting; a
+positive RQ1 with a negative RQ2 points to a representation or supervision
+problem rather than an optimiser problem. Two boundary checks, cross-task
+transfer and a confidence-stratified fault map, test whether any conclusion is
+an artefact of one pool or one configuration.
+
+The results are consistently negative, and the way they fail is informative.
+Gross complementarity is real: on CodeXGLUE with Laya, an oracle that picks the
+better action per row gains 23.3 accuracy points over the better fixed action,
+and \choice{} repairs 14 \noul{} errors. It also breaks 15 correct answers, so
+net repair on the training pool is $-1$. Held-out pools do not stabilise the
+picture. One confirm cell, FinDVer with Laya, shows a positive net-repair
+accuracy interval, but its macro-F1 interval spans zero and the better fixed
+action reverses between dev and confirm. Utility prediction repeats the pattern:
+out-of-fold AUROC reaches 0.92 for FinDVer with Vela, yet the threshold chosen
+on dev produces a negative net utility on confirm, and the best dev policy for
+CodeXGLUE with Laya degenerates to switching on every row. Search does not
+rescue the signal: GA beats random search in none of 60 paired macro-F1
+comparisons, its five significant wins over fixed switching all occur on the
+FinDVer/Vela training pool, and NSGA-II deployment is significantly worse than
+the fixed baseline in six cells. Calibration is poor---confirm ECE ranges from
+0.09 to 0.29---but temperature scaling leaves the routing outcome unchanged or
+worse, because a monotone recalibration cannot create signal the band policy
+class could not already express.
+
+The paper contributes a diagnostic decomposition of routing value into action
+complementarity, incremental-utility predictability and search efficacy,
+measured on frozen structured decision models rather than inferred from
+end-task accuracy. It reports a pre-registered negative result for evolutionary
+routing with paired group-bootstrap intervals across five seeds, three pools and
+four task--model cells, including the training-pool-only nature of the apparent
+wins. It shows that calibration and action-value prediction dissociate, and
+locates the failures in the action set and the supervision target rather than in
+optimiser capacity.

@@ -1,0 +1,63 @@
+\section{背景与相关工作}
+
+结构化决策模型用带类型的问题和带类型的答案取代自由文本生成。TypeSafe 的
+商业 System One 模型 Jev 接收一个状态和一组问题，返回 \noul{}（二元判断）、
+\choice{}（在命名候选中选择）或 \score{}（有序评分）及相应概率
+\citep{typesafe2026}。\citet{deusser2026jev} 在 37 个数据集上评测 Jev，
+\citet{guo2026justask} 把它用于对齐失败检测；两者都把该模型视为通用决策
+接口，而不是文本生成器。TypeSafe 把训练目标描述为
+Reinforcement Learning for Calibrated Decisions（RLCD），用严格适当评分
+规则优化所报告的分布，使概率携带 argmax 之外的信息；完整配方未公开。
+\citet{gao2026openjev} 提供了独立的开源实现。RLCD 这一名称也出现在
+\citet{yang2023rlcd} 的 Reinforcement Learning from Contrast Distillation
+中；两者无关，本文只在“校准决策”意义上使用 RLCD。
+
+我们运行的两个模型在骨干与监督上不同，但共享接口。Laya 0.4.16 是带决策头
+的 ModernBERT\allowbreak-large 编码器，约 4.21 亿参数，在一次非自回归前向中支持
+\noul{}、\choice{} 与 \score{}；它是最接近 RLCD 描述的开源模型
+\citep{laya2026,layastudio2026}。Vela 2.0 0.3B 是 22 层 ModernBERT 编码器，
+上下文窗口 8{,}192 个 token；它提供同样三种动作以及 \spanact{} 与 \setact{}，
+并从 Decision-1.0-Kai 的 \choice{} 路径初始化，使用任务特定损失与路由数据
+\citep{vllm2026vela,warner2024modernbert}。Vela 的模型卡没有把配方称为
+RLCD，因此我们把 Laya 视为开放 RLCD 模型，把 Vela 视为接口匹配但训练路线
+不同的对照（附录~\ref{app:models}）。
+
+校准是审视这些概率的自然第一视角。神经网络常常过度自信，温度缩放或其他
+后处理映射可以在不改变 argmax 的情况下降低期望校准误差
+\citep{guo2017calibration}。语言模型也能部分识别自身错误，这使置信度成为
+看似合理的路由特征 \citep{kadavath2022know}；适当评分规则则形式化了为什么
+所报告的概率应当因诚实而非仅因尖锐而得到奖励
+\citep{gneiting2007scoring}。这些工作关心的都是模型已经给出的答案的概率，
+而不是该概率能否排序另一个问题类型的反事实价值。我们测量当前答案正确性
+的 ECE 与 Brier，再测量同一概率对“替代动作可修复行”的排序能力。
+
+级联与路由器在不同模型或动作之间分配计算。经典级联尽早拒绝简单样本，把
+困难样本送给更强的分类器 \citep{viola2001rapid}；现代系统学习何时调用更大
+的语言模型 \citep{chen2024frugalgpt,aggarwal2024automix,ong2024routellm}、
+采样多少候选 \citep{ding2025bestroute}，或如何把路由与级联合并为一个目标
+\citep{dekoninck2025unified}。理论上的警告来自
+\citet{jitkrittum2023cascade}：基于置信度的推迟只有在 downstream 误差与
+upstream 置信度足够紧密相关时才最优，并且会在专门化的下游误差、标签噪声
+或分布偏移下失效。\citet{damani2025hard} 主张计算应跟随期望收益，而不是
+表面难度。我们的实验在一个结构化决策模型中具体化了这一警告：第二个动作
+是向同一个冻结网络提出的不同问题，而不是更大的模型，其价值取决于第一个
+概率并未编码的误差结构。对 ProcessBench，选择性预测提供了弃权框架：
+\citet{chow1970optimum} 推导了已知分布下的最优拒绝规则，
+\citet{geifman2017selective}、\citet{kamath2020selective} 与
+\citet{xin2021art} 研究了选择性分类、问答以及覆盖率与条件准确率的分离。
+
+当策略是一个小型不可微对象、目标又是缓存回放时，演化方法是合理选择。
+遗传算法、进化策略与 NSGA-II 覆盖单目标与 Pareto 形式
+\citep{deb2002nsga2,hansen2001cmaes,stanley2002neat}，正则化演化也被用于
+架构搜索 \citep{real2019regularized,elsken2019nas}。在 NLP 中，EvoPrompt 与
+Promptbreeder 让语言模型参与循环，演化提示或变异指令
+\citep{guo2024evoprompt,fernando2024promptbreeder}。这些系统搜索的是改变
+模型所见内容的文本；我们固定模型与问题模板，只搜索一个两参数门，决定是否
+提出第二个带类型问题。提示搜索可以改进单次调用，而我们的搜索只能利用两个
+固定动作之间已经存在的互补性。因此，平坦的搜索地形是关于动作集的发现，
+而不只是关于优化器强度的发现。
+
+我们的协议遵循 \citet{henderson2018matters}、\citet{bouthillier2021variance}
+与 \citet{dodge2019show} 的方差感知报告实践：在查看 confirm 之前固定动作集、
+模板与预算；报告每个种子级区间，而不是只报告最好单元；把锁定测试标为
+未运行，而不是用 confirm 数字替代。

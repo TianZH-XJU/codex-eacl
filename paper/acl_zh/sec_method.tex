@@ -1,0 +1,106 @@
+\section{方法与决策规则}
+\label{sec:method}
+
+我们研究一个冻结模型 $M$ 与固定动作集 $\mathcal{A}$。输入 $x$ 由任务适配器
+渲染为状态字符串与带类型问题；模型返回经过模式校验的决策及其概率。策略只
+读取第一次调用，并决定是否发出第二次调用。模型权重、问题模板与候选标签集
+在搜索过程中从不修改。这样就把推理期控制与在路由目标上微调骨干区分开来。
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  >=Stealth,
+  node distance=5mm,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=3pt,
+              minimum height=9mm, fill=white},
+  arr/.style={->, thick},
+  dashedarr/.style={->, thick, dashed}
+]
+\node[box] (x) {输入 $x$};
+\node[box, right=of x] (m) {冻结模型 $M$};
+\node[box, right=of m] (p) {\noul{} 调用\\$p(x)$};
+\node[box, right=of p] (g) {带门\\$\ell \le p \le h$};
+\node[box, right=of g, yshift=12mm] (c) {\choice{} 调用\\第二视角};
+\node[box, right=of g, yshift=-12mm] (n) {\noul{} 标签\\不再调用};
+\draw[arr] (x) -- (m);
+\draw[arr] (m) -- (p);
+\draw[arr] (p) -- (g);
+\draw[arr] (g) -- node[above, font=\scriptsize]{$u=1$} (c);
+\draw[arr] (g) -- node[below left, font=\scriptsize]{否则} (n);
+\node[box, below=22mm of p, fill=gray!8] (fit) {$J(g)=Q(g)-\lambda\,C(g)$};
+\node[box, left=of fit, fill=gray!8] (cache) {不可变输出缓存};
+\node[box, right=of fit, fill=gray!8] (search) {GA / ES / NSGA-II};
+\draw[dashedarr] (cache) -- (fit);
+\draw[dashedarr] (fit) -- (search);
+\end{tikzpicture}
+\caption{路由设定。冻结模型回答第一个 \noul{} 问题；一个两参数门决定是否
+向同一模型提出第二个 \choice{} 问题。搜索完全在缓存输出上进行：候选基因组
+通过回放缓存评分，优化器只看到标量适应度 $J$。虚线路径离线，实线路径是
+部署策略。}
+\label{fig:pipeline}
+\end{figure}
+
+对二元任务 CodeXGLUE 与 FinDVer，第一个动作是 \noul{}：模型回答一个是/否
+问题并返回 $p(x)=P(\text{真}\mid x)$。第二个动作是 \choice{}：模型在两个
+命名标签之间选择。在 CodeXGLUE 中，问题是函数是否含有漏洞，以及应标为
+\texttt{secure} 还是 \texttt{vulnerable}；在 FinDVer 中，问题是主张是否
+被支持，以及应标为 \texttt{supported} 还是 \texttt{not supported}。级联
+总是先支付 \noul{}，只有当门打开时才支付 \choice{}。策略是基因组
+$g_{\mathrm{cas}}=(\ell,h,u)$，其中 $\ell,h\in[0,1]$，$u\in\{0,1\}$：
+\begin{equation}
+\pi_{g}(x)=
+\begin{cases}
+\choice(x), & u=1\!\land\!\ell\le p(x)\le h,\\
+\noul(x), & \text{否则}.
+\end{cases}
+\label{eq:cascade}
+\end{equation}
+门使用正类概率而不是对称置信度，因为 \noul{} 问题有一个指定的真标签。
+基因组修复会把 $\ell$ 与 $h$ 裁剪到 $[0,1]$，在 $\ell>h$ 时交换二者，并把
+$u$ 映射到 $\{0,1\}$。两个固定策略是特例：$u=0$ 是仅 \noul{}；
+$u=1,\ell=0,h=1$ 是固定仅切换，它仍然支付第一次 \noul{} 调用，因此每行
+成本为两次调用。
+
+ProcessBench 的动作空间不同。模型返回候选步骤的排序列表，策略决定是用
+top-1 步骤回答还是弃权。基因组 $g_{\mathrm{abs}}=(t,v,m)$，其中
+$t,m\in[0,1]$，$v\in\{0,1\}$，使用 top-1 概率 $s_1(x)$ 与 top-1/top-2
+间隔 $\Delta(x)$：
+\begin{equation}
+\mathrm{abstain}(x)=
+\begin{cases}
+\text{真}, & s_1(x)<t,\\
+\text{真}, & v=1\,\land\,\Delta(x)<m,\\
+\text{假}, & \text{否则}.
+\end{cases}
+\label{eq:abstain}
+\end{equation}
+当所需置信度字段缺失时，评估器按失败关闭处理：该行被强制回答，并计为错误，
+而不是被悄悄丢弃。我们报告覆盖率（被回答行的比例）与选择性准确率（被回答
+行上的准确率）。两个基因组从不共享动作集或成本模型，因此我们从不合并它们
+的准确率数字。
+
+适应度把任务质量与第二次调用的成本结合起来：
+\begin{equation}
+J(g)=Q(g)-\lambda\,C(g),
+\label{eq:fitness}
+\end{equation}
+其中 $Q$ 在二元任务上是 macro-F1，在 ProcessBench 上是步骤准确率；$C(g)$
+是每行模型调用均值减一；$\lambda=0.05$ 在搜索前固定。Macro-F1 作为主指标，
+因为两个二元数据集都类别不平衡；准确率同时报告。第一次 \noul{} 调用计入
+每个策略，包括仅 \noul{}，因此成本项隔离的是增量调用，而不是总推理账单。
+模型输出只生成一次，并从不可变 JSON 缓存回放，这使候选评估确定且廉价。
+我们测量原生动作的端到端延迟，但不为每个搜索出的策略声称延迟。
+
+GA 使用锦标赛选择、均匀交叉、高斯变异与 $u$ 的位翻转。ES 是
+$(\mu+\lambda)$ 策略，变异两个端点并固定 $u=1$。NSGA-II 维护非支配前沿，
+在二元任务上优化准确率与负调用成本，在 ProcessBench 上优化选择性准确率与
+覆盖率；由于其质量目标是准确率而不是 macro-F1，我们单独保留其区间。主预算
+是 24 次唯一基因组评估，种子 17、23、41；五种子扩展加入 59 与 73。一个
+探针把 CodeXGLUE/Vela 的预算提高到 48。随机搜索使用相同预算与缓存。
+
+策略类的一个性质塑造了校准实验。门只通过区间 $\ell\le p\le h$ 依赖
+$p(x)$。任何严格单调变换——例如温度缩放——都把区间映射为另一个区间，并在
+端点重参数化意义下诱导同一组被切换行。因此，单调重校准无法改变固定池上
+可达的最优带策略。它可以移动行在带之间的位置，但无法创造原始排序本就不
+包含的“可修复行 vs 有害行”区分。因此校准与路由分开评估。

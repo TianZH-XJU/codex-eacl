@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\small
+\caption{边界检查。上：冻结基因组迁移，统计相对目标固定仅切换策略的显著
+配对准确率差异；对角线单元是同任务部署检查，非对角线单元是真正的迁移。
+下：四个最高严重度的故障图单元，严重度定义为单元内错误率。}
+\label{tab:boundary}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+迁移 & 显著正 & 显著负 \\
+\midrule
+对角线（同任务） & 0 & 2 \\
+非对角线（真正迁移） & 0 & 4 \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+故障图单元 & $n$ discover & 严重度 & $n$ dev & 严重度 & $n$ confirm & 严重度 \\
+\midrule
+ProcessBench / Vela / 中 & 14 & 0.929 & 10 & 0.800 & 12 & 0.833 \\
+ProcessBench / Laya / 中 & 13 & 0.923 & 15 & 0.867 & 16 & 0.875 \\
+ProcessBench / Vela / 低 & 45 & 0.889 & 46 & 0.957 & 47 & 0.936 \\
+ProcessBench / Laya / 高 & 41 & 0.756 & 35 & 0.914 & 38 & 0.895 \\
+\bottomrule
+\end{tabular}
+\end{table}

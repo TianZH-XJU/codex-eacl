@@ -1,0 +1,84 @@
+\section{Background and Related Work}
+
+Structured decision models replace free-form generation with a typed question
+and a typed answer. Jev, the commercial System One model from TypeSafe, accepts
+a state and a set of questions and returns \noul{} (a binary judgment),
+\choice{} (a selection among named candidates) or \score{} (an ordered rating)
+with associated probabilities \citep{typesafe2026}. \citet{deusser2026jev}
+benchmark Jev on 37 datasets, and \citet{guo2026justask} apply it to alignment
+failure detection; both treat the model as a general decision interface rather
+than a text generator. TypeSafe describes the training objective as
+Reinforcement Learning for Calibrated Decisions (RLCD), which optimises the
+reported distribution with strictly proper scoring rules so that probabilities
+carry information beyond the argmax; the full recipe is not public.
+\citet{gao2026openjev} provide an independent open implementation. The name
+RLCD also appears in \citet{yang2023rlcd} for Reinforcement Learning from
+Contrast Distillation; the two are unrelated, and we use RLCD only in the
+calibrated-decision sense.
+
+The two models we run differ in backbone and supervision while sharing the
+interface. Laya 0.4.16 is a ModernBERT-large encoder with decision-specific
+heads, about 421M parameters, and supports \noul{}, \choice{} and \score{} in a
+non-autoregressive pass; it is the open model closest to the RLCD description
+\citep{laya2026,layastudio2026}. Vela 2.0 0.3B is a 22-layer ModernBERT encoder
+with an 8{,}192-token window; it exposes the same three actions plus \spanact{}
+and \setact{}, and was initialised from the Decision-1.0-Kai \choice{} path with
+task-specific losses and routing data \citep{vllm2026vela,warner2024modernbert}.
+Vela's card does not call the recipe RLCD, so we treat Laya as an open RLCD
+model and Vela as an interface-matched comparison with a different training
+route (Appendix~\ref{app:models}).
+
+Calibration is the natural first lens on these probabilities. Neural networks
+are often overconfident, and temperature scaling or other post-hoc maps can
+reduce expected calibration error without changing the argmax
+\citep{guo2017calibration}. Language models can also partially recognise their
+own errors, which makes confidence a plausible routing feature
+\citep{kadavath2022know}, and proper scoring rules formalise why a reported
+probability should be rewarded for honesty rather than sharpness alone
+\citep{gneiting2007scoring}. All of this work concerns the probability of the
+answer the model has already produced, not whether that probability orders the
+counterfactual value of a different question type. We measure ECE and Brier for
+current-answer correctness, then measure the same probability's ability to rank
+rows that the alternative action would repair.
+
+Cascades and routers allocate computation across models or actions. The
+classical cascade rejects easy examples early and sends hard ones to a stronger
+classifier \citep{viola2001rapid}; modern systems learn when to call a larger
+language model \citep{chen2024frugalgpt,aggarwal2024automix,ong2024routellm},
+how many candidates to sample \citep{ding2025bestroute}, or how to combine
+routing and cascading in one objective \citep{dekoninck2025unified}. The
+theoretical caution comes from \citet{jitkrittum2023cascade}: confidence-based
+deferral is optimal only when downstream errors are sufficiently tied to
+upstream confidence, and it can fail under specialised downstream errors, label
+noise or distribution shift. \citet{damani2025hard} argue that computation should
+follow expected benefit rather than surface difficulty. Our experiments
+instantiate this warning in a structured decision model: the second action is a
+different question to the same frozen network, not a larger model, and its value
+depends on an error structure that the first probability does not encode. For
+ProcessBench, selective prediction supplies the abstention framing:
+\citet{chow1970optimum} derives the optimal reject rule under known
+distributions, and \citet{geifman2017selective}, \citet{kamath2020selective} and
+\citet{xin2021art} study selective classification, question answering and the
+separation of coverage from conditional accuracy.
+
+Evolutionary methods are a reasonable choice when the policy is a small
+non-differentiable object and the objective is a cached replay. Genetic
+algorithms, evolution strategies and NSGA-II cover single-objective and Pareto
+formulations \citep{deb2002nsga2,hansen2001cmaes,stanley2002neat}, and
+regularised evolution has been used for architecture search
+\citep{real2019regularized,elsken2019nas}. In NLP, EvoPrompt and Promptbreeder
+evolve prompts or mutation instructions with language models in the loop
+\citep{guo2024evoprompt,fernando2024promptbreeder}. Those systems search over
+text that changes what the model sees; we hold the model and the question
+template fixed and search over a two-parameter gate that decides whether a
+second typed question is asked. Prompt search can improve a single call, whereas
+our search can only exploit complementarity that already exists between two
+fixed actions. A flat landscape is therefore a finding about the action set, not
+merely about optimiser strength.
+
+Our protocol follows the variance-aware reporting practices of
+\citet{henderson2018matters}, \citet{bouthillier2021variance} and
+\citet{dodge2019show}: we fix the action set, templates and budget before
+looking at confirm, report every seed-level interval rather than only the best
+cell, and label the locked test as not run rather than substituting a confirm
+number for it.

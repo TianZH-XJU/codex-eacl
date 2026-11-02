@@ -1,0 +1,94 @@
+\section{Experimental Design}
+
+The experiments use three tasks whose labels and group structure are fixed
+before any policy is searched. CodeXGLUE defect detection provides 21{,}854
+training, 2{,}732 dev and 2{,}732 test functions; the controller pools are drawn
+only from the official training split, and functions are grouped by an exact
+hash of their text so that identical functions cannot cross the internal
+\texttt{search\_train}, \texttt{selection\_dev} and \texttt{confirm} pools
+\citep{lu2021codexglue,zhou2019devign}. Each internal pool contains 60
+functions. This controls duplicate-function leakage but is not a project-level
+holdout. FinDVer provides financial claims with \texttt{supported}/\texttt{not
+supported} labels; its pools are grouped by report, and contain 60, 59 and 44
+claims \citep{zhao2024findver}. The official FinDVer test labels are not used
+for controller search. ProcessBench contains 3{,}400 annotated records over
+2{,}842 mathematical problems; its pools are grouped by problem and contain 60
+records each \citep{zheng2025processbench,cobbe2021gsm8k,lightman2024verify,uesato2022process}.
+The task is to identify the earliest erroneous step or to certify that the chain
+is correct.
+
+All inference runs on one Windows machine with CPU-only PyTorch in FP32, two
+threads and one model resident at a time. Laya is pinned to source revision
+\texttt{b9fe351} and checkpoint revision \texttt{7b928d8}; Vela is pinned to
+revision \texttt{d6f03aa}. Peak resident memory stays below 2.2~GB. The native
+single-action baselines on \texttt{search\_dev} are reported in
+Appendix~\ref{app:native}: CodeXGLUE accuracy is 0.450/0.650 for Laya
+(\noul/\choice) and 0.633/0.667 for Vela; FinDVer is 0.712/0.644 for Laya and
+0.458/0.458 for Vela; ProcessBench \choice{} accuracy is 0.10 for both models.
+The near-identical per-call latency of the two representations (about
+2.2--2.8~s) is why call count, rather than a model-specific latency model, is
+the cost term in Equation~\ref{eq:fitness}. The native numbers already contain a warning: the better representation depends
+on the task and the model, and on FinDVer the two Vela actions are
+indistinguishable at the aggregate level.
+
+E1 measures action complementarity without training a router. For each
+task--model cell we take the better fixed action on \texttt{search\_train} and
+freeze that direction; we then count rows where the alternative action repairs a
+base error, rows where it breaks a correct base answer, and their difference.
+The oracle headroom is the accuracy of a per-row oracle minus the accuracy of
+the better fixed action. Because the direction is fixed on train, the held-out
+net-repair numbers are not selected on the evaluation pool. We report net repair
+in percentage points with a group-level percentile bootstrap (5{,}000
+resamples), and pair it with the macro-F1 difference between fixed \choice{} and
+fixed \noul{} on the same rows. ProcessBench has only one evaluated
+representation, so its headroom is zero by construction and it is excluded from
+the binary complementarity table.
+
+E2 asks whether the incremental utility of the second action is predictable
+before that action is executed. The prediction target is whether switching
+would repair the current \noul{} error. The features are deployable at the
+moment of decision: $p$, $|p-0.5|$ and the binary entropy $-p\log p -
+(1-p)\log(1-p)$; no \choice{} output, gold label or downstream feature is used.
+We compare logistic regression, a shallow decision tree, a single confidence
+threshold and a never-switch majority baseline. Training uses group-aware
+three-fold out-of-fold predictions; the predictor and threshold are then chosen
+together on \texttt{selection\_dev} by net utility, frozen, and evaluated once
+on \texttt{confirm}. Net utility is (repairs $-$ regressions) divided by the
+number of rows; the cost-adjusted variant subtracts $\lambda=0.05$ per extra
+call. A champion that switches every row is retained, because it reveals
+whether the predictor adds anything beyond fixed switching.
+
+E3 compares optimisers under a matched evaluation budget. GA, ES and NSGA-II
+are run on the cached pools with 24 unique genome evaluations and seeds 17, 23
+and 41; the five-seed extension adds 59 and 73. Random search receives the same
+budget. The primary deployment comparison is pre-registered: the GA genome
+selected on \texttt{search\_train} is frozen and compared with fixed
+switch-only on \texttt{confirm} using paired group-bootstrap macro-F1 intervals.
+All other cell-level comparisons are exploratory and are reported with effect
+estimates and intervals rather than as significance claims. E4 examines the
+search trajectory itself: best-so-far fitness per generation, the number of
+unique genomes actually evaluated, the fraction of single-gene mutations that
+leave fitness unchanged, the rank correlation between train and dev fitness
+across the archive, and the effect of raising the budget cap from 24 to 48 on
+CodeXGLUE with Vela. These diagnostics use existing logs and caches and add no
+model calls.
+
+E5 checks two boundaries. The transfer experiment freezes each source-task
+genome and applies it to every target task and pool without re-searching;
+diagonal cells are same-task deployment checks, off-diagonal cells are true
+transfer. The fault map partitions rows by task, model and a confidence band
+derived from \noul{} probability or candidate margin, and reports the error
+severity of each cell on discover, dev and confirm. A cell is eligible when it
+contains at least eight rows on the discover pool, and it is confirmed when the
+dev or confirm severity is within 0.15 of the discover severity.
+
+Two statistical details matter for reading the tables. All binary comparisons
+use paired group bootstrap with 5{,}000 resamples and a fixed random state
+\citep{efron1993bootstrap}; the resampling unit is the group (function hash or
+report), not the row, so dependence within a report is preserved. We report
+McNemar exact tests for repair/harmful counts \citep{mcnemar1947} and Wilson
+intervals for within-cell severity \citep{wilson1927}, but we do not call a
+result significant on the basis of a single seed or a single pool. The locked
+test has not been run. The confirm pools are held out from search and threshold
+selection but have been inspected during analysis; a locked evaluation would
+require freezing templates, policy class and statistics first.
