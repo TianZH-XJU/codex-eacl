@@ -13,10 +13,12 @@ claims \citep{zhao2024findver}. The official FinDVer test labels are not used
 for controller search. ProcessBench contains 3{,}400 annotated records over
 2{,}842 mathematical problems; its pools are grouped by problem and contain 60
 records each \citep{zheng2025processbench,cobbe2021gsm8k,lightman2024verify,uesato2022process}.
-FinDVer rows come from the official testmini split and are grouped by report
-(41/16/16 groups; 60/59/44 claims); the state is a \texttt{Claim:} line, a
-blank line, then an \texttt{Evidence:} block of relevant passages, and testmini
-labels are never read for search. CodeXGLUE state is raw function text
+FinDVer internal pools are carved from official testmini and grouped by report
+(41/16/16 groups; 60/59/44 claims); labels are used inside these pools for
+fitting, thresholding and frozen evaluation. The official test split is
+separate and read only by the locked-test evaluator. State is a \texttt{Claim:}
+line, a blank line, then an \texttt{Evidence:} block. CodeXGLUE state is raw
+function text
 (positive rates 0.50/0.40/0.45). ProcessBench asks ``Which step contains the
 earliest error?''; its state is the problem plus \texttt{[k] step} lines and an
 \texttt{ALL STEPS CORRECT} sentinel.

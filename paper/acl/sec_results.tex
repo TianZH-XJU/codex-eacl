@@ -66,7 +66,8 @@ repairable rows from the middle of the distribution to the low-confidence tail.
 The second question is whether the signed incremental value of \choice{} is
 predictable from the first call. Table~\ref{tab:predictability} uses
 $\Delta_i=\mathbf{1}[\choice_i\text{ correct}]-
-\mathbf{1}[\noul_i\text{ correct}]\in\{-1,0,+1\}$. Out-of-fold Spearman
+\mathbf{1}[\noul_i\text{ correct}]\in\{-1,0,+1\}$. This is per-example
+accuracy, not an additive macro-F1 increment. Out-of-fold Spearman
 correlation between predicted and realised $\Delta$ is $-0.02$, $+0.19$,
 $+0.13$ and $-0.17$; every group-bootstrap interval includes zero.
 Signed-$\Delta$ repair AUROC is 0.36, 0.74, 0.46 and 0.40, and regression
@@ -75,10 +76,8 @@ nets of $0.0$, $0.0$, $0.0$ and $-2.3$ points, and cost-adjusted nets of
 $0.0$, $0.0$, $-0.1$ and $-2.8$ points; no cell is positive, and
 FinDVer/Vela's cost interval $[-7.5,-0.1]$ is negative. CodeXGLUE/Vela never
 switches (0/60). The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
-$-2.3$, so the predictor forgoes the $+13.6$ gain in FinDVer/Laya and $+1.7$
-in CodeXGLUE/Laya. A repair-target predictor reaches 0.92 repair AUROC but
-also fails on confirm; calibration below uses raw probability, a different
-quantity.
+$-2.3$, so it forgoes the $+13.6$ FinDVer/Laya gain. A repair-target predictor
+reaches 0.92 repair AUROC but also fails on confirm.
 
 \input{tables/tab_predictability}
 
