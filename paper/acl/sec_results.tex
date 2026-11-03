@@ -51,7 +51,6 @@ confident and wrong. It also explains why calibration cannot rescue the router:
 recalibration moves probability mass monotonically, but it does not move
 repairable rows from the middle of the distribution to the low-confidence tail.
 
-\needspace{22\baselineskip}
 \input{tables/tab_predictability}
 
 The second question is whether the signed incremental value of \choice{} is
@@ -61,14 +60,12 @@ $\Delta_i=\mathbf{1}[\choice_i\text{ correct}]-
 accuracy, not an additive macro-F1 increment. Out-of-fold Spearman
 correlation between predicted and realised $\Delta$ is $-0.02$, $+0.19$,
 $+0.13$ and $-0.17$; every group-bootstrap interval includes zero.
-Signed-$\Delta$ repair AUROC is 0.36, 0.74, 0.46 and 0.40, and regression
-AUROC 0.61, 0.33, 0.71 and 0.36. The dev-selected thresholds yield confirm raw
-nets of $0.0$, $0.0$, $0.0$ and $-2.3$ points, and cost-adjusted nets of
-$0.0$, $0.0$, $-0.1$ and $-2.8$ points; no cell is positive, and the cost
-interval for Vela on FinDVer, $[-7.5,-0.1]$, is negative. Vela on CodeXGLUE
-never switches (0/60). The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
-$-2.3$, so it forgoes the $+13.6$ gain on FinDVer with Laya. A repair-target predictor
-reaches 0.92 repair AUROC but also fails on confirm.
+Signed-$\Delta$ repair AUROC is 0.36, 0.74, 0.46 and 0.40. The dev-selected
+thresholds yield non-positive confirm cost-adjusted utility in all four cells;
+the Vela on FinDVer interval $[-7.5,-0.1]$ is negative, and Vela on CodeXGLUE
+never switches. The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
+$-2.3$, so the predictor forgoes the $+13.6$ gain on FinDVer with Laya. A
+repair-target predictor reaches 0.92 repair AUROC but also fails on confirm.
 
 Calibration is the most natural explanation for a failed probability-based
 router, so it serves as a control. Raw probabilities are poorly calibrated on
