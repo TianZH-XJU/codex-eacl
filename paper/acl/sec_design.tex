@@ -15,9 +15,11 @@ for controller search. ProcessBench contains 3{,}400 annotated records over
 records each \citep{zheng2025processbench,cobbe2021gsm8k,lightman2024verify,uesato2022process}.
 FinDVer internal pools are carved from official testmini and grouped by report
 (41/16/16 groups; 60/59/44 claims); labels are used inside these pools for
-fitting, thresholding and frozen evaluation. The official test split is
-separate and read only by the locked-test evaluator. State is a \texttt{Claim:}
-line, a blank line, then an \texttt{Evidence:} block. CodeXGLUE state is raw
+fitting, thresholding and frozen evaluation. The official test annotations were
+publicly released in July 2026 (\texttt{test.json}, 1,700 labelled rows); they
+are read only by the locked-test evaluator, which samples 60 rows from 14
+reports. State is a \texttt{Claim:} line, a blank line, then an
+\texttt{Evidence:} block. CodeXGLUE state is raw
 function text
 (positive rates 0.50/0.40/0.45). ProcessBench asks ``Which step contains the
 earliest error?''; its state is the problem plus \texttt{[k] step} lines and an
@@ -68,7 +70,7 @@ whether the predictor adds anything beyond fixed switching.
 The search comparison runs optimisers under a matched evaluation budget. GA, ES and NSGA-II
 are run on the cached pools with 24 unique genome evaluations and seeds 17, 23
 and 41; the five-seed extension adds 59 and 73. Random search receives the same
-budget. The primary deployment comparison is pre-specified: the GA genome
+budget. The primary deployment comparison is prespecified: the GA genome
 selected on \texttt{search\_train} is frozen and compared with fixed
 switch-only on \texttt{confirm} using paired group-bootstrap macro-F1 intervals.
 All other cell-level comparisons are exploratory and are reported with effect

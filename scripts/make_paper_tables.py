@@ -205,7 +205,7 @@ AUROC are in the text. Last column: switches/rows.}
 \label{tab:predictability}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-Cell & OOF $\rho$ & Repair & Raw & Cost & Sw. \\
+Cell & OOF $\rho$ & Repair & Raw (pp) & Cost (pp) & Sw. \\
 \midrule
 """
         + "\n".join(rows)

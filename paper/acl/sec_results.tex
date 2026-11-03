@@ -17,8 +17,8 @@ training pool never produces a net repair distinguishable from zero.
 Held-out pools do not turn the gross opportunity into a stable net gain.
 Laya on CodeXGLUE gains 20.0 points on \texttt{selection\_dev}
 ($[+1.7,+38.3]$), but the same frozen direction gains only 1.7 points on confirm
-($[-18.3,+20.0]$). That gap is a selection-pool effect, not a routing effect:
-dev is the pool on which the direction was chosen. FinDVer with Laya is the
+($[-18.3,+20.0]$). That gap is pool variability, not a routing effect: the
+direction was fixed on train, and dev is the first held-out pool. FinDVer with Laya is the
 exception that tests the narrative. Its confirm net repair is $+13.6$ points
 $[+2.0,+24.6]$, and the fixed-action accuracy difference is $+0.136$
 $[+0.020,+0.246]$. The corresponding macro-F1 difference, however, is $+0.111$
@@ -65,7 +65,8 @@ thresholds yield non-positive confirm cost-adjusted utility in all four cells;
 the Vela on FinDVer interval $[-7.5,-0.1]$ is negative, and Vela on CodeXGLUE
 never switches. The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
 $-2.3$, so the predictor forgoes the $+13.6$ gain on FinDVer with Laya. A
-repair-target predictor reaches 0.92 repair AUROC but also fails on confirm.
+predictor trained on the binary repair label instead reaches 0.92 repair AUROC
+but also fails on confirm.
 
 Calibration is the most natural explanation for a failed probability-based
 router, so it serves as a control. Raw probabilities are poorly calibrated on
@@ -88,7 +89,7 @@ task--model cells and three pools, there are 60 paired macro-F1 comparisons, and
 none has an interval that excludes zero. GA versus fixed switch-only has five
 significant positive cells, all on the FinDVer training pool with Vela and all with
 an effect near $+0.12$; on dev and confirm, none of the 40 comparisons is
-significant. The pre-specified deployment comparison---train-selected GA
+significant. The prespecified deployment comparison---train-selected GA
 against fixed switch-only on confirm---is null in every seed-level cell. ES
 versus random search is null in all 30 comparisons; ES versus fixed switching
 has three significant training cells and one positive seed-level estimate on
@@ -119,8 +120,8 @@ ProcessBench band.
 
 Table~\ref{tab:processbench} reports the selective baseline. Selective accuracy
 is 0.133/0.083 at full coverage, 0.100/0.069 at 50\%, and 0.105/0.143 at 25\%;
-AURC is 0.894/0.883. Confidence does not order errors well enough for
-abstention to buy accuracy.
+AURC is 0.894/0.883. Confidence does not yield a stable, repeatable gain from
+abstention; the 25\% Vela point is a small-sample fluctuation.
 
 \input{tables/tab_processbench}
 
