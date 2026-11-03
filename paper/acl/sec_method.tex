@@ -9,41 +9,52 @@ question templates and candidate label sets are never modified during search.
 This isolates inference-time control from fine-tuning the backbone on the
 routing objective.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
+\resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
-  font=\small,
+  font=\sffamily\small,
   >=Stealth,
-  node distance=6mm,
-  box/.style={draw, rounded corners=2pt, align=center, inner sep=4pt,
-              minimum height=8.5mm, fill=white},
-  arr/.style={->, thick},
-  dashedarr/.style={->, thick, dashed}
+  box/.style={draw=black!85, rounded corners=3pt, align=center, inner sep=3pt,
+              minimum height=1.0cm, text=black!85, line width=1.1pt,
+              font=\sffamily\bfseries\small},
+  branch/.style={box, minimum height=1.35cm, text width=3.4cm},
+  wide/.style={box, minimum height=0.9cm, text width=5.6cm},
+  arr/.style={->, line width=1.1pt, draw=black!85},
+  dasharr/.style={->, dashed, line width=1.1pt, draw=black!85}
 ]
-\node[box] (x) {input $x$};
-\node[box, right=of x] (m) {frozen model $M$};
-\node[box, right=of m] (p) {\noul{} call\\$p(x)$};
-\node[box, right=of p] (g) {band gate\\$\ell \le p \le h$};
-\node[box, right=of g, yshift=12mm] (c) {\choice{} call\\second view};
-\node[box, right=of g, yshift=-12mm] (n) {\noul{} label\\no second call};
+\node[wide, fill=green!12] (x) at (0,8.8) {input $x$};
+\node[wide, fill=blue!10] (m) at (0,7.4) {frozen model $M$};
+\node[wide, fill=green!12] (p) at (0,6.0) {\noul{} call\\$p(x)$};
+\node[wide, fill=yellow!18] (g) at (0,4.6) {band gate\\$\ell \le p \le h$};
+\node[branch, fill=purple!12] (c) at (-2.1,3.0) {\choice{} call\\second view};
+\node[branch, fill=black!8] (n) at (2.1,3.0) {\noul{} label\\no second call};
+\node[wide, fill=cyan!10] (o) at (0,1.4) {output decision};
+\node[wide, fill=black!6] (cache) at (0,-0.5) {immutable cache};
+\node[wide, fill=black!6] (fit) at (0,-2.1) {fitness\\$J(g)=Q(g)-\lambda C(g)$};
+\node[wide, fill=black!6] (search) at (0,-3.7) {GA / ES / NSGA-II};
 \draw[arr] (x) -- (m);
 \draw[arr] (m) -- (p);
 \draw[arr] (p) -- (g);
-\draw[arr] (g) -- node[above, font=\scriptsize]{$u=1$} (c);
-\draw[arr] (g) -- node[below left, font=\scriptsize]{else} (n);
-\node[box, below=10mm of p, fill=gray!8] (fit) {$J(g)=Q(g)-\lambda\,C(g)$};
-\node[box, left=of fit, fill=gray!8] (cache) {immutable output cache};
-\node[box, right=of fit, fill=gray!8] (search) {GA / ES / NSGA-II};
-\draw[dashedarr] (cache) -- (fit);
-\draw[dashedarr] (fit) -- (search);
-\end{tikzpicture}
-\caption{The routing setting. A frozen model answers a first \noul{} question;
-a two-parameter gate decides whether the same model is asked a second
-\choice{} question. Search operates entirely on cached outputs: a candidate
-genome is scored by replaying the cache, and the optimiser only sees the scalar
-fitness $J$. The dashed path is offline; the solid path is the deployed policy.}
+\draw[arr] (g.south) -- node[above left, font=\sffamily\bfseries\footnotesize, text=black!85]{gate open} (c.north);
+\draw[arr] (g.south) -- node[above right, font=\sffamily\bfseries\footnotesize, text=black!85]{else} (n.north);
+\draw[arr] (c.south) -- (o.north west);
+\draw[arr] (n.south) -- (o.north east);
+\draw[arr] (cache) -- (fit);
+\draw[arr] (fit) -- (search);
+\draw[dasharr] (search.west) -- (-5.4,-3.7) -- (-5.4,4.6) -- (g.west);
+\node[anchor=west, font=\sffamily\bfseries\footnotesize, text=black!85] at (-5.2,1.0) {candidate $g$};
+\draw[black!35, dashed, line width=0.7pt] (-4.4,0.5) -- (4.4,0.5);
+\end{tikzpicture}%
+}
+\caption{Routing with a frozen structured decision model. The model answers a
+first \noul{} question and returns $p(x)$. A band gate $\ell\le p\le h$ decides
+whether to ask the same frozen model a second \choice{} question; otherwise the
+\noul{} label is returned. The dashed path is offline: cached outputs score
+candidate gates by $J(g)=Q(g)-\lambda C(g)$, and GA/ES/NSGA-II search the gate.
+The solid path is deployed. Both calls use the same frozen model $M$.}
 \label{fig:pipeline}
-\end{figure*}
+\end{figure}
 
 For the binary tasks, CodeXGLUE and FinDVer, the first action is \noul{}: the
 model answers a yes/no question and returns $p(x)=P(\text{true}\mid x)$. The
