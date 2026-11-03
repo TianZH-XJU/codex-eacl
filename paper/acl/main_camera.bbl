@@ -298,15 +298,19 @@ Kevin Yang, Dan Klein, Asli Celikyilmaz, Nanyun Peng, and Yuandong Tian. 2023.
   learning from contrast distillation for language model alignment}.
 \newblock \emph{Preprint}, arXiv:2307.12950.
 
-\bibitem[{Zhao et~al.(2024)}]{zhao2024findver}
-Yilun Zhao et~al. 2024.
+\bibitem[{Zhao et~al.(2024)Zhao, Long, Jiang, Wang, Chen, Liu, Tang, Zhang,
+  Zhao, and Cohan}]{zhao2024findver}
+Yilun Zhao, Yitao Long, Tintin Jiang, Chengye Wang, Weiyuan Chen, Hongjun Liu,
+  Xiangru Tang, Yiming Zhang, Chen Zhao, and Arman Cohan. 2024.
 \newblock {FinDVer}: Explainable claim verification over long and
   hybrid-content financial documents.
 \newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
   Natural Language Processing}, pages 14739--14752.
 
-\bibitem[{Zheng et~al.(2025)}]{zheng2025processbench}
-Chujie Zheng et~al. 2025.
+\bibitem[{Zheng et~al.(2025)Zheng, Zhang, Zhang, Lin, Lu, Yu, Liu, Zhou, and
+  Lin}]{zheng2025processbench}
+Chujie Zheng, Zhenru Zhang, Beichen Zhang, Runji Lin, Keming Lu, Bowen Yu,
+  Dayiheng Liu, Jingren Zhou, and Junyang Lin. 2025.
 \newblock {ProcessBench}: Identifying process errors in mathematical reasoning.
 \newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association
   for Computational Linguistics}, pages 1009--1024.
