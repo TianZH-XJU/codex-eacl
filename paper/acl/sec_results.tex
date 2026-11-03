@@ -51,6 +51,9 @@ confident and wrong. It also explains why calibration cannot rescue the router:
 recalibration moves probability mass monotonically, but it does not move
 repairable rows from the middle of the distribution to the low-confidence tail.
 
+\clearpage
+\input{tables/tab_predictability}
+
 The second question is whether the signed incremental value of \choice{} is
 predictable from the first call. Table~\ref{tab:predictability} uses
 $\Delta_i=\mathbf{1}[\choice_i\text{ correct}]-
@@ -66,8 +69,6 @@ interval for Vela on FinDVer, $[-7.5,-0.1]$, is negative. Vela on CodeXGLUE
 never switches (0/60). The always-switch baseline is $+1.7$, $0.0$, $+13.6$ and
 $-2.3$, so it forgoes the $+13.6$ gain on FinDVer with Laya. A repair-target predictor
 reaches 0.92 repair AUROC but also fails on confirm.
-
-\input{tables/tab_predictability}
 
 Calibration is the most natural explanation for a failed probability-based
 router, so it serves as a control. Raw probabilities are poorly calibrated on

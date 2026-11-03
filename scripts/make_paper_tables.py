@@ -185,19 +185,14 @@ def tab_predictability() -> None:
         champ = c["champion"]
         m = c["models"][champ]
         cand = c["candidates"][champ]
-        dev = cand["dev_net"]
         conf = cand["confirm_net"]
-        rlo, rhi = conf["raw_ci95_pp"]
-        clo, chi = conf["cost_ci95_pp"]
         rows.append(
             f"{CELL_TEX[cell]} & {m['oof_spearman']:+.2f} & "
-            f"{f3(m['oof_auroc_repair'])} & {f3(m['oof_auroc_regression'])} & "
-            f"{dev['cost_pp']:+.1f} & {conf['raw_pp']:+.1f} "
-            f"[{rlo:+.1f}, {rhi:+.1f}] & {conf['cost_pp']:+.1f} "
-            f"[{clo:+.1f}, {chi:+.1f}] & {conf['n_switched']}/{c['n_confirm']} \\\\"
+            f"{f3(m['oof_auroc_repair'])} & {conf['raw_pp']:+.1f} & "
+            f"{conf['cost_pp']:+.1f} & {conf['n_switched']}/{c['n_confirm']} \\\\"
         )
     body = (
-        r"""\begin{table*}[t]
+        r"""\begin{table}[H]
 \centering
 \scriptsize
 \caption{Signed incremental-utility prediction. Target
@@ -205,19 +200,19 @@ $\Delta_i=\mathbf{1}[\textsc{Choice}_i\text{ correct}]-
 \mathbf{1}[\textsc{Noul}_i\text{ correct}]\in\{-1,0,+1\}$. OOF $\rho$ uses
 group-aware three-fold CV on \texttt{search\_train}; the threshold is selected
 on \texttt{search\_dev} by cost-adjusted utility. Raw net is mean $\Delta$;
-cost-adjusted net subtracts $\lambda=0.05$ per switch; 95\% group-bootstrap
-CIs. Last column: switches/rows.}
+cost-adjusted net subtracts $\lambda=0.05$ per switch; 95\% CIs and regression
+AUROC are in the text. Last column: switches/rows.}
 \label{tab:predictability}
-\begin{tabular}{@{}lrrrrrrr@{}}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
-Task / model & OOF $\rho$ & AUROC repair & AUROC reg. & Dev cost & Confirm raw (95\% CI) & Confirm cost (95\% CI) & Switches \\
+Cell & OOF $\rho$ & Repair & Raw & Cost & Sw. \\
 \midrule
 """
         + "\n".join(rows)
         + r"""
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 """
     )
     write("tab_predictability.tex", body)
