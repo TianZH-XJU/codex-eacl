@@ -194,7 +194,7 @@ Amita Kamath, Robin Jia, and Percy Liang. 2020.
 
 \bibitem[{{Laya Studio}(2026)}]{layastudio2026}
 {Laya Studio}. 2026.
-\newblock Proper scoring rules: How to reward honest probabilities.
+\newblock {Proper scoring rules: rewarding a model for honest probabilities}.
 \newblock \url{https://laya.studio/learn/proper-scoring-rules}.
 \newblock Accessed 2026-11-01.
 
@@ -283,13 +283,14 @@ Edwin~B. Wilson. 1927.
 \newblock \emph{Journal of the American Statistical Association},
   22(158):209--212.
 
-\bibitem[{Xin et~al.(2021)Xin, Tang, Lee, and Lin}]{xin2021art}
-Ji~Xin, Raphael Tang, Yaoliang Lee, and Jimmy Lin. 2021.
-\newblock The art of abstention: Selective prediction and error conditioning in
-  question answering.
+\bibitem[{Xin et~al.(2021)Xin, Tang, Yu, and Lin}]{xin2021art}
+Ji~Xin, Raphael Tang, Yaoliang Yu, and Jimmy Lin. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.acl-long.84} {The art of
+  abstention: Selective prediction and error regularization for natural
+  language processing}.
 \newblock In \emph{Proceedings of the 59th Annual Meeting of the Association
   for Computational Linguistics and the 11th International Joint Conference on
-  Natural Language Processing}, pages 1040--1051.
+  Natural Language Processing (Volume 1: Long Papers)}, pages 1040--1051.
 
 \bibitem[{Yang et~al.(2023)Yang, Klein, Celikyilmaz, Peng, and
   Tian}]{yang2023rlcd}
